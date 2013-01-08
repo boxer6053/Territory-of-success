@@ -111,11 +111,11 @@
             </objects>
             <point key="canvasLocation" x="357" y="-1043"/>
         </scene>
-        <!--Navigation Controller - Item 2-->
+        <!--Navigation Controller - Catalogue-->
         <scene sceneID="2yE-Ac-aRf">
             <objects>
                 <navigationController id="rKH-MI-8hw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" id="D8e-iH-KKD"/>
+                    <tabBarItem key="tabBarItem" title="Catalogue" image="Catalogue.png" id="D8e-iH-KKD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bK7-ec-7vO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -130,11 +130,11 @@
             </objects>
             <point key="canvasLocation" x="357" y="-348"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - Questions-->
         <scene sceneID="TOo-i4-P61">
             <objects>
                 <navigationController id="TsD-xh-9RE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="xr2-ka-6RV"/>
+                    <tabBarItem key="tabBarItem" title="Questions" image="Questions.png" id="xr2-ka-6RV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FJa-KM-BR9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -164,11 +164,11 @@
             </objects>
             <point key="canvasLocation" x="883" y="980"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - Settings-->
         <scene sceneID="03Y-68-yoo">
             <objects>
                 <navigationController id="BIb-F4-6Wk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="xPw-kQ-uM6"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings.png" id="xPw-kQ-uM6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nw1-zZ-O4a">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -185,7 +185,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Catalogue.png" width="30" height="30"/>
+        <image name="Questions.png" width="30" height="30"/>
         <image name="home.png" width="30" height="30"/>
+        <image name="settings.png" width="30" height="30"/>
     </resources>
     <classes>
         <class className="MSFirstNavigationController" superclassName="UINavigationController">
