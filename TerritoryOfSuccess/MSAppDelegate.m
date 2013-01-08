@@ -16,6 +16,8 @@
 
 - (void)customizeInterface
 {
+    [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
+    
     [[UITabBar appearance] setSelectedImageTintColor:[UIColor colorWithRed:1 green:(102/255.0) blue:0 alpha:1]];
 }
 
