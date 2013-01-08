@@ -90,11 +90,11 @@
             </objects>
             <point key="canvasLocation" x="875" y="322"/>
         </scene>
-        <!--First Navigation Controller - Home-->
+        <!--First Navigation Controller - Main-->
         <scene sceneID="kUx-Pn-sSh">
             <objects>
                 <navigationController id="WMr-Z5-3IS" customClass="MSFirstNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="home.png" id="vHN-4a-EzM"/>
+                    <tabBarItem key="tabBarItem" title="Main" image="home.png" id="vHN-4a-EzM"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="F3A-Mp-SZr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -187,6 +187,29 @@
     <resources>
         <image name="home.png" width="30" height="30"/>
     </resources>
+    <classes>
+        <class className="MSFirstNavigationController" superclassName="UINavigationController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSFirstNavigationController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="myTabBarItem" candidateClass="UITabBarItem"/>
+            </relationships>
+        </class>
+        <class className="MSFirstViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSFirstViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="recognize:"/>
+            </relationships>
+        </class>
+        <class className="MSTabBarController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSTabBarController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="myTabBarController" candidateClass="UITabBar"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
