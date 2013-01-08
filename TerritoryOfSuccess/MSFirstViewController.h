@@ -11,6 +11,4 @@
 @interface MSFirstViewController : UIViewController
 - (IBAction)recognize:(id)sender;
 
-//trololo
-
 @end
