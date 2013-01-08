@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		F53560EE169C547600BB9F6D /* iPhoneStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F53560ED169C547600BB9F6D /* iPhoneStoryboard.storyboard */; };
 		F5603C44169C6E6400667203 /* MSFirstNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5603C43169C6E6400667203 /* MSFirstNavigationController.m */; };
-		F5603C46169C709400667203 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = F5603C45169C709400667203 /* home.png */; };
+		F5603C4E169C752200667203 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = F5603C4D169C752200667203 /* home.png */; };
 		F5F6ADC3169C4F21000247D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC2169C4F21000247D9 /* UIKit.framework */; };
 		F5F6ADC5169C4F21000247D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC4169C4F21000247D9 /* Foundation.framework */; };
 		F5F6ADC7169C4F21000247D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC6169C4F21000247D9 /* CoreGraphics.framework */; };
@@ -36,7 +36,7 @@
 		F53560ED169C547600BB9F6D /* iPhoneStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhoneStoryboard.storyboard; sourceTree = "<group>"; };
 		F5603C42169C6E6400667203 /* MSFirstNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSFirstNavigationController.h; sourceTree = "<group>"; };
 		F5603C43169C6E6400667203 /* MSFirstNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSFirstNavigationController.m; sourceTree = "<group>"; };
-		F5603C45169C709400667203 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
+		F5603C4D169C752200667203 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
 		F5F6ADBE169C4F21000247D9 /* TerritoryOfSuccess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TerritoryOfSuccess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5F6ADC2169C4F21000247D9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F5F6ADC4169C4F21000247D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -273,7 +273,7 @@
 		F5F6ADCB169C4F21000247D9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F5603C45169C709400667203 /* home.png */,
+				F5603C4D169C752200667203 /* home.png */,
 				F5F6AE90169C51A3000247D9 /* numbers.png */,
 				F5F6AE89169C4F72000247D9 /* tessdata */,
 				F5F6AE80169C4F65000247D9 /* tesseract-ios */,
@@ -556,7 +556,7 @@
 				F5F6AE8A169C4F72000247D9 /* tessdata in Resources */,
 				F5F6AE91169C51A3000247D9 /* numbers.png in Resources */,
 				F53560EE169C547600BB9F6D /* iPhoneStoryboard.storyboard in Resources */,
-				F5603C46169C709400667203 /* home.png in Resources */,
+				F5603C4E169C752200667203 /* home.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

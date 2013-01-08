@@ -93,7 +93,7 @@
         <scene sceneID="kUx-Pn-sSh">
             <objects>
                 <navigationController id="WMr-Z5-3IS" customClass="MSFirstNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="vHN-4a-EzM"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home.png" id="vHN-4a-EzM"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="F3A-Mp-SZr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -183,6 +183,9 @@
             <point key="canvasLocation" x="357" y="980"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="home.png" width="30" height="30"/>
+    </resources>
     <classes>
         <class className="MSFirstNavigationController" superclassName="UINavigationController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSFirstNavigationController.h"/>
