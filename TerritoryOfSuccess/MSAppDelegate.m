@@ -14,8 +14,15 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
+- (void)customizeInterface
+{
+    [[UITabBar appearance] setSelectedImageTintColor:[UIColor colorWithRed:1 green:(102/255.0) blue:0 alpha:1]];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self customizeInterface];
+    
     return YES;
 }
 
