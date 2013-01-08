@@ -25,7 +25,6 @@
 		F5F6AE7F169C4F5A000247D9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F5F6AE7B169C4F5A000247D9 /* README.md */; };
 		F5F6AE86169C4F65000247D9 /* Tesseract.mm in Sources */ = {isa = PBXBuildFile; fileRef = F5F6AE83169C4F65000247D9 /* Tesseract.mm */; };
 		F5F6AE87169C4F65000247D9 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F5F6AE84169C4F65000247D9 /* LICENSE */; };
-		F5F6AE88169C4F65000247D9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F5F6AE85169C4F65000247D9 /* README.md */; };
 		F5F6AE8A169C4F72000247D9 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = F5F6AE89169C4F72000247D9 /* tessdata */; };
 		F5F6AE8F169C5153000247D9 /* MSFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F6AE8E169C5153000247D9 /* MSFirstViewController.m */; };
 		F5F6AE91169C51A3000247D9 /* numbers.png in Resources */ = {isa = PBXBuildFile; fileRef = F5F6AE90169C51A3000247D9 /* numbers.png */; };
@@ -546,7 +545,6 @@
 				F5F6AE7C169C4F5A000247D9 /* .gitignore in Resources */,
 				F5F6AE7F169C4F5A000247D9 /* README.md in Resources */,
 				F5F6AE87169C4F65000247D9 /* LICENSE in Resources */,
-				F5F6AE88169C4F65000247D9 /* README.md in Resources */,
 				F5F6AE8A169C4F72000247D9 /* tessdata in Resources */,
 				F5F6AE91169C51A3000247D9 /* numbers.png in Resources */,
 				F53560EE169C547600BB9F6D /* iPhoneStoryboard.storyboard in Resources */,
