@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8kx-JT-nNm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8kx-JT-nNm">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
     <scenes>
         <!--View Controller - 2-->
@@ -27,27 +27,92 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLf-Pc-45q">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="recognize:" destination="jKd-fR-cIU" eventType="touchUpInside" id="et0-1f-ELo"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" id="Vjb-iY-u2g">
+                                <rect key="frame" x="20" y="296" width="280" height="139"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hcs-IG-iCC">
+                                        <rect key="frame" x="10" y="82" width="185" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="send">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NAL-Z1-5ll">
+                                        <rect key="frame" x="203" y="76" width="67" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" backgroundImage="photo_camera_1.png">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="dN8-M6-sm3">
+                                        <rect key="frame" x="10" y="32" width="260" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Enter code or make a photo:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xqB-Cx-BFj">
+                                        <rect key="frame" x="10" y="8" width="260" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="0.1481238594890511" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Check your product:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kl8-ve-pk8">
+                                <rect key="frame" x="20" y="261" width="280" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" white="0.14999999999999999" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" id="QRT-kF-N46">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="223"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="DdF-cE-hpc">
+                                        <rect key="frame" x="5" y="5" width="310" height="190"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="jKd-fR-cIU" id="PSQ-t5-hcF"/>
+                                        </connections>
+                                    </scrollView>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="Pey-O0-vf0">
+                                        <rect key="frame" x="141" y="192" width="38" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="changeNewsPage:" destination="jKd-fR-cIU" eventType="valueChanged" id="cSL-Sf-1jX"/>
+                                        </connections>
+                                    </pageControl>
+                                </subviews>
+                                <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="wLf-Pc-45q" firstAttribute="centerX" secondItem="0JY-C8-Kkc" secondAttribute="centerX" type="default" id="1TU-DD-xeX"/>
-                            <constraint firstItem="wLf-Pc-45q" firstAttribute="centerY" secondItem="0JY-C8-Kkc" secondAttribute="centerY" type="default" id="ZAC-iJ-H9y"/>
-                        </constraints>
+                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="1" id="S0C-j4-tdR"/>
+                    <connections>
+                        <outlet property="codeInputView" destination="Vjb-iY-u2g" id="Fhe-0S-Wrb"/>
+                        <outlet property="codeTextField" destination="dN8-M6-sm3" id="TeA-mM-lWm"/>
+                        <outlet property="newsPageControl" destination="Pey-O0-vf0" id="3xT-fn-Kyc"/>
+                        <outlet property="newsScrollView" destination="DdF-cE-hpc" id="BR4-gm-xuX"/>
+                        <outlet property="newsView" destination="QRT-kF-N46" id="LHV-hG-XRI"/>
+                        <outlet property="photoButton" destination="NAL-Z1-5ll" id="UA2-vY-44t"/>
+                        <outlet property="sendCodeButton" destination="hcs-IG-iCC" id="RW5-ob-nwn"/>
+                        <outlet property="tintLabel" destination="xqB-Cx-BFj" id="3VU-M6-Rji"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Zv-zQ-42Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -188,6 +253,7 @@
         <image name="Catalogue.png" width="30" height="30"/>
         <image name="Questions.png" width="30" height="30"/>
         <image name="home.png" width="30" height="30"/>
+        <image name="photo_camera_1.png" width="128" height="96"/>
         <image name="settings.png" width="30" height="30"/>
     </resources>
     <classes>
@@ -200,7 +266,16 @@
         <class className="MSFirstViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSFirstViewController.h"/>
             <relationships>
+                <relationship kind="action" name="changeNewsPage:"/>
                 <relationship kind="action" name="recognize:"/>
+                <relationship kind="outlet" name="codeInputView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="codeTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="newsPageControl" candidateClass="UIPageControl"/>
+                <relationship kind="outlet" name="newsScrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="newsView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="photoButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="sendCodeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="tintLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="MSTabBarController" superclassName="UITabBarController">
@@ -208,9 +283,6 @@
             <relationships>
                 <relationship kind="outlet" name="myTabBarController" candidateClass="UITabBar"/>
             </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
