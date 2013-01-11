@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
     <scenes>
-        <!--View Controller - 2-->
+        <!--View Controller - Каталог-->
         <scene sceneID="o3e-fT-KFl">
             <objects>
                 <viewController id="7i8-cs-uKQ" sceneMemberID="viewController">
@@ -13,13 +13,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="2" id="BAi-Sz-OmZ"/>
+                    <navigationItem key="navigationItem" title="Каталог" id="BAi-Sz-OmZ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bpc-Zf-IHM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="883" y="-348"/>
         </scene>
-        <!--First View Controller - 1-->
+        <!--First View Controller-->
         <scene sceneID="68i-5j-DHG">
             <objects>
                 <viewController id="jKd-fR-cIU" customClass="MSFirstViewController" sceneMemberID="viewController">
@@ -140,7 +140,7 @@
             </objects>
             <point key="canvasLocation" x="-190" y="24"/>
         </scene>
-        <!--View Controller - 3-->
+        <!--View Controller - Вопросы-->
         <scene sceneID="ssN-xn-xUv">
             <objects>
                 <viewController id="Cru-iV-L4Z" sceneMemberID="viewController">
@@ -149,7 +149,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="3" id="sQE-dx-gsA"/>
+                    <navigationItem key="navigationItem" title="Вопросы" id="sQE-dx-gsA"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q3i-81-c2y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -167,8 +167,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <outlet property="myTabBarItem" destination="vHN-4a-EzM" id="a7h-z4-hGT"/>
-                        <outlet property="tabBarItem" destination="vHN-4a-EzM" id="oU9-th-Za3"/>
+                        <outlet property="mainNavigationBar" destination="F3A-Mp-SZr" id="WUs-Ia-IO3"/>
                         <segue destination="jKd-fR-cIU" kind="relationship" relationship="rootViewController" id="KXm-xh-WjB"/>
                     </connections>
                 </navigationController>
@@ -176,10 +175,10 @@
             </objects>
             <point key="canvasLocation" x="357" y="-1043"/>
         </scene>
-        <!--Navigation Controller - Catalogue-->
+        <!--First Navigation Controller - Catalogue-->
         <scene sceneID="2yE-Ac-aRf">
             <objects>
-                <navigationController id="rKH-MI-8hw" sceneMemberID="viewController">
+                <navigationController id="rKH-MI-8hw" customClass="MSFirstNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Catalogue" image="Catalogue.png" id="D8e-iH-KKD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bK7-ec-7vO">
@@ -195,10 +194,10 @@
             </objects>
             <point key="canvasLocation" x="357" y="-348"/>
         </scene>
-        <!--Navigation Controller - Questions-->
+        <!--First Navigation Controller - Questions-->
         <scene sceneID="TOo-i4-P61">
             <objects>
-                <navigationController id="TsD-xh-9RE" sceneMemberID="viewController">
+                <navigationController id="TsD-xh-9RE" customClass="MSFirstNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Questions" image="Questions.png" id="xr2-ka-6RV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FJa-KM-BR9">
@@ -214,7 +213,7 @@
             </objects>
             <point key="canvasLocation" x="349" y="322"/>
         </scene>
-        <!--View Controller - 4-->
+        <!--View Controller - Новости-->
         <scene sceneID="WN0-wI-NeY">
             <objects>
                 <viewController id="hJd-OY-AUG" sceneMemberID="viewController">
@@ -223,16 +222,16 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="4" id="bGf-Y1-16V"/>
+                    <navigationItem key="navigationItem" title="Новости" id="bGf-Y1-16V"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="seV-FP-qjx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="883" y="980"/>
         </scene>
-        <!--Navigation Controller - Settings-->
+        <!--First Navigation Controller - Settings-->
         <scene sceneID="03Y-68-yoo">
             <objects>
-                <navigationController id="BIb-F4-6Wk" sceneMemberID="viewController">
+                <navigationController id="BIb-F4-6Wk" customClass="MSFirstNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="settings.png" id="xPw-kQ-uM6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nw1-zZ-O4a">
@@ -260,7 +259,8 @@
         <class className="MSFirstNavigationController" superclassName="UINavigationController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSFirstNavigationController.h"/>
             <relationships>
-                <relationship kind="outlet" name="myTabBarItem" candidateClass="UITabBarItem"/>
+                <relationship kind="outlet" name="mainNavigationBar" candidateClass="UINavigationBar"/>
+                <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
             </relationships>
         </class>
         <class className="MSFirstViewController" superclassName="UIViewController">

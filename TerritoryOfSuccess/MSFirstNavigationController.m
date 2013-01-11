@@ -14,8 +14,6 @@
 
 @implementation MSFirstNavigationController
 
-@synthesize myTabBarItem = _myTabBarItem;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -28,6 +26,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];    
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"logoBackground.png"] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationBar setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
+                                                 [UIColor blackColor], UITextAttributeTextColor,
+                                                 [UIFont fontWithName:@"EuphemiaUCAS-Bold" size:20.0], UITextAttributeFont,
+                                                 nil]];
+    [self.mainNavigationBar setBackgroundImage:[UIImage imageNamed:@"mainLogoBackground.png"] forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)didReceiveMemoryWarning
