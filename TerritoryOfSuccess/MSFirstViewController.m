@@ -56,23 +56,6 @@
         subView.backgroundColor = [contentArray objectAtIndex:i];
         [self.newsScrollView addSubview:subView];
         
-        CGRect textFrame;
-        textFrame.origin.x = 0;
-        textFrame.origin.y = 120;
-        textFrame.size = CGSizeMake(self.newsScrollView.frame.size.width, 70);
-        
-        UIView *textView = [[UIView alloc]initWithFrame:textFrame];
-        textView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
-        [subView addSubview:textView];
-        
-        UILabel *descritionText = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, textView.frame.size.width - 10, textView.frame.size.height)];
-        descritionText.textColor = [UIColor whiteColor];
-        descritionText.backgroundColor = [UIColor clearColor];
-        descritionText.numberOfLines = 3;
-        descritionText.font = [UIFont systemFontOfSize:14];
-        descritionText.text = @"Hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world";
-        [textView addSubview:descritionText];
-        
     }
     self.newsScrollView.contentSize = CGSizeMake(self.newsScrollView.frame.size.width * contentArray.count, self.newsScrollView.frame.size.height);
     [self.newsScrollView.layer setCornerRadius:5.0];

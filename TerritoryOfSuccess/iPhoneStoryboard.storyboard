@@ -35,7 +35,7 @@
                                         <rect key="frame" x="10" y="82" width="185" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="send">
+                                        <state key="normal" title="Отправить">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -61,7 +61,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Enter code or make a photo:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xqB-Cx-BFj">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Введите код или сделайте фото:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xqB-Cx-BFj">
                                         <rect key="frame" x="10" y="8" width="260" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -71,7 +71,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Check your product:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kl8-ve-pk8">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Проверка кода:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kl8-ve-pk8">
                                 <rect key="frame" x="20" y="261" width="280" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -79,18 +79,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" id="QRT-kF-N46">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="223"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="233"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="DdF-cE-hpc">
-                                        <rect key="frame" x="5" y="5" width="310" height="190"/>
+                                        <rect key="frame" x="5" y="10" width="310" height="200"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <connections>
                                             <outlet property="delegate" destination="jKd-fR-cIU" id="PSQ-t5-hcF"/>
                                         </connections>
                                     </scrollView>
                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="Pey-O0-vf0">
-                                        <rect key="frame" x="141" y="192" width="38" height="36"/>
+                                        <rect key="frame" x="141" y="203" width="38" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <connections>
                                             <action selector="changeNewsPage:" destination="jKd-fR-cIU" eventType="valueChanged" id="cSL-Sf-1jX"/>
@@ -102,7 +102,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="1" id="S0C-j4-tdR"/>
+                    <navigationItem key="navigationItem" id="S0C-j4-tdR"/>
                     <connections>
                         <outlet property="codeInputView" destination="Vjb-iY-u2g" id="Fhe-0S-Wrb"/>
                         <outlet property="codeTextField" destination="dN8-M6-sm3" id="TeA-mM-lWm"/>
