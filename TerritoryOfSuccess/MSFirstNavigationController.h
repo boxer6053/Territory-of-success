@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MSFirstNavigationController : UINavigationController
-@property (weak, nonatomic) IBOutlet UITabBarItem *myTabBarItem;
-
+@property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
+@property (strong, nonatomic) IBOutlet UINavigationBar *mainNavigationBar;
 @end
