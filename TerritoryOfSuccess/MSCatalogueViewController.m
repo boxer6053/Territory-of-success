@@ -7,6 +7,7 @@
 //
 
 #import "MSCatalogueViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface MSCatalogueViewController ()
 
@@ -31,6 +32,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];
     
+    self.tableView.layer.cornerRadius = 10;
     [[self.productAndBonusesControl.subviews objectAtIndex:1] setTintColor:[UIColor colorWithRed:255.0/255.0 green:140/255.0 blue:0 alpha:1]];
     [[self.productAndBonusesControl.subviews objectAtIndex:0] setTintColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1]];
 }

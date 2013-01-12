@@ -34,6 +34,9 @@
 		F5F6AE8A169C4F72000247D9 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = F5F6AE89169C4F72000247D9 /* tessdata */; };
 		F5F6AE8F169C5153000247D9 /* MSFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F6AE8E169C5153000247D9 /* MSFirstViewController.m */; };
 		F5F6AE91169C51A3000247D9 /* numbers.png in Resources */ = {isa = PBXBuildFile; fileRef = F5F6AE90169C51A3000247D9 /* numbers.png */; };
+		FA283CCD16A0890F00DBDC19 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA283CCC16A0890F00DBDC19 /* QuartzCore.framework */; };
+		FA283CD016A0909000DBDC19 /* tab_select_indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = FA283CCE16A0909000DBDC19 /* tab_select_indicator.png */; };
+		FA283CD116A0909000DBDC19 /* tab_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FA283CCF16A0909000DBDC19 /* tab_bg.png */; };
 		FA55C14016A069C400671CAB /* logoBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = FA55C13E16A069C400671CAB /* logoBackground.png */; };
 		FA55C14116A069C400671CAB /* mainLogoBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = FA55C13F16A069C400671CAB /* mainLogoBackground.png */; };
 		FA55C14916A071AA00671CAB /* MSCatalogueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA55C14816A071AA00671CAB /* MSCatalogueViewController.m */; };
@@ -219,6 +222,9 @@
 		F5F6AE8D169C5153000247D9 /* MSFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSFirstViewController.h; sourceTree = "<group>"; };
 		F5F6AE8E169C5153000247D9 /* MSFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSFirstViewController.m; sourceTree = "<group>"; };
 		F5F6AE90169C51A3000247D9 /* numbers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = numbers.png; sourceTree = "<group>"; };
+		FA283CCC16A0890F00DBDC19 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		FA283CCE16A0909000DBDC19 /* tab_select_indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_select_indicator.png; sourceTree = "<group>"; };
+		FA283CCF16A0909000DBDC19 /* tab_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_bg.png; sourceTree = "<group>"; };
 		FA55C13E16A069C400671CAB /* logoBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoBackground.png; sourceTree = "<group>"; };
 		FA55C13F16A069C400671CAB /* mainLogoBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainLogoBackground.png; sourceTree = "<group>"; };
 		FA55C14716A071AA00671CAB /* MSCatalogueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCatalogueViewController.h; sourceTree = "<group>"; };
@@ -230,6 +236,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA283CCD16A0890F00DBDC19 /* QuartzCore.framework in Frameworks */,
 				F5F6ADC3169C4F21000247D9 /* UIKit.framework in Frameworks */,
 				F5F6ADC5169C4F21000247D9 /* Foundation.framework in Frameworks */,
 				F5F6ADC7169C4F21000247D9 /* CoreGraphics.framework in Frameworks */,
@@ -262,6 +269,7 @@
 		F5F6ADC1169C4F21000247D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA283CCC16A0890F00DBDC19 /* QuartzCore.framework */,
 				F5F6ADC2169C4F21000247D9 /* UIKit.framework */,
 				F5F6ADC4169C4F21000247D9 /* Foundation.framework */,
 				F5F6ADC6169C4F21000247D9 /* CoreGraphics.framework */,
@@ -293,6 +301,8 @@
 		F5F6ADCB169C4F21000247D9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FA283CCE16A0909000DBDC19 /* tab_select_indicator.png */,
+				FA283CCF16A0909000DBDC19 /* tab_bg.png */,
 				FA55C13E16A069C400671CAB /* logoBackground.png */,
 				FA55C13F16A069C400671CAB /* mainLogoBackground.png */,
 				F5603C62169C9A1100667203 /* Catalogue.png */,
@@ -587,6 +597,8 @@
 				F5603C63169C9A1100667203 /* Catalogue.png in Resources */,
 				FA55C14016A069C400671CAB /* logoBackground.png in Resources */,
 				FA55C14116A069C400671CAB /* mainLogoBackground.png in Resources */,
+				FA283CD016A0909000DBDC19 /* tab_select_indicator.png in Resources */,
+				FA283CD116A0909000DBDC19 /* tab_bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

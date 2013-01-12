@@ -12,15 +12,6 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="MPF-3Z-tlg">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="odg-EI-Wxz"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                </segments>
-                            </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5sI-XP-K4q">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="336" type="user" id="aXA-ds-HYM"/>
@@ -34,27 +25,44 @@
                                     <action selector="segmentPressed:" destination="7i8-cs-uKQ" eventType="valueChanged" id="sbL-Xq-G8d"/>
                                 </connections>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="j1R-Un-PSU">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="j1R-Un-PSU">
+                                <color key="backgroundColor" red="1" green="0.63934806359999996" blue="0.2459421654" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="378" id="ccK-cB-n6N"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="RBy-Fh-EM5" style="IBUITableViewCellStyleDefault" id="pXn-9x-6Df">
+                                        <rect key="frame" x="0.0" y="22" width="280" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBy-Fh-EM5">
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="5sI-XP-K4q" firstAttribute="leading" secondItem="MPF-3Z-tlg" secondAttribute="leading" type="user" id="2dK-sU-qbB"/>
                             <constraint firstItem="j1R-Un-PSU" firstAttribute="leading" secondItem="j7r-tX-S6q" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="IgE-TG-l7Q"/>
                             <constraint firstItem="j1R-Un-PSU" firstAttribute="top" secondItem="5sI-XP-K4q" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="KQY-Si-3wq"/>
                             <constraint firstItem="5sI-XP-K4q" firstAttribute="centerX" secondItem="j7r-tX-S6q" secondAttribute="centerX" type="user" id="KcA-V9-lvl"/>
-                            <constraint firstItem="5sI-XP-K4q" firstAttribute="trailing" secondItem="MPF-3Z-tlg" secondAttribute="trailing" type="user" id="Ofs-U3-cgs"/>
                             <constraint firstAttribute="trailing" secondItem="j1R-Un-PSU" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="YvT-po-azQ"/>
-                            <constraint firstItem="5sI-XP-K4q" firstAttribute="top" secondItem="j7r-tX-S6q" secondAttribute="top" type="default" id="oiR-GK-diM"/>
-                            <constraint firstItem="MPF-3Z-tlg" firstAttribute="top" secondItem="j7r-tX-S6q" secondAttribute="top" type="default" id="qqa-eE-Dav"/>
-                            <constraint firstItem="5sI-XP-K4q" firstAttribute="baseline" secondItem="MPF-3Z-tlg" secondAttribute="baseline" type="user" id="uhO-2o-Egf"/>
                             <constraint firstAttribute="bottom" secondItem="j1R-Un-PSU" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="yKS-F0-eBY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Каталог" id="BAi-Sz-OmZ"/>
                     <connections>
                         <outlet property="productAndBonusesControl" destination="5sI-XP-K4q" id="mwn-aq-i1A"/>
+                        <outlet property="tableView" destination="j1R-Un-PSU" id="lab-nc-h0b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bpc-Zf-IHM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -132,11 +140,11 @@
             </objects>
             <point key="canvasLocation" x="875" y="322"/>
         </scene>
-        <!--First Navigation Controller - Main-->
+        <!--First Navigation Controller - Главная-->
         <scene sceneID="kUx-Pn-sSh">
             <objects>
                 <navigationController id="WMr-Z5-3IS" customClass="MSFirstNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Main" image="home.png" id="vHN-4a-EzM"/>
+                    <tabBarItem key="tabBarItem" title="Главная" image="home.png" id="vHN-4a-EzM"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="F3A-Mp-SZr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -152,11 +160,11 @@
             </objects>
             <point key="canvasLocation" x="357" y="-1043"/>
         </scene>
-        <!--First Navigation Controller - Catalogue-->
+        <!--First Navigation Controller - Каталог-->
         <scene sceneID="2yE-Ac-aRf">
             <objects>
                 <navigationController id="rKH-MI-8hw" customClass="MSFirstNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Catalogue" image="Catalogue.png" id="D8e-iH-KKD"/>
+                    <tabBarItem key="tabBarItem" title="Каталог" image="Catalogue.png" id="D8e-iH-KKD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bK7-ec-7vO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -171,11 +179,11 @@
             </objects>
             <point key="canvasLocation" x="357" y="-348"/>
         </scene>
-        <!--First Navigation Controller - Questions-->
+        <!--First Navigation Controller - Вопросы-->
         <scene sceneID="TOo-i4-P61">
             <objects>
                 <navigationController id="TsD-xh-9RE" customClass="MSFirstNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Questions" image="Questions.png" id="xr2-ka-6RV"/>
+                    <tabBarItem key="tabBarItem" title="Вопросы" image="Questions.png" id="xr2-ka-6RV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FJa-KM-BR9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -205,11 +213,11 @@
             </objects>
             <point key="canvasLocation" x="883" y="980"/>
         </scene>
-        <!--First Navigation Controller - Settings-->
+        <!--First Navigation Controller - Новости-->
         <scene sceneID="03Y-68-yoo">
             <objects>
                 <navigationController id="BIb-F4-6Wk" customClass="MSFirstNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="settings.png" id="xPw-kQ-uM6"/>
+                    <tabBarItem key="tabBarItem" title="Новости" image="settings.png" id="xPw-kQ-uM6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nw1-zZ-O4a">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -231,37 +239,6 @@
         <image name="home.png" width="30" height="30"/>
         <image name="settings.png" width="30" height="30"/>
     </resources>
-    <classes>
-        <class className="MSCatalogueViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSCatalogueViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="segmentPressed:"/>
-                <relationship kind="outlet" name="productAndBonusesControl" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-        <class className="MSFirstNavigationController" superclassName="UINavigationController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSFirstNavigationController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="mainNavigationBar" candidateClass="UINavigationBar"/>
-                <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
-            </relationships>
-        </class>
-        <class className="MSFirstViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSFirstViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="recognize:"/>
-            </relationships>
-        </class>
-        <class className="MSTabBarController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSTabBarController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="myTabBarController" candidateClass="UITabBar"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
