@@ -14,7 +14,7 @@
 @end
 
 @implementation MSCatalogueViewController
-
+@synthesize tableView = _tableView;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -27,12 +27,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    [_tableView reloadData];
+    
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_image.png"]]];
+    _tableView.layer.cornerRadius = 10;
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];
-    
-    self.tableView.layer.cornerRadius = 10;
     [[self.productAndBonusesControl.subviews objectAtIndex:1] setTintColor:[UIColor colorWithRed:255.0/255.0 green:140/255.0 blue:0 alpha:1]];
     [[self.productAndBonusesControl.subviews objectAtIndex:0] setTintColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1]];
 }
@@ -54,5 +58,27 @@
                         [[self.productAndBonusesControl.subviews objectAtIndex:i] setTintColor:tintcolor];
                         }
            }
+}
+
+#pragma mark Table View
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 5;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString* myIdentifier = @"cellIdentifier";
+    UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:myIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:myIdentifier];
+    }
+    cell.imageView.image = [UIImage imageNamed:@"photo_camera_1.png"];
+    cell.textLabel.text = @"Название категории";
+    cell.textLabel.alpha = 1.0;
+    cell.detailTextLabel.text = @"Описание";
+    return cell;
 }
 @end

@@ -40,7 +40,8 @@
 		FA55C14016A069C400671CAB /* logoBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = FA55C13E16A069C400671CAB /* logoBackground.png */; };
 		FA55C14116A069C400671CAB /* mainLogoBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = FA55C13F16A069C400671CAB /* mainLogoBackground.png */; };
 		FA55C14916A071AA00671CAB /* MSCatalogueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA55C14816A071AA00671CAB /* MSCatalogueViewController.m */; };
-		FAFCDE9916A00B2700A37E76 /* photo_camera_1.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFCDE9816A00B2700A37E76 /* photo_camera_1.png */; };
+		FA5D725216A174BE00D2E050 /* photo_camera_1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5D725116A174BE00D2E050 /* photo_camera_1.png */; };
+		FA626B9916A1970B002BB7F6 /* bg_image.png in Resources */ = {isa = PBXBuildFile; fileRef = FA626B9816A1970B002BB7F6 /* bg_image.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -230,7 +231,8 @@
 		FA55C13F16A069C400671CAB /* mainLogoBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainLogoBackground.png; sourceTree = "<group>"; };
 		FA55C14716A071AA00671CAB /* MSCatalogueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCatalogueViewController.h; sourceTree = "<group>"; };
 		FA55C14816A071AA00671CAB /* MSCatalogueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCatalogueViewController.m; sourceTree = "<group>"; };
-		FAFCDE9816A00B2700A37E76 /* photo_camera_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = photo_camera_1.png; path = ../../../Downloads/photo_camera_1.png; sourceTree = "<group>"; };
+		FA5D725116A174BE00D2E050 /* photo_camera_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo_camera_1.png; sourceTree = "<group>"; };
+		FA626B9816A1970B002BB7F6 /* bg_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_image.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,11 +305,12 @@
 		F5F6ADCB169C4F21000247D9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FA626B9816A1970B002BB7F6 /* bg_image.png */,
+				FA5D725116A174BE00D2E050 /* photo_camera_1.png */,
 				FA283CCE16A0909000DBDC19 /* tab_select_indicator.png */,
 				FA283CCF16A0909000DBDC19 /* tab_bg.png */,
 				FA55C13E16A069C400671CAB /* logoBackground.png */,
 				FA55C13F16A069C400671CAB /* mainLogoBackground.png */,
-				FAFCDE9816A00B2700A37E76 /* photo_camera_1.png */,
 				F5603C62169C9A1100667203 /* Catalogue.png */,
 				F5603C58169C944C00667203 /* settings.png */,
 				F5603C56169C92AF00667203 /* Questions.png */,
@@ -602,7 +605,8 @@
 				FA55C14116A069C400671CAB /* mainLogoBackground.png in Resources */,
 				FA283CD016A0909000DBDC19 /* tab_select_indicator.png in Resources */,
 				FA283CD116A0909000DBDC19 /* tab_bg.png in Resources */,
-				FAFCDE9916A00B2700A37E76 /* photo_camera_1.png in Resources */,
+				FA5D725216A174BE00D2E050 /* photo_camera_1.png in Resources */,
+				FA626B9916A1970B002BB7F6 /* bg_image.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

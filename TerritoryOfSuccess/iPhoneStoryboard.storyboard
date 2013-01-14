@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8kx-JT-nNm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8kx-JT-nNm">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
         <!--Catalogue View Controller - Каталог-->
@@ -12,57 +12,58 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5sI-XP-K4q">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="336" type="user" id="aXA-ds-HYM"/>
-                                    <constraint firstAttribute="height" constant="50" type="user" id="guX-md-KtS"/>
-                                </constraints>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="JVi-72-uhQ">
+                                <rect key="frame" x="-13" y="0.0" width="346" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Продукты"/>
                                     <segment title="Бонусы"/>
                                 </segments>
                                 <connections>
-                                    <action selector="segmentPressed:" destination="7i8-cs-uKQ" eventType="valueChanged" id="sbL-Xq-G8d"/>
+                                    <action selector="segmentPressed:" destination="7i8-cs-uKQ" eventType="valueChanged" id="B0A-F0-CrX"/>
                                 </connections>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="j1R-Un-PSU">
-                                <color key="backgroundColor" red="1" green="0.63934806359999996" blue="0.2459421654" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="378" id="ccK-cB-n6N"/>
-                                </constraints>
+                            <tableView clipsSubviews="YES" alpha="0.50000000000000011" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="LKh-YK-2uW">
+                                <rect key="frame" x="20" y="51" width="280" height="384"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="RBy-Fh-EM5" style="IBUITableViewCellStyleDefault" id="pXn-9x-6Df">
-                                        <rect key="frame" x="0.0" y="22" width="280" height="44"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellIdentifier" textLabel="obR-98-9zQ" detailTextLabel="kde-7E-hXh" rowHeight="100" style="IBUITableViewCellStyleSubtitle" id="Ttl-5M-fTt">
+                                        <rect key="frame" x="0.0" y="22" width="280" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="280" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="260" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBy-Fh-EM5">
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="obR-98-9zQ">
+                                                    <rect key="frame" x="10" y="30" width="38" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kde-7E-hXh">
+                                                    <rect key="frame" x="10" y="52" width="47" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="j1R-Un-PSU" firstAttribute="leading" secondItem="j7r-tX-S6q" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="IgE-TG-l7Q"/>
-                            <constraint firstItem="j1R-Un-PSU" firstAttribute="top" secondItem="5sI-XP-K4q" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="KQY-Si-3wq"/>
-                            <constraint firstItem="5sI-XP-K4q" firstAttribute="centerX" secondItem="j7r-tX-S6q" secondAttribute="centerX" type="user" id="KcA-V9-lvl"/>
-                            <constraint firstAttribute="trailing" secondItem="j1R-Un-PSU" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="YvT-po-azQ"/>
-                            <constraint firstAttribute="bottom" secondItem="j1R-Un-PSU" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="yKS-F0-eBY"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Каталог" id="BAi-Sz-OmZ"/>
                     <connections>
-                        <outlet property="productAndBonusesControl" destination="5sI-XP-K4q" id="mwn-aq-i1A"/>
-                        <outlet property="tableView" destination="j1R-Un-PSU" id="lab-nc-h0b"/>
+                        <outlet property="productAndBonusesControl" destination="JVi-72-uhQ" id="EjB-xq-0Xn"/>
+                        <outlet property="tableView" destination="LKh-YK-2uW" id="oTe-rI-xuF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bpc-Zf-IHM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -302,10 +303,18 @@
         <image name="Catalogue.png" width="30" height="30"/>
         <image name="Questions.png" width="30" height="30"/>
         <image name="home.png" width="30" height="30"/>
-        <image name="photo_camera_1.png" width="128" height="96"/>
+        <image name="photo_camera_1.png" width="61" height="61"/>
         <image name="settings.png" width="30" height="30"/>
     </resources>
     <classes>
+        <class className="MSCatalogueViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSCatalogueViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="segmentPressed:"/>
+                <relationship kind="outlet" name="productAndBonusesControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
         <class className="MSFirstNavigationController" superclassName="UINavigationController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSFirstNavigationController.h"/>
             <relationships>
