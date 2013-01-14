@@ -175,8 +175,11 @@
     
     NSLog(@"%@", recognizedText);
     
-    [self.codeTextField setText:[recognizedText stringByReplacingOccurrencesOfString:@" " withString:@""]];
-    NSLog(@"Recognized string lenght: %d", recognizedText.length);
+    recognizedText = [recognizedText stringByReplacingOccurrencesOfString:@" " withString:@""];
+    recognizedText = [recognizedText stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    
+    [self.codeTextField setText:recognizedText];
+        
     //------------------------------
     
     [imagePickerController dismissViewControllerAnimated:YES completion:NULL];
