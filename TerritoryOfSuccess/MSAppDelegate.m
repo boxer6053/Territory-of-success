@@ -18,15 +18,16 @@
 {
     [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
     
-    [[UITabBar appearance] setBackgroundImage:[[UIImage imageNamed:@"tab_bg.png"]resizableImageWithCapInsets:UIEdgeInsetsZero]];
-    [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tab_select_indicator.png"]];
-    [[UITabBar appearance] setSelectedImageTintColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1]];
+    //[[UITabBar appearance] setBackgroundImage:[[UIImage imageNamed:@"bg_color.png"]resizableImageWithCapInsets:UIEdgeInsetsZero]];
+    [[UITabBar appearance] setBackgroundColor:[UIColor blackColor]];
+    //[[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tab_select_indicator.png"]];
+    [[UITabBar appearance] setSelectedImageTintColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                       [UIColor blackColor], UITextAttributeTextColor,
+                                                       [UIColor whiteColor], UITextAttributeTextColor,
                                                        nil] forState:UIControlStateHighlighted];
-    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                        [UIFont fontWithName:@"AmericanTypewriter" size:14.0f], UITextAttributeFont,
-                                                        nil] forState:UIControlStateNormal];
+//    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+//                                                        [UIFont fontWithName:@"AmericanTypewriter" size:14.0f], UITextAttributeFont,
+//                                                        nil] forState:UIControlStateNormal];
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

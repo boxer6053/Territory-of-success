@@ -42,6 +42,7 @@
 		FA55C14916A071AA00671CAB /* MSCatalogueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA55C14816A071AA00671CAB /* MSCatalogueViewController.m */; };
 		FA5D725216A174BE00D2E050 /* photo_camera_1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5D725116A174BE00D2E050 /* photo_camera_1.png */; };
 		FA626B9916A1970B002BB7F6 /* bg_image.png in Resources */ = {isa = PBXBuildFile; fileRef = FA626B9816A1970B002BB7F6 /* bg_image.png */; };
+		FAAD061F16A410D700D37373 /* bg_color.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD061E16A410D700D37373 /* bg_color.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -233,6 +234,7 @@
 		FA55C14816A071AA00671CAB /* MSCatalogueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCatalogueViewController.m; sourceTree = "<group>"; };
 		FA5D725116A174BE00D2E050 /* photo_camera_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo_camera_1.png; sourceTree = "<group>"; };
 		FA626B9816A1970B002BB7F6 /* bg_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_image.png; sourceTree = "<group>"; };
+		FAAD061E16A410D700D37373 /* bg_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_color.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -305,6 +307,7 @@
 		F5F6ADCB169C4F21000247D9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FAAD061E16A410D700D37373 /* bg_color.png */,
 				FA626B9816A1970B002BB7F6 /* bg_image.png */,
 				FA5D725116A174BE00D2E050 /* photo_camera_1.png */,
 				FA283CCE16A0909000DBDC19 /* tab_select_indicator.png */,
@@ -607,6 +610,7 @@
 				FA283CD116A0909000DBDC19 /* tab_bg.png in Resources */,
 				FA5D725216A174BE00D2E050 /* photo_camera_1.png in Resources */,
 				FA626B9916A1970B002BB7F6 /* bg_image.png in Resources */,
+				FAAD061F16A410D700D37373 /* bg_color.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
