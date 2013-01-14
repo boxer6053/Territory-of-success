@@ -24,10 +24,9 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" alpha="0.50000000000000011" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="LKh-YK-2uW">
-                                <rect key="frame" x="20" y="65" width="280" height="370"/>
+                                <rect key="frame" x="20" y="85" width="280" height="350"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellIdentifier" textLabel="obR-98-9zQ" detailTextLabel="kde-7E-hXh" rowHeight="100" style="IBUITableViewCellStyleSubtitle" id="Ttl-5M-fTt">
                                         <rect key="frame" x="0.0" y="22" width="280" height="100"/>
@@ -57,18 +56,61 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <tableView clipsSubviews="YES" alpha="0.50000000000000011" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="gCe-cp-NOb">
+                                <rect key="frame" x="330" y="85" width="280" height="350"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="detailCellIdentifier" textLabel="nXG-K7-OS8" detailTextLabel="243-Hh-ku9" style="IBUITableViewCellStyleSubtitle" id="hxI-pv-Mmu">
+                                        <rect key="frame" x="0.0" y="22" width="280" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="260" height="99"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nXG-K7-OS8">
+                                                    <rect key="frame" x="10" y="30" width="38" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="243-Hh-ku9">
+                                                    <rect key="frame" x="10" y="52" width="47" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Категории продуктов:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vmR-jB-1GN">
+                                <rect key="frame" x="30" y="57" width="270" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" white="0.14999999999999999" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Каталог" id="BAi-Sz-OmZ"/>
                     <connections>
+                        <outlet property="detailTableView" destination="gCe-cp-NOb" id="EyQ-v4-W1q"/>
+                        <outlet property="mainLabel" destination="vmR-jB-1GN" id="Ol0-ec-feX"/>
                         <outlet property="productAndBonusesControl" destination="JVi-72-uhQ" id="EjB-xq-0Xn"/>
                         <outlet property="tableView" destination="LKh-YK-2uW" id="oTe-rI-xuF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bpc-Zf-IHM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="883" y="-348"/>
+            <point key="canvasLocation" x="870" y="-348"/>
         </scene>
         <!--First View Controller-->
         <scene sceneID="68i-5j-DHG">
@@ -306,44 +348,6 @@
         <image name="photo_camera_1.png" width="61" height="61"/>
         <image name="settings.png" width="30" height="30"/>
     </resources>
-    <classes>
-        <class className="MSCatalogueViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSCatalogueViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="segmentPressed:"/>
-                <relationship kind="outlet" name="productAndBonusesControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="MSFirstNavigationController" superclassName="UINavigationController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSFirstNavigationController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="mainNavigationBar" candidateClass="UINavigationBar"/>
-                <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
-            </relationships>
-        </class>
-        <class className="MSFirstViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSFirstViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="changeNewsPage:"/>
-                <relationship kind="action" name="recognize:"/>
-                <relationship kind="outlet" name="codeInputView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="codeTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="newsPageControl" candidateClass="UIPageControl"/>
-                <relationship kind="outlet" name="newsScrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="newsView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="photoButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="sendCodeButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="tintLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MSTabBarController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSTabBarController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="myTabBarController" candidateClass="UITabBar"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

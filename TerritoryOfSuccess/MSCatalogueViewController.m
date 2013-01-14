@@ -15,6 +15,8 @@
 
 @implementation MSCatalogueViewController
 @synthesize tableView = _tableView;
+@synthesize detailTableView = _detailTableView;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -33,6 +35,13 @@
     
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_image.png"]]];
     _tableView.layer.cornerRadius = 10;
+    [_tableView.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0].CGColor];
+    [_tableView.layer setBorderWidth:1.0f];
+    [_tableView.layer setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.7].CGColor];
+    _detailTableView.layer.cornerRadius = 10;
+    [_detailTableView.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0].CGColor];
+    [_detailTableView.layer setBorderWidth:1.0f];
+    [_detailTableView.layer setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.7].CGColor];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -58,6 +67,12 @@
                         [[self.productAndBonusesControl.subviews objectAtIndex:i] setTintColor:tintcolor];
                         }
            }
+    
+    if (self.productAndBonusesControl.selectedSegmentIndex == 0){
+        self.mainLabel.text = @"Категории продуктов:";
+    } else {
+        self.mainLabel.text = @"Категории бонусов:";
+    }
 }
 
 #pragma mark Table View
@@ -70,15 +85,41 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString* myIdentifier = @"cellIdentifier";
-    UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:myIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:myIdentifier];
+    UITableViewCell *cell;
+    if (tableView == _tableView) {
+        static NSString* myIdentifier = @"cellIdentifier";
+        cell = [_tableView dequeueReusableCellWithIdentifier:myIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:myIdentifier];
+        }
+        cell.imageView.image = [UIImage imageNamed:@"photo_camera_1.png"];
+        cell.textLabel.text = @"Название категории";
+        cell.detailTextLabel.text = @"Описание";
     }
-    cell.imageView.image = [UIImage imageNamed:@"photo_camera_1.png"];
-    cell.textLabel.text = @"Название категории";
-    cell.textLabel.alpha = 1.0;
-    cell.detailTextLabel.text = @"Описание";
+    if (tableView == _detailTableView) {
+        static NSString* myIdentifier = @"detailCellIdentifier";
+        cell = [_tableView dequeueReusableCellWithIdentifier:myIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:myIdentifier];
+        }
+        cell.imageView.image = [UIImage imageNamed:@"photo_camera_1.png"];
+        cell.textLabel.text = @"Название продукта";
+        cell.detailTextLabel.text = @"Описание";
+    }
+    
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [UIView animateWithDuration:0.5 animations:^{
+        self.mainLabel.frame = CGRectMake(-300, self.mainLabel.frame.origin.y, self.mainLabel.frame.size.width, self.mainLabel.frame.size.height);
+        _tableView.frame = CGRectMake(-310, _tableView.frame.origin.y, _tableView.frame.size.width, _tableView.frame.size.height);
+        
+        _detailTableView.frame = CGRectMake(20, _detailTableView.frame.origin.y, _detailTableView.frame.size.width, _detailTableView.frame.size.height);
+        _detailTableView.delegate = self;
+        _detailTableView.dataSource = self;
+        [_detailTableView reloadData];
+        //[self tableView:_detailTableView cellForRowAtIndexPath:indexPath];
+    }];
 }
 @end
