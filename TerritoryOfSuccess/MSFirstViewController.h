@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MSFirstViewController : UIViewController <UIScrollViewDelegate>
-- (IBAction)recognize:(id)sender;
+@interface MSFirstViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, UITextFieldDelegate>
+{
+    UIImagePickerController *imagePickerController;
+}
+
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIScrollView *newsScrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *newsPageControl;
 @property (weak, nonatomic) IBOutlet UIView *newsView;
@@ -18,6 +22,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *sendCodeButton;
 @property (weak, nonatomic) IBOutlet UIButton *photoButton;
 @property (weak, nonatomic) IBOutlet UILabel *tintLabel;
+
 - (IBAction)changeNewsPage:(id)sender;
+- (IBAction)takePhoto:(UIButton *)sender;
+- (UIImage *)cropImage:(UIImage *)image withX:(CGFloat)x withY:(CGFloat)y withWidth:(CGFloat)width withHeight:(CGFloat)height;
+- (NSString *)recognizeImage:(UIImage *)image;
 
 @end

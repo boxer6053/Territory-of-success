@@ -74,7 +74,7 @@
         <scene sceneID="68i-5j-DHG">
             <objects>
                 <viewController id="jKd-fR-cIU" customClass="MSFirstViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="0JY-C8-Kkc">
+                    <view key="view" contentMode="scaleToFill" id="0JY-C8-Kkc" customClass="UIScrollView">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -105,8 +105,11 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="takePhoto:" destination="jKd-fR-cIU" eventType="touchUpInside" id="gU0-MA-hQw"/>
+                                        </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="dN8-M6-sm3">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="dN8-M6-sm3">
                                         <rect key="frame" x="10" y="32" width="260" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -161,6 +164,7 @@
                         <outlet property="newsScrollView" destination="DdF-cE-hpc" id="BR4-gm-xuX"/>
                         <outlet property="newsView" destination="QRT-kF-N46" id="LHV-hG-XRI"/>
                         <outlet property="photoButton" destination="NAL-Z1-5ll" id="UA2-vY-44t"/>
+                        <outlet property="scrollView" destination="0JY-C8-Kkc" id="RCM-av-AAz"/>
                         <outlet property="sendCodeButton" destination="hcs-IG-iCC" id="RW5-ob-nwn"/>
                         <outlet property="tintLabel" destination="xqB-Cx-BFj" id="3VU-M6-Rji"/>
                     </connections>
@@ -326,13 +330,14 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSFirstViewController.h"/>
             <relationships>
                 <relationship kind="action" name="changeNewsPage:"/>
-                <relationship kind="action" name="recognize:"/>
+                <relationship kind="action" name="takePhoto:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="codeInputView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="codeTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="newsPageControl" candidateClass="UIPageControl"/>
                 <relationship kind="outlet" name="newsScrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="newsView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="photoButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="sendCodeButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="tintLabel" candidateClass="UILabel"/>
             </relationships>

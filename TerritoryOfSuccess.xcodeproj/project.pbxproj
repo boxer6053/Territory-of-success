@@ -14,6 +14,7 @@
 		F5603C57169C92AF00667203 /* Questions.png in Resources */ = {isa = PBXBuildFile; fileRef = F5603C56169C92AF00667203 /* Questions.png */; };
 		F5603C59169C944C00667203 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = F5603C58169C944C00667203 /* settings.png */; };
 		F5603C63169C9A1100667203 /* Catalogue.png in Resources */ = {isa = PBXBuildFile; fileRef = F5603C62169C9A1100667203 /* Catalogue.png */; };
+		F57B65E116A43694007C7982 /* rect200*50.png in Resources */ = {isa = PBXBuildFile; fileRef = F57B65E016A43693007C7982 /* rect200*50.png */; };
 		F5F6ADC3169C4F21000247D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC2169C4F21000247D9 /* UIKit.framework */; };
 		F5F6ADC5169C4F21000247D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC4169C4F21000247D9 /* Foundation.framework */; };
 		F5F6ADC7169C4F21000247D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC6169C4F21000247D9 /* CoreGraphics.framework */; };
@@ -33,7 +34,6 @@
 		F5F6AE87169C4F65000247D9 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F5F6AE84169C4F65000247D9 /* LICENSE */; };
 		F5F6AE8A169C4F72000247D9 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = F5F6AE89169C4F72000247D9 /* tessdata */; };
 		F5F6AE8F169C5153000247D9 /* MSFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F6AE8E169C5153000247D9 /* MSFirstViewController.m */; };
-		F5F6AE91169C51A3000247D9 /* numbers.png in Resources */ = {isa = PBXBuildFile; fileRef = F5F6AE90169C51A3000247D9 /* numbers.png */; };
 		FA283CCD16A0890F00DBDC19 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA283CCC16A0890F00DBDC19 /* QuartzCore.framework */; };
 		FA283CD016A0909000DBDC19 /* tab_select_indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = FA283CCE16A0909000DBDC19 /* tab_select_indicator.png */; };
 		FA283CD116A0909000DBDC19 /* tab_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FA283CCF16A0909000DBDC19 /* tab_bg.png */; };
@@ -55,6 +55,7 @@
 		F5603C56169C92AF00667203 /* Questions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Questions.png; sourceTree = "<group>"; };
 		F5603C58169C944C00667203 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		F5603C62169C9A1100667203 /* Catalogue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Catalogue.png; sourceTree = "<group>"; };
+		F57B65E016A43693007C7982 /* rect200*50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rect200*50.png"; sourceTree = "<group>"; };
 		F5F6ADBE169C4F21000247D9 /* TerritoryOfSuccess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TerritoryOfSuccess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5F6ADC2169C4F21000247D9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F5F6ADC4169C4F21000247D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -224,7 +225,6 @@
 		F5F6AE89169C4F72000247D9 /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tessdata; sourceTree = "<group>"; };
 		F5F6AE8D169C5153000247D9 /* MSFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSFirstViewController.h; sourceTree = "<group>"; };
 		F5F6AE8E169C5153000247D9 /* MSFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSFirstViewController.m; sourceTree = "<group>"; };
-		F5F6AE90169C51A3000247D9 /* numbers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = numbers.png; sourceTree = "<group>"; };
 		FA283CCC16A0890F00DBDC19 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FA283CCE16A0909000DBDC19 /* tab_select_indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_select_indicator.png; sourceTree = "<group>"; };
 		FA283CCF16A0909000DBDC19 /* tab_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_bg.png; sourceTree = "<group>"; };
@@ -307,6 +307,7 @@
 		F5F6ADCB169C4F21000247D9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F57B65E016A43693007C7982 /* rect200*50.png */,
 				FAAD061E16A410D700D37373 /* bg_color.png */,
 				FA626B9816A1970B002BB7F6 /* bg_image.png */,
 				FA5D725116A174BE00D2E050 /* photo_camera_1.png */,
@@ -318,7 +319,6 @@
 				F5603C58169C944C00667203 /* settings.png */,
 				F5603C56169C92AF00667203 /* Questions.png */,
 				F5603C4D169C752200667203 /* home.png */,
-				F5F6AE90169C51A3000247D9 /* numbers.png */,
 				F5F6AE89169C4F72000247D9 /* tessdata */,
 				F5F6AE80169C4F65000247D9 /* tesseract-ios */,
 				F5F6ADE4169C4F5A000247D9 /* tesseract-ios-lib */,
@@ -598,7 +598,6 @@
 				F5F6AE7F169C4F5A000247D9 /* README.md in Resources */,
 				F5F6AE87169C4F65000247D9 /* LICENSE in Resources */,
 				F5F6AE8A169C4F72000247D9 /* tessdata in Resources */,
-				F5F6AE91169C51A3000247D9 /* numbers.png in Resources */,
 				F53560EE169C547600BB9F6D /* iPhoneStoryboard.storyboard in Resources */,
 				F5603C4E169C752200667203 /* home.png in Resources */,
 				F5603C57169C92AF00667203 /* Questions.png in Resources */,
@@ -611,6 +610,7 @@
 				FA5D725216A174BE00D2E050 /* photo_camera_1.png in Resources */,
 				FA626B9916A1970B002BB7F6 /* bg_image.png in Resources */,
 				FAAD061F16A410D700D37373 /* bg_color.png in Resources */,
+				F57B65E116A43694007C7982 /* rect200*50.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -705,11 +705,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TerritoryOfSuccess/TerritoryOfSuccess-Prefix.pch";
 				INFOPLIST_FILE = "TerritoryOfSuccess/TerritoryOfSuccess-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/TerritoryOfSuccess/tesseract-ios-lib/lib\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -722,11 +724,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TerritoryOfSuccess/TerritoryOfSuccess-Prefix.pch";
 				INFOPLIST_FILE = "TerritoryOfSuccess/TerritoryOfSuccess-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/TerritoryOfSuccess/tesseract-ios-lib/lib\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
