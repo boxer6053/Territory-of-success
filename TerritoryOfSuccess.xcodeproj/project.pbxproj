@@ -52,13 +52,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F52816D416A5760F00E64924 /* MSQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSQuestionsViewController.h; sourceTree = "<group>"; };
-		F52816D516A5760F00E64924 /* MSQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSQuestionsViewController.m; sourceTree = "<group>"; };
-		F52816D816A5764700E64924 /* MSQuestionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSQuestionDetailViewController.h; sourceTree = "<group>"; };
-		F52816D916A5764700E64924 /* MSQuestionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSQuestionDetailViewController.m; sourceTree = "<group>"; };
-		F52816DB16A5765C00E64924 /* MSQuestionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSQuestionCell.h; sourceTree = "<group>"; };
-		F52816DC16A5765C00E64924 /* MSQuestionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSQuestionCell.m; sourceTree = "<group>"; };
-		F52816DE16A5766D00E64924 /* MSQuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSQuestionCell.xib; sourceTree = "<group>"; };
+		F52816D416A5760F00E64924 /* MSQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSQuestionsViewController.h; path = ../MSQuestionsViewController.h; sourceTree = "<group>"; };
+		F52816D516A5760F00E64924 /* MSQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSQuestionsViewController.m; path = ../MSQuestionsViewController.m; sourceTree = "<group>"; };
+		F52816D816A5764700E64924 /* MSQuestionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSQuestionDetailViewController.h; path = ../MSQuestionDetailViewController.h; sourceTree = "<group>"; };
+		F52816D916A5764700E64924 /* MSQuestionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSQuestionDetailViewController.m; path = ../MSQuestionDetailViewController.m; sourceTree = "<group>"; };
+		F52816DB16A5765C00E64924 /* MSQuestionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSQuestionCell.h; path = ../MSQuestionCell.h; sourceTree = "<group>"; };
+		F52816DC16A5765C00E64924 /* MSQuestionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSQuestionCell.m; path = ../MSQuestionCell.m; sourceTree = "<group>"; };
+		F52816DE16A5766D00E64924 /* MSQuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MSQuestionCell.xib; path = ../MSQuestionCell.xib; sourceTree = "<group>"; };
 		F5603C42169C6E6400667203 /* MSFirstNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSFirstNavigationController.h; sourceTree = "<group>"; };
 		F5603C43169C6E6400667203 /* MSFirstNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSFirstNavigationController.m; sourceTree = "<group>"; };
 		F5603C4D169C752200667203 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
@@ -273,13 +273,6 @@
 		F5F6ADB3169C4F21000247D9 = {
 			isa = PBXGroup;
 			children = (
-				F52816D416A5760F00E64924 /* MSQuestionsViewController.h */,
-				F52816D516A5760F00E64924 /* MSQuestionsViewController.m */,
-				F52816D816A5764700E64924 /* MSQuestionDetailViewController.h */,
-				F52816D916A5764700E64924 /* MSQuestionDetailViewController.m */,
-				F52816DB16A5765C00E64924 /* MSQuestionCell.h */,
-				F52816DC16A5765C00E64924 /* MSQuestionCell.m */,
-				F52816DE16A5766D00E64924 /* MSQuestionCell.xib */,
 				F5F6ADCA169C4F21000247D9 /* TerritoryOfSuccess */,
 				F5F6ADC1169C4F21000247D9 /* Frameworks */,
 				F5F6ADBF169C4F21000247D9 /* Products */,
@@ -311,6 +304,13 @@
 			children = (
 				F5F6ADD3169C4F21000247D9 /* MSAppDelegate.h */,
 				F5F6ADD4169C4F21000247D9 /* MSAppDelegate.m */,
+				F52816D416A5760F00E64924 /* MSQuestionsViewController.h */,
+				F52816D516A5760F00E64924 /* MSQuestionsViewController.m */,
+				F52816D816A5764700E64924 /* MSQuestionDetailViewController.h */,
+				F52816D916A5764700E64924 /* MSQuestionDetailViewController.m */,
+				F52816DB16A5765C00E64924 /* MSQuestionCell.h */,
+				F52816DC16A5765C00E64924 /* MSQuestionCell.m */,
+				F52816DE16A5766D00E64924 /* MSQuestionCell.xib */,
 				F5F6AE8D169C5153000247D9 /* MSFirstViewController.h */,
 				F5F6AE8E169C5153000247D9 /* MSFirstViewController.m */,
 				F5603C42169C6E6400667203 /* MSFirstNavigationController.h */,
