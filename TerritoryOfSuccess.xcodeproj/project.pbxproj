@@ -7,8 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F52816D616A5760F00E64924 /* MSQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52816D516A5760F00E64924 /* MSQuestionsViewController.m */; };
+		F52816DA16A5764700E64924 /* MSQuestionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52816D916A5764700E64924 /* MSQuestionDetailViewController.m */; };
+		F52816DD16A5765C00E64924 /* MSQuestionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F52816DC16A5765C00E64924 /* MSQuestionCell.m */; };
+		F52816DF16A5766D00E64924 /* MSQuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F52816DE16A5766D00E64924 /* MSQuestionCell.xib */; };
 		F559534616A57A500079B985 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F559534416A57A500079B985 /* SVProgressHUD.m */; };
 		F559534716A57A500079B985 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F559534516A57A500079B985 /* SVProgressHUD.bundle */; };
+		F559534F16A5A9FB0079B985 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F559534C16A59B780079B985 /* Default.png */; };
+		F559535116A5AA120079B985 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F559535016A5AA110079B985 /* Default@2x.png */; };
+		F559535316A5AA260079B985 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F559535216A5AA250079B985 /* Default-568h@2x.png */; };
 		F5603C44169C6E6400667203 /* MSFirstNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5603C43169C6E6400667203 /* MSFirstNavigationController.m */; };
 		F5603C4E169C752200667203 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = F5603C4D169C752200667203 /* home.png */; };
 		F5603C51169C802100667203 /* MSTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5603C50169C802100667203 /* MSTabBarController.m */; };
@@ -50,9 +57,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F52816D416A5760F00E64924 /* MSQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSQuestionsViewController.h; path = ../MSQuestionsViewController.h; sourceTree = "<group>"; };
+		F52816D516A5760F00E64924 /* MSQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSQuestionsViewController.m; path = ../MSQuestionsViewController.m; sourceTree = "<group>"; };
+		F52816D816A5764700E64924 /* MSQuestionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSQuestionDetailViewController.h; path = ../MSQuestionDetailViewController.h; sourceTree = "<group>"; };
+		F52816D916A5764700E64924 /* MSQuestionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSQuestionDetailViewController.m; path = ../MSQuestionDetailViewController.m; sourceTree = "<group>"; };
+		F52816DB16A5765C00E64924 /* MSQuestionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSQuestionCell.h; path = ../MSQuestionCell.h; sourceTree = "<group>"; };
+		F52816DC16A5765C00E64924 /* MSQuestionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSQuestionCell.m; path = ../MSQuestionCell.m; sourceTree = "<group>"; };
+		F52816DE16A5766D00E64924 /* MSQuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MSQuestionCell.xib; path = ../MSQuestionCell.xib; sourceTree = "<group>"; };
 		F559534316A57A500079B985 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		F559534416A57A500079B985 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		F559534516A57A500079B985 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		F559534C16A59B780079B985 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		F559535016A5AA110079B985 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		F559535216A5AA250079B985 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F5603C42169C6E6400667203 /* MSFirstNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSFirstNavigationController.h; sourceTree = "<group>"; };
 		F5603C43169C6E6400667203 /* MSFirstNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSFirstNavigationController.m; sourceTree = "<group>"; };
 		F5603C4D169C752200667203 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
@@ -277,6 +294,9 @@
 		F5F6ADB3169C4F21000247D9 = {
 			isa = PBXGroup;
 			children = (
+				F559535216A5AA250079B985 /* Default-568h@2x.png */,
+				F559535016A5AA110079B985 /* Default@2x.png */,
+				F559534C16A59B780079B985 /* Default.png */,
 				F5F6ADCA169C4F21000247D9 /* TerritoryOfSuccess */,
 				F5F6ADC1169C4F21000247D9 /* Frameworks */,
 				F5F6ADBF169C4F21000247D9 /* Products */,
@@ -643,6 +663,10 @@
 				FAAD062C16A4326A00D37373 /* iconWhite114.png in Resources */,
 				FAAD063216A4500C00D37373 /* iPhoneStoryboard.storyboard in Resources */,
 				F559534716A57A500079B985 /* SVProgressHUD.bundle in Resources */,
+				F52816DF16A5766D00E64924 /* MSQuestionCell.xib in Resources */,
+				F559534F16A5A9FB0079B985 /* Default.png in Resources */,
+				F559535116A5AA120079B985 /* Default@2x.png in Resources */,
+				F559535316A5AA260079B985 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -662,6 +686,9 @@
 				F5603C51169C802100667203 /* MSTabBarController.m in Sources */,
 				FA55C14916A071AA00671CAB /* MSCatalogueViewController.m in Sources */,
 				F559534616A57A500079B985 /* SVProgressHUD.m in Sources */,
+				F52816D616A5760F00E64924 /* MSQuestionsViewController.m in Sources */,
+				F52816DA16A5764700E64924 /* MSQuestionDetailViewController.m in Sources */,
+				F52816DD16A5765C00E64924 /* MSQuestionCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
