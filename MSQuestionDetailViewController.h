@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *questionTitleLabel;
 @property (strong, nonatomic) NSDictionary *data;
 @property (strong, nonatomic) NSString *questionTitle;
+@property (weak, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSString *questionDescription;
 
 
