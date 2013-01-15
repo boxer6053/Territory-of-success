@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F559534616A57A500079B985 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F559534416A57A500079B985 /* SVProgressHUD.m */; };
+		F559534716A57A500079B985 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F559534516A57A500079B985 /* SVProgressHUD.bundle */; };
 		F5603C44169C6E6400667203 /* MSFirstNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5603C43169C6E6400667203 /* MSFirstNavigationController.m */; };
 		F5603C4E169C752200667203 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = F5603C4D169C752200667203 /* home.png */; };
 		F5603C51169C802100667203 /* MSTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5603C50169C802100667203 /* MSTabBarController.m */; };
@@ -48,6 +50,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F559534316A57A500079B985 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		F559534416A57A500079B985 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		F559534516A57A500079B985 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		F5603C42169C6E6400667203 /* MSFirstNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSFirstNavigationController.h; sourceTree = "<group>"; };
 		F5603C43169C6E6400667203 /* MSFirstNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSFirstNavigationController.m; sourceTree = "<group>"; };
 		F5603C4D169C752200667203 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
@@ -259,6 +264,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F559534116A579350079B985 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				F559534316A57A500079B985 /* SVProgressHUD.h */,
+				F559534416A57A500079B985 /* SVProgressHUD.m */,
+				F559534516A57A500079B985 /* SVProgressHUD.bundle */,
+			);
+			name = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 		F5F6ADB3169C4F21000247D9 = {
 			isa = PBXGroup;
 			children = (
@@ -303,6 +318,7 @@
 				FA55C14816A071AA00671CAB /* MSCatalogueViewController.m */,
 				F5F6ADDC169C4F22000247D9 /* TerritoryOfSuccess.xcdatamodeld */,
 				FAAD063116A4500C00D37373 /* iPhoneStoryboard.storyboard */,
+				F559534116A579350079B985 /* SVProgressHUD */,
 				F5F6ADCB169C4F21000247D9 /* Supporting Files */,
 			);
 			path = TerritoryOfSuccess;
@@ -604,7 +620,6 @@
 				F5F6AE7F169C4F5A000247D9 /* README.md in Resources */,
 				F5F6AE87169C4F65000247D9 /* LICENSE in Resources */,
 				F5F6AE8A169C4F72000247D9 /* tessdata in Resources */,
-				F53560EE169C547600BB9F6D /* iPhoneStoryboard.storyboard in Resources */,
 				F5603C4E169C752200667203 /* home.png in Resources */,
 				F5603C57169C92AF00667203 /* Questions.png in Resources */,
 				F5603C59169C944C00667203 /* settings.png in Resources */,
@@ -620,6 +635,7 @@
 				FAAD062A16A4326400D37373 /* iconWhite57.png in Resources */,
 				FAAD062C16A4326A00D37373 /* iconWhite114.png in Resources */,
 				FAAD063216A4500C00D37373 /* iPhoneStoryboard.storyboard in Resources */,
+				F559534716A57A500079B985 /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -638,6 +654,7 @@
 				F5603C44169C6E6400667203 /* MSFirstNavigationController.m in Sources */,
 				F5603C51169C802100667203 /* MSTabBarController.m in Sources */,
 				FA55C14916A071AA00671CAB /* MSCatalogueViewController.m in Sources */,
+				F559534616A57A500079B985 /* SVProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

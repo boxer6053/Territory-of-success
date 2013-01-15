@@ -9,6 +9,7 @@
 #import "MSFirstViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "Tesseract.h"
+#import "SVProgressHUD.h"
 
 @interface MSFirstViewController ()
 
@@ -47,7 +48,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+        
     [self.scrollView setScrollEnabled:NO];
     [self.scrollView setShowsHorizontalScrollIndicator:NO];
     [self.scrollView setShowsVerticalScrollIndicator:NO];
@@ -162,7 +163,7 @@
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
+{    
     UIImage *img = [info objectForKey:UIImagePickerControllerOriginalImage];
     
     NSLog(@"Picture width: %f", img.size.width);
@@ -292,7 +293,7 @@ static inline double radians (double degrees)
 
 //роспізнавання коду
 - (NSString *)recognizeImage:(UIImage *)image
-{
+{    
     Tesseract* tesseract = [[Tesseract alloc] initWithDataPath:@"tessdata" language:@"eng"];
     [tesseract setImage:image];
     [tesseract recognize];
