@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8kx-JT-nNm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12B19" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8kx-JT-nNm">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
         <!--Catalogue View Controller - Каталог-->
@@ -237,16 +237,38 @@
             </objects>
             <point key="canvasLocation" x="-190" y="24"/>
         </scene>
-        <!--View Controller - Вопросы-->
+        <!--Questions View Controller - Вопросы-->
         <scene sceneID="ssN-xn-xUv">
             <objects>
-                <viewController id="Cru-iV-L4Z" sceneMemberID="viewController">
+                <viewController id="Cru-iV-L4Z" customClass="MSQuestionsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PUb-QU-0Q3">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="64d-sB-zMW">
+                                <rect key="frame" x="80" y="16" width="161" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <connections>
+                                    <action selector="questionDoubleButton:" destination="Cru-iV-L4Z" eventType="valueChanged" id="ZKx-Go-h0X"/>
+                                </connections>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="UjK-dp-d4E">
+                                <rect key="frame" x="20" y="53" width="280" height="382"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Вопросы" id="sQE-dx-gsA"/>
+                    <connections>
+                        <outlet property="segment" destination="64d-sB-zMW" id="czu-fV-DdA"/>
+                        <outlet property="tableView" destination="UjK-dp-d4E" id="5Zr-Lc-5Ig"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q3i-81-c2y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -384,6 +406,14 @@
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="sendCodeButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="tintLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="MSQuestionsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSQuestionsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="questionDoubleButton:"/>
+                <relationship kind="outlet" name="segment" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>
         <class className="MSTabBarController" superclassName="UITabBarController">
