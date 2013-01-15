@@ -2,7 +2,7 @@
 //  MSQuestionDetailViewController.m
 //  TerritoryOfSuccess
 //
-//  Created by Matrix Soft on 1/15/13.
+//  Created by Matrix Soft on 1/10/13.
 //  Copyright (c) 2013 Matrix Soft. All rights reserved.
 //
 
@@ -13,7 +13,11 @@
 @end
 
 @implementation MSQuestionDetailViewController
-
+@synthesize data;
+@synthesize questionDescription;
+@synthesize questionTitle;
+@synthesize questionDescriptionLabel;
+@synthesize questionTitleLabel;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -26,6 +30,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.questionDescriptionLabel.text = questionDescription;
+    self.questionTitleLabel.text = questionTitle;
+    for (id key in [data allKeys])
+        NSLog(@"Key : %@ => value : %@", key, [data objectForKey:key]);
+    NSLog(@"Number %u", data.count);
+    
 	// Do any additional setup after loading the view.
 }
 

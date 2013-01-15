@@ -2,12 +2,31 @@
 //  MSQuestionsViewController.h
 //  TerritoryOfSuccess
 //
-//  Created by Matrix Soft on 1/15/13.
+//  Created by Matrix Soft on 1/9/13.
 //  Copyright (c) 2013 Matrix Soft. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import "MSQuestionDetailViewController.h"
+@interface MSQuestionsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+{
+    NSArray *allArray;
+    NSArray *myArray;
+    NSMutableArray *myQuestionsArray;
+}
 
-@interface MSQuestionsViewController : UIViewController
+
+
+@property BOOL myQuestionsMode;
+@property BOOL allQuestionsMode;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+- (IBAction)questionDoubleButton:(id)sender;
+@property (strong, nonatomic) NSMutableDictionary *testDictionary;
+@property (strong, nonatomic) NSDictionary *questionsDictionary;
+@property (weak, nonatomic) NSArray *questionTitles;
+@property (weak, nonatomic) NSString *questionTitle;
+@property (weak, nonatomic) NSString *questionDescription;
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
 
 @end
