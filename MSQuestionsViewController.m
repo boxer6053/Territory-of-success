@@ -1,5 +1,4 @@
 #import "MSQuestionsViewController.h"
-#import "MSQuestionCell.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface MSQuestionsViewController ()
@@ -121,35 +120,49 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"QuestionCellIdentifier";
-    MSQuestionCell *cell1 = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    //    if (cell1 == nil) {
-    //        cell1 = [[MSQuestionCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    //    }
-    if(!cell1)
-    {
-        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"MSQuestionCell" owner:nil options:nil];
-        for(id currentObject in topLevelObjects)
+    UITableViewCell *cell;
+    if (tableView == _tableView)
         {
-            if([currentObject isKindOfClass:[MSQuestionCell class]])
-            {
-                cell1 = (MSQuestionCell *)currentObject;
-                break;
-            }
+            static NSString* cellIdentifier = @"cellID";
+        cell = [_tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
         }
-    }
-    
-    //
-    //         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    //         if (cell == nil) {
-    //             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    //         }
+        //cell.imageView.image = [UIImage imageNamed:@"photo_camera_1.png"];
+//        cell.textLabel.text = @"Название категории";
+//        cell.detailTextLabel.text = @"Описание";
+
+//    
+//    static NSString *CellIdentifier = @"QuestionCellIdentifier";
+//    MSQuestionCell *cell1 = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    //    if (cell1 == nil) {
+//    //        cell1 = [[MSQuestionCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+//    //    }
+//    if(!cell1)
+//    {
+//        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"MSQuestionCell" owner:nil options:nil];
+//        for(id currentObject in topLevelObjects)
+//        {
+//            if([currentObject isKindOfClass:[MSQuestionCell class]])
+//            {
+//                cell1 = (MSQuestionCell *)currentObject;
+//                break;
+//            }
+//        }
+//    }
+//    
+//    //
+//    //         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    //         if (cell == nil) {
+//    //             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+//    //         }
     if(self.myQuestionsMode)
     {
         int index = [indexPath indexAtPosition:1];
         NSString *key = [[self.questionsDictionary allKeys] objectAtIndex:index];
-        // NSString *value = [self.questionsDictionary objectForKey:key];
-        cell1.title.text =key;
+       // NSString *value = [self.questionsDictionary objectForKey:key];
+        cell.textLabel.text =key;
+        cell.detailTextLabel.text = @"grade";
         //        for(int i=0;i<self.questionsDictionary.count;i++)
         //        {
         //    cell.textLabel.text = [myArray objectAtIndex:indexPath.row]  ;
@@ -157,13 +170,15 @@
     }
     if(self.allQuestionsMode)
     {
-        cell1.title.text = [allArray objectAtIndex:indexPath.row]  ;
+        cell.textLabel.text = [allArray objectAtIndex:indexPath.row]  ;
+        cell.detailTextLabel.text = @"grade";
     }
     
-    return cell1;
+   
     
+    }
+     return cell;
 }
-
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(self.myQuestionsMode){
