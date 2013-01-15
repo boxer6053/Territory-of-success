@@ -13,9 +13,9 @@
 		F52816DF16A5766D00E64924 /* MSQuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F52816DE16A5766D00E64924 /* MSQuestionCell.xib */; };
 		F559534616A57A500079B985 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F559534416A57A500079B985 /* SVProgressHUD.m */; };
 		F559534716A57A500079B985 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F559534516A57A500079B985 /* SVProgressHUD.bundle */; };
-		F559534F16A5A9FB0079B985 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F559534C16A59B780079B985 /* Default.png */; };
-		F559535116A5AA120079B985 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F559535016A5AA110079B985 /* Default@2x.png */; };
-		F559535316A5AA260079B985 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F559535216A5AA250079B985 /* Default-568h@2x.png */; };
+		F559535E16A5AF320079B985 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F559534C16A59B780079B985 /* Default.png */; };
+		F559535F16A5AFCF0079B985 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F559535016A5AA110079B985 /* Default@2x.png */; };
+		F559536016A5AFDB0079B985 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F559535216A5AA250079B985 /* Default-568h@2x.png */; };
 		F5603C44169C6E6400667203 /* MSFirstNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5603C43169C6E6400667203 /* MSFirstNavigationController.m */; };
 		F5603C4E169C752200667203 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = F5603C4D169C752200667203 /* home.png */; };
 		F5603C51169C802100667203 /* MSTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5603C50169C802100667203 /* MSTabBarController.m */; };
@@ -30,9 +30,6 @@
 		F5F6ADCF169C4F21000247D9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5F6ADCD169C4F21000247D9 /* InfoPlist.strings */; };
 		F5F6ADD1169C4F21000247D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F6ADD0169C4F21000247D9 /* main.m */; };
 		F5F6ADD5169C4F21000247D9 /* MSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F6ADD4169C4F21000247D9 /* MSAppDelegate.m */; };
-		F5F6ADD7169C4F21000247D9 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F5F6ADD6169C4F21000247D9 /* Default.png */; };
-		F5F6ADD9169C4F21000247D9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5F6ADD8169C4F21000247D9 /* Default@2x.png */; };
-		F5F6ADDB169C4F21000247D9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5F6ADDA169C4F21000247D9 /* Default-568h@2x.png */; };
 		F5F6ADDE169C4F22000247D9 /* TerritoryOfSuccess.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5F6ADDC169C4F22000247D9 /* TerritoryOfSuccess.xcdatamodeld */; };
 		F5F6AE7C169C4F5A000247D9 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F5F6ADE5169C4F5A000247D9 /* .gitignore */; };
 		F5F6AE7D169C4F5A000247D9 /* liblept.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6AE79169C4F5A000247D9 /* liblept.a */; };
@@ -90,9 +87,6 @@
 		F5F6ADD2169C4F21000247D9 /* TerritoryOfSuccess-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TerritoryOfSuccess-Prefix.pch"; sourceTree = "<group>"; };
 		F5F6ADD3169C4F21000247D9 /* MSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSAppDelegate.h; sourceTree = "<group>"; };
 		F5F6ADD4169C4F21000247D9 /* MSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSAppDelegate.m; sourceTree = "<group>"; };
-		F5F6ADD6169C4F21000247D9 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		F5F6ADD8169C4F21000247D9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		F5F6ADDA169C4F21000247D9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F5F6ADDD169C4F22000247D9 /* TerritoryOfSuccess.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TerritoryOfSuccess.xcdatamodel; sourceTree = "<group>"; };
 		F5F6ADE5169C4F5A000247D9 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		F5F6ADE8169C4F5A000247D9 /* allheaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = allheaders.h; sourceTree = "<group>"; };
@@ -375,9 +369,6 @@
 				F5F6ADCD169C4F21000247D9 /* InfoPlist.strings */,
 				F5F6ADD0169C4F21000247D9 /* main.m */,
 				F5F6ADD2169C4F21000247D9 /* TerritoryOfSuccess-Prefix.pch */,
-				F5F6ADD6169C4F21000247D9 /* Default.png */,
-				F5F6ADD8169C4F21000247D9 /* Default@2x.png */,
-				F5F6ADDA169C4F21000247D9 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -640,9 +631,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5F6ADCF169C4F21000247D9 /* InfoPlist.strings in Resources */,
-				F5F6ADD7169C4F21000247D9 /* Default.png in Resources */,
-				F5F6ADD9169C4F21000247D9 /* Default@2x.png in Resources */,
-				F5F6ADDB169C4F21000247D9 /* Default-568h@2x.png in Resources */,
 				F5F6AE7C169C4F5A000247D9 /* .gitignore in Resources */,
 				F5F6AE7F169C4F5A000247D9 /* README.md in Resources */,
 				F5F6AE87169C4F65000247D9 /* LICENSE in Resources */,
@@ -664,9 +652,9 @@
 				FAAD063216A4500C00D37373 /* iPhoneStoryboard.storyboard in Resources */,
 				F559534716A57A500079B985 /* SVProgressHUD.bundle in Resources */,
 				F52816DF16A5766D00E64924 /* MSQuestionCell.xib in Resources */,
-				F559534F16A5A9FB0079B985 /* Default.png in Resources */,
-				F559535116A5AA120079B985 /* Default@2x.png in Resources */,
-				F559535316A5AA260079B985 /* Default-568h@2x.png in Resources */,
+				F559535E16A5AF320079B985 /* Default.png in Resources */,
+				F559535F16A5AFCF0079B985 /* Default@2x.png in Resources */,
+				F559536016A5AFDB0079B985 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
