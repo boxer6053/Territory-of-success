@@ -357,6 +357,8 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSCatalogueViewController.h"/>
             <relationships>
                 <relationship kind="action" name="segmentPressed:"/>
+                <relationship kind="outlet" name="detailTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="mainLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="productAndBonusesControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>

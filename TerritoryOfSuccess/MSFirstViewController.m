@@ -177,6 +177,24 @@
     
     recognizedText = [recognizedText stringByReplacingOccurrencesOfString:@" " withString:@""];
     recognizedText = [recognizedText stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    //розкоментити код нище для додавання тире між цифрами
+    //------------------------------------------------------------------
+//    NSMutableArray *substringsArray = [[NSMutableArray alloc] init];
+//    NSRange substringRange;
+//    for (int i = 0; i < recognizedText.length; i++) {
+//        if (i%4 == 0) {
+//            NSLog(@"%d", i);
+//            substringRange.location = i;
+//            substringRange.length = 4;
+//            [substringsArray addObject:[recognizedText substringWithRange:substringRange]];
+//        }
+//    }
+//    
+//    NSMutableString *combiningString = [NSMutableString stringWithFormat:@"%@", [substringsArray objectAtIndex:0]];
+//    for (int i = 1; i < substringsArray.count; i++) {
+//        [combiningString appendFormat:@"-%@", [substringsArray objectAtIndex:i]];
+//    }
+    //------------------------------------------------------------------
     
     [self.codeTextField setText:recognizedText];
         
