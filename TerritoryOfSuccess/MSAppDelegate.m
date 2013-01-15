@@ -16,7 +16,6 @@
 
 - (void)customizeInterface
 {
-    CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
     [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
     
     //[[UITabBar appearance] setBackgroundImage:[[UIImage imageNamed:@"bg_color.png"]resizableImageWithCapInsets:UIEdgeInsetsZero]];
