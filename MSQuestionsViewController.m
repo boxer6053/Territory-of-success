@@ -24,13 +24,18 @@
 
 - (void)viewDidLoad
 {
+    if ([[UIScreen mainScreen] bounds].size.height == 568) {
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*568.png"]]];
+    }
+    else
+    {
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*480.png"]]];
+    }
     
     self.allQuestionsMode = YES;
     self.myQuestionsMode = NO;
     self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_image.png"]]];
-    
+    self.tableView.dataSource = self;    
     
     self.tableView.layer.cornerRadius = 10;
     [self.tableView.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0].CGColor];
