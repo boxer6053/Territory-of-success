@@ -11,6 +11,11 @@
 		F52816DA16A5764700E64924 /* MSQuestionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52816D916A5764700E64924 /* MSQuestionDetailViewController.m */; };
 		F52816DD16A5765C00E64924 /* MSQuestionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F52816DC16A5765C00E64924 /* MSQuestionCell.m */; };
 		F52816DF16A5766D00E64924 /* MSQuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F52816DE16A5766D00E64924 /* MSQuestionCell.xib */; };
+		F559534616A57A500079B985 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F559534416A57A500079B985 /* SVProgressHUD.m */; };
+		F559534716A57A500079B985 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F559534516A57A500079B985 /* SVProgressHUD.bundle */; };
+		F559535E16A5AF320079B985 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F559534C16A59B780079B985 /* Default.png */; };
+		F559535F16A5AFCF0079B985 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F559535016A5AA110079B985 /* Default@2x.png */; };
+		F559536016A5AFDB0079B985 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F559535216A5AA250079B985 /* Default-568h@2x.png */; };
 		F5603C44169C6E6400667203 /* MSFirstNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5603C43169C6E6400667203 /* MSFirstNavigationController.m */; };
 		F5603C4E169C752200667203 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = F5603C4D169C752200667203 /* home.png */; };
 		F5603C51169C802100667203 /* MSTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5603C50169C802100667203 /* MSTabBarController.m */; };
@@ -25,9 +30,6 @@
 		F5F6ADCF169C4F21000247D9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5F6ADCD169C4F21000247D9 /* InfoPlist.strings */; };
 		F5F6ADD1169C4F21000247D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F6ADD0169C4F21000247D9 /* main.m */; };
 		F5F6ADD5169C4F21000247D9 /* MSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F6ADD4169C4F21000247D9 /* MSAppDelegate.m */; };
-		F5F6ADD7169C4F21000247D9 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F5F6ADD6169C4F21000247D9 /* Default.png */; };
-		F5F6ADD9169C4F21000247D9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5F6ADD8169C4F21000247D9 /* Default@2x.png */; };
-		F5F6ADDB169C4F21000247D9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5F6ADDA169C4F21000247D9 /* Default-568h@2x.png */; };
 		F5F6ADDE169C4F22000247D9 /* TerritoryOfSuccess.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5F6ADDC169C4F22000247D9 /* TerritoryOfSuccess.xcdatamodeld */; };
 		F5F6AE7C169C4F5A000247D9 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F5F6ADE5169C4F5A000247D9 /* .gitignore */; };
 		F5F6AE7D169C4F5A000247D9 /* liblept.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6AE79169C4F5A000247D9 /* liblept.a */; };
@@ -59,6 +61,12 @@
 		F52816DB16A5765C00E64924 /* MSQuestionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSQuestionCell.h; path = ../MSQuestionCell.h; sourceTree = "<group>"; };
 		F52816DC16A5765C00E64924 /* MSQuestionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSQuestionCell.m; path = ../MSQuestionCell.m; sourceTree = "<group>"; };
 		F52816DE16A5766D00E64924 /* MSQuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MSQuestionCell.xib; path = ../MSQuestionCell.xib; sourceTree = "<group>"; };
+		F559534316A57A500079B985 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		F559534416A57A500079B985 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		F559534516A57A500079B985 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		F559534C16A59B780079B985 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		F559535016A5AA110079B985 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		F559535216A5AA250079B985 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		F5603C42169C6E6400667203 /* MSFirstNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSFirstNavigationController.h; sourceTree = "<group>"; };
 		F5603C43169C6E6400667203 /* MSFirstNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSFirstNavigationController.m; sourceTree = "<group>"; };
 		F5603C4D169C752200667203 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
@@ -79,9 +87,6 @@
 		F5F6ADD2169C4F21000247D9 /* TerritoryOfSuccess-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TerritoryOfSuccess-Prefix.pch"; sourceTree = "<group>"; };
 		F5F6ADD3169C4F21000247D9 /* MSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSAppDelegate.h; sourceTree = "<group>"; };
 		F5F6ADD4169C4F21000247D9 /* MSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSAppDelegate.m; sourceTree = "<group>"; };
-		F5F6ADD6169C4F21000247D9 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		F5F6ADD8169C4F21000247D9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		F5F6ADDA169C4F21000247D9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F5F6ADDD169C4F22000247D9 /* TerritoryOfSuccess.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TerritoryOfSuccess.xcdatamodel; sourceTree = "<group>"; };
 		F5F6ADE5169C4F5A000247D9 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		F5F6ADE8169C4F5A000247D9 /* allheaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = allheaders.h; sourceTree = "<group>"; };
@@ -270,6 +275,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F559534116A579350079B985 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				F559534316A57A500079B985 /* SVProgressHUD.h */,
+				F559534416A57A500079B985 /* SVProgressHUD.m */,
+				F559534516A57A500079B985 /* SVProgressHUD.bundle */,
+			);
+			name = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 		F5F6ADB3169C4F21000247D9 = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +336,7 @@
 				FA55C14816A071AA00671CAB /* MSCatalogueViewController.m */,
 				F5F6ADDC169C4F22000247D9 /* TerritoryOfSuccess.xcdatamodeld */,
 				FAAD063116A4500C00D37373 /* iPhoneStoryboard.storyboard */,
+				F559534116A579350079B985 /* SVProgressHUD */,
 				F5F6ADCB169C4F21000247D9 /* Supporting Files */,
 			);
 			path = TerritoryOfSuccess;
@@ -329,6 +345,9 @@
 		F5F6ADCB169C4F21000247D9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F559535216A5AA250079B985 /* Default-568h@2x.png */,
+				F559535016A5AA110079B985 /* Default@2x.png */,
+				F559534C16A59B780079B985 /* Default.png */,
 				FAAD062B16A4326A00D37373 /* iconWhite114.png */,
 				FAAD062916A4326400D37373 /* iconWhite57.png */,
 				F57B65E016A43693007C7982 /* rect200*50.png */,
@@ -350,9 +369,6 @@
 				F5F6ADCD169C4F21000247D9 /* InfoPlist.strings */,
 				F5F6ADD0169C4F21000247D9 /* main.m */,
 				F5F6ADD2169C4F21000247D9 /* TerritoryOfSuccess-Prefix.pch */,
-				F5F6ADD6169C4F21000247D9 /* Default.png */,
-				F5F6ADD8169C4F21000247D9 /* Default@2x.png */,
-				F5F6ADDA169C4F21000247D9 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -615,9 +631,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5F6ADCF169C4F21000247D9 /* InfoPlist.strings in Resources */,
-				F5F6ADD7169C4F21000247D9 /* Default.png in Resources */,
-				F5F6ADD9169C4F21000247D9 /* Default@2x.png in Resources */,
-				F5F6ADDB169C4F21000247D9 /* Default-568h@2x.png in Resources */,
 				F5F6AE7C169C4F5A000247D9 /* .gitignore in Resources */,
 				F5F6AE7F169C4F5A000247D9 /* README.md in Resources */,
 				F5F6AE87169C4F65000247D9 /* LICENSE in Resources */,
@@ -637,7 +650,11 @@
 				FAAD062A16A4326400D37373 /* iconWhite57.png in Resources */,
 				FAAD062C16A4326A00D37373 /* iconWhite114.png in Resources */,
 				FAAD063216A4500C00D37373 /* iPhoneStoryboard.storyboard in Resources */,
+				F559534716A57A500079B985 /* SVProgressHUD.bundle in Resources */,
 				F52816DF16A5766D00E64924 /* MSQuestionCell.xib in Resources */,
+				F559535E16A5AF320079B985 /* Default.png in Resources */,
+				F559535F16A5AFCF0079B985 /* Default@2x.png in Resources */,
+				F559536016A5AFDB0079B985 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,6 +673,7 @@
 				F5603C44169C6E6400667203 /* MSFirstNavigationController.m in Sources */,
 				F5603C51169C802100667203 /* MSTabBarController.m in Sources */,
 				FA55C14916A071AA00671CAB /* MSCatalogueViewController.m in Sources */,
+				F559534616A57A500079B985 /* SVProgressHUD.m in Sources */,
 				F52816D616A5760F00E64924 /* MSQuestionsViewController.m in Sources */,
 				F52816DA16A5764700E64924 /* MSQuestionDetailViewController.m in Sources */,
 				F52816DD16A5765C00E64924 /* MSQuestionCell.m in Sources */,
