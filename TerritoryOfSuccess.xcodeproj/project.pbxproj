@@ -64,9 +64,9 @@
 		F559534316A57A500079B985 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		F559534416A57A500079B985 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		F559534516A57A500079B985 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
-		F559534C16A59B780079B985 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		F559535016A5AA110079B985 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		F559535216A5AA250079B985 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		F559534C16A59B780079B985 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		F559535016A5AA110079B985 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		F559535216A5AA250079B985 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		F5603C42169C6E6400667203 /* MSFirstNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSFirstNavigationController.h; sourceTree = "<group>"; };
 		F5603C43169C6E6400667203 /* MSFirstNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSFirstNavigationController.m; sourceTree = "<group>"; };
 		F5603C4D169C752200667203 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
@@ -288,9 +288,6 @@
 		F5F6ADB3169C4F21000247D9 = {
 			isa = PBXGroup;
 			children = (
-				F559535216A5AA250079B985 /* Default-568h@2x.png */,
-				F559535016A5AA110079B985 /* Default@2x.png */,
-				F559534C16A59B780079B985 /* Default.png */,
 				F5F6ADCA169C4F21000247D9 /* TerritoryOfSuccess */,
 				F5F6ADC1169C4F21000247D9 /* Frameworks */,
 				F5F6ADBF169C4F21000247D9 /* Products */,
@@ -348,6 +345,9 @@
 		F5F6ADCB169C4F21000247D9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F559535216A5AA250079B985 /* Default-568h@2x.png */,
+				F559535016A5AA110079B985 /* Default@2x.png */,
+				F559534C16A59B780079B985 /* Default.png */,
 				FAAD062B16A4326A00D37373 /* iconWhite114.png */,
 				FAAD062916A4326400D37373 /* iconWhite57.png */,
 				F57B65E016A43693007C7982 /* rect200*50.png */,
