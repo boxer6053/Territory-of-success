@@ -308,6 +308,13 @@
 			children = (
 				F5F6ADD3169C4F21000247D9 /* MSAppDelegate.h */,
 				F5F6ADD4169C4F21000247D9 /* MSAppDelegate.m */,
+				F52816D416A5760F00E64924 /* MSQuestionsViewController.h */,
+				F52816D516A5760F00E64924 /* MSQuestionsViewController.m */,
+				F52816D816A5764700E64924 /* MSQuestionDetailViewController.h */,
+				F52816D916A5764700E64924 /* MSQuestionDetailViewController.m */,
+				F52816DB16A5765C00E64924 /* MSQuestionCell.h */,
+				F52816DC16A5765C00E64924 /* MSQuestionCell.m */,
+				F52816DE16A5766D00E64924 /* MSQuestionCell.xib */,
 				F5F6AE8D169C5153000247D9 /* MSFirstViewController.h */,
 				F5F6AE8E169C5153000247D9 /* MSFirstViewController.m */,
 				F5603C42169C6E6400667203 /* MSFirstNavigationController.h */,
