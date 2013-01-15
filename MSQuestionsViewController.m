@@ -1,5 +1,6 @@
 #import "MSQuestionsViewController.h"
 #import "MSQuestionCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface MSQuestionsViewController ()
 
@@ -23,12 +24,18 @@
 
 - (void)viewDidLoad
 {
+    
     self.allQuestionsMode = YES;
     self.myQuestionsMode = NO;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_image.png"]]];
     
     
+    self.tableView.layer.cornerRadius = 10;
+    [self.tableView.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0].CGColor];
+    [self.tableView.layer setBorderWidth:1.0f];
+    [self.tableView.layer setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.7].CGColor];
     
     
     [self createAllArray];
