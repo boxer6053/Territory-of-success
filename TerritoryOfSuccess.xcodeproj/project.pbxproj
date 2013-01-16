@@ -49,6 +49,7 @@
 		FAAD062A16A4326400D37373 /* iconWhite57.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD062916A4326400D37373 /* iconWhite57.png */; };
 		FAAD062C16A4326A00D37373 /* iconWhite114.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD062B16A4326A00D37373 /* iconWhite114.png */; };
 		FAAD063216A4500C00D37373 /* iPhoneStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAD063116A4500C00D37373 /* iPhoneStoryboard.storyboard */; };
+		FADA06AA16A5DBA0008DBE38 /* MSNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FADA06A916A5DBA0008DBE38 /* MSNewsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -250,6 +251,8 @@
 		FAAD062916A4326400D37373 /* iconWhite57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconWhite57.png; path = ../iconWhite57.png; sourceTree = "<group>"; };
 		FAAD062B16A4326A00D37373 /* iconWhite114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconWhite114.png; path = ../iconWhite114.png; sourceTree = "<group>"; };
 		FAAD063116A4500C00D37373 /* iPhoneStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhoneStoryboard.storyboard; sourceTree = "<group>"; };
+		FADA06A816A5DBA0008DBE38 /* MSNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSNewsViewController.h; sourceTree = "<group>"; };
+		FADA06A916A5DBA0008DBE38 /* MSNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSNewsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,6 +315,8 @@
 		F5F6ADCA169C4F21000247D9 /* TerritoryOfSuccess */ = {
 			isa = PBXGroup;
 			children = (
+				FADA06A816A5DBA0008DBE38 /* MSNewsViewController.h */,
+				FADA06A916A5DBA0008DBE38 /* MSNewsViewController.m */,
 				F5F6ADD3169C4F21000247D9 /* MSAppDelegate.h */,
 				F5F6ADD4169C4F21000247D9 /* MSAppDelegate.m */,
 				F52816D416A5760F00E64924 /* MSQuestionsViewController.h */,
@@ -667,6 +672,7 @@
 				F559534616A57A500079B985 /* SVProgressHUD.m in Sources */,
 				F52816D616A5760F00E64924 /* MSQuestionsViewController.m in Sources */,
 				F52816DA16A5764700E64924 /* MSQuestionDetailViewController.m in Sources */,
+				FADA06AA16A5DBA0008DBE38 /* MSNewsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
