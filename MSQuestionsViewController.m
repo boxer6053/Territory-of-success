@@ -29,6 +29,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_image.png"]]];
+
     
     
     self.tableView.layer.cornerRadius = 10;
@@ -39,7 +40,7 @@
     
     [self createAllArray];
     [self createMyArray];
-    NSLog(@"objects%@", myArray);
+ 
     [super viewDidLoad];
     
     // [newDictionary setObject:@"You" forKey:@"title"];
@@ -51,8 +52,7 @@
     {
         self.questionsDictionary = [[NSDictionary alloc] initWithObjects:questionsDetails forKeys:questionTitles];
         ////
-        NSLog(@"titles %@", [questionTitles objectAtIndex:i]);
-        NSLog(@"objects %@", [questionsDetails objectAtIndex:i]);
+       
         //
         [self.testDictionary setObject:[questionTitles objectAtIndex:i] forKey:@"Titles"];
         [self.testDictionary setObject:[questionsDetails objectAtIndex:i] forKey:@"Description"];
@@ -66,11 +66,10 @@
     //    self.testDictionary = [NSDictionary dictionaryWithObject:questionsDetails forKey:questionTitles];
     for (id key in [self.questionsDictionary allKeys])
     {
-        NSLog(@"Key : %@ => value : %@", key, [self.questionsDictionary objectForKey:key]);
-        NSLog(@"Number %u", self.questionsDictionary.count);
+
         NSArray *array = [[NSMutableArray alloc] init];
         array = [self.questionsDictionary allKeys];
-        NSLog(@"ArrYA %@", array);
+
         
         
         
@@ -80,10 +79,22 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    UIColor *selectedColor=[UIColor colorWithRed:255.0/255.0 green:140.0/255.0 blue:0.0/255.0 alpha:1.0];
-    [[self.segment.subviews objectAtIndex:1] setTintColor:selectedColor];
-    [[self.segment.subviews objectAtIndex:0] setTintColor:[UIColor blackColor]];
-    
+    if(allQuestionsMode){
+
+        UIColor *selectedColor=[UIColor colorWithRed:255.0/255.0 green:140.0/255.0 blue:0.0/255.0 alpha:1.0];
+        [[self.segment.subviews objectAtIndex:1] setTintColor:selectedColor];
+        [[self.segment.subviews objectAtIndex:0] setTintColor:[UIColor blackColor]];
+
+    }
+    if(myQuestionsMode)
+    {
+        UIColor *selectedColor=[UIColor colorWithRed:255.0/255.0 green:140.0/255.0 blue:0.0/255.0 alpha:1.0];
+        [[self.segment.subviews objectAtIndex:0] setTintColor:selectedColor];
+        [[self.segment.subviews objectAtIndex:1] setTintColor:[UIColor blackColor]];
+
+ 
+    }
+       
     
 }
 
@@ -184,28 +195,36 @@
     if(self.myQuestionsMode){
         int index = [indexPath indexAtPosition:1];
         NSString *key = [[self.questionsDictionary allKeys] objectAtIndex:index];
-        NSString *value = [self.questionsDictionary objectForKey:key];
+        
         self.questionTitle = key;
         self.questionDescription = [self.questionsDictionary objectForKey:key];
-        NSLog(@"Pressed value %@", value);
-        NSLog(@"Pressed index %d", index);
-        NSLog(@"Pressed key %@", key);
+      
     }
     if(self.allQuestionsMode)
     {
         
         self.questionTitle = [allArray objectAtIndex:indexPath.row];
-        NSLog(@"You just pressed %@",[allArray objectAtIndex:indexPath.row] );
-    }
-    
+           }
+    //UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+  
+  
     [self performSegueWithIdentifier:@"toQuestionDetail" sender:self];
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([segue.identifier isEqualToString:@"toQuestionDetail"]){
-        MSQuestionDetailViewController *controller = (MSQuestionDetailViewController *)segue.destinationViewController;
+            MSQuestionDetailViewController *controller = (MSQuestionDetailViewController *)segue.destinationViewController;
+        if(myQuestionsMode){
+
         controller.data = self.questionsDictionary;
         controller.questionDescription = self.questionDescription;
         controller.questionTitle = self.questionTitle;
+        }
+        if(allQuestionsMode)
+        {
+            controller.questionDescription = @"All question description";
+            controller.questionTitle = @" All question title";
+        }
+            
     }
 }
 
@@ -240,16 +259,14 @@
         self.myQuestionsMode = NO;
         [self.tableView reloadData];
         
-        NSLog(@"All MODE");
+    
     }
     if(selectedSegment ==1)
     {
         self.myQuestionsMode = YES;
         self.allQuestionsMode = NO;
         [self.tableView reloadData];
-        NSInteger inte =    [self.questionsDictionary count];
-        NSLog(@"zz %d", inte);
-        NSLog(@"My Mode");
+       
     }
 }
 

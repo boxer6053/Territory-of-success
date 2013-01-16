@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8kx-JT-nNm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12B19" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8kx-JT-nNm">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
         <!--Catalogue View Controller - Каталог-->
@@ -257,7 +257,7 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" alpha="0.50000000000000011" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="74" sectionHeaderHeight="22" sectionFooterHeight="22" id="UjK-dp-d4E">
-                                <rect key="frame" x="20" y="53" width="280" height="382"/>
+                                <rect key="frame" x="20" y="57" width="280" height="378"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -530,75 +530,6 @@
         <image name="photo_camera_1.png" width="61" height="61"/>
         <image name="settings.png" width="30" height="30"/>
     </resources>
-    <classes>
-        <class className="MSCatalogueViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSCatalogueViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="segmentPressed:"/>
-                <relationship kind="outlet" name="detailTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="mainLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="productAndBonusesControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="MSFirstNavigationController" superclassName="UINavigationController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSFirstNavigationController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="mainNavigationBar" candidateClass="UINavigationBar"/>
-                <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
-            </relationships>
-        </class>
-        <class className="MSFirstViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSFirstViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="changeNewsPage:"/>
-                <relationship kind="action" name="takePhoto:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="codeInputView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="codeTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="newsPageControl" candidateClass="UIPageControl"/>
-                <relationship kind="outlet" name="newsScrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="newsView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="photoButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="sendCodeButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="tintLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MSNewsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSNewsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="beckButtonClick:"/>
-                <relationship kind="outlet" name="articleScrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="articleTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="articleTitleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="beckButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="imageScrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="newsTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="MSQuestionDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSQuestionDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="questionDescriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="questionTitleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="tableOfAnswers" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="MSQuestionsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSQuestionsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="questionDoubleButton:"/>
-                <relationship kind="outlet" name="segment" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="MSTabBarController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSTabBarController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="myTabBarController" candidateClass="UITabBar"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
