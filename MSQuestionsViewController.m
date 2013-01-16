@@ -29,6 +29,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_image.png"]]];
+
     
     
     self.tableView.layer.cornerRadius = 10;
