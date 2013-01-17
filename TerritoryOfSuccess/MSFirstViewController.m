@@ -59,6 +59,14 @@
     else
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*480.png"]]];
+        self.codeInputView.frame = CGRectMake(self.codeInputView.frame.origin.x, self.codeInputView.frame.origin.y - 35, self.codeInputView.frame.size.width, 144);
+        self.titleLabel.frame = CGRectMake(self.titleLabel.frame.origin.x, self.titleLabel.frame.origin.y - 35, self.titleLabel.frame.size.width, self.titleLabel.frame.size.height);
+        self.sendCodeButton.frame = CGRectMake(self.sendCodeButton.frame.origin.x, self.sendCodeButton.frame.origin.y - 10, self.sendCodeButton.frame.size.width, self.sendCodeButton.frame.size.height);
+        self.photoButton.frame = CGRectMake(self.photoButton.frame.origin.x, self.photoButton.frame.origin.y - 10, self.photoButton.frame.size.width, self.photoButton.frame.size.height);
+        self.tintLabel.frame = CGRectMake(self.tintLabel.frame.origin.x, self.tintLabel.frame.origin.y - 10, self.tintLabel.frame.size.width, self.tintLabel.frame.size.height);
+        self.codeTextField.frame = CGRectMake(self.codeTextField.frame.origin.x, self.codeTextField.frame.origin.y - 10, self.codeTextField.frame.size.width, self.codeTextField.frame.size.height);
+        
+        
     }
     
     NSArray *contentArray = [NSArray arrayWithObjects:[UIColor grayColor], [UIColor orangeColor], [UIColor darkGrayColor], [UIColor purpleColor], nil];
