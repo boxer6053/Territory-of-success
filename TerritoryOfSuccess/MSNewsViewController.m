@@ -87,6 +87,7 @@
         subView.backgroundColor = [contentArray objectAtIndex:i];
         [self.imageScrollView addSubview:subView];
     }
+    self.newsImagePageController.numberOfPages = contentArray.count;
     self.imageScrollView.contentSize = CGSizeMake(contentArray.count * self.imageScrollView.frame.size.width, self.imageScrollView.frame.size.height);
     
     self.articleTitleLabel.text = @"Заголовок новости";
@@ -110,5 +111,14 @@
         self.beckButton.frame = CGRectMake(320, self.beckButton.frame.origin.y
                                            , self.beckButton.frame.size.width, self.beckButton.frame.size.height);
     }];
+}
+
+#pragma mark ScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    float pageWidth = self.imageScrollView.frame.size.width;
+    int page = floor((self.imageScrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    self.newsImagePageController.currentPage = page;
 }
 @end
