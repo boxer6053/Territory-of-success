@@ -14,8 +14,9 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *imageScrollView;
 @property (weak, nonatomic) IBOutlet UILabel *articleTitleLabel;
 @property (weak, nonatomic) IBOutlet UITextView *articleTextView;
-@property (strong, nonatomic) IBOutlet UIButton *beckButton;
+@property (strong, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UIPageControl *newsImagePageController;
-- (IBAction)beckButtonClick:(id)sender;
+- (IBAction)backButtonClick:(id)sender;
+- (IBAction)magePageChanged:(id)sender;
 
 @end
