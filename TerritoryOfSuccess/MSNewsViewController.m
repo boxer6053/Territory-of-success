@@ -42,6 +42,7 @@
     else
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*480.png"]]];
+        self.articleScrollView.frame = CGRectMake(self.articleScrollView.frame.origin.x, self.articleScrollView.frame.origin.y + 87, self.articleScrollView.frame.size.width, self.articleScrollView.frame.size.height);
     }
     
     self.newsTableView.layer.cornerRadius = 10;
