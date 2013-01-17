@@ -36,6 +36,11 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;    
     
+    self.tableOfAnswers.layer.cornerRadius = 10;
+    [self.tableOfAnswers.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0].CGColor];
+    [self.tableOfAnswers.layer setBorderWidth:1.0f];
+    [self.tableOfAnswers.layer setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.7].CGColor];
+    
     self.tableView.layer.cornerRadius = 10;
     [self.tableView.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0].CGColor];
     [self.tableView.layer setBorderWidth:1.0f];
