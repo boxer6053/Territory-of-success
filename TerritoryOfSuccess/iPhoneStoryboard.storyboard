@@ -428,7 +428,7 @@
         <scene sceneID="kUx-Pn-sSh">
             <objects>
                 <navigationController id="WMr-Z5-3IS" customClass="MSFirstNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Главная" image="home.png" id="vHN-4a-EzM"/>
+                    <tabBarItem key="tabBarItem" title="Главная" image="home_TOS.png" id="vHN-4a-EzM"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="F3A-Mp-SZr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -448,7 +448,7 @@
         <scene sceneID="2yE-Ac-aRf">
             <objects>
                 <navigationController id="rKH-MI-8hw" customClass="MSFirstNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Каталог" image="Catalogue.png" id="D8e-iH-KKD"/>
+                    <tabBarItem key="tabBarItem" title="Каталог" image="catalogue_TOS.png" id="D8e-iH-KKD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bK7-ec-7vO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -467,7 +467,7 @@
         <scene sceneID="TOo-i4-P61">
             <objects>
                 <navigationController id="TsD-xh-9RE" customClass="MSFirstNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Вопросы" image="Questions.png" id="xr2-ka-6RV"/>
+                    <tabBarItem key="tabBarItem" title="Вопросы" image="questions1.png" id="xr2-ka-6RV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FJa-KM-BR9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -598,7 +598,7 @@
         <scene sceneID="03Y-68-yoo">
             <objects>
                 <navigationController id="BIb-F4-6Wk" customClass="MSFirstNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Новости" image="settings.png" id="xPw-kQ-uM6"/>
+                    <tabBarItem key="tabBarItem" title="Новости" image="news_TOS.png" id="xPw-kQ-uM6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nw1-zZ-O4a">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -615,15 +615,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Catalogue.png" width="30" height="30"/>
-        <image name="Questions.png" width="30" height="30"/>
         <image name="backButton.png" width="20" height="60"/>
         <image name="button_orange.png" width="185" height="45"/>
+        <image name="catalogue_TOS.png" width="38" height="38"/>
         <image name="exampleDetailImage.png" width="320" height="212"/>
-        <image name="home.png" width="30" height="30"/>
+        <image name="home_TOS.png" width="34" height="34"/>
         <image name="like.png" width="33" height="30"/>
+        <image name="news_TOS.png" width="32" height="32"/>
         <image name="photo_camera_1.png" width="61" height="61"/>
-        <image name="settings.png" width="30" height="30"/>
+        <image name="questions1.png" width="25" height="25"/>
     </resources>
     <classes>
         <class className="MSCatalogueViewController" superclassName="UIViewController">
@@ -632,7 +632,6 @@
                 <relationship kind="action" name="backButtonAction:"/>
                 <relationship kind="action" name="segmentPressed:"/>
                 <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="backFuckingButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="detailLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="detailTableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="mainLabel" candidateClass="UILabel"/>
