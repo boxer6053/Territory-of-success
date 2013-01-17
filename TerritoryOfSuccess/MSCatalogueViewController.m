@@ -121,24 +121,31 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [UIView animateWithDuration:0.5 animations:^{
-        self.mainLabel.frame = CGRectMake(-300, self.mainLabel.frame.origin.y, self.mainLabel.frame.size.width, self.mainLabel.frame.size.height);
-        _tableView.frame = CGRectMake(-310, _tableView.frame.origin.y, _tableView.frame.size.width, _tableView.frame.size.height);
-        
-        self.backButton.frame = CGRectMake(0, self.backButton.frame.origin.y, self.backButton.frame.size.width, self.backButton.frame.size.height);
-        _detailLabel.frame = CGRectMake(30, -60, _detailLabel.frame.size.width, _detailLabel.frame.size.width);
-        
-        
-        _detailTableView.frame = CGRectMake(30, _detailTableView.frame.origin.y, _detailTableView.frame.size.width, _detailTableView.frame.size.height);
-        _detailTableView.delegate = self;
-        _detailTableView.dataSource = self;
-        [_detailTableView reloadData];
- 
-    } completion:^(BOOL finished) {
+    if (tableView == _tableView) {
         [UIView animateWithDuration:0.5 animations:^{
+            self.mainLabel.frame = CGRectMake(-300, self.mainLabel.frame.origin.y, self.mainLabel.frame.size.width, self.mainLabel.frame.size.height);
+            _tableView.frame = CGRectMake(-310, _tableView.frame.origin.y, _tableView.frame.size.width, _tableView.frame.size.height);
+        
+            self.backButton.frame = CGRectMake(0, self.backButton.frame.origin.y, self.backButton.frame.size.width, self.backButton.frame.size.height);
+            _detailLabel.frame = CGRectMake(30, -64, _detailLabel.frame.size.width, _detailLabel.frame.size.width);
+        
+        
+            _detailTableView.frame = CGRectMake(30, _detailTableView.frame.origin.y, _detailTableView.frame.size.width, _detailTableView.frame.size.height);
+            _detailTableView.delegate = self;
+            _detailTableView.dataSource = self;
+            [_detailTableView reloadData];
+ 
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.5 animations:^{
                     self.backButton.alpha = 1.0;
+            }];
         }];
-    }];
+    }
+    
+    if (tableView == _detailTableView) {
+        [self performSegueWithIdentifier:@"toDetailView" sender:_detailTableView];
+    }
+    
 }
 - (IBAction)backButtonAction:(id)sender {
     [UIView animateWithDuration:0.2 animations:^{
