@@ -14,5 +14,8 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UITableView *detailTableView;
 @property (strong, nonatomic) IBOutlet UILabel *mainLabel;
+@property (strong, nonatomic) IBOutlet UILabel *detailLabel;
+@property (strong, nonatomic) IBOutlet UIButton *backButton;
+- (IBAction)backButtonAction:(id)sender;
 
 @end
