@@ -81,6 +81,13 @@
         subView.backgroundColor = [contentArray objectAtIndex:i];
         [self.newsScrollView addSubview:subView];
         
+        UIButton *subViewButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.newsScrollView.frame.size.width, self.newsScrollView.frame.size.height)];
+        [subViewButton addTarget:self
+                   action:@selector(PicturePressed)
+         forControlEvents:UIControlEventTouchDown];
+        //subViewButton.alpha = 0.0;
+        [subView addSubview:subViewButton];
+        
     }
     self.newsScrollView.contentSize = CGSizeMake(self.newsScrollView.frame.size.width * contentArray.count, self.newsScrollView.frame.size.height);
     [self.newsScrollView.layer setCornerRadius:5.0];
@@ -120,6 +127,11 @@
     frame.origin.y = 0;
     frame.size = self.newsScrollView.frame.size;
     [self.newsScrollView scrollRectToVisible:frame animated:YES];
+}
+
+- (void) PicturePressed
+{
+    
 }
 
 #pragma mark ScrollViewDelegate
