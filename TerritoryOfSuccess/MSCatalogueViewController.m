@@ -120,26 +120,34 @@
         self.backButton.frame = CGRectMake(0, self.backButton.frame.origin.y, self.backButton.frame.size.width, self.backButton.frame.size.height);
         _detailLabel.frame = CGRectMake(30, -60, _detailLabel.frame.size.width, _detailLabel.frame.size.width);
         
+        
         _detailTableView.frame = CGRectMake(30, _detailTableView.frame.origin.y, _detailTableView.frame.size.width, _detailTableView.frame.size.height);
         _detailTableView.delegate = self;
         _detailTableView.dataSource = self;
         [_detailTableView reloadData];
  
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.5 animations:^{
+                    self.backButton.alpha = 1.0;
+        }];
     }];
 }
 - (IBAction)backButtonAction:(id)sender {
-    [UIView animateWithDuration:0.5 animations:^{
-        self.mainLabel.frame = CGRectMake(30, self.mainLabel.frame.origin.y, self.mainLabel.frame.size.width, self.mainLabel.frame.size.height);
-        _tableView.frame = CGRectMake(20, _tableView.frame.origin.y, _tableView.frame.size.width, _tableView.frame.size.height);
-        
-        self.backButton.frame = CGRectMake(320, self.backButton.frame.origin.y, self.backButton.frame.size.width, self.backButton.frame.size.height);
-        _detailLabel.frame = CGRectMake(330, _detailLabel.frame.origin.y, _detailLabel.frame.size.width, _detailLabel.frame.size.width);
-        
-        _detailTableView.frame = CGRectMake(330, _detailTableView.frame.origin.y, _detailTableView.frame.size.width, _detailTableView.frame.size.height);
-        _detailTableView.delegate = self;
-        _detailTableView.dataSource = self;
-        [_detailTableView reloadData];
-        
+    [UIView animateWithDuration:0.2 animations:^{
+        self.backButton.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.5 animations:^{
+            self.mainLabel.frame = CGRectMake(30, self.mainLabel.frame.origin.y, self.mainLabel.frame.size.width, self.mainLabel.frame.size.height);
+            _tableView.frame = CGRectMake(20, _tableView.frame.origin.y, _tableView.frame.size.width, _tableView.frame.size.height);
+            
+            self.backButton.frame = CGRectMake(320, self.backButton.frame.origin.y, self.backButton.frame.size.width, self.backButton.frame.size.height);
+            _detailLabel.frame = CGRectMake(330, _detailLabel.frame.origin.y, _detailLabel.frame.size.width, _detailLabel.frame.size.width);
+            
+            _detailTableView.frame = CGRectMake(330, _detailTableView.frame.origin.y, _detailTableView.frame.size.width, _detailTableView.frame.size.height);
+            _detailTableView.delegate = self;
+            _detailTableView.dataSource = self;
+            [_detailTableView reloadData];
+        }];
     }];
 
 }
