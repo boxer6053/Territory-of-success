@@ -23,6 +23,11 @@
 		F5603C59169C944C00667203 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = F5603C58169C944C00667203 /* settings.png */; };
 		F5603C63169C9A1100667203 /* Catalogue.png in Resources */ = {isa = PBXBuildFile; fileRef = F5603C62169C9A1100667203 /* Catalogue.png */; };
 		F57B65E116A43694007C7982 /* rect200*50.png in Resources */ = {isa = PBXBuildFile; fileRef = F57B65E016A43693007C7982 /* rect200*50.png */; };
+		F59B7FA416A86B620084FEE3 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F59B7FA316A86B620084FEE3 /* backButton.png */; };
+		F59B7FA616A86E480084FEE3 /* home_TOS.png in Resources */ = {isa = PBXBuildFile; fileRef = F59B7FA516A86E480084FEE3 /* home_TOS.png */; };
+		F59B7FA816A86E540084FEE3 /* catalogue_TOS.png in Resources */ = {isa = PBXBuildFile; fileRef = F59B7FA716A86E540084FEE3 /* catalogue_TOS.png */; };
+		F59B7FAA16A86E600084FEE3 /* news_TOS.png in Resources */ = {isa = PBXBuildFile; fileRef = F59B7FA916A86E600084FEE3 /* news_TOS.png */; };
+		F59B7FAE16A874950084FEE3 /* questions1.png in Resources */ = {isa = PBXBuildFile; fileRef = F59B7FAD16A874950084FEE3 /* questions1.png */; };
 		F5F6ADC3169C4F21000247D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC2169C4F21000247D9 /* UIKit.framework */; };
 		F5F6ADC5169C4F21000247D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC4169C4F21000247D9 /* Foundation.framework */; };
 		F5F6ADC7169C4F21000247D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC6169C4F21000247D9 /* CoreGraphics.framework */; };
@@ -77,8 +82,12 @@
 		F5603C56169C92AF00667203 /* Questions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Questions.png; sourceTree = "<group>"; };
 		F5603C58169C944C00667203 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		F5603C62169C9A1100667203 /* Catalogue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Catalogue.png; sourceTree = "<group>"; };
-		F5757CA516A7FE3B00F4F528 /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = "<group>"; };
 		F57B65E016A43693007C7982 /* rect200*50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rect200*50.png"; sourceTree = "<group>"; };
+		F59B7FA316A86B620084FEE3 /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = "<group>"; };
+		F59B7FA516A86E480084FEE3 /* home_TOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_TOS.png; sourceTree = "<group>"; };
+		F59B7FA716A86E540084FEE3 /* catalogue_TOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = catalogue_TOS.png; sourceTree = "<group>"; };
+		F59B7FA916A86E600084FEE3 /* news_TOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = news_TOS.png; sourceTree = "<group>"; };
+		F59B7FAD16A874950084FEE3 /* questions1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = questions1.png; sourceTree = "<group>"; };
 		F5F6ADBE169C4F21000247D9 /* TerritoryOfSuccess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TerritoryOfSuccess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5F6ADC2169C4F21000247D9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F5F6ADC4169C4F21000247D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -357,7 +366,6 @@
 				F559536216A5B9E20079B985 /* background_320*480.png */,
 				F559535216A5AA250079B985 /* Default-568h@2x.png */,
 				F559535016A5AA110079B985 /* Default@2x.png */,
-				F5757CA516A7FE3B00F4F528 /* backButton.png */,
 				F559534C16A59B780079B985 /* Default.png */,
 				FAAD062B16A4326A00D37373 /* iconWhite114.png */,
 				FAAD062916A4326400D37373 /* iconWhite57.png */,
