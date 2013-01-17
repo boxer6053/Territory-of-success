@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F52816D616A5760F00E64924 /* MSQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52816D516A5760F00E64924 /* MSQuestionsViewController.m */; };
-		F52816DA16A5764700E64924 /* MSQuestionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52816D916A5764700E64924 /* MSQuestionDetailViewController.m */; };
 		F559534616A57A500079B985 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F559534416A57A500079B985 /* SVProgressHUD.m */; };
 		F559534716A57A500079B985 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F559534516A57A500079B985 /* SVProgressHUD.bundle */; };
 		F559535E16A5AF320079B985 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F559534C16A59B780079B985 /* Default.png */; };
@@ -20,6 +19,7 @@
 		F5603C57169C92AF00667203 /* Questions.png in Resources */ = {isa = PBXBuildFile; fileRef = F5603C56169C92AF00667203 /* Questions.png */; };
 		F5603C59169C944C00667203 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = F5603C58169C944C00667203 /* settings.png */; };
 		F5603C63169C9A1100667203 /* Catalogue.png in Resources */ = {isa = PBXBuildFile; fileRef = F5603C62169C9A1100667203 /* Catalogue.png */; };
+		F5757CA616A7FE3B00F4F528 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F5757CA516A7FE3B00F4F528 /* backButton.png */; };
 		F57B65E116A43694007C7982 /* rect200*50.png in Resources */ = {isa = PBXBuildFile; fileRef = F57B65E016A43693007C7982 /* rect200*50.png */; };
 		F5F6ADC3169C4F21000247D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC2169C4F21000247D9 /* UIKit.framework */; };
 		F5F6ADC5169C4F21000247D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC4169C4F21000247D9 /* Foundation.framework */; };
@@ -37,7 +37,6 @@
 		F5F6AE87169C4F65000247D9 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F5F6AE84169C4F65000247D9 /* LICENSE */; };
 		F5F6AE8A169C4F72000247D9 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = F5F6AE89169C4F72000247D9 /* tessdata */; };
 		F5F6AE8F169C5153000247D9 /* MSFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F6AE8E169C5153000247D9 /* MSFirstViewController.m */; };
-		FA0A94B516A6E72800D6D754 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0A94B416A6E72800D6D754 /* backButton.png */; };
 		FA283CCD16A0890F00DBDC19 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA283CCC16A0890F00DBDC19 /* QuartzCore.framework */; };
 		FA283CD016A0909000DBDC19 /* tab_select_indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = FA283CCE16A0909000DBDC19 /* tab_select_indicator.png */; };
 		FA283CD116A0909000DBDC19 /* tab_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FA283CCF16A0909000DBDC19 /* tab_bg.png */; };
@@ -56,8 +55,6 @@
 /* Begin PBXFileReference section */
 		F52816D416A5760F00E64924 /* MSQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSQuestionsViewController.h; path = ../MSQuestionsViewController.h; sourceTree = "<group>"; };
 		F52816D516A5760F00E64924 /* MSQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSQuestionsViewController.m; path = ../MSQuestionsViewController.m; sourceTree = "<group>"; };
-		F52816D816A5764700E64924 /* MSQuestionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSQuestionDetailViewController.h; path = ../MSQuestionDetailViewController.h; sourceTree = "<group>"; };
-		F52816D916A5764700E64924 /* MSQuestionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSQuestionDetailViewController.m; path = ../MSQuestionDetailViewController.m; sourceTree = "<group>"; };
 		F559534316A57A500079B985 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		F559534416A57A500079B985 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		F559534516A57A500079B985 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
@@ -72,6 +69,7 @@
 		F5603C56169C92AF00667203 /* Questions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Questions.png; sourceTree = "<group>"; };
 		F5603C58169C944C00667203 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		F5603C62169C9A1100667203 /* Catalogue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Catalogue.png; sourceTree = "<group>"; };
+		F5757CA516A7FE3B00F4F528 /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = "<group>"; };
 		F57B65E016A43693007C7982 /* rect200*50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rect200*50.png"; sourceTree = "<group>"; };
 		F5F6ADBE169C4F21000247D9 /* TerritoryOfSuccess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TerritoryOfSuccess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5F6ADC2169C4F21000247D9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -323,8 +321,6 @@
 				F5F6ADD4169C4F21000247D9 /* MSAppDelegate.m */,
 				F52816D416A5760F00E64924 /* MSQuestionsViewController.h */,
 				F52816D516A5760F00E64924 /* MSQuestionsViewController.m */,
-				F52816D816A5764700E64924 /* MSQuestionDetailViewController.h */,
-				F52816D916A5764700E64924 /* MSQuestionDetailViewController.m */,
 				F5F6AE8D169C5153000247D9 /* MSFirstViewController.h */,
 				F5F6AE8E169C5153000247D9 /* MSFirstViewController.m */,
 				F5603C42169C6E6400667203 /* MSFirstNavigationController.h */,
@@ -347,6 +343,7 @@
 				FA0A94B416A6E72800D6D754 /* backButton.png */,
 				F559535216A5AA250079B985 /* Default-568h@2x.png */,
 				F559535016A5AA110079B985 /* Default@2x.png */,
+				F5757CA516A7FE3B00F4F528 /* backButton.png */,
 				F559534C16A59B780079B985 /* Default.png */,
 				FAAD062B16A4326A00D37373 /* iconWhite114.png */,
 				FAAD062916A4326400D37373 /* iconWhite57.png */,
@@ -654,7 +651,7 @@
 				F559535E16A5AF320079B985 /* Default.png in Resources */,
 				F559535F16A5AFCF0079B985 /* Default@2x.png in Resources */,
 				F559536016A5AFDB0079B985 /* Default-568h@2x.png in Resources */,
-				FA0A94B516A6E72800D6D754 /* backButton.png in Resources */,
+				F5757CA616A7FE3B00F4F528 /* backButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,7 +672,6 @@
 				FA55C14916A071AA00671CAB /* MSCatalogueViewController.m in Sources */,
 				F559534616A57A500079B985 /* SVProgressHUD.m in Sources */,
 				F52816D616A5760F00E64924 /* MSQuestionsViewController.m in Sources */,
-				F52816DA16A5764700E64924 /* MSQuestionDetailViewController.m in Sources */,
 				FADA06AA16A5DBA0008DBE38 /* MSNewsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
