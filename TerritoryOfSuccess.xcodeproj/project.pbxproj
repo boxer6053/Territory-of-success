@@ -23,6 +23,7 @@
 		F5603C59169C944C00667203 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = F5603C58169C944C00667203 /* settings.png */; };
 		F5603C63169C9A1100667203 /* Catalogue.png in Resources */ = {isa = PBXBuildFile; fileRef = F5603C62169C9A1100667203 /* Catalogue.png */; };
 		F57B65E116A43694007C7982 /* rect200*50.png in Resources */ = {isa = PBXBuildFile; fileRef = F57B65E016A43693007C7982 /* rect200*50.png */; };
+		F59B7FA416A86B620084FEE3 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F59B7FA316A86B620084FEE3 /* backButton.png */; };
 		F5F6ADC3169C4F21000247D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC2169C4F21000247D9 /* UIKit.framework */; };
 		F5F6ADC5169C4F21000247D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC4169C4F21000247D9 /* Foundation.framework */; };
 		F5F6ADC7169C4F21000247D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC6169C4F21000247D9 /* CoreGraphics.framework */; };
@@ -44,6 +45,7 @@
 		FA1BEA9616A842A200F2C219 /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1BEA9516A842A100F2C219 /* like.png */; };
 		FA1BEA9916A845FE00F2C219 /* logoDetailBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1BEA9816A845FE00F2C219 /* logoDetailBackground.png */; };
 		FA283CCD16A0890F00DBDC19 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA283CCC16A0890F00DBDC19 /* QuartzCore.framework */; };
+		FA50F14116A855E700963D33 /* exampleDetailImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FA50F14016A855E700963D33 /* exampleDetailImage.png */; };
 		FA55C14016A069C400671CAB /* logoBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = FA55C13E16A069C400671CAB /* logoBackground.png */; };
 		FA55C14116A069C400671CAB /* mainLogoBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = FA55C13F16A069C400671CAB /* mainLogoBackground.png */; };
 		FA55C14916A071AA00671CAB /* MSCatalogueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA55C14816A071AA00671CAB /* MSCatalogueViewController.m */; };
@@ -76,8 +78,8 @@
 		F5603C56169C92AF00667203 /* Questions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Questions.png; sourceTree = "<group>"; };
 		F5603C58169C944C00667203 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		F5603C62169C9A1100667203 /* Catalogue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Catalogue.png; sourceTree = "<group>"; };
-		F5757CA516A7FE3B00F4F528 /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = "<group>"; };
 		F57B65E016A43693007C7982 /* rect200*50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rect200*50.png"; sourceTree = "<group>"; };
+		F59B7FA316A86B620084FEE3 /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = "<group>"; };
 		F5F6ADBE169C4F21000247D9 /* TerritoryOfSuccess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TerritoryOfSuccess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5F6ADC2169C4F21000247D9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F5F6ADC4169C4F21000247D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -250,6 +252,7 @@
 		FA1BEA9516A842A100F2C219 /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
 		FA1BEA9816A845FE00F2C219 /* logoDetailBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoDetailBackground.png; sourceTree = "<group>"; };
 		FA283CCC16A0890F00DBDC19 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		FA50F14016A855E700963D33 /* exampleDetailImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exampleDetailImage.png; sourceTree = "<group>"; };
 		FA55C13E16A069C400671CAB /* logoBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoBackground.png; sourceTree = "<group>"; };
 		FA55C13F16A069C400671CAB /* mainLogoBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainLogoBackground.png; sourceTree = "<group>"; };
 		FA55C14716A071AA00671CAB /* MSCatalogueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCatalogueViewController.h; sourceTree = "<group>"; };
@@ -348,12 +351,14 @@
 		F5F6ADCB169C4F21000247D9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F59B7FA316A86B620084FEE3 /* backButton.png */,
+				FA50F14016A855E700963D33 /* exampleDetailImage.png */,
+				FAF4C8B216A84AC700A1B1B8 /* button_orange.png */,
 				FA1BEA9516A842A100F2C219 /* like.png */,
 				F559536116A5B9E20079B985 /* background_320*568.png */,
 				F559536216A5B9E20079B985 /* background_320*480.png */,
 				F559535216A5AA250079B985 /* Default-568h@2x.png */,
 				F559535016A5AA110079B985 /* Default@2x.png */,
-				F5757CA516A7FE3B00F4F528 /* backButton.png */,
 				F559534C16A59B780079B985 /* Default.png */,
 				FAAD062B16A4326A00D37373 /* iconWhite114.png */,
 				FAAD062916A4326400D37373 /* iconWhite57.png */,
@@ -672,10 +677,12 @@
 				F559536316A5B9E30079B985 /* background_320*568.png in Resources */,
 				F559536416A5B9E30079B985 /* background_320*480.png in Resources */,
 				F559536C16A5C9B60079B985 /* rect160*20.png in Resources */,
-				F5757CA616A7FE3B00F4F528 /* backButton.png in Resources */,
+				FAF4C8B316A84AC700A1B1B8 /* button_orange.png in Resources */,
 				FA1BEA9016A81A7300F2C219 /* iPhoneStoryboard.storyboard in Resources */,
 				FA1BEA9616A842A200F2C219 /* like.png in Resources */,
 				FA1BEA9916A845FE00F2C219 /* logoDetailBackground.png in Resources */,
+				FA50F14116A855E700963D33 /* exampleDetailImage.png in Resources */,
+				F59B7FA416A86B620084FEE3 /* backButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

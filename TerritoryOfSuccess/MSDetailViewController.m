@@ -7,6 +7,7 @@
 //
 
 #import "MSDetailViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface MSDetailViewController ()
 
@@ -26,11 +27,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    [self.detailImage.layer setCornerRadius:10.0];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    //[[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"logoDetailBackground.png"] forBarMetrics:UIBarMetricsDefault];
+
 }
 
 - (void)didReceiveMemoryWarning

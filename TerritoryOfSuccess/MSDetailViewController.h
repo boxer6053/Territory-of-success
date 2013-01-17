@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface MSDetailViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UIImageView *detailImage;
+@property (strong, nonatomic) IBOutlet UIView *viewDetail;
 
 @end
