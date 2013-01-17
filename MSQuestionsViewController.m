@@ -31,6 +31,10 @@
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_image.png"]]];
 
     
+    self.tableOfAnswers.layer.cornerRadius = 10;
+    [self.tableOfAnswers.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0].CGColor];
+    [self.tableOfAnswers.layer setBorderWidth:1.0f];
+    [self.tableOfAnswers.layer setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.7].CGColor];
     
     self.tableView.layer.cornerRadius = 10;
     [self.tableView.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0].CGColor];
@@ -115,18 +119,31 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    if(tableView == _tableView){
     return 1;
+    }
+else{
+    return 5;
+}
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+     
+    if(tableView ==_tableView){
     if(self.myQuestionsMode)
     {
+       
         return self.questionsDictionary.count;
     }
     else{
         return myArray.count;
     }
+        
+    }
+else{
+    return 5;
+}
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -192,40 +209,57 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if(tableView == _tableView)
+    {
     if(self.myQuestionsMode){
         int index = [indexPath indexAtPosition:1];
         NSString *key = [[self.questionsDictionary allKeys] objectAtIndex:index];
         
         self.questionTitle = key;
         self.questionDescription = [self.questionsDictionary objectForKey:key];
+        
+        self.questionDetailDescriptionLabel.text = [self.questionsDictionary objectForKey:key];
+        self.questionDetailTitleLabel.text = key;
       
     }
     if(self.allQuestionsMode)
     {
         
         self.questionTitle = [allArray objectAtIndex:indexPath.row];
-           }
+           
+        self.questionDetailTitleLabel.text = [allArray objectAtIndex:indexPath.row];
+
+        self.questionDetailDescriptionLabel.text = @"description of the 'all question'";
+    }
     //UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
-  
-  
-    [self performSegueWithIdentifier:@"toQuestionDetail" sender:self];
+        [UIView animateWithDuration:0.5 animations:^{
+            self.segment.frame = CGRectMake(-340, self.segment.frame.origin.y, self.segment.frame.size.width,self.segment.frame.size.height);
+            self.tableView.frame = CGRectMake(-310, self.tableView.frame.origin.y, self.tableView.frame.size.width, self.tableView.frame.size.height);
+            self.tableOfAnswers.frame = CGRectMake(22, self.tableOfAnswers.frame.origin.y, self.tableOfAnswers.frame.size.width, self.tableOfAnswers.frame.size.height);
+            self.questionDetailTitleLabel.frame = CGRectMake(122, self.questionDetailTitleLabel.frame.origin.y, self.questionDetailTitleLabel.frame.size.width, self.questionDetailTitleLabel.frame.size.height);
+            self.questionDetailDescriptionLabel.frame = CGRectMake(20, self.questionDetailDescriptionLabel.frame.origin.y, self.questionDetailDescriptionLabel.frame.size.width, self.questionDetailDescriptionLabel.frame.size.height);
+            self.backButton.frame = CGRectMake(0, self.backButton.frame.origin.y, self.backButton.frame.size.width, self.backButton.frame.size.height);
+        }];
+//  
+//    [self performSegueWithIdentifier:@"toQuestionDetail" sender:self];
+    }
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if([segue.identifier isEqualToString:@"toQuestionDetail"]){
-            MSQuestionDetailViewController *controller = (MSQuestionDetailViewController *)segue.destinationViewController;
-        if(myQuestionsMode){
-
-        controller.data = self.questionsDictionary;
-        controller.questionDescription = self.questionDescription;
-        controller.questionTitle = self.questionTitle;
-        }
-        if(allQuestionsMode)
-        {
-            controller.questionDescription = @"All question description";
-            controller.questionTitle = @" All question title";
-        }
-            
-    }
+//    if([segue.identifier isEqualToString:@"toQuestionDetail"]){
+//            MSQuestionDetailViewController *controller = (MSQuestionDetailViewController *)segue.destinationViewController;
+//        if(myQuestionsMode){
+//
+//        controller.data = self.questionsDictionary;
+//        controller.questionDescription = self.questionDescription;
+//        controller.questionTitle = self.questionTitle;
+//        }
+//        if(allQuestionsMode)
+//        {
+//            controller.questionDescription = @"All question description";
+//            controller.questionTitle = @" All question title";
+//        }
+//            
+//    }
 }
 
 
@@ -270,4 +304,15 @@
     }
 }
 
+- (IBAction)backToQuestionTable:(id)sender {
+    [UIView animateWithDuration:0.5 animations:^{
+        self.segment.frame = CGRectMake(-6, self.segment.frame.origin.y, self.segment.frame.size.width,self.segment.frame.size.height);
+        self.tableView.frame = CGRectMake(20, self.tableView.frame.origin.y, self.tableView.frame.size.width, self.tableView.frame.size.height);
+        self.tableOfAnswers.frame = CGRectMake(22+320, self.tableOfAnswers.frame.origin.y, self.tableOfAnswers.frame.size.width, self.tableOfAnswers.frame.size.height);
+        self.questionDetailTitleLabel.frame = CGRectMake(122+320, self.questionDetailTitleLabel.frame.origin.y, self.questionDetailTitleLabel.frame.size.width, self.questionDetailTitleLabel.frame.size.height);
+        self.questionDetailDescriptionLabel.frame = CGRectMake(20+320, self.questionDetailDescriptionLabel.frame.origin.y, self.questionDetailDescriptionLabel.frame.size.width, self.questionDetailDescriptionLabel.frame.size.height);
+        self.backButton.frame = CGRectMake(0+320, self.backButton.frame.origin.y, self.backButton.frame.size.width, self.backButton.frame.size.height);
+    }];
+
+}
 @end
