@@ -87,6 +87,9 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="kfr-cJ-FrO" kind="push" id="09T-Z2-5Pi"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -97,24 +100,27 @@
                                 <color key="textColor" white="0.14999999999999999" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="E2D-OV-wkb">
-                                <rect key="frame" x="20" y="217" width="270" height="27"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Trololo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XVL-by-vfi">
+                                <rect key="frame" x="330" y="57" width="270" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GYo-WI-DIT">
-                                <rect key="frame" x="123" y="206" width="20" height="60"/>
+                                <rect key="frame" x="330" y="85" width="20" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Button" backgroundImage="backButton.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="backButtonAction:" destination="7i8-cs-uKQ" eventType="touchUpInside" id="NOt-TL-4fi"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -122,7 +128,7 @@
                     <navigationItem key="navigationItem" title="Каталог" id="BAi-Sz-OmZ"/>
                     <connections>
                         <outlet property="backButton" destination="GYo-WI-DIT" id="LZQ-ld-NuK"/>
-                        <outlet property="detailLabel" destination="E2D-OV-wkb" id="pwv-8e-E9h"/>
+                        <outlet property="detailLabel" destination="XVL-by-vfi" id="HN9-ws-Oxy"/>
                         <outlet property="detailTableView" destination="gCe-cp-NOb" id="EyQ-v4-W1q"/>
                         <outlet property="mainLabel" destination="vmR-jB-1GN" id="Ol0-ec-feX"/>
                         <outlet property="productAndBonusesControl" destination="JVi-72-uhQ" id="EjB-xq-0Xn"/>
@@ -132,6 +138,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bpc-Zf-IHM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="870" y="-348"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="3vp-Af-cwb">
+            <objects>
+                <viewController id="kfr-cJ-FrO" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cM6-BH-cQE">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="hhk-db-SL5"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6pe-9P-POD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1307" y="-348"/>
         </scene>
         <!--First View Controller-->
         <scene sceneID="68i-5j-DHG">
@@ -555,6 +576,7 @@
         <class className="MSCatalogueViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSCatalogueViewController.h"/>
             <relationships>
+                <relationship kind="action" name="backButtonAction:"/>
                 <relationship kind="action" name="segmentPressed:"/>
                 <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="detailLabel" candidateClass="UILabel"/>

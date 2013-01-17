@@ -16,5 +16,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *mainLabel;
 @property (strong, nonatomic) IBOutlet UILabel *detailLabel;
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
+- (IBAction)backButtonAction:(id)sender;
 
 @end
