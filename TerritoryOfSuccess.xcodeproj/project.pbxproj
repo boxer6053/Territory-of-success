@@ -22,7 +22,6 @@
 		F5603C57169C92AF00667203 /* Questions.png in Resources */ = {isa = PBXBuildFile; fileRef = F5603C56169C92AF00667203 /* Questions.png */; };
 		F5603C59169C944C00667203 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = F5603C58169C944C00667203 /* settings.png */; };
 		F5603C63169C9A1100667203 /* Catalogue.png in Resources */ = {isa = PBXBuildFile; fileRef = F5603C62169C9A1100667203 /* Catalogue.png */; };
-		F5757CA616A7FE3B00F4F528 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F5757CA516A7FE3B00F4F528 /* backButton.png */; };
 		F57B65E116A43694007C7982 /* rect200*50.png in Resources */ = {isa = PBXBuildFile; fileRef = F57B65E016A43693007C7982 /* rect200*50.png */; };
 		F5F6ADC3169C4F21000247D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC2169C4F21000247D9 /* UIKit.framework */; };
 		F5F6ADC5169C4F21000247D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC4169C4F21000247D9 /* Foundation.framework */; };
@@ -53,6 +52,7 @@
 		FAAD062C16A4326A00D37373 /* iconWhite114.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD062B16A4326A00D37373 /* iconWhite114.png */; };
 		FAAD063216A4500C00D37373 /* iPhoneStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAD063116A4500C00D37373 /* iPhoneStoryboard.storyboard */; };
 		FADA06AA16A5DBA0008DBE38 /* MSNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FADA06A916A5DBA0008DBE38 /* MSNewsViewController.m */; };
+		FAF4C8B316A84AC700A1B1B8 /* button_orange.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF4C8B216A84AC700A1B1B8 /* button_orange.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -258,6 +258,7 @@
 		FAAD063116A4500C00D37373 /* iPhoneStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhoneStoryboard.storyboard; sourceTree = "<group>"; };
 		FADA06A816A5DBA0008DBE38 /* MSNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSNewsViewController.h; sourceTree = "<group>"; };
 		FADA06A916A5DBA0008DBE38 /* MSNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSNewsViewController.m; sourceTree = "<group>"; };
+		FAF4C8B216A84AC700A1B1B8 /* button_orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_orange.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -345,6 +346,7 @@
 		F5F6ADCB169C4F21000247D9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FAF4C8B216A84AC700A1B1B8 /* button_orange.png */,
 				F559536116A5B9E20079B985 /* background_320*568.png */,
 				F559536216A5B9E20079B985 /* background_320*480.png */,
 				F559535216A5AA250079B985 /* Default-568h@2x.png */,
@@ -661,6 +663,7 @@
 				F559536316A5B9E30079B985 /* background_320*568.png in Resources */,
 				F559536416A5B9E30079B985 /* background_320*480.png in Resources */,
 				F559536C16A5C9B60079B985 /* rect160*20.png in Resources */,
+				FAF4C8B316A84AC700A1B1B8 /* button_orange.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
