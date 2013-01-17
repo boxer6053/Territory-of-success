@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *sendCodeButton;
 @property (weak, nonatomic) IBOutlet UIButton *photoButton;
 @property (weak, nonatomic) IBOutlet UILabel *tintLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 - (IBAction)changeNewsPage:(id)sender;
 - (IBAction)takePhoto:(UIButton *)sender;
