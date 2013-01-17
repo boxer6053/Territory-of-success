@@ -42,9 +42,9 @@
 		F5F6AE8F169C5153000247D9 /* MSFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F6AE8E169C5153000247D9 /* MSFirstViewController.m */; };
 		FA1BEA8C16A813B200F2C219 /* MSDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1BEA8B16A813B200F2C219 /* MSDetailViewController.m */; };
 		FA1BEA9016A81A7300F2C219 /* iPhoneStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA1BEA8F16A81A7300F2C219 /* iPhoneStoryboard.storyboard */; };
+		FA1BEA9616A842A200F2C219 /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1BEA9516A842A100F2C219 /* like.png */; };
+		FA1BEA9916A845FE00F2C219 /* logoDetailBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1BEA9816A845FE00F2C219 /* logoDetailBackground.png */; };
 		FA283CCD16A0890F00DBDC19 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA283CCC16A0890F00DBDC19 /* QuartzCore.framework */; };
-		FA283CD016A0909000DBDC19 /* tab_select_indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = FA283CCE16A0909000DBDC19 /* tab_select_indicator.png */; };
-		FA283CD116A0909000DBDC19 /* tab_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FA283CCF16A0909000DBDC19 /* tab_bg.png */; };
 		FA55C14016A069C400671CAB /* logoBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = FA55C13E16A069C400671CAB /* logoBackground.png */; };
 		FA55C14116A069C400671CAB /* mainLogoBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = FA55C13F16A069C400671CAB /* mainLogoBackground.png */; };
 		FA55C14916A071AA00671CAB /* MSCatalogueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA55C14816A071AA00671CAB /* MSCatalogueViewController.m */; };
@@ -244,13 +244,12 @@
 		F5F6AE89169C4F72000247D9 /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tessdata; sourceTree = "<group>"; };
 		F5F6AE8D169C5153000247D9 /* MSFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSFirstViewController.h; sourceTree = "<group>"; };
 		F5F6AE8E169C5153000247D9 /* MSFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSFirstViewController.m; sourceTree = "<group>"; };
-		FA0A94B416A6E72800D6D754 /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = "<group>"; };
 		FA1BEA8A16A813B200F2C219 /* MSDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDetailViewController.h; sourceTree = "<group>"; };
 		FA1BEA8B16A813B200F2C219 /* MSDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDetailViewController.m; sourceTree = "<group>"; };
 		FA1BEA8F16A81A7300F2C219 /* iPhoneStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhoneStoryboard.storyboard; sourceTree = "<group>"; };
+		FA1BEA9516A842A100F2C219 /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
+		FA1BEA9816A845FE00F2C219 /* logoDetailBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoDetailBackground.png; sourceTree = "<group>"; };
 		FA283CCC16A0890F00DBDC19 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		FA283CCE16A0909000DBDC19 /* tab_select_indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_select_indicator.png; sourceTree = "<group>"; };
-		FA283CCF16A0909000DBDC19 /* tab_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_bg.png; sourceTree = "<group>"; };
 		FA55C13E16A069C400671CAB /* logoBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoBackground.png; sourceTree = "<group>"; };
 		FA55C13F16A069C400671CAB /* mainLogoBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainLogoBackground.png; sourceTree = "<group>"; };
 		FA55C14716A071AA00671CAB /* MSCatalogueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCatalogueViewController.h; sourceTree = "<group>"; };
@@ -348,6 +347,7 @@
 		F5F6ADCB169C4F21000247D9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FA1BEA9516A842A100F2C219 /* like.png */,
 				F559536116A5B9E20079B985 /* background_320*568.png */,
 				F559536216A5B9E20079B985 /* background_320*480.png */,
 				F559535216A5AA250079B985 /* Default-568h@2x.png */,
@@ -361,9 +361,8 @@
 				FAAD061E16A410D700D37373 /* bg_color.png */,
 				FA626B9816A1970B002BB7F6 /* bg_image.png */,
 				FA5D725116A174BE00D2E050 /* photo_camera_1.png */,
-				FA283CCE16A0909000DBDC19 /* tab_select_indicator.png */,
-				FA283CCF16A0909000DBDC19 /* tab_bg.png */,
 				FA55C13E16A069C400671CAB /* logoBackground.png */,
+				FA1BEA9816A845FE00F2C219 /* logoDetailBackground.png */,
 				FA55C13F16A069C400671CAB /* mainLogoBackground.png */,
 				F5603C62169C9A1100667203 /* Catalogue.png */,
 				F5603C58169C944C00667203 /* settings.png */,
@@ -659,8 +658,6 @@
 				F5603C63169C9A1100667203 /* Catalogue.png in Resources */,
 				FA55C14016A069C400671CAB /* logoBackground.png in Resources */,
 				FA55C14116A069C400671CAB /* mainLogoBackground.png in Resources */,
-				FA283CD016A0909000DBDC19 /* tab_select_indicator.png in Resources */,
-				FA283CD116A0909000DBDC19 /* tab_bg.png in Resources */,
 				FA5D725216A174BE00D2E050 /* photo_camera_1.png in Resources */,
 				FA626B9916A1970B002BB7F6 /* bg_image.png in Resources */,
 				FAAD061F16A410D700D37373 /* bg_color.png in Resources */,
@@ -671,8 +668,13 @@
 				F559535E16A5AF320079B985 /* Default.png in Resources */,
 				F559535F16A5AFCF0079B985 /* Default@2x.png in Resources */,
 				F559536016A5AFDB0079B985 /* Default-568h@2x.png in Resources */,
+				F559536316A5B9E30079B985 /* background_320*568.png in Resources */,
+				F559536416A5B9E30079B985 /* background_320*480.png in Resources */,
+				F559536C16A5C9B60079B985 /* rect160*20.png in Resources */,
 				F5757CA616A7FE3B00F4F528 /* backButton.png in Resources */,
 				FA1BEA9016A81A7300F2C219 /* iPhoneStoryboard.storyboard in Resources */,
+				FA1BEA9616A842A200F2C219 /* like.png in Resources */,
+				FA1BEA9916A845FE00F2C219 /* logoDetailBackground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

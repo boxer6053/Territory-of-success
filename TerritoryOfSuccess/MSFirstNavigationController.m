@@ -29,7 +29,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"logoBackground.png"] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"logoDetailBackground.png"] forBarMetrics:UIBarMetricsDefault];
     [self.navigationBar setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
                                                  [UIColor blackColor], UITextAttributeTextColor,
                                                  [UIFont fontWithName:@"EuphemiaUCAS-Bold" size:20.0], UITextAttributeFont,
