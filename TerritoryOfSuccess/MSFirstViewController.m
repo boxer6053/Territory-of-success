@@ -69,10 +69,6 @@
         frame.origin.y = 0;
         frame.size = self.newsScrollView.frame.size;
         
-        NSLog(@"%f",self.newsScrollView.frame.size.height);
-        NSLog(@"%f",self.newsView.frame.size.height);
-        NSLog(@"%f",self.view.frame.size.height);
-        
         UIView *subView = [[UIView alloc]initWithFrame:frame];
         subView.backgroundColor = [contentArray objectAtIndex:i];
         [self.newsScrollView addSubview:subView];
@@ -81,6 +77,8 @@
     self.newsScrollView.contentSize = CGSizeMake(self.newsScrollView.frame.size.width * contentArray.count, self.newsScrollView.frame.size.height);
     [self.newsScrollView.layer setCornerRadius:5.0];
     self.newsPageControl.numberOfPages = contentArray.count;
+    self.newsView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.7];
+    self.codeInputView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.7];
     self.newsPageControl.pageIndicatorTintColor = [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0];
     self.newsPageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:170/255.0 green:170/255.0 blue:170/255.0 alpha:1.0];
     [self.newsView.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0].CGColor];

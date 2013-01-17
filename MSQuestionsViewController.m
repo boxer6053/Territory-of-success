@@ -44,7 +44,7 @@
     
     [self createAllArray];
     [self createMyArray];
-    NSLog(@"objects%@", myArray);
+ 
     [super viewDidLoad];
     
     // [newDictionary setObject:@"You" forKey:@"title"];
@@ -56,8 +56,7 @@
     {
         self.questionsDictionary = [[NSDictionary alloc] initWithObjects:questionsDetails forKeys:questionTitles];
         ////
-        NSLog(@"titles %@", [questionTitles objectAtIndex:i]);
-        NSLog(@"objects %@", [questionsDetails objectAtIndex:i]);
+       
         //
         [self.testDictionary setObject:[questionTitles objectAtIndex:i] forKey:@"Titles"];
         [self.testDictionary setObject:[questionsDetails objectAtIndex:i] forKey:@"Description"];
@@ -71,11 +70,10 @@
     //    self.testDictionary = [NSDictionary dictionaryWithObject:questionsDetails forKey:questionTitles];
     for (id key in [self.questionsDictionary allKeys])
     {
-        NSLog(@"Key : %@ => value : %@", key, [self.questionsDictionary objectForKey:key]);
-        NSLog(@"Number %u", self.questionsDictionary.count);
+
         NSArray *array = [[NSMutableArray alloc] init];
         array = [self.questionsDictionary allKeys];
-        NSLog(@"ArrYA %@", array);
+
         
         
         
@@ -85,10 +83,22 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    UIColor *selectedColor=[UIColor colorWithRed:255.0/255.0 green:140.0/255.0 blue:0.0/255.0 alpha:1.0];
-    [[self.segment.subviews objectAtIndex:1] setTintColor:selectedColor];
-    [[self.segment.subviews objectAtIndex:0] setTintColor:[UIColor blackColor]];
-    
+    if(allQuestionsMode){
+
+        UIColor *selectedColor=[UIColor colorWithRed:255.0/255.0 green:140.0/255.0 blue:0.0/255.0 alpha:1.0];
+        [[self.segment.subviews objectAtIndex:1] setTintColor:selectedColor];
+        [[self.segment.subviews objectAtIndex:0] setTintColor:[UIColor blackColor]];
+
+    }
+    if(myQuestionsMode)
+    {
+        UIColor *selectedColor=[UIColor colorWithRed:255.0/255.0 green:140.0/255.0 blue:0.0/255.0 alpha:1.0];
+        [[self.segment.subviews objectAtIndex:0] setTintColor:selectedColor];
+        [[self.segment.subviews objectAtIndex:1] setTintColor:[UIColor blackColor]];
+
+ 
+    }
+       
     
 }
 
@@ -109,18 +119,31 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    if(tableView == _tableView){
     return 1;
+    }
+else{
+    return 5;
+}
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+     
+    if(tableView ==_tableView){
     if(self.myQuestionsMode)
     {
+       
         return self.questionsDictionary.count;
     }
     else{
         return myArray.count;
     }
+        
+    }
+else{
+    return 5;
+}
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -186,32 +209,62 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if(tableView == _tableView)
+    {
     if(self.myQuestionsMode){
         int index = [indexPath indexAtPosition:1];
         NSString *key = [[self.questionsDictionary allKeys] objectAtIndex:index];
-        NSString *value = [self.questionsDictionary objectForKey:key];
+        
         self.questionTitle = key;
         self.questionDescription = [self.questionsDictionary objectForKey:key];
-        NSLog(@"Pressed value %@", value);
-        NSLog(@"Pressed index %d", index);
-        NSLog(@"Pressed key %@", key);
+        
+        self.questionDetailDescriptionLabel.text = [self.questionsDictionary objectForKey:key];
+        self.questionDetailTitleLabel.text = key;
+      
     }
     if(self.allQuestionsMode)
     {
         
         self.questionTitle = [allArray objectAtIndex:indexPath.row];
-        NSLog(@"You just pressed %@",[allArray objectAtIndex:indexPath.row] );
+           
+        self.questionDetailTitleLabel.text = [allArray objectAtIndex:indexPath.row];
+
+        self.questionDetailDescriptionLabel.text = @"description of the 'all question'";
     }
-    
-    [self performSegueWithIdentifier:@"toQuestionDetail" sender:self];
+    //UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+        [UIView animateWithDuration:0.5 animations:^{
+            self.segment.frame = CGRectMake(-340, self.segment.frame.origin.y, self.segment.frame.size.width,self.segment.frame.size.height);
+            self.tableView.frame = CGRectMake(-310, self.tableView.frame.origin.y, self.tableView.frame.size.width, self.tableView.frame.size.height);
+            self.tableOfAnswers.frame = CGRectMake(22, self.tableOfAnswers.frame.origin.y, self.tableOfAnswers.frame.size.width, self.tableOfAnswers.frame.size.height);
+            self.questionDetailTitleLabel.frame = CGRectMake(122, self.questionDetailTitleLabel.frame.origin.y, self.questionDetailTitleLabel.frame.size.width, self.questionDetailTitleLabel.frame.size.height);
+            self.questionDetailDescriptionLabel.frame = CGRectMake(20, self.questionDetailDescriptionLabel.frame.origin.y, self.questionDetailDescriptionLabel.frame.size.width, self.questionDetailDescriptionLabel.frame.size.height);
+            self.backButton.frame = CGRectMake(0, self.backButton.frame.origin.y, self.backButton.frame.size.width, self.backButton.frame.size.height);
+            
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.5 animations:^{
+                self.backButton.alpha = 1.0;
+            }];
+        }];
+//  
+//    [self performSegueWithIdentifier:@"toQuestionDetail" sender:self];
+    }
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if([segue.identifier isEqualToString:@"toQuestionDetail"]){
-        MSQuestionDetailViewController *controller = (MSQuestionDetailViewController *)segue.destinationViewController;
-        controller.data = self.questionsDictionary;
-        controller.questionDescription = self.questionDescription;
-        controller.questionTitle = self.questionTitle;
-    }
+//    if([segue.identifier isEqualToString:@"toQuestionDetail"]){
+//            MSQuestionDetailViewController *controller = (MSQuestionDetailViewController *)segue.destinationViewController;
+//        if(myQuestionsMode){
+//
+//        controller.data = self.questionsDictionary;
+//        controller.questionDescription = self.questionDescription;
+//        controller.questionTitle = self.questionTitle;
+//        }
+//        if(allQuestionsMode)
+//        {
+//            controller.questionDescription = @"All question description";
+//            controller.questionTitle = @" All question title";
+//        }
+//            
+//    }
 }
 
 
@@ -245,17 +298,29 @@
         self.myQuestionsMode = NO;
         [self.tableView reloadData];
         
-        NSLog(@"All MODE");
+    
     }
     if(selectedSegment ==1)
     {
         self.myQuestionsMode = YES;
         self.allQuestionsMode = NO;
         [self.tableView reloadData];
-        NSInteger inte =    [self.questionsDictionary count];
-        NSLog(@"zz %d", inte);
-        NSLog(@"My Mode");
+       
     }
 }
 
+- (IBAction)backToQuestionTable:(id)sender {
+    [UIView animateWithDuration:0.2 animations:^{
+        self.backButton.alpha = 0.0;
+    } completion:^(BOOL finished) {
+    [UIView animateWithDuration:0.5 animations:^{
+        self.segment.frame = CGRectMake(-6, self.segment.frame.origin.y, self.segment.frame.size.width,self.segment.frame.size.height);
+        self.tableView.frame = CGRectMake(20, self.tableView.frame.origin.y, self.tableView.frame.size.width, self.tableView.frame.size.height);
+        self.tableOfAnswers.frame = CGRectMake(22+320, self.tableOfAnswers.frame.origin.y, self.tableOfAnswers.frame.size.width, self.tableOfAnswers.frame.size.height);
+        self.questionDetailTitleLabel.frame = CGRectMake(122+320, self.questionDetailTitleLabel.frame.origin.y, self.questionDetailTitleLabel.frame.size.width, self.questionDetailTitleLabel.frame.size.height);
+        self.questionDetailDescriptionLabel.frame = CGRectMake(20+320, self.questionDetailDescriptionLabel.frame.origin.y, self.questionDetailDescriptionLabel.frame.size.width, self.questionDetailDescriptionLabel.frame.size.height);
+        self.backButton.frame = CGRectMake(0+320, self.backButton.frame.origin.y, self.backButton.frame.size.width, self.backButton.frame.size.height);
+    }];
+  }];
+}
 @end
