@@ -23,13 +23,18 @@
 
 - (void)viewDidLoad
 {
+    if ([[UIScreen mainScreen] bounds].size.height == 568) {
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*568.png"]]];
+    }
+    else
+    {
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*480.png"]]];
+    }
     
     self.allQuestionsMode = YES;
     self.myQuestionsMode = NO;
     self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_image.png"]]];
-
+    self.tableView.dataSource = self;    
     
     self.tableOfAnswers.layer.cornerRadius = 10;
     [self.tableOfAnswers.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0].CGColor];
@@ -239,6 +244,11 @@ else{
             self.questionDetailTitleLabel.frame = CGRectMake(122, self.questionDetailTitleLabel.frame.origin.y, self.questionDetailTitleLabel.frame.size.width, self.questionDetailTitleLabel.frame.size.height);
             self.questionDetailDescriptionLabel.frame = CGRectMake(20, self.questionDetailDescriptionLabel.frame.origin.y, self.questionDetailDescriptionLabel.frame.size.width, self.questionDetailDescriptionLabel.frame.size.height);
             self.backButton.frame = CGRectMake(0, self.backButton.frame.origin.y, self.backButton.frame.size.width, self.backButton.frame.size.height);
+            
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.5 animations:^{
+                self.backButton.alpha = 1.0;
+            }];
         }];
 //  
 //    [self performSegueWithIdentifier:@"toQuestionDetail" sender:self];
@@ -305,6 +315,9 @@ else{
 }
 
 - (IBAction)backToQuestionTable:(id)sender {
+    [UIView animateWithDuration:0.2 animations:^{
+        self.backButton.alpha = 0.0;
+    } completion:^(BOOL finished) {
     [UIView animateWithDuration:0.5 animations:^{
         self.segment.frame = CGRectMake(-6, self.segment.frame.origin.y, self.segment.frame.size.width,self.segment.frame.size.height);
         self.tableView.frame = CGRectMake(20, self.tableView.frame.origin.y, self.tableView.frame.size.width, self.tableView.frame.size.height);
@@ -313,6 +326,6 @@ else{
         self.questionDetailDescriptionLabel.frame = CGRectMake(20+320, self.questionDetailDescriptionLabel.frame.origin.y, self.questionDetailDescriptionLabel.frame.size.width, self.questionDetailDescriptionLabel.frame.size.height);
         self.backButton.frame = CGRectMake(0+320, self.backButton.frame.origin.y, self.backButton.frame.size.width, self.backButton.frame.size.height);
     }];
-
+  }];
 }
 @end

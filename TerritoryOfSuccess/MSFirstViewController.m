@@ -53,7 +53,13 @@
     [self.scrollView setShowsHorizontalScrollIndicator:NO];
     [self.scrollView setShowsVerticalScrollIndicator:NO];
     
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_image.png"]]];
+    if ([[UIScreen mainScreen] bounds].size.height == 568) {
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*568.png"]]];
+    }
+    else
+    {
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*480.png"]]];
+    }
     
     NSArray *contentArray = [NSArray arrayWithObjects:[UIColor grayColor], [UIColor orangeColor], [UIColor darkGrayColor], [UIColor purpleColor], nil];
     for (int i = 0; i <contentArray.count; i++)
@@ -129,7 +135,7 @@
         imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
         
         UIImageView *overlayImageView = [[UIImageView alloc] init];
-        [overlayImageView setImage:[UIImage imageNamed:@"rect200*50.png"]];
+        [overlayImageView setImage:[UIImage imageNamed:@"rect160*20.png"]];
         
         
         self.screenWidth = [[UIScreen mainScreen] bounds].size.width;

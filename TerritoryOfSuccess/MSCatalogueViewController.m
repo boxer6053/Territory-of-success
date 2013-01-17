@@ -34,7 +34,15 @@
     _tableView.dataSource = self;
     [_tableView reloadData];
     
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_image.png"]]];
+    if ([[UIScreen mainScreen] bounds].size.height == 568) {
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*568.png"]]];
+        NSLog(@"568");
+    }
+    else
+    {
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*480.png"]]];
+        NSLog(@"480");
+    }
     _tableView.layer.cornerRadius = 10;
     [_tableView.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0].CGColor];
     [_tableView.layer setBorderWidth:1.0f];

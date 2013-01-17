@@ -355,7 +355,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JZd-KR-mob">
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JZd-KR-mob">
                                 <rect key="frame" x="320" y="0.0" width="20" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -489,14 +489,24 @@
                                     <outlet property="delegate" destination="hJd-OY-AUG" id="KRQ-XE-d9v"/>
                                 </connections>
                             </tableView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="7aZ-dX-rHt">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="7aZ-dX-rHt">
                                 <rect key="frame" x="350" y="20" width="280" height="415"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="Yc7-KQ-Lgf">
                                         <rect key="frame" x="10" y="10" width="260" height="120"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="hJd-OY-AUG" id="5L6-AD-UUw"/>
+                                        </connections>
                                     </scrollView>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="E1U-FH-zcr">
+                                        <rect key="frame" x="120" y="100" width="38" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="magePageChanged:" destination="hJd-OY-AUG" eventType="valueChanged" id="MQu-KV-AB2"/>
+                                        </connections>
+                                    </pageControl>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zu0-7B-poX">
                                         <rect key="frame" x="10" y="138" width="260" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -526,7 +536,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="beckButtonClick:" destination="hJd-OY-AUG" eventType="touchUpInside" id="2ha-ae-gRF"/>
+                                    <action selector="backButtonClick:" destination="hJd-OY-AUG" eventType="touchUpInside" id="fts-Mc-UJk"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -537,8 +547,9 @@
                         <outlet property="articleScrollView" destination="7aZ-dX-rHt" id="qzS-jA-ORx"/>
                         <outlet property="articleTextView" destination="uSc-Tl-qXZ" id="iSu-FM-Khm"/>
                         <outlet property="articleTitleLabel" destination="zu0-7B-poX" id="ZpG-Y2-Fc2"/>
-                        <outlet property="beckButton" destination="5mf-Y3-2jZ" id="5sE-le-I2u"/>
+                        <outlet property="backButton" destination="5mf-Y3-2jZ" id="Iuf-xV-PJZ"/>
                         <outlet property="imageScrollView" destination="Yc7-KQ-Lgf" id="OUA-mk-ePn"/>
+                        <outlet property="newsImagePageController" destination="E1U-FH-zcr" id="AZK-FN-i7N"/>
                         <outlet property="newsTableView" destination="cXM-dE-Waq" id="QRa-ro-c7D"/>
                     </connections>
                 </viewController>
