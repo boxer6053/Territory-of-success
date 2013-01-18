@@ -738,7 +738,7 @@
         <image name="catalogue_TOS.png" width="38" height="38"/>
         <image name="commentsButton.png" width="280" height="32"/>
         <image name="commentsNumberImage.png" width="15" height="15"/>
-        <image name="exampleDetailImage.png" width="16" height="16"/>
+        <image name="exampleDetailImage.png" width="320" height="212"/>
         <image name="home_TOS.png" width="34" height="34"/>
         <image name="like.png" width="33" height="30"/>
         <image name="news_TOS.png" width="32" height="32"/>
