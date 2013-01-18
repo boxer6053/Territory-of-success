@@ -16,18 +16,13 @@
 
 - (void)customizeInterface
 {
-    [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
+    [[UINavigationBar appearance] setTintColor:[UIColor orangeColor]];
     
-    //[[UITabBar appearance] setBackgroundImage:[[UIImage imageNamed:@"bg_color.png"]resizableImageWithCapInsets:UIEdgeInsetsZero]];
     [[UITabBar appearance] setBackgroundColor:[UIColor blackColor]];
-    //[[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tab_select_indicator.png"]];
     [[UITabBar appearance] setSelectedImageTintColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                        [UIColor whiteColor], UITextAttributeTextColor,
                                                        nil] forState:UIControlStateHighlighted];
-//    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-//                                                        [UIFont fontWithName:@"AmericanTypewriter" size:14.0f], UITextAttributeFont,
-//                                                        nil] forState:UIControlStateNormal];
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
