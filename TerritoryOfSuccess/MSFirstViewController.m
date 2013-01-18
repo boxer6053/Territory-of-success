@@ -48,6 +48,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.codeTextField setDelegate:self];
         
     [self.scrollView setScrollEnabled:NO];
     [self.scrollView setShowsHorizontalScrollIndicator:NO];
@@ -321,33 +323,69 @@ static inline double radians (double degrees)
 {
     NSLog(@"Screen height: %f", [[UIScreen mainScreen] bounds].size.height);
     
-    [self.scrollView setScrollEnabled:NO];
-    [self.scrollView setContentSize:CGSizeMake(320.0, 568.0 + 40.0)];
+    if ([[UIScreen mainScreen] bounds].size.height == 568) {
+        [self.scrollView setScrollEnabled:NO];
+        [self.scrollView setContentSize:CGSizeMake(320.0, 568.0 + 40.0)];
+        
+        CGFloat tempy = 568.0 + 40.0;//self.scrollView.contentSize.height;
+        CGFloat tempx = 320.0;//self.scrollView.contentSize.width;;
+        CGRect zoomRect = CGRectMake((tempx/2), (tempy/2), tempy, tempx);
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.25];
+        [self.scrollView scrollRectToVisible:zoomRect animated:NO];
+        [UIView commitAnimations];
+    }
     
-    CGFloat tempy = 568.0 + 40.0;//self.scrollView.contentSize.height;
-    CGFloat tempx = 320.0;//self.scrollView.contentSize.width;;
-    CGRect zoomRect = CGRectMake((tempx/2), (tempy/2), tempy, tempx);
-    
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.25];
-    [self.scrollView scrollRectToVisible:zoomRect animated:NO];
-    [UIView commitAnimations];
-    
+    else
+    {
+        [self.scrollView setScrollEnabled:NO];
+        [self.scrollView setContentSize:CGSizeMake(320.0, 480.0 + 55.0)];
+        
+        CGFloat tempy = 480.0 + 55.0;//self.scrollView.contentSize.height;
+        CGFloat tempx = 320.0;//self.scrollView.contentSize.width;;
+        CGRect zoomRect = CGRectMake((tempx/2), (tempy/2), tempy, tempx);
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.25];
+        [self.scrollView scrollRectToVisible:zoomRect animated:NO];
+        [UIView commitAnimations];
+    }
+        
     [self.view addGestureRecognizer:self.tapRecognizer];
 }
 
 -(void) keyboardWillHide:(NSNotification *) note
 {
-    CGRect zoomRect = CGRectMake(0, 0, 320, 568);
+    if ([[UIScreen mainScreen] bounds].size.height == 568) {
+        CGRect zoomRect = CGRectMake(0, 0, 320, 568);
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.25];
+        [self.scrollView scrollRectToVisible:zoomRect animated:NO];
+        [UIView commitAnimations];
+    }
     
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.25];
-    [self.scrollView scrollRectToVisible:zoomRect animated:NO];
-    [UIView commitAnimations];
+    else
+    {
+        CGRect zoomRect = CGRectMake(0, 0, 320, 480);
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.25];
+        [self.scrollView scrollRectToVisible:zoomRect animated:NO];
+        [UIView commitAnimations];
+    }
     
     [self.scrollView setScrollEnabled:NO];
     
     [self.view removeGestureRecognizer:self.tapRecognizer];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
+    return YES;
 }
 
 @end
