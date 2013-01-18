@@ -21,6 +21,10 @@
 @property CGFloat frameMarkWidth;
 @property CGFloat frameMarkHeight;
 
+//timer for slideshow
+@property NSTimer *slideShowTimer;
+@property NSTimer *userTouchTimer;
+
 @property (strong, nonatomic) UITapGestureRecognizer *tapRecognizer;
 
 @end
@@ -65,8 +69,6 @@
         self.photoButton.frame = CGRectMake(self.photoButton.frame.origin.x, self.photoButton.frame.origin.y - 10, self.photoButton.frame.size.width, self.photoButton.frame.size.height);
         self.tintLabel.frame = CGRectMake(self.tintLabel.frame.origin.x, self.tintLabel.frame.origin.y - 10, self.tintLabel.frame.size.width, self.tintLabel.frame.size.height);
         self.codeTextField.frame = CGRectMake(self.codeTextField.frame.origin.x, self.codeTextField.frame.origin.y - 10, self.codeTextField.frame.size.width, self.codeTextField.frame.size.height);
-        
-        
     }
     
     NSArray *contentArray = [NSArray arrayWithObjects:[UIColor grayColor], [UIColor orangeColor], [UIColor darkGrayColor], [UIColor purpleColor], nil];
@@ -111,6 +113,7 @@
     [nc addObserver:self selector:@selector(keyboardWillHide:) name:
      UIKeyboardWillHideNotification object:nil];
     
+    self.slideShowTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(slide) userInfo:nil repeats:YES];
     self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapAnywhere:)];
 }
 
@@ -120,7 +123,28 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) slide
+{
+    if (self.newsPageControl.currentPage + 1 == self.newsPageControl.numberOfPages)
+    {
+        self.newsPageControl.currentPage = 0;
+    }
+    else
+    {
+        self.newsPageControl.currentPage++;
+    }
+    [self chengeImgeByPageController];
+}
+
 - (IBAction)changeNewsPage:(id)sender
+{
+    [self chengeImgeByPageController];
+    [self.slideShowTimer invalidate];
+    self.slideShowTimer = nil;
+    self.userTouchTimer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(touchDelay) userInfo:nil repeats:NO];
+}
+
+- (void)chengeImgeByPageController
 {
     CGRect frame;
     frame.origin.x = self.newsScrollView.frame.size.width * self.newsPageControl.currentPage;
@@ -134,6 +158,13 @@
     
 }
 
+-(void) touchDelay
+{
+    [self.userTouchTimer invalidate];
+    self.userTouchTimer = nil;
+    self.slideShowTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(slide) userInfo:nil repeats:YES];
+}
+
 #pragma mark ScrollViewDelegate
 
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView
@@ -141,6 +172,18 @@
     float pageWidth = self.newsScrollView.frame.size.width;
     int page = floor((self.newsScrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
     self.newsPageControl.currentPage = page;
+}
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [self.slideShowTimer invalidate];
+    self.slideShowTimer = nil;
+    [self.userTouchTimer invalidate];
+    self.userTouchTimer =nil;
+}
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    self.userTouchTimer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(touchDelay) userInfo:nil repeats:NO];
 }
 
 //зробити фото коду
