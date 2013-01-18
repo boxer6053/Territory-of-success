@@ -51,7 +51,7 @@
     [_detailTableView.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0].CGColor];
     [_detailTableView.layer setBorderWidth:1.0f];
     [_detailTableView.layer setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.7].CGColor];
-    _detailLabel.text = @"Описание";
+    _detailLabel.text = @"Название категории";
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -106,6 +106,7 @@
         cell.textLabel.text = @"Название категории";
         cell.detailTextLabel.text = @"Описание";
     }
+    
     if (tableView == _detailTableView) {
         static NSString* myIdentifier = @"detailCellIdentifier";
         cell = [_tableView dequeueReusableCellWithIdentifier:myIdentifier];
@@ -114,14 +115,18 @@
         }
         cell.imageView.image = [UIImage imageNamed:@"photo_camera_1.png"];
         cell.textLabel.text = @"Название продукта";
-        cell.detailTextLabel.text = @"Описание";
+        cell.detailTextLabel.text = @"Короткое описание";
+        [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
+        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     }
     
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     if (tableView == _tableView) {
+        tableView.pagingEnabled = NO;
         [UIView animateWithDuration:0.5 animations:^{
             self.mainLabel.frame = CGRectMake(-300, self.mainLabel.frame.origin.y, self.mainLabel.frame.size.width, self.mainLabel.frame.size.height);
             _tableView.frame = CGRectMake(-310, _tableView.frame.origin.y, _tableView.frame.size.width, _tableView.frame.size.height);
@@ -144,6 +149,7 @@
     
     if (tableView == _detailTableView) {
         [self performSegueWithIdentifier:@"toDetailView" sender:_detailTableView];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
     
 }
