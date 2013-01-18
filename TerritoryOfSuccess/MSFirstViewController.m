@@ -21,6 +21,10 @@
 @property CGFloat frameMarkWidth;
 @property CGFloat frameMarkHeight;
 
+//timer for slideshow
+@property NSTimer *slideShowTimer;
+@property NSTimer *userTouchTimer;
+
 @property (strong, nonatomic) UITapGestureRecognizer *tapRecognizer;
 
 @end
@@ -48,6 +52,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.codeTextField setDelegate:self];
         
     [self.scrollView setScrollEnabled:NO];
     [self.scrollView setShowsHorizontalScrollIndicator:NO];
@@ -65,8 +71,6 @@
         self.photoButton.frame = CGRectMake(self.photoButton.frame.origin.x, self.photoButton.frame.origin.y - 10, self.photoButton.frame.size.width, self.photoButton.frame.size.height);
         self.tintLabel.frame = CGRectMake(self.tintLabel.frame.origin.x, self.tintLabel.frame.origin.y - 10, self.tintLabel.frame.size.width, self.tintLabel.frame.size.height);
         self.codeTextField.frame = CGRectMake(self.codeTextField.frame.origin.x, self.codeTextField.frame.origin.y - 10, self.codeTextField.frame.size.width, self.codeTextField.frame.size.height);
-        
-        
     }
     
     NSArray *contentArray = [NSArray arrayWithObjects:[UIColor grayColor], [UIColor orangeColor], [UIColor darkGrayColor], [UIColor purpleColor], nil];
@@ -80,6 +84,13 @@
         UIView *subView = [[UIView alloc]initWithFrame:frame];
         subView.backgroundColor = [contentArray objectAtIndex:i];
         [self.newsScrollView addSubview:subView];
+        
+        UIButton *subViewButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.newsScrollView.frame.size.width, self.newsScrollView.frame.size.height)];
+        [subViewButton addTarget:self
+                   action:@selector(PicturePressed)
+         forControlEvents:UIControlEventTouchDown];
+        //subViewButton.alpha = 0.0;
+        [subView addSubview:subViewButton];
         
     }
     self.newsScrollView.contentSize = CGSizeMake(self.newsScrollView.frame.size.width * contentArray.count, self.newsScrollView.frame.size.height);
@@ -104,6 +115,7 @@
     [nc addObserver:self selector:@selector(keyboardWillHide:) name:
      UIKeyboardWillHideNotification object:nil];
     
+    self.slideShowTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(slide) userInfo:nil repeats:YES];
     self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapAnywhere:)];
 }
 
@@ -113,13 +125,46 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) slide
+{
+    if (self.newsPageControl.currentPage + 1 == self.newsPageControl.numberOfPages)
+    {
+        self.newsPageControl.currentPage = 0;
+    }
+    else
+    {
+        self.newsPageControl.currentPage++;
+    }
+    [self chengeImgeByPageController];
+}
+
 - (IBAction)changeNewsPage:(id)sender
+{
+    [self chengeImgeByPageController];
+    [self.slideShowTimer invalidate];
+    self.slideShowTimer = nil;
+    self.userTouchTimer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(touchDelay) userInfo:nil repeats:NO];
+}
+
+- (void)chengeImgeByPageController
 {
     CGRect frame;
     frame.origin.x = self.newsScrollView.frame.size.width * self.newsPageControl.currentPage;
     frame.origin.y = 0;
     frame.size = self.newsScrollView.frame.size;
     [self.newsScrollView scrollRectToVisible:frame animated:YES];
+}
+
+- (void) PicturePressed
+{
+    
+}
+
+-(void) touchDelay
+{
+    [self.userTouchTimer invalidate];
+    self.userTouchTimer = nil;
+    self.slideShowTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(slide) userInfo:nil repeats:YES];
 }
 
 #pragma mark ScrollViewDelegate
@@ -131,10 +176,22 @@
     self.newsPageControl.currentPage = page;
 }
 
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [self.slideShowTimer invalidate];
+    self.slideShowTimer = nil;
+    [self.userTouchTimer invalidate];
+    self.userTouchTimer =nil;
+}
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    self.userTouchTimer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(touchDelay) userInfo:nil repeats:NO];
+}
+
 //зробити фото коду
 - (void)takePhoto:(UIButton *)sender
 {
-    //перевірка наявності камире в девайсі
+    //перевірка наявності камири в девайсі
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
         //якщо є
@@ -144,11 +201,25 @@
         
         UIImageView *overlayImageView = [[UIImageView alloc] init];
         [overlayImageView setImage:[UIImage imageNamed:@"rect160*20.png"]];
+                
+        UIView *overlayAlphaTopView = [[UIView alloc] init];
+        [overlayAlphaTopView setBackgroundColor:[UIColor blackColor]];
+        [overlayAlphaTopView setAlpha:0.6];
         
+        UIView *overlayAlphaBottomView = [[UIView alloc] init];
+        [overlayAlphaBottomView setBackgroundColor:[UIColor blackColor]];
         
+        UIView *overlayAlphaLeftView = [[UIView alloc] init];
+        [overlayAlphaLeftView setBackgroundColor:[UIColor blackColor]];
+        
+        UIView *overlayAlphaRightView = [[UIView alloc] init];
+        [overlayAlphaRightView setBackgroundColor:[UIColor blackColor]];
+        
+        //розмір екрана
         self.screenWidth = [[UIScreen mainScreen] bounds].size.width;
         self.screenHeight = [[UIScreen mainScreen] bounds].size.height;
         
+        //розмір рамки
         self.frameMarkWidth = 160;
         self.frameMarkHeight = 20;
         
@@ -156,12 +227,25 @@
         [self presentViewController:imagePickerController animated:YES completion:^(void){
             NSLog(@"Block");
             
-            if (self.screenHeight == 480) {
-                [overlayImageView setFrame:CGRectMake((self.screenWidth - self.frameMarkWidth)/2, (self.screenHeight - 54 - self.frameMarkHeight)/2, self.frameMarkWidth, self.frameMarkHeight)];
-                
-                //добавлення маркерної рамки на камеру
-                imagePickerController.cameraOverlayView = overlayImageView;
-            }
+            //додавання рамки і напівпрозорого фону
+            [overlayImageView setFrame:CGRectMake((self.screenWidth - self.frameMarkWidth)/2, (self.screenHeight - 54 - self.frameMarkHeight)/2, self.frameMarkWidth, self.frameMarkHeight)];
+            
+            [overlayAlphaTopView setFrame:CGRectMake(0, 0, 320, (self.screenHeight - 54 - self.frameMarkHeight)/2)];
+            
+            [overlayAlphaBottomView setFrame:CGRectMake(0, (self.screenHeight - 54 + self.frameMarkHeight)/2, 320, self.screenHeight - (self.screenHeight - 54 + self.frameMarkHeight)/2 - 52)];
+            
+            [overlayAlphaLeftView setFrame:CGRectMake(0, (self.screenHeight - 54 - self.frameMarkHeight)/2, (self.screenWidth - self.frameMarkWidth)/2, self.frameMarkHeight)];
+            
+            [overlayAlphaRightView setFrame:CGRectMake(self.frameMarkWidth + (self.screenWidth - self.frameMarkWidth)/2, (self.screenHeight - 54 - self.frameMarkHeight)/2, 320 - self.frameMarkWidth + (self.screenWidth - self.frameMarkWidth)/2, self.frameMarkHeight)];
+            
+            [overlayAlphaTopView addSubview:overlayImageView];
+            [overlayAlphaTopView addSubview:overlayAlphaBottomView];
+            [overlayAlphaTopView addSubview:overlayAlphaLeftView];
+            [overlayAlphaTopView addSubview:overlayAlphaRightView];
+            
+            //добавлення маркерної рамки на камеру
+            imagePickerController.cameraOverlayView = overlayAlphaTopView;
+
         }];
     }
     else
@@ -321,33 +405,69 @@ static inline double radians (double degrees)
 {
     NSLog(@"Screen height: %f", [[UIScreen mainScreen] bounds].size.height);
     
-    [self.scrollView setScrollEnabled:NO];
-    [self.scrollView setContentSize:CGSizeMake(320.0, 568.0 + 40.0)];
+    if ([[UIScreen mainScreen] bounds].size.height == 568) {
+        [self.scrollView setScrollEnabled:NO];
+        [self.scrollView setContentSize:CGSizeMake(320.0, 568.0 + 40.0)];
+        
+        CGFloat tempy = 568.0 + 40.0;//self.scrollView.contentSize.height;
+        CGFloat tempx = 320.0;//self.scrollView.contentSize.width;;
+        CGRect zoomRect = CGRectMake((tempx/2), (tempy/2), tempy, tempx);
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.25];
+        [self.scrollView scrollRectToVisible:zoomRect animated:NO];
+        [UIView commitAnimations];
+    }
     
-    CGFloat tempy = 568.0 + 40.0;//self.scrollView.contentSize.height;
-    CGFloat tempx = 320.0;//self.scrollView.contentSize.width;;
-    CGRect zoomRect = CGRectMake((tempx/2), (tempy/2), tempy, tempx);
-    
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.25];
-    [self.scrollView scrollRectToVisible:zoomRect animated:NO];
-    [UIView commitAnimations];
-    
+    else
+    {
+        [self.scrollView setScrollEnabled:NO];
+        [self.scrollView setContentSize:CGSizeMake(320.0, 480.0 + 55.0)];
+        
+        CGFloat tempy = 480.0 + 55.0;//self.scrollView.contentSize.height;
+        CGFloat tempx = 320.0;//self.scrollView.contentSize.width;;
+        CGRect zoomRect = CGRectMake((tempx/2), (tempy/2), tempy, tempx);
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.25];
+        [self.scrollView scrollRectToVisible:zoomRect animated:NO];
+        [UIView commitAnimations];
+    }
+        
     [self.view addGestureRecognizer:self.tapRecognizer];
 }
 
 -(void) keyboardWillHide:(NSNotification *) note
 {
-    CGRect zoomRect = CGRectMake(0, 0, 320, 568);
+    if ([[UIScreen mainScreen] bounds].size.height == 568) {
+        CGRect zoomRect = CGRectMake(0, 0, 320, 568);
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.25];
+        [self.scrollView scrollRectToVisible:zoomRect animated:NO];
+        [UIView commitAnimations];
+    }
     
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.25];
-    [self.scrollView scrollRectToVisible:zoomRect animated:NO];
-    [UIView commitAnimations];
+    else
+    {
+        CGRect zoomRect = CGRectMake(0, 0, 320, 480);
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.25];
+        [self.scrollView scrollRectToVisible:zoomRect animated:NO];
+        [UIView commitAnimations];
+    }
     
     [self.scrollView setScrollEnabled:NO];
     
     [self.view removeGestureRecognizer:self.tapRecognizer];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
+    return YES;
 }
 
 @end
