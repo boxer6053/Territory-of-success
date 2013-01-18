@@ -51,6 +51,7 @@
 		FA167C4F16A98DCF0008561D /* commentsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA167C4E16A98DCF0008561D /* commentsButton.png */; };
 		FA167C5616A993940008561D /* MSCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA167C5516A993940008561D /* MSCommentsViewController.m */; };
 		FA167C5E16A9A2DC0008561D /* shareButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA167C5D16A9A2DB0008561D /* shareButton.png */; };
+		FA167C6116A9A5BB0008561D /* MSSubCatalogueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA167C6016A9A5BB0008561D /* MSSubCatalogueViewController.m */; };
 		FA1BEA8C16A813B200F2C219 /* MSDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1BEA8B16A813B200F2C219 /* MSDetailViewController.m */; };
 		FA1BEA9616A842A200F2C219 /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1BEA9516A842A100F2C219 /* like.png */; };
 		FA283CCD16A0890F00DBDC19 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA283CCC16A0890F00DBDC19 /* QuartzCore.framework */; };
@@ -267,6 +268,8 @@
 		FA167C5416A993940008561D /* MSCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCommentsViewController.h; sourceTree = "<group>"; };
 		FA167C5516A993940008561D /* MSCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCommentsViewController.m; sourceTree = "<group>"; };
 		FA167C5D16A9A2DB0008561D /* shareButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareButton.png; sourceTree = "<group>"; };
+		FA167C5F16A9A5BA0008561D /* MSSubCatalogueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSubCatalogueViewController.h; sourceTree = "<group>"; };
+		FA167C6016A9A5BB0008561D /* MSSubCatalogueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSubCatalogueViewController.m; sourceTree = "<group>"; };
 		FA1BEA8A16A813B200F2C219 /* MSDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDetailViewController.h; sourceTree = "<group>"; };
 		FA1BEA8B16A813B200F2C219 /* MSDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDetailViewController.m; sourceTree = "<group>"; };
 		FA1BEA9516A842A100F2C219 /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
@@ -622,6 +625,8 @@
 			children = (
 				FA55C14716A071AA00671CAB /* MSCatalogueViewController.h */,
 				FA55C14816A071AA00671CAB /* MSCatalogueViewController.m */,
+				FA167C5F16A9A5BA0008561D /* MSSubCatalogueViewController.h */,
+				FA167C6016A9A5BB0008561D /* MSSubCatalogueViewController.m */,
 				FA1BEA8A16A813B200F2C219 /* MSDetailViewController.h */,
 				FA1BEA8B16A813B200F2C219 /* MSDetailViewController.m */,
 				FA167C5416A993940008561D /* MSCommentsViewController.h */,
@@ -743,6 +748,7 @@
 				FADA06AA16A5DBA0008DBE38 /* MSNewsViewController.m in Sources */,
 				FA1BEA8C16A813B200F2C219 /* MSDetailViewController.m in Sources */,
 				FA167C5616A993940008561D /* MSCommentsViewController.m in Sources */,
+				FA167C6116A9A5BB0008561D /* MSSubCatalogueViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
