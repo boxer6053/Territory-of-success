@@ -52,6 +52,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.codeTextField setDelegate:self];
         
     [self.scrollView setScrollEnabled:NO];
     [self.scrollView setShowsHorizontalScrollIndicator:NO];
@@ -189,7 +191,7 @@
 //зробити фото коду
 - (void)takePhoto:(UIButton *)sender
 {
-    //перевірка наявності камире в девайсі
+    //перевірка наявності камири в девайсі
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
         //якщо є
@@ -199,11 +201,25 @@
         
         UIImageView *overlayImageView = [[UIImageView alloc] init];
         [overlayImageView setImage:[UIImage imageNamed:@"rect160*20.png"]];
+                
+        UIView *overlayAlphaTopView = [[UIView alloc] init];
+        [overlayAlphaTopView setBackgroundColor:[UIColor blackColor]];
+        [overlayAlphaTopView setAlpha:0.6];
         
+        UIView *overlayAlphaBottomView = [[UIView alloc] init];
+        [overlayAlphaBottomView setBackgroundColor:[UIColor blackColor]];
         
+        UIView *overlayAlphaLeftView = [[UIView alloc] init];
+        [overlayAlphaLeftView setBackgroundColor:[UIColor blackColor]];
+        
+        UIView *overlayAlphaRightView = [[UIView alloc] init];
+        [overlayAlphaRightView setBackgroundColor:[UIColor blackColor]];
+        
+        //розмір екрана
         self.screenWidth = [[UIScreen mainScreen] bounds].size.width;
         self.screenHeight = [[UIScreen mainScreen] bounds].size.height;
         
+        //розмір рамки
         self.frameMarkWidth = 160;
         self.frameMarkHeight = 20;
         
@@ -211,12 +227,25 @@
         [self presentViewController:imagePickerController animated:YES completion:^(void){
             NSLog(@"Block");
             
-            if (self.screenHeight == 480) {
-                [overlayImageView setFrame:CGRectMake((self.screenWidth - self.frameMarkWidth)/2, (self.screenHeight - 54 - self.frameMarkHeight)/2, self.frameMarkWidth, self.frameMarkHeight)];
-                
-                //добавлення маркерної рамки на камеру
-                imagePickerController.cameraOverlayView = overlayImageView;
-            }
+            //додавання рамки і напівпрозорого фону
+            [overlayImageView setFrame:CGRectMake((self.screenWidth - self.frameMarkWidth)/2, (self.screenHeight - 54 - self.frameMarkHeight)/2, self.frameMarkWidth, self.frameMarkHeight)];
+            
+            [overlayAlphaTopView setFrame:CGRectMake(0, 0, 320, (self.screenHeight - 54 - self.frameMarkHeight)/2)];
+            
+            [overlayAlphaBottomView setFrame:CGRectMake(0, (self.screenHeight - 54 + self.frameMarkHeight)/2, 320, self.screenHeight - (self.screenHeight - 54 + self.frameMarkHeight)/2 - 52)];
+            
+            [overlayAlphaLeftView setFrame:CGRectMake(0, (self.screenHeight - 54 - self.frameMarkHeight)/2, (self.screenWidth - self.frameMarkWidth)/2, self.frameMarkHeight)];
+            
+            [overlayAlphaRightView setFrame:CGRectMake(self.frameMarkWidth + (self.screenWidth - self.frameMarkWidth)/2, (self.screenHeight - 54 - self.frameMarkHeight)/2, 320 - self.frameMarkWidth + (self.screenWidth - self.frameMarkWidth)/2, self.frameMarkHeight)];
+            
+            [overlayAlphaTopView addSubview:overlayImageView];
+            [overlayAlphaTopView addSubview:overlayAlphaBottomView];
+            [overlayAlphaTopView addSubview:overlayAlphaLeftView];
+            [overlayAlphaTopView addSubview:overlayAlphaRightView];
+            
+            //добавлення маркерної рамки на камеру
+            imagePickerController.cameraOverlayView = overlayAlphaTopView;
+
         }];
     }
     else
@@ -376,33 +405,69 @@ static inline double radians (double degrees)
 {
     NSLog(@"Screen height: %f", [[UIScreen mainScreen] bounds].size.height);
     
-    [self.scrollView setScrollEnabled:NO];
-    [self.scrollView setContentSize:CGSizeMake(320.0, 568.0 + 40.0)];
+    if ([[UIScreen mainScreen] bounds].size.height == 568) {
+        [self.scrollView setScrollEnabled:NO];
+        [self.scrollView setContentSize:CGSizeMake(320.0, 568.0 + 40.0)];
+        
+        CGFloat tempy = 568.0 + 40.0;//self.scrollView.contentSize.height;
+        CGFloat tempx = 320.0;//self.scrollView.contentSize.width;;
+        CGRect zoomRect = CGRectMake((tempx/2), (tempy/2), tempy, tempx);
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.25];
+        [self.scrollView scrollRectToVisible:zoomRect animated:NO];
+        [UIView commitAnimations];
+    }
     
-    CGFloat tempy = 568.0 + 40.0;//self.scrollView.contentSize.height;
-    CGFloat tempx = 320.0;//self.scrollView.contentSize.width;;
-    CGRect zoomRect = CGRectMake((tempx/2), (tempy/2), tempy, tempx);
-    
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.25];
-    [self.scrollView scrollRectToVisible:zoomRect animated:NO];
-    [UIView commitAnimations];
-    
+    else
+    {
+        [self.scrollView setScrollEnabled:NO];
+        [self.scrollView setContentSize:CGSizeMake(320.0, 480.0 + 55.0)];
+        
+        CGFloat tempy = 480.0 + 55.0;//self.scrollView.contentSize.height;
+        CGFloat tempx = 320.0;//self.scrollView.contentSize.width;;
+        CGRect zoomRect = CGRectMake((tempx/2), (tempy/2), tempy, tempx);
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.25];
+        [self.scrollView scrollRectToVisible:zoomRect animated:NO];
+        [UIView commitAnimations];
+    }
+        
     [self.view addGestureRecognizer:self.tapRecognizer];
 }
 
 -(void) keyboardWillHide:(NSNotification *) note
 {
-    CGRect zoomRect = CGRectMake(0, 0, 320, 568);
+    if ([[UIScreen mainScreen] bounds].size.height == 568) {
+        CGRect zoomRect = CGRectMake(0, 0, 320, 568);
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.25];
+        [self.scrollView scrollRectToVisible:zoomRect animated:NO];
+        [UIView commitAnimations];
+    }
     
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.25];
-    [self.scrollView scrollRectToVisible:zoomRect animated:NO];
-    [UIView commitAnimations];
+    else
+    {
+        CGRect zoomRect = CGRectMake(0, 0, 320, 480);
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.25];
+        [self.scrollView scrollRectToVisible:zoomRect animated:NO];
+        [UIView commitAnimations];
+    }
     
     [self.scrollView setScrollEnabled:NO];
     
     [self.view removeGestureRecognizer:self.tapRecognizer];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
+    return YES;
 }
 
 @end
