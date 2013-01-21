@@ -1,11 +1,3 @@
-//
-//  MSCatalogueViewController.m
-//  TerritoryOfSuccess
-//
-//  Created by matrixsoft on 11.01.13.
-//  Copyright (c) 2013 Matrix Soft. All rights reserved.
-//
-
 #import "MSCatalogueViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -58,11 +50,12 @@
 }
 
 - (IBAction)segmentPressed:(id)sender {
+// Изменение цвета при переключении СегментКонтрола
     for (int i=0; i<[self.productAndBonusesControl.subviews count]; i++){
         
         if ([[self.productAndBonusesControl.subviews objectAtIndex:i]isSelected] ){
             
-            UIColor *tintcolor=[UIColor colorWithRed:255.0/255.0 green:140.0/255.0 blue:0.0/255.0 alpha:1.0];
+            UIColor *tintcolor=[UIColor colorWithRed:255.0/255.0 green:140.0/255.0 blue:0 alpha:1.0];
             [[self.productAndBonusesControl.subviews objectAtIndex:i] setTintColor:tintcolor];
                     } else {
                         UIColor *tintcolor=[UIColor blackColor]; // default color
@@ -71,6 +64,9 @@
            }
     
     if (self.productAndBonusesControl.selectedSegmentIndex == 0){
+        [_tableView reloadData];
+    } else {
+        [_tableView reloadData];
     }
 }
 
@@ -85,17 +81,26 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell;
-    if (tableView == _tableView) {
-        static NSString* myIdentifier = @"cellIdentifier";
-        cell = [_tableView dequeueReusableCellWithIdentifier:myIdentifier];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:myIdentifier];
-        }
+    static NSString* myIdentifier = @"cellIdentifier";
+    cell = [_tableView dequeueReusableCellWithIdentifier:myIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:myIdentifier];
+    }
+    
+//Првоерка на СегментКонтрол и подгрузка соответствующего контента в ячейки
+    if (self.productAndBonusesControl.selectedSegmentIndex == 0) {
         cell.imageView.image = [UIImage imageNamed:@"photo_camera_1.png"];
         cell.textLabel.text = @"Название категории";
         cell.detailTextLabel.text = @"Описание";
     }
     
+    if (self.productAndBonusesControl.selectedSegmentIndex == 1) {
+
+        cell.imageView.image = [UIImage imageNamed:@"photo_camera_1.png"];
+        cell.textLabel.text = @"Название бренда";
+        cell.detailTextLabel.text = @"Описание";
+    }
+
     return cell;
 }
 
