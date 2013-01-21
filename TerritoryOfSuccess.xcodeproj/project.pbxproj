@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F52816D616A5760F00E64924 /* MSQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52816D516A5760F00E64924 /* MSQuestionsViewController.m */; };
+		F547E1BC16AD556100365FB3 /* MSAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = F547E1BB16AD556100365FB3 /* MSAPI.m */; };
 		F559534616A57A500079B985 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F559534416A57A500079B985 /* SVProgressHUD.m */; };
 		F559534716A57A500079B985 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F559534516A57A500079B985 /* SVProgressHUD.bundle */; };
 		F559535E16A5AF320079B985 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F559534C16A59B780079B985 /* Default.png */; };
@@ -70,6 +71,8 @@
 /* Begin PBXFileReference section */
 		F52816D416A5760F00E64924 /* MSQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSQuestionsViewController.h; path = ../MSQuestionsViewController.h; sourceTree = "<group>"; };
 		F52816D516A5760F00E64924 /* MSQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSQuestionsViewController.m; path = ../MSQuestionsViewController.m; sourceTree = "<group>"; };
+		F547E1BA16AD556100365FB3 /* MSAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPI.h; sourceTree = "<group>"; };
+		F547E1BB16AD556100365FB3 /* MSAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSAPI.m; sourceTree = "<group>"; };
 		F559534316A57A500079B985 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		F559534416A57A500079B985 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		F559534516A57A500079B985 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
@@ -361,6 +364,8 @@
 				FA1BEA8E16A813BF00F2C219 /* Pauli */,
 				F5F6ADDC169C4F22000247D9 /* TerritoryOfSuccess.xcdatamodeld */,
 				FA167C4116A951D20008561D /* iPhoneStoryboard.storyboard */,
+				F547E1BA16AD556100365FB3 /* MSAPI.h */,
+				F547E1BB16AD556100365FB3 /* MSAPI.m */,
 				F559534116A579350079B985 /* SVProgressHUD */,
 				F5F6ADCB169C4F21000247D9 /* Supporting Files */,
 			);
@@ -743,6 +748,7 @@
 				FADA06AA16A5DBA0008DBE38 /* MSNewsViewController.m in Sources */,
 				FA1BEA8C16A813B200F2C219 /* MSDetailViewController.m in Sources */,
 				FA167C5616A993940008561D /* MSCommentsViewController.m in Sources */,
+				F547E1BC16AD556100365FB3 /* MSAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MSTabBarController : UITabBarController
+@interface MSTabBarController : UITabBarController<NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 @property (weak, nonatomic) IBOutlet UITabBar *myTabBarController;
+
+@property (strong, nonatomic) NSMutableData *receivedData;
 
 @end
