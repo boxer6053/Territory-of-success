@@ -28,7 +28,13 @@
 		F59B7FA816A86E540084FEE3 /* catalogue_TOS.png in Resources */ = {isa = PBXBuildFile; fileRef = F59B7FA716A86E540084FEE3 /* catalogue_TOS.png */; };
 		F59B7FAA16A86E600084FEE3 /* news_TOS.png in Resources */ = {isa = PBXBuildFile; fileRef = F59B7FA916A86E600084FEE3 /* news_TOS.png */; };
 		F59B7FAE16A874950084FEE3 /* questions1.png in Resources */ = {isa = PBXBuildFile; fileRef = F59B7FAD16A874950084FEE3 /* questions1.png */; };
+		F59F4D6C16ADA2B800458E5E /* MSInquirerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F59F4D6B16ADA2B800458E5E /* MSInquirerViewController.m */; };
+		F59F4D7416ADA3AC00458E5E /* MSTypesOfInquirersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F59F4D7316ADA3AC00458E5E /* MSTypesOfInquirersViewController.m */; };
+		F59F4D7916ADA40E00458E5E /* Inquirer.png in Resources */ = {isa = PBXBuildFile; fileRef = F59F4D7616ADA40E00458E5E /* Inquirer.png */; };
+		F59F4D7A16ADA40E00458E5E /* WhitchOneIsBetter.png in Resources */ = {isa = PBXBuildFile; fileRef = F59F4D7716ADA40E00458E5E /* WhitchOneIsBetter.png */; };
+		F59F4D7B16ADA40E00458E5E /* CheckThisUp.png in Resources */ = {isa = PBXBuildFile; fileRef = F59F4D7816ADA40E00458E5E /* CheckThisUp.png */; };
 		F5C04FD016A957DF00A3E220 /* exampleDetailImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F5C04FCF16A957DF00A3E220 /* exampleDetailImage.png */; };
+		F5F377D816AD636E002CD218 /* MSQuestionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F377D716AD636E002CD218 /* MSQuestionDetailViewController.m */; };
 		F5F6ADC3169C4F21000247D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC2169C4F21000247D9 /* UIKit.framework */; };
 		F5F6ADC5169C4F21000247D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC4169C4F21000247D9 /* Foundation.framework */; };
 		F5F6ADC7169C4F21000247D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC6169C4F21000247D9 /* CoreGraphics.framework */; };
@@ -69,6 +75,11 @@
 		FAC3B71D16AD5B23007B8578 /* MSNewsDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC3B71C16AD5B23007B8578 /* MSNewsDetailsViewController.m */; };
 		FAC3B72016AD7E4A007B8578 /* mainLogoBackground_center.png in Resources */ = {isa = PBXBuildFile; fileRef = FAC3B71F16AD7E49007B8578 /* mainLogoBackground_center.png */; };
 		FADA06AA16A5DBA0008DBE38 /* MSNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FADA06A916A5DBA0008DBE38 /* MSNewsViewController.m */; };
+		FADA3FD216AD8A0C008D2C7E /* 5star.png in Resources */ = {isa = PBXBuildFile; fileRef = FADA3FCD16AD8A0C008D2C7E /* 5star.png */; };
+		FADA3FD316AD8A0C008D2C7E /* 4star.png in Resources */ = {isa = PBXBuildFile; fileRef = FADA3FCE16AD8A0C008D2C7E /* 4star.png */; };
+		FADA3FD416AD8A0C008D2C7E /* 1star.png in Resources */ = {isa = PBXBuildFile; fileRef = FADA3FCF16AD8A0C008D2C7E /* 1star.png */; };
+		FADA3FD516AD8A0C008D2C7E /* 2star.png in Resources */ = {isa = PBXBuildFile; fileRef = FADA3FD016AD8A0C008D2C7E /* 2star.png */; };
+		FADA3FD616AD8A0C008D2C7E /* 3star.png in Resources */ = {isa = PBXBuildFile; fileRef = FADA3FD116AD8A0C008D2C7E /* 3star.png */; };
 		FAF4C8B316A84AC700A1B1B8 /* button_orange.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF4C8B216A84AC700A1B1B8 /* button_orange.png */; };
 /* End PBXBuildFile section */
 
@@ -98,7 +109,16 @@
 		F59B7FA716A86E540084FEE3 /* catalogue_TOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = catalogue_TOS.png; sourceTree = "<group>"; };
 		F59B7FA916A86E600084FEE3 /* news_TOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = news_TOS.png; sourceTree = "<group>"; };
 		F59B7FAD16A874950084FEE3 /* questions1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = questions1.png; sourceTree = "<group>"; };
+		F59F4D6A16ADA2B800458E5E /* MSInquirerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSInquirerViewController.h; sourceTree = "<group>"; };
+		F59F4D6B16ADA2B800458E5E /* MSInquirerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSInquirerViewController.m; sourceTree = "<group>"; };
+		F59F4D7216ADA3AC00458E5E /* MSTypesOfInquirersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTypesOfInquirersViewController.h; sourceTree = "<group>"; };
+		F59F4D7316ADA3AC00458E5E /* MSTypesOfInquirersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTypesOfInquirersViewController.m; sourceTree = "<group>"; };
+		F59F4D7616ADA40E00458E5E /* Inquirer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Inquirer.png; sourceTree = "<group>"; };
+		F59F4D7716ADA40E00458E5E /* WhitchOneIsBetter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WhitchOneIsBetter.png; sourceTree = "<group>"; };
+		F59F4D7816ADA40E00458E5E /* CheckThisUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CheckThisUp.png; sourceTree = "<group>"; };
 		F5C04FCF16A957DF00A3E220 /* exampleDetailImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exampleDetailImage.png; sourceTree = "<group>"; };
+		F5F377D616AD636E002CD218 /* MSQuestionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSQuestionDetailViewController.h; path = ../MSQuestionDetailViewController.h; sourceTree = "<group>"; };
+		F5F377D716AD636E002CD218 /* MSQuestionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSQuestionDetailViewController.m; path = ../MSQuestionDetailViewController.m; sourceTree = "<group>"; };
 		F5F6ADBE169C4F21000247D9 /* TerritoryOfSuccess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TerritoryOfSuccess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5F6ADC2169C4F21000247D9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F5F6ADC4169C4F21000247D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -297,6 +317,11 @@
 		FAC3B71F16AD7E49007B8578 /* mainLogoBackground_center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainLogoBackground_center.png; sourceTree = "<group>"; };
 		FADA06A816A5DBA0008DBE38 /* MSNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSNewsViewController.h; sourceTree = "<group>"; };
 		FADA06A916A5DBA0008DBE38 /* MSNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSNewsViewController.m; sourceTree = "<group>"; };
+		FADA3FCD16AD8A0C008D2C7E /* 5star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5star.png; sourceTree = "<group>"; };
+		FADA3FCE16AD8A0C008D2C7E /* 4star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4star.png; sourceTree = "<group>"; };
+		FADA3FCF16AD8A0C008D2C7E /* 1star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1star.png; sourceTree = "<group>"; };
+		FADA3FD016AD8A0C008D2C7E /* 2star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2star.png; sourceTree = "<group>"; };
+		FADA3FD116AD8A0C008D2C7E /* 3star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3star.png; sourceTree = "<group>"; };
 		FAF4C8B216A84AC700A1B1B8 /* button_orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_orange.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -391,6 +416,9 @@
 				F59A6CAF16A9A6A400796C0E /* background_320*480.png */,
 				F5C04FCF16A957DF00A3E220 /* exampleDetailImage.png */,
 				FA167C5D16A9A2DB0008561D /* shareButton.png */,
+				F59F4D7616ADA40E00458E5E /* Inquirer.png */,
+				F59F4D7716ADA40E00458E5E /* WhitchOneIsBetter.png */,
+				F59F4D7816ADA40E00458E5E /* CheckThisUp.png */,
 				FA167C4E16A98DCF0008561D /* commentsButton.png */,
 				FA167C4A16A9699B0008561D /* starOffImage.png */,
 				FA167C4B16A9699B0008561D /* starOnImage.png */,
