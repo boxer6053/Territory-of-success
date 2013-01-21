@@ -68,14 +68,14 @@
     [self.api setDelegate:self];
     
 //    [self.api getNewsWithId:@"3"];
-//    [self.api getAllNews];
-        
+    [self.api getAllNews];
+    
 }
 
 - (void)finished
 {
     self.receivedData = [self.api receivedData];
-    NSString *receiveText = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding];
+//    NSString *receiveText = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding];
 }
 
 //- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
