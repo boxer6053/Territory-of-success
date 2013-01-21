@@ -395,6 +395,14 @@
 				F5F6ADD4169C4F21000247D9 /* MSAppDelegate.m */,
 				F52816D416A5760F00E64924 /* MSQuestionsViewController.h */,
 				F52816D516A5760F00E64924 /* MSQuestionsViewController.m */,
+				F5F377D616AD636E002CD218 /* MSQuestionDetailViewController.h */,
+				F5F377D716AD636E002CD218 /* MSQuestionDetailViewController.m */,
+				F59F4D6A16ADA2B800458E5E /* MSInquirerViewController.h */,
+				F59F4D6B16ADA2B800458E5E /* MSInquirerViewController.m */,
+				F59F4D7216ADA3AC00458E5E /* MSTypesOfInquirersViewController.h */,
+				F59F4D7316ADA3AC00458E5E /* MSTypesOfInquirersViewController.m */,
+				F5F6AE8D169C5153000247D9 /* MSFirstViewController.h */,
+				F5F6AE8E169C5153000247D9 /* MSFirstViewController.m */,
 				F5603C42169C6E6400667203 /* MSFirstNavigationController.h */,
 				F5603C43169C6E6400667203 /* MSFirstNavigationController.m */,
 				F5603C4F169C802100667203 /* MSTabBarController.h */,
@@ -412,6 +420,11 @@
 			isa = PBXGroup;
 			children = (
 				FAC3B71F16AD7E49007B8578 /* mainLogoBackground_center.png */,
+				FADA3FCD16AD8A0C008D2C7E /* 5star.png */,
+				FADA3FCE16AD8A0C008D2C7E /* 4star.png */,
+				FADA3FCF16AD8A0C008D2C7E /* 1star.png */,
+				FADA3FD016AD8A0C008D2C7E /* 2star.png */,
+				FADA3FD116AD8A0C008D2C7E /* 3star.png */,
 				F59A6CB616A9A83700796C0E /* background_320*568.png */,
 				F59A6CAF16A9A6A400796C0E /* background_320*480.png */,
 				F5C04FCF16A957DF00A3E220 /* exampleDetailImage.png */,
@@ -772,6 +785,14 @@
 				F59A6CB116A9A6A400796C0E /* background_320*480.png in Resources */,
 				F59A6CB716A9A83700796C0E /* background_320*568.png in Resources */,
 				FAC3B72016AD7E4A007B8578 /* mainLogoBackground_center.png in Resources */,
+				F59F4D7916ADA40E00458E5E /* Inquirer.png in Resources */,
+				F59F4D7A16ADA40E00458E5E /* WhitchOneIsBetter.png in Resources */,
+				F59F4D7B16ADA40E00458E5E /* CheckThisUp.png in Resources */,
+				FADA3FD216AD8A0C008D2C7E /* 5star.png in Resources */,
+				FADA3FD316AD8A0C008D2C7E /* 4star.png in Resources */,
+				FADA3FD416AD8A0C008D2C7E /* 1star.png in Resources */,
+				FADA3FD516AD8A0C008D2C7E /* 2star.png in Resources */,
+				FADA3FD616AD8A0C008D2C7E /* 3star.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -799,6 +820,9 @@
 				FA87C6FC16AACDE400784A0D /* MSCommentCell.m in Sources */,
 				FA87C70016AAE0EE00784A0D /* MSAddingCommentViewController.m in Sources */,
 				FAC3B71D16AD5B23007B8578 /* MSNewsDetailsViewController.m in Sources */,
+				F5F377D816AD636E002CD218 /* MSQuestionDetailViewController.m in Sources */,
+				F59F4D6C16ADA2B800458E5E /* MSInquirerViewController.m in Sources */,
+				F59F4D7416ADA3AC00458E5E /* MSTypesOfInquirersViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
