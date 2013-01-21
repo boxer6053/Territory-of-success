@@ -109,7 +109,7 @@
 
 -(void)createAllArray
 {
-    NSArray *dataArray = [[NSArray alloc] initWithObjects:@"Обший вопрос 1",@"Общий вопрос 2", nil];
+    NSArray *dataArray = [[NSArray alloc] initWithObjects:@"Общий вопрос 1",@"Общий вопрос 2", nil];
     allArray = dataArray;
 }
 
@@ -148,7 +148,7 @@
     UITableViewCell *cell;
     if (tableView == _tableView)
     {
-        static NSString* cellIdentifier = @"cellID";
+        static NSString* cellIdentifier = @"quesIDCell";
         cell = [_tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
