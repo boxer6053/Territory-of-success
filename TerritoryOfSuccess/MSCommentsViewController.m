@@ -20,9 +20,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSArray *firstComment = [NSArray arrayWithObjects:@"Pavel",@"Продукт - полное ***", nil];
-    NSArray *secondComment = [NSArray arrayWithObjects:@"Lehaness",@"Real shit, dudes! Otveechaju", nil];
-    NSArray *thirdComment =[NSArray arrayWithObjects:@"Andrew",@"This is bullshit, but i like it!", nil];
+    NSArray *firstComment = [NSArray arrayWithObjects:@"Pavel",@"Продукт - полное ***",[NSNumber numberWithInteger:1], nil];
+    NSArray *secondComment = [NSArray arrayWithObjects:@"Lehaness",@"Real shit, dudes! Otveechaju",[NSNumber numberWithInteger:1], nil];
+    NSArray *thirdComment =[NSArray arrayWithObjects:@"Andrew",@"This is bullshit, but i like it!",[NSNumber numberWithInteger:3], nil];
     _commentsArray = [NSMutableArray arrayWithObjects:firstComment,secondComment,thirdComment, nil];
 
 }
@@ -54,7 +54,12 @@
     }
     NSMutableString *name = [NSString stringWithFormat:@"%@",[[_commentsArray objectAtIndex:indexPath.row] objectAtIndex:0]];
     cell.commentatorName.text =[name stringByAppendingString:@" написал:"];
+    
     cell.commentText.text = [[_commentsArray objectAtIndex:indexPath.row] objectAtIndex:1];
+    
+    NSString *imageName = [NSString stringWithFormat:@"%@star.png",[[_commentsArray objectAtIndex:indexPath.row] objectAtIndex:2]];
+    cell.starsImage.image = [UIImage imageNamed:imageName];
+    
     cell.starView.layer.cornerRadius = 10;
     [cell.starView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.6]];
     
