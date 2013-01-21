@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import "MSQuestionDetailViewController.h"
+#import "MSQuestionDetailViewController.h"
 @interface MSQuestionsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
     NSArray *allArray;
@@ -27,12 +27,6 @@
 @property (weak, nonatomic) NSString *questionTitle;
 @property (weak, nonatomic) NSString *questionDescription;
 
-@property (weak, nonatomic) IBOutlet UILabel *questionDetailTitleLabel;
 
-@property (weak, nonatomic) IBOutlet UILabel *questionDetailDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
-@property (weak, nonatomic) IBOutlet UITableView *tableOfAnswers;
-- (IBAction)backToQuestionTable:(id)sender;
-@property (weak, nonatomic) IBOutlet UIButton *backButton;
-
 @end
