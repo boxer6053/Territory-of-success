@@ -8,6 +8,23 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MSAPI : NSObject
+@protocol WsCompleteDelegate
+
+- (void)finished;
+
+@end
+
+@interface MSAPI : NSObject<NSURLConnectionDelegate, NSURLConnectionDataDelegate>
+
+@property (nonatomic, strong) id<WsCompleteDelegate> delegate;
+
+@property (strong, nonatomic) NSURL *url;
+@property (strong, nonatomic) NSMutableURLRequest *request;
+@property (strong, nonatomic) NSURLConnection *connection;
+@property (strong, nonatomic) NSMutableString *params;
+@property (strong, nonatomic) NSMutableData *receivedData;
+
+- (void)getAllNews;
+- (void)getNewsWithId:(NSString *)newsId;
 
 @end

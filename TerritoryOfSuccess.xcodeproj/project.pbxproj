@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		F52816D616A5760F00E64924 /* MSQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52816D516A5760F00E64924 /* MSQuestionsViewController.m */; };
 		F547E1BC16AD556100365FB3 /* MSAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = F547E1BB16AD556100365FB3 /* MSAPI.m */; };
+		F547E1C416AD5BCE00365FB3 /* checkConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = F547E1C316AD5BCE00365FB3 /* checkConnection.m */; };
+		F547E1C716AD5D6900365FB3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F547E1C616AD5D6900365FB3 /* SystemConfiguration.framework */; };
 		F559534616A57A500079B985 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F559534416A57A500079B985 /* SVProgressHUD.m */; };
 		F559534716A57A500079B985 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F559534516A57A500079B985 /* SVProgressHUD.bundle */; };
 		F559535E16A5AF320079B985 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F559534C16A59B780079B985 /* Default.png */; };
@@ -76,6 +78,9 @@
 		F52816D516A5760F00E64924 /* MSQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSQuestionsViewController.m; path = ../MSQuestionsViewController.m; sourceTree = "<group>"; };
 		F547E1BA16AD556100365FB3 /* MSAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPI.h; sourceTree = "<group>"; };
 		F547E1BB16AD556100365FB3 /* MSAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSAPI.m; sourceTree = "<group>"; };
+		F547E1C216AD5BCE00365FB3 /* checkConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = checkConnection.h; sourceTree = "<group>"; };
+		F547E1C316AD5BCE00365FB3 /* checkConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = checkConnection.m; sourceTree = "<group>"; };
+		F547E1C616AD5D6900365FB3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F559534316A57A500079B985 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		F559534416A57A500079B985 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		F559534516A57A500079B985 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
@@ -303,6 +308,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F547E1C716AD5D6900365FB3 /* SystemConfiguration.framework in Frameworks */,
 				FA283CCD16A0890F00DBDC19 /* QuartzCore.framework in Frameworks */,
 				F5F6ADC3169C4F21000247D9 /* UIKit.framework in Frameworks */,
 				F5F6ADC5169C4F21000247D9 /* Foundation.framework in Frameworks */,
@@ -329,6 +335,7 @@
 		F5F6ADB3169C4F21000247D9 = {
 			isa = PBXGroup;
 			children = (
+				F547E1C616AD5D6900365FB3 /* SystemConfiguration.framework */,
 				F5F6ADCA169C4F21000247D9 /* TerritoryOfSuccess */,
 				F5F6ADC1169C4F21000247D9 /* Frameworks */,
 				F5F6ADBF169C4F21000247D9 /* Products */,
@@ -358,6 +365,8 @@
 		F5F6ADCA169C4F21000247D9 /* TerritoryOfSuccess */ = {
 			isa = PBXGroup;
 			children = (
+				F547E1C216AD5BCE00365FB3 /* checkConnection.h */,
+				F547E1C316AD5BCE00365FB3 /* checkConnection.m */,
 				FADA06A816A5DBA0008DBE38 /* MSNewsViewController.h */,
 				FADA06A916A5DBA0008DBE38 /* MSNewsViewController.m */,
 				F5F6ADD3169C4F21000247D9 /* MSAppDelegate.h */,
@@ -764,6 +773,10 @@
 				FA1BEA8C16A813B200F2C219 /* MSDetailViewController.m in Sources */,
 				FA167C5616A993940008561D /* MSCommentsViewController.m in Sources */,
 				F547E1BC16AD556100365FB3 /* MSAPI.m in Sources */,
+				FA167C6116A9A5BB0008561D /* MSSubCatalogueViewController.m in Sources */,
+				FA87C6FC16AACDE400784A0D /* MSCommentCell.m in Sources */,
+				FA87C70016AAE0EE00784A0D /* MSAddingCommentViewController.m in Sources */,
+				F547E1C416AD5BCE00365FB3 /* checkConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

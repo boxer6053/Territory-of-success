@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MSAPI.h"
 
-@interface MSTabBarController : UITabBarController<NSURLConnectionDelegate, NSURLConnectionDataDelegate>
+@interface MSTabBarController : UITabBarController<NSURLConnectionDelegate, NSURLConnectionDataDelegate, WsCompleteDelegate>
+
 @property (weak, nonatomic) IBOutlet UITabBar *myTabBarController;
 
 @property (strong, nonatomic) NSMutableData *receivedData;
