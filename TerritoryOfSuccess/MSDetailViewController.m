@@ -1,11 +1,3 @@
-//
-//  MSDetailViewController.m
-//  TerritoryOfSuccess
-//
-//  Created by matrixsoft on 17.01.13.
-//  Copyright (c) 2013 Matrix Soft. All rights reserved.
-//
-
 #import "MSDetailViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -27,6 +19,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if ([[UIScreen mainScreen] bounds].size.height == 568) {
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*568.png"]]];
+        NSLog(@"568");
+    }
+    else
+    {
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*480.png"]]];
+        NSLog(@"480");
+    }
+    
     self.likeView.layer.cornerRadius = 10;
     [self.likeView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.6]];
     self.starView.layer.cornerRadius = 10;

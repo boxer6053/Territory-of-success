@@ -53,6 +53,7 @@
 		FA167C4F16A98DCF0008561D /* commentsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA167C4E16A98DCF0008561D /* commentsButton.png */; };
 		FA167C5616A993940008561D /* MSCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA167C5516A993940008561D /* MSCommentsViewController.m */; };
 		FA167C5E16A9A2DC0008561D /* shareButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA167C5D16A9A2DB0008561D /* shareButton.png */; };
+		FA167C6116A9A5BB0008561D /* MSSubCatalogueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA167C6016A9A5BB0008561D /* MSSubCatalogueViewController.m */; };
 		FA1BEA8C16A813B200F2C219 /* MSDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1BEA8B16A813B200F2C219 /* MSDetailViewController.m */; };
 		FA1BEA9616A842A200F2C219 /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1BEA9516A842A100F2C219 /* like.png */; };
 		FA283CCD16A0890F00DBDC19 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA283CCC16A0890F00DBDC19 /* QuartzCore.framework */; };
@@ -61,6 +62,8 @@
 		FA55C14916A071AA00671CAB /* MSCatalogueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA55C14816A071AA00671CAB /* MSCatalogueViewController.m */; };
 		FA5D725216A174BE00D2E050 /* photo_camera_1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5D725116A174BE00D2E050 /* photo_camera_1.png */; };
 		FA626B9916A1970B002BB7F6 /* bg_image.png in Resources */ = {isa = PBXBuildFile; fileRef = FA626B9816A1970B002BB7F6 /* bg_image.png */; };
+		FA87C6FC16AACDE400784A0D /* MSCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA87C6FB16AACDE400784A0D /* MSCommentCell.m */; };
+		FA87C70016AAE0EE00784A0D /* MSAddingCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA87C6FF16AAE0EE00784A0D /* MSAddingCommentViewController.m */; };
 		FAAD061F16A410D700D37373 /* bg_color.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD061E16A410D700D37373 /* bg_color.png */; };
 		FAAD062A16A4326400D37373 /* iconWhite57.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD062916A4326400D37373 /* iconWhite57.png */; };
 		FAAD062C16A4326A00D37373 /* iconWhite114.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD062B16A4326A00D37373 /* iconWhite114.png */; };
@@ -271,6 +274,8 @@
 		FA167C5416A993940008561D /* MSCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCommentsViewController.h; sourceTree = "<group>"; };
 		FA167C5516A993940008561D /* MSCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCommentsViewController.m; sourceTree = "<group>"; };
 		FA167C5D16A9A2DB0008561D /* shareButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareButton.png; sourceTree = "<group>"; };
+		FA167C5F16A9A5BA0008561D /* MSSubCatalogueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSubCatalogueViewController.h; sourceTree = "<group>"; };
+		FA167C6016A9A5BB0008561D /* MSSubCatalogueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSubCatalogueViewController.m; sourceTree = "<group>"; };
 		FA1BEA8A16A813B200F2C219 /* MSDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDetailViewController.h; sourceTree = "<group>"; };
 		FA1BEA8B16A813B200F2C219 /* MSDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDetailViewController.m; sourceTree = "<group>"; };
 		FA1BEA9516A842A100F2C219 /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
@@ -281,6 +286,10 @@
 		FA55C14816A071AA00671CAB /* MSCatalogueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCatalogueViewController.m; sourceTree = "<group>"; };
 		FA5D725116A174BE00D2E050 /* photo_camera_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo_camera_1.png; sourceTree = "<group>"; };
 		FA626B9816A1970B002BB7F6 /* bg_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_image.png; sourceTree = "<group>"; };
+		FA87C6FA16AACDE400784A0D /* MSCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCommentCell.h; sourceTree = "<group>"; };
+		FA87C6FB16AACDE400784A0D /* MSCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCommentCell.m; sourceTree = "<group>"; };
+		FA87C6FE16AAE0ED00784A0D /* MSAddingCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAddingCommentViewController.h; sourceTree = "<group>"; };
+		FA87C6FF16AAE0EE00784A0D /* MSAddingCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSAddingCommentViewController.m; sourceTree = "<group>"; };
 		FAAD061E16A410D700D37373 /* bg_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_color.png; sourceTree = "<group>"; };
 		FAAD062916A4326400D37373 /* iconWhite57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconWhite57.png; path = ../iconWhite57.png; sourceTree = "<group>"; };
 		FAAD062B16A4326A00D37373 /* iconWhite114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconWhite114.png; path = ../iconWhite114.png; sourceTree = "<group>"; };
@@ -627,10 +636,16 @@
 			children = (
 				FA55C14716A071AA00671CAB /* MSCatalogueViewController.h */,
 				FA55C14816A071AA00671CAB /* MSCatalogueViewController.m */,
+				FA167C5F16A9A5BA0008561D /* MSSubCatalogueViewController.h */,
+				FA167C6016A9A5BB0008561D /* MSSubCatalogueViewController.m */,
 				FA1BEA8A16A813B200F2C219 /* MSDetailViewController.h */,
 				FA1BEA8B16A813B200F2C219 /* MSDetailViewController.m */,
 				FA167C5416A993940008561D /* MSCommentsViewController.h */,
 				FA167C5516A993940008561D /* MSCommentsViewController.m */,
+				FA87C6FE16AAE0ED00784A0D /* MSAddingCommentViewController.h */,
+				FA87C6FF16AAE0EE00784A0D /* MSAddingCommentViewController.m */,
+				FA87C6FA16AACDE400784A0D /* MSCommentCell.h */,
+				FA87C6FB16AACDE400784A0D /* MSCommentCell.m */,
 			);
 			name = Pauli;
 			sourceTree = "<group>";
