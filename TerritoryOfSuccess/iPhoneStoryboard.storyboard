@@ -914,6 +914,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="CheckThisUp.png" width="128" height="128"/>
+        <image name="Inquirer.png" width="128" height="128"/>
+        <image name="WhitchOneIsBetter.png" width="128" height="128"/>
         <image name="3star.png" width="87" height="20"/>
         <image name="backButton.png" width="20" height="60"/>
         <image name="button_orange.png" width="185" height="45"/>
