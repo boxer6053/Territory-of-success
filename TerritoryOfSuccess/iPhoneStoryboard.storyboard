@@ -399,13 +399,13 @@
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <navigationItem title="Ваш комментарий" id="Kfj-BY-01N">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="ihU-EN-RiF">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ihU-EN-RiF">
                                             <color key="tintColor" red="1" green="0.48933537269999999" blue="0.032153169990000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="cancel:" destination="VxG-hA-1PC" id="r1b-47-QJ4"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="b5f-9E-DmE">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="b5f-9E-DmE">
                                             <color key="tintColor" red="1" green="0.57347453753381039" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="save:" destination="VxG-hA-1PC" id="Q3v-sS-RJY"/>
