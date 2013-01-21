@@ -168,10 +168,10 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Gce-Jt-I9L">
-                                        <rect key="frame" x="10" y="407" width="280" height="32"/>
+                                        <rect key="frame" x="10" y="407" width="120" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Перейти к комментариям" backgroundImage="commentsButton.png">
+                                        <state key="normal" title="Комментарии" backgroundImage="commentsButton.png">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
@@ -180,6 +180,21 @@
                                         </state>
                                         <connections>
                                             <segue destination="Wf6-Og-MMe" kind="push" id="Btw-f8-W6E"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Z8E-KR-BHo">
+                                        <rect key="frame" x="172" y="407" width="120" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Вопросы" backgroundImage="commentsButton.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="n0Y-1n-ipS" kind="push" id="ZJc-OF-OT8"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -216,6 +231,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qNu-5g-eX7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1880" y="-348"/>
+        </scene>
+        <!--Questions View Controller-->
+        <scene sceneID="aVn-4Y-gKy">
+            <objects>
+                <viewController id="n0Y-1n-ipS" customClass="MSQuestionsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fR1-yN-9P8">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="hYa-rD-zRq">
+                                <rect key="frame" x="-6" y="0.0" width="332" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Все вопросы"/>
+                                    <segment title="Мои вопросы"/>
+                                </segments>
+                                <connections>
+                                    <action selector="questionDoubleButton:" destination="n0Y-1n-ipS" eventType="valueChanged" id="2Qe-DX-efR"/>
+                                </connections>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Nwm-3X-nrg">
+                                <rect key="frame" x="20" y="57" width="280" height="378"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="lru-sR-YtE"/>
+                    <connections>
+                        <outlet property="segment" destination="hYa-rD-zRq" id="psS-Qw-H6T"/>
+                        <outlet property="tableView" destination="Nwm-3X-nrg" id="x3o-Ti-Q6C"/>
+                        <segue destination="4hb-Vg-pcd" kind="push" identifier="toQuestionDetail" id="Bfg-PT-E0l"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CSG-YT-mm5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2251" y="304"/>
         </scene>
         <!--Comments View Controller - Комментарии-->
         <scene sceneID="oaX-Ne-Ltg">
@@ -480,66 +533,16 @@
             </objects>
             <point key="canvasLocation" x="-190" y="24"/>
         </scene>
-        <!--Questions View Controller - Вопросы-->
+        <!--View Controller - Вопросы-->
         <scene sceneID="ssN-xn-xUv">
             <objects>
-                <viewController id="Cru-iV-L4Z" customClass="MSQuestionsViewController" sceneMemberID="viewController">
+                <viewController id="Cru-iV-L4Z" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PUb-QU-0Q3">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="64d-sB-zMW">
-                                <rect key="frame" x="-6" y="0.0" width="332" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Общие вопросы"/>
-                                    <segment title="Мои вопросы"/>
-                                </segments>
-                                <connections>
-                                    <action selector="questionDoubleButton:" destination="Cru-iV-L4Z" eventType="valueChanged" id="ZKx-Go-h0X"/>
-                                </connections>
-                            </segmentedControl>
-                            <tableView clipsSubviews="YES" alpha="0.50000000000000011" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="74" sectionHeaderHeight="22" sectionFooterHeight="22" id="UjK-dp-d4E">
-                                <rect key="frame" x="20" y="57" width="280" height="378"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="cellID" textLabel="gIt-4P-WzD" detailTextLabel="qVo-v2-Dsl" rowHeight="74" style="IBUITableViewCellStyleValue1" id="uCX-Uq-p8E">
-                                        <rect key="frame" x="0.0" y="22" width="280" height="74"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="280" height="73"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gIt-4P-WzD">
-                                                    <rect key="frame" x="10" y="26" width="35" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qVo-v2-Dsl">
-                                                    <rect key="frame" x="213" y="26" width="57" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Вопросы" id="sQE-dx-gsA"/>
-                    <connections>
-                        <outlet property="segment" destination="64d-sB-zMW" id="czu-fV-DdA"/>
-                        <outlet property="tableView" destination="UjK-dp-d4E" id="5Zr-Lc-5Ig"/>
-                        <segue destination="4hb-Vg-pcd" kind="push" identifier="toQuestionDetail" id="w3j-8S-b7e"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q3i-81-c2y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -584,7 +587,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fSC-Jo-gtb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1355" y="316"/>
+            <point key="canvasLocation" x="2715" y="312"/>
         </scene>
         <!--Sub Catalogue View Controller - Продукты-->
         <scene sceneID="Uvl-TC-9RE">
