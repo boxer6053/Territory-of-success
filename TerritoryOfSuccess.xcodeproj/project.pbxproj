@@ -29,6 +29,7 @@
 		F59B7FAA16A86E600084FEE3 /* news_TOS.png in Resources */ = {isa = PBXBuildFile; fileRef = F59B7FA916A86E600084FEE3 /* news_TOS.png */; };
 		F59B7FAE16A874950084FEE3 /* questions1.png in Resources */ = {isa = PBXBuildFile; fileRef = F59B7FAD16A874950084FEE3 /* questions1.png */; };
 		F5C04FD016A957DF00A3E220 /* exampleDetailImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F5C04FCF16A957DF00A3E220 /* exampleDetailImage.png */; };
+		F5F377D816AD636E002CD218 /* MSQuestionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F377D716AD636E002CD218 /* MSQuestionDetailViewController.m */; };
 		F5F6ADC3169C4F21000247D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC2169C4F21000247D9 /* UIKit.framework */; };
 		F5F6ADC5169C4F21000247D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC4169C4F21000247D9 /* Foundation.framework */; };
 		F5F6ADC7169C4F21000247D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC6169C4F21000247D9 /* CoreGraphics.framework */; };
@@ -97,6 +98,8 @@
 		F59B7FA916A86E600084FEE3 /* news_TOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = news_TOS.png; sourceTree = "<group>"; };
 		F59B7FAD16A874950084FEE3 /* questions1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = questions1.png; sourceTree = "<group>"; };
 		F5C04FCF16A957DF00A3E220 /* exampleDetailImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exampleDetailImage.png; sourceTree = "<group>"; };
+		F5F377D616AD636E002CD218 /* MSQuestionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSQuestionDetailViewController.h; path = ../MSQuestionDetailViewController.h; sourceTree = "<group>"; };
+		F5F377D716AD636E002CD218 /* MSQuestionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSQuestionDetailViewController.m; path = ../MSQuestionDetailViewController.m; sourceTree = "<group>"; };
 		F5F6ADBE169C4F21000247D9 /* TerritoryOfSuccess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TerritoryOfSuccess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5F6ADC2169C4F21000247D9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F5F6ADC4169C4F21000247D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -361,6 +364,8 @@
 				F5F6ADD4169C4F21000247D9 /* MSAppDelegate.m */,
 				F52816D416A5760F00E64924 /* MSQuestionsViewController.h */,
 				F52816D516A5760F00E64924 /* MSQuestionsViewController.m */,
+				F5F377D616AD636E002CD218 /* MSQuestionDetailViewController.h */,
+				F5F377D716AD636E002CD218 /* MSQuestionDetailViewController.m */,
 				F5F6AE8D169C5153000247D9 /* MSFirstViewController.h */,
 				F5F6AE8E169C5153000247D9 /* MSFirstViewController.m */,
 				F5603C42169C6E6400667203 /* MSFirstNavigationController.h */,
@@ -761,6 +766,7 @@
 				FA167C6116A9A5BB0008561D /* MSSubCatalogueViewController.m in Sources */,
 				FA87C6FC16AACDE400784A0D /* MSCommentCell.m in Sources */,
 				FA87C70016AAE0EE00784A0D /* MSAddingCommentViewController.m in Sources */,
+				F5F377D816AD636E002CD218 /* MSQuestionDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
