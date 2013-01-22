@@ -393,6 +393,10 @@
 		F59AEB7D16AF16C5004519B9 /* Clases */ = {
 			isa = PBXGroup;
 			children = (
+				F5F6AE89169C4F72000247D9 /* tessdata */,
+				F5F6AE80169C4F65000247D9 /* tesseract-ios */,
+				F5F6ADE4169C4F5A000247D9 /* tesseract-ios-lib */,
+				F559534116A579350079B985 /* SVProgressHUD */,
 				F547E1BA16AD556100365FB3 /* MSAPI.h */,
 				F547E1BB16AD556100365FB3 /* MSAPI.m */,
 				F547E1C216AD5BCE00365FB3 /* checkConnection.h */,
@@ -403,56 +407,7 @@
 			name = Clases;
 			sourceTree = "<group>";
 		};
-		F5F6ADB3169C4F21000247D9 = {
-			isa = PBXGroup;
-			children = (
-				F5F6ADCA169C4F21000247D9 /* TerritoryOfSuccess */,
-				F5F6ADC1169C4F21000247D9 /* Frameworks */,
-				F5F6ADBF169C4F21000247D9 /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		F5F6ADBF169C4F21000247D9 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				F5F6ADBE169C4F21000247D9 /* TerritoryOfSuccess.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		F5F6ADC1169C4F21000247D9 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				F5AEFAA616AEF2B1004EC992 /* ImageIO.framework */,
-				F5AEFAA416AEF256004EC992 /* SDWebImage.framework */,
-				F547E1C616AD5D6900365FB3 /* SystemConfiguration.framework */,
-				FA283CCC16A0890F00DBDC19 /* QuartzCore.framework */,
-				F5F6ADC2169C4F21000247D9 /* UIKit.framework */,
-				F5F6ADC4169C4F21000247D9 /* Foundation.framework */,
-				F5F6ADC6169C4F21000247D9 /* CoreGraphics.framework */,
-				F5F6ADC8169C4F21000247D9 /* CoreData.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		F5F6ADCA169C4F21000247D9 /* TerritoryOfSuccess */ = {
-			isa = PBXGroup;
-			children = (
-				F59AEB7D16AF16C5004519B9 /* Clases */,
-				F59AEB7B16AF16A8004519B9 /* ViewControllers */,
-				F5F6ADD3169C4F21000247D9 /* MSAppDelegate.h */,
-				F5F6ADD4169C4F21000247D9 /* MSAppDelegate.m */,
-				F5F6ADDC169C4F22000247D9 /* TerritoryOfSuccess.xcdatamodeld */,
-				FA167C4116A951D20008561D /* iPhoneStoryboard.storyboard */,
-				FAC3B72A16ADAF62007B8578 /* Lyohaness */,
-				FA1BEA8E16A813BF00F2C219 /* Pauli */,
-				F559534116A579350079B985 /* SVProgressHUD */,
-				F5F6ADCB169C4F21000247D9 /* Supporting Files */,
-			);
-			path = TerritoryOfSuccess;
-			sourceTree = "<group>";
-		};
-		F5F6ADCB169C4F21000247D9 /* Supporting Files */ = {
+		F59AEB7E16AF1770004519B9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
 				FAC3B71F16AD7E49007B8578 /* mainLogoBackground_center.png */,
@@ -495,9 +450,62 @@
 				F5603C58169C944C00667203 /* settings.png */,
 				F5603C56169C92AF00667203 /* Questions.png */,
 				F5603C4D169C752200667203 /* home.png */,
-				F5F6AE89169C4F72000247D9 /* tessdata */,
-				F5F6AE80169C4F65000247D9 /* tesseract-ios */,
-				F5F6ADE4169C4F5A000247D9 /* tesseract-ios-lib */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		F5F6ADB3169C4F21000247D9 = {
+			isa = PBXGroup;
+			children = (
+				F5F6ADCA169C4F21000247D9 /* TerritoryOfSuccess */,
+				F5F6ADC1169C4F21000247D9 /* Frameworks */,
+				F5F6ADBF169C4F21000247D9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F5F6ADBF169C4F21000247D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F5F6ADBE169C4F21000247D9 /* TerritoryOfSuccess.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F5F6ADC1169C4F21000247D9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F5AEFAA616AEF2B1004EC992 /* ImageIO.framework */,
+				F5AEFAA416AEF256004EC992 /* SDWebImage.framework */,
+				F547E1C616AD5D6900365FB3 /* SystemConfiguration.framework */,
+				FA283CCC16A0890F00DBDC19 /* QuartzCore.framework */,
+				F5F6ADC2169C4F21000247D9 /* UIKit.framework */,
+				F5F6ADC4169C4F21000247D9 /* Foundation.framework */,
+				F5F6ADC6169C4F21000247D9 /* CoreGraphics.framework */,
+				F5F6ADC8169C4F21000247D9 /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F5F6ADCA169C4F21000247D9 /* TerritoryOfSuccess */ = {
+			isa = PBXGroup;
+			children = (
+				F59AEB7E16AF1770004519B9 /* Images */,
+				F59AEB7D16AF16C5004519B9 /* Clases */,
+				F59AEB7B16AF16A8004519B9 /* ViewControllers */,
+				F5F6ADD3169C4F21000247D9 /* MSAppDelegate.h */,
+				F5F6ADD4169C4F21000247D9 /* MSAppDelegate.m */,
+				F5F6ADDC169C4F22000247D9 /* TerritoryOfSuccess.xcdatamodeld */,
+				FA167C4116A951D20008561D /* iPhoneStoryboard.storyboard */,
+				FAC3B72A16ADAF62007B8578 /* Lyohaness */,
+				FA1BEA8E16A813BF00F2C219 /* Pauli */,
+				F5F6ADCB169C4F21000247D9 /* Supporting Files */,
+			);
+			path = TerritoryOfSuccess;
+			sourceTree = "<group>";
+		};
+		F5F6ADCB169C4F21000247D9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
 				F5F6ADCC169C4F21000247D9 /* TerritoryOfSuccess-Info.plist */,
 				F5F6ADCD169C4F21000247D9 /* InfoPlist.strings */,
 				F5F6ADD0169C4F21000247D9 /* main.m */,
