@@ -87,7 +87,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:myIdentifier];
     }
     
-//Првоерка на СегментКонтрол и подгрузка соответствующего контента в ячейки
+//Проверка на СегментКонтрол и подгрузка соответствующего контента в ячейки
     if (self.productAndBonusesControl.selectedSegmentIndex == 0) {
         cell.imageView.image = [UIImage imageNamed:@"photo_camera_1.png"];
         cell.textLabel.text = @"Название категории";
@@ -106,5 +106,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self performSegueWithIdentifier:@"toSubCatalogue" sender:self];
+}
+
+#pragma mark Web-delegate
+-(void)finished{
 }
 @end
