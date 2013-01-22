@@ -365,7 +365,6 @@
 		F5F6ADB3169C4F21000247D9 = {
 			isa = PBXGroup;
 			children = (
-				F547E1C616AD5D6900365FB3 /* SystemConfiguration.framework */,
 				F5F6ADCA169C4F21000247D9 /* TerritoryOfSuccess */,
 				F5F6ADC1169C4F21000247D9 /* Frameworks */,
 				F5F6ADBF169C4F21000247D9 /* Products */,
@@ -383,6 +382,7 @@
 		F5F6ADC1169C4F21000247D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F547E1C616AD5D6900365FB3 /* SystemConfiguration.framework */,
 				FA283CCC16A0890F00DBDC19 /* QuartzCore.framework */,
 				F5F6ADC2169C4F21000247D9 /* UIKit.framework */,
 				F5F6ADC4169C4F21000247D9 /* Foundation.framework */,
