@@ -371,6 +371,38 @@
 			name = SVProgressHUD;
 			sourceTree = "<group>";
 		};
+		F59AEB7B16AF16A8004519B9 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F52816D416A5760F00E64924 /* MSQuestionsViewController.h */,
+				F52816D516A5760F00E64924 /* MSQuestionsViewController.m */,
+				F5F377D616AD636E002CD218 /* MSQuestionDetailViewController.h */,
+				F5F377D716AD636E002CD218 /* MSQuestionDetailViewController.m */,
+				F59F4D6A16ADA2B800458E5E /* MSInquirerViewController.h */,
+				F59F4D6B16ADA2B800458E5E /* MSInquirerViewController.m */,
+				F59F4D7216ADA3AC00458E5E /* MSTypesOfInquirersViewController.h */,
+				F59F4D7316ADA3AC00458E5E /* MSTypesOfInquirersViewController.m */,
+				F5603C42169C6E6400667203 /* MSFirstNavigationController.h */,
+				F5603C43169C6E6400667203 /* MSFirstNavigationController.m */,
+				F5603C4F169C802100667203 /* MSTabBarController.h */,
+				F5603C50169C802100667203 /* MSTabBarController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F59AEB7D16AF16C5004519B9 /* Clases */ = {
+			isa = PBXGroup;
+			children = (
+				F547E1BA16AD556100365FB3 /* MSAPI.h */,
+				F547E1BB16AD556100365FB3 /* MSAPI.m */,
+				F547E1C216AD5BCE00365FB3 /* checkConnection.h */,
+				F547E1C316AD5BCE00365FB3 /* checkConnection.m */,
+				F5AEFA6B16AED9A0004EC992 /* JSONParserForDataEntenties.h */,
+				F5AEFA6C16AED9A0004EC992 /* JSONParserForDataEntenties.m */,
+			);
+			name = Clases;
+			sourceTree = "<group>";
+		};
 		F5F6ADB3169C4F21000247D9 = {
 			isa = PBXGroup;
 			children = (
@@ -406,28 +438,12 @@
 		F5F6ADCA169C4F21000247D9 /* TerritoryOfSuccess */ = {
 			isa = PBXGroup;
 			children = (
-				F5AEFA6B16AED9A0004EC992 /* JSONParserForDataEntenties.h */,
-				F5AEFA6C16AED9A0004EC992 /* JSONParserForDataEntenties.m */,
-				F547E1C216AD5BCE00365FB3 /* checkConnection.h */,
-				F547E1C316AD5BCE00365FB3 /* checkConnection.m */,
+				F59AEB7D16AF16C5004519B9 /* Clases */,
+				F59AEB7B16AF16A8004519B9 /* ViewControllers */,
 				F5F6ADD3169C4F21000247D9 /* MSAppDelegate.h */,
 				F5F6ADD4169C4F21000247D9 /* MSAppDelegate.m */,
-				F52816D416A5760F00E64924 /* MSQuestionsViewController.h */,
-				F52816D516A5760F00E64924 /* MSQuestionsViewController.m */,
-				F5F377D616AD636E002CD218 /* MSQuestionDetailViewController.h */,
-				F5F377D716AD636E002CD218 /* MSQuestionDetailViewController.m */,
-				F59F4D6A16ADA2B800458E5E /* MSInquirerViewController.h */,
-				F59F4D6B16ADA2B800458E5E /* MSInquirerViewController.m */,
-				F59F4D7216ADA3AC00458E5E /* MSTypesOfInquirersViewController.h */,
-				F59F4D7316ADA3AC00458E5E /* MSTypesOfInquirersViewController.m */,
-				F5603C42169C6E6400667203 /* MSFirstNavigationController.h */,
-				F5603C43169C6E6400667203 /* MSFirstNavigationController.m */,
-				F5603C4F169C802100667203 /* MSTabBarController.h */,
-				F5603C50169C802100667203 /* MSTabBarController.m */,
 				F5F6ADDC169C4F22000247D9 /* TerritoryOfSuccess.xcdatamodeld */,
 				FA167C4116A951D20008561D /* iPhoneStoryboard.storyboard */,
-				F547E1BA16AD556100365FB3 /* MSAPI.h */,
-				F547E1BB16AD556100365FB3 /* MSAPI.m */,
 				FAC3B72A16ADAF62007B8578 /* Lyohaness */,
 				FA1BEA8E16A813BF00F2C219 /* Pauli */,
 				F559534116A579350079B985 /* SVProgressHUD */,
