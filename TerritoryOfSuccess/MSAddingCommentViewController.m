@@ -6,6 +6,7 @@
 @end
 
 @implementation MSAddingCommentViewController
+@synthesize delegate, sentArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,6 +44,16 @@
 }
 
 - (IBAction)save:(id)sender {
+    sentArray = [[NSMutableArray alloc]init];
+    NSString *name = @"Egor";
+    NSString *comment = self.inputText.text;
+    NSNumber *starsNumber = [NSNumber numberWithInt:(int)self.stepper.value];
+    [sentArray addObject:name];
+    [sentArray addObject:comment];
+    [sentArray addObject:starsNumber];
+    
+    [self.delegate addNewComment:sentArray];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)cancel:(id)sender {
