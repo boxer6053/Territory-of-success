@@ -36,6 +36,7 @@
 		F59F4D7916ADA40E00458E5E /* Inquirer.png in Resources */ = {isa = PBXBuildFile; fileRef = F59F4D7616ADA40E00458E5E /* Inquirer.png */; };
 		F59F4D7A16ADA40E00458E5E /* WhitchOneIsBetter.png in Resources */ = {isa = PBXBuildFile; fileRef = F59F4D7716ADA40E00458E5E /* WhitchOneIsBetter.png */; };
 		F59F4D7B16ADA40E00458E5E /* CheckThisUp.png in Resources */ = {isa = PBXBuildFile; fileRef = F59F4D7816ADA40E00458E5E /* CheckThisUp.png */; };
+		F5AEFA6D16AED9A0004EC992 /* JSONParserForDataEntenties.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AEFA6C16AED9A0004EC992 /* JSONParserForDataEntenties.m */; };
 		F5C04FD016A957DF00A3E220 /* exampleDetailImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F5C04FCF16A957DF00A3E220 /* exampleDetailImage.png */; };
 		F5F377D816AD636E002CD218 /* MSQuestionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F377D716AD636E002CD218 /* MSQuestionDetailViewController.m */; };
 		F5F6ADC3169C4F21000247D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC2169C4F21000247D9 /* UIKit.framework */; };
@@ -124,6 +125,8 @@
 		F59F4D7616ADA40E00458E5E /* Inquirer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Inquirer.png; sourceTree = "<group>"; };
 		F59F4D7716ADA40E00458E5E /* WhitchOneIsBetter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WhitchOneIsBetter.png; sourceTree = "<group>"; };
 		F59F4D7816ADA40E00458E5E /* CheckThisUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CheckThisUp.png; sourceTree = "<group>"; };
+		F5AEFA6B16AED9A0004EC992 /* JSONParserForDataEntenties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONParserForDataEntenties.h; sourceTree = "<group>"; };
+		F5AEFA6C16AED9A0004EC992 /* JSONParserForDataEntenties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONParserForDataEntenties.m; sourceTree = "<group>"; };
 		F5C04FCF16A957DF00A3E220 /* exampleDetailImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exampleDetailImage.png; sourceTree = "<group>"; };
 		F5F377D616AD636E002CD218 /* MSQuestionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSQuestionDetailViewController.h; path = ../MSQuestionDetailViewController.h; sourceTree = "<group>"; };
 		F5F377D716AD636E002CD218 /* MSQuestionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSQuestionDetailViewController.m; path = ../MSQuestionDetailViewController.m; sourceTree = "<group>"; };
@@ -365,7 +368,6 @@
 		F5F6ADB3169C4F21000247D9 = {
 			isa = PBXGroup;
 			children = (
-				F547E1C616AD5D6900365FB3 /* SystemConfiguration.framework */,
 				F5F6ADCA169C4F21000247D9 /* TerritoryOfSuccess */,
 				F5F6ADC1169C4F21000247D9 /* Frameworks */,
 				F5F6ADBF169C4F21000247D9 /* Products */,
@@ -383,6 +385,7 @@
 		F5F6ADC1169C4F21000247D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F547E1C616AD5D6900365FB3 /* SystemConfiguration.framework */,
 				FA283CCC16A0890F00DBDC19 /* QuartzCore.framework */,
 				F5F6ADC2169C4F21000247D9 /* UIKit.framework */,
 				F5F6ADC4169C4F21000247D9 /* Foundation.framework */,
@@ -395,6 +398,8 @@
 		F5F6ADCA169C4F21000247D9 /* TerritoryOfSuccess */ = {
 			isa = PBXGroup;
 			children = (
+				F5AEFA6B16AED9A0004EC992 /* JSONParserForDataEntenties.h */,
+				F5AEFA6C16AED9A0004EC992 /* JSONParserForDataEntenties.m */,
 				F547E1C216AD5BCE00365FB3 /* checkConnection.h */,
 				F547E1C316AD5BCE00365FB3 /* checkConnection.m */,
 				F5F6ADD3169C4F21000247D9 /* MSAppDelegate.h */,
@@ -845,6 +850,7 @@
 				F59F4D6C16ADA2B800458E5E /* MSInquirerViewController.m in Sources */,
 				F59F4D7416ADA3AC00458E5E /* MSTypesOfInquirersViewController.m in Sources */,
 				F547E1C416AD5BCE00365FB3 /* checkConnection.m in Sources */,
+				F5AEFA6D16AED9A0004EC992 /* JSONParserForDataEntenties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
