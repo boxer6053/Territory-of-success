@@ -55,6 +55,7 @@
     [super viewDidLoad];
     
     [self.codeTextField setDelegate:self];
+    [self.codeTextField setClearButtonMode:UITextFieldViewModeWhileEditing];
         
     [self.scrollView setScrollEnabled:NO];
     [self.scrollView setShowsHorizontalScrollIndicator:NO];
