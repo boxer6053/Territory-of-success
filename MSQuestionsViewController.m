@@ -23,6 +23,8 @@
 
 - (void)viewDidLoad
 {
+ 
+
     if ([[UIScreen mainScreen] bounds].size.height == 568) {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*568.png"]]];
     }
@@ -83,20 +85,16 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     if(allQuestionsMode){
-        
         UIColor *selectedColor=[UIColor colorWithRed:255.0/255.0 green:140.0/255.0 blue:0.0/255.0 alpha:1.0];
         [[self.segment.subviews objectAtIndex:1] setTintColor:selectedColor];
         [[self.segment.subviews objectAtIndex:0] setTintColor:[UIColor blackColor]];
-        
     }
     if(myQuestionsMode)
     {
         UIColor *selectedColor=[UIColor colorWithRed:255.0/255.0 green:140.0/255.0 blue:0.0/255.0 alpha:1.0];
         [[self.segment.subviews objectAtIndex:0] setTintColor:selectedColor];
         [[self.segment.subviews objectAtIndex:1] setTintColor:[UIColor blackColor]];
-        
-        
-    }
+        }
     
     
 }
