@@ -34,9 +34,9 @@
 		F59F4D6C16ADA2B800458E5E /* MSInquirerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F59F4D6B16ADA2B800458E5E /* MSInquirerViewController.m */; };
 		F59F4D7416ADA3AC00458E5E /* MSTypesOfInquirersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F59F4D7316ADA3AC00458E5E /* MSTypesOfInquirersViewController.m */; };
 		F59F4D7916ADA40E00458E5E /* Inquirer.png in Resources */ = {isa = PBXBuildFile; fileRef = F59F4D7616ADA40E00458E5E /* Inquirer.png */; };
-		F59F4D7A16ADA40E00458E5E /* WhitchOneIsBetter.png in Resources */ = {isa = PBXBuildFile; fileRef = F59F4D7716ADA40E00458E5E /* WhitchOneIsBetter.png */; };
 		F59F4D7B16ADA40E00458E5E /* CheckThisUp.png in Resources */ = {isa = PBXBuildFile; fileRef = F59F4D7816ADA40E00458E5E /* CheckThisUp.png */; };
 		F5AEFA6D16AED9A0004EC992 /* JSONParserForDataEntenties.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AEFA6C16AED9A0004EC992 /* JSONParserForDataEntenties.m */; };
+		F5BA5A0616AEE5E300AF69CB /* WhitchOneIsBetter.png in Resources */ = {isa = PBXBuildFile; fileRef = F5BA5A0516AEE5E300AF69CB /* WhitchOneIsBetter.png */; };
 		F5C04FD016A957DF00A3E220 /* exampleDetailImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F5C04FCF16A957DF00A3E220 /* exampleDetailImage.png */; };
 		F5F377D816AD636E002CD218 /* MSQuestionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F377D716AD636E002CD218 /* MSQuestionDetailViewController.m */; };
 		F5F6ADC3169C4F21000247D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC2169C4F21000247D9 /* UIKit.framework */; };
@@ -123,10 +123,10 @@
 		F59F4D7216ADA3AC00458E5E /* MSTypesOfInquirersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTypesOfInquirersViewController.h; sourceTree = "<group>"; };
 		F59F4D7316ADA3AC00458E5E /* MSTypesOfInquirersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTypesOfInquirersViewController.m; sourceTree = "<group>"; };
 		F59F4D7616ADA40E00458E5E /* Inquirer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Inquirer.png; sourceTree = "<group>"; };
-		F59F4D7716ADA40E00458E5E /* WhitchOneIsBetter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WhitchOneIsBetter.png; sourceTree = "<group>"; };
 		F59F4D7816ADA40E00458E5E /* CheckThisUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CheckThisUp.png; sourceTree = "<group>"; };
 		F5AEFA6B16AED9A0004EC992 /* JSONParserForDataEntenties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONParserForDataEntenties.h; sourceTree = "<group>"; };
 		F5AEFA6C16AED9A0004EC992 /* JSONParserForDataEntenties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONParserForDataEntenties.m; sourceTree = "<group>"; };
+		F5BA5A0516AEE5E300AF69CB /* WhitchOneIsBetter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WhitchOneIsBetter.png; sourceTree = "<group>"; };
 		F5C04FCF16A957DF00A3E220 /* exampleDetailImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exampleDetailImage.png; sourceTree = "<group>"; };
 		F5F377D616AD636E002CD218 /* MSQuestionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSQuestionDetailViewController.h; path = ../MSQuestionDetailViewController.h; sourceTree = "<group>"; };
 		F5F377D716AD636E002CD218 /* MSQuestionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSQuestionDetailViewController.m; path = ../MSQuestionDetailViewController.m; sourceTree = "<group>"; };
@@ -442,7 +442,7 @@
 				F5C04FCF16A957DF00A3E220 /* exampleDetailImage.png */,
 				FA167C5D16A9A2DB0008561D /* shareButton.png */,
 				F59F4D7616ADA40E00458E5E /* Inquirer.png */,
-				F59F4D7716ADA40E00458E5E /* WhitchOneIsBetter.png */,
+				F5BA5A0516AEE5E300AF69CB /* WhitchOneIsBetter.png */,
 				F59F4D7816ADA40E00458E5E /* CheckThisUp.png */,
 				FA167C4E16A98DCF0008561D /* commentsButton.png */,
 				FA167C4A16A9699B0008561D /* starOffImage.png */,
@@ -811,13 +811,13 @@
 				F59A6CB716A9A83700796C0E /* background_320*568.png in Resources */,
 				FAC3B72016AD7E4A007B8578 /* mainLogoBackground_center.png in Resources */,
 				F59F4D7916ADA40E00458E5E /* Inquirer.png in Resources */,
-				F59F4D7A16ADA40E00458E5E /* WhitchOneIsBetter.png in Resources */,
 				F59F4D7B16ADA40E00458E5E /* CheckThisUp.png in Resources */,
 				FADA3FD216AD8A0C008D2C7E /* 5star.png in Resources */,
 				FADA3FD316AD8A0C008D2C7E /* 4star.png in Resources */,
 				FADA3FD416AD8A0C008D2C7E /* 1star.png in Resources */,
 				FADA3FD516AD8A0C008D2C7E /* 2star.png in Resources */,
 				FADA3FD616AD8A0C008D2C7E /* 3star.png in Resources */,
+				F5BA5A0616AEE5E300AF69CB /* WhitchOneIsBetter.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
