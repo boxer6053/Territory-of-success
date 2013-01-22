@@ -34,7 +34,7 @@
                                                  [UIColor blackColor], UITextAttributeTextColor,
                                                  [UIFont fontWithName:@"EuphemiaUCAS-Bold" size:20.0], UITextAttributeFont,
                                                  nil]];
-    [self.mainNavigationBar setBackgroundImage:[UIImage imageNamed:@"mainLogoBackground.png"] forBarMetrics:UIBarMetricsDefault];
+    [self.mainNavigationBar setBackgroundImage:[UIImage imageNamed:@"mainLogoBackground_center.png"] forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)didReceiveMemoryWarning

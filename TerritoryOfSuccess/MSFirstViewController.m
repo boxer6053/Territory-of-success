@@ -7,6 +7,7 @@
 //
 
 #import "MSFirstViewController.h"
+#import "MSNewsDetailsViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "Tesseract.h"
 #import "SVProgressHUD.h"
@@ -87,7 +88,7 @@
         
         UIButton *subViewButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.newsScrollView.frame.size.width, self.newsScrollView.frame.size.height)];
         [subViewButton addTarget:self
-                   action:@selector(PicturePressed)
+                   action:@selector(picturePressed)
          forControlEvents:UIControlEventTouchDown];
         //subViewButton.alpha = 0.0;
         [subView addSubview:subViewButton];
@@ -125,7 +126,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) slide
+- (void)slide
 {
     if (self.newsPageControl.currentPage + 1 == self.newsPageControl.numberOfPages)
     {
@@ -135,18 +136,18 @@
     {
         self.newsPageControl.currentPage++;
     }
-    [self chengeImgeByPageController];
+    [self changeImageByPageController];
 }
 
 - (IBAction)changeNewsPage:(id)sender
 {
-    [self chengeImgeByPageController];
+    [self changeImageByPageController];
     [self.slideShowTimer invalidate];
     self.slideShowTimer = nil;
     self.userTouchTimer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(touchDelay) userInfo:nil repeats:NO];
 }
 
-- (void)chengeImgeByPageController
+- (void)changeImageByPageController
 {
     CGRect frame;
     frame.origin.x = self.newsScrollView.frame.size.width * self.newsPageControl.currentPage;
@@ -155,9 +156,16 @@
     [self.newsScrollView scrollRectToVisible:frame animated:YES];
 }
 
-- (void) PicturePressed
+- (void)picturePressed
 {
-    
+    [self performSegueWithIdentifier:@"newsDetailsFromHome" sender:self];
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"newsDetailsFromHome"])
+    {
+        [segue.destinationViewController setContentOfArticle];
+    }
 }
 
 -(void) touchDelay
