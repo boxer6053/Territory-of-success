@@ -17,7 +17,7 @@
 - (void)customizeInterface
 {
     [[UINavigationBar appearance] setTintColor:[UIColor orangeColor]];
-    
+
     [[UITabBar appearance] setBackgroundColor:[UIColor blackColor]];
     [[UITabBar appearance] setSelectedImageTintColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
