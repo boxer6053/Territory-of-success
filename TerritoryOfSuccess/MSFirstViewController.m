@@ -286,7 +286,7 @@
     [self.api checkCode:tempCodeStr];
 }
 
-- (void)fi
+- (void)finished
 {
     self.receivedData = [self.api receivedData];
 }
