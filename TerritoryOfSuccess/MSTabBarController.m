@@ -40,8 +40,6 @@
     [self.api getNewsWithId:@"3"];
     [self.api getFiveNewsWithOffset:0];
     
-//    [self.api getNewsWithId:@"3"];
-    
 }
 
 - (void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
