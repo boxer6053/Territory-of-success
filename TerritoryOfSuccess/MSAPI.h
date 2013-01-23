@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "JSONParserForDataEntenties.h"
 
-typedef enum {auth = 1, regist = 2, news = 3, newsWithId = 4, code = 5, brands = 6, categories = 7, catalog = 8} requestTypes;
+typedef enum {kAuth = 1, kRegist = 2, kNews = 3, kNewsWithId = 4, kCode = 5, kBrands = 6, kCategories = 7, kCatalog = 8} requestTypes;
 
 @protocol WsCompleteDelegate
 
