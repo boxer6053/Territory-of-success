@@ -36,4 +36,5 @@ typedef enum {auth = 1, regist = 2, news = 3, newsWithId = 4, code = 5, brands =
 - (void)getNewsWithId:(NSString *)newsId;
 - (void)checkCode:(NSString *)code;
 
+//- (void)getFiveBrandsWithOffset:(int)offset;
 @end
