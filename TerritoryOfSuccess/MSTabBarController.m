@@ -40,12 +40,13 @@
     
 //    [self.api getNewsWithId:@"3"];
     [self.api getAllNews];
+    [self.api getNewsWithId:@"3"];
     
 }
 
-- (void)finished
+- (void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
 {
-    self.receivedData = [self.api receivedData];
+    
 }
 
 - (void)didReceiveMemoryWarning

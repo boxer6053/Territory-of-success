@@ -17,17 +17,35 @@
 @synthesize params = _params;
 @synthesize receivedData = _receivedData;
 @synthesize delegate = _delegate;
+@synthesize checkRequest = _checkRequest;
+@synthesize connectionToInfoMapping = _connectionToInfoMapping;
+@synthesize connectionInfo = _connectionInfo;
 
-- (void)getAllNews
+- (CFMutableDictionaryRef)connectionToInfoMapping
 {
-    self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/news"];
+    if (!_connectionToInfoMapping) {
+        _connectionToInfoMapping = CFDictionaryCreateMutable(kCFAllocatorDefault, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
+    }
     
-    //створюемо запыт
+    return _connectionToInfoMapping;
+}
+
+- (void)checkCode:(NSString *)code
+{
+    self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/code"];
+    
+    //створюемо запит
     self.request = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
     
     //вказуэм протокол доступу
     [self.request setHTTPMethod:@"POST"];
-            
+    
+    //вказуэм параметри POST запиту
+    self.params = [NSMutableString stringWithFormat:@"code=%@", code];
+    
+    //вказуэм тіло запиту
+    [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
+    
     //перевірка наявності інету
     if (checkConnection.hasConnectivity) {
         //створюєм з'єднання і начинаєм загрузку
@@ -63,11 +81,62 @@
     }
 }
 
+- (void)getAllNews
+{
+    self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/news"];
+    
+    self.checkRequest = news;
+    
+    //створюемо запит
+    self.request = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
+    
+    //вказуэм протокол доступу
+    [self.request setHTTPMethod:@"POST"];
+            
+    //перевірка наявності інету
+    if (checkConnection.hasConnectivity) {
+        //створюєм з'єднання і начинаєм загрузку
+        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self];
+        
+        //перевірка з'єднання
+        if (connection) {
+            NSLog(@"З'єднання почалось");
+            self.receivedData = [[NSMutableData alloc] init];
+                        
+            CFDictionaryAddValue(self.connectionToInfoMapping, CFBridgingRetain(connection), CFBridgingRetain([NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInt:self.checkRequest] forKey:@"requestType"]));            
+        }
+        else
+        {
+            //якщо з'єднання нема
+            // Inform the user that the connection failed.
+            NSLog(@"Помилка з'єднання");
+            UIAlertView *connectFailMessage = [[UIAlertView alloc] initWithTitle:@"URL Connection"
+                                                                         message:@"Not success URL connection"
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"Ok"
+                                                               otherButtonTitles:nil];
+            [connectFailMessage show];
+        }
+    }
+    else
+    {
+        //якщо інету нема
+        UIAlertView *connectFailMessage = [[UIAlertView alloc] initWithTitle:@"Internet Connection"
+                                                                     message:@"Not success Internet connection"
+                                                                    delegate:self
+                                                           cancelButtonTitle:@"Ok"
+                                                           otherButtonTitles:nil];
+        [connectFailMessage show];
+    }
+}
+
 - (void)getNewsWithId:(NSString *)newsId
 {
     self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/news"];
     
-    //створюемо запыт
+    self.checkRequest = newsWithId;
+    
+    //створюемо запит
     self.request = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
     
     //вказуэм протокол доступу
@@ -88,6 +157,8 @@
         if (connection) {
             NSLog(@"З'єднання почалось");
             self.receivedData = [[NSMutableData alloc] init];
+                        
+            CFDictionaryAddValue(self.connectionToInfoMapping, CFBridgingRetain(connection), CFBridgingRetain([NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInt:self.checkRequest] forKey:@"requestType"]));
         }
         else
         {
@@ -123,8 +194,8 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    //бобавляєм отримані дані
-    [self.receivedData appendData:data];
+    //добавляєм отримані дані
+    [self.receivedData appendData:data];    
 }
 
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
@@ -146,7 +217,12 @@
     NSString *text = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding];
     NSLog(@"%@", text);
     
-    [self.delegate finished];
+    self.connectionInfo = CFBridgingRelease(CFDictionaryGetValue(self.connectionToInfoMapping, CFBridgingRetain(connection)));
+//    [[self.connectionInfo objectForKey:@"receivedData"] appendData:data];
+    
+    NSDictionary *receivedDictionary = [JSONParserForDataEntenties parseJSONDataWithData:self.receivedData];
+    
+    [self.delegate finishedWithDictionary:receivedDictionary withTypeRequest:[[self.connectionInfo objectForKey:@"requestType"] intValue]];
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
