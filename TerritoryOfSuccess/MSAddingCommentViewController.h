@@ -15,6 +15,7 @@
 @property (strong, nonatomic) UITapGestureRecognizer *tap;
 @property (strong, nonatomic) IBOutlet UIStepper *stepper;
 @property (strong, nonatomic) IBOutlet UIView *containView;
+@property (strong, nonatomic) IBOutlet UILabel *pleaseLabel;
 @property (strong, nonatomic) id <AddingCommentDelegate> delegate;
 @property (strong, nonatomic) NSMutableArray *sentArray;
 

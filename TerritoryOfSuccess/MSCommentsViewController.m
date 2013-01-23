@@ -25,7 +25,6 @@
     NSArray *secondComment = [NSArray arrayWithObjects:@"Lyohaness",@"Real shit, dudes! Otveechaju",[NSNumber numberWithInteger:1], nil];
     NSArray *thirdComment =[NSArray arrayWithObjects:@"Andrew",@"This is bullshit, but i like it!",[NSNumber numberWithInteger:3], nil];
     _commentsArray = [NSMutableArray arrayWithObjects:firstComment,secondComment,thirdComment, nil];
-
 }
 
 - (void)didReceiveMemoryWarning

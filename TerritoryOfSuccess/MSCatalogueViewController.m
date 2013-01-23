@@ -2,11 +2,13 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface MSCatalogueViewController ()
-
+@property (strong, nonatomic) MSAPI *api;
+@property (strong, nonatomic) NSMutableData *receivedData;
 @end
 
 @implementation MSCatalogueViewController
 @synthesize tableView = _tableView;
+@synthesize api = _api;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -19,6 +21,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+//    _api = [[MSAPI alloc] init];
+//    _api.delegate = self;
+//    [_api getFiveBrandsWithOffset:0];
+    
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [_tableView reloadData];
@@ -109,6 +115,7 @@
 }
 
 #pragma mark Web-delegate
--(void)finished{
-}
+//-(void)finished{
+//    self.receivedData = [self.api receivedData];
+//}
 @end
