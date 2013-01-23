@@ -8,7 +8,7 @@
 
 @implementation MSCatalogueViewController
 @synthesize tableView = _tableView;
-@synthesize api = _api;
+//@synthesize api = _api;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

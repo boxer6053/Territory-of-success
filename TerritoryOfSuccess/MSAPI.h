@@ -26,5 +26,5 @@
 
 - (void)getAllNews;
 - (void)getNewsWithId:(NSString *)newsId;
-- (void)getFiveBrandsWithOffset:(int)offset;
+//- (void)getFiveBrandsWithOffset:(int)offset;
 @end
