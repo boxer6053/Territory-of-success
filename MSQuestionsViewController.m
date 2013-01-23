@@ -32,7 +32,7 @@
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*480.png"]]];
     }
-    
+    [self.segment setTintColor:[UIColor blackColor]];
     self.allQuestionsMode = YES;
     self.myQuestionsMode = NO;
     self.tableView.delegate = self;
@@ -47,29 +47,16 @@
     [self createMyArray];
     
     [super viewDidLoad];
-    
-    // [newDictionary setObject:@"You" forKey:@"title"];
-    //
-    NSArray *questionTitles = [[NSArray alloc] initWithObjects:@"Вопрос 1", @"Вопрос 2", @"Вопрос 3", nil];
+       NSArray *questionTitles = [[NSArray alloc] initWithObjects:@"Вопрос 1", @"Вопрос 2", @"Вопрос 3", nil];
     NSArray *questionsDetails = [[NSArray alloc] initWithObjects:@"Описание вопроса 1", @"Описание вопроса 2", @"Описание вопроса 3", nil];
+    
     
     for(int i=0;i<questionsDetails.count;i++)
     {
         self.questionsDictionary = [[NSDictionary alloc] initWithObjects:questionsDetails forKeys:questionTitles];
-        ////
-        
-        //
-        [self.testDictionary setObject:[questionTitles objectAtIndex:i] forKey:@"Titles"];
+              [self.testDictionary setObject:[questionTitles objectAtIndex:i] forKey:@"Titles"];
         [self.testDictionary setObject:[questionsDetails objectAtIndex:i] forKey:@"Description"];
-        
-        //
-        //      //  [newDictionary setObject:@"World" forKey:@"Titles"];
-        //      //  NSLog(@"newDictionary titles %@", [self.questionsDictionary objectForKey:@"Titles"]);
-    }
-    //     self.questionsDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:@"FirstObject111",@"first",@"SecondObject222",@"second",@"ThirdObject333",@"third", nil];
-    
-    //    self.testDictionary = [NSDictionary dictionaryWithObject:questionsDetails forKey:questionTitles];
-    for (id key in [self.questionsDictionary allKeys])
+          }    for (id key in [self.questionsDictionary allKeys])
     {
         
         NSArray *array = [[NSMutableArray alloc] init];
