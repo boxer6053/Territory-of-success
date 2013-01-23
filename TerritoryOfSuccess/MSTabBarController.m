@@ -37,9 +37,10 @@
     self.api = [[MSAPI alloc] init];
     
     [self.api setDelegate:self];
+    [self.api getNewsWithId:@"3"];
+    [self.api getFiveNewsWithOffset:0];
     
 //    [self.api getNewsWithId:@"3"];
-    [self.api getAllNews];
     
 }
 

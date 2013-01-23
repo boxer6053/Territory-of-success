@@ -18,7 +18,7 @@
 @synthesize receivedData = _receivedData;
 @synthesize delegate = _delegate;
 
-- (void)getAllNews
+- (void)getFiveNewsWithOffset:(int)offset
 {
     self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/news"];
     
@@ -27,12 +27,13 @@
     
     //вказуэм протокол доступу
     [self.request setHTTPMethod:@"POST"];
-            
+    
+    self.params = [NSMutableString stringWithFormat:@"offset=%d", offset];
+    
     //перевірка наявності інету
     if (checkConnection.hasConnectivity) {
         //створюєм з'єднання і начинаєм загрузку
         NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self];
-        
         //перевірка з'єднання
         if (connection) {
             NSLog(@"З'єднання почалось");

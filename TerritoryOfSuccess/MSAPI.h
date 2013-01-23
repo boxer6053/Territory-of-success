@@ -24,7 +24,7 @@
 @property (strong, nonatomic) NSMutableString *params;
 @property (strong, nonatomic) NSMutableData *receivedData;
 
-- (void)getAllNews;
+- (void)getFiveNewsWithOffset:(int)offset;
 - (void)getNewsWithId:(NSString *)newsId;
 
 @end

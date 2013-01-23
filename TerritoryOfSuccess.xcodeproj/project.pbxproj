@@ -374,6 +374,12 @@
 		F59AEB7B16AF16A8004519B9 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				FADA06A816A5DBA0008DBE38 /* MSNewsViewController.h */,
+				FADA06A916A5DBA0008DBE38 /* MSNewsViewController.m */,
+				FAC3B71B16AD5B23007B8578 /* MSNewsDetailsViewController.h */,
+				FAC3B71C16AD5B23007B8578 /* MSNewsDetailsViewController.m */,
+				F5F6AE8D169C5153000247D9 /* MSFirstViewController.h */,
+				F5F6AE8E169C5153000247D9 /* MSFirstViewController.m */,
 				F52816D416A5760F00E64924 /* MSQuestionsViewController.h */,
 				F52816D516A5760F00E64924 /* MSQuestionsViewController.m */,
 				F5F377D616AD636E002CD218 /* MSQuestionDetailViewController.h */,
@@ -496,7 +502,6 @@
 				F5F6ADD4169C4F21000247D9 /* MSAppDelegate.m */,
 				F5F6ADDC169C4F22000247D9 /* TerritoryOfSuccess.xcdatamodeld */,
 				FA167C4116A951D20008561D /* iPhoneStoryboard.storyboard */,
-				FAC3B72A16ADAF62007B8578 /* Lyohaness */,
 				FA1BEA8E16A813BF00F2C219 /* Pauli */,
 				F5F6ADCB169C4F21000247D9 /* Supporting Files */,
 			);
@@ -736,19 +741,6 @@
 				FA87C6FB16AACDE400784A0D /* MSCommentCell.m */,
 			);
 			name = Pauli;
-			sourceTree = "<group>";
-		};
-		FAC3B72A16ADAF62007B8578 /* Lyohaness */ = {
-			isa = PBXGroup;
-			children = (
-				FADA06A816A5DBA0008DBE38 /* MSNewsViewController.h */,
-				FADA06A916A5DBA0008DBE38 /* MSNewsViewController.m */,
-				FAC3B71B16AD5B23007B8578 /* MSNewsDetailsViewController.h */,
-				FAC3B71C16AD5B23007B8578 /* MSNewsDetailsViewController.m */,
-				F5F6AE8D169C5153000247D9 /* MSFirstViewController.h */,
-				F5F6AE8E169C5153000247D9 /* MSFirstViewController.m */,
-			);
-			name = Lyohaness;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
