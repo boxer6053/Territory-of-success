@@ -7,6 +7,7 @@
 //
 
 #import "MSInquirerViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface MSInquirerViewController ()
 
@@ -14,7 +15,8 @@
 
 
 @implementation MSInquirerViewController
-@synthesize inquirerPic = _inquirerPic;
+@synthesize tableOfInquirers = _tableOfInquirers;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -25,15 +27,14 @@
     return self;
 }
 
-- (void)singleTapGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
-{
-    [self performSegueWithIdentifier:@"toInquirersTypes" sender:self];
-    NSLog(@"Tapped image");
-}
+
 - (void)viewDidLoad
 {
     
     [super viewDidLoad];
+   
+    _tableOfInquirers.delegate = self;
+    _tableOfInquirers.dataSource = self;
     if ([[UIScreen mainScreen] bounds].size.height == 568) {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*568.png"]]];
     }
@@ -41,15 +42,38 @@
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*480.png"]]];
     }
-    
-    _inquirerPic.userInteractionEnabled = YES;
-    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureRecognizer:)];
-    tapGestureRecognizer.delegate = self;
-    tapGestureRecognizer.numberOfTapsRequired = 1;
-    [_inquirerPic addGestureRecognizer:tapGestureRecognizer];
-    
-    
+    _tableOfInquirers.layer.cornerRadius = 10;
+    [_tableOfInquirers.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0].CGColor];
+    [_tableOfInquirers.layer setBorderWidth:1.0f];
+    [_tableOfInquirers.layer setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.7].CGColor];
+       
 	// Do any additional setup after loading the view.
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 5;
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell;
+        static NSString* cellIdentifier = @"inquirerCellID";
+        cell = [_tableOfInquirers dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+        
+        }
+    cell.textLabel.text = @"Название опроса";
+    cell.detailTextLabel.text = @"Детали опроса";
+    cell.imageView.image = [UIImage imageNamed:@"photo_camera_1.png"];
+    
+    return cell;
 }
 
 - (void)didReceiveMemoryWarning
