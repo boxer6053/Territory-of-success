@@ -2,7 +2,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface MSCatalogueViewController ()
-@property (strong, nonatomic) MSAPI *api;
+//@property (strong, nonatomic) MSAPI *api;
 @property (strong, nonatomic) NSMutableData *receivedData;
 @end
 
