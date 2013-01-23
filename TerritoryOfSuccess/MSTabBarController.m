@@ -38,9 +38,8 @@
     
     [self.api setDelegate:self];
     
-//    [self.api getNewsWithId:@"3"];
+//  [self.api getNewsWithId:@"3"];
     [self.api getAllNews];
-    
 }
 
 - (void)finished

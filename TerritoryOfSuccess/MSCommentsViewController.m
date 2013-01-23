@@ -8,6 +8,7 @@
 
 @implementation MSCommentsViewController
 @synthesize commentsArray = _commentsArray;
+@synthesize commentNew = _commentNew;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -21,10 +22,9 @@
 {
     [super viewDidLoad];
     NSArray *firstComment = [NSArray arrayWithObjects:@"Pavel",@"Продукт - полное ***",[NSNumber numberWithInteger:1], nil];
-    NSArray *secondComment = [NSArray arrayWithObjects:@"Lehaness",@"Real shit, dudes! Otveechaju",[NSNumber numberWithInteger:1], nil];
+    NSArray *secondComment = [NSArray arrayWithObjects:@"Lyohaness",@"Real shit, dudes! Otveechaju",[NSNumber numberWithInteger:1], nil];
     NSArray *thirdComment =[NSArray arrayWithObjects:@"Andrew",@"This is bullshit, but i like it!",[NSNumber numberWithInteger:3], nil];
     _commentsArray = [NSMutableArray arrayWithObjects:firstComment,secondComment,thirdComment, nil];
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -75,5 +75,15 @@
 
 - (IBAction)addComment:(id)sender {
     [self performSegueWithIdentifier:@"toAddingCommentView" sender:self];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+        MSAddingCommentViewController *acvc = [segue destinationViewController];
+        acvc.delegate = self;
+}
+
+-(void) addNewComment:(NSArray *)array{
+    [_commentsArray addObject:array];
+    [self.commentTableView reloadData];
 }
 @end
