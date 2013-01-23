@@ -151,43 +151,13 @@
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
         }
-        
-        
-        //
-        //    static NSString *CellIdentifier = @"QuestionCellIdentifier";
-        //    MSQuestionCell *cell1 = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        //    //    if (cell1 == nil) {
-        //    //        cell1 = [[MSQuestionCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-        //    //    }
-        //    if(!cell1)
-        //    {
-        //        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"MSQuestionCell" owner:nil options:nil];
-        //        for(id currentObject in topLevelObjects)
-        //        {
-        //            if([currentObject isKindOfClass:[MSQuestionCell class]])
-        //            {
-        //                cell1 = (MSQuestionCell *)currentObject;
-        //                break;
-        //            }
-        //        }
-        //    }
-        //
-        //    //
-        //    //         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        //    //         if (cell == nil) {
-        //    //             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-        //    //         }
+    
         if(self.myQuestionsMode)
         {
             int index = [indexPath indexAtPosition:1];
             NSString *key = [[self.questionsDictionary allKeys] objectAtIndex:index];
-            // NSString *value = [self.questionsDictionary objectForKey:key];
             cell.textLabel.text =key;
             cell.detailTextLabel.text = @"Оценка";
-            //        for(int i=0;i<self.questionsDictionary.count;i++)
-            //        {
-            //    cell.textLabel.text = [myArray objectAtIndex:indexPath.row]  ;
-            //        }
         }
         if(self.allQuestionsMode)
         {

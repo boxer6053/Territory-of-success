@@ -14,6 +14,7 @@
 
 @implementation MSTypesOfInquirersViewController
 @synthesize navBar = _navBar;
+@synthesize cancelButton = _cancelButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,6 +27,10 @@
 
 - (void)viewDidLoad
 {
+    [_navBar setTintColor:[UIColor whiteColor]];
+   _navBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor blackColor] forKey:UITextAttributeTextColor];
+   // [_cancelButton setTintColor:[UIColor blackColor]];
+    
     
     if ([[UIScreen mainScreen] bounds].size.height == 568) {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*568.png"]]];
