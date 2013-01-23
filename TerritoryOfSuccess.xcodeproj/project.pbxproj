@@ -390,7 +390,7 @@
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
-		F59AEB7D16AF16C5004519B9 /* Clases */ = {
+		F59AEB7D16AF16C5004519B9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				F5F6AE89169C4F72000247D9 /* tessdata */,
@@ -404,7 +404,7 @@
 				F5AEFA6B16AED9A0004EC992 /* JSONParserForDataEntenties.h */,
 				F5AEFA6C16AED9A0004EC992 /* JSONParserForDataEntenties.m */,
 			);
-			name = Clases;
+			name = Classes;
 			sourceTree = "<group>";
 		};
 		F59AEB7E16AF1770004519B9 /* Images */ = {
@@ -490,7 +490,7 @@
 			isa = PBXGroup;
 			children = (
 				F59AEB7E16AF1770004519B9 /* Images */,
-				F59AEB7D16AF16C5004519B9 /* Clases */,
+				F59AEB7D16AF16C5004519B9 /* Classes */,
 				F59AEB7B16AF16A8004519B9 /* ViewControllers */,
 				F5F6ADD3169C4F21000247D9 /* MSAppDelegate.h */,
 				F5F6ADD4169C4F21000247D9 /* MSAppDelegate.m */,
