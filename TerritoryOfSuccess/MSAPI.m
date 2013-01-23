@@ -117,6 +117,7 @@
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
     //отримано відповідь від сервера
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     [self.receivedData setLength:0];
 }
 
@@ -133,6 +134,8 @@
                              [error description],
                              [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]];
     NSLog(@"%@", errorString);
+    
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
