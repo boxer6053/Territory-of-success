@@ -11,6 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "Tesseract.h"
 #import "SVProgressHUD.h"
+#import <SDWebImage/UIButton+WebCache.h>
 
 @interface MSFirstViewController ()
 
@@ -55,9 +56,21 @@
 @synthesize api = _api;
 @synthesize receivedData = _receivedData;
 
+-(MSAPI *)api
+{
+    if(!_api)
+    {
+        _api = [[MSAPI alloc]init];
+        _api.delegate = self;
+    }
+    return _api;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.api getFiveNewsWithOffset:0];
     
     [self.codeTextField setDelegate:self];
     [self.codeTextField setClearButtonMode:UITextFieldViewModeWhileEditing];
@@ -80,29 +93,6 @@
         self.codeTextField.frame = CGRectMake(self.codeTextField.frame.origin.x, self.codeTextField.frame.origin.y - 10, self.codeTextField.frame.size.width, self.codeTextField.frame.size.height);
     }
     
-    NSArray *contentArray = [NSArray arrayWithObjects:[UIColor grayColor], [UIColor orangeColor], [UIColor darkGrayColor], [UIColor purpleColor], nil];
-    for (int i = 0; i <contentArray.count; i++)
-    {
-        CGRect frame;
-        frame.origin.x = i * self.newsScrollView.frame.size.width;
-        frame.origin.y = 0;
-        frame.size = self.newsScrollView.frame.size;
-        
-        UIView *subView = [[UIView alloc]initWithFrame:frame];
-        subView.backgroundColor = [contentArray objectAtIndex:i];
-        [self.newsScrollView addSubview:subView];
-        
-        UIButton *subViewButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.newsScrollView.frame.size.width, self.newsScrollView.frame.size.height)];
-        [subViewButton addTarget:self
-                   action:@selector(picturePressed)
-         forControlEvents:UIControlEventTouchDown];
-        //subViewButton.alpha = 0.0;
-        [subView addSubview:subViewButton];
-        
-    }
-    self.newsScrollView.contentSize = CGSizeMake(self.newsScrollView.frame.size.width * contentArray.count, self.newsScrollView.frame.size.height);
-    [self.newsScrollView.layer setCornerRadius:5.0];
-    self.newsPageControl.numberOfPages = contentArray.count;
     self.newsView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.7];
     self.codeInputView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.7];
     self.newsPageControl.pageIndicatorTintColor = [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0];
@@ -276,8 +266,6 @@
     
     NSLog(@"You click on send button!!!");
     
-    self.api = [[MSAPI alloc] init];
-    
     [self.api setDelegate:self];
     
     NSString *tempCodeStr = @"2EA4-29E9-CCE0-90EB";
@@ -295,6 +283,33 @@
     
     if (type == kCode) {
         NSLog(@"checking");
+    }
+    if (type == kNews)
+    {
+        NSArray *arrayOfNews = [dictionary valueForKey:@"list"];
+        for (int i = 0; i < arrayOfNews.count; i++)
+        {
+            CGRect frame;
+            frame.origin.x = i * self.newsScrollView.frame.size.width;
+            frame.origin.y = 0;
+            frame.size = self.newsScrollView.frame.size;
+            
+            UIView *subView = [[UIView alloc]initWithFrame:frame];
+            [self.newsScrollView addSubview:subView];
+            
+            UIButton *subViewButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.newsScrollView.frame.size.width, self.newsScrollView.frame.size.height)];
+            [subViewButton addTarget:self
+                              action:@selector(picturePressed)
+                    forControlEvents:UIControlEventTouchDown];
+        
+            NSURL *imageUrl = [NSURL URLWithString:[[arrayOfNews objectAtIndex:i] valueForKey:@"image" ]];
+            [subViewButton setBackgroundImageWithURL:imageUrl forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
+            [subView addSubview:subViewButton];
+            
+        }
+        self.newsScrollView.contentSize = CGSizeMake(self.newsScrollView.frame.size.width * arrayOfNews.count, self.newsScrollView.frame.size.height);
+        [self.newsScrollView.layer setCornerRadius:5.0];
+        self.newsPageControl.numberOfPages = arrayOfNews.count;
     }
 }
 

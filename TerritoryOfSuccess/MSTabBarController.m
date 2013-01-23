@@ -7,11 +7,8 @@
 //
 
 #import "MSTabBarController.h"
-#import "MSAPI.h"
 
 @interface MSTabBarController ()
-
-@property (strong, nonatomic) MSAPI *api;
 
 @end
 
@@ -19,7 +16,6 @@
 
 @synthesize myTabBarController = _myTabBarController;
 @synthesize receivedData = _receivedData;
-@synthesize api = _api;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,17 +29,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-            
-    self.api = [[MSAPI alloc] init];
-    
-    [self.api setDelegate:self];
-    [self.api getNewsWithId:@"3"];
-    [self.api getFiveNewsWithOffset:0];
-    
-}
-
-- (void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
-{
     
 }
 
