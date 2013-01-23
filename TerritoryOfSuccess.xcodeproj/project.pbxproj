@@ -11,6 +11,8 @@
 		F547E1BC16AD556100365FB3 /* MSAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = F547E1BB16AD556100365FB3 /* MSAPI.m */; };
 		F547E1C416AD5BCE00365FB3 /* checkConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = F547E1C316AD5BCE00365FB3 /* checkConnection.m */; };
 		F547E1C716AD5D6900365FB3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F547E1C616AD5D6900365FB3 /* SystemConfiguration.framework */; };
+		F552752616B06AEA0086AE53 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F552752516B06AEA0086AE53 /* SDWebImage.framework */; };
+		F552752916B06AFF0086AE53 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F552752816B06AFF0086AE53 /* ImageIO.framework */; };
 		F559534616A57A500079B985 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F559534416A57A500079B985 /* SVProgressHUD.m */; };
 		F559534716A57A500079B985 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F559534516A57A500079B985 /* SVProgressHUD.bundle */; };
 		F559535E16A5AF320079B985 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F559534C16A59B780079B985 /* Default.png */; };
@@ -95,6 +97,8 @@
 		F547E1C216AD5BCE00365FB3 /* checkConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = checkConnection.h; sourceTree = "<group>"; };
 		F547E1C316AD5BCE00365FB3 /* checkConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = checkConnection.m; sourceTree = "<group>"; };
 		F547E1C616AD5D6900365FB3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F552752516B06AEA0086AE53 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
+		F552752816B06AFF0086AE53 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		F559534316A57A500079B985 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		F559534416A57A500079B985 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		F559534516A57A500079B985 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
@@ -341,7 +345,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5AEFAA716AEF2B1004EC992 /* ImageIO.framework in Frameworks */,
+				F552752916B06AFF0086AE53 /* ImageIO.framework in Frameworks */,
 				F547E1C716AD5D6900365FB3 /* SystemConfiguration.framework in Frameworks */,
 				FA283CCD16A0890F00DBDC19 /* QuartzCore.framework in Frameworks */,
 				F5F6ADC3169C4F21000247D9 /* UIKit.framework in Frameworks */,
@@ -350,7 +354,7 @@
 				F5F6ADC9169C4F21000247D9 /* CoreData.framework in Frameworks */,
 				F5F6AE7D169C4F5A000247D9 /* liblept.a in Frameworks */,
 				F5F6AE7E169C4F5A000247D9 /* libtesseract_all.a in Frameworks */,
-				F5AEFAA516AEF256004EC992 /* SDWebImage.framework in Frameworks */,
+				F552752616B06AEA0086AE53 /* SDWebImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,8 +474,8 @@
 		F5F6ADC1169C4F21000247D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F5AEFAA616AEF2B1004EC992 /* ImageIO.framework */,
-				F5AEFAA416AEF256004EC992 /* SDWebImage.framework */,
+				F552752816B06AFF0086AE53 /* ImageIO.framework */,
+				F552752516B06AEA0086AE53 /* SDWebImage.framework */,
 				F547E1C616AD5D6900365FB3 /* SystemConfiguration.framework */,
 				FA283CCC16A0890F00DBDC19 /* QuartzCore.framework */,
 				F5F6ADC2169C4F21000247D9 /* UIKit.framework */,
@@ -955,6 +959,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/TerritoryOfSuccess\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TerritoryOfSuccess/TerritoryOfSuccess-Prefix.pch";
@@ -979,6 +984,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/TerritoryOfSuccess\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TerritoryOfSuccess/TerritoryOfSuccess-Prefix.pch";
