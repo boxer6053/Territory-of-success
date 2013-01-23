@@ -34,6 +34,8 @@
 {
     self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/code"];
     
+    self.checkRequest = kCode;
+    
     //створюемо запит
     self.request = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
     
@@ -55,6 +57,8 @@
         if (connection) {
             NSLog(@"З'єднання почалось");
             self.receivedData = [[NSMutableData alloc] init];
+            
+            CFDictionaryAddValue(self.connectionToInfoMapping, CFBridgingRetain(connection), CFBridgingRetain([NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInt:self.checkRequest] forKey:@"requestType"]));
         }
         else
         {
@@ -85,7 +89,7 @@
 {
     self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/news"];
     
-    self.checkRequest = news;
+    self.checkRequest = kNews;
     
     //створюемо запит
     self.request = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
@@ -134,7 +138,7 @@
 {
     self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/news"];
     
-    self.checkRequest = newsWithId;
+    self.checkRequest = kNewsWithId;
     
     //створюемо запит
     self.request = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];

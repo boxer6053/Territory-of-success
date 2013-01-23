@@ -283,12 +283,19 @@
     NSString *tempCodeStr = @"2EA4-29E9-CCE0-90EB";
     
 //    [self.api checkCode:[self.codeTextField text]];
-    [self.api checkCode:tempCodeStr];
+    
+    if (![self.codeTextField.text isEqualToString:@""]) {
+        [self.api checkCode:tempCodeStr];
+    }
 }
 
-- (void)finished
+- (void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
 {
-    self.receivedData = [self.api receivedData];
+//    self.receivedData = [self.api receivedData];
+    
+    if (type == kCode) {
+        NSLog(@"checking");
+    }
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info

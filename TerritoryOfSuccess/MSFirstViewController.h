@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "MSAPI.h"
-#import "JSONParserForDataEntenties.h"
 
 @interface MSFirstViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, UITextFieldDelegate, WsCompleteDelegate>
 {
