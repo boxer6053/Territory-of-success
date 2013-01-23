@@ -44,9 +44,9 @@
     
 }
 
-- (void)finished
+- (void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
 {
-    self.receivedData = [self.api receivedData];
+    
 }
 
 - (void)didReceiveMemoryWarning

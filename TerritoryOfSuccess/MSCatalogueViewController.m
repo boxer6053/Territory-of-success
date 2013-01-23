@@ -2,11 +2,13 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface MSCatalogueViewController ()
-
+//@property (strong, nonatomic) MSAPI *api;
+@property (strong, nonatomic) NSMutableData *receivedData;
 @end
 
 @implementation MSCatalogueViewController
 @synthesize tableView = _tableView;
+//@synthesize api = _api;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -19,6 +21,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+//    _api = [[MSAPI alloc] init];
+//    _api.delegate = self;
+//    [_api getFiveBrandsWithOffset:0];
+    
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [_tableView reloadData];
@@ -87,7 +93,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:myIdentifier];
     }
     
-//Првоерка на СегментКонтрол и подгрузка соответствующего контента в ячейки
+//Проверка на СегментКонтрол и подгрузка соответствующего контента в ячейки
     if (self.productAndBonusesControl.selectedSegmentIndex == 0) {
         cell.imageView.image = [UIImage imageNamed:@"photo_camera_1.png"];
         cell.textLabel.text = @"Название категории";
@@ -107,4 +113,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self performSegueWithIdentifier:@"toSubCatalogue" sender:self];
 }
+
+#pragma mark Web-delegate
+//-(void)finished{
+//    self.receivedData = [self.api receivedData];
+//}
 @end

@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MSInquirerViewController : UIViewController <UIGestureRecognizerDelegate>
-@property (weak, nonatomic) IBOutlet UIImageView *inquirerPic;
+@interface MSInquirerViewController : UIViewController <UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tableOfInquirers;
+
 
 @end

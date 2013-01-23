@@ -26,6 +26,8 @@
 @property NSTimer *slideShowTimer;
 @property NSTimer *userTouchTimer;
 
+@property (strong, nonatomic) MSAPI *api;
+
 @property (strong, nonatomic) UITapGestureRecognizer *tapRecognizer;
 
 @end
@@ -49,6 +51,9 @@
 
 @synthesize frameMarkWidth = _frameMarkWidth;
 @synthesize frameMarkHeight = _frameMarkHeight;
+
+@synthesize api = _api;
+@synthesize receivedData = _receivedData;
 
 - (void)viewDidLoad
 {
@@ -264,6 +269,26 @@
         
         [cameraNotAvailableMessage show];
     }
+}
+
+//перевірка коду
+- (IBAction)sendCode:(UIButton *)sender {
+    
+    NSLog(@"You click on send button!!!");
+    
+    self.api = [[MSAPI alloc] init];
+    
+    [self.api setDelegate:self];
+    
+    NSString *tempCodeStr = @"2EA4-29E9-CCE0-90EB";
+    
+//    [self.api checkCode:[self.codeTextField text]];
+    [self.api checkCode:tempCodeStr];
+}
+
+- (void)finished
+{
+    self.receivedData = [self.api receivedData];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info

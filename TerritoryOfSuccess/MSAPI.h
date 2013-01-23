@@ -7,10 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JSONParserForDataEntenties.h"
+
+typedef enum {auth = 1, regist = 2, news = 3, newsWithId = 4, code = 5, brands = 6, categories = 7, catalog = 8} requestTypes;
 
 @protocol WsCompleteDelegate
 
-- (void)finished;
+- (void)finishedWithDictionary:(NSDictionary *)dictionary
+               withTypeRequest:(requestTypes)type;
 
 @end
 
@@ -23,8 +27,14 @@
 @property (strong, nonatomic) NSURLConnection *connection;
 @property (strong, nonatomic) NSMutableString *params;
 @property (strong, nonatomic) NSMutableData *receivedData;
+@property requestTypes checkRequest;
+@property (nonatomic) CFMutableDictionaryRef connectionToInfoMapping;
+@property (strong, nonatomic) NSMutableDictionary *connectionInfo;
+
 
 - (void)getFiveNewsWithOffset:(int)offset;
 - (void)getNewsWithId:(NSString *)newsId;
+- (void)checkCode:(NSString *)code;
 
+//- (void)getFiveBrandsWithOffset:(int)offset;
 @end

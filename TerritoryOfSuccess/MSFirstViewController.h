@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MSAPI.h"
+#import "JSONParserForDataEntenties.h"
 
-@interface MSFirstViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, UITextFieldDelegate>
+@interface MSFirstViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, UITextFieldDelegate, WsCompleteDelegate>
 {
     UIImagePickerController *imagePickerController;
 }
@@ -23,9 +25,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *photoButton;
 @property (weak, nonatomic) IBOutlet UILabel *tintLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) NSMutableData *receivedData;
+
 
 - (IBAction)changeNewsPage:(id)sender;
 - (IBAction)takePhoto:(UIButton *)sender;
+- (IBAction)sendCode:(UIButton *)sender;
 - (UIImage *)cropImage:(UIImage *)image withX:(CGFloat)x withY:(CGFloat)y withWidth:(CGFloat)width withHeight:(CGFloat)height;
 - (NSString *)recognizeImage:(UIImage *)image;
 

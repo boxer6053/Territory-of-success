@@ -23,6 +23,8 @@
 
 - (void)viewDidLoad
 {
+ 
+
     if ([[UIScreen mainScreen] bounds].size.height == 568) {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*568.png"]]];
     }
@@ -30,7 +32,7 @@
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*480.png"]]];
     }
-    
+    [self.segment setTintColor:[UIColor blackColor]];
     self.allQuestionsMode = YES;
     self.myQuestionsMode = NO;
     self.tableView.delegate = self;
@@ -45,29 +47,16 @@
     [self createMyArray];
     
     [super viewDidLoad];
-    
-    // [newDictionary setObject:@"You" forKey:@"title"];
-    //
-    NSArray *questionTitles = [[NSArray alloc] initWithObjects:@"Вопрос 1", @"Вопрос 2", @"Вопрос 3", nil];
+       NSArray *questionTitles = [[NSArray alloc] initWithObjects:@"Вопрос 1", @"Вопрос 2", @"Вопрос 3", nil];
     NSArray *questionsDetails = [[NSArray alloc] initWithObjects:@"Описание вопроса 1", @"Описание вопроса 2", @"Описание вопроса 3", nil];
+    
     
     for(int i=0;i<questionsDetails.count;i++)
     {
         self.questionsDictionary = [[NSDictionary alloc] initWithObjects:questionsDetails forKeys:questionTitles];
-        ////
-        
-        //
-        [self.testDictionary setObject:[questionTitles objectAtIndex:i] forKey:@"Titles"];
+              [self.testDictionary setObject:[questionTitles objectAtIndex:i] forKey:@"Titles"];
         [self.testDictionary setObject:[questionsDetails objectAtIndex:i] forKey:@"Description"];
-        
-        //
-        //      //  [newDictionary setObject:@"World" forKey:@"Titles"];
-        //      //  NSLog(@"newDictionary titles %@", [self.questionsDictionary objectForKey:@"Titles"]);
-    }
-    //     self.questionsDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:@"FirstObject111",@"first",@"SecondObject222",@"second",@"ThirdObject333",@"third", nil];
-    
-    //    self.testDictionary = [NSDictionary dictionaryWithObject:questionsDetails forKey:questionTitles];
-    for (id key in [self.questionsDictionary allKeys])
+          }    for (id key in [self.questionsDictionary allKeys])
     {
         
         NSArray *array = [[NSMutableArray alloc] init];
@@ -83,20 +72,16 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     if(allQuestionsMode){
-        
         UIColor *selectedColor=[UIColor colorWithRed:255.0/255.0 green:140.0/255.0 blue:0.0/255.0 alpha:1.0];
         [[self.segment.subviews objectAtIndex:1] setTintColor:selectedColor];
         [[self.segment.subviews objectAtIndex:0] setTintColor:[UIColor blackColor]];
-        
     }
     if(myQuestionsMode)
     {
         UIColor *selectedColor=[UIColor colorWithRed:255.0/255.0 green:140.0/255.0 blue:0.0/255.0 alpha:1.0];
         [[self.segment.subviews objectAtIndex:0] setTintColor:selectedColor];
         [[self.segment.subviews objectAtIndex:1] setTintColor:[UIColor blackColor]];
-        
-        
-    }
+        }
     
     
 }
@@ -109,7 +94,7 @@
 
 -(void)createAllArray
 {
-    NSArray *dataArray = [[NSArray alloc] initWithObjects:@"Общий вопрос 1",@"Общий вопрос 2", nil];
+    NSArray *dataArray = [[NSArray alloc] initWithObjects:@"Обший вопрос 1",@"Общий вопрос 2", nil];
     allArray = dataArray;
 }
 
@@ -148,48 +133,18 @@
     UITableViewCell *cell;
     if (tableView == _tableView)
     {
-        static NSString* cellIdentifier = @"quesIDCell";
+        static NSString* cellIdentifier = @"cellID";
         cell = [_tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
         }
-        
-        
-        //
-        //    static NSString *CellIdentifier = @"QuestionCellIdentifier";
-        //    MSQuestionCell *cell1 = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        //    //    if (cell1 == nil) {
-        //    //        cell1 = [[MSQuestionCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-        //    //    }
-        //    if(!cell1)
-        //    {
-        //        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"MSQuestionCell" owner:nil options:nil];
-        //        for(id currentObject in topLevelObjects)
-        //        {
-        //            if([currentObject isKindOfClass:[MSQuestionCell class]])
-        //            {
-        //                cell1 = (MSQuestionCell *)currentObject;
-        //                break;
-        //            }
-        //        }
-        //    }
-        //
-        //    //
-        //    //         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        //    //         if (cell == nil) {
-        //    //             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-        //    //         }
+    
         if(self.myQuestionsMode)
         {
             int index = [indexPath indexAtPosition:1];
             NSString *key = [[self.questionsDictionary allKeys] objectAtIndex:index];
-            // NSString *value = [self.questionsDictionary objectForKey:key];
             cell.textLabel.text =key;
             cell.detailTextLabel.text = @"Оценка";
-            //        for(int i=0;i<self.questionsDictionary.count;i++)
-            //        {
-            //    cell.textLabel.text = [myArray objectAtIndex:indexPath.row]  ;
-            //        }
         }
         if(self.allQuestionsMode)
         {
