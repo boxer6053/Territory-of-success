@@ -77,7 +77,7 @@
 //    [self.dbManager getFiveNewsWithOffset:self.newsCount - 1];
 }
 
--(void)finished
+-(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)typefinished
 {
     
 }
@@ -113,7 +113,7 @@
 {
     if ([segue.identifier isEqualToString:@"newsDetails"])
     {
-        [segue.destinationViewController setContentOfArticle];
+        //[segue.destinationViewController setContentOfArticle:[NSString stringWithFormat:@"%@"]];
     }
 }
 @end

@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MSAPI.h"
 
-@interface MSNewsDetailsViewController : UIViewController
+@interface MSNewsDetailsViewController : UIViewController <WsCompleteDelegate>
 
--(void)setContentOfArticle;
+@property (weak, nonatomic) IBOutlet UIImageView *articleImageView;
+@property (weak, nonatomic) IBOutlet UILabel *articleTitleLabel;
+@property (weak, nonatomic) IBOutlet UITextView *articleTextView;
+
+-(void)setContentOfArticleWithId:(NSString *)articleId;
 
 @end
