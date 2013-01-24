@@ -31,8 +31,7 @@ typedef enum {kAuth = 1, kRegist = 2, kNews = 3, kNewsWithId = 4, kCode = 5, kBr
 @property (nonatomic) CFMutableDictionaryRef connectionToInfoMapping;
 @property (strong, nonatomic) NSMutableDictionary *connectionInfo;
 
-
-- (void)getAllNews;
+- (void)getFiveNewsWithOffset:(int)offset;
 - (void)getNewsWithId:(NSString *)newsId;
 - (void)checkCode:(NSString *)code;
 

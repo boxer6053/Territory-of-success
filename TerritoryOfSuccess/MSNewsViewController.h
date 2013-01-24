@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MSAPI.h"
 
-@interface MSNewsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
+@interface MSNewsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, WsCompleteDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *newsTableView;
 
 @end

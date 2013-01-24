@@ -7,11 +7,8 @@
 //
 
 #import "MSTabBarController.h"
-#import "MSAPI.h"
 
 @interface MSTabBarController ()
-
-@property (strong, nonatomic) MSAPI *api;
 
 @end
 
@@ -19,7 +16,6 @@
 
 @synthesize myTabBarController = _myTabBarController;
 @synthesize receivedData = _receivedData;
-@synthesize api = _api;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
