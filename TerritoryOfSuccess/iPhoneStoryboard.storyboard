@@ -890,7 +890,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="m1h-GF-ETN">
@@ -932,26 +932,27 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3dN-lb-EPq">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="3dN-lb-EPq">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="457"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Текст статьи" id="WBP-ad-G3e">
-                                        <rect key="frame" x="10" y="192" width="300" height="255"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Текст статьи" id="WBP-ad-G3e">
+                                        <rect key="frame" x="0.0" y="195" width="320" height="242"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Заголовок" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="l37-UB-TFh">
-                                        <rect key="frame" x="10" y="163" width="300" height="21"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Заголовок" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsLetterSpacingToFitWidth="YES" id="l37-UB-TFh">
+                                        <rect key="frame" x="5" y="150" width="310" height="42"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="NPh-Ms-E9e">
-                                        <rect key="frame" x="10" y="5" width="300" height="150"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
@@ -962,6 +963,7 @@
                     <navigationItem key="navigationItem" id="MQP-vo-gXr"/>
                     <connections>
                         <outlet property="articleImageView" destination="NPh-Ms-E9e" id="kuF-14-Gb6"/>
+                        <outlet property="articleScrollView" destination="3dN-lb-EPq" id="ivF-PA-GvF"/>
                         <outlet property="articleTextView" destination="WBP-ad-G3e" id="DA1-Km-V7T"/>
                         <outlet property="articleTitleLabel" destination="l37-UB-TFh" id="daZ-rg-KQO"/>
                     </connections>
@@ -1098,6 +1100,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSNewsDetailsViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="articleImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="articleScrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="articleTextView" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="articleTitleLabel" candidateClass="UILabel"/>
             </relationships>
@@ -1148,6 +1151,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ffa-R0-niF"/>
+        <segue reference="f75-2Y-K7q"/>
     </inferredMetricsTieBreakers>
 </document>

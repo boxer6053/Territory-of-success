@@ -19,9 +19,10 @@
 @implementation MSNewsDetailsViewController
 
 @synthesize dbApi = _dbApi;
-@synthesize articleImageView = _articleImageView;
 @synthesize articleTextView = _articleTextView;
+@synthesize articleImageView = _articleImageView;
 @synthesize articleTitleLabel = _articleTitleLabel;
+@synthesize articleScrollView = _articleScrollView;
 
 -(MSAPI *)dbApi
 {
@@ -45,6 +46,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if ([[UIScreen mainScreen] bounds].size.height == 568) {
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*568.png"]]];
+    }
+    else
+    {
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*480.png"]]];
+    }
+    
+    self.articleScrollView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+   // self.articleScrollView.layer.cornerRadius = 10.0;
+    
 	// Do any additional setup after loading the view.
 }
 
@@ -68,7 +81,8 @@
         [self.articleImageView.layer setCornerRadius:5.0];
         self.articleTitleLabel.text = [[dictionary valueForKey:@"post"] valueForKey:@"title"];
         self.articleTextView.text = [[dictionary valueForKey:@"post"] valueForKey:@"content"];
-//        self.newsPageControl.numberOfPages = arrayOfNews.count;
+        self.articleTextView.frame = CGRectMake(self.articleTextView.frame.origin.x, self.articleTextView.frame.origin.y, self.articleTextView.frame.size.width, self.articleTextView.contentSize.height);
+        self.articleScrollView.contentSize= CGSizeMake(self.articleScrollView.contentSize.width, self.articleTextView.frame.origin.y + self.articleTextView.frame.size.height + 5);
     }
 }
 @end
