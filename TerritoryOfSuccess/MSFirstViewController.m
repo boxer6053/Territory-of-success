@@ -280,12 +280,13 @@
     
     [self.api setDelegate:self];
     
-    NSString *tempCodeStr = @"3957-8BF4-9C17-789B";
+//    NSString *codeStr = @"3957-8BF4-9C17-789B";
+    NSString *codeStr = [self.codeTextField text];;
     
 //    [self.api checkCode:[self.codeTextField text]];
     
-    if (![self.codeTextField.text isEqualToString:@""]) {
-        [self.api checkCode:tempCodeStr];
+    if (![codeStr isEqualToString:@""] && codeStr.length == 19) {
+        [self.api checkCode:codeStr];
     }
 }
 
@@ -509,6 +510,30 @@ static inline double radians (double degrees)
     [textField resignFirstResponder];
     
     return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+//    string = @"";
+//    
+//    if (textField.text.length >= 19)
+//    {
+//        NSString *str;
+//        
+//        return YES;
+//    }
+//    
+//    return YES;
+    
+    if (textField.text.length == 4) {
+        NSMutableString *tempMutStr = [NSMutableString stringWithString:textField.text];
+        [tempMutStr appendString:@"-"];
+        textField.text = [NSString stringWithString:tempMutStr];
+    }
+    
+    NSUInteger newLength = [textField.text length] + [string length] - range.length;
+    
+    return (newLength > 19) ? NO : YES;
 }
 
 @end

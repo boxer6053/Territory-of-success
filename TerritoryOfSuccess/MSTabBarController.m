@@ -39,7 +39,7 @@
     [self.api setDelegate:self];
     
 //  [self.api getNewsWithId:@"3"];
-//    [self.api getAllNews];
+    [self.api getAllNews];
 //    [self.api getNewsWithId:@"3"];
 //    [self.api checkCode:@"2EA4-29E9-CCE0-90EB"];
     
