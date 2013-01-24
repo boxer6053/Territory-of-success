@@ -44,6 +44,7 @@
     
     //вказуэм параметри POST запиту
     self.params = [NSMutableString stringWithFormat:@"code=%@", code];
+    [self.params appendFormat:@"&lang=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
     
     //вказуэм тіло запиту
     [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
@@ -149,6 +150,7 @@
     
     //вказуэм параметри POST запиту
     self.params = [NSMutableString stringWithFormat:@"news_id=%@", newsId];
+    [self.params appendFormat:@"&lang=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
     
     //вказуэм тіло запиту
     [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
