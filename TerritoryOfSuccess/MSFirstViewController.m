@@ -279,8 +279,6 @@
 
 - (void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
 {
-//    self.receivedData = [self.api receivedData];
-    
     if (type == kCode) {
         NSLog(@"checking");
     }
@@ -300,12 +298,11 @@
             UIButton *subViewButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.newsScrollView.frame.size.width, self.newsScrollView.frame.size.height)];
             [subViewButton addTarget:self
                               action:@selector(picturePressed)
-                    forControlEvents:UIControlEventTouchDown];
+                    forControlEvents:UIControlEventTouchUpInside];
         
             NSURL *imageUrl = [NSURL URLWithString:[[arrayOfNews objectAtIndex:i] valueForKey:@"image" ]];
             [subViewButton setBackgroundImageWithURL:imageUrl forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
             [subView addSubview:subViewButton];
-            
         }
         self.newsScrollView.contentSize = CGSizeMake(self.newsScrollView.frame.size.width * arrayOfNews.count, self.newsScrollView.frame.size.height);
         [self.newsScrollView.layer setCornerRadius:5.0];
