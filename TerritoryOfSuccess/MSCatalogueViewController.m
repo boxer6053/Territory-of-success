@@ -2,13 +2,18 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface MSCatalogueViewController ()
-//@property (strong, nonatomic) MSAPI *api;
+
+@property (strong, nonatomic) NSArray *arrayOfCategories;
+@property (strong, nonatomic) NSArray *arrayOfBrands;
+@property (strong, nonatomic) MSAPI *api;
 @property (strong, nonatomic) NSMutableData *receivedData;
 @end
 
 @implementation MSCatalogueViewController
 @synthesize tableView = _tableView;
-//@synthesize api = _api;
+@synthesize api = _api;
+@synthesize arrayOfBrands = _arrayOfBrands;
+@synthesize arrayOfCategories = _arrayOfCategories;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -18,12 +23,17 @@
     return self;
 }
 
+- (MSAPI *) api{
+    if(!_api){
+        _api = [[MSAPI alloc]init];
+        _api.delegate = self;
+    }
+    return _api;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    _api = [[MSAPI alloc] init];
-//    _api.delegate = self;
-//    [_api getFiveBrandsWithOffset:0];
     
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -115,7 +125,21 @@
 }
 
 #pragma mark Web-delegate
-//-(void)finished{
-//    self.receivedData = [self.api receivedData];
-//}
+
+-(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type{
+    if (type == kBrands){
+        _arrayOfBrands = [dictionary valueForKey:@"list"];
+        for (int i = 0; i < _arrayOfBrands.count; i++){
+            NSURL *titleURL = [NSURL URLWithString:[[_arrayOfBrands objectAtIndex:i] valueForKey:@"title"]];
+        }
+    }
+    
+    if (type == kCategories){
+        _arrayOfCategories = [dictionary valueForKey:@"list"];
+        for (int i = 0; i < _arrayOfCategories.count; i++){
+            NSURL *titleURL = [NSURL URLWithString:[[_arrayOfCategories objectAtIndex:i] valueForKey:@"title"]];
+        }
+    }
+}
+
 @end

@@ -2,7 +2,10 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface MSDetailViewController ()
-
+{
+    BOOL shareIsPressed;
+    BOOL accessToContinue;
+}
 @end
 
 @implementation MSDetailViewController
@@ -19,6 +22,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    shareIsPressed = NO;
+    accessToContinue = YES;
     if ([[UIScreen mainScreen] bounds].size.height == 568) {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*568.png"]]];
     }
@@ -70,4 +75,35 @@
     [super didReceiveMemoryWarning];
 }
 
+- (IBAction)fbButtonPressed:(id)sender {
+}
+- (IBAction)twButtonPressed:(id)sender {
+}
+- (IBAction)vkButtonPressed:(id)sender {
+}
+
+- (IBAction)shareButtonPressed:(id)sender {
+    if (shareIsPressed == NO && accessToContinue == YES) {
+        [UIView animateWithDuration:1 animations:^{
+            accessToContinue = NO;
+            self.vkButton.alpha = 1;
+            self.fbButton.alpha = 1;
+            self.twButton.alpha = 1;
+            shareIsPressed = YES;
+        } completion:^(BOOL finished) {
+            accessToContinue = YES;
+        }];
+    }else if(shareIsPressed == YES && accessToContinue == YES){
+        [UIView animateWithDuration:1 animations:^{
+            accessToContinue = NO;
+            self.vkButton.alpha = 0;
+            self.fbButton.alpha = 0;
+            self.twButton.alpha = 0;
+            shareIsPressed = NO;
+        } completion:^(BOOL finished) {
+            accessToContinue = YES;
+        }];
+    }
+
+}
 @end

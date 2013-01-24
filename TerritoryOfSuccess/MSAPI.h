@@ -35,5 +35,6 @@ typedef enum {kAuth = 1, kRegist = 2, kNews = 3, kNewsWithId = 4, kCode = 5, kBr
 - (void)getNewsWithId:(NSString *)newsId;
 - (void)checkCode:(NSString *)code;
 
-//- (void)getFiveBrandsWithOffset:(int)offset;
+- (void)getFiveBrandsWithOffset:(int)offset;
+- (void)getCategories;
 @end
