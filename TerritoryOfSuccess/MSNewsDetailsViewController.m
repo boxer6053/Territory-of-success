@@ -7,12 +7,32 @@
 //
 
 #import "MSNewsDetailsViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface MSNewsDetailsViewController ()
+
+@property (nonatomic)MSAPI *dbApi;
 
 @end
 
 @implementation MSNewsDetailsViewController
+
+@synthesize dbApi = _dbApi;
+@synthesize articleTextView = _articleTextView;
+@synthesize articleImageView = _articleImageView;
+@synthesize articleTitleLabel = _articleTitleLabel;
+@synthesize articleScrollView = _articleScrollView;
+
+-(MSAPI *)dbApi
+{
+    if(!_dbApi)
+    {
+        _dbApi = [[MSAPI alloc]init];
+        _dbApi.delegate = self;
+    }
+    return _dbApi;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,6 +46,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if ([[UIScreen mainScreen] bounds].size.height == 568) {
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*568.png"]]];
+    }
+    else
+    {
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*480.png"]]];
+    }
+    
+    self.articleScrollView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+   // self.articleScrollView.layer.cornerRadius = 10.0;
+    
 	// Do any additional setup after loading the view.
 }
 
@@ -35,8 +67,22 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setContentOfArticle
+- (void)setContentOfArticleWithId:(NSString *)articleId
 {
-    
+    [self.dbApi getNewsWithId:articleId];
+}
+
+-(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
+{
+    if (type == kNewsWithId)
+    {
+        NSURL *imageUrl = [NSURL URLWithString: [[dictionary valueForKey:@"post"] valueForKey:@"image"]];
+        [self.articleImageView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
+        [self.articleImageView.layer setCornerRadius:5.0];
+        self.articleTitleLabel.text = [[dictionary valueForKey:@"post"] valueForKey:@"title"];
+        self.articleTextView.text = [[dictionary valueForKey:@"post"] valueForKey:@"content"];
+        self.articleTextView.frame = CGRectMake(self.articleTextView.frame.origin.x, self.articleTextView.frame.origin.y, self.articleTextView.frame.size.width, self.articleTextView.contentSize.height);
+        self.articleScrollView.contentSize= CGSizeMake(self.articleScrollView.contentSize.width, self.articleTextView.frame.origin.y + self.articleTextView.frame.size.height + 5);
+    }
 }
 @end

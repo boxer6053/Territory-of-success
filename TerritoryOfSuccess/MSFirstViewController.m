@@ -152,15 +152,16 @@
     [self.newsScrollView scrollRectToVisible:frame animated:YES];
 }
 
-- (void)picturePressed
+- (void)picturePressed:(UIButton *)sender
 {
-    [self performSegueWithIdentifier:@"newsDetailsFromHome" sender:self];
+    [self performSegueWithIdentifier:@"newsDetailsFromHome" sender:sender];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"newsDetailsFromHome"])
     {
-        [segue.destinationViewController setContentOfArticle];
+        UIButton *currentSender = sender;
+        [segue.destinationViewController setContentOfArticleWithId:[NSString stringWithFormat:@"%u",currentSender.tag]];
     }
 }
 
@@ -298,11 +299,12 @@
             
             UIButton *subViewButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.newsScrollView.frame.size.width, self.newsScrollView.frame.size.height)];
             [subViewButton addTarget:self
-                              action:@selector(picturePressed)
+                              action:@selector(picturePressed:)
                     forControlEvents:UIControlEventTouchUpInside];
         
             NSURL *imageUrl = [NSURL URLWithString:[[arrayOfNews objectAtIndex:i] valueForKey:@"image" ]];
             [subViewButton setBackgroundImageWithURL:imageUrl forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
+            subViewButton.tag = [[[arrayOfNews objectAtIndex:i]valueForKey:@"id"] integerValue];
             [subView addSubview:subViewButton];
         }
         self.newsScrollView.contentSize = CGSizeMake(self.newsScrollView.frame.size.width * arrayOfNews.count, self.newsScrollView.frame.size.height);

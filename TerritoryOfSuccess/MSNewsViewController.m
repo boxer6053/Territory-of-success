@@ -10,21 +10,38 @@
 #import "MSNewsDetailsViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "JSONParserForDataEntenties.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface MSNewsViewController ()
 
-@property MSAPI *dbManager;
+@property (nonatomic)  MSAPI *dbApi;
 @property int newsCount;
-@property NSDictionary *dictinaryOfNews;
+@property NSMutableArray *arrayOfNews;
+@property NSArray *lastDownloadedNews;
+@property NSInteger totalNewsCount;
+@property UIButton *footerButton;
 
 @end
 
 @implementation MSNewsViewController
 
 @synthesize newsTableView = _newsTableView;
-@synthesize dbManager = _dbManager;
-@synthesize dictinaryOfNews = _dictinaryOfNews;
+@synthesize dbApi = _dbApi;
+@synthesize arrayOfNews = _arrayOfNews;
 @synthesize newsCount = _newsCount;
+@synthesize lastDownloadedNews = _lastDownloadedNews;
+@synthesize totalNewsCount = _totalNewsCount;
+@synthesize footerButton = _footerButton;
+
+-(MSAPI *)dbApi
+{
+    if(!_dbApi)
+    {
+        _dbApi = [[MSAPI alloc]init];
+        _dbApi.delegate = self;
+    }
+    return _dbApi;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,6 +56,9 @@
 {
     [super viewDidLoad];
     
+    self.arrayOfNews = [[NSMutableArray alloc]init];
+    [self.dbApi getFiveNewsWithOffset:0];
+    
     if ([[UIScreen mainScreen] bounds].size.height == 568) {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*568.png"]]];
     }
@@ -46,16 +66,16 @@
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*480.png"]]];
     }
-    self.newsCount = 5; //number of default 5 news thet loaded at start of app
+    
     self.newsTableView.layer.cornerRadius = 10;
     self.newsTableView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.4];
     [self.newsTableView.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0].CGColor];
     [self.newsTableView.layer setBorderWidth:1.0f];
-    UIButton *footerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.newsTableView.frame.size.width, 50)];
-    [footerButton setTitle:@"Загрузить еще" forState:UIControlStateNormal];
-    [footerButton setTitleColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4] forState:UIControlStateNormal];
-    [footerButton addTarget:self action:@selector(moreNews) forControlEvents:UIControlEventTouchDown];
-    self.newsTableView.tableFooterView = footerButton;
+    self.footerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.newsTableView.frame.size.width, 50)];
+    [self.footerButton setTitle:@"Загрузить еще" forState:UIControlStateNormal];
+    [self.footerButton setTitleColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4] forState:UIControlStateNormal];
+    [self.footerButton addTarget:self action:@selector(moreNews) forControlEvents:UIControlEventTouchDown];
+    self.newsTableView.tableFooterView = self.footerButton;
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,20 +86,27 @@
 
 - (void)moreNews
 {
-    for (int i  = 0; i<3; i++)
+    if (self.arrayOfNews.count < self.totalNewsCount)
+    {
+        [self.dbApi getFiveNewsWithOffset:self.arrayOfNews.count - 1];
+    }
+    else
+    {
+        [self.footerButton setTitle:@"Загружены все новости" forState:UIControlStateNormal];
+    }
+        
+}
+
+-(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)typefinished
+{
+    [self.arrayOfNews addObjectsFromArray: [dictionary valueForKey:@"list"]];
+    self.lastDownloadedNews = [dictionary valueForKey:@"list"];
+    for (int i  = 0; i<self.lastDownloadedNews.count; i++)
     {
         NSArray *insertIndexPath = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.newsCount inSection:0]];
         self.newsCount++;
         [self.newsTableView insertRowsAtIndexPaths: insertIndexPath withRowAnimation:NO];
     }
-//    self.dbManager = [[MSAPI alloc]init];
-//    self.dbManager.delegate = self;
-//    [self.dbManager getFiveNewsWithOffset:self.newsCount - 1];
-}
-
--(void)finished
-{
-    
 }
 
 #pragma mark Table View
@@ -97,23 +124,26 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:myIdentifier];
     }
-    cell.imageView.image = [UIImage imageNamed:@"photo_camera_1.png"];
-    cell.textLabel.text = @"Заголовок новости";
+    [cell.imageView setImageWithURL:[[self.arrayOfNews objectAtIndex:indexPath.row] valueForKey:@"image"]  placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
+    cell.textLabel.text = [[self.arrayOfNews objectAtIndex:indexPath.row] valueForKey:@"title"];
     cell.textLabel.alpha = 1.0;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%u",indexPath.row];
+    cell.detailTextLabel.text = [[self.arrayOfNews objectAtIndex:indexPath.row] valueForKey:@"brief"];
+    cell.tag = [[[self.arrayOfNews objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"newsDetails" sender:self];
+    UITableViewCell * currentCell = [self.newsTableView cellForRowAtIndexPath:indexPath];
+    [self performSegueWithIdentifier:@"newsDetails" sender:currentCell];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"newsDetails"])
     {
-        [segue.destinationViewController setContentOfArticle];
+        UITableViewCell *currentCell = sender;
+        [segue.destinationViewController setContentOfArticleWithId:[NSString stringWithFormat:@"%d",currentCell.tag]];
     }
 }
 @end
