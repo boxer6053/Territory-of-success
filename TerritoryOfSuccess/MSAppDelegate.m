@@ -30,6 +30,10 @@
     
     [self customizeInterface];
     
+    NSString *currentLanguage = [[NSLocale preferredLanguages] objectAtIndex:0];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:currentLanguage forKey:@"currentLanguage"];
+    
     return YES;
 }
 

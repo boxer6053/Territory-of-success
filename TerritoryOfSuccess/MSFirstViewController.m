@@ -280,7 +280,7 @@
     
     [self.api setDelegate:self];
     
-    NSString *tempCodeStr = @"2EA4-29E9-CCE0-90EB";
+    NSString *tempCodeStr = @"3957-8BF4-9C17-789B";
     
 //    [self.api checkCode:[self.codeTextField text]];
     
