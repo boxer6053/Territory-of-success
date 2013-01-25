@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F52816D616A5760F00E64924 /* MSQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52816D516A5760F00E64924 /* MSQuestionsViewController.m */; };
+		F545779F16B2DB5100B4221E /* inquirerPic.png in Resources */ = {isa = PBXBuildFile; fileRef = F545779E16B2DB5100B4221E /* inquirerPic.png */; };
 		F547E1BC16AD556100365FB3 /* MSAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = F547E1BB16AD556100365FB3 /* MSAPI.m */; };
 		F547E1C416AD5BCE00365FB3 /* checkConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = F547E1C316AD5BCE00365FB3 /* checkConnection.m */; };
 		F547E1C716AD5D6900365FB3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F547E1C616AD5D6900365FB3 /* SystemConfiguration.framework */; };
@@ -96,6 +97,7 @@
 /* Begin PBXFileReference section */
 		F52816D416A5760F00E64924 /* MSQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSQuestionsViewController.h; path = ../MSQuestionsViewController.h; sourceTree = "<group>"; };
 		F52816D516A5760F00E64924 /* MSQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSQuestionsViewController.m; path = ../MSQuestionsViewController.m; sourceTree = "<group>"; };
+		F545779E16B2DB5100B4221E /* inquirerPic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inquirerPic.png; sourceTree = "<group>"; };
 		F547E1BA16AD556100365FB3 /* MSAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPI.h; sourceTree = "<group>"; };
 		F547E1BB16AD556100365FB3 /* MSAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSAPI.m; sourceTree = "<group>"; };
 		F547E1C216AD5BCE00365FB3 /* checkConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = checkConnection.h; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 				F59B7FA916A86E600084FEE3 /* news_TOS.png */,
 				F59B7FA716A86E540084FEE3 /* catalogue_TOS.png */,
 				F59B7FA516A86E480084FEE3 /* home_TOS.png */,
+				F545779E16B2DB5100B4221E /* inquirerPic.png */,
 				F59B7FA316A86B620084FEE3 /* backButton.png */,
 				FAF4C8B216A84AC700A1B1B8 /* button_orange.png */,
 				FA1BEA9516A842A100F2C219 /* like.png */,
@@ -867,6 +870,7 @@
 				FA0A301316B1B68800EDF04A /* paper.png in Resources */,
 				FA1AB2EB16B2B924001827A6 /* px_by_Gre3g.png in Resources */,
 				FA1AB2ED16B2B936001827A6 /* bg.png in Resources */,
+				F545779F16B2DB5100B4221E /* inquirerPic.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

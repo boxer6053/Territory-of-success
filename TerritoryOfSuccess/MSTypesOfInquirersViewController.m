@@ -13,8 +13,9 @@
 @end
 
 @implementation MSTypesOfInquirersViewController
-@synthesize navBar = _navBar;
-@synthesize cancelButton = _cancelButton;
+@synthesize inquirerPic = _inquirerPic;
+@synthesize whitchIsBetterButton     = _whitchIsBetterButton;
+@synthesize gradeButton = _gradeButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,17 +28,21 @@
 
 - (void)viewDidLoad
 {
-    [_navBar setTintColor:[UIColor whiteColor]];
-   _navBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor blackColor] forKey:UITextAttributeTextColor];
-   // [_cancelButton setTintColor:[UIColor blackColor]];
     
     
     if ([[UIScreen mainScreen] bounds].size.height == 568) {
-        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*568.png"]]];
+        //_inquirerPic.frame = CGRectMake(20, 50, 280, 280);
+        
+        
     }
     else
     {
-        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*480.png"]]];
+        _inquirerPic.frame = CGRectMake(20, 155, 280, 302);
+        
+        
+        
     }
     
     [super viewDidLoad];
@@ -53,5 +58,7 @@
 - (IBAction)cancelButton:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
     
+}
+- (IBAction)toWhitchIsBetter:(id)sender {
 }
 @end
