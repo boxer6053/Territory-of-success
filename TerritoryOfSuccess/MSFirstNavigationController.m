@@ -28,13 +28,9 @@
     [super viewDidLoad];    
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"logoBackground.png"] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationBar setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
-                                                 [UIColor blackColor], UITextAttributeTextColor,
-                                                 [UIFont fontWithName:@"EuphemiaUCAS-Bold" size:20.0], UITextAttributeFont,
-                                                 nil]];
-    [self.mainNavigationBar setBackgroundImage:[UIImage imageNamed:@"mainLogoBackground_center.png"] forBarMetrics:UIBarMetricsDefault];
+-(void)viewWillAppear:(BOOL)animated
+{
+
 }
 
 - (void)didReceiveMemoryWarning

@@ -48,14 +48,14 @@
     [super viewDidLoad];
     
     if ([[UIScreen mainScreen] bounds].size.height == 568) {
-        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*568.png"]]];
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
     else
     {
-        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*480.png"]]];
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
     
-    self.articleScrollView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+    self.articleScrollView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.0];
    // self.articleScrollView.layer.cornerRadius = 10.0;
     
 	// Do any additional setup after loading the view.
@@ -81,7 +81,11 @@
         [self.articleImageView.layer setCornerRadius:5.0];
         self.articleTitleLabel.text = [[dictionary valueForKey:@"post"] valueForKey:@"title"];
         self.articleTextView.text = [[dictionary valueForKey:@"post"] valueForKey:@"content"];
-        self.articleTextView.frame = CGRectMake(self.articleTextView.frame.origin.x, self.articleTextView.frame.origin.y, self.articleTextView.frame.size.width, self.articleTextView.contentSize.height);
+        self.articleBriefTextView.text = [[dictionary valueForKey:@"post"] valueForKey:@"brief"];
+        self.articleDateLabel.text = [[dictionary valueForKey:@"post"] valueForKey:@"date"];
+        self.articleBriefTextView.frame = CGRectMake(self.articleBriefTextView.frame.origin.x, self.articleBriefTextView.frame.origin.y, self.articleBriefTextView.frame.size.width, self.articleBriefTextView.contentSize.height);
+        self.articleBriefTextView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.1];
+        self.articleTextView.frame = CGRectMake(self.articleTextView.frame.origin.x, self.articleBriefTextView.frame.origin.y + self.articleBriefTextView.frame.size.height, self.articleTextView.frame.size.width, self.articleTextView.contentSize.height);
         self.articleScrollView.contentSize= CGSizeMake(self.articleScrollView.contentSize.width, self.articleTextView.frame.origin.y + self.articleTextView.frame.size.height + 5);
     }
 }
