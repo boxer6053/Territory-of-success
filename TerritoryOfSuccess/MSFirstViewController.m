@@ -269,7 +269,7 @@
     
     [self.api setDelegate:self];
     
-//    NSString *codeStr = @"3957-8BF4-9C17-789B";
+//    NSString *codeStr = @"2EA4*29E9*CCE0*90EB";
     NSString *codeStr = [self.codeTextField text];;
     
 //    [self.api checkCode:[self.codeTextField text]];
@@ -277,6 +277,34 @@
     if (![codeStr isEqualToString:@""] && codeStr.length == 19) {
         [self.api checkCode:codeStr];
     }
+    
+    [self showDialogView];
+    
+}
+
+- (void)showDialogView
+{
+    UIView *dialogView = [[UIView alloc] initWithFrame:CGRectMake(5, 568, 310, 400)];
+    
+    [dialogView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
+    [dialogView.layer setCornerRadius:10.0];
+    [dialogView setClipsToBounds:YES];
+    
+    UIToolbar *toolBar = [[UIToolbar alloc] init];
+    [toolBar setFrame:CGRectMake(0, 0, 280, 44)];
+    
+    [self.scrollView addSubview:dialogView];
+    
+    UIView *topBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, dialogView.frame.size.width, 44.0)];
+    [topBarView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1]];
+//    [topBarView.layer setBorderWidth:1.0];
+//    [topBarView.layer setBorderColor:[[UIColor grayColor] CGColor]];
+    [dialogView addSubview:topBarView];
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.4];
+    [dialogView setFrame:CGRectMake(5, 5, 310, 400)];
+    [UIView commitAnimations];
 }
 
 - (void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
@@ -528,26 +556,49 @@ static inline double radians (double degrees)
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-//    string = @"";
-//    
-//    if (textField.text.length >= 19)
-//    {
-//        NSString *str;
-//        
-//        return YES;
-//    }
-//    
-//    return YES;
-    
-    if (textField.text.length == 4) {
+    //бидло код трололо
+    if ((range.location == 4 || range.location == 9 || range.location == 14) && range.location != 0 && ![string isEqualToString:@""]) {
+        
+        NSRange myRange;
+        myRange.location = range.location + 1;
+        myRange.length = 1;
+        
         NSMutableString *tempMutStr = [NSMutableString stringWithString:textField.text];
-        [tempMutStr appendString:@"-"];
-        textField.text = [NSString stringWithString:tempMutStr];
+        
+        if ([string isEqualToString:@"-"]) {
+            return YES;
+        }
+        else
+        {
+            if (range.location < [textField.text length]) {
+                return  NO;
+            }
+            else
+            {
+                [tempMutStr insertString:@"-" atIndex:range.location];
+                textField.text = [NSString stringWithString:tempMutStr];
+            }
+        }
     }
     
     NSUInteger newLength = [textField.text length] + [string length] - range.length;
     
-    return (newLength > 19) ? NO : YES;
+    if ([string isEqualToString:@""]) {
+        return YES;
+    }
+    else
+    {
+        
+        if (newLength > 19) {
+            return NO;
+        }
+        else
+        {
+            return YES;
+        }
+        
+//        return (newLength > 19) ? NO : YES;
+    }
 }
 
 @end

@@ -32,5 +32,7 @@
 - (IBAction)sendCode:(UIButton *)sender;
 - (UIImage *)cropImage:(UIImage *)image withX:(CGFloat)x withY:(CGFloat)y withWidth:(CGFloat)width withHeight:(CGFloat)height;
 - (NSString *)recognizeImage:(UIImage *)image;
+- (void)showDialogView;
+- (void)closeDialogView;
 
 @end
