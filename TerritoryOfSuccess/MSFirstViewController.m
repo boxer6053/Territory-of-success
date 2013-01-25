@@ -80,28 +80,32 @@
     [self.scrollView setShowsVerticalScrollIndicator:NO];
     
     if ([[UIScreen mainScreen] bounds].size.height == 568) {
-        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*568.png"]]];
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
     else
     {
-        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*480.png"]]];
-        self.codeInputView.frame = CGRectMake(self.codeInputView.frame.origin.x, self.codeInputView.frame.origin.y - 35, self.codeInputView.frame.size.width, 144);
-        self.titleLabel.frame = CGRectMake(self.titleLabel.frame.origin.x, self.titleLabel.frame.origin.y - 35, self.titleLabel.frame.size.width, self.titleLabel.frame.size.height);
-        self.sendCodeButton.frame = CGRectMake(self.sendCodeButton.frame.origin.x, self.sendCodeButton.frame.origin.y - 10, self.sendCodeButton.frame.size.width, self.sendCodeButton.frame.size.height);
-        self.photoButton.frame = CGRectMake(self.photoButton.frame.origin.x, self.photoButton.frame.origin.y - 10, self.photoButton.frame.size.width, self.photoButton.frame.size.height);
-        self.tintLabel.frame = CGRectMake(self.tintLabel.frame.origin.x, self.tintLabel.frame.origin.y - 10, self.tintLabel.frame.size.width, self.tintLabel.frame.size.height);
-        self.codeTextField.frame = CGRectMake(self.codeTextField.frame.origin.x, self.codeTextField.frame.origin.y - 10, self.codeTextField.frame.size.width, self.codeTextField.frame.size.height);
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
+        self.codeInputView.frame = CGRectMake(self.codeInputView.frame.origin.x, self.codeInputView.frame.origin.y - 55, self.codeInputView.frame.size.width, self.codeInputView.frame.size.height);
+        //self.titleLabel.frame = CGRectMake(self.titleLabel.frame.origin.x, self.titleLabel.frame.origin.y - 35, self.titleLabel.frame.size.width, self.titleLabel.frame.size.height);
+        //self.sendCodeButton.frame = CGRectMake(self.sendCodeButton.frame.origin.x, self.sendCodeButton.frame.origin.y - 10, self.sendCodeButton.frame.size.width, self.sendCodeButton.frame.size.height);
+        //self.photoButton.frame = CGRectMake(self.photoButton.frame.origin.x, self.photoButton.frame.origin.y - 10, self.photoButton.frame.size.width, self.photoButton.frame.size.height);
+        //self.tintLabel.frame = CGRectMake(self.tintLabel.frame.origin.x, self.tintLabel.frame.origin.y - 10, self.tintLabel.frame.size.width, self.tintLabel.frame.size.height);
+        //self.codeTextField.frame = CGRectMake(self.codeTextField.frame.origin.x, self.codeTextField.frame.origin.y - 10, self.codeTextField.frame.size.width, self.codeTextField.frame.size.height);
     }
+    self.titleLabel.hidden = YES;
     
-    self.newsView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.7];
-    self.codeInputView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.7];
+    CGRect frame = CGRectMake(self.codeTextField.frame.origin.x, self.codeTextField.frame.origin.y, self.codeTextField.frame.size.width, 45);
+    self.codeTextField.frame = frame;
+    
+    self.newsView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
+    self.codeInputView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
     self.newsPageControl.pageIndicatorTintColor = [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0];
     self.newsPageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:170/255.0 green:170/255.0 blue:170/255.0 alpha:1.0];
-    [self.newsView.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0].CGColor];
+    [self.newsView.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:0.7].CGColor];
     [self.newsView.layer setBorderWidth:1.0f];
     
     [self.codeInputView.layer setCornerRadius:7.0];
-    [self.codeInputView.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0].CGColor];
+    [self.codeInputView.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:0.7].CGColor];
     [self.codeInputView.layer setBorderWidth:1.0f];
     
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];

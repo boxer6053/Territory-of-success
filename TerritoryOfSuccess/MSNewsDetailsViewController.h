@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *articleTitleLabel;
 @property (weak, nonatomic) IBOutlet UITextView *articleTextView;
 @property (weak, nonatomic) IBOutlet UIScrollView *articleScrollView;
+@property (weak, nonatomic) IBOutlet UITextView *articleBriefTextView;
+@property (weak, nonatomic) IBOutlet UILabel *articleDateLabel;
 
 -(void)setContentOfArticleWithId:(NSString *)articleId;
 

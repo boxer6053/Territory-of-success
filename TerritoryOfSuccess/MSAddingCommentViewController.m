@@ -20,11 +20,11 @@
 {
     [super viewDidLoad];
     if ([[UIScreen mainScreen] bounds].size.height == 568) {
-        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*568.png"]]];
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
     else
     {
-        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*480.png"]]];
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
         self.inputText.frame = CGRectMake(self.inputText.frame.origin.x, self.inputText.frame.origin.y - 20, self.inputText.frame.size.width, self.inputText.frame.size.width);
         self.containView.frame = CGRectMake(self.containView.frame.origin.x, self.containView.frame.origin.y, self.containView.frame.size.width, self.containView.frame.size.height - 88);
         self.starView.frame = CGRectMake(self.starView.frame.origin.x, self.stepper.frame.origin.y, self.starView.frame.size.width, self.starView.frame.size.height);
