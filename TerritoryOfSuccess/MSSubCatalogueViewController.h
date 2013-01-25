@@ -1,5 +1,7 @@
 #import <UIKit/UIKit.h>
+#import "MSAPI.h"
+@interface MSSubCatalogueViewController : UITableViewController <WsCompleteDelegate>
 
-@interface MSSubCatalogueViewController : UITableViewController
+-(void) writeANumber:(int)trololo;
 
 @end

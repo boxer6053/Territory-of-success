@@ -37,4 +37,5 @@ typedef enum {kAuth = 1, kRegist = 2, kNews = 3, kNewsWithId = 4, kCode = 5, kBr
 
 - (void)getFiveBrandsWithOffset:(int)offset;
 - (void)getCategories;
+- (void)getProductsWithOffset:(int)offset withBrandId:(int)brandId withCategoryId:(int)categoryId;
 @end
