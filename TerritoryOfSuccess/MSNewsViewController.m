@@ -11,6 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "JSONParserForDataEntenties.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "MSNewsCell.h"
 
 @interface MSNewsViewController ()
 
@@ -60,17 +61,17 @@
     [self.dbApi getFiveNewsWithOffset:0];
     
     if ([[UIScreen mainScreen] bounds].size.height == 568) {
-        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*568.png"]]];
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
     else
     {
-        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*480.png"]]];
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
     
-    self.newsTableView.layer.cornerRadius = 10;
-    self.newsTableView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.4];
-    [self.newsTableView.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0].CGColor];
-    [self.newsTableView.layer setBorderWidth:1.0f];
+//    self.newsTableView.layer.cornerRadius = 10;
+    self.newsTableView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.0];
+//    [self.newsTableView.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0].CGColor];
+//    [self.newsTableView.layer setBorderWidth:1.0f];
     self.footerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.newsTableView.frame.size.width, 50)];
     [self.footerButton setTitle:@"Загрузить еще" forState:UIControlStateNormal];
     [self.footerButton setTitleColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4] forState:UIControlStateNormal];
@@ -120,14 +121,14 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString* myIdentifier = @"newsCellIdentifier";
-    UITableViewCell *cell = [self.newsTableView dequeueReusableCellWithIdentifier:myIdentifier];
+    MSNewsCell *cell = [self.newsTableView dequeueReusableCellWithIdentifier:myIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:myIdentifier];
+        cell = [[MSNewsCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:myIdentifier];
     }
-    [cell.imageView setImageWithURL:[[self.arrayOfNews objectAtIndex:indexPath.row] valueForKey:@"image"]  placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
-    cell.textLabel.text = [[self.arrayOfNews objectAtIndex:indexPath.row] valueForKey:@"title"];
-    cell.textLabel.alpha = 1.0;
-    cell.detailTextLabel.text = [[self.arrayOfNews objectAtIndex:indexPath.row] valueForKey:@"brief"];
+    [cell.newsImageView setImageWithURL:[[self.arrayOfNews objectAtIndex:indexPath.row] valueForKey:@"image"]  placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
+    cell.newsTitleLabel.text = [[self.arrayOfNews objectAtIndex:indexPath.row] valueForKey:@"title"];
+    cell.newsDetailLabel.text = [[self.arrayOfNews objectAtIndex:indexPath.row] valueForKey:@"brief"];
+    cell.newsDateLabel.text = [[self.arrayOfNews objectAtIndex:indexPath.row] valueForKey:@"date"];
     cell.tag = [[[self.arrayOfNews objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
     return cell;
 }
