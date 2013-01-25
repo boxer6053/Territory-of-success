@@ -17,7 +17,6 @@
 @synthesize data;
 @synthesize questionDescription;
 @synthesize questionTitle;
-@synthesize questionDescriptionLabel;
 @synthesize questionTitleLabel;
 @synthesize tableOfAnswers;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -43,7 +42,7 @@
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
-    self.questionDescriptionLabel.text = questionDescription;
+    self.descriptionField.text = questionDescription;
     self.questionTitleLabel.text = questionTitle;
     for (id key in [data allKeys])
         NSLog(@"Key : %@ => value : %@", key, [data objectForKey:key]);

@@ -14,7 +14,8 @@
     NSString *questionTitle;
     NSString *questionDescription;
 }
-@property (weak, nonatomic) IBOutlet UILabel *questionDescriptionLabel;
+
+@property (weak, nonatomic) IBOutlet UITextView *descriptionField;
 @property (weak, nonatomic) IBOutlet UITableView *tableOfAnswers;
 @property (weak, nonatomic) IBOutlet UILabel *questionTitleLabel;
 @property (strong, nonatomic) NSDictionary *data;
