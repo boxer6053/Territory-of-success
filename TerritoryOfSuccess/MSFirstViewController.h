@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MSAPI.h"
+#import "MSDialogView.h"
 
 @interface MSFirstViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, UITextFieldDelegate, WsCompleteDelegate>
 {
@@ -25,6 +26,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *tintLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) NSMutableData *receivedData;
+//@property (strong, nonatomic) UIView *dialogView;
+@property (strong, nonatomic) UILabel *captionLabel;
+@property (strong, nonatomic) UIImageView *productImageView;
+@property (strong, nonatomic) MSDialogView *dialogView;
 
 
 - (IBAction)changeNewsPage:(id)sender;

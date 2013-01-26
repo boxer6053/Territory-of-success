@@ -12,6 +12,7 @@
 #import "Tesseract.h"
 #import "SVProgressHUD.h"
 #import <SDWebImage/UIButton+WebCache.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface MSFirstViewController ()
 
@@ -55,6 +56,10 @@
 
 @synthesize api = _api;
 @synthesize receivedData = _receivedData;
+
+@synthesize dialogView = _dialogView;
+@synthesize captionLabel = _captionLabel;
+@synthesize productImageView = _productImageView;
 
 -(MSAPI *)api
 {
@@ -273,8 +278,8 @@
     
     [self.api setDelegate:self];
     
-//    NSString *codeStr = @"2EA4*29E9*CCE0*90EB";
-    NSString *codeStr = [self.codeTextField text];;
+    NSString *codeStr = @"2EA4-29E9-CCE0-90EB";
+//    NSString *codeStr = [self.codeTextField text];;
     
 //    [self.api checkCode:[self.codeTextField text]];
     
@@ -282,39 +287,64 @@
         [self.api checkCode:codeStr];
     }
     
-    [self showDialogView];
+//    [self showDialogView];
     
 }
 
 - (void)showDialogView
-{
-    UIView *dialogView = [[UIView alloc] initWithFrame:CGRectMake(5, 568, 310, 400)];
+{    
+    [self.dialogView.closeButton addTarget:self action:@selector(closeDialogView) forControlEvents:UIControlEventTouchUpInside];
     
-    [dialogView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
-    [dialogView.layer setCornerRadius:10.0];
-    [dialogView setClipsToBounds:YES];
-    
-    UIToolbar *toolBar = [[UIToolbar alloc] init];
-    [toolBar setFrame:CGRectMake(0, 0, 280, 44)];
-    
-    [self.scrollView addSubview:dialogView];
-    
-    UIView *topBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, dialogView.frame.size.width, 44.0)];
-    [topBarView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1]];
-//    [topBarView.layer setBorderWidth:1.0];
-//    [topBarView.layer setBorderColor:[[UIColor grayColor] CGColor]];
-    [dialogView addSubview:topBarView];
-    
+    [self.scrollView addSubview:self.dialogView];
+        
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.4];
-    [dialogView setFrame:CGRectMake(5, 5, 310, 400)];
+    [self.dialogView setFrame:CGRectMake(5, 5, 310, 400)];
+    [UIView commitAnimations];
+
+}
+
+- (void)closeDialogView
+{
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.4];
+    [self.dialogView setFrame:CGRectMake(5, 568, 310, 400)];
     [UIView commitAnimations];
 }
+
+#pragma mark finishedWithDictionary:withTypeRequest:
 
 - (void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
 {
     if (type == kCode) {
         NSLog(@"checking");
+        
+        if ([[dictionary valueForKey:@"status"] isEqualToString:@"valid"]) {
+            
+            self.dialogView = [[MSDialogView alloc] initWithFrame:CGRectMake(5, 568, 310, 400)];
+                        
+            [self.dialogView.captionLabel setText:[[dictionary valueForKey:@"message"] objectAtIndex:0]];
+            [self.dialogView.productLabel setText:@"Товар:"];
+            NSURL *imageUrl = [NSURL URLWithString:[[dictionary valueForKey:@"product"] valueForKey:@"image"]];
+            [self.dialogView.productImageView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
+            
+            NSMutableString *productString = [NSMutableString stringWithString:[[dictionary valueForKey:@"brand"] valueForKey:@"title"]];
+            [productString appendFormat:@" / %@", [[dictionary valueForKey:@"product"] valueForKey:@"title"]];
+            
+            [self.dialogView.productDescripptionLabel setText:productString];
+            [self.dialogView.productDescripptionLabel sizeToFit];
+            
+            [self.dialogView.categoryLabel setText:@"Категория:"];
+            [self.dialogView.categoryDescripptionLabel setText:[[dictionary valueForKey:@"category"] valueForKey:@"title"]];
+            [self.dialogView.categoryDescripptionLabel sizeToFit];
+            
+            [self.dialogView.messageLabel setText:[[dictionary valueForKey:@"message"] objectAtIndex:1]];
+            [self.dialogView.messageLabel sizeToFit];
+            
+            [self.dialogView.messageView setFrame:CGRectMake(self.dialogView.messageView.frame.origin.x, self.dialogView.messageView.frame.origin.y, self.dialogView.messageView.frame.size.width, self.dialogView.messageLabel.frame.size.height)];
+            
+            [self showDialogView];
+        }
     }
     if (type == kNews)
     {
