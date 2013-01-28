@@ -720,34 +720,20 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="tDB-8J-BY8">
-                                <rect key="frame" x="20" y="49" width="128" height="128"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Описание опроса" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mzH-kP-5TX">
+                                <rect key="frame" x="20" y="49" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="QL9-se-0Ew">
-                                <rect key="frame" x="20" y="185" width="128" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="5dP-W7-C4B">
-                                <rect key="frame" x="20" y="321" width="128" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="s0A-f1-t4T">
-                                <rect key="frame" x="172" y="49" width="128" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="ozw-Ya-qfm">
-                                <rect key="frame" x="172" y="185" width="128" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="nFa-Dk-blm">
-                                <rect key="frame" x="172" y="321" width="128" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="7dw-Qs-YPP"/>
+                    <connections>
+                        <outlet property="inquirerTitle" destination="mzH-kP-5TX" id="H6K-2N-hmP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NPl-TN-7Hd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1159,6 +1145,9 @@
         </class>
         <class className="MSInquirerDetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSInquirerDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="inquirerTitle" candidateClass="UILabel"/>
+            </relationships>
         </class>
         <class className="MSInquirerViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSInquirerViewController.h"/>

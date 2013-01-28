@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface MSInquirerDetailViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *inquirerTitle;
+@property (strong, nonatomic) NSString *inquirerType;
 
 @end

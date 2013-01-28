@@ -13,6 +13,7 @@
 @end
 
 @implementation MSInquirerDetailViewController
+@synthesize inquirerType = _inquirerType;
 
 
 - (void)viewDidLoad
@@ -24,8 +25,17 @@
     {
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
-
+    
+    _inquirerType = @"Grade the item";
+    if(_inquirerType == @"Grade the item")
+    {
+        UIImageView *imageForInquirer1 = [[UIImageView alloc] initWithFrame:CGRectMake(60, 78, 200, 200)];
+        [imageForInquirer1 setImage:[UIImage imageNamed:@"appllee.png"]];
+        [self.view addSubview:imageForInquirer1];
+    }
     [super viewDidLoad];
+    
+    
 	// Do any additional setup after loading the view.
 }
 

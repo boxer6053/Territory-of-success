@@ -13,6 +13,7 @@
 		F547E1C416AD5BCE00365FB3 /* checkConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = F547E1C316AD5BCE00365FB3 /* checkConnection.m */; };
 		F547E1C716AD5D6900365FB3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F547E1C616AD5D6900365FB3 /* SystemConfiguration.framework */; };
 		F54DC3FC16B666D5001385CB /* MSInquirerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54DC3FB16B666D5001385CB /* MSInquirerDetailViewController.m */; };
+		F54DC41316B6C048001385CB /* appllee.png in Resources */ = {isa = PBXBuildFile; fileRef = F54DC41216B6C048001385CB /* appllee.png */; };
 		F552752616B06AEA0086AE53 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F552752516B06AEA0086AE53 /* SDWebImage.framework */; };
 		F552752916B06AFF0086AE53 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F552752816B06AFF0086AE53 /* ImageIO.framework */; };
 		F559534616A57A500079B985 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F559534416A57A500079B985 /* SVProgressHUD.m */; };
@@ -106,6 +107,7 @@
 		F547E1C616AD5D6900365FB3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F54DC3FA16B666D5001385CB /* MSInquirerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSInquirerDetailViewController.h; sourceTree = "<group>"; };
 		F54DC3FB16B666D5001385CB /* MSInquirerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSInquirerDetailViewController.m; sourceTree = "<group>"; };
+		F54DC41216B6C048001385CB /* appllee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appllee.png; sourceTree = "<group>"; };
 		F552752516B06AEA0086AE53 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
 		F552752816B06AFF0086AE53 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		F559534316A57A500079B985 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
@@ -440,6 +442,7 @@
 				FADA3FCD16AD8A0C008D2C7E /* 5star.png */,
 				FADA3FCE16AD8A0C008D2C7E /* 4star.png */,
 				FADA3FCF16AD8A0C008D2C7E /* 1star.png */,
+				F54DC41216B6C048001385CB /* appllee.png */,
 				FADA3FD016AD8A0C008D2C7E /* 2star.png */,
 				FADA3FD116AD8A0C008D2C7E /* 3star.png */,
 				F59A6CB616A9A83700796C0E /* background_320*568.png */,
@@ -876,6 +879,7 @@
 				FA1AB2EB16B2B924001827A6 /* px_by_Gre3g.png in Resources */,
 				FA1AB2ED16B2B936001827A6 /* bg.png in Resources */,
 				F545779F16B2DB5100B4221E /* inquirerPic.png in Resources */,
+				F54DC41316B6C048001385CB /* appllee.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
