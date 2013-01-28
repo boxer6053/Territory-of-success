@@ -8,6 +8,7 @@
 
 #import "MSInquirerViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "MSInquirerDetailViewController.h"
 
 @interface MSInquirerViewController ()
 
@@ -16,6 +17,8 @@
 
 @implementation MSInquirerViewController
 @synthesize tableOfInquirers = _tableOfInquirers;
+@synthesize testInquirers = _testInquirers;
+@synthesize selectedValue = _selectedValue;
 
 
 
@@ -26,6 +29,7 @@
    
     _tableOfInquirers.delegate = self;
     _tableOfInquirers.dataSource = self;
+    _testInquirers = [[NSArray alloc] initWithObjects:@"Какой товар лучше",@"Оцените товар",@"Какой товар лучше",@"Оцените товар", nil];
     [_tableOfInquirers setShowsVerticalScrollIndicator:NO];
     if ([[UIScreen mainScreen] bounds].size.height == 568) {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
@@ -44,7 +48,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return _testInquirers.count;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -61,16 +65,33 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
         
         }
-    cell.textLabel.text = @"Название опроса";
+    cell.textLabel.text = [_testInquirers objectAtIndex:indexPath.row];
     cell.detailTextLabel.text = @"Детали опроса";
     cell.imageView.image = [UIImage imageNamed:@"photo_camera_1.png"];
     
     return cell;
 }
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    if([segue.identifier isEqualToString:@"toInquirerDetail"]){
+        MSInquirerDetailViewController *controller = (MSInquirerDetailViewController *)segue.destinationViewController;
+        if(_selectedValue == @"Оцените товар")
+        {
+            controller.inquirerType = 1;
+        }
+        else{
+            controller.inquirerType = 2;
+        }
+        NSLog(@"ss %@", _selectedValue);
+    }
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    _selectedValue = cell.textLabel.text;
     [self performSegueWithIdentifier:@"toInquirerDetail" sender:self];
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

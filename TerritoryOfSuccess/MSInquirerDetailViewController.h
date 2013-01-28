@@ -10,6 +10,7 @@
 
 @interface MSInquirerDetailViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *inquirerTitle;
-@property (strong, nonatomic) NSString *inquirerType;
+@property (nonatomic) NSInteger inquirerType;
+@property   (strong, nonatomic) NSString *test;
 
 @end
