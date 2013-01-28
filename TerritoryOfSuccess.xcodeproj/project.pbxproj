@@ -887,6 +887,7 @@
 				FA0A301316B1B68800EDF04A /* paper.png in Resources */,
 				FA1AB2EB16B2B924001827A6 /* px_by_Gre3g.png in Resources */,
 				FA1AB2ED16B2B936001827A6 /* bg.png in Resources */,
+				F545779F16B2DB5100B4221E /* inquirerPic.png in Resources */,
 				FA827C6216B198CA00EAC0DD /* fbButton.png in Resources */,
 				FA827C6316B198CA00EAC0DD /* twButton.png in Resources */,
 				FA827C6416B198CA00EAC0DD /* vkButton.png in Resources */,
