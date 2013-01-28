@@ -403,10 +403,10 @@
 				F59F4D6B16ADA2B800458E5E /* MSInquirerViewController.m */,
 				F59F4D7216ADA3AC00458E5E /* MSTypesOfInquirersViewController.h */,
 				F59F4D7316ADA3AC00458E5E /* MSTypesOfInquirersViewController.m */,
-				F5603C42169C6E6400667203 /* MSFirstNavigationController.h */,
-				F5603C43169C6E6400667203 /* MSFirstNavigationController.m */,
 				F54DC3FA16B666D5001385CB /* MSInquirerDetailViewController.h */,
 				F54DC3FB16B666D5001385CB /* MSInquirerDetailViewController.m */,
+				F5603C42169C6E6400667203 /* MSFirstNavigationController.h */,
+				F5603C43169C6E6400667203 /* MSFirstNavigationController.m */,
 				F5603C4F169C802100667203 /* MSTabBarController.h */,
 				F5603C50169C802100667203 /* MSTabBarController.m */,
 			);
