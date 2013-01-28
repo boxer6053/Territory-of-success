@@ -15,7 +15,7 @@
 
 @interface MSNewsViewController ()
 
-@property (nonatomic)  MSAPI *dbApi;
+@property (nonatomic) MSAPI *dbApi;
 @property int newsCount;
 @property NSMutableArray *arrayOfNews;
 @property NSArray *lastDownloadedNews;

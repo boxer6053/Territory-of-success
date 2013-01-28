@@ -11,5 +11,15 @@
 @property (strong, nonatomic) IBOutlet UIButton *questionsButton;
 @property (strong, nonatomic) IBOutlet UIButton *commentsButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *detailScrollView;
-@property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
+
+@property (strong, nonatomic) IBOutlet UIButton *fbButton;
+- (IBAction)fbButtonPressed:(id)sender;
+
+@property (strong, nonatomic) IBOutlet UIButton *twButton;
+- (IBAction)twButtonPressed:(id)sender;
+
+@property (strong, nonatomic) IBOutlet UIButton *vkButton;
+- (IBAction)vkButtonPressed:(id)sender;
+
+- (IBAction)shareButtonPressed:(id)sender;
 @end

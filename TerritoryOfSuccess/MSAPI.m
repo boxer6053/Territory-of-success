@@ -192,26 +192,93 @@
     }
 }
 
-//-(void) getFiveBrandsWithOffset:(int)offset{
-//    self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/brands"];
-//    self.request  = [NSURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
-//    self.params = [NSString stringWithFormat:@"offset=%d",offset];
-//    [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
-//    
-//    if (checkConnection.hasConnectivity) {
-//        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self];
-//        
-//        if(connection){
-//            self.receivedData = [[NSMutableData alloc]init];
-//        }else{
-//            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"URL Connection" message:@"Not seccess URL Connection" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-//            [failmessage show];
-//        }
-//    }else{
-//        UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Internet Connection" message:@"Not seccess Internet Connection" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-//        [failmessage show];
-//    }
-//}
+-(void) getFiveBrandsWithOffset:(int)offset{
+    self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/brands"];
+    self.checkRequest = kBrands;
+    
+    self.request  = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
+    [self.request setHTTPMethod:@"POST"];
+    
+    self.params = [NSMutableString stringWithFormat:@"offset=%d",offset];
+    [self.params appendFormat:@"&lang=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
+    [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    if (checkConnection.hasConnectivity) {
+        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self];
+        
+        if(connection){
+            self.receivedData = [[NSMutableData alloc]init];
+            
+            CFDictionaryAddValue(self.connectionToInfoMapping, CFBridgingRetain(connection), CFBridgingRetain([NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInt:self.checkRequest] forKey:@"requestType"]));
+        }else{
+            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"URL Connection" message:@"Not seccess URL Connection" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [failmessage show];
+        }
+    }else{
+        UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Internet Connection" message:@"Not seccess Internet Connection" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [failmessage show];
+    }
+}
+
+-(void) getCategories{
+    self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/categories"];
+    self.checkRequest = kCategories;
+    
+    self.request  = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
+    [self.request setHTTPMethod:@"POST"];
+    self.params = [NSString stringWithFormat:@"&lang=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
+    [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    if (checkConnection.hasConnectivity) {
+        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self];
+        
+        if(connection){
+            self.receivedData = [[NSMutableData alloc]init];
+            
+            CFDictionaryAddValue(self.connectionToInfoMapping, CFBridgingRetain(connection), CFBridgingRetain([NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInt:self.checkRequest] forKey:@"requestType"]));
+        }else{
+            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"URL Connection" message:@"Not seccess URL Connection" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [failmessage show];
+        }
+    }else{
+        UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Internet Connection" message:@"Not seccess Internet Connection" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [failmessage show];
+    }
+}
+
+-(void)getProductsWithOffset:(int)offset withBrandId:(int)brandId withCategoryId:(int)categoryId{
+    self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/catalog"];
+    self.checkRequest = kCatalog;
+    
+    self.request = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
+    [self.request setHTTPMethod:@"POST"];
+    
+    self.params = [NSMutableString stringWithFormat:@"offset=%d",offset];
+    if (brandId == 0){
+        [self.params appendFormat:@"&category_id=%d",categoryId];
+    } else if (categoryId == 0){
+        [self.params appendFormat:@"&brand_id=%d",brandId];
+    }
+    [self.params appendFormat:@"&lang=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
+    [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    if (checkConnection.hasConnectivity) {
+        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self];
+        
+        if(connection){
+            self.receivedData = [[NSMutableData alloc]init];
+            
+            CFDictionaryAddValue(self.connectionToInfoMapping, CFBridgingRetain(connection), CFBridgingRetain([NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInt:self.checkRequest] forKey:@"requestType"]));
+        }else{
+            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"URL Connection" message:@"Not seccess URL Connection" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [failmessage show];
+        }
+    }else{
+        UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Internet Connection" message:@"Not seccess Internet Connection" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [failmessage show];
+    }
+
+}
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
