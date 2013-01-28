@@ -35,6 +35,7 @@
    
     _tableOfInquirers.delegate = self;
     _tableOfInquirers.dataSource = self;
+    [_tableOfInquirers setShowsVerticalScrollIndicator:NO];
     if ([[UIScreen mainScreen] bounds].size.height == 568) {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
@@ -75,7 +76,10 @@
     
     return cell;
 }
-
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"toInquirerDetail" sender:self];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

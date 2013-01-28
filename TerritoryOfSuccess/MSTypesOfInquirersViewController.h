@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface MSTypesOfInquirersViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
-- (IBAction)cancelButton:(id)sender;
+@property (weak, nonatomic) IBOutlet UIImageView *inquirerPic;
+@property (weak, nonatomic) IBOutlet UIButton *whitchIsBetterButton;
+@property (weak, nonatomic) IBOutlet UIButton *gradeButton;
+- (IBAction)toWhitchIsBetter:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *toGrade;
 
 @end
