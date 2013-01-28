@@ -29,7 +29,7 @@
    
     _tableOfInquirers.delegate = self;
     _tableOfInquirers.dataSource = self;
-    _testInquirers = [[NSArray alloc] initWithObjects:@"Какой товар лучше",@"Оцените товар",@"Какой товар лучше",@"Оцените товар", nil];
+    _testInquirers = [[NSArray alloc] initWithObjects:@"1",@"2", nil];
     [_tableOfInquirers setShowsVerticalScrollIndicator:NO];
     if ([[UIScreen mainScreen] bounds].size.height == 568) {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
@@ -71,25 +71,21 @@
     
     return cell;
 }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    _selectedValue = cell.textLabel.text;
+    NSLog (@"%@", _selectedValue);
+    [self performSegueWithIdentifier:@"toInquirerDetail" sender:self];
+}
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if([segue.identifier isEqualToString:@"toInquirerDetail"]){
         MSInquirerDetailViewController *controller = (MSInquirerDetailViewController *)segue.destinationViewController;
-        if(_selectedValue == @"Оцените товар")
-        {
-            controller.inquirerType = 1;
-        }
-        else{
-            controller.inquirerType = 2;
-        }
+        controller.inquirerType = [_selectedValue integerValue];
         NSLog(@"ss %@", _selectedValue);
     }
-}
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    _selectedValue = cell.textLabel.text;
-    [self performSegueWithIdentifier:@"toInquirerDetail" sender:self];
 }
 
 - (void)didReceiveMemoryWarning

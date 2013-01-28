@@ -32,10 +32,30 @@
        if(_inquirerType ==1)
     {
         _inquirerTitle.text = @"Оцените товар";
-        UIImageView *imageForInquirer1 = [[UIImageView alloc] initWithFrame:CGRectMake(60, 78, 200, 200)];
-        [imageForInquirer1 setImage:[UIImage imageNamed:@"appllee.png"]];
-        [self.view addSubview:imageForInquirer1];
-    }
+        if ([[UIScreen mainScreen] bounds].size.height == 568)
+        { UIImageView *imageForInquirer1 = [[UIImageView alloc] initWithFrame:CGRectMake(60, 78, 200, 200)];
+            [imageForInquirer1 setImage:[UIImage imageNamed:@"appllee.png"]];
+            [self.view addSubview:imageForInquirer1];
+            UIButton *likeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            likeButton.frame = CGRectMake(20, 330, 120, 32);
+            [likeButton setBackgroundImage:[UIImage imageNamed:@"commentsButton.png"] forState:UIControlStateNormal];
+            [likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [likeButton setTitle:@"Like it!" forState:UIControlStateNormal];
+            [self.view addSubview:likeButton];
+            UIButton *dislikeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            dislikeButton.frame = CGRectMake(180, 330, 120, 32);
+            [dislikeButton setBackgroundImage:[UIImage imageNamed:@"commentsButton.png"] forState:UIControlStateNormal];
+            [dislikeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [dislikeButton setTitle:@"Hate it!" forState:UIControlStateNormal];
+            [self.view addSubview:dislikeButton];
+            
+            
+            }
+        
+        else{
+            
+        }
+           }
     else{
         _inquirerTitle.text = @"Какой товар лучше";
         if ([[UIScreen mainScreen] bounds].size.height == 568)
