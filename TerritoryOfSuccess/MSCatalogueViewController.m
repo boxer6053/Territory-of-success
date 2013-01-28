@@ -1,6 +1,5 @@
 #import "MSCatalogueViewController.h"
 #import <QuartzCore/QuartzCore.h>
-#import "JSONParserForDataEntenties.h"
 #import "MSSubCatalogueViewController.h"
 
 @interface MSCatalogueViewController ()
@@ -100,6 +99,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:myIdentifier];
     }
+    
 //Проверка на СегментКонтрол и подгрузка соответствующего контента в ячейки
     if (self.productAndBonusesControl.selectedSegmentIndex == 0) {
         cell.textLabel.text = [[_arrayOfCategories objectAtIndex:indexPath.row] valueForKey:@"title"];
@@ -120,12 +120,17 @@
     UITableViewCell * currentCell = [_tableView cellForRowAtIndexPath:indexPath];
     [self performSegueWithIdentifier:@"toSubCatalogue" sender:currentCell];
 }
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if([segue.identifier isEqualToString:@"toSubCatalogue"])
     {
         UITableViewCell *currentCell = sender;
-        [segue.destinationViewController writeANumber:currentCell.tag];
+        if (self.productAndBonusesControl.selectedSegmentIndex == 0) {
+            [segue.destinationViewController sentWithBrandId:0 withCategoryId:currentCell.tag];
+        } else {
+            [segue.destinationViewController sentWithBrandId:currentCell.tag withCategoryId:0];
+        }
     }
 }
 

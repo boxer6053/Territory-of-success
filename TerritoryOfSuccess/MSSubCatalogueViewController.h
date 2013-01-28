@@ -1,7 +1,9 @@
 #import <UIKit/UIKit.h>
 #import "MSAPI.h"
-@interface MSSubCatalogueViewController : UITableViewController <WsCompleteDelegate>
+@interface MSSubCatalogueViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, WsCompleteDelegate>
 
--(void) writeANumber:(int)trololo;
+@property (strong, nonatomic) IBOutlet UITableView *productsTableView;
+
+-(void) sentWithBrandId:(int)brandId withCategoryId:(int)categoryId;
 
 @end

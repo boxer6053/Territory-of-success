@@ -253,7 +253,7 @@
     self.request = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
     [self.request setHTTPMethod:@"POST"];
     
-    self.params = [NSString stringWithFormat:@"offset=%d",offset];
+    self.params = [NSMutableString stringWithFormat:@"offset=%d",offset];
     if (brandId == 0){
         [self.params appendFormat:@"&category_id=%d",categoryId];
     } else if (categoryId == 0){

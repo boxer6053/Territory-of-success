@@ -434,6 +434,9 @@
 		F59AEB7E16AF1770004519B9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FA1AB2EC16B2B935001827A6 /* bg.png */,
+				FA1AB2EA16B2B924001827A6 /* px_by_Gre3g.png */,
+				FA0A301216B1B68800EDF04A /* paper.png */,
 				FA7881A116B2C36000AF18CD /* bag.png */,
 				FAC3B71F16AD7E49007B8578 /* mainLogoBackground_center.png */,
 				FADA3FCD16AD8A0C008D2C7E /* 5star.png */,
@@ -873,6 +876,9 @@
 				FADA3FD516AD8A0C008D2C7E /* 2star.png in Resources */,
 				FADA3FD616AD8A0C008D2C7E /* 3star.png in Resources */,
 				F5BA5A0616AEE5E300AF69CB /* WhitchOneIsBetter.png in Resources */,
+				FA0A301316B1B68800EDF04A /* paper.png in Resources */,
+				FA1AB2EB16B2B924001827A6 /* px_by_Gre3g.png in Resources */,
+				FA1AB2ED16B2B936001827A6 /* bg.png in Resources */,
 				FA827C6216B198CA00EAC0DD /* fbButton.png in Resources */,
 				FA827C6316B198CA00EAC0DD /* twButton.png in Resources */,
 				FA827C6416B198CA00EAC0DD /* vkButton.png in Resources */,

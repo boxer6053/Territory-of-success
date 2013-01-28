@@ -34,7 +34,7 @@
     [self.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor blackColor],UITextAttributeTextColor, nil]];
     
     self.containView.layer.borderColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1].CGColor;
-    self.containView.layer.borderWidth = 3.0f;
+    //self.containView.layer.borderWidth = 3.0f;
     self.containView.layer.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.3].CGColor;
     
     self.inputText.returnKeyType = UIReturnKeyDone;
@@ -42,7 +42,7 @@
     self.inputText.layer.cornerRadius = 10;
     self.inputText.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.inputText.layer.borderWidth = 1.0f;
-    self.inputText.layer.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.3].CGColor;
+    self.inputText.layer.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1].CGColor;
     
     self.starView.layer.cornerRadius = 10;
     [self.starView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.6]];
