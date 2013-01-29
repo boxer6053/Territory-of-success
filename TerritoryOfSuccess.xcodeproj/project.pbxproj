@@ -487,8 +487,11 @@
 				F526D77216B2E7820027BF21 /* paper.png */,
 				F532D54016B29F4300E29267 /* footer_568.png */,
 				F532D53E16B297BF00E29267 /* footer.png */,
+				FA3B6F1A16B6C6300095A851 /* brandLogoExample.png */,
 				FA1AB2EC16B2B935001827A6 /* bg.png */,
 				FA1AB2EA16B2B924001827A6 /* px_by_Gre3g.png */,
+				FA0A301216B1B68800EDF04A /* paper.png */,
+				FA7881A116B2C36000AF18CD /* bag.png */,
 				FAC3B71F16AD7E49007B8578 /* mainLogoBackground_center.png */,
 				FADA3FCD16AD8A0C008D2C7E /* 5star.png */,
 				FADA3FCE16AD8A0C008D2C7E /* 4star.png */,
@@ -955,6 +958,16 @@
 				F57217D416B6E4AC00705682 /* dialogViewGradient.png in Resources */,
 				F57217D616B6F3A600705682 /* closeIcon.png in Resources */,
 				F57217DA16B7004500705682 /* TOS cap.png in Resources */,
+				FA827C6216B198CA00EAC0DD /* fbButton.png in Resources */,
+				FA827C6316B198CA00EAC0DD /* twButton.png in Resources */,
+				FA827C6416B198CA00EAC0DD /* vkButton.png in Resources */,
+				FA7881A216B2C36000AF18CD /* bag.png in Resources */,
+				F54DC41316B6C048001385CB /* appllee.png in Resources */,
+				F54DC41916B6C861001385CB /* appllee2.png in Resources */,
+				FA3B6F1B16B6C6300095A851 /* brandLogoExample.png in Resources */,
+				FA3B6F2016B700BA0095A851 /* 0star.png in Resources */,
+				FA884BBE16B7FB35002A7FDC /* shareButton.png in Resources */,
+				FA884BC816B82B74002A7FDC /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -990,6 +1003,9 @@
 				F5AEFA6D16AED9A0004EC992 /* JSONParserForDataEntenties.m in Sources */,
 				FA1AB2E916B27E43001827A6 /* MSNewsCell.m in Sources */,
 				F555201F16B3E240000C0D3E /* MSDialogView.m in Sources */,
+				F54DC3FC16B666D5001385CB /* MSInquirerDetailViewController.m in Sources */,
+				FA3B6F1916B6C30C0095A851 /* MSBrandsAndCategoryCell.m in Sources */,
+				FA3B6F1E16B6EE7E0095A851 /* MSSubCatalogueCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
