@@ -921,6 +921,8 @@
 				FA827C6316B198CA00EAC0DD /* twButton.png in Resources */,
 				FA827C6416B198CA00EAC0DD /* vkButton.png in Resources */,
 				FA7881A216B2C36000AF18CD /* bag.png in Resources */,
+				F54DC41316B6C048001385CB /* appllee.png in Resources */,
+				F54DC41916B6C861001385CB /* appllee2.png in Resources */,
 				FA3B6F1B16B6C6300095A851 /* brandLogoExample.png in Resources */,
 				FA3B6F2016B700BA0095A851 /* 0star.png in Resources */,
 				FA884BBE16B7FB35002A7FDC /* shareButton.png in Resources */,
