@@ -27,9 +27,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) NSMutableData *receivedData;
 //@property (strong, nonatomic) UIView *dialogView;
-@property (strong, nonatomic) UILabel *captionLabel;
 @property (strong, nonatomic) UIImageView *productImageView;
 @property (strong, nonatomic) MSDialogView *dialogView;
+@property (strong, nonatomic) UIImageView *mainFishkaImageView;
+@property (strong, nonatomic) UILabel *mainFishkaLabel;
+@property (strong, nonatomic) UIView *backAlphaView;
+@property (weak, nonatomic) IBOutlet UIButton *testButton;
 
 
 - (IBAction)changeNewsPage:(id)sender;

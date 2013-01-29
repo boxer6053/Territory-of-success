@@ -58,8 +58,12 @@
 @synthesize receivedData = _receivedData;
 
 @synthesize dialogView = _dialogView;
-@synthesize captionLabel = _captionLabel;
 @synthesize productImageView = _productImageView;
+@synthesize mainFishkaImageView = _mainFishkaImageView;
+@synthesize mainFishkaLabel = _mainFishkaLabel;
+@synthesize backAlphaView = _backAlphaView;
+
+@synthesize testButton = _testButton;
 
 -(MSAPI *)api
 {
@@ -74,11 +78,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+        
     [self.api getFiveNewsWithOffset:0];
     
     [self.codeTextField setDelegate:self];
     [self.codeTextField setClearButtonMode:UITextFieldViewModeWhileEditing];
+    [self.codeTextField setAutocapitalizationType:UITextAutocapitalizationTypeAllCharacters];
         
     [self.scrollView setScrollEnabled:NO];
     [self.scrollView setShowsHorizontalScrollIndicator:NO];
@@ -276,14 +281,19 @@
     
     NSLog(@"You click on send button!!!");
     
+    [self.codeTextField resignFirstResponder];
+    
+    
     [self.api setDelegate:self];
     
-    NSString *codeStr = @"2EA4-29E9-CCE0-90EB";
-//    NSString *codeStr = [self.codeTextField text];;
+//    NSString *codeStr = @"2EA4-29E9-CCE0-90EB";
+//    NSString *codeStr = @"37B9-45A4-3711-2DA2";
+    NSString *codeStr = [self.codeTextField text];
     
 //    [self.api checkCode:[self.codeTextField text]];
     
     if (![codeStr isEqualToString:@""] && codeStr.length == 19) {
+        [SVProgressHUD showWithStatus:@"Sending code..."];
         [self.api checkCode:codeStr];
     }
     
@@ -292,24 +302,44 @@
 }
 
 - (void)showDialogView
-{    
+{
+    [SVProgressHUD showSuccessWithStatus:@"Ok"];
+    
     [self.dialogView.closeButton addTarget:self action:@selector(closeDialogView) forControlEvents:UIControlEventTouchUpInside];
+    [self.dialogView.okButton addTarget:self action:@selector(closeDialogView) forControlEvents:UIControlEventTouchUpInside];
     
     [self.scrollView addSubview:self.dialogView];
-        
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.4];
-    [self.dialogView setFrame:CGRectMake(5, 5, 310, 400)];
-    [UIView commitAnimations];
-
+    [self.scrollView addSubview:self.mainFishkaImageView];
+    
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.4];
+        [self.dialogView setFrame:CGRectMake(5, ([[UIScreen mainScreen] bounds].size.height - self.dialogView.frame.size.height)/2 - 54, 310, 350)];
+        [self.mainFishkaImageView setFrame:CGRectMake(56, ([[UIScreen mainScreen] bounds].size.height - self.dialogView.frame.size.height)/2 - 54 - 4, 198, 33)];
+        [self.backAlphaView setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.8]];
+        [UIView commitAnimations];
 }
 
 - (void)closeDialogView
 {
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.4];
-    [self.dialogView setFrame:CGRectMake(5, 568, 310, 400)];
-    [UIView commitAnimations];
+    if ([[UIScreen mainScreen] bounds].size.height == 568) {
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.4];
+        [self.dialogView setFrame:CGRectMake(5, 568, 310, 350)];
+        [self.mainFishkaImageView setFrame:CGRectMake(56, 564, 198, 33)];
+        [self.backAlphaView setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0]];
+        [UIView commitAnimations];
+    }
+    else
+    {
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.4];
+        [self.dialogView setFrame:CGRectMake(5, 480, 310, 350)];
+        [self.mainFishkaImageView setFrame:CGRectMake(56, 476, 198, 33)];
+        [self.backAlphaView setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0]];
+        [UIView commitAnimations];
+    }
+    
+    [self.scrollView insertSubview:self.backAlphaView atIndex:0];
 }
 
 #pragma mark finishedWithDictionary:withTypeRequest:
@@ -321,7 +351,38 @@
         
         if ([[dictionary valueForKey:@"status"] isEqualToString:@"valid"]) {
             
-            self.dialogView = [[MSDialogView alloc] initWithFrame:CGRectMake(5, 568, 310, 400)];
+            NSLog(@"valid");
+            
+            if ([[UIScreen mainScreen] bounds].size.height == 568) {
+                self.dialogView = [[MSDialogView alloc] initWithFrame:CGRectMake(5, 568, 310, 350)];
+                
+                self.backAlphaView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)];
+                
+                self.mainFishkaImageView = [[UIImageView alloc] initWithFrame:CGRectMake(56, 564, 198, 33)];
+            }
+            else
+            {
+                self.dialogView = [[MSDialogView alloc] initWithFrame:CGRectMake(5, 480, 310, 350)];
+                
+                self.backAlphaView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+                
+                self.mainFishkaImageView = [[UIImageView alloc] initWithFrame:CGRectMake(56, 476, 198, 33)];
+            }
+            
+            [self.backAlphaView setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0]];
+            [self.scrollView insertSubview:self.backAlphaView belowSubview:self.dialogView];
+            
+            [self.mainFishkaImageView setImage:[UIImage imageNamed:@"TOS cap.png"]];
+            
+            self.mainFishkaLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, 178, 20)];
+            self.mainFishkaLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15.0];
+            [self.mainFishkaLabel setTextColor:[UIColor whiteColor]];
+            [self.mainFishkaLabel setBackgroundColor:[UIColor clearColor]];
+            [self.mainFishkaLabel setTextAlignment:NSTextAlignmentCenter];
+            [self.mainFishkaLabel setText:@"ПРОВЕРКА КОДА"];
+            
+            [self.mainFishkaImageView addSubview:self.mainFishkaLabel];
+            
                         
             [self.dialogView.captionLabel setText:[[dictionary valueForKey:@"message"] objectAtIndex:0]];
             [self.dialogView.productLabel setText:@"Товар:"];
@@ -338,6 +399,9 @@
             [self.dialogView.categoryDescripptionLabel setText:[[dictionary valueForKey:@"category"] valueForKey:@"title"]];
             [self.dialogView.categoryDescripptionLabel sizeToFit];
             
+            [self.dialogView.bonusLabel setText:@"Бонус за продукт:"];
+            [self.dialogView.bonusValueLabel setText:@"5.00"];
+            
             [self.dialogView.messageLabel setText:[[dictionary valueForKey:@"message"] objectAtIndex:1]];
             [self.dialogView.messageLabel sizeToFit];
             
@@ -345,6 +409,67 @@
             
             [self showDialogView];
         }
+        else
+            if ([[dictionary valueForKey:@"status"] isEqualToString:@"notfound"]) {
+                
+                NSLog(@"notfound");
+                
+                if ([[UIScreen mainScreen] bounds].size.height == 568) {
+                    self.dialogView = [[MSDialogView alloc] initWithFrame:CGRectMake(5, 568, 310, 350)];
+                    
+                    self.backAlphaView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)];
+                    
+                    self.mainFishkaImageView = [[UIImageView alloc] initWithFrame:CGRectMake(56, 564, 198, 33)];
+                }
+                else
+                {
+                    self.dialogView = [[MSDialogView alloc] initWithFrame:CGRectMake(5, 480, 310, 350)];
+                    
+                    self.backAlphaView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+                    
+                    self.mainFishkaImageView = [[UIImageView alloc] initWithFrame:CGRectMake(56, 476, 198, 33)];
+
+                }
+                    
+                [self.backAlphaView setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0]];
+                [self.scrollView insertSubview:self.backAlphaView belowSubview:self.dialogView];
+                
+                [self.mainFishkaImageView setImage:[UIImage imageNamed:@"TOS cap.png"]];
+                
+                self.mainFishkaLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, 178, 20)];
+                self.mainFishkaLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15.0];
+                [self.mainFishkaLabel setTextColor:[UIColor whiteColor]];
+                [self.mainFishkaLabel setBackgroundColor:[UIColor clearColor]];
+                [self.mainFishkaLabel setTextAlignment:NSTextAlignmentCenter];
+                [self.mainFishkaLabel setText:@"ПРОВЕРКА КОДА"];
+                
+                [self.mainFishkaImageView addSubview:self.mainFishkaLabel];
+
+                
+                [self.dialogView.captionLabel setText:[[dictionary valueForKey:@"message"] objectAtIndex:0]];
+                
+                
+                
+                NSString *messageStr = [[dictionary valueForKey:@"message"] objectAtIndex:1];
+                
+                messageStr = [messageStr stringByReplacingOccurrencesOfString:@"<p>" withString:@""];
+                messageStr = [messageStr stringByReplacingOccurrencesOfString:@"</p>" withString:@"\n"];
+                
+                UILabel *notFoundMessageLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, self.dialogView.captionLabel.frame.origin.y + self.dialogView.captionLabel.frame.size.height + 30, 290, 100)];
+                [notFoundMessageLabel setNumberOfLines:0];
+                [notFoundMessageLabel setLineBreakMode:NSLineBreakByWordWrapping];
+                [notFoundMessageLabel setBackgroundColor:[UIColor clearColor]];
+                notFoundMessageLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:11.0];
+                [notFoundMessageLabel setTextColor:[UIColor whiteColor]];
+                [notFoundMessageLabel setText:messageStr];
+                [notFoundMessageLabel sizeToFit];
+                
+                [self.dialogView addSubview:notFoundMessageLabel];
+                
+                [self.dialogView.bonusNameLabel setText:@""];
+                
+                [self showDialogView];
+            }
     }
     if (type == kNews)
     {
@@ -514,12 +639,12 @@ static inline double radians (double degrees)
     return [tesseract recognizedText];
 }
 
-- (void)didTapAnywhere: (UITapGestureRecognizer*) recognizer
+- (void)didTapAnywhere:(UITapGestureRecognizer*)recognizer
 {
     [self.codeTextField resignFirstResponder];
 }
 
--(void)keyboardWillShow:(NSNotification *) note
+- (void)keyboardWillShow:(NSNotification *)note
 {
     NSLog(@"Screen height: %f", [[UIScreen mainScreen] bounds].size.height);
     
@@ -555,7 +680,7 @@ static inline double radians (double degrees)
     [self.view addGestureRecognizer:self.tapRecognizer];
 }
 
--(void) keyboardWillHide:(NSNotification *) note
+- (void)keyboardWillHide:(NSNotification *)note
 {
     if ([[UIScreen mainScreen] bounds].size.height == 568) {
         CGRect zoomRect = CGRectMake(0, 0, 320, 568);

@@ -22,5 +22,11 @@
 @property (strong, nonatomic) UILabel *categoryDescripptionLabel;
 @property (strong, nonatomic) UIView *messageView;
 @property (strong, nonatomic) UILabel *messageLabel;
+//@property (strong, nonatomic) UIImageView *mainFishkaImageView;
+@property (strong, nonatomic) UIButton *okButton;
+@property (strong, nonatomic) UIButton *complaint;
+@property (strong, nonatomic) UILabel *bonusLabel;
+@property (strong, nonatomic) UILabel *bonusValueLabel;
+@property (strong, nonatomic) UILabel *bonusNameLabel;
 
 @end

@@ -1119,6 +1119,7 @@
                 <relationship kind="outlet" name="photoButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="sendCodeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="testButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="tintLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
             </relationships>
