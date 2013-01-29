@@ -1,5 +1,7 @@
 #import "MSSubCatalogueViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "MSSubCatalogueCell.h"
+#import "MSDetailViewController.h"
 
 @interface MSSubCatalogueViewController ()
 @property (strong, nonatomic) MSAPI *api;
@@ -16,7 +18,6 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -26,13 +27,18 @@
     [super viewDidLoad];
     self.productsTableView.delegate = self;
     self.productsTableView.dataSource = self;
-    [self.productsTableView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
-    //[self.productsTableView setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0]];
+    [self.productsTableView setBackgroundView:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"bg.png"]]];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+// Метод вызываемый при переходе на этот контроллер
+-(void) sentWithBrandId:(int)brandId withCategoryId:(int)categoryId
+{
+    [self.api getProductsWithOffset:0 withBrandId:brandId withCategoryId:categoryId];
 }
 
 #pragma mark - Table view data source
@@ -50,31 +56,47 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"subCatalogueCellIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    MSSubCatalogueCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[MSSubCatalogueCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    cell.textLabel.text = [[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"title"];
-    [cell.imageView setImageWithURL:[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"image"] placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
+    
+    cell.productName.text = [[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"title"];
+    [cell.productImage setImageWithURL:[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"image"] placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
+    cell.productRatingImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%dstar.png",[[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"rating"]integerValue]]];
+    
+    //на экспорт
+    cell.productAdviceNumber = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"advises"] integerValue];
+    cell.productCommentsNumber = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"comments"] integerValue];
+    cell.productRatingNumber = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"rating"] integerValue];
+    cell.productImageURL = [[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"image"];
+    cell.tag = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
     
     return cell;
-}
-
--(void) sentWithBrandId:(int)brandId withCategoryId:(int)categoryId{
-    [self.api getProductsWithOffset:0 withBrandId:brandId withCategoryId:categoryId];
 }
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"toDetailView" sender:self];
+    UITableViewCell *currentCell = [productsTableView cellForRowAtIndexPath:indexPath];
+    [self performSegueWithIdentifier:@"toDetailView" sender:currentCell];
 }
 
-#pragma mark - Web methods
-- (MSAPI *) api{
-    if(!_api){
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"toDetailView"])
+    {
+        MSSubCatalogueCell *currentCell = sender;
+        [segue.destinationViewController sentProductName:currentCell.productName.text andRating:currentCell.productRatingNumber andCommentsNumber:currentCell.productCommentsNumber andAdvisesNumber:currentCell.productAdviceNumber andImageURL:currentCell.productImageURL];
+    }
+}
+#pragma mark - Web Methods
+- (MSAPI *) api
+{
+    if(!_api)
+    {
         _api = [[MSAPI alloc]init];
         _api.delegate = self;
     }
