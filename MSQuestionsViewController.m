@@ -33,6 +33,7 @@
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
     [self.segment setTintColor:[UIColor blackColor]];
+    [_tableView setShowsVerticalScrollIndicator:NO];
     self.allQuestionsMode = YES;
     self.myQuestionsMode = NO;
     self.tableView.delegate = self;

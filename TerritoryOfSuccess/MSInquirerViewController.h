@@ -10,6 +10,8 @@
 
 @interface MSInquirerViewController : UIViewController <UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableOfInquirers;
+@property (strong, nonatomic) NSArray *testInquirers;
+@property (weak, nonatomic) NSString *selectedValue;
 
 
 @end

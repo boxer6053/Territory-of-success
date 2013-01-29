@@ -1,14 +1,23 @@
 #import "MSCatalogueViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "MSSubCatalogueViewController.h"
+#import "MSBrandsAndCategoryCell.h"
 
 @interface MSCatalogueViewController ()
-//@property (strong, nonatomic) MSAPI *api;
+
+@property (strong, nonatomic) NSArray *arrayOfCategories;
+@property (strong, nonatomic) NSArray *arrayOfBrands;
+@property (strong, nonatomic) MSAPI *api;
 @property (strong, nonatomic) NSMutableData *receivedData;
+@property int rowsCounter, brandsCounter, brandAndCategoryCount;
 @end
 
 @implementation MSCatalogueViewController
 @synthesize tableView = _tableView;
-//@synthesize api = _api;
+@synthesize api = _api;
+@synthesize arrayOfBrands = _arrayOfBrands;
+@synthesize arrayOfCategories = _arrayOfCategories;
+@synthesize rowsCounter, brandsCounter, brandAndCategoryCount;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -18,16 +27,17 @@
     return self;
 }
 
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    _api = [[MSAPI alloc] init];
-//    _api.delegate = self;
-//    [_api getFiveBrandsWithOffset:0];
-    
     _tableView.delegate = self;
     _tableView.dataSource = self;
-    [_tableView reloadData];
+    [self.api getCategories];
     
     if ([[UIScreen mainScreen] bounds].size.height == 568) {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
@@ -38,41 +48,35 @@
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
         NSLog(@"480");
     }
-    _tableView.layer.cornerRadius = 10;
-    [_tableView.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0].CGColor];
-    [_tableView.layer setBorderWidth:1.0f];
-    [_tableView.layer setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.7].CGColor];
+    [_tableView.layer setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0].CGColor];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];
-    [[self.productAndBonusesControl.subviews objectAtIndex:1] setTintColor:[UIColor colorWithRed:255.0/255.0 green:140/255.0 blue:0 alpha:1]];
-    [[self.productAndBonusesControl.subviews objectAtIndex:0] setTintColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1]];
+    [self makeWrightSegmentColor];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
+#pragma mark SegmentControl
+-(void) makeWrightSegmentColor{
+// Изменение цвета СегментКонтролa
+    if (self.productAndBonusesControl.selectedSegmentIndex == 0) {
+       [[self.productAndBonusesControl.subviews objectAtIndex:1] setTintColor:[UIColor colorWithRed:255.0/255.0 green:140.0/255.0 blue:0 alpha:1.0]];
+        [[self.productAndBonusesControl.subviews objectAtIndex:0] setTintColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1.0]];
+    }else{
+        [[self.productAndBonusesControl.subviews objectAtIndex:0] setTintColor:[UIColor colorWithRed:255.0/255.0 green:140.0/255.0 blue:0 alpha:1.0]];
+        [[self.productAndBonusesControl.subviews objectAtIndex:1] setTintColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1.0]];
+    }
 }
 
 - (IBAction)segmentPressed:(id)sender {
-// Изменение цвета при переключении СегментКонтрола
-    for (int i=0; i<[self.productAndBonusesControl.subviews count]; i++){
-        
-        if ([[self.productAndBonusesControl.subviews objectAtIndex:i]isSelected] ){
-            
-            UIColor *tintcolor=[UIColor colorWithRed:255.0/255.0 green:140.0/255.0 blue:0 alpha:1.0];
-            [[self.productAndBonusesControl.subviews objectAtIndex:i] setTintColor:tintcolor];
-                    } else {
-                        UIColor *tintcolor=[UIColor blackColor]; // default color
-                        [[self.productAndBonusesControl.subviews objectAtIndex:i] setTintColor:tintcolor];
-                        }
-           }
-    
-    if (self.productAndBonusesControl.selectedSegmentIndex == 0){
-        [_tableView reloadData];
-    } else {
-        [_tableView reloadData];
+    self.rowsCounter = 0;
+    self.brandsCounter = 0;
+    [self makeWrightSegmentColor];
+    [_tableView reloadData];
+    if (self.productAndBonusesControl.selectedSegmentIndex == 0) {
+            [self.api getCategories];
+    }else{
+            [self.api getFiveBrandsWithOffset:0];
     }
 }
 
@@ -80,42 +84,87 @@
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
-
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 5;
+    if (self.productAndBonusesControl.selectedSegmentIndex == 0)
+         return self.rowsCounter;
+    else return self.brandsCounter;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell;
+    MSBrandsAndCategoryCell *cell;
     static NSString* myIdentifier = @"cellIdentifier";
     cell = [_tableView dequeueReusableCellWithIdentifier:myIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:myIdentifier];
+        cell = [[MSBrandsAndCategoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:myIdentifier];
     }
     
 //Проверка на СегментКонтрол и подгрузка соответствующего контента в ячейки
     if (self.productAndBonusesControl.selectedSegmentIndex == 0) {
-        cell.imageView.image = [UIImage imageNamed:@"photo_camera_1.png"];
-        cell.textLabel.text = @"Название категории";
-        cell.detailTextLabel.text = @"Описание";
+        cell.categoryOrBrandName.text = [[_arrayOfCategories objectAtIndex:indexPath.row] valueForKey:@"title"];
+        cell.categoryOrBrandImage.image = [UIImage imageNamed:@"bag.png"];
+        
+        cell.tag = [[[_arrayOfCategories objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
     }
     
     if (self.productAndBonusesControl.selectedSegmentIndex == 1) {
-
-        cell.imageView.image = [UIImage imageNamed:@"photo_camera_1.png"];
-        cell.textLabel.text = @"Название бренда";
-        cell.detailTextLabel.text = @"Описание";
+        cell.categoryOrBrandName.text = [[_arrayOfBrands objectAtIndex:indexPath.row] valueForKey:@"title"];
+        cell.categoryOrBrandImage.image = [UIImage imageNamed:@"brandLogoExample.png"];
+        
+        cell.tag = [[[_arrayOfBrands objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
     }
 
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"toSubCatalogue" sender:self];
+    UITableViewCell * currentCell = [_tableView cellForRowAtIndexPath:indexPath];
+    [self performSegueWithIdentifier:@"toSubCatalogue" sender:currentCell];
+    [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"toSubCatalogue"])
+    {
+        UITableViewCell *currentCell = sender;
+        if (self.productAndBonusesControl.selectedSegmentIndex == 0) {
+            [segue.destinationViewController sentWithBrandId:0 withCategoryId:currentCell.tag];
+        } else {
+            [segue.destinationViewController sentWithBrandId:currentCell.tag withCategoryId:0];
+        }
+    }
 }
 
 #pragma mark Web-delegate
-//-(void)finished{
-//    self.receivedData = [self.api receivedData];
-//}
+- (MSAPI *) api{
+    if(!_api){
+        _api = [[MSAPI alloc]init];
+        _api.delegate = self;
+    }
+    return _api;
+}
+
+-(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type{
+    if (type == kCategories){
+        _arrayOfCategories = [dictionary valueForKey:@"list"];
+        for (int i = 0; i < _arrayOfCategories.count; i++){
+            NSArray *insertIndexPath = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.rowsCounter inSection:0]];
+            self.rowsCounter++;
+            [_tableView insertRowsAtIndexPaths:insertIndexPath withRowAnimation:NO];
+        }
+    }
+    
+    if (type == kBrands){
+        _arrayOfBrands = [dictionary valueForKey:@"list"];
+        for (int i = 0; i < _arrayOfBrands.count; i++){
+            NSArray *insertIndexPath = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.brandsCounter inSection:0]];
+            self.brandsCounter++;
+            [_tableView insertRowsAtIndexPaths:insertIndexPath withRowAnimation:NO];
+        }
+    }
+    
+    if (type == kCatalog){
+            self.brandAndCategoryCount = [[dictionary valueForKey:@"count"] integerValue];
+    }
+}
 @end
