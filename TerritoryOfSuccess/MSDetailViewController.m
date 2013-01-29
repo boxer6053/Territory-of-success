@@ -7,7 +7,6 @@
     BOOL shareIsPressed;
     BOOL accessToContinue;
 }
-//@property (nonatomic) MSAPI *api;
 @property (nonatomic) int commentsDetail, advisesDetail, ratingDetail;
 @property (strong, nonatomic) NSString* productImageURL;
 @property (strong, nonatomic) NSString* productSentName;
@@ -17,7 +16,6 @@
 @synthesize commentsDetail, advisesDetail, ratingDetail;
 
 @synthesize productName;
-//@synthesize api;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -95,20 +93,6 @@
     self.commentsDetail = comments;
     self.advisesDetail = advises;
 }
-
-#pragma mark Web Methods
-//- (MSAPI *) api{
-//    if(!self.api){
-//        self.api = [[MSAPI alloc]init];
-//        self.api.delegate = self;
-//    }
-//    return self.api;
-//}
-//
-//- (void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type{
-//    
-//}
-
 
 #pragma mark Share Methods
 - (IBAction)fbButtonPressed:(id)sender {

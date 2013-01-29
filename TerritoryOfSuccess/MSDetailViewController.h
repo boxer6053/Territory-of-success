@@ -29,6 +29,5 @@
 
 - (IBAction)shareButtonPressed:(id)sender;
 
-//-(void) sentToDetailWithBrandId:(int)brandId withCategoryId:(int)categoryId;
 -(void) sentProductName:(NSString*)name andRating:(int)rating andCommentsNumber:(int)comments andAdvisesNumber:(int)advises andImageURL:(NSString*)imageURL;
 @end
