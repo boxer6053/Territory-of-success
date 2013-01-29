@@ -17,33 +17,18 @@
 @synthesize whitchIsBetterButton     = _whitchIsBetterButton;
 @synthesize gradeButton = _gradeButton;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     
-    
     if ([[UIScreen mainScreen] bounds].size.height == 568) {
-        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*568.png"]]];
-        //_inquirerPic.frame = CGRectMake(20, 50, 280, 280);
-        
-        
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
     else
     {
-        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_320*480.png"]]];
-        _inquirerPic.frame = CGRectMake(20, 155, 280, 302);
-        
-        
-        
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
+
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
