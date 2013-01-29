@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableOfInquirers;
 @property (strong, nonatomic) NSArray *testInquirers;
 @property (weak, nonatomic) NSString *selectedValue;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *inquirerTypeSegment;
 
 
 @end
