@@ -631,7 +631,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" id="zeS-7I-XmZ">
-                                <rect key="frame" x="20" y="20" width="280" height="415"/>
+                                <rect key="frame" x="20" y="57" width="280" height="378"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -663,6 +663,17 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Qhv-5f-RkT">
+                                <rect key="frame" x="-6" y="0.0" width="332" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Все опросы"/>
+                                    <segment title="Мои опросы"/>
+                                </segments>
+                                <connections>
+                                    <action selector="inquirerTypeSwitch:" destination="Cru-iV-L4Z" eventType="valueChanged" id="PYd-5l-13q"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -674,6 +685,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="inquirerTypeSegment" destination="Qhv-5f-RkT" id="30G-x5-wib"/>
                         <outlet property="tableOfInquirers" destination="zeS-7I-XmZ" id="gU7-80-Ry7"/>
                         <segue destination="xlL-gh-fab" kind="push" identifier="toInquirerDetail" id="Hmy-AW-mjy"/>
                     </connections>
@@ -698,14 +710,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Выберите тип опроса" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="II8-Mh-SHg">
-                                <rect key="frame" x="70" y="20" width="180" height="21"/>
+                                <rect key="frame" x="70" y="5" width="180" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SiE-VA-Abl">
-                                <rect key="frame" x="20" y="49" width="280" height="32"/>
+                                <rect key="frame" x="20" y="34" width="280" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Какой товар лучше?" backgroundImage="commentsButton.png">
@@ -720,7 +732,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sgP-nu-NSq">
-                                <rect key="frame" x="20" y="88" width="280" height="32"/>
+                                <rect key="frame" x="20" y="74" width="280" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Оцените товар" backgroundImage="commentsButton.png">
@@ -732,9 +744,24 @@
                                 </state>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="inquirerPic.png" id="wbq-c5-3E1">
-                                <rect key="frame" x="20" y="155" width="280" height="220"/>
+                                <rect key="frame" x="20" y="163" width="280" height="220"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Fz4-Bg-pgk">
+                                <rect key="frame" x="20" y="114" width="280" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Задать вопрос о товаре" backgroundImage="commentsButton.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="mc9-cG-NdE" kind="push" id="zLu-RE-q3q"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -1074,6 +1101,91 @@
             </objects>
             <point key="canvasLocation" x="1407" y="980"/>
         </scene>
+        <!--Ask View Controller-->
+        <scene sceneID="t8L-Mk-wXP">
+            <objects>
+                <viewController id="mc9-cG-NdE" customClass="MSAskViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FUj-8E-4Sz">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="66" sectionHeaderHeight="22" sectionFooterHeight="22" id="seu-Rx-Ovi">
+                                <rect key="frame" x="20" y="20" width="280" height="415"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="questCellID" textLabel="5An-IC-oHd" detailTextLabel="FcA-PJ-h6c" rowHeight="66" style="IBUITableViewCellStyleSubtitle" id="Gi5-jZ-qU8">
+                                        <rect key="frame" x="0.0" y="22" width="280" height="66"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="65"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5An-IC-oHd">
+                                                    <rect key="frame" x="10" y="13" width="38" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FcA-PJ-h6c">
+                                                    <rect key="frame" x="10" y="35" width="47" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="t6Z-4Q-kC3">
+                        <barButtonItem key="rightBarButtonItem" title="Наверх" id="aJJ-ZY-1Ox">
+                            <connections>
+                                <action selector="upAction:" destination="mc9-cG-NdE" id="YGW-ZX-ugW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableOfCategories" destination="seu-Rx-Ovi" id="Beu-JS-2nE"/>
+                        <outlet property="upButton" destination="aJJ-ZY-1Ox" id="kKi-hs-syr"/>
+                        <segue destination="kEY-zH-Ufw" kind="push" identifier="toAskSubCategory" id="fKk-HT-9uR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WZt-ZS-LiA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1775" y="980"/>
+        </scene>
+        <!--Ask Sub Category View Controller-->
+        <scene sceneID="xRv-b5-fbx">
+            <objects>
+                <viewController id="kEY-zH-Ufw" customClass="MSAskSubCategoryViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wa3-u8-d6I">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Gcg-kS-9wS">
+                                <rect key="frame" x="20" y="20" width="280" height="415"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="As1-QS-gGS"/>
+                    <connections>
+                        <outlet property="askSubCategTable" destination="Gcg-kS-9wS" id="gls-hc-3fX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0QY-KW-WEk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2251" y="980"/>
+        </scene>
         <!--First Navigation Controller - Новости-->
         <scene sceneID="03Y-68-yoo">
             <objects>
@@ -1127,6 +1239,20 @@
                 <relationship kind="outlet" name="starImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="starView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="stepper" candidateClass="UIStepper"/>
+            </relationships>
+        </class>
+        <class className="MSAskSubCategoryViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSAskSubCategoryViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="askSubCategTable" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="MSAskViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSAskViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="upAction:"/>
+                <relationship kind="outlet" name="tableOfCategories" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="upButton" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
         <class className="MSBrandsAndCategoryCell" superclassName="UITableViewCell">
@@ -1221,6 +1347,8 @@
         <class className="MSInquirerViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSInquirerViewController.h"/>
             <relationships>
+                <relationship kind="action" name="inquirerTypeSwitch:"/>
+                <relationship kind="outlet" name="inquirerTypeSegment" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="tableOfInquirers" candidateClass="UITableView"/>
             </relationships>
         </class>
