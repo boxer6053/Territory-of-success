@@ -1,6 +1,7 @@
 #import "MSCatalogueViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "MSSubCatalogueViewController.h"
+#import "MSBrandsAndCategoryCell.h"
 
 @interface MSCatalogueViewController ()
 
@@ -8,7 +9,7 @@
 @property (strong, nonatomic) NSArray *arrayOfBrands;
 @property (strong, nonatomic) MSAPI *api;
 @property (strong, nonatomic) NSMutableData *receivedData;
-@property int rowsCounter, brandsCounter;
+@property int rowsCounter, brandsCounter, brandAndCategoryCount;
 @end
 
 @implementation MSCatalogueViewController
@@ -16,7 +17,7 @@
 @synthesize api = _api;
 @synthesize arrayOfBrands = _arrayOfBrands;
 @synthesize arrayOfCategories = _arrayOfCategories;
-@synthesize rowsCounter,brandsCounter;
+@synthesize rowsCounter, brandsCounter, brandAndCategoryCount;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,10 +48,7 @@
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
         NSLog(@"480");
     }
-    _tableView.layer.cornerRadius = 10;
-    [_tableView.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0].CGColor];
-    [_tableView.layer setBorderWidth:1.0f];
-    [_tableView.layer setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.5].CGColor];
+    [_tableView.layer setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0].CGColor];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -78,7 +76,7 @@
     if (self.productAndBonusesControl.selectedSegmentIndex == 0) {
             [self.api getCategories];
     }else{
-            [self.api getFiveBrandsWithOffset:3];
+            [self.api getFiveBrandsWithOffset:0];
     }
 }
 
@@ -93,23 +91,25 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell;
+    MSBrandsAndCategoryCell *cell;
     static NSString* myIdentifier = @"cellIdentifier";
     cell = [_tableView dequeueReusableCellWithIdentifier:myIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:myIdentifier];
+        cell = [[MSBrandsAndCategoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:myIdentifier];
     }
     
 //Проверка на СегментКонтрол и подгрузка соответствующего контента в ячейки
     if (self.productAndBonusesControl.selectedSegmentIndex == 0) {
-        cell.textLabel.text = [[_arrayOfCategories objectAtIndex:indexPath.row] valueForKey:@"title"];
-        cell.imageView.image = [UIImage imageNamed:@"bag.png"];
+        cell.categoryOrBrandName.text = [[_arrayOfCategories objectAtIndex:indexPath.row] valueForKey:@"title"];
+        cell.categoryOrBrandImage.image = [UIImage imageNamed:@"bag.png"];
+        
         cell.tag = [[[_arrayOfCategories objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
     }
     
     if (self.productAndBonusesControl.selectedSegmentIndex == 1) {
-        cell.textLabel.text = [[_arrayOfBrands objectAtIndex:indexPath.row] valueForKey:@"title"];
-        cell.imageView.image = nil;
+        cell.categoryOrBrandName.text = [[_arrayOfBrands objectAtIndex:indexPath.row] valueForKey:@"title"];
+        cell.categoryOrBrandImage.image = [UIImage imageNamed:@"brandLogoExample.png"];
+        
         cell.tag = [[[_arrayOfBrands objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
     }
 
@@ -119,6 +119,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell * currentCell = [_tableView cellForRowAtIndexPath:indexPath];
     [self performSegueWithIdentifier:@"toSubCatalogue" sender:currentCell];
+    [_tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -160,7 +161,10 @@
             self.brandsCounter++;
             [_tableView insertRowsAtIndexPaths:insertIndexPath withRowAnimation:NO];
         }
+    }
     
+    if (type == kCatalog){
+            self.brandAndCategoryCount = [[dictionary valueForKey:@"count"] integerValue];
     }
 }
 @end

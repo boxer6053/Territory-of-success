@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MSAPI.h"
+#import "MSDialogView.h"
 
 @interface MSFirstViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, UITextFieldDelegate, WsCompleteDelegate>
 {
@@ -25,6 +26,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *tintLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) NSMutableData *receivedData;
+//@property (strong, nonatomic) UIView *dialogView;
+@property (strong, nonatomic) UIImageView *productImageView;
+@property (strong, nonatomic) MSDialogView *dialogView;
+@property (strong, nonatomic) UIImageView *mainFishkaImageView;
+@property (strong, nonatomic) UILabel *mainFishkaLabel;
+@property (strong, nonatomic) UIView *backAlphaView;
 
 
 - (IBAction)changeNewsPage:(id)sender;
@@ -32,5 +39,8 @@
 - (IBAction)sendCode:(UIButton *)sender;
 - (UIImage *)cropImage:(UIImage *)image withX:(CGFloat)x withY:(CGFloat)y withWidth:(CGFloat)width withHeight:(CGFloat)height;
 - (NSString *)recognizeImage:(UIImage *)image;
+- (void)showDialogView;
+- (void)closeDialogView;
+- (NSString *)filtringCode:(NSString *)code;
 
 @end
