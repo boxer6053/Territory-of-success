@@ -42,7 +42,7 @@
 		F57217D616B6F3A600705682 /* closeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F57217D516B6F3A600705682 /* closeIcon.png */; };
 		F57217DA16B7004500705682 /* TOS cap.png in Resources */ = {isa = PBXBuildFile; fileRef = F57217D916B7004500705682 /* TOS cap.png */; };
 		F57B65E116A43694007C7982 /* rect200*50.png in Resources */ = {isa = PBXBuildFile; fileRef = F57B65E016A43693007C7982 /* rect200*50.png */; };
-		F59884A316B856D5009FBF48 /* MSAskSubCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F59884A216B856D5009FBF48 /* MSAskSubCategoryViewController.m */; };
+		F59884A416B96ABD009FBF48 /* MSAskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AA6B0E16B82A2F009EB16C /* MSAskViewController.m */; };
 		F59A6CB116A9A6A400796C0E /* background_320*480.png in Resources */ = {isa = PBXBuildFile; fileRef = F59A6CAF16A9A6A400796C0E /* background_320*480.png */; };
 		F59A6CB716A9A83700796C0E /* background_320*568.png in Resources */ = {isa = PBXBuildFile; fileRef = F59A6CB616A9A83700796C0E /* background_320*568.png */; };
 		F59B7FA416A86B620084FEE3 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F59B7FA316A86B620084FEE3 /* backButton.png */; };
@@ -54,7 +54,6 @@
 		F59F4D7416ADA3AC00458E5E /* MSTypesOfInquirersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F59F4D7316ADA3AC00458E5E /* MSTypesOfInquirersViewController.m */; };
 		F59F4D7916ADA40E00458E5E /* Inquirer.png in Resources */ = {isa = PBXBuildFile; fileRef = F59F4D7616ADA40E00458E5E /* Inquirer.png */; };
 		F59F4D7B16ADA40E00458E5E /* CheckThisUp.png in Resources */ = {isa = PBXBuildFile; fileRef = F59F4D7816ADA40E00458E5E /* CheckThisUp.png */; };
-		F5AA6B0F16B82A2F009EB16C /* MSAskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AA6B0E16B82A2F009EB16C /* MSAskViewController.m */; };
 		F5AEFA6D16AED9A0004EC992 /* JSONParserForDataEntenties.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AEFA6C16AED9A0004EC992 /* JSONParserForDataEntenties.m */; };
 		F5BA5A0616AEE5E300AF69CB /* WhitchOneIsBetter.png in Resources */ = {isa = PBXBuildFile; fileRef = F5BA5A0516AEE5E300AF69CB /* WhitchOneIsBetter.png */; };
 		F5C04FD016A957DF00A3E220 /* exampleDetailImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F5C04FCF16A957DF00A3E220 /* exampleDetailImage.png */; };
@@ -1021,8 +1020,9 @@
 				FA1AB2E916B27E43001827A6 /* MSNewsCell.m in Sources */,
 				F555201F16B3E240000C0D3E /* MSDialogView.m in Sources */,
 				F54DC3FC16B666D5001385CB /* MSInquirerDetailViewController.m in Sources */,
-				F5AA6B0F16B82A2F009EB16C /* MSAskViewController.m in Sources */,
-				F59884A316B856D5009FBF48 /* MSAskSubCategoryViewController.m in Sources */,
+				FA3B6F1916B6C30C0095A851 /* MSBrandsAndCategoryCell.m in Sources */,
+				FA3B6F1E16B6EE7E0095A851 /* MSSubCatalogueCell.m in Sources */,
+				F59884A416B96ABD009FBF48 /* MSAskViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

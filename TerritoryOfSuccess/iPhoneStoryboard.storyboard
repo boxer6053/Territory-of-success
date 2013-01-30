@@ -1255,6 +1255,14 @@
                 <relationship kind="outlet" name="upButton" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
+        <class className="MSBrandsAndCategoryCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSBrandsAndCategoryCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="categoryOrBrandAvailable" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="categoryOrBrandImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="categoryOrBrandName" candidateClass="UILabel"/>
+            </relationships>
+        </class>
         <class className="MSCatalogueViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSCatalogueViewController.h"/>
             <relationships>

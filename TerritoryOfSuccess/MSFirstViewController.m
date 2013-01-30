@@ -76,8 +76,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
- 
-    
+        
     [self.api getFiveNewsWithOffset:0];
     
     [self.codeTextField setDelegate:self];
