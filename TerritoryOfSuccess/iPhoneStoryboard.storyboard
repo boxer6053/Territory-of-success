@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8kx-JT-nNm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8kx-JT-nNm">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
         <!--Catalogue View Controller - Каталог-->
@@ -520,21 +520,6 @@
                                 <rect key="frame" x="10" y="252" width="300" height="144"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hcs-IG-iCC">
-                                        <rect key="frame" x="10" y="79" width="185" height="45"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Отправить" backgroundImage="button_orange.png">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="sendCode:" destination="jKd-fR-cIU" eventType="touchUpInside" id="b38-qh-tUe"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NAL-Z1-5ll">
                                         <rect key="frame" x="212" y="58" width="80" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -556,19 +541,19 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Av7-vU-KvY">
-                                        <rect key="frame" x="10" y="79" width="185" height="45"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="h7L-XQ-A7e">
+                                        <rect key="frame" x="10" y="78" width="185" height="46"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Отправить" backgroundImage="button_orange.png">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="sendCode:" destination="jKd-fR-cIU" eventType="touchUpInside" id="8dY-vB-N3e"/>
+                                            <action selector="sendCode:" destination="jKd-fR-cIU" eventType="touchUpInside" id="cGY-9U-CBg"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -607,7 +592,7 @@
                         <outlet property="newsView" destination="QRT-kF-N46" id="LHV-hG-XRI"/>
                         <outlet property="photoButton" destination="NAL-Z1-5ll" id="UA2-vY-44t"/>
                         <outlet property="scrollView" destination="0JY-C8-Kkc" id="RCM-av-AAz"/>
-                        <outlet property="sendCodeButton" destination="hcs-IG-iCC" id="RW5-ob-nwn"/>
+                        <outlet property="sendCodeButton" destination="h7L-XQ-A7e" id="pfW-FO-G1Y"/>
                         <segue destination="6ww-UU-93h" kind="push" identifier="newsDetailsFromHome" id="ffa-R0-niF"/>
                     </connections>
                 </viewController>
@@ -1126,157 +1111,6 @@
         <image name="twButton.png" width="32" height="33"/>
         <image name="vkButton.png" width="32" height="33"/>
     </resources>
-    <classes>
-        <class className="MSAddingCommentViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSAddingCommentViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="action" name="save:"/>
-                <relationship kind="action" name="starStepper:"/>
-                <relationship kind="outlet" name="containView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="inputText" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="navigation" candidateClass="UINavigationItem"/>
-                <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
-                <relationship kind="outlet" name="pleaseLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="starImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="starView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="stepper" candidateClass="UIStepper"/>
-            </relationships>
-        </class>
-        <class className="MSCatalogueViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSCatalogueViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="segmentPressed:"/>
-                <relationship kind="outlet" name="productAndBonusesControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="MSCommentCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSCommentCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="commentText" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="commentatorName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="starView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="starsImage" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="MSCommentsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSCommentsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="addComment:"/>
-                <relationship kind="outlet" name="commentTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="MSDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="commentsButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="detailImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="detailScrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="likeView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="mainView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="productDescriptionTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="questionsButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="shareButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="starView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="MSFirstNavigationController" superclassName="UINavigationController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSFirstNavigationController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="mainNavigationBar" candidateClass="UINavigationBar"/>
-                <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
-            </relationships>
-        </class>
-        <class className="MSFirstViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSFirstViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="changeNewsPage:"/>
-                <relationship kind="action" name="sendCode:" candidateClass="UIButton"/>
-                <relationship kind="action" name="takePhoto:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="codeInputView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="codeTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="newsPageControl" candidateClass="UIPageControl"/>
-                <relationship kind="outlet" name="newsScrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="newsView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="photoButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="sendCodeButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="testButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="tintLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MSInquirerViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSInquirerViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tableOfInquirers" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="MSNewsCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSNewsCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="newsDateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="newsDetailLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="newsImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="newsTitleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MSNewsDetailsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSNewsDetailsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="articleBriefTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="articleDateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="articleImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="articleScrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="articleTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="articleTitleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MSNewsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSNewsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="newsTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="MSQuestionDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSQuestionDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="questionDescriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="questionTitleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="tableOfAnswers" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="MSQuestionsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSQuestionsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="questionDoubleButton:"/>
-                <relationship kind="outlet" name="segment" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="MSSubCatalogueViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSSubCatalogueViewController.h"/>
-        </class>
-        <class className="MSTabBarController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSTabBarController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="myTabBarController" candidateClass="UITabBar"/>
-            </relationships>
-        </class>
-        <class className="MSTypesOfInquirersViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSTypesOfInquirersViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="toWhitchIsBetter:"/>
-                <relationship kind="outlet" name="gradeButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="inquirerPic" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="toGrade" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="whitchIsBetterButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

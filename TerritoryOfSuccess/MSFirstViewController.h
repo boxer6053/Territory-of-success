@@ -32,7 +32,6 @@
 @property (strong, nonatomic) UIImageView *mainFishkaImageView;
 @property (strong, nonatomic) UILabel *mainFishkaLabel;
 @property (strong, nonatomic) UIView *backAlphaView;
-@property (weak, nonatomic) IBOutlet UIButton *testButton;
 
 
 - (IBAction)changeNewsPage:(id)sender;
@@ -42,5 +41,6 @@
 - (NSString *)recognizeImage:(UIImage *)image;
 - (void)showDialogView;
 - (void)closeDialogView;
+- (NSString *)filtringCode:(NSString *)code;
 
 @end

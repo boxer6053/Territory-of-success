@@ -63,8 +63,6 @@
 @synthesize mainFishkaLabel = _mainFishkaLabel;
 @synthesize backAlphaView = _backAlphaView;
 
-@synthesize testButton = _testButton;
-
 -(MSAPI *)api
 {
     if(!_api)
@@ -128,6 +126,7 @@
     
     self.slideShowTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(slide) userInfo:nil repeats:YES];
     self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapAnywhere:)];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -270,7 +269,7 @@
     else
     {
         //якщо нема
-        UIAlertView *cameraNotAvailableMessage = [[UIAlertView alloc] initWithTitle:@"Camera error" message:@"Camera not available" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        UIAlertView *cameraNotAvailableMessage = [[UIAlertView alloc] initWithTitle:@"Ошибка камеры" message:@"Камера не тоступна" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         
         [cameraNotAvailableMessage show];
     }
@@ -280,6 +279,8 @@
 - (IBAction)sendCode:(UIButton *)sender {
     
     NSLog(@"You click on send button!!!");
+    
+    [self.sendCodeButton setEnabled:NO];
     
     [self.codeTextField resignFirstResponder];
     
@@ -292,9 +293,26 @@
     
 //    [self.api checkCode:[self.codeTextField text]];
     
+//    unichar ch = [codeStr characterAtIndex:4];
+//    NSString *str = [NSString stringWithFormat:@"%c", ch];
+    
+    
+    
     if (![codeStr isEqualToString:@""] && codeStr.length == 19) {
         [SVProgressHUD showWithStatus:@"Sending code..."];
+        
         [self.api checkCode:codeStr];
+    }
+    else
+    {
+        UIAlertView *codeFailMessage = [[UIAlertView alloc] initWithTitle:@"Ошибка кода"
+                                                                     message:@"Код должен включать 16 символов"
+                                                                    delegate:self
+                                                           cancelButtonTitle:@"Ok"
+                                                           otherButtonTitles:nil];
+        [codeFailMessage show];
+        
+        [self.sendCodeButton setEnabled:YES];
     }
     
 //    [self showDialogView];
@@ -304,6 +322,8 @@
 - (void)showDialogView
 {
     [SVProgressHUD showSuccessWithStatus:@"Ok"];
+    
+    [self.sendCodeButton setEnabled:YES];
     
     [self.dialogView.closeButton addTarget:self action:@selector(closeDialogView) forControlEvents:UIControlEventTouchUpInside];
     [self.dialogView.okButton addTarget:self action:@selector(closeDialogView) forControlEvents:UIControlEventTouchUpInside];
@@ -535,7 +555,7 @@
 //    }
     //------------------------------------------------------------------
     
-    [self.codeTextField setText:recognizedText];
+    [self.codeTextField setText:[self filtringCode:recognizedText]];
         
     //------------------------------
     
@@ -637,6 +657,26 @@ static inline double radians (double degrees)
     [tesseract recognize];
     
     return [tesseract recognizedText];
+}
+
+//фільтрування коду
+- (NSString *)filtringCode:(NSString *)code
+{
+    NSMutableString *filtredString = [[NSMutableString alloc] init];
+    
+    for (int i = 0; i < code.length; i++) {
+        unichar ch = [code characterAtIndex:i];
+        if ((ch >= 48 && ch <= 57) || (ch >= 65 && ch <= 90) || ch == 45 || ch == 8212 || ch == 8211)
+        {
+            if (ch == 8212) {
+                ch = 45;
+            }
+            NSLog(@"%@", [NSString stringWithFormat:@"%c", ch]);
+            [filtredString appendString:[NSString stringWithFormat:@"%c", ch]];
+        }
+    }
+    
+    return filtredString;
 }
 
 - (void)didTapAnywhere:(UITapGestureRecognizer*)recognizer
