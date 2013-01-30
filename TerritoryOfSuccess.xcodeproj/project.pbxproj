@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F51CCD5216B95B4400029B9B /* button_185_45.png in Resources */ = {isa = PBXBuildFile; fileRef = F51CCD5116B95B4400029B9B /* button_185_45.png */; };
+		F51CCD5416B95C6F00029B9B /* button_120*32.png in Resources */ = {isa = PBXBuildFile; fileRef = F51CCD5316B95C6F00029B9B /* button_120*32.png */; };
 		F526D77316B2E7820027BF21 /* paper.png in Resources */ = {isa = PBXBuildFile; fileRef = F526D77216B2E7820027BF21 /* paper.png */; };
 		F526D77716B3009D0027BF21 /* button55*30.png in Resources */ = {isa = PBXBuildFile; fileRef = F526D77616B3009D0027BF21 /* button55*30.png */; };
 		F52816D616A5760F00E64924 /* MSQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52816D516A5760F00E64924 /* MSQuestionsViewController.m */; };
@@ -116,6 +118,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F51CCD5116B95B4400029B9B /* button_185_45.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_185_45.png; sourceTree = "<group>"; };
+		F51CCD5316B95C6F00029B9B /* button_120*32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_120*32.png"; sourceTree = "<group>"; };
 		F526D77216B2E7820027BF21 /* paper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paper.png; sourceTree = "<group>"; };
 		F526D77616B3009D0027BF21 /* button55*30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button55*30.png"; sourceTree = "<group>"; };
 		F52816D416A5760F00E64924 /* MSQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSQuestionsViewController.h; path = ../MSQuestionsViewController.h; sourceTree = "<group>"; };
@@ -478,6 +482,8 @@
 		F59AEB7E16AF1770004519B9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F51CCD5316B95C6F00029B9B /* button_120*32.png */,
+				F51CCD5116B95B4400029B9B /* button_185_45.png */,
 				F57217D916B7004500705682 /* TOS cap.png */,
 				F57217D516B6F3A600705682 /* closeIcon.png */,
 				F57217D316B6E4AC00705682 /* dialogViewGradient.png */,
@@ -490,7 +496,6 @@
 				FA3B6F1A16B6C6300095A851 /* brandLogoExample.png */,
 				FA1AB2EC16B2B935001827A6 /* bg.png */,
 				FA1AB2EA16B2B924001827A6 /* px_by_Gre3g.png */,
-				FA0A301216B1B68800EDF04A /* paper.png */,
 				FA7881A116B2C36000AF18CD /* bag.png */,
 				FAC3B71F16AD7E49007B8578 /* mainLogoBackground_center.png */,
 				FADA3FCD16AD8A0C008D2C7E /* 5star.png */,
@@ -968,6 +973,8 @@
 				FA3B6F2016B700BA0095A851 /* 0star.png in Resources */,
 				FA884BBE16B7FB35002A7FDC /* shareButton.png in Resources */,
 				FA884BC816B82B74002A7FDC /* Settings.bundle in Resources */,
+				F51CCD5216B95B4400029B9B /* button_185_45.png in Resources */,
+				F51CCD5416B95C6F00029B9B /* button_120*32.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
