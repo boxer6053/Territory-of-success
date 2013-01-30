@@ -258,7 +258,7 @@
 {
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-   if(typefinished == kQuest)
+   if(typefinished == kQuestCateg)
    {
     _questionsArray = [dictionary valueForKey:@"list"];
     for (int i  = 0; i<_questionsArray.count; i++)

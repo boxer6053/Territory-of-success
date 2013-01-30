@@ -19,14 +19,19 @@
 @synthesize tableOfInquirers = _tableOfInquirers;
 @synthesize testInquirers = _testInquirers;
 @synthesize selectedValue = _selectedValue;
+@synthesize allInquirerMode;
+@synthesize myInquirerMode;
+@synthesize inquirerTypeSegment = _inquirerTypeSegment;
 
 
 
 - (void)viewDidLoad
 {
-    
+
+  
     [super viewDidLoad];
-   
+     NSLog(@"VIEW DID LOAD");
+    [self setSegmentControlColor];
     _tableOfInquirers.delegate = self;
     _tableOfInquirers.dataSource = self;
     _testInquirers = [[NSArray alloc] initWithObjects:@"1",@"2", nil];
@@ -45,7 +50,23 @@
        
 	// Do any additional setup after loading the view.
 }
+-(void)setSegmentControlColor
+{
+    if (_inquirerTypeSegment.selectedSegmentIndex == 0) {
+        [[_inquirerTypeSegment.subviews objectAtIndex:1] setTintColor:[UIColor colorWithRed:255.0/255.0 green:140.0/255.0 blue:0 alpha:1.0]];
+        [[_inquirerTypeSegment.subviews objectAtIndex:0] setTintColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1.0]];
+    }else{
+        [[_inquirerTypeSegment.subviews objectAtIndex:0] setTintColor:[UIColor colorWithRed:255.0/255.0 green:140.0/255.0 blue:0 alpha:1.0]];
+        [[_inquirerTypeSegment.subviews objectAtIndex:1] setTintColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1.0]];
+    }
+   
+}
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [self setSegmentControlColor];
+ 
+}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return _testInquirers.count;
@@ -94,4 +115,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)inquirerTypeSwitch:(id)sender {
+    
+    [self setSegmentControlColor];
+    [_tableOfInquirers reloadData];
+}
 @end

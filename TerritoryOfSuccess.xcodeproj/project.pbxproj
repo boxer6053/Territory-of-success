@@ -30,6 +30,7 @@
 		F5603C59169C944C00667203 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = F5603C58169C944C00667203 /* settings.png */; };
 		F5603C63169C9A1100667203 /* Catalogue.png in Resources */ = {isa = PBXBuildFile; fileRef = F5603C62169C9A1100667203 /* Catalogue.png */; };
 		F57B65E116A43694007C7982 /* rect200*50.png in Resources */ = {isa = PBXBuildFile; fileRef = F57B65E016A43693007C7982 /* rect200*50.png */; };
+		F59884A316B856D5009FBF48 /* MSAskSubCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F59884A216B856D5009FBF48 /* MSAskSubCategoryViewController.m */; };
 		F59A6CB116A9A6A400796C0E /* background_320*480.png in Resources */ = {isa = PBXBuildFile; fileRef = F59A6CAF16A9A6A400796C0E /* background_320*480.png */; };
 		F59A6CB716A9A83700796C0E /* background_320*568.png in Resources */ = {isa = PBXBuildFile; fileRef = F59A6CB616A9A83700796C0E /* background_320*568.png */; };
 		F59B7FA416A86B620084FEE3 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F59B7FA316A86B620084FEE3 /* backButton.png */; };
@@ -41,6 +42,7 @@
 		F59F4D7416ADA3AC00458E5E /* MSTypesOfInquirersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F59F4D7316ADA3AC00458E5E /* MSTypesOfInquirersViewController.m */; };
 		F59F4D7916ADA40E00458E5E /* Inquirer.png in Resources */ = {isa = PBXBuildFile; fileRef = F59F4D7616ADA40E00458E5E /* Inquirer.png */; };
 		F59F4D7B16ADA40E00458E5E /* CheckThisUp.png in Resources */ = {isa = PBXBuildFile; fileRef = F59F4D7816ADA40E00458E5E /* CheckThisUp.png */; };
+		F5AA6B0F16B82A2F009EB16C /* MSAskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AA6B0E16B82A2F009EB16C /* MSAskViewController.m */; };
 		F5AEFA6D16AED9A0004EC992 /* JSONParserForDataEntenties.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AEFA6C16AED9A0004EC992 /* JSONParserForDataEntenties.m */; };
 		F5BA5A0616AEE5E300AF69CB /* WhitchOneIsBetter.png in Resources */ = {isa = PBXBuildFile; fileRef = F5BA5A0516AEE5E300AF69CB /* WhitchOneIsBetter.png */; };
 		F5C04FD016A957DF00A3E220 /* exampleDetailImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F5C04FCF16A957DF00A3E220 /* exampleDetailImage.png */; };
@@ -132,6 +134,8 @@
 		F5603C58169C944C00667203 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		F5603C62169C9A1100667203 /* Catalogue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Catalogue.png; sourceTree = "<group>"; };
 		F57B65E016A43693007C7982 /* rect200*50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rect200*50.png"; sourceTree = "<group>"; };
+		F59884A116B856D5009FBF48 /* MSAskSubCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAskSubCategoryViewController.h; sourceTree = "<group>"; };
+		F59884A216B856D5009FBF48 /* MSAskSubCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSAskSubCategoryViewController.m; sourceTree = "<group>"; };
 		F59A6CAF16A9A6A400796C0E /* background_320*480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_320*480.png"; sourceTree = "<group>"; };
 		F59A6CB616A9A83700796C0E /* background_320*568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_320*568.png"; sourceTree = "<group>"; };
 		F59B7FA316A86B620084FEE3 /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = "<group>"; };
@@ -145,6 +149,8 @@
 		F59F4D7316ADA3AC00458E5E /* MSTypesOfInquirersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTypesOfInquirersViewController.m; sourceTree = "<group>"; };
 		F59F4D7616ADA40E00458E5E /* Inquirer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Inquirer.png; sourceTree = "<group>"; };
 		F59F4D7816ADA40E00458E5E /* CheckThisUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CheckThisUp.png; sourceTree = "<group>"; };
+		F5AA6B0D16B82A2F009EB16C /* MSAskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAskViewController.h; sourceTree = "<group>"; };
+		F5AA6B0E16B82A2F009EB16C /* MSAskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSAskViewController.m; sourceTree = "<group>"; };
 		F5AEFA6B16AED9A0004EC992 /* JSONParserForDataEntenties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONParserForDataEntenties.h; sourceTree = "<group>"; };
 		F5AEFA6C16AED9A0004EC992 /* JSONParserForDataEntenties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONParserForDataEntenties.m; sourceTree = "<group>"; };
 		F5BA5A0516AEE5E300AF69CB /* WhitchOneIsBetter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WhitchOneIsBetter.png; sourceTree = "<group>"; };
@@ -417,6 +423,10 @@
 				F59F4D7316ADA3AC00458E5E /* MSTypesOfInquirersViewController.m */,
 				F54DC3FA16B666D5001385CB /* MSInquirerDetailViewController.h */,
 				F54DC3FB16B666D5001385CB /* MSInquirerDetailViewController.m */,
+				F5AA6B0D16B82A2F009EB16C /* MSAskViewController.h */,
+				F5AA6B0E16B82A2F009EB16C /* MSAskViewController.m */,
+				F59884A116B856D5009FBF48 /* MSAskSubCategoryViewController.h */,
+				F59884A216B856D5009FBF48 /* MSAskSubCategoryViewController.m */,
 				F5603C42169C6E6400667203 /* MSFirstNavigationController.h */,
 				F5603C43169C6E6400667203 /* MSFirstNavigationController.m */,
 				F5603C4F169C802100667203 /* MSTabBarController.h */,
@@ -935,6 +945,8 @@
 				F5AEFA6D16AED9A0004EC992 /* JSONParserForDataEntenties.m in Sources */,
 				FA1AB2E916B27E43001827A6 /* MSNewsCell.m in Sources */,
 				F54DC3FC16B666D5001385CB /* MSInquirerDetailViewController.m in Sources */,
+				F5AA6B0F16B82A2F009EB16C /* MSAskViewController.m in Sources */,
+				F59884A316B856D5009FBF48 /* MSAskSubCategoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

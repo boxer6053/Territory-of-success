@@ -222,7 +222,7 @@
 
 -(void) getQuestionsWithParentID:(int)parentId{
     self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/subjects"];
-    self.checkRequest = kQuest;
+    self.checkRequest = kQuestCateg;
     
     self.request  = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
     [self.request setHTTPMethod:@"POST"];
