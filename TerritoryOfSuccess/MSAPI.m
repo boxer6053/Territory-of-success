@@ -192,7 +192,7 @@
     }
 }
 
--(void) getFiveBrandsWithOffset:(int)offset{
+- (void)getFiveBrandsWithOffset:(int)offset{
     self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/brands"];
     self.checkRequest = kBrands;
     
@@ -220,7 +220,7 @@
     }
 }
 
--(void) getQuestionsWithParentID:(int)parentId{
+- (void)getQuestionsWithParentID:(int)parentId{
     self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/subjects"];
     self.checkRequest = kQuestCateg;
     
@@ -247,7 +247,7 @@
     }
 }
 
--(void) getCategories{
+- (void)getCategories{
     self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/categories"];
     self.checkRequest = kCategories;
     
@@ -273,7 +273,7 @@
     }
 }
 
--(void)getProductsWithOffset:(int)offset withBrandId:(int)brandId withCategoryId:(int)categoryId{
+- (void)getProductsWithOffset:(int)offset withBrandId:(int)brandId withCategoryId:(int)categoryId{
     self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/catalog"];
     self.checkRequest = kCatalog;
     

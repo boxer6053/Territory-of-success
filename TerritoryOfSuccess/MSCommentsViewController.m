@@ -3,7 +3,6 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface MSCommentsViewController ()
-
 @end
 
 @implementation MSCommentsViewController
@@ -21,10 +20,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSArray *firstComment = [NSArray arrayWithObjects:@"Pavel",@"Продукт - полное ***",[NSNumber numberWithInteger:1], nil];
-    NSArray *secondComment = [NSArray arrayWithObjects:@"Lyohaness",@"Real shit, dudes! Otveechaju",[NSNumber numberWithInteger:1], nil];
-    NSArray *thirdComment =[NSArray arrayWithObjects:@"Andrew",@"This is bullshit, but i like it!",[NSNumber numberWithInteger:3], nil];
-    _commentsArray = [NSMutableArray arrayWithObjects:firstComment,secondComment,thirdComment, nil];
+    [[self commentTableView] setBackgroundView:[[UIImageView alloc]
+                                 initWithImage:[UIImage imageNamed:@"bg.png"]]];
+    NSArray *firstComment = [NSArray arrayWithObjects:@"Pavel",@"Мне не понравился данный продукт",[NSNumber numberWithInteger:1], nil];
+    NSArray *secondComment = [NSArray arrayWithObjects:@"Lyohaness",@"фу-фу-фу",[NSNumber numberWithInteger:1], nil];
+    NSArray *thirdComment =[NSArray arrayWithObjects:@"Andrew",@"Нормальный продукт, на твердую 3!",[NSNumber numberWithInteger:3], nil];
+    self.commentsArray = [NSMutableArray arrayWithObjects:firstComment,secondComment,thirdComment, nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -33,15 +34,9 @@
 }
 
 #pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_commentsArray count];
+    return [[self commentsArray] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -68,11 +63,6 @@
 
 
 #pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-}
-
 - (IBAction)addComment:(id)sender {
     [self performSegueWithIdentifier:@"toAddingCommentView" sender:self];
 }
@@ -83,7 +73,7 @@
 }
 
 -(void) addNewComment:(NSArray *)array{
-    [_commentsArray addObject:array];
-    [self.commentTableView reloadData];
+    [[self commentsArray] addObject:array];
+    [[self commentTableView] reloadData];
 }
 @end
