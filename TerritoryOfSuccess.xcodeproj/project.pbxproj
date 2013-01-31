@@ -43,6 +43,7 @@
 		F57B65E116A43694007C7982 /* rect200*50.png in Resources */ = {isa = PBXBuildFile; fileRef = F57B65E016A43693007C7982 /* rect200*50.png */; };
 		F59884A416B96ABD009FBF48 /* MSAskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AA6B0E16B82A2F009EB16C /* MSAskViewController.m */; };
 		F59884A716BA830F009FBF48 /* MSQuiestionProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F59884A616BA830F009FBF48 /* MSQuiestionProductDetailViewController.m */; };
+		F59884AA16BACE7C009FBF48 /* MSCreateQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F59884A916BACE7C009FBF48 /* MSCreateQuestionViewController.m */; };
 		F59A6CB116A9A6A400796C0E /* background_320*480.png in Resources */ = {isa = PBXBuildFile; fileRef = F59A6CAF16A9A6A400796C0E /* background_320*480.png */; };
 		F59A6CB716A9A83700796C0E /* background_320*568.png in Resources */ = {isa = PBXBuildFile; fileRef = F59A6CB616A9A83700796C0E /* background_320*568.png */; };
 		F59B7FA416A86B620084FEE3 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F59B7FA316A86B620084FEE3 /* backButton.png */; };
@@ -162,6 +163,8 @@
 		F57B65E016A43693007C7982 /* rect200*50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rect200*50.png"; sourceTree = "<group>"; };
 		F59884A516BA830F009FBF48 /* MSQuiestionProductDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSQuiestionProductDetailViewController.h; path = ../MSQuiestionProductDetailViewController.h; sourceTree = "<group>"; };
 		F59884A616BA830F009FBF48 /* MSQuiestionProductDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSQuiestionProductDetailViewController.m; path = ../MSQuiestionProductDetailViewController.m; sourceTree = "<group>"; };
+		F59884A816BACE7C009FBF48 /* MSCreateQuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCreateQuestionViewController.h; sourceTree = "<group>"; };
+		F59884A916BACE7C009FBF48 /* MSCreateQuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCreateQuestionViewController.m; sourceTree = "<group>"; };
 		F59A6CAF16A9A6A400796C0E /* background_320*480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_320*480.png"; sourceTree = "<group>"; };
 		F59A6CB616A9A83700796C0E /* background_320*568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_320*568.png"; sourceTree = "<group>"; };
 		F59B7FA316A86B620084FEE3 /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = "<group>"; };
@@ -454,6 +457,8 @@
 				F5AA6B0E16B82A2F009EB16C /* MSAskViewController.m */,
 				F59884A516BA830F009FBF48 /* MSQuiestionProductDetailViewController.h */,
 				F59884A616BA830F009FBF48 /* MSQuiestionProductDetailViewController.m */,
+				F59884A816BACE7C009FBF48 /* MSCreateQuestionViewController.h */,
+				F59884A916BACE7C009FBF48 /* MSCreateQuestionViewController.m */,
 				F5603C42169C6E6400667203 /* MSFirstNavigationController.h */,
 				F5603C43169C6E6400667203 /* MSFirstNavigationController.m */,
 				F5603C4F169C802100667203 /* MSTabBarController.h */,
@@ -1017,6 +1022,7 @@
 				FABA8A6916BA82530040EF16 /* MSNewsDetailsViewController.m in Sources */,
 				FABA8A6C16BA85720040EF16 /* MSNewsViewController.m in Sources */,
 				F59884A716BA830F009FBF48 /* MSQuiestionProductDetailViewController.m in Sources */,
+				F59884AA16BACE7C009FBF48 /* MSCreateQuestionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
