@@ -1069,6 +1069,8 @@
 				FA6DE84716BACD1600B48434 /* MSSexProfileCell.m in Sources */,
 				FA6DE84A16BACD5400B48434 /* MSStandardProfileCell.m in Sources */,
 				FA6DE87516BADCEA00B48434 /* MSProfileSaveCell.m in Sources */,
+				FAA0FCB816BAB190005AF32E /* MSShare.m in Sources */,
+				F59884AA16BACE7C009FBF48 /* MSCreateQuestionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
