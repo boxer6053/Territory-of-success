@@ -1139,12 +1139,6 @@
                 <relationship kind="outlet" name="stepper" candidateClass="UIStepper"/>
             </relationships>
         </class>
-        <class className="MSAskSubCategoryViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSAskSubCategoryViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="askSubCategTable" candidateClass="UITableView"/>
-            </relationships>
-        </class>
         <class className="MSAskViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSAskViewController.h"/>
             <relationships>
@@ -1243,9 +1237,7 @@
         <class className="MSInquirerViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSInquirerViewController.h"/>
             <relationships>
-                <relationship kind="action" name="inquirerTypeSwitch:"/>
-                <relationship kind="outlet" name="inquirerTypeSegment" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="tableOfInquirers" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="inquirerPic" candidateClass="UIImageView"/>
             </relationships>
         </class>
         <class className="MSNewsCell" superclassName="UITableViewCell">
@@ -1283,6 +1275,14 @@
                 <relationship kind="outlet" name="newsTableView" candidateClass="UITableView"/>
             </relationships>
         </class>
+        <class className="MSQuiestionProductDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSQuiestionProductDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="productImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="productTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="tableOfAnswers" candidateClass="UITableView"/>
+            </relationships>
+        </class>
         <class className="MSSubCatalogueCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSSubCatalogueCell.h"/>
             <relationships>
@@ -1306,11 +1306,9 @@
         <class className="MSTypesOfInquirersViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSTypesOfInquirersViewController.h"/>
             <relationships>
-                <relationship kind="action" name="toWhitchIsBetter:"/>
-                <relationship kind="outlet" name="gradeButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="inquirerPic" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="toGrade" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="whitchIsBetterButton" candidateClass="UIButton"/>
+                <relationship kind="action" name="inquirerTypeSwitch:"/>
+                <relationship kind="outlet" name="inquirerTypeSegment" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="tableOfInquirers" candidateClass="UITableView"/>
             </relationships>
         </class>
     </classes>
