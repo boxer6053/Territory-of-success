@@ -8,7 +8,9 @@
 
 #import "MSAskViewController.h"
 #import <QuartzCore/QuartzCore.h>
-#import "MSAskSubCategoryViewController.h"
+#import "MSQuiestionProductDetailViewController.h"
+
+
 
 @interface MSAskViewController ()
 @property (strong, nonatomic) NSArray *questionsArray;
@@ -27,6 +29,8 @@
 @synthesize translatingValue;
 @synthesize upButtonShows;
 @synthesize upButton = _upButton;
+@synthesize sendingTitle = _sendingTitle;
+@synthesize translatingUrl = _translatingUrl;
 
 - (MSAPI *) api{
     if(!_api){
@@ -105,16 +109,23 @@
     }
     else
     {
+        _translatingUrl = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"];
+        _sendingTitle = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
+        NSLog(@"wazaaaa %@",_translatingUrl);
+        NSLog(@"asdadsfdsfsf %@",_sendingTitle);
         [self performSegueWithIdentifier:@"toQuestionProductDetail" sender:self];
+        
     }
  
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([segue.identifier isEqualToString:@"toAskSubCategory"])
+    if([segue.identifier isEqualToString:@"toQuestionProductDetail"])
     {
-        MSAskSubCategoryViewController *controller = (MSAskSubCategoryViewController *)segue.destinationViewController;
-        controller.parentID1 = self.translatingValue;
+        MSQuiestionProductDetailViewController *controller = (MSQuiestionProductDetailViewController *)segue.destinationViewController;
+        controller.gettedProductTitle = _sendingTitle;
+        controller.gettedUrlImage = _translatingUrl;
+    
     }
 }
 
