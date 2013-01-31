@@ -105,6 +105,8 @@
 		FA884BBE16B7FB35002A7FDC /* shareButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA884BBD16B7FB35002A7FDC /* shareButton.png */; };
 		FA884BC816B82B74002A7FDC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FA884BC716B82B74002A7FDC /* Settings.bundle */; };
 		FAA0FCB416BAA856005AF32E /* button_310_32-1.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA0FCB316BAA856005AF32E /* button_310_32-1.png */; };
+		FAA0FCB816BAB190005AF32E /* MSShare.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA0FCB716BAB190005AF32E /* MSShare.m */; };
+		FAA0FCBA16BAB1F6005AF32E /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA0FCB916BAB1F6005AF32E /* Social.framework */; };
 		FAAD061F16A410D700D37373 /* bg_color.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD061E16A410D700D37373 /* bg_color.png */; };
 		FAAD062A16A4326400D37373 /* iconWhite57.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD062916A4326400D37373 /* iconWhite57.png */; };
 		FAAD062C16A4326A00D37373 /* iconWhite114.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD062B16A4326A00D37373 /* iconWhite114.png */; };
@@ -390,6 +392,9 @@
 		FA884BBD16B7FB35002A7FDC /* shareButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareButton.png; sourceTree = "<group>"; };
 		FA884BC716B82B74002A7FDC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		FAA0FCB316BAA856005AF32E /* button_310_32-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_310_32-1.png"; sourceTree = "<group>"; };
+		FAA0FCB616BAB190005AF32E /* MSShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSShare.h; sourceTree = "<group>"; };
+		FAA0FCB716BAB190005AF32E /* MSShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSShare.m; sourceTree = "<group>"; };
+		FAA0FCB916BAB1F6005AF32E /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		FAAD061E16A410D700D37373 /* bg_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_color.png; sourceTree = "<group>"; };
 		FAAD062916A4326400D37373 /* iconWhite57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconWhite57.png; path = ../iconWhite57.png; sourceTree = "<group>"; };
 		FAAD062B16A4326A00D37373 /* iconWhite114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconWhite114.png; path = ../iconWhite114.png; sourceTree = "<group>"; };
@@ -411,6 +416,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAA0FCBA16BAB1F6005AF32E /* Social.framework in Frameworks */,
 				F552752916B06AFF0086AE53 /* ImageIO.framework in Frameworks */,
 				F547E1C716AD5D6900365FB3 /* SystemConfiguration.framework in Frameworks */,
 				FA283CCD16A0890F00DBDC19 /* QuartzCore.framework in Frameworks */,
@@ -482,6 +488,8 @@
 				F5AEFA6C16AED9A0004EC992 /* JSONParserForDataEntenties.m */,
 				F555201D16B3E240000C0D3E /* MSDialogView.h */,
 				F555201E16B3E240000C0D3E /* MSDialogView.m */,
+				FAA0FCB616BAB190005AF32E /* MSShare.h */,
+				FAA0FCB716BAB190005AF32E /* MSShare.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -576,6 +584,7 @@
 		F5F6ADC1169C4F21000247D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FAA0FCB916BAB1F6005AF32E /* Social.framework */,
 				F552752816B06AFF0086AE53 /* ImageIO.framework */,
 				F552752516B06AEA0086AE53 /* SDWebImage.framework */,
 				F547E1C616AD5D6900365FB3 /* SystemConfiguration.framework */,
