@@ -95,12 +95,19 @@
     self.upButtonShows = YES;
     [self.navigationItem.rightBarButtonItem setEnabled:YES];
     self.translatingValue = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"];
+    if([[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"] integerValue] != 0)
+    {
     _questionsCount = 0;
     [_tableOfCategories reloadData];
     [self.api getQuestionsWithParentID:[[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue]];
     
     NSLog(@"translate %@", self.translatingValue);
-    //[self performSegueWithIdentifier:@"toAskSubCategory" sender:self];
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"toQuestionProductDetail" sender:self];
+    }
+ 
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

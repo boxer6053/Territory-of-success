@@ -162,8 +162,6 @@
 		F57217D516B6F3A600705682 /* closeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = closeIcon.png; sourceTree = "<group>"; };
 		F57217D916B7004500705682 /* TOS cap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TOS cap.png"; sourceTree = "<group>"; };
 		F57B65E016A43693007C7982 /* rect200*50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rect200*50.png"; sourceTree = "<group>"; };
-		F59884A116B856D5009FBF48 /* MSAskSubCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAskSubCategoryViewController.h; sourceTree = "<group>"; };
-		F59884A216B856D5009FBF48 /* MSAskSubCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSAskSubCategoryViewController.m; sourceTree = "<group>"; };
 		F59A6CAF16A9A6A400796C0E /* background_320*480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_320*480.png"; sourceTree = "<group>"; };
 		F59A6CB616A9A83700796C0E /* background_320*568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_320*568.png"; sourceTree = "<group>"; };
 		F59B7FA316A86B620084FEE3 /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = "<group>"; };
@@ -459,8 +457,6 @@
 				F54DC3FB16B666D5001385CB /* MSInquirerDetailViewController.m */,
 				F5AA6B0D16B82A2F009EB16C /* MSAskViewController.h */,
 				F5AA6B0E16B82A2F009EB16C /* MSAskViewController.m */,
-				F59884A116B856D5009FBF48 /* MSAskSubCategoryViewController.h */,
-				F59884A216B856D5009FBF48 /* MSAskSubCategoryViewController.m */,
 				F5603C42169C6E6400667203 /* MSFirstNavigationController.h */,
 				F5603C43169C6E6400667203 /* MSFirstNavigationController.m */,
 				F5603C4F169C802100667203 /* MSTabBarController.h */,
