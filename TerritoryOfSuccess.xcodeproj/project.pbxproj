@@ -1031,6 +1031,7 @@
 				FABA8A6916BA82530040EF16 /* MSNewsDetailsViewController.m in Sources */,
 				FABA8A6C16BA85720040EF16 /* MSNewsViewController.m in Sources */,
 				F59884A716BA830F009FBF48 /* MSQuiestionProductDetailViewController.m in Sources */,
+				FAA0FCB816BAB190005AF32E /* MSShare.m in Sources */,
 				F59884AA16BACE7C009FBF48 /* MSCreateQuestionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
