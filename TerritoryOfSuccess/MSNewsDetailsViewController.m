@@ -19,10 +19,11 @@
 @implementation MSNewsDetailsViewController
 
 @synthesize dbApi = _dbApi;
-@synthesize articleTextView = _articleTextView;
+@synthesize articleTextWebView = _articleTextWebView;
 @synthesize articleImageView = _articleImageView;
 @synthesize articleTitleLabel = _articleTitleLabel;
 @synthesize articleScrollView = _articleScrollView;
+@synthesize articleActivityIndicator = _articleActivityIndicator;
 
 -(MSAPI *)dbApi
 {
@@ -56,6 +57,11 @@
     }
     
     self.articleScrollView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.0];
+    self.articleTextWebView.backgroundColor = [UIColor clearColor];
+    self.articleTextWebView.opaque = NO;
+    [self.articleActivityIndicator startAnimating];
+    self.articleActivityIndicator.hidesWhenStopped = YES;
+    self.articleTextWebView.hidden = YES;
    // self.articleScrollView.layer.cornerRadius = 10.0;
     
 	// Do any additional setup after loading the view.
@@ -80,13 +86,28 @@
         [self.articleImageView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
         [self.articleImageView.layer setCornerRadius:5.0];
         self.articleTitleLabel.text = [[dictionary valueForKey:@"post"] valueForKey:@"title"];
-        self.articleTextView.text = [[dictionary valueForKey:@"post"] valueForKey:@"content"];
+        
+        //change iframe size for youtube video
+
+        NSString *articleText = [[dictionary valueForKey:@"post"] valueForKey:@"content"];
+        articleText  = [articleText stringByReplacingOccurrencesOfString:@"width=\"327\" height=\"245\"><\/iframe>" withString:@"width=\"300\" height=\"224\"><\/iframe>"];
+        
+        [self.articleTextWebView loadHTMLString:[NSString stringWithFormat:@"<div background-color:transparent>%@<div>",articleText] baseURL:nil];
+        
+        
         self.articleBriefTextView.text = [[dictionary valueForKey:@"post"] valueForKey:@"brief"];
         self.articleDateLabel.text = [[dictionary valueForKey:@"post"] valueForKey:@"date"];
         self.articleBriefTextView.frame = CGRectMake(self.articleBriefTextView.frame.origin.x, self.articleBriefTextView.frame.origin.y, self.articleBriefTextView.frame.size.width, self.articleBriefTextView.contentSize.height);
         self.articleBriefTextView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.1];
-        self.articleTextView.frame = CGRectMake(self.articleTextView.frame.origin.x, self.articleBriefTextView.frame.origin.y + self.articleBriefTextView.frame.size.height, self.articleTextView.frame.size.width, self.articleTextView.contentSize.height);
-        self.articleScrollView.contentSize= CGSizeMake(self.articleScrollView.contentSize.width, self.articleTextView.frame.origin.y + self.articleTextView.frame.size.height + 5);
     }
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [self.articleActivityIndicator stopAnimating];
+    [self.articleTextWebView sizeToFit];
+    self.articleTextWebView.frame = CGRectMake(self.articleTextWebView.frame.origin.x, self.articleBriefTextView.frame.origin.y + self.articleBriefTextView.frame.size.height, 320, self.articleTextWebView.frame.size.height);
+    self.articleScrollView.contentSize= CGSizeMake(self.articleScrollView.contentSize.width, self.articleTextWebView.frame.origin.y + self.articleTextWebView.frame.size.height + 5);
+    self.articleTextWebView.hidden = NO;
 }
 @end

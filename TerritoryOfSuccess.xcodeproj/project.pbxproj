@@ -107,9 +107,9 @@
 		FAAD061F16A410D700D37373 /* bg_color.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD061E16A410D700D37373 /* bg_color.png */; };
 		FAAD062A16A4326400D37373 /* iconWhite57.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD062916A4326400D37373 /* iconWhite57.png */; };
 		FAAD062C16A4326A00D37373 /* iconWhite114.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD062B16A4326A00D37373 /* iconWhite114.png */; };
-		FAC3B71D16AD5B23007B8578 /* MSNewsDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC3B71C16AD5B23007B8578 /* MSNewsDetailsViewController.m */; };
+		FABA8A6916BA82530040EF16 /* MSNewsDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABA8A6816BA82530040EF16 /* MSNewsDetailsViewController.m */; };
+		FABA8A6C16BA85720040EF16 /* MSNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABA8A6B16BA85720040EF16 /* MSNewsViewController.m */; };
 		FAC3B72016AD7E4A007B8578 /* mainLogoBackground_center.png in Resources */ = {isa = PBXBuildFile; fileRef = FAC3B71F16AD7E49007B8578 /* mainLogoBackground_center.png */; };
-		FADA06AA16A5DBA0008DBE38 /* MSNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FADA06A916A5DBA0008DBE38 /* MSNewsViewController.m */; };
 		FADA3FD216AD8A0C008D2C7E /* 5star.png in Resources */ = {isa = PBXBuildFile; fileRef = FADA3FCD16AD8A0C008D2C7E /* 5star.png */; };
 		FADA3FD316AD8A0C008D2C7E /* 4star.png in Resources */ = {isa = PBXBuildFile; fileRef = FADA3FCE16AD8A0C008D2C7E /* 4star.png */; };
 		FADA3FD416AD8A0C008D2C7E /* 1star.png in Resources */ = {isa = PBXBuildFile; fileRef = FADA3FCF16AD8A0C008D2C7E /* 1star.png */; };
@@ -393,11 +393,11 @@
 		FAAD061E16A410D700D37373 /* bg_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_color.png; sourceTree = "<group>"; };
 		FAAD062916A4326400D37373 /* iconWhite57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconWhite57.png; path = ../iconWhite57.png; sourceTree = "<group>"; };
 		FAAD062B16A4326A00D37373 /* iconWhite114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconWhite114.png; path = ../iconWhite114.png; sourceTree = "<group>"; };
-		FAC3B71B16AD5B23007B8578 /* MSNewsDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSNewsDetailsViewController.h; sourceTree = "<group>"; };
-		FAC3B71C16AD5B23007B8578 /* MSNewsDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSNewsDetailsViewController.m; sourceTree = "<group>"; };
+		FABA8A6716BA82530040EF16 /* MSNewsDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSNewsDetailsViewController.h; sourceTree = "<group>"; };
+		FABA8A6816BA82530040EF16 /* MSNewsDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSNewsDetailsViewController.m; sourceTree = "<group>"; };
+		FABA8A6A16BA85720040EF16 /* MSNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSNewsViewController.h; sourceTree = "<group>"; };
+		FABA8A6B16BA85720040EF16 /* MSNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSNewsViewController.m; sourceTree = "<group>"; };
 		FAC3B71F16AD7E49007B8578 /* mainLogoBackground_center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainLogoBackground_center.png; sourceTree = "<group>"; };
-		FADA06A816A5DBA0008DBE38 /* MSNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSNewsViewController.h; sourceTree = "<group>"; };
-		FADA06A916A5DBA0008DBE38 /* MSNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSNewsViewController.m; sourceTree = "<group>"; };
 		FADA3FCD16AD8A0C008D2C7E /* 5star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5star.png; sourceTree = "<group>"; };
 		FADA3FCE16AD8A0C008D2C7E /* 4star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4star.png; sourceTree = "<group>"; };
 		FADA3FCF16AD8A0C008D2C7E /* 1star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1star.png; sourceTree = "<group>"; };
@@ -441,10 +441,10 @@
 			isa = PBXGroup;
 			children = (
 				FA1AB2E616B27DE1001827A6 /* Cells */,
-				FADA06A816A5DBA0008DBE38 /* MSNewsViewController.h */,
-				FADA06A916A5DBA0008DBE38 /* MSNewsViewController.m */,
-				FAC3B71B16AD5B23007B8578 /* MSNewsDetailsViewController.h */,
-				FAC3B71C16AD5B23007B8578 /* MSNewsDetailsViewController.m */,
+				FABA8A6A16BA85720040EF16 /* MSNewsViewController.h */,
+				FABA8A6B16BA85720040EF16 /* MSNewsViewController.m */,
+				FABA8A6716BA82530040EF16 /* MSNewsDetailsViewController.h */,
+				FABA8A6816BA82530040EF16 /* MSNewsDetailsViewController.m */,
 				F5F6AE8D169C5153000247D9 /* MSFirstViewController.h */,
 				F5F6AE8E169C5153000247D9 /* MSFirstViewController.m */,
 				F52816D416A5760F00E64924 /* MSQuestionsViewController.h */,
@@ -1004,14 +1004,12 @@
 				FA55C14916A071AA00671CAB /* MSCatalogueViewController.m in Sources */,
 				F559534616A57A500079B985 /* SVProgressHUD.m in Sources */,
 				F52816D616A5760F00E64924 /* MSQuestionsViewController.m in Sources */,
-				FADA06AA16A5DBA0008DBE38 /* MSNewsViewController.m in Sources */,
 				FA1BEA8C16A813B200F2C219 /* MSDetailViewController.m in Sources */,
 				FA167C5616A993940008561D /* MSCommentsViewController.m in Sources */,
 				F547E1BC16AD556100365FB3 /* MSAPI.m in Sources */,
 				FA167C6116A9A5BB0008561D /* MSSubCatalogueViewController.m in Sources */,
 				FA87C6FC16AACDE400784A0D /* MSCommentCell.m in Sources */,
 				FA87C70016AAE0EE00784A0D /* MSAddingCommentViewController.m in Sources */,
-				FAC3B71D16AD5B23007B8578 /* MSNewsDetailsViewController.m in Sources */,
 				F5F377D816AD636E002CD218 /* MSQuestionDetailViewController.m in Sources */,
 				F59F4D6C16ADA2B800458E5E /* MSInquirerViewController.m in Sources */,
 				F59F4D7416ADA3AC00458E5E /* MSTypesOfInquirersViewController.m in Sources */,
@@ -1023,6 +1021,8 @@
 				FA3B6F1916B6C30C0095A851 /* MSBrandsAndCategoryCell.m in Sources */,
 				FA3B6F1E16B6EE7E0095A851 /* MSSubCatalogueCell.m in Sources */,
 				F59884A416B96ABD009FBF48 /* MSAskViewController.m in Sources */,
+				FABA8A6916BA82530040EF16 /* MSNewsDetailsViewController.m in Sources */,
+				FABA8A6C16BA85720040EF16 /* MSNewsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
