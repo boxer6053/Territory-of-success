@@ -8,7 +8,9 @@
 
 #import "MSAskViewController.h"
 #import <QuartzCore/QuartzCore.h>
-#import "MSAskSubCategoryViewController.h"
+#import "MSQuiestionProductDetailViewController.h"
+
+
 
 @interface MSAskViewController ()
 @property (strong, nonatomic) NSArray *questionsArray;
@@ -27,6 +29,8 @@
 @synthesize translatingValue;
 @synthesize upButtonShows;
 @synthesize upButton = _upButton;
+@synthesize sendingTitle = _sendingTitle;
+@synthesize translatingUrl = _translatingUrl;
 
 - (MSAPI *) api{
     if(!_api){
@@ -95,19 +99,33 @@
     self.upButtonShows = YES;
     [self.navigationItem.rightBarButtonItem setEnabled:YES];
     self.translatingValue = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"];
+    if([[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"] integerValue] != 0)
+    {
     _questionsCount = 0;
     [_tableOfCategories reloadData];
     [self.api getQuestionsWithParentID:[[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue]];
     
     NSLog(@"translate %@", self.translatingValue);
-    //[self performSegueWithIdentifier:@"toAskSubCategory" sender:self];
+    }
+    else
+    {
+        _translatingUrl = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"];
+        _sendingTitle = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
+        NSLog(@"wazaaaa %@",_translatingUrl);
+        NSLog(@"asdadsfdsfsf %@",_sendingTitle);
+        [self performSegueWithIdentifier:@"toQuestionProductDetail" sender:self];
+        
+    }
+ 
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([segue.identifier isEqualToString:@"toAskSubCategory"])
+    if([segue.identifier isEqualToString:@"toQuestionProductDetail"])
     {
-        MSAskSubCategoryViewController *controller = (MSAskSubCategoryViewController *)segue.destinationViewController;
-        controller.parentID1 = self.translatingValue;
+        MSQuiestionProductDetailViewController *controller = (MSQuiestionProductDetailViewController *)segue.destinationViewController;
+        controller.gettedProductTitle = _sendingTitle;
+        controller.gettedUrlImage = _translatingUrl;
+    
     }
 }
 

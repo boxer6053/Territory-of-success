@@ -2,18 +2,19 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface MSAddingCommentViewController ()
-
 @end
 
 @implementation MSAddingCommentViewController
-@synthesize delegate, sentArray;
+@synthesize delegate = _delegate;
+@synthesize sentArray = _sentArray;
 
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if ([[UIScreen mainScreen] bounds].size.height == 568) {
+    if ([[UIScreen mainScreen] bounds].size.height == 568)
+    {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
     else
@@ -28,7 +29,6 @@
     [self.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor blackColor],UITextAttributeTextColor, nil]];
     
     self.containView.layer.borderColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1].CGColor;
-    //self.containView.layer.borderWidth = 3.0f;
     self.containView.layer.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.3].CGColor;
     
     self.inputText.returnKeyType = UIReturnKeyDone;
@@ -51,15 +51,15 @@
 }
 
 - (IBAction)save:(id)sender {
-    sentArray = [[NSMutableArray alloc]init];
+    self.sentArray = [[NSMutableArray alloc]init];
     NSString *name = @"Egor";
     NSString *comment = self.inputText.text;
     NSNumber *starsNumber = [NSNumber numberWithInt:(int)self.stepper.value];
-    [sentArray addObject:name];
-    [sentArray addObject:comment];
-    [sentArray addObject:starsNumber];
+    [[self sentArray] addObject:name];
+    [[self sentArray] addObject:comment];
+    [[self sentArray] addObject:starsNumber];
     
-    [self.delegate addNewComment:sentArray];
+    [self.delegate addNewComment:[self sentArray]];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -91,7 +91,6 @@
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView{
     if([self.inputText.text isEqualToString:@"Напишите, что Вы думаете об этом товаре..."])
     self.inputText.text = @"";
-    
     self.inputText.textColor = [UIColor blackColor];
     return YES;
 }
@@ -101,27 +100,30 @@
         self.inputText.textColor = [UIColor lightGrayColor];
     }
 }
-
+// ввод текста комментария
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
     NSCharacterSet *doneButtonCharacterSet = [NSCharacterSet newlineCharacterSet];
     NSRange replacementTextRange = [text rangeOfCharacterFromSet:doneButtonCharacterSet];
     NSUInteger location = replacementTextRange.location;
     
-    if (textView.text.length + text.length > 140){
-        if (location != NSNotFound){
+    if (textView.text.length + text.length > 140)
+    {
+        if (location != NSNotFound)
+        {
             [textView resignFirstResponder];
         }
         return NO;
     }
     
-    else if (location != NSNotFound){
+    else if (location != NSNotFound)
+    {
         [textView resignFirstResponder];
         return NO;
     }
     
     return YES;
 }
-
+// нажатие в любой точке экрана для отмены ввода комментария
 -(void)tapPressed:(UITapGestureRecognizer *)recognizer{
     [self.inputText resignFirstResponder];
 }
