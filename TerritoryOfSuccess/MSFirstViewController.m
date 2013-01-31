@@ -32,6 +32,8 @@
 
 @property (strong, nonatomic) UITapGestureRecognizer *tapRecognizer;
 
+@property (nonatomic, strong) UIImageView *logoBarImageView;
+
 @end
 
 @implementation MSFirstViewController
@@ -63,6 +65,8 @@
 @synthesize mainFishkaLabel = _mainFishkaLabel;
 @synthesize backAlphaView = _backAlphaView;
 
+@synthesize logoBarImageView = _logoBarImageView;
+
 -(MSAPI *)api
 {
     if(!_api)
@@ -76,7 +80,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-        
+    
+    self.logoBarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(250, 10, 40, 25)];
+    [self.logoBarImageView setImage:[UIImage imageNamed:@"iconWhite57.png"]];
+    
+//    [self.navigationController.navigationBar addSubview:self.logoBarImageView];
+    
     [self.api getFiveNewsWithOffset:0];
     
     [self.codeTextField setDelegate:self];
@@ -129,6 +138,13 @@
     
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [UIView animateWithDuration:0.4 animations:^{
+        [self.logoBarImageView setAlpha:1];
+    }];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -167,6 +183,8 @@
 
 - (void)picturePressed:(UIButton *)sender
 {
+    [self.logoBarImageView setAlpha:0];
+    
     [self performSegueWithIdentifier:@"newsDetailsFromHome" sender:sender];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -218,11 +236,11 @@
         imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
         
         UIImageView *overlayImageView = [[UIImageView alloc] init];
-        [overlayImageView setImage:[UIImage imageNamed:@"rect160*20.png"]];
+        [overlayImageView setImage:[UIImage imageNamed:@"rect_220*30.png"]];
                 
         UIView *overlayAlphaTopView = [[UIView alloc] init];
         [overlayAlphaTopView setBackgroundColor:[UIColor blackColor]];
-        [overlayAlphaTopView setAlpha:0.6];
+        [overlayAlphaTopView setAlpha:0.7];
         
         UIView *overlayAlphaBottomView = [[UIView alloc] init];
         [overlayAlphaBottomView setBackgroundColor:[UIColor blackColor]];
@@ -238,8 +256,8 @@
         self.screenHeight = [[UIScreen mainScreen] bounds].size.height;
         
         //розмір рамки
-        self.frameMarkWidth = 160;
-        self.frameMarkHeight = 20;
+        self.frameMarkWidth = 220;
+        self.frameMarkHeight = 30;
         
         //запуск камери
         [self presentViewController:imagePickerController animated:YES completion:^(void){

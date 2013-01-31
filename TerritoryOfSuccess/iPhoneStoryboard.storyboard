@@ -502,7 +502,13 @@
                         </subviews>
                         <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="S0C-j4-tdR"/>
+                    <navigationItem key="navigationItem" id="S0C-j4-tdR">
+                        <barButtonItem key="rightBarButtonItem" image="Profile-Picture_40*28.png" id="xiG-LB-pWW">
+                            <connections>
+                                <segue destination="fxs-RG-A77" kind="push" id="UlY-3T-aQN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="codeInputView" destination="Vjb-iY-u2g" id="Fhe-0S-Wrb"/>
                         <outlet property="codeTextField" destination="dN8-M6-sm3" id="TeA-mM-lWm"/>
@@ -518,6 +524,186 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Zv-zQ-42Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="870" y="-1043"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="aP3-JW-70E">
+            <objects>
+                <viewController id="fxs-RG-A77" customClass="MSProfileViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="In0-e7-0UH">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="1ei-NH-ioB">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="bonusProfileCell" id="OU6-Nf-fbe" customClass="MSBonusCell">
+                                        <rect key="frame" x="0.0" y="46" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fg8-MC-mnf">
+                                                    <rect key="frame" x="0.0" y="0.0" width="73" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" title="Бонусы">
+                                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Количество баллов" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pLv-Lo-miT">
+                                                    <rect key="frame" x="81" y="10" width="208" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="bonusButton" destination="fg8-MC-mnf" id="tdm-KF-Yk3"/>
+                                            <outlet property="bonusCountLabel" destination="pLv-Lo-miT" id="o5Y-XI-GpA"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="standardProfileCell" id="3dk-mo-psy" customClass="MSStandardProfileCell">
+                                        <rect key="frame" x="0.0" y="91" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" id="y7a-MP-Gag">
+                                                    <rect key="frame" x="7" y="0.0" width="90" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Введите информацию" minimumFontSize="17" id="KlH-NJ-SHx">
+                                                    <rect key="frame" x="102" y="7" width="188" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="standartTextField" destination="KlH-NJ-SHx" id="UQY-J8-fBF"/>
+                                            <outlet property="standartTitleLabel" destination="y7a-MP-Gag" id="M41-Fy-W8i"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="sexProfileCell" id="cLK-Na-oYk" customClass="MSSexProfileCell">
+                                        <rect key="frame" x="0.0" y="135" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zAL-re-eSF">
+                                                    <rect key="frame" x="20" y="6" width="32" height="32"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" backgroundImage="checkbox_full.png">
+                                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="sexMaleSelected:" destination="cLK-Na-oYk" eventType="touchUpInside" id="4Zf-tg-8ae"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Мужчина" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8cC-w6-YWq">
+                                                    <rect key="frame" x="60" y="11" width="83" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mmV-M8-p1E">
+                                                    <rect key="frame" x="141" y="6" width="32" height="32"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" backgroundImage="checkbox_empty.png">
+                                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="sexFemaleSelected:" destination="cLK-Na-oYk" eventType="touchUpInside" id="liD-S4-ZX3"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Женщина" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IqJ-sg-u8g">
+                                                    <rect key="frame" x="181" y="11" width="91" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="sexFemaleButton" destination="mmV-M8-p1E" id="bMq-zs-oZ4"/>
+                                            <outlet property="sexFemaleLabel" destination="IqJ-sg-u8g" id="Puf-Hp-ePB"/>
+                                            <outlet property="sexMaleButton" destination="zAL-re-eSF" id="pBi-oZ-6Ys"/>
+                                            <outlet property="sexMaleLabel" destination="8cC-w6-YWq" id="0sD-MK-EtV"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="saveProfileCell" id="x3R-bC-BFt" customClass="MSProfileSaveCell">
+                                        <rect key="frame" x="0.0" y="179" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lpN-V0-zQI">
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" title="Сохранить" backgroundImage="button_300*43.png">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="SaveButton" destination="lpN-V0-zQI" id="Adq-Ei-yw3"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="fxs-RG-A77" id="xi3-JV-esH"/>
+                                    <outlet property="delegate" destination="fxs-RG-A77" id="sVc-pO-HSN"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Iyd-w8-v4E"/>
+                    <connections>
+                        <outlet property="profileTableView" destination="1ei-NH-ioB" id="LSn-9I-6cM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zHV-Iu-Ol0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1354" y="-1044"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="x9U-XE-zf6">
@@ -1173,9 +1359,13 @@
     </scenes>
     <resources>
         <image name="3star.png" width="87" height="20"/>
+        <image name="Profile-Picture_40*28.png" width="40" height="28"/>
         <image name="button_185_45.png" width="185" height="45"/>
+        <image name="button_300*43.png" width="300" height="43"/>
         <image name="button_310_32-1.png" width="310" height="32"/>
         <image name="catalogue_TOS.png" width="38" height="38"/>
+        <image name="checkbox_empty.png" width="32" height="32"/>
+        <image name="checkbox_full.png" width="32" height="32"/>
         <image name="commentsButton.png" width="280" height="32"/>
         <image name="commentsNumberImage.png" width="15" height="15"/>
         <image name="exampleDetailImage.png" width="320" height="212"/>
@@ -1212,6 +1402,13 @@
                 <relationship kind="action" name="upAction:"/>
                 <relationship kind="outlet" name="tableOfCategories" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="upButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="MSBonusCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSBonusCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="bonusButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="bonusCountLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="MSBrandsAndCategoryCell" superclassName="UITableViewCell">
@@ -1351,12 +1548,42 @@
                 <relationship kind="outlet" name="newsTableView" candidateClass="UITableView"/>
             </relationships>
         </class>
+        <class className="MSProfileSaveCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSProfileSaveCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="SaveButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="MSProfileViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSProfileViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="profileTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
         <class className="MSQuiestionProductDetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSQuiestionProductDetailViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="productImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="productTitleLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="tableOfAnswers" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="MSSexProfileCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSSexProfileCell.h"/>
+            <relationships>
+                <relationship kind="action" name="sexFemaleSelected:"/>
+                <relationship kind="action" name="sexMaleSelected:"/>
+                <relationship kind="outlet" name="sexFemaleButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="sexFemaleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sexMaleButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="sexMaleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="MSStandardProfileCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSStandardProfileCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="standartTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="standartTitleLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="MSSubCatalogueCell" superclassName="UITableViewCell">
