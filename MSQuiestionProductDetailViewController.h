@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableOfAnswers;
 @property (strong, nonatomic) NSURL *gettedUrlImage;
 @property (strong, nonatomic) NSString *gettedProductTitle;
+@property (weak, nonatomic) NSString *sendingTitle;
+@property (weak, nonatomic) NSURL *sendingURL;
 
 
 

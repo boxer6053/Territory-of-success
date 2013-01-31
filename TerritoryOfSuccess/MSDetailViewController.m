@@ -1,22 +1,29 @@
 #import "MSDetailViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "MSShare.h"
+#import <Social/Social.h>
 
 @interface MSDetailViewController ()
 {
     BOOL shareIsPressed;
     BOOL accessToContinue;
 }
+
 @property (nonatomic) int commentsDetail, advisesDetail, ratingDetail;
-@property (strong, nonatomic) NSString* productImageURL;
-@property (strong, nonatomic) NSString* productSentName;
+@property (strong, nonatomic) NSString *productImageURL;
+@property (strong, nonatomic) NSString *productSentName;
+@property (strong, atomic) MSShare *share;
+
 @end
 
 @implementation MSDetailViewController
+
 @synthesize commentsDetail = _commentsDetail;
 @synthesize advisesDetail = _advisesDetail;
 @synthesize ratingDetail = _ratingDetail;
 @synthesize productName = _productName;
+@synthesize share = _share;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -99,9 +106,31 @@
 }
 
 #pragma mark Share Methods
-- (IBAction)fbButtonPressed:(id)sender {
+- (MSShare *) share
+{
+    if (!_share) {
+        _share = [[MSShare alloc] init];
+    }
+    return _share;
 }
-- (IBAction)twButtonPressed:(id)sender {
+
+- (void)setShare:(MSShare *)share
+{
+    _share = share;
+}
+
+- (IBAction)fbButtonPressed:(id)sender
+{
+    [[self share] shareOnFacebookWithText:[self productSentName]
+                                withImage:[UIImage imageNamed:@"fbButton.png"]
+                    currentViewController:self];
+    
+}
+- (IBAction)twButtonPressed:(id)sender
+{
+    [[self share] shareOnTwitterWithText:[self productSentName]
+                               withImage:[UIImage imageNamed:@"twButton.png"]
+                   currentViewController:self];
 }
 - (IBAction)vkButtonPressed:(id)sender {
 }
