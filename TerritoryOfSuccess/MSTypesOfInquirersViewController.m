@@ -32,7 +32,7 @@
     
     [super viewDidLoad];
     NSLog(@"VIEW DID LOAD");
-    [self setSegmentControlColor];
+    [_inquirerTypeSegment setTintColor:[UIColor blackColor]];
     _tableOfInquirers.delegate = self;
     _tableOfInquirers.dataSource = self;
     _testInquirers = [[NSArray alloc] initWithObjects:@"1",@"2", nil];
