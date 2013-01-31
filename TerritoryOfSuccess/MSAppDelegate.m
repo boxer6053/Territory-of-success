@@ -18,7 +18,7 @@
 {
     [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
     [[UIBarButtonItem appearance] setTintColor:[UIColor orangeColor]];
-
+    
     [[UITabBar appearance] setBackgroundColor:[UIColor blackColor]];
     [[UITabBar appearance] setSelectedImageTintColor:[UIColor orangeColor]];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
