@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSMutableData *receivedData;
 @property (strong, nonatomic) MSAPI *api;
 
+
 @end
 
 @implementation MSAskViewController
@@ -31,6 +32,7 @@
 @synthesize upButton = _upButton;
 @synthesize sendingTitle = _sendingTitle;
 @synthesize translatingUrl = _translatingUrl;
+@synthesize upperID = _upperID;
 
 - (MSAPI *) api{
     if(!_api){
@@ -106,6 +108,7 @@
     _questionsCount = 0;
     [_tableOfCategories reloadData];
     [self.api getQuestionsWithParentID:[[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue]];
+            _upperID = [[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
     
     NSLog(@"translate %@", self.translatingValue);
         }
