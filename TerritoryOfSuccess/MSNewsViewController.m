@@ -15,12 +15,13 @@
 
 @interface MSNewsViewController ()
 
-@property (nonatomic) MSAPI *dbApi;
+@property (nonatomic)  MSAPI *dbApi;
 @property int newsCount;
 @property NSMutableArray *arrayOfNews;
 @property NSArray *lastDownloadedNews;
 @property NSInteger totalNewsCount;
 @property UIButton *footerButton;
+@property UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -33,6 +34,7 @@
 @synthesize lastDownloadedNews = _lastDownloadedNews;
 @synthesize totalNewsCount = _totalNewsCount;
 @synthesize footerButton = _footerButton;
+@synthesize activityIndicator = _activityIndicator;
 
 -(MSAPI *)dbApi
 {
@@ -67,16 +69,16 @@
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
-    
-//    self.newsTableView.layer.cornerRadius = 10;
+
     self.newsTableView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.0];
-//    [self.newsTableView.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0].CGColor];
-//    [self.newsTableView.layer setBorderWidth:1.0f];
-    self.footerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.newsTableView.frame.size.width, 50)];
+    self.footerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.newsTableView.frame.size.width, 20)];
     [self.footerButton setTitle:@"Загрузить еще" forState:UIControlStateNormal];
+    self.footerButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
     [self.footerButton setTitleColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4] forState:UIControlStateNormal];
     [self.footerButton addTarget:self action:@selector(moreNews) forControlEvents:UIControlEventTouchDown];
     self.newsTableView.tableFooterView = self.footerButton;
+    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.activityIndicator.hidesWhenStopped = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -89,17 +91,21 @@
 {
     if (self.arrayOfNews.count < self.totalNewsCount)
     {
+        self.newsTableView.tableFooterView = self.activityIndicator;
+        [self.activityIndicator startAnimating];
         [self.dbApi getFiveNewsWithOffset:self.arrayOfNews.count - 1];
     }
     else
     {
         [self.footerButton setTitle:@"Загружены все новости" forState:UIControlStateNormal];
     }
-        
+
 }
 
 -(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)typefinished
 {
+    [self.activityIndicator stopAnimating];
+    self.newsTableView.tableFooterView = self.footerButton;
     [self.arrayOfNews addObjectsFromArray: [dictionary valueForKey:@"list"]];
     self.lastDownloadedNews = [dictionary valueForKey:@"list"];
     for (int i  = 0; i<self.lastDownloadedNews.count; i++)
