@@ -9,6 +9,7 @@
 #import "MSQuiestionProductDetailViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <QuartzCore/QuartzCore.h>
+#import "MSCreateQuestionViewController.h"
 
 @interface MSQuiestionProductDetailViewController ()
 
@@ -20,6 +21,8 @@
 @synthesize productImage = _productImage;
 @synthesize productTitleLabel = _productTitleLabel;
 @synthesize tableOfAnswers = _tableOfAnswers;
+@synthesize sendingTitle = _sendingTitle;
+@synthesize sendingURL = _sendingURL;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,6 +49,11 @@
     [_tableOfAnswers.layer setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.7].CGColor];
     NSLog(@"Hello %@",_gettedProductTitle);
     NSLog(@"Hi %@", _gettedUrlImage);
+    _sendingTitle = _gettedProductTitle;
+    _sendingURL = _gettedUrlImage;
+    NSLog(@"111 %@", _sendingTitle);
+    NSLog(@"222 %@", _sendingURL);
+
     _productTitleLabel.text = _gettedProductTitle;
     [_productImage setImageWithURL:_gettedUrlImage placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
     
@@ -53,6 +61,15 @@
 	// Do any additional setup after loading the view.
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"toCreateQuestion"])
+    {
+        MSCreateQuestionViewController *controller = (MSCreateQuestionViewController *)segue.destinationViewController;
+        controller.productTitle = _sendingTitle;
+        controller.imageURL = _sendingURL;
+    }
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

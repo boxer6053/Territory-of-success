@@ -15,7 +15,11 @@
 @property (weak, nonatomic) NSURL *translatingUrl;
 @property (weak, nonatomic) NSString *sendingTitle;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *upButton;
+@property (nonatomic) NSInteger upperID;
+
 - (IBAction)upAction:(id)sender;
+
+
 
 @property  BOOL upButtonShows;
 @end

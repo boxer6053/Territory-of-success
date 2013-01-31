@@ -49,7 +49,8 @@
     }
     NSMutableString *name = [NSString stringWithFormat:@"%@",[[_commentsArray objectAtIndex:indexPath.row] objectAtIndex:0]];
     cell.commentatorName.text =[name stringByAppendingString:@" написал:"];
-    
+    [cell.commentText setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.7]];
+    [cell.commentText.layer setCornerRadius:10];
     cell.commentText.text = [[_commentsArray objectAtIndex:indexPath.row] objectAtIndex:1];
     
     NSString *imageName = [NSString stringWithFormat:@"%@star.png",[[_commentsArray objectAtIndex:indexPath.row] objectAtIndex:2]];
