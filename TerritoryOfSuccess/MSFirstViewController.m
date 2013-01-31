@@ -32,6 +32,8 @@
 
 @property (strong, nonatomic) UITapGestureRecognizer *tapRecognizer;
 
+@property (nonatomic, strong) UIImageView *logoBarImageView;
+
 @end
 
 @implementation MSFirstViewController
@@ -63,6 +65,8 @@
 @synthesize mainFishkaLabel = _mainFishkaLabel;
 @synthesize backAlphaView = _backAlphaView;
 
+@synthesize logoBarImageView = _logoBarImageView;
+
 -(MSAPI *)api
 {
     if(!_api)
@@ -76,7 +80,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-        
+    
+    self.logoBarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(250, 10, 40, 25)];
+    [self.logoBarImageView setImage:[UIImage imageNamed:@"iconWhite57.png"]];
+    
+    [self.navigationController.navigationBar addSubview:self.logoBarImageView];
+    
     [self.api getFiveNewsWithOffset:0];
     
     [self.codeTextField setDelegate:self];
@@ -129,6 +138,13 @@
     
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [UIView animateWithDuration:0.4 animations:^{
+        [self.logoBarImageView setAlpha:1];
+    }];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -167,6 +183,8 @@
 
 - (void)picturePressed:(UIButton *)sender
 {
+    [self.logoBarImageView setAlpha:0];
+    
     [self performSegueWithIdentifier:@"newsDetailsFromHome" sender:sender];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
