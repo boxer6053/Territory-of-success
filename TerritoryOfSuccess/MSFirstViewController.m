@@ -430,9 +430,9 @@
             [self showDialogView];
         }
         else
-            if ([[dictionary valueForKey:@"status"] isEqualToString:@"notfound"]) {
-                
-                NSLog(@"notfound");
+        {
+            if ([[dictionary valueForKey:@"status"] isEqualToString:@"expiried"]) {
+                NSLog(@"expiried");
                 
                 if ([[UIScreen mainScreen] bounds].size.height == 568) {
                     self.dialogView = [[MSDialogView alloc] initWithFrame:CGRectMake(5, 568, 310, 350)];
@@ -448,9 +448,8 @@
                     self.backAlphaView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
                     
                     self.mainFishkaImageView = [[UIImageView alloc] initWithFrame:CGRectMake(56, 476, 198, 33)];
-
                 }
-                    
+                
                 [self.backAlphaView setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0]];
                 [self.scrollView insertSubview:self.backAlphaView belowSubview:self.dialogView];
                 
@@ -464,32 +463,97 @@
                 [self.mainFishkaLabel setText:@"ПРОВЕРКА КОДА"];
                 
                 [self.mainFishkaImageView addSubview:self.mainFishkaLabel];
-
+                
                 
                 [self.dialogView.captionLabel setText:[[dictionary valueForKey:@"message"] objectAtIndex:0]];
+                [self.dialogView.productLabel setText:@"Товар:"];
+                NSURL *imageUrl = [NSURL URLWithString:[[dictionary valueForKey:@"product"] valueForKey:@"image"]];
+                [self.dialogView.productImageView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
                 
+                NSMutableString *productString = [NSMutableString stringWithString:[[dictionary valueForKey:@"brand"] valueForKey:@"title"]];
+                [productString appendFormat:@" / %@", [[dictionary valueForKey:@"product"] valueForKey:@"title"]];
                 
+                [self.dialogView.productDescripptionLabel setText:productString];
+                [self.dialogView.productDescripptionLabel sizeToFit];
                 
-                NSString *messageStr = [[dictionary valueForKey:@"message"] objectAtIndex:1];
+                [self.dialogView.categoryLabel setText:@"Категория:"];
+                [self.dialogView.categoryDescripptionLabel setText:[[dictionary valueForKey:@"category"] valueForKey:@"title"]];
+                [self.dialogView.categoryDescripptionLabel sizeToFit];
                 
-                messageStr = [messageStr stringByReplacingOccurrencesOfString:@"<p>" withString:@""];
-                messageStr = [messageStr stringByReplacingOccurrencesOfString:@"</p>" withString:@"\n"];
+                [self.dialogView.bonusLabel setText:@"Бонус за продукт:"];
+                [self.dialogView.bonusValueLabel setText:@"5.00"];
                 
-                UILabel *notFoundMessageLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, self.dialogView.captionLabel.frame.origin.y + self.dialogView.captionLabel.frame.size.height + 30, 290, 100)];
-                [notFoundMessageLabel setNumberOfLines:0];
-                [notFoundMessageLabel setLineBreakMode:NSLineBreakByWordWrapping];
-                [notFoundMessageLabel setBackgroundColor:[UIColor clearColor]];
-                notFoundMessageLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:11.0];
-                [notFoundMessageLabel setTextColor:[UIColor whiteColor]];
-                [notFoundMessageLabel setText:messageStr];
-                [notFoundMessageLabel sizeToFit];
+                [self.dialogView.messageLabel setText:[[dictionary valueForKey:@"message"] objectAtIndex:1]];
+                [self.dialogView.messageLabel sizeToFit];
                 
-                [self.dialogView addSubview:notFoundMessageLabel];
-                
-                [self.dialogView.bonusNameLabel setText:@""];
+                [self.dialogView.messageView setFrame:CGRectMake(self.dialogView.messageView.frame.origin.x, self.dialogView.messageView.frame.origin.y, self.dialogView.messageView.frame.size.width, self.dialogView.messageLabel.frame.size.height)];
                 
                 [self showDialogView];
             }
+            else
+            {
+                if ([[dictionary valueForKey:@"status"] isEqualToString:@"notfound"]) {
+                    
+                    NSLog(@"notfound");
+                    
+                    if ([[UIScreen mainScreen] bounds].size.height == 568) {
+                        self.dialogView = [[MSDialogView alloc] initWithFrame:CGRectMake(5, 568, 310, 350)];
+                        
+                        self.backAlphaView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)];
+                        
+                        self.mainFishkaImageView = [[UIImageView alloc] initWithFrame:CGRectMake(56, 564, 198, 33)];
+                    }
+                    else
+                    {
+                        self.dialogView = [[MSDialogView alloc] initWithFrame:CGRectMake(5, 480, 310, 350)];
+                        
+                        self.backAlphaView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+                        
+                        self.mainFishkaImageView = [[UIImageView alloc] initWithFrame:CGRectMake(56, 476, 198, 33)];
+                        
+                    }
+                    
+                    [self.backAlphaView setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0]];
+                    [self.scrollView insertSubview:self.backAlphaView belowSubview:self.dialogView];
+                    
+                    [self.mainFishkaImageView setImage:[UIImage imageNamed:@"TOS cap.png"]];
+                    
+                    self.mainFishkaLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, 178, 20)];
+                    self.mainFishkaLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15.0];
+                    [self.mainFishkaLabel setTextColor:[UIColor whiteColor]];
+                    [self.mainFishkaLabel setBackgroundColor:[UIColor clearColor]];
+                    [self.mainFishkaLabel setTextAlignment:NSTextAlignmentCenter];
+                    [self.mainFishkaLabel setText:@"ПРОВЕРКА КОДА"];
+                    
+                    [self.mainFishkaImageView addSubview:self.mainFishkaLabel];
+                    
+                    
+                    [self.dialogView.captionLabel setText:[[dictionary valueForKey:@"message"] objectAtIndex:0]];
+                    
+                    
+                    
+                    NSString *messageStr = [[dictionary valueForKey:@"message"] objectAtIndex:1];
+                    
+                    messageStr = [messageStr stringByReplacingOccurrencesOfString:@"<p>" withString:@""];
+                    messageStr = [messageStr stringByReplacingOccurrencesOfString:@"</p>" withString:@"\n"];
+                    
+                    UILabel *notFoundMessageLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, self.dialogView.captionLabel.frame.origin.y + self.dialogView.captionLabel.frame.size.height + 30, 290, 100)];
+                    [notFoundMessageLabel setNumberOfLines:0];
+                    [notFoundMessageLabel setLineBreakMode:NSLineBreakByWordWrapping];
+                    [notFoundMessageLabel setBackgroundColor:[UIColor clearColor]];
+                    notFoundMessageLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:11.0];
+                    [notFoundMessageLabel setTextColor:[UIColor whiteColor]];
+                    [notFoundMessageLabel setText:messageStr];
+                    [notFoundMessageLabel sizeToFit];
+                    
+                    [self.dialogView addSubview:notFoundMessageLabel];
+                    
+                    [self.dialogView.bonusNameLabel setText:@""];
+                    
+                    [self showDialogView];
+                }
+            }
+        }
     }
     if (type == kNews)
     {

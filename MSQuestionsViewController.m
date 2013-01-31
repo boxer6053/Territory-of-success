@@ -1,16 +1,25 @@
 #import "MSQuestionsViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
+
 @interface MSQuestionsViewController ()
+@property (strong, nonatomic) NSArray *questionsArray;
+@property int questionsCount;
+@property (strong, nonatomic) NSMutableData *receivedData;
+@property (strong, nonatomic) MSAPI *api;
 
 @end
 
 @implementation MSQuestionsViewController
 
+@synthesize receivedData = _receivedData;
+@synthesize questionsCount = _questionsCount;
+@synthesize questionsArray = _questionsArray;
 @synthesize tableView = _tableView;
 @synthesize myQuestionsMode;
 @synthesize allQuestionsMode;
 @synthesize segment;
+@synthesize api = _api;
 
 
 
@@ -19,12 +28,23 @@
 @synthesize questionTitle = _questionTitle;
 @synthesize questionDescription = _questionDescription;
 
-
+- (MSAPI *) api{
+    if(!_api){
+        _api = [[MSAPI alloc]init];
+        _api.delegate = self;
+    }
+    return _api;
+}
 
 - (void)viewDidLoad
 {
- 
 
+    
+  
+    [self.api getQuestionsWithParentID:0];
+    
+    
+    
     if ([[UIScreen mainScreen] bounds].size.height == 568) {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
@@ -36,8 +56,7 @@
     [_tableView setShowsVerticalScrollIndicator:NO];
     self.allQuestionsMode = YES;
     self.myQuestionsMode = NO;
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
+    
     self.tableView.layer.cornerRadius = 10;
     [self.tableView.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0].CGColor];
     [self.tableView.layer setBorderWidth:1.0f];
@@ -104,26 +123,17 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if(tableView == _tableView){
-        return 1;
-    }
-    else{
-        return 5;
-    }
+    return 1;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    
-    if(self.myQuestionsMode)
-    {
+    if(allQuestionsMode)
+        return _questionsCount;
+    else return self.questionsDictionary.count;
         
-        return self.questionsDictionary.count;
-    }
-    else{
-        return myArray.count;
-    }
+    
     
 }
 
@@ -143,14 +153,13 @@
         if(self.myQuestionsMode)
         {
             int index = [indexPath indexAtPosition:1];
-            NSString *key = [[self.questionsDictionary allKeys] objectAtIndex:index];
+            NSString *key = [[self.questionsDictionary allKeys] objectAtIndex:index];;
             cell.textLabel.text =key;
             cell.detailTextLabel.text = @"Оценка";
         }
         if(self.allQuestionsMode)
         {
-            cell.textLabel.text = [allArray objectAtIndex:indexPath.row]  ;
-            cell.detailTextLabel.text = @"Оценка";
+              cell.textLabel.text = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];            cell.detailTextLabel.text = @"Оценка";
         }
         
         
@@ -239,6 +248,27 @@
         [self.tableView reloadData];
         
     }
+    
+    
+}
+
+
+
+-(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)typefinished
+{
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+   if(typefinished == kQuestCateg)
+   {
+    _questionsArray = [dictionary valueForKey:@"list"];
+    for (int i  = 0; i<_questionsArray.count; i++)
+    {
+        NSArray *insertIndexPath = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:_questionsCount inSection:0]];
+        _questionsCount++;
+        [_tableView insertRowsAtIndexPaths: insertIndexPath withRowAnimation:NO];
+    }
+   }
+   
 }
 
 @end

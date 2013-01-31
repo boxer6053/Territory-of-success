@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "MSQuestionDetailViewController.h"
-@interface MSQuestionsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+#import "MSAPI.h"
+
+@interface MSQuestionsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, WsCompleteDelegate>
 {
     NSArray *allArray;
     NSArray *myArray;
