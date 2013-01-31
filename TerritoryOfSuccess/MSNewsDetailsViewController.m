@@ -12,18 +12,24 @@
 
 @interface MSNewsDetailsViewController ()
 
-@property (nonatomic)MSAPI *dbApi;
+@property (nonatomic) MSAPI *dbApi;
+@property (nonatomic) BOOL shareButtonsShowed;
 
 @end
 
 @implementation MSNewsDetailsViewController
 
 @synthesize dbApi = _dbApi;
+@synthesize shareButtonsShowed = _shareButtonsShowed;
 @synthesize articleTextWebView = _articleTextWebView;
 @synthesize articleImageView = _articleImageView;
 @synthesize articleTitleLabel = _articleTitleLabel;
 @synthesize articleScrollView = _articleScrollView;
 @synthesize articleActivityIndicator = _articleActivityIndicator;
+@synthesize articleShareButton = _articleShareButton;
+@synthesize articleShareFbButton = _articleShareFbButton;
+@synthesize articleShareTwButton = _articleShareTwButton;
+@synthesize articleShareVkButton = _articleShareVkButton;
 
 -(MSAPI *)dbApi
 {
@@ -56,6 +62,7 @@
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
     
+    self.shareButtonsShowed = NO;
     self.articleScrollView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.0];
     self.articleTextWebView.backgroundColor = [UIColor clearColor];
     self.articleTextWebView.opaque = NO;
@@ -71,6 +78,41 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)vkButtonPressed:(id)sender {
+}
+
+- (IBAction)twbButtonPressed:(id)sender {
+}
+
+- (IBAction)fbButtonPressed:(id)sender {
+}
+
+- (IBAction)shareButtonPressed:(id)sender
+{
+    if (!self.shareButtonsShowed)
+    {
+        self.shareButtonsShowed = YES;
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.25];
+        self.articleShareVkButton.frame = CGRectMake(self.articleShareVkButton.frame.origin.x, self.articleShareVkButton.frame.origin.y + 40, self.articleShareVkButton.frame.size.width, self.articleShareVkButton.frame.size.height);
+        self.articleShareTwButton.frame = CGRectMake(self.articleShareTwButton.frame.origin.x, self.articleShareTwButton.frame.origin.y + 40, self.articleShareTwButton.frame.size.width, self.articleShareTwButton.frame.size.height);
+        self.articleShareFbButton.frame = CGRectMake(self.articleShareFbButton.frame.origin.x, self.articleShareFbButton.frame.origin.y + 40, self.articleShareFbButton.frame.size.width, self.articleShareFbButton.frame.size.height);
+        self.articleScrollView.frame = CGRectMake(0, 35, self.articleScrollView.frame.size.width, self.articleScrollView.frame.size.height);
+        [UIView commitAnimations];
+    }
+    else
+    {
+        self.shareButtonsShowed = NO;
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.25];
+        self.articleShareVkButton.frame = CGRectMake(self.articleShareVkButton.frame.origin.x, self.articleShareVkButton.frame.origin.y - 40, self.articleShareVkButton.frame.size.width, self.articleShareVkButton.frame.size.height);
+        self.articleShareTwButton.frame = CGRectMake(self.articleShareTwButton.frame.origin.x, self.articleShareTwButton.frame.origin.y - 40, self.articleShareTwButton.frame.size.width, self.articleShareTwButton.frame.size.height);
+        self.articleShareFbButton.frame = CGRectMake(self.articleShareFbButton.frame.origin.x, self.articleShareFbButton.frame.origin.y - 40, self.articleShareFbButton.frame.size.width, self.articleShareFbButton.frame.size.height);
+        self.articleScrollView.frame = CGRectMake(0, 0, self.articleScrollView.frame.size.width, self.articleScrollView.frame.size.height);
+        [UIView commitAnimations];
+    }
 }
 
 - (void)setContentOfArticleWithId:(NSString *)articleId
