@@ -113,6 +113,7 @@
 		FADA3FD416AD8A0C008D2C7E /* 1star.png in Resources */ = {isa = PBXBuildFile; fileRef = FADA3FCF16AD8A0C008D2C7E /* 1star.png */; };
 		FADA3FD516AD8A0C008D2C7E /* 2star.png in Resources */ = {isa = PBXBuildFile; fileRef = FADA3FD016AD8A0C008D2C7E /* 2star.png */; };
 		FADA3FD616AD8A0C008D2C7E /* 3star.png in Resources */ = {isa = PBXBuildFile; fileRef = FADA3FD116AD8A0C008D2C7E /* 3star.png */; };
+		FAFF40F416BAF4F100D020FE /* MSRecieveProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFF40F316BAF4F100D020FE /* MSRecieveProfileCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -402,6 +403,8 @@
 		FADA3FCF16AD8A0C008D2C7E /* 1star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1star.png; sourceTree = "<group>"; };
 		FADA3FD016AD8A0C008D2C7E /* 2star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2star.png; sourceTree = "<group>"; };
 		FADA3FD116AD8A0C008D2C7E /* 3star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3star.png; sourceTree = "<group>"; };
+		FAFF40F216BAF4F100D020FE /* MSReceiveProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSReceiveProfileCell.h; sourceTree = "<group>"; };
+		FAFF40F316BAF4F100D020FE /* MSRecieveProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSRecieveProfileCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -827,6 +830,8 @@
 				FA1AB2E816B27E43001827A6 /* MSNewsCell.m */,
 				FA6DE87316BADCEA00B48434 /* MSProfileSaveCell.h */,
 				FA6DE87416BADCEA00B48434 /* MSProfileSaveCell.m */,
+				FAFF40F216BAF4F100D020FE /* MSReceiveProfileCell.h */,
+				FAFF40F316BAF4F100D020FE /* MSRecieveProfileCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1019,6 +1024,7 @@
 				FA6DE87516BADCEA00B48434 /* MSProfileSaveCell.m in Sources */,
 				FAA0FCB816BAB190005AF32E /* MSShare.m in Sources */,
 				F59884AA16BACE7C009FBF48 /* MSCreateQuestionViewController.m in Sources */,
+				FAFF40F416BAF4F100D020FE /* MSRecieveProfileCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

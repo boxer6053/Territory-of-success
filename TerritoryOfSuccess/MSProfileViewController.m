@@ -10,6 +10,8 @@
 #import "MSBonusCell.h"
 #import "MSSexProfileCell.h"
 #import "MSStandardProfileCell.h"
+#import "MSReceiveProfileCell.h"
+#import "MSProfileSaveCell.h"
 
 @interface MSProfileViewController ()
 
@@ -32,10 +34,21 @@
 }
 
 #pragma mark - Table view data source
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 4)
+    {
+        return 110;
+    }
+    else
+    {
+        return 44;
+    }
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 5;
+    return 6;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -57,6 +70,10 @@
         return 4;
     }
     else if (section == 4)
+    {
+        return 1;
+    }
+    else if (section == 5)
     {
         return 1;
     }
@@ -83,8 +100,14 @@
     }
     if (indexPath.section == 4)
     {
+        static NSString *CellIdentifier = @"receiveProfileCell";
+        MSReceiveProfileCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        return cell;
+    }
+    if (indexPath.section == 5)
+    {
         static NSString *CellIdentifier = @"saveProfileCell";
-        MSSexProfileCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        MSProfileSaveCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         return cell;
     }
     else
