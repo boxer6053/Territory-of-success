@@ -1,5 +1,5 @@
 //
-//  MSTypesOfInquirersViewController.h
+//  MSInquirerViewController.h
 //  TerritoryOfSuccess
 //
 //  Created by Matrix Soft on 1/21/13.
@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MSTypesOfInquirersViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIImageView *inquirerPic;
-@property (weak, nonatomic) IBOutlet UIButton *whitchIsBetterButton;
-@property (weak, nonatomic) IBOutlet UIButton *gradeButton;
-- (IBAction)toWhitchIsBetter:(id)sender;
-@property (weak, nonatomic) IBOutlet UIButton *toGrade;
+@interface MSTypesOfInquirersViewController : UIViewController <UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tableOfInquirers;
+@property (strong, nonatomic) NSArray *testInquirers;
+@property (weak, nonatomic) NSString *selectedValue;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *inquirerTypeSegment;
+- (IBAction)inquirerTypeSwitch:(id)sender;
+@property BOOL allInquirerMode;
+@property BOOL  myInquirerMode;
+
 
 @end

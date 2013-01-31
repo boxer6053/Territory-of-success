@@ -549,71 +549,53 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" id="zeS-7I-XmZ">
-                                <rect key="frame" x="20" y="57" width="280" height="378"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="inquirerCellID" textLabel="jKU-8E-IfX" detailTextLabel="YcF-oz-2aW" rowHeight="90" style="IBUITableViewCellStyleSubtitle" id="3Dc-5Y-2VI">
-                                        <rect key="frame" x="0.0" y="22" width="280" height="90"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="260" height="89"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jKU-8E-IfX">
-                                                    <rect key="frame" x="10" y="25" width="38" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YcF-oz-2aW">
-                                                    <rect key="frame" x="10" y="47" width="36" height="18"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Qhv-5f-RkT">
-                                <rect key="frame" x="-6" y="0.0" width="332" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9Ii-AZ-dCD">
+                                <rect key="frame" x="20" y="20" width="280" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Все опросы"/>
-                                    <segment title="Мои опросы"/>
-                                </segments>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Опросники" backgroundImage="commentsButton.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
-                                    <action selector="inquirerTypeSwitch:" destination="Cru-iV-L4Z" eventType="valueChanged" id="PYd-5l-13q"/>
+                                    <segue destination="XDR-nH-Zyd" kind="push" identifier="toInquirers" id="zm2-Yt-p04"/>
                                 </connections>
-                            </segmentedControl>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ZHN-GQ-oad">
+                                <rect key="frame" x="20" y="60" width="280" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Вопросы о товарах" backgroundImage="commentsButton.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="mc9-cG-NdE" kind="push" id="pVA-c4-ufE"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="inquirerPic.png" id="s3J-Hl-xuL">
+                                <rect key="frame" x="20" y="163" width="280" height="220"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Опросы" id="sQE-dx-gsA">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="pcX-0e-nRk">
-                            <connections>
-                                <segue destination="XDR-nH-Zyd" kind="push" id="dcn-f7-Odb"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Опросы" id="sQE-dx-gsA"/>
                     <connections>
-                        <outlet property="inquirerTypeSegment" destination="Qhv-5f-RkT" id="30G-x5-wib"/>
-                        <outlet property="tableOfInquirers" destination="zeS-7I-XmZ" id="gU7-80-Ry7"/>
-                        <segue destination="xlL-gh-fab" kind="push" identifier="toInquirerDetail" id="Hmy-AW-mjy"/>
+                        <outlet property="inquirerPic" destination="s3J-Hl-xuL" id="B9G-cE-lyQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q3i-81-c2y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="875" y="322"/>
         </scene>
-        <!--Types Of Inquirers View Controller - Создать свой опрос-->
+        <!--Types Of Inquirers View Controller - Опросы-->
         <scene sceneID="gic-uz-iAW">
             <objects>
                 <viewController id="XDR-nH-Zyd" customClass="MSTypesOfInquirersViewController" sceneMemberID="viewController">
@@ -628,68 +610,32 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Выберите тип опроса" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="II8-Mh-SHg">
-                                <rect key="frame" x="70" y="5" width="180" height="21"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="uU7-wQ-Ng3">
+                                <rect key="frame" x="-6" y="0.0" width="332" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SiE-VA-Abl">
-                                <rect key="frame" x="20" y="34" width="280" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Какой товар лучше?" backgroundImage="commentsButton.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <segments>
+                                    <segment title="Все опросы"/>
+                                    <segment title="Мои опросы"/>
+                                </segments>
                                 <connections>
-                                    <action selector="toWhitchIsBetter:" destination="XDR-nH-Zyd" eventType="touchUpInside" id="OmK-md-Kxx"/>
+                                    <action selector="inquirerTypeSwitch:" destination="XDR-nH-Zyd" eventType="valueChanged" id="hP4-pD-wO0"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sgP-nu-NSq">
-                                <rect key="frame" x="20" y="74" width="280" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Оцените товар" backgroundImage="commentsButton.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="inquirerPic.png" id="wbq-c5-3E1">
-                                <rect key="frame" x="20" y="163" width="280" height="220"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Fz4-Bg-pgk">
-                                <rect key="frame" x="20" y="114" width="280" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Задать вопрос о товаре" backgroundImage="commentsButton.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="mc9-cG-NdE" kind="push" id="zLu-RE-q3q"/>
-                                </connections>
-                            </button>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="dGO-Bo-MLa">
+                                <rect key="frame" x="20" y="57" width="280" height="378"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Создать свой опрос" id="Hdt-dX-Gwp"/>
+                    <navigationItem key="navigationItem" title="Опросы" id="Hdt-dX-Gwp">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="OPS-Dn-j0k"/>
+                    </navigationItem>
                     <connections>
-                        <outlet property="gradeButton" destination="sgP-nu-NSq" id="yuV-Jl-rRU"/>
-                        <outlet property="inquirerPic" destination="wbq-c5-3E1" id="uNR-uX-WDA"/>
-                        <outlet property="toGrade" destination="sgP-nu-NSq" id="m5E-Q9-wfj"/>
-                        <outlet property="whitchIsBetterButton" destination="SiE-VA-Abl" id="cIK-Pj-JqD"/>
+                        <outlet property="inquirerTypeSegment" destination="uU7-wQ-Ng3" id="T94-9W-baF"/>
+                        <outlet property="tableOfInquirers" destination="dGO-Bo-MLa" id="Gki-c3-qA4"/>
+                        <segue destination="xlL-gh-fab" kind="push" identifier="toInquirerDetail" id="jsp-kh-fjf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mHa-AF-by9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1038,23 +984,34 @@
                     <connections>
                         <outlet property="tableOfCategories" destination="seu-Rx-Ovi" id="Beu-JS-2nE"/>
                         <outlet property="upButton" destination="aJJ-ZY-1Ox" id="kKi-hs-syr"/>
-                        <segue destination="kEY-zH-Ufw" kind="push" identifier="toAskSubCategory" id="fKk-HT-9uR"/>
+                        <segue destination="kEY-zH-Ufw" kind="push" identifier="toQuestionProductDetail" id="fKk-HT-9uR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZt-ZS-LiA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1775" y="980"/>
+            <point key="canvasLocation" x="1803" y="980"/>
         </scene>
-        <!--Ask Sub Category View Controller-->
+        <!--Quiestion Product Detail View Controller-->
         <scene sceneID="xRv-b5-fbx">
             <objects>
-                <viewController id="kEY-zH-Ufw" customClass="MSAskSubCategoryViewController" sceneMemberID="viewController">
+                <viewController id="kEY-zH-Ufw" customClass="MSQuiestionProductDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wa3-u8-d6I">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Gcg-kS-9wS">
-                                <rect key="frame" x="20" y="20" width="280" height="415"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="Ccg-x0-qlY">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="O72-VX-RvM">
+                                <rect key="frame" x="20" y="168" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="uXd-ED-NXx">
+                                <rect key="frame" x="20" y="206" width="280" height="229"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
@@ -1063,7 +1020,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="As1-QS-gGS"/>
                     <connections>
-                        <outlet property="askSubCategTable" destination="Gcg-kS-9wS" id="gls-hc-3fX"/>
+                        <outlet property="productImage" destination="Ccg-x0-qlY" id="FmF-iv-0cd"/>
+                        <outlet property="productTitleLabel" destination="O72-VX-RvM" id="QGv-R0-I3H"/>
+                        <outlet property="tableOfAnswers" destination="uXd-ED-NXx" id="G3N-Sc-2PB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0QY-KW-WEk" userLabel="First Responder" sceneMemberID="firstResponder"/>
