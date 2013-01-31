@@ -1022,6 +1022,8 @@
 				FA3B6F1916B6C30C0095A851 /* MSBrandsAndCategoryCell.m in Sources */,
 				FA3B6F1E16B6EE7E0095A851 /* MSSubCatalogueCell.m in Sources */,
 				F59884A416B96ABD009FBF48 /* MSAskViewController.m in Sources */,
+				FABA8A6916BA82530040EF16 /* MSNewsDetailsViewController.m in Sources */,
+				FABA8A6C16BA85720040EF16 /* MSNewsViewController.m in Sources */,
 				F59884A716BA830F009FBF48 /* MSQuiestionProductDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
