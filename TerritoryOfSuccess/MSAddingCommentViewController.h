@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol AddingCommentDelegate <NSObject>
-@required
+
 -(void) addNewComment:(NSArray *) array;
 
 @end

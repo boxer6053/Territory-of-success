@@ -42,12 +42,6 @@
 }
 
 #pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.productsCounter;
@@ -66,7 +60,7 @@
     [cell.productImage setImageWithURL:[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"image"] placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
     cell.productRatingImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%dstar.png",[[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"rating"]integerValue]]];
     
-    //на экспорт
+    //на экспорт в MSDetailViewController
     cell.productAdviceNumber = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"advises"] integerValue];
     cell.productCommentsNumber = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"comments"] integerValue];
     cell.productRatingNumber = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"rating"] integerValue];
@@ -77,10 +71,9 @@
 }
 
 #pragma mark - Table view delegate
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *currentCell = [productsTableView cellForRowAtIndexPath:indexPath];
+    UITableViewCell *currentCell = [self.productsTableView cellForRowAtIndexPath:indexPath];
     [self performSegueWithIdentifier:@"toDetailView" sender:currentCell];
 }
 
@@ -103,10 +96,13 @@
     return _api;
 }
 
--(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type{
-    if (type == kCatalog){
+-(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
+{
+    if (type == kCatalog)
+    {
         self.arrayOfProducts = [dictionary valueForKey:@"list"];
-        for(int i = 0; i < self.arrayOfProducts.count; i++){
+        for(int i = 0; i < self.arrayOfProducts.count; i++)
+        {
             NSArray *insertIndexPath = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.productsCounter inSection:0]];
             self.productsCounter++;
             [self.productsTableView insertRowsAtIndexPaths:insertIndexPath withRowAnimation:NO];

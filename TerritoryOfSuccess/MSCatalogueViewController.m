@@ -57,12 +57,18 @@
 }
 
 #pragma mark SegmentControl
--(void) makeWrightSegmentColor{
-// Изменение цвета СегментКонтролa
-    if (self.productAndBonusesControl.selectedSegmentIndex == 0) {
+// Изменение цвета СегментКонтролa при нажатии
+-(void) makeWrightSegmentColor
+{
+    // выбраны категории
+    if (self.productAndBonusesControl.selectedSegmentIndex == 0)
+    {
        [[self.productAndBonusesControl.subviews objectAtIndex:1] setTintColor:[UIColor colorWithRed:255.0/255.0 green:140.0/255.0 blue:0 alpha:1.0]];
         [[self.productAndBonusesControl.subviews objectAtIndex:0] setTintColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1.0]];
-    }else{
+    }
+    // выбраны бренды
+    else
+    {
         [[self.productAndBonusesControl.subviews objectAtIndex:0] setTintColor:[UIColor colorWithRed:255.0/255.0 green:140.0/255.0 blue:0 alpha:1.0]];
         [[self.productAndBonusesControl.subviews objectAtIndex:1] setTintColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1.0]];
     }
@@ -71,39 +77,43 @@
 - (IBAction)segmentPressed:(id)sender
 {
     [self makeWrightSegmentColor];
+    // запретить использование сегмент контрола до окончания дозагрузки информации (защита от идиота)
     [self.productAndBonusesControl setUserInteractionEnabled:NO];
-    if (self.productAndBonusesControl.selectedSegmentIndex == 0) {
+    if (self.productAndBonusesControl.selectedSegmentIndex == 0)
+    {
         [[self api] getCategories];
-    }else{
+    }
+    else
+    {
         [[self api] getFiveBrandsWithOffset:0];
     }
 }
 
 #pragma mark Table View
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
-}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [self numberOfRows];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MSBrandsAndCategoryCell *cell;
-    static NSString* myIdentifier = @"cellIdentifier";
+    static NSString *myIdentifier = @"cellIdentifier";
     cell = [[self tableView] dequeueReusableCellWithIdentifier:myIdentifier];
     if (cell == nil) {
         cell = [[MSBrandsAndCategoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:myIdentifier];
     }
     
 //Проверка на СегментКонтрол и подгрузка соответствующего контента в ячейки
-    if (self.productAndBonusesControl.selectedSegmentIndex == 0) {
+    //категории
+    if (self.productAndBonusesControl.selectedSegmentIndex == 0)
+    {
         cell.categoryOrBrandName.text = [[_arrayOfCategories objectAtIndex:indexPath.row] valueForKey:@"title"];
         cell.categoryOrBrandImage.image = [UIImage imageNamed:@"bag.png"];
         
         cell.tag = [[[[self arrayOfCategories] objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
     }
-    
-    if (self.productAndBonusesControl.selectedSegmentIndex == 1) {
+    //бренды
+    else
+    {
         cell.categoryOrBrandName.text = [[_arrayOfBrands objectAtIndex:indexPath.row] valueForKey:@"title"];
         cell.categoryOrBrandImage.image = [UIImage imageNamed:@"brandLogoExample.png"];
         
@@ -114,26 +124,29 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell * currentCell = [[self tableView] cellForRowAtIndexPath:indexPath];
-    [self performSegueWithIdentifier:@"toSubCatalogue" sender:currentCell];
+    //UITableViewCell * currentCell = [[self tableView] cellForRowAtIndexPath:indexPath];
+    [self performSegueWithIdentifier:@"toSubCatalogue" sender:[[self tableView] cellForRowAtIndexPath:indexPath]];
     [[self tableView] deselectRowAtIndexPath:indexPath animated:YES];
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableView *)sender
 {
     if([segue.identifier isEqualToString:@"toSubCatalogue"])
     {
-        UITableViewCell *currentCell = sender;
-        if (self.productAndBonusesControl.selectedSegmentIndex == 0) {
-            [segue.destinationViewController sentWithBrandId:0 withCategoryId:currentCell.tag];
-        } else {
-            [segue.destinationViewController sentWithBrandId:currentCell.tag withCategoryId:0];
+        if (self.productAndBonusesControl.selectedSegmentIndex == 0)
+        {
+            [segue.destinationViewController sentWithBrandId:0 withCategoryId:sender.tag];
+        }
+        else
+        {
+            [segue.destinationViewController sentWithBrandId:sender.tag withCategoryId:0];
         }
     }
 }
 
 #pragma mark Web-delegate
-- (MSAPI *) api{
+- (MSAPI *) api
+{
     if(!_api){
         _api = [[MSAPI alloc]init];
         [_api setDelegate:self];
@@ -141,16 +154,20 @@
     return _api;
 }
 
--(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type{
-    if (type == kCategories){
+-(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
+{
+    if (type == kCategories)
+    {
         self.arrayOfCategories = [dictionary valueForKey:@"list"];
         self.numberOfRows = [[self arrayOfCategories] count];
     }
     
-    if (type == kBrands){
+    if (type == kBrands)
+    {
         self.arrayOfBrands = [dictionary valueForKey:@"list"];
         self.numberOfRows = [[self arrayOfBrands] count];
     }
+    
     [[self tableView] reloadData];
     [self.productAndBonusesControl setUserInteractionEnabled:YES];
 
