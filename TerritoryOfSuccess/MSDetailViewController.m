@@ -60,7 +60,6 @@
         self.imageView.frame = CGRectMake(self.imageView.frame.origin.x, self.imageView.frame.origin.y + 85, self.imageView.frame.size.width, self.imageView.frame.size.height);
         self.productDescriptionTextView.frame = CGRectMake(self.productDescriptionTextView.frame.origin.x, self.productDescriptionTextView.frame.origin.y + 85, self.productDescriptionTextView.frame.size.width, self.productDescriptionTextView.frame.size.height);
         self.detailScrollView.frame = CGRectMake(self.detailScrollView.frame.origin.x, self.detailScrollView.frame.origin.y, self.detailScrollView.frame.size.width, self.detailScrollView.frame.size.height);
-        self.questionsButton.frame = CGRectMake(self.questionsButton.frame.origin.x, 325, self.questionsButton.frame.size.width, self.questionsButton.frame.size.height);
         self.commentsButton.frame = CGRectMake(self.commentsButton.frame.origin.x, 325, self.commentsButton.frame.size.width, self.commentsButton.frame.size.height);
         self.mainView.frame = CGRectMake(self.mainView.frame.origin.x, self.mainView.frame.origin.y, self.mainView.frame.size.width, self.mainView.frame.size.height - 85);
         self.productName.frame = CGRectMake(self.productName.frame.origin.x , self.productName.frame.origin.y + 85, self.productName.frame.size.width, self.productName.frame.size.height);
@@ -76,7 +75,7 @@
     [super didReceiveMemoryWarning];
 }
 
--(void)viewWillAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     self.commentsLabel.text = [NSString stringWithFormat:@"%d",self.commentsDetail];
     self.advisesLabel.text = [NSString stringWithFormat:@"%d",self.advisesDetail];
@@ -86,7 +85,11 @@
 }
 //необходим рефакторинг
 //метод получения информации о продукте от сигвея
--(void)sentProductName:(NSString *)name andRating:(int)rating andCommentsNumber:(int)comments andAdvisesNumber:(int)advises andImageURL:(NSString *)imageURL
+- (void)sentProductName:(NSString *)name
+              andRating:(int)rating
+      andCommentsNumber:(int)comments
+       andAdvisesNumber:(int)advises
+            andImageURL:(NSString *)imageURL
 {
     self.productSentName = name;
     self.productImageURL = imageURL;
@@ -127,4 +130,5 @@
     }
 
 }
+
 @end

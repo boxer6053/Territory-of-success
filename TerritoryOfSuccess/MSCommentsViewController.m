@@ -20,6 +20,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[self commentTableView] setBackgroundView:[[UIImageView alloc]
+                                 initWithImage:[UIImage imageNamed:@"bg.png"]]];
     NSArray *firstComment = [NSArray arrayWithObjects:@"Pavel",@"Мне не понравился данный продукт",[NSNumber numberWithInteger:1], nil];
     NSArray *secondComment = [NSArray arrayWithObjects:@"Lyohaness",@"фу-фу-фу",[NSNumber numberWithInteger:1], nil];
     NSArray *thirdComment =[NSArray arrayWithObjects:@"Andrew",@"Нормальный продукт, на твердую 3!",[NSNumber numberWithInteger:3], nil];

@@ -39,14 +39,13 @@
     [[self tableView] setDataSource:self];
     [self.api getCategories];
     
-    if ([[UIScreen mainScreen] bounds].size.height == 568) {
+    if ([[UIScreen mainScreen] bounds].size.height == 568)
+    {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
-        NSLog(@"568");
     }
     else
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
-        NSLog(@"480");
     }
     [self.tableView.layer setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0].CGColor];
 }
