@@ -99,21 +99,31 @@
     self.upButtonShows = YES;
     [self.navigationItem.rightBarButtonItem setEnabled:YES];
     self.translatingValue = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"];
+    
+    
     if([[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"] integerValue] != 0)
-    {
+        {
     _questionsCount = 0;
     [_tableOfCategories reloadData];
     [self.api getQuestionsWithParentID:[[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue]];
     
     NSLog(@"translate %@", self.translatingValue);
-    }
+        }
     else
     {
+        if([[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"] isEqualToString:@""])
+        {
+            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Sorry" message:@"No picture or not enough data =(" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [failmessage show];
+        }
+        else
+        {
         _translatingUrl = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"];
         _sendingTitle = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
         NSLog(@"wazaaaa %@",_translatingUrl);
         NSLog(@"asdadsfdsfsf %@",_sendingTitle);
         [self performSegueWithIdentifier:@"toQuestionProductDetail" sender:self];
+        }
         
     }
  
