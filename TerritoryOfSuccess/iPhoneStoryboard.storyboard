@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8kx-JT-nNm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8kx-JT-nNm">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
         <!--Catalogue View Controller - Каталог-->
@@ -214,21 +214,6 @@
                                             </button>
                                         </subviews>
                                     </scrollView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Z8E-KR-BHo">
-                                        <rect key="frame" x="20" y="409" width="120" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Вопросы" backgroundImage="button_120*32.png">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="n0Y-1n-ipS" kind="push" id="ZJc-OF-OT8"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Gce-Jt-I9L">
                                         <rect key="frame" x="175" y="409" width="120" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -269,7 +254,6 @@
                         <outlet property="mainView" destination="KTp-lC-eYt" id="JBt-2o-HHc"/>
                         <outlet property="productDescriptionTextView" destination="WiQ-qI-oGj" id="N3O-Hw-xh2"/>
                         <outlet property="productName" destination="DeZ-HA-pbV" id="8fW-c5-sPd"/>
-                        <outlet property="questionsButton" destination="Z8E-KR-BHo" id="ixb-Ht-cLB"/>
                         <outlet property="ratingImage" destination="mXs-lz-J8f" id="oDc-RC-aif"/>
                         <outlet property="starView" destination="pYS-CY-0eM" id="i9d-tu-Swq"/>
                         <outlet property="twButton" destination="Uvw-ed-P2X" id="aNh-dK-J8B"/>
@@ -279,71 +263,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qNu-5g-eX7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1880" y="-348"/>
-        </scene>
-        <!--Questions View Controller-->
-        <scene sceneID="aVn-4Y-gKy">
-            <objects>
-                <viewController id="n0Y-1n-ipS" customClass="MSQuestionsViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fR1-yN-9P8">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="hYa-rD-zRq">
-                                <rect key="frame" x="-6" y="0.0" width="332" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Все вопросы"/>
-                                    <segment title="Мои вопросы"/>
-                                </segments>
-                                <connections>
-                                    <action selector="questionDoubleButton:" destination="n0Y-1n-ipS" eventType="valueChanged" id="2Qe-DX-efR"/>
-                                </connections>
-                            </segmentedControl>
-                            <tableView clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="59" sectionHeaderHeight="22" sectionFooterHeight="22" id="Nwm-3X-nrg">
-                                <rect key="frame" x="20" y="57" width="280" height="378"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="quesIDCell" textLabel="jMK-v1-5LT" detailTextLabel="Y8e-ds-xmh" rowHeight="59" style="IBUITableViewCellStyleValue1" id="inI-Hu-CaJ">
-                                        <rect key="frame" x="0.0" y="22" width="280" height="59"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="280" height="58"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jMK-v1-5LT">
-                                                    <rect key="frame" x="10" y="19" width="35" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Y8e-ds-xmh">
-                                                    <rect key="frame" x="226" y="19" width="44" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="lru-sR-YtE"/>
-                    <connections>
-                        <outlet property="segment" destination="hYa-rD-zRq" id="psS-Qw-H6T"/>
-                        <outlet property="tableView" destination="Nwm-3X-nrg" id="x3o-Ti-Q6C"/>
-                        <segue destination="4hb-Vg-pcd" kind="push" identifier="toQuestionDetail" id="Bfg-PT-E0l"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CSG-YT-mm5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2877" y="322"/>
         </scene>
         <!--Comments View Controller - Комментарии-->
         <scene sceneID="oaX-Ne-Ltg">
@@ -753,47 +672,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NPl-TN-7Hd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1803" y="322"/>
-        </scene>
-        <!--Question Detail View Controller-->
-        <scene sceneID="KMi-XV-MsT">
-            <objects>
-                <viewController id="4hb-Vg-pcd" customClass="MSQuestionDetailViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="CXB-cP-Ld9">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="npm-oz-5Go">
-                                <rect key="frame" x="85" y="20" width="150" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tableView clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Fu0-iI-3HM">
-                                <rect key="frame" x="20" y="209" width="280" height="226"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Описание вопроса" id="tw8-k1-9tz">
-                                <rect key="frame" x="20" y="49" width="280" height="152"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="NbZ-ju-dxs"/>
-                    <connections>
-                        <outlet property="descriptionField" destination="tw8-k1-9tz" id="Rxh-pe-Avl"/>
-                        <outlet property="questionTitleLabel" destination="npm-oz-5Go" id="4yw-eV-Dja"/>
-                        <outlet property="tableOfAnswers" destination="Fu0-iI-3HM" id="spf-gs-uTo"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fSC-Jo-gtb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3341" y="330"/>
         </scene>
         <!--Sub Catalogue View Controller - Продукты-->
         <scene sceneID="Uvl-TC-9RE">

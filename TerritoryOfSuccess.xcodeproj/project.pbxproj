@@ -11,7 +11,6 @@
 		F51CCD5416B95C6F00029B9B /* button_120*32.png in Resources */ = {isa = PBXBuildFile; fileRef = F51CCD5316B95C6F00029B9B /* button_120*32.png */; };
 		F526D77316B2E7820027BF21 /* paper.png in Resources */ = {isa = PBXBuildFile; fileRef = F526D77216B2E7820027BF21 /* paper.png */; };
 		F526D77716B3009D0027BF21 /* button55*30.png in Resources */ = {isa = PBXBuildFile; fileRef = F526D77616B3009D0027BF21 /* button55*30.png */; };
-		F52816D616A5760F00E64924 /* MSQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52816D516A5760F00E64924 /* MSQuestionsViewController.m */; };
 		F532D53F16B297BF00E29267 /* footer.png in Resources */ = {isa = PBXBuildFile; fileRef = F532D53E16B297BF00E29267 /* footer.png */; };
 		F532D54116B29F4300E29267 /* footer_568.png in Resources */ = {isa = PBXBuildFile; fileRef = F532D54016B29F4300E29267 /* footer_568.png */; };
 		F545779F16B2DB5100B4221E /* inquirerPic.png in Resources */ = {isa = PBXBuildFile; fileRef = F545779E16B2DB5100B4221E /* inquirerPic.png */; };
@@ -58,7 +57,6 @@
 		F5AEFA6D16AED9A0004EC992 /* JSONParserForDataEntenties.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AEFA6C16AED9A0004EC992 /* JSONParserForDataEntenties.m */; };
 		F5BA5A0616AEE5E300AF69CB /* WhitchOneIsBetter.png in Resources */ = {isa = PBXBuildFile; fileRef = F5BA5A0516AEE5E300AF69CB /* WhitchOneIsBetter.png */; };
 		F5C04FD016A957DF00A3E220 /* exampleDetailImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F5C04FCF16A957DF00A3E220 /* exampleDetailImage.png */; };
-		F5F377D816AD636E002CD218 /* MSQuestionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F377D716AD636E002CD218 /* MSQuestionDetailViewController.m */; };
 		F5F6ADC3169C4F21000247D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC2169C4F21000247D9 /* UIKit.framework */; };
 		F5F6ADC5169C4F21000247D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC4169C4F21000247D9 /* Foundation.framework */; };
 		F5F6ADC7169C4F21000247D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC6169C4F21000247D9 /* CoreGraphics.framework */; };
@@ -124,8 +122,6 @@
 		F51CCD5316B95C6F00029B9B /* button_120*32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_120*32.png"; sourceTree = "<group>"; };
 		F526D77216B2E7820027BF21 /* paper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paper.png; sourceTree = "<group>"; };
 		F526D77616B3009D0027BF21 /* button55*30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button55*30.png"; sourceTree = "<group>"; };
-		F52816D416A5760F00E64924 /* MSQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSQuestionsViewController.h; path = ../MSQuestionsViewController.h; sourceTree = "<group>"; };
-		F52816D516A5760F00E64924 /* MSQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSQuestionsViewController.m; path = ../MSQuestionsViewController.m; sourceTree = "<group>"; };
 		F532D53E16B297BF00E29267 /* footer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = footer.png; sourceTree = "<group>"; };
 		F532D54016B29F4300E29267 /* footer_568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = footer_568.png; sourceTree = "<group>"; };
 		F545779E16B2DB5100B4221E /* inquirerPic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inquirerPic.png; sourceTree = "<group>"; };
@@ -184,8 +180,6 @@
 		F5AEFA6C16AED9A0004EC992 /* JSONParserForDataEntenties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONParserForDataEntenties.m; sourceTree = "<group>"; };
 		F5BA5A0516AEE5E300AF69CB /* WhitchOneIsBetter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WhitchOneIsBetter.png; sourceTree = "<group>"; };
 		F5C04FCF16A957DF00A3E220 /* exampleDetailImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exampleDetailImage.png; sourceTree = "<group>"; };
-		F5F377D616AD636E002CD218 /* MSQuestionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSQuestionDetailViewController.h; path = ../MSQuestionDetailViewController.h; sourceTree = "<group>"; };
-		F5F377D716AD636E002CD218 /* MSQuestionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSQuestionDetailViewController.m; path = ../MSQuestionDetailViewController.m; sourceTree = "<group>"; };
 		F5F6ADBE169C4F21000247D9 /* TerritoryOfSuccess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TerritoryOfSuccess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5F6ADC2169C4F21000247D9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F5F6ADC4169C4F21000247D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -448,10 +442,6 @@
 				FABA8A6816BA82530040EF16 /* MSNewsDetailsViewController.m */,
 				F5F6AE8D169C5153000247D9 /* MSFirstViewController.h */,
 				F5F6AE8E169C5153000247D9 /* MSFirstViewController.m */,
-				F52816D416A5760F00E64924 /* MSQuestionsViewController.h */,
-				F52816D516A5760F00E64924 /* MSQuestionsViewController.m */,
-				F5F377D616AD636E002CD218 /* MSQuestionDetailViewController.h */,
-				F5F377D716AD636E002CD218 /* MSQuestionDetailViewController.m */,
 				F59F4D6A16ADA2B800458E5E /* MSInquirerViewController.h */,
 				F59F4D6B16ADA2B800458E5E /* MSInquirerViewController.m */,
 				F59F4D7216ADA3AC00458E5E /* MSTypesOfInquirersViewController.h */,
@@ -1004,14 +994,12 @@
 				F5603C51169C802100667203 /* MSTabBarController.m in Sources */,
 				FA55C14916A071AA00671CAB /* MSCatalogueViewController.m in Sources */,
 				F559534616A57A500079B985 /* SVProgressHUD.m in Sources */,
-				F52816D616A5760F00E64924 /* MSQuestionsViewController.m in Sources */,
 				FA1BEA8C16A813B200F2C219 /* MSDetailViewController.m in Sources */,
 				FA167C5616A993940008561D /* MSCommentsViewController.m in Sources */,
 				F547E1BC16AD556100365FB3 /* MSAPI.m in Sources */,
 				FA167C6116A9A5BB0008561D /* MSSubCatalogueViewController.m in Sources */,
 				FA87C6FC16AACDE400784A0D /* MSCommentCell.m in Sources */,
 				FA87C70016AAE0EE00784A0D /* MSAddingCommentViewController.m in Sources */,
-				F5F377D816AD636E002CD218 /* MSQuestionDetailViewController.m in Sources */,
 				F59F4D6C16ADA2B800458E5E /* MSInquirerViewController.m in Sources */,
 				F59F4D7416ADA3AC00458E5E /* MSTypesOfInquirersViewController.m in Sources */,
 				F547E1C416AD5BCE00365FB3 /* checkConnection.m in Sources */,
