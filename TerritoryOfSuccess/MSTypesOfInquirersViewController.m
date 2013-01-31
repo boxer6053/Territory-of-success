@@ -44,7 +44,7 @@
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
-    _tableOfInquirers.layer.cornerRadius = 10;
+    
     [_tableOfInquirers.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0].CGColor];
     [_tableOfInquirers.layer setBorderWidth:1.0f];
     [_tableOfInquirers.layer setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.7].CGColor];

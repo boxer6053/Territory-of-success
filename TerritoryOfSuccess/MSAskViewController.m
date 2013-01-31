@@ -53,7 +53,7 @@
 
 - (void)viewDidLoad
 {
-   
+    [_tableOfCategories setShowsVerticalScrollIndicator:NO];
     [self.navigationItem.rightBarButtonItem setEnabled:NO];
     self.upButtonShows = NO;
     [super viewDidLoad];
