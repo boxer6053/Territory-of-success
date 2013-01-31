@@ -9,7 +9,7 @@
 @property (strong, nonatomic) NSArray *arrayOfBrands;
 @property (strong, nonatomic) MSAPI *api;
 @property (strong, nonatomic) NSMutableData *receivedData;
-@property int rowsCounter, brandsCounter, brandAndCategoryCount;
+@property int numberOfRows;
 @end
 
 @implementation MSCatalogueViewController
@@ -17,7 +17,7 @@
 @synthesize api = _api;
 @synthesize arrayOfBrands = _arrayOfBrands;
 @synthesize arrayOfCategories = _arrayOfCategories;
-@synthesize rowsCounter, brandsCounter, brandAndCategoryCount;
+@synthesize numberOfRows = _numberOfRows;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,8 +35,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
+    [[self tableView] setDelegate:self];
+    [[self tableView] setDataSource:self];
     [self.api getCategories];
     
     if ([[UIScreen mainScreen] bounds].size.height == 568) {
@@ -48,7 +48,7 @@
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
         NSLog(@"480");
     }
-    [_tableView.layer setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0].CGColor];
+    [self.tableView.layer setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0].CGColor];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -68,15 +68,14 @@
     }
 }
 
-- (IBAction)segmentPressed:(id)sender {
-    self.rowsCounter = 0;
-    self.brandsCounter = 0;
+- (IBAction)segmentPressed:(id)sender
+{
     [self makeWrightSegmentColor];
-    [_tableView reloadData];
+    [self.productAndBonusesControl setUserInteractionEnabled:NO];
     if (self.productAndBonusesControl.selectedSegmentIndex == 0) {
-            [self.api getCategories];
+        [[self api] getCategories];
     }else{
-            [self.api getFiveBrandsWithOffset:0];
+        [[self api] getFiveBrandsWithOffset:0];
     }
 }
 
@@ -85,15 +84,13 @@
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (self.productAndBonusesControl.selectedSegmentIndex == 0)
-         return self.rowsCounter;
-    else return self.brandsCounter;
+    return [self numberOfRows];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MSBrandsAndCategoryCell *cell;
     static NSString* myIdentifier = @"cellIdentifier";
-    cell = [_tableView dequeueReusableCellWithIdentifier:myIdentifier];
+    cell = [[self tableView] dequeueReusableCellWithIdentifier:myIdentifier];
     if (cell == nil) {
         cell = [[MSBrandsAndCategoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:myIdentifier];
     }
@@ -103,23 +100,23 @@
         cell.categoryOrBrandName.text = [[_arrayOfCategories objectAtIndex:indexPath.row] valueForKey:@"title"];
         cell.categoryOrBrandImage.image = [UIImage imageNamed:@"bag.png"];
         
-        cell.tag = [[[_arrayOfCategories objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
+        cell.tag = [[[[self arrayOfCategories] objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
     }
     
     if (self.productAndBonusesControl.selectedSegmentIndex == 1) {
         cell.categoryOrBrandName.text = [[_arrayOfBrands objectAtIndex:indexPath.row] valueForKey:@"title"];
         cell.categoryOrBrandImage.image = [UIImage imageNamed:@"brandLogoExample.png"];
         
-        cell.tag = [[[_arrayOfBrands objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
+        cell.tag = [[[[self arrayOfBrands] objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
     }
 
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell * currentCell = [_tableView cellForRowAtIndexPath:indexPath];
+    UITableViewCell * currentCell = [[self tableView] cellForRowAtIndexPath:indexPath];
     [self performSegueWithIdentifier:@"toSubCatalogue" sender:currentCell];
-    [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [[self tableView] deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -139,32 +136,23 @@
 - (MSAPI *) api{
     if(!_api){
         _api = [[MSAPI alloc]init];
-        _api.delegate = self;
+        [_api setDelegate:self];
     }
     return _api;
 }
 
 -(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type{
     if (type == kCategories){
-        _arrayOfCategories = [dictionary valueForKey:@"list"];
-        for (int i = 0; i < _arrayOfCategories.count; i++){
-            NSArray *insertIndexPath = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.rowsCounter inSection:0]];
-            self.rowsCounter++;
-            [_tableView insertRowsAtIndexPaths:insertIndexPath withRowAnimation:NO];
-        }
+        self.arrayOfCategories = [dictionary valueForKey:@"list"];
+        self.numberOfRows = [[self arrayOfCategories] count];
     }
     
     if (type == kBrands){
-        _arrayOfBrands = [dictionary valueForKey:@"list"];
-        for (int i = 0; i < _arrayOfBrands.count; i++){
-            NSArray *insertIndexPath = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.brandsCounter inSection:0]];
-            self.brandsCounter++;
-            [_tableView insertRowsAtIndexPaths:insertIndexPath withRowAnimation:NO];
-        }
+        self.arrayOfBrands = [dictionary valueForKey:@"list"];
+        self.numberOfRows = [[self arrayOfBrands] count];
     }
-    
-    if (type == kCatalog){
-            self.brandAndCategoryCount = [[dictionary valueForKey:@"count"] integerValue];
-    }
+    [[self tableView] reloadData];
+    [self.productAndBonusesControl setUserInteractionEnabled:YES];
+
 }
 @end
