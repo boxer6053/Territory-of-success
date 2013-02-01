@@ -13,7 +13,12 @@
 @property (nonatomic) int commentsDetail, advisesDetail, ratingDetail;
 @property (strong, nonatomic) NSString *productImageURL;
 @property (strong, nonatomic) NSString *productSentName;
-@property (strong, atomic) MSShare *share;
+@property (strong, nonatomic) NSString *productSentDescription;
+@property (strong, nonatomic) MSShare *share;
+@property (nonatomic) Vkontakte *vkontakte;
+@property (nonatomic) UIButton *loginVKButton;
+@property (nonatomic) UIButton *postVKButton;
+@property (nonatomic) UIView *vkView;
 
 @end
 
@@ -24,6 +29,11 @@
 @synthesize ratingDetail = _ratingDetail;
 @synthesize productName = _productName;
 @synthesize share = _share;
+@synthesize vkontakte = _vkontakte;
+@synthesize loginVKButton = _loginVKButton;
+@synthesize postVKButton = _postVKButton;
+@synthesize vkView = _vkView;
+@synthesize productSentDescription = _productSentDescription;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,14 +58,28 @@
     
     [self.mainView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0]];
     
-    self.productDescriptionTextView.text = @"iPod Classic (продается как «iPod classic», раньше был известен под именем iPod) — портативный медиа плеер, созданный Apple, Inc.К сегодняшнему дню появилось шесть поколений iPod Classic, а также один спин-офф (iPod Photo) который постепенно воссоединился с линией Classic. Все поколения используют 1.8- дюймовый жёсткий диск для хранения информации. Текущее поколение на сегодняшний день является самым емким iPod,с 160 ГБ дискового пространства. Ретроним «Classic» появился вместе с шестым поколением iPod Classic 5-ого сентября 2007; до этого, iPod Classic назывался просто iPod.Недавнее изучение, проведённое Consumers Digest foundation при cотрудничестве Книги рекордов Гиннеса и департамент продаж Apple, Inc. отметил, что пользователи iPod покупали аксессуары и обновления каждые 6.2 месяцев, высшая цифра находится в регионе, где семья Монтмерль-Беренц из Парижа, Франция приобретала их каждые 6.3 дней с 2000 по 2007 гг.";
+    [self.productDescriptionTextView setBackgroundColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:0.0]];
+    
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.commentsLabel.text = [NSString stringWithFormat:@"%d",self.commentsDetail];
+    self.advisesLabel.text = [NSString stringWithFormat:@"%d",self.advisesDetail];
+    self.productName.text = self.productSentName;
+    self.ratingImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%dstar",self.ratingDetail]];
+    [self.detailImage setImageWithURL:[NSURL URLWithString:self.productImageURL]];
+    self.productDescriptionTextView.text = self.productSentDescription;
     CGRect frame = self.productDescriptionTextView.frame;
     frame.size.height = self.productDescriptionTextView.contentSize.height;
     self.productDescriptionTextView.frame = frame;
     
-    [self.productDescriptionTextView setBackgroundColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:0.0]];
-    
-  // проверка на развер экрана
+    // проверка на развер экрана
     if ([[UIScreen mainScreen] bounds].size.height == 568)
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
@@ -76,20 +100,6 @@
         [self.detailScrollView setContentSize:CGSizeMake(self.detailScrollView .frame.size.width, self.imageView.frame.size.height + self.productDescriptionTextView.frame.size.height + 135)];
     }
 }
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    self.commentsLabel.text = [NSString stringWithFormat:@"%d",self.commentsDetail];
-    self.advisesLabel.text = [NSString stringWithFormat:@"%d",self.advisesDetail];
-    self.productName.text = self.productSentName;
-    self.ratingImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%dstar",self.ratingDetail]];
-    [self.detailImage setImageWithURL:[NSURL URLWithString:self.productImageURL]];
-}
 //необходим рефакторинг
 //метод получения информации о продукте от сигвея
 - (void)sentProductName:(NSString *)name
@@ -97,12 +107,14 @@
       andCommentsNumber:(int)comments
        andAdvisesNumber:(int)advises
             andImageURL:(NSString *)imageURL
+     andDescriptionText:(NSString *) descriptionText
 {
     self.productSentName = name;
     self.productImageURL = imageURL;
     self.ratingDetail = rating;
     self.commentsDetail = comments;
     self.advisesDetail = advises;
+    self.productSentDescription = descriptionText;
 }
 
 #pragma mark Share Methods
@@ -119,21 +131,6 @@
     _share = share;
 }
 
-- (IBAction)fbButtonPressed:(id)sender
-{
-    [[self share] shareOnFacebookWithText:[self productSentName]
-                                withImage:[UIImage imageNamed:@"fbButton.png"]
-                    currentViewController:self];
-    
-}
-- (IBAction)twButtonPressed:(id)sender
-{
-    [[self share] shareOnTwitterWithText:[self productSentName]
-                               withImage:[UIImage imageNamed:@"twButton.png"]
-                   currentViewController:self];
-}
-- (IBAction)vkButtonPressed:(id)sender {
-}
 //необходим рефакторинг
 - (IBAction)shareButtonPressed:(id)sender {
     if (shareIsPressed == NO && accessToContinue == YES) {
@@ -157,7 +154,137 @@
             accessToContinue = YES;
         }];
     }
-
+    
 }
 
+- (IBAction)fbButtonPressed:(id)sender
+{
+    [[self share] shareOnFacebookWithText:@"I like Territory of Success"
+                                withImage:[UIImage imageNamed:@"fbButton.png"]
+                    currentViewController:self];
+}
+
+- (IBAction)twButtonPressed:(id)sender
+{
+    [[self share] shareOnTwitterWithText:self.productName.text
+                               withImage:[UIImage imageNamed:@"twButton.png"]
+                   currentViewController:self];
+}
+- (IBAction)vkButtonPressed:(id)sender
+{
+    _vkontakte = [Vkontakte sharedInstance];
+    _vkontakte.delegate = self;
+    
+    self.vkView = [[UIView alloc] initWithFrame:CGRectMake(70, 100, 180, 195)];
+    [self.vkView setBackgroundColor:[UIColor whiteColor]];
+    [self.vkView.layer setBorderColor:[UIColor colorWithRed:75/255.0 green:110/255.0 blue:148/255.0 alpha:1].CGColor];
+    [self.vkView.layer setCornerRadius:10];
+    [self.vkView.layer setBorderWidth:1.0f];
+    self.vkView.clipsToBounds = YES;
+    [self.view addSubview:self.vkView];
+    
+    UIImageView *vkHeaderImage = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"vkHeader.png"]];
+    vkHeaderImage.frame = CGRectMake(0, 0, 180, 45);
+    [self.vkView addSubview:vkHeaderImage];
+    
+    UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [cancelButton setBackgroundImage:[UIImage imageNamed:@"cancelVKButton.png"] forState:UIControlStateNormal];
+    [cancelButton addTarget:self action:@selector(closeVKView) forControlEvents:UIControlEventTouchUpInside];
+    cancelButton.frame = CGRectMake(162, 3, 15, 15);
+    cancelButton.hidden = NO;
+    [self.vkView addSubview:cancelButton];
+    
+    self.loginVKButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.loginVKButton setBackgroundImage:[UIImage imageNamed:@"vkActionButton.png"] forState:UIControlStateNormal];
+    [self.loginVKButton addTarget:self action:@selector(loginPressed) forControlEvents:UIControlEventTouchUpInside];
+    self.loginVKButton.hidden = NO;
+    [self.vkView addSubview:self.loginVKButton];
+    [self refreshButtonState];
+    
+    self.postVKButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.postVKButton addTarget:self action:@selector(postImageWithTextAndLink) forControlEvents:UIControlEventTouchUpInside];
+    self.postVKButton.frame = CGRectMake (self.vkView.frame.size.width/2 - 58, 130, 117, 27);
+    [self.postVKButton setBackgroundImage:[UIImage imageNamed:@"vkActionButton.png"] forState:UIControlStateNormal];
+    self.postVKButton.hidden = YES;
+    [self.postVKButton setTitle:@"Post" forState:UIControlStateNormal];
+    [self.vkView addSubview:self.postVKButton];
+}
+
+- (void)refreshButtonState
+{
+    if (![_vkontakte isAuthorized])
+    {
+        self.loginVKButton.frame = CGRectMake(self.vkView.frame.size.width/2 - 58, 100, 117, 27);
+        [self.loginVKButton setTitle:@"LogIn"
+                            forState:UIControlStateNormal];
+        self.postVKButton.hidden = YES;
+    }
+    else
+    {
+        self.loginVKButton.frame = CGRectMake(self.vkView.frame.size.width/2 - 58, 70, 117, 27);
+        [self.loginVKButton setTitle:@"LogOut"
+                            forState:UIControlStateNormal];
+        self.postVKButton.hidden = NO;
+    }
+}
+
+- (void)loginPressed
+{
+    if (![_vkontakte isAuthorized])
+    {
+        [_vkontakte authenticate];
+    }
+    else
+    {
+        [_vkontakte logout];
+    }
+}
+
+- (void)postImageWithTextAndLink
+{
+    [_vkontakte postImageToWall:[UIImage imageNamed:@"test.jpg"]
+                           text:@"Vkontakte iOS SDK Trololo"
+                           link:[NSURL URLWithString:@"https://www.ex.ua"]];
+}
+
+- (void)vkontakteDidFinishPostingToWall:(NSDictionary *)responce
+{
+    NSLog(@"%@", responce);
+    UIAlertView *alertVK = [[UIAlertView alloc] initWithTitle:nil message:@"Posted successfully" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alertVK show];
+    [self.vkView removeFromSuperview];
+}
+
+#pragma mark - VkontakteDelegate
+
+- (void)vkontakteDidFailedWithError:(NSError *)error
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)showVkontakteAuthController:(UIViewController *)controller
+{
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        controller.modalPresentationStyle = UIModalPresentationFormSheet;
+    }
+    
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (void)vkontakteAuthControllerDidCancelled
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)vkontakteDidFinishLogin:(Vkontakte *)vkontakte
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self refreshButtonState];
+}
+
+- (void)vkontakteDidFinishLogOut:(Vkontakte *)vkontakte
+{
+    [self refreshButtonState];
+}
 @end

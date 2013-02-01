@@ -1,11 +1,12 @@
 #import "MSShare.h"
 @interface MSShare()
-{
-    SLComposeViewController *slComposeSheet;
-}
+
+@property (nonatomic) SLComposeViewController *slComposeSheet;
+
 @end
 
 @implementation MSShare
+@synthesize slComposeSheet = _slComposeSheet;
 
 - (void)shareOnFacebookWithText:(NSString *)shareText
                     withImage:(UIImage *)shareImage
@@ -13,12 +14,11 @@
 {
     if ([SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook])
     {
-        slComposeSheet = [[SLComposeViewController alloc]init];
-        slComposeSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-        [slComposeSheet setInitialText:shareText];
-        [slComposeSheet addImage:shareImage];
-        [slComposeSheet addURL:[NSURL URLWithString:@"id-bonus.com"]];
-        [viewController presentViewController:slComposeSheet animated:YES completion:nil];
+        self.slComposeSheet = [[SLComposeViewController alloc]init];
+        self.slComposeSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+        [self.slComposeSheet setInitialText:shareText];
+        [self.slComposeSheet addImage:shareImage];
+        [viewController presentViewController:self.slComposeSheet animated:YES completion:nil];
         [self slComposeSheetHandlerMethod];
     }
 }
@@ -29,11 +29,12 @@
 {
     if ([SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter])
     {
-        slComposeSheet = [[SLComposeViewController alloc]init];
-        slComposeSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-        [slComposeSheet setInitialText:shareText];
-        [slComposeSheet addImage:shareImage];
-        [viewController presentViewController:slComposeSheet animated:YES completion:nil];
+        self.slComposeSheet = [[SLComposeViewController alloc]init];
+        self.slComposeSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+        [self.slComposeSheet setInitialText:shareText];
+        [self.slComposeSheet addImage:shareImage];
+        [self.slComposeSheet addURL:[NSURL URLWithString:@"id-bonus.com"]];
+        [viewController presentViewController:self.slComposeSheet animated:YES completion:nil];
         [self slComposeSheetHandlerMethod];
 
     }
@@ -41,7 +42,7 @@
 
 - (void) slComposeSheetHandlerMethod
 {
-    [slComposeSheet setCompletionHandler:^(SLComposeViewControllerResult result)
+    [self.slComposeSheet setCompletionHandler:^(SLComposeViewControllerResult result)
      {
          switch (result)
          {
@@ -59,4 +60,5 @@
      }];
 
 }
+
 @end
