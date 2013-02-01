@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 #import <Social/Social.h>
+
 @interface MSShare : NSObject
 
 - (void)shareOnFacebookWithText:(NSString *)shareText

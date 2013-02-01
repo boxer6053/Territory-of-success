@@ -22,8 +22,8 @@
     [super viewDidLoad];
     [[self commentTableView] setBackgroundView:[[UIImageView alloc]
                                  initWithImage:[UIImage imageNamed:@"bg.png"]]];
-    NSArray *firstComment = [NSArray arrayWithObjects:@"Pavel",@"Мне не понравился данный продукт",[NSNumber numberWithInteger:1], nil];
-    NSArray *secondComment = [NSArray arrayWithObjects:@"Lyohaness",@"фу-фу-фу",[NSNumber numberWithInteger:1], nil];
+    NSArray *firstComment = [NSArray arrayWithObjects:@"Pavel",@"Кльовий продукт. Рекомендую",[NSNumber numberWithInteger:5], nil];
+    NSArray *secondComment = [NSArray arrayWithObjects:@"Lyohaness",@"+++",[NSNumber numberWithInteger:4], nil];
     NSArray *thirdComment =[NSArray arrayWithObjects:@"Andrew",@"Нормальный продукт, на твердую 3!",[NSNumber numberWithInteger:3], nil];
     self.commentsArray = [NSMutableArray arrayWithObjects:firstComment,secondComment,thirdComment, nil];
 }
@@ -49,8 +49,7 @@
     }
     NSMutableString *name = [NSString stringWithFormat:@"%@",[[_commentsArray objectAtIndex:indexPath.row] objectAtIndex:0]];
     cell.commentatorName.text =[name stringByAppendingString:@" написал:"];
-    [cell.commentText setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.7]];
-    [cell.commentText.layer setCornerRadius:10];
+    [cell.commentText setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0]];
     cell.commentText.text = [[_commentsArray objectAtIndex:indexPath.row] objectAtIndex:1];
     
     NSString *imageName = [NSString stringWithFormat:@"%@star.png",[[_commentsArray objectAtIndex:indexPath.row] objectAtIndex:2]];

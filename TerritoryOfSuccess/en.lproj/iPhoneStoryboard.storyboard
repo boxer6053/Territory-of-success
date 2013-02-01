@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8kx-JT-nNm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8kx-JT-nNm">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--Catalogue View Controller - Каталог-->
+        <!--Catalogue View Controller - Catalogue-->
         <scene sceneID="o3e-fT-KFl">
             <objects>
                 <viewController id="7i8-cs-uKQ" customClass="MSCatalogueViewController" sceneMemberID="viewController">
@@ -13,11 +13,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="JVi-72-uhQ">
-                                <rect key="frame" x="-13" y="0.0" width="346" height="50"/>
+                                <rect key="frame" x="-13" y="10" width="346" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
-                                    <segment title="Категории"/>
-                                    <segment title="Бренды"/>
+                                    <segment title="Categories"/>
+                                    <segment title="Brands"/>
                                 </segments>
                                 <connections>
                                     <action selector="segmentPressed:" destination="7i8-cs-uKQ" eventType="valueChanged" id="B0A-F0-CrX"/>
@@ -67,7 +67,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Каталог" id="BAi-Sz-OmZ"/>
+                    <navigationItem key="navigationItem" title="Catalogue" id="BAi-Sz-OmZ"/>
                     <connections>
                         <outlet property="productAndBonusesControl" destination="JVi-72-uhQ" id="EjB-xq-0Xn"/>
                         <outlet property="tableView" destination="LKh-YK-2uW" id="oTe-rI-xuF"/>
@@ -454,7 +454,7 @@
                                             <action selector="takePhoto:" destination="jKd-fR-cIU" eventType="touchUpInside" id="gU0-MA-hQw"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите код или сделайте фото" textAlignment="center" minimumFontSize="17" id="dN8-M6-sm3">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a code or make a foto" textAlignment="center" minimumFontSize="17" id="dN8-M6-sm3">
                                         <rect key="frame" x="10" y="20" width="280" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -464,7 +464,7 @@
                                         <rect key="frame" x="10" y="79" width="185" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Отправить" backgroundImage="button_185_45.png">
+                                        <state key="normal" title="Send" backgroundImage="button_185_45.png">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
