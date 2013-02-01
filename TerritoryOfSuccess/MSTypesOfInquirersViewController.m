@@ -7,7 +7,6 @@
 //
 
 
-#import <QuartzCore/QuartzCore.h>
 #import "MSTypesOfInquirersViewController.h"
 #import "MSInquirerDetailViewController.h"
 
@@ -32,7 +31,7 @@
     
     [super viewDidLoad];
     NSLog(@"VIEW DID LOAD");
-    [self setSegmentControlColor];
+    [_inquirerTypeSegment setTintColor:[UIColor blackColor]];
     _tableOfInquirers.delegate = self;
     _tableOfInquirers.dataSource = self;
     _testInquirers = [[NSArray alloc] initWithObjects:@"1",@"2", nil];
@@ -44,12 +43,8 @@
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
-    _tableOfInquirers.layer.cornerRadius = 10;
-    [_tableOfInquirers.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0].CGColor];
-    [_tableOfInquirers.layer setBorderWidth:1.0f];
-    [_tableOfInquirers.layer setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.7].CGColor];
     
-	// Do any additional setup after loading the view.
+    	// Do any additional setup after loading the view.
 }
 -(void)setSegmentControlColor
 {
