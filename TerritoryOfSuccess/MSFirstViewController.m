@@ -33,6 +33,7 @@
 @property (strong, nonatomic) UITapGestureRecognizer *tapRecognizer;
 
 @property (nonatomic, strong) UIImageView *logoBarImageView;
+@property (nonatomic, strong) UIImageView *logoBarTextImageView;
 
 @end
 
@@ -66,6 +67,7 @@
 @synthesize backAlphaView = _backAlphaView;
 
 @synthesize logoBarImageView = _logoBarImageView;
+@synthesize logoBarTextImageView = _logoBarTextImageView;
 
 -(MSAPI *)api
 {
@@ -81,10 +83,14 @@
 {
     [super viewDidLoad];
     
-    self.logoBarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(250, 10, 40, 25)];
-    [self.logoBarImageView setImage:[UIImage imageNamed:@"iconWhite57.png"]];
+    self.logoBarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 2, 35, 40)];
+    [self.logoBarImageView setImage:[UIImage imageNamed:@"logo_color_35*40.png"]];
     
-//    [self.navigationController.navigationBar addSubview:self.logoBarImageView];
+    self.logoBarTextImageView = [[UIImageView alloc] initWithFrame:CGRectMake(77.5, 7, 165, 30)];
+    [self.logoBarTextImageView setImage:[UIImage imageNamed:@"logo_text_30*165.png"]];
+    
+    [self.navigationController.navigationBar addSubview:self.logoBarImageView];
+    [self.navigationController.navigationBar addSubview:self.logoBarTextImageView];
     
     [self.api getFiveNewsWithOffset:0];
     
@@ -138,10 +144,19 @@
     
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
-    [UIView animateWithDuration:0.4 animations:^{
+    [UIView animateWithDuration:0.3 animations:^{
         [self.logoBarImageView setAlpha:1];
+        [self.logoBarTextImageView setAlpha:1];
+    }];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.logoBarImageView setAlpha:0];
+        [self.logoBarTextImageView setAlpha:0];
     }];
 }
 
@@ -183,7 +198,13 @@
 
 - (void)picturePressed:(UIButton *)sender
 {
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.logoBarImageView setAlpha:0];
+        [self.logoBarTextImageView setAlpha:0];
+    }];
+    
     [self.logoBarImageView setAlpha:0];
+    [self.logoBarTextImageView setAlpha:0];
     
     [self performSegueWithIdentifier:@"newsDetailsFromHome" sender:sender];
 }

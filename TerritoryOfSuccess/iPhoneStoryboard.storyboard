@@ -503,7 +503,7 @@
                         <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="S0C-j4-tdR">
-                        <barButtonItem key="rightBarButtonItem" image="Profile-Picture_40*28.png" id="xiG-LB-pWW">
+                        <barButtonItem key="rightBarButtonItem" image="Profile-Picture_40*28_white.png" id="xiG-LB-pWW">
                             <connections>
                                 <segue destination="fxs-RG-A77" kind="push" id="UlY-3T-aQN"/>
                             </connections>
@@ -1359,7 +1359,7 @@
     </scenes>
     <resources>
         <image name="3star.png" width="87" height="20"/>
-        <image name="Profile-Picture_40*28.png" width="40" height="28"/>
+        <image name="Profile-Picture_40*28_white.png" width="40" height="28"/>
         <image name="button_185_45.png" width="185" height="45"/>
         <image name="button_300*43.png" width="300" height="43"/>
         <image name="button_310_32-1.png" width="310" height="32"/>
