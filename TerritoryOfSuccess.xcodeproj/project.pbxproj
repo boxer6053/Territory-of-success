@@ -1029,6 +1029,11 @@
 				F5B1883F16BBC8D200290F27 /* logo_text_30*167.png in Resources */,
 				F5B1884116BBCA2F00290F27 /* logo_text_30*165.png in Resources */,
 				F54E86C616BC2415001B9D3B /* logo_color_invert_40*147.png in Resources */,
+				F541FE0116BAF1D00021A93F /* Profile-Picture_40*28.png in Resources */,
+				FAFC778716BAEF5A0025275D /* vkHeader.png in Resources */,
+				FA44435F16BB9B2F0009FC03 /* vkActionButton.png in Resources */,
+				FA44436616BBAB2D0009FC03 /* cancellVKButton.png in Resources */,
+				FA44436816BBAD270009FC03 /* cancelVKButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

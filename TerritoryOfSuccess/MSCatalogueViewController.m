@@ -173,6 +173,8 @@
     
     [[self tableView] reloadData];
     [self.productAndBonusesControl setUserInteractionEnabled:YES];
+    
+    [SVProgressHUD showSuccessWithStatus:@"Загрузка завершина."];
 
 }
 
