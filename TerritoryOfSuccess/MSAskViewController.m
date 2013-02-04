@@ -7,7 +7,7 @@
 //
 
 #import "MSAskViewController.h"
-#import <QuartzCore/QuartzCore.h>
+
 #import "MSQuiestionProductDetailViewController.h"
 
 
@@ -67,10 +67,7 @@
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
-    _tableOfCategories.layer.cornerRadius = 10;
-    [_tableOfCategories.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0].CGColor];
-    [_tableOfCategories.layer setBorderWidth:1.0f];
-    [_tableOfCategories.layer setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.7].CGColor];
+ 
     [self.api getQuestionsWithParentID:0];
     
 	// Do any additional setup after loading the view.

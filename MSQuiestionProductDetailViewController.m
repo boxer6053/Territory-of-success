@@ -8,7 +8,7 @@
 
 #import "MSQuiestionProductDetailViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import <QuartzCore/QuartzCore.h>
+
 #import "MSCreateQuestionViewController.h"
 
 @interface MSQuiestionProductDetailViewController ()
@@ -43,9 +43,7 @@
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
     [_tableOfAnswers setShowsVerticalScrollIndicator:NO];
-      [_tableOfAnswers.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0].CGColor];
-    [_tableOfAnswers.layer setBorderWidth:1.0f];
-    [_tableOfAnswers.layer setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.7].CGColor];
+
     NSLog(@"Hello %@",_gettedProductTitle);
     NSLog(@"Hi %@", _gettedUrlImage);
     _sendingTitle = _gettedProductTitle;

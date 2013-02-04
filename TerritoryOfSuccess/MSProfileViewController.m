@@ -10,14 +10,19 @@
 #import "MSBonusCell.h"
 #import "MSSexProfileCell.h"
 #import "MSStandardProfileCell.h"
+#import "MSReceiveProfileCell.h"
+#import "MSProfileSaveCell.h"
 
 @interface MSProfileViewController ()
+
+@property (nonatomic) UIDatePicker *datePicker;
 
 @end
 
 @implementation MSProfileViewController
 
 @synthesize profileTableView = _profileTableView;
+@synthesize datePicker = _datePicker;
 
 - (void)viewDidLoad
 {
@@ -32,10 +37,21 @@
 }
 
 #pragma mark - Table view data source
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 4)
+    {
+        return 95;
+    }
+    else
+    {
+        return 44;
+    }
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 5;
+    return 6;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -57,6 +73,10 @@
         return 4;
     }
     else if (section == 4)
+    {
+        return 1;
+    }
+    else if (section == 5)
     {
         return 1;
     }
@@ -83,8 +103,14 @@
     }
     if (indexPath.section == 4)
     {
+        static NSString *CellIdentifier = @"receiveProfileCell";
+        MSReceiveProfileCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        return cell;
+    }
+    if (indexPath.section == 5)
+    {
         static NSString *CellIdentifier = @"saveProfileCell";
-        MSSexProfileCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        MSProfileSaveCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         return cell;
     }
     else
@@ -109,6 +135,20 @@
             if (indexPath.row == 3)
             {
                 cell.standartTitleLabel.text = @"Дата Рождения";
+                UIView *myView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 261)];
+                self.datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 44, myView.frame.size.width, myView.frame.size.height - 44)];
+                self.datePicker.datePickerMode = UIDatePickerModeDate;
+                UIToolbar *datePickerToolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, myView.frame.size.width, 44)];
+                datePickerToolBar.barStyle = UIBarStyleBlackTranslucent;
+                UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(pickerViewDonePressed)];
+                [doneButton setTintColor:[UIColor orangeColor]];
+                UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(pickerViewCancelPressed)];
+                [cancelButton setTintColor:[UIColor orangeColor]];
+                UIBarButtonItem *spacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+                datePickerToolBar.items = [NSArray arrayWithObjects:cancelButton, spacer, doneButton, nil];
+                [myView addSubview:datePickerToolBar];
+                [myView addSubview:self.datePicker];
+                cell.standartTextField.inputView = myView;
             }
         }
         else if (indexPath.section == 2)
@@ -116,6 +156,7 @@
             if (indexPath.row == 0)
             {
                 cell.standartTitleLabel.text = @"Телефон";
+                cell.standartTextField.keyboardType = UIKeyboardTypePhonePad;
             }
             if (indexPath.row == 1)
             {
@@ -124,6 +165,7 @@
             if (indexPath.row == 2)
             {
                 cell.standartTitleLabel.text = @"e-mail";
+                cell.standartTextField.keyboardType = UIKeyboardTypeEmailAddress;
             }
 
         }
@@ -152,6 +194,27 @@
         
         return cell;
     }
+}
+
+-(void)pickerViewDonePressed
+{
+    NSIndexPath * indexPath = [NSIndexPath indexPathForItem:3 inSection:1];
+    MSStandardProfileCell *cell = (MSStandardProfileCell *)[self.profileTableView cellForRowAtIndexPath:indexPath];
+    NSDate *date = [self.datePicker date];
+    //format it
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
+    [dateFormat setDateFormat:@"dd-MM-yyyy"];
+    
+    NSString *dateString = [dateFormat stringFromDate:date];
+    cell.standartTextField.text = dateString;
+    [cell.standartTextField resignFirstResponder];
+}
+
+-(void)pickerViewCancelPressed
+{
+    NSIndexPath * indexPath = [NSIndexPath indexPathForItem:3 inSection:1];
+    MSStandardProfileCell *cell = (MSStandardProfileCell *)[self.profileTableView cellForRowAtIndexPath:indexPath];
+    [cell.standartTextField resignFirstResponder];
 }
 
 -(void)TextFieldStartEditing:(id)sender

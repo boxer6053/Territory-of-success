@@ -1,6 +1,7 @@
 #import <UIKit/UIKit.h>
 #import "MSAPI.h"
-@interface MSDetailViewController : UIViewController //<WsCompleteDelegate>
+#import "Vkontakte.h"
+@interface MSDetailViewController : UIViewController <VkontakteDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *likeView;
 @property (strong, nonatomic) IBOutlet UIView *starView;
@@ -27,5 +28,10 @@
 
 - (IBAction)shareButtonPressed:(id)sender;
 
--(void) sentProductName:(NSString*)name andRating:(int)rating andCommentsNumber:(int)comments andAdvisesNumber:(int)advises andImageURL:(NSString*)imageURL;
+- (void)sentProductName:(NSString *)name
+              andRating:(int)rating
+      andCommentsNumber:(int)comments
+       andAdvisesNumber:(int)advises
+            andImageURL:(NSString *)imageURL
+     andDescriptionText:(NSString *) descriptionText;
 @end

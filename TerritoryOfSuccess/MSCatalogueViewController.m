@@ -2,6 +2,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "MSSubCatalogueViewController.h"
 #import "MSBrandsAndCategoryCell.h"
+#import "SVProgressHUD.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface MSCatalogueViewController ()
 
@@ -38,6 +40,7 @@
     [super viewDidLoad];
     [[self tableView] setDelegate:self];
     [[self tableView] setDataSource:self];
+    [SVProgressHUD showWithStatus:@"Загрузка контента..."];
     [self.api getCategories];
     
     if ([[UIScreen mainScreen] bounds].size.height == 568)
@@ -106,17 +109,17 @@
     //категории
     if (self.productAndBonusesControl.selectedSegmentIndex == 0)
     {
-        cell.categoryOrBrandName.text = [[_arrayOfCategories objectAtIndex:indexPath.row] valueForKey:@"title"];
+        cell.categoryOrBrandName.text = [[[self arrayOfCategories] objectAtIndex:indexPath.row] valueForKey:@"title"];
         cell.categoryOrBrandImage.image = [UIImage imageNamed:@"bag.png"];
-        
+        cell.categoryOrBrandAvailable.text = [NSString stringWithFormat:@"Доступно: %d", [[[[self arrayOfCategories] objectAtIndex:indexPath.row] valueForKey:@"count"]integerValue]];
         cell.tag = [[[[self arrayOfCategories] objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
     }
     //бренды
     else
     {
         cell.categoryOrBrandName.text = [[_arrayOfBrands objectAtIndex:indexPath.row] valueForKey:@"title"];
-        cell.categoryOrBrandImage.image = [UIImage imageNamed:@"brandLogoExample.png"];
-        
+        [cell.categoryOrBrandImage setImageWithURL:[[[self arrayOfBrands] objectAtIndex:indexPath.row]valueForKey:@"image"]];
+        cell.categoryOrBrandAvailable.text = [NSString stringWithFormat:@"Доступно: %d",[[[[self arrayOfBrands] objectAtIndex:indexPath.row] valueForKey:@"count"]integerValue]];
         cell.tag = [[[[self arrayOfBrands] objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
     }
 
