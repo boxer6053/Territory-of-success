@@ -13,6 +13,7 @@
 #import "SVProgressHUD.h"
 #import <SDWebImage/UIButton+WebCache.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "MSLogInView.h"
 
 @interface MSFirstViewController ()
 
@@ -46,7 +47,6 @@
 @synthesize codeTextField = _codeTextField;
 @synthesize sendCodeButton = _sendCodeButton;
 @synthesize photoButton = _photoButton;
-@synthesize tintLabel = _tintLabel;
 
 @synthesize tapRecognizer = _tapRecognizer;
 
@@ -109,7 +109,6 @@
         //self.tintLabel.frame = CGRectMake(self.tintLabel.frame.origin.x, self.tintLabel.frame.origin.y - 10, self.tintLabel.frame.size.width, self.tintLabel.frame.size.height);
         //self.codeTextField.frame = CGRectMake(self.codeTextField.frame.origin.x, self.codeTextField.frame.origin.y - 10, self.codeTextField.frame.size.width, self.codeTextField.frame.size.height);
     }
-    self.titleLabel.hidden = YES;
     
     CGRect frame = CGRectMake(self.codeTextField.frame.origin.x, self.codeTextField.frame.origin.y, self.codeTextField.frame.size.width, 45);
     self.codeTextField.frame = frame;
@@ -335,6 +334,21 @@
     
 //    [self showDialogView];
     
+}
+
+- (IBAction)profileButtonPressed:(id)sender
+{
+    NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
+    NSString *token = [userDefults objectForKey:@"authorization_Token" ];
+    if (token.length)
+    {
+        [self performSegueWithIdentifier:@"toProfile" sender:self];
+    }
+    else
+    {
+        MSLogInView *loginView = [[MSLogInView alloc]initWithScreenFrame: self.scrollView.frame LoginButtonText:@"Login" CancelButtonText:@"Cancel" EmailLabelText:@"e-mail:" PasswordLabelText:@"password:"];
+        [self.view addSubview:loginView];
+    }
 }
 
 - (void)showDialogView

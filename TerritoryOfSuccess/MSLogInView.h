@@ -17,6 +17,5 @@
 @property (strong, nonatomic) UIButton *loginButton;
 @property (strong, nonatomic) UIButton *cancelButton;
 
-- (id)initWithLoginButtonText:(NSString *) loginText CancelButtonText:(NSString *)cancelText EmailLabelText:(NSString *)emailText PasswordLabelText:(NSString *)passwordText;
-
+- (id)initWithScreenFrame:(CGRect)screenFrame LoginButtonText:(NSString *) loginText CancelButtonText:(NSString *)cancelText EmailLabelText:(NSString *)emailText PasswordLabelText:(NSString *)passwordText;
 @end

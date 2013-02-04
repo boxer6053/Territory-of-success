@@ -505,7 +505,7 @@
                     <navigationItem key="navigationItem" id="S0C-j4-tdR">
                         <barButtonItem key="rightBarButtonItem" image="Profile-Picture_40*28.png" id="xiG-LB-pWW">
                             <connections>
-                                <segue destination="fxs-RG-A77" kind="push" id="UlY-3T-aQN"/>
+                                <action selector="profileButtonPressed:" destination="jKd-fR-cIU" id="m6R-Tb-sE8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -516,9 +516,11 @@
                         <outlet property="newsScrollView" destination="DdF-cE-hpc" id="BR4-gm-xuX"/>
                         <outlet property="newsView" destination="QRT-kF-N46" id="LHV-hG-XRI"/>
                         <outlet property="photoButton" destination="NAL-Z1-5ll" id="UA2-vY-44t"/>
+                        <outlet property="profileBarButton" destination="xiG-LB-pWW" id="4mQ-cA-Qiz"/>
                         <outlet property="scrollView" destination="0JY-C8-Kkc" id="RCM-av-AAz"/>
                         <outlet property="sendCodeButton" destination="h7L-XQ-A7e" id="pfW-FO-G1Y"/>
                         <segue destination="6ww-UU-93h" kind="push" identifier="newsDetailsFromHome" id="ffa-R0-niF"/>
+                        <segue destination="fxs-RG-A77" kind="push" identifier="toProfile" id="TCt-3O-610"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Zv-zQ-42Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -608,7 +610,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zAL-re-eSF">
-                                                    <rect key="frame" x="20" y="6" width="32" height="32"/>
+                                                    <rect key="frame" x="20" y="11" width="21" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <state key="normal" backgroundImage="checkbox_full.png">
@@ -623,14 +625,14 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Мужчина" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8cC-w6-YWq">
-                                                    <rect key="frame" x="60" y="11" width="83" height="21"/>
+                                                    <rect key="frame" x="47" y="11" width="83" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mmV-M8-p1E">
-                                                    <rect key="frame" x="141" y="6" width="32" height="32"/>
+                                                    <rect key="frame" x="141" y="11" width="21" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <state key="normal" backgroundImage="checkbox_empty.png">
@@ -645,7 +647,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Женщина" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IqJ-sg-u8g">
-                                                    <rect key="frame" x="181" y="11" width="91" height="21"/>
+                                                    <rect key="frame" x="168" y="11" width="91" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -687,15 +689,15 @@
                                             <outlet property="SaveButton" destination="lpN-V0-zQI" id="Adq-Ei-yw3"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="receiveProfileCell" rowHeight="110" id="7hS-Q6-rBF" customClass="MSReceiveProfileCell">
-                                        <rect key="frame" x="0.0" y="223" width="320" height="111"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="receiveProfileCell" rowHeight="95" id="7hS-Q6-rBF" customClass="MSReceiveProfileCell">
+                                        <rect key="frame" x="0.0" y="223" width="320" height="96"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="0.0" width="300" height="109"/>
+                                            <rect key="frame" x="10" y="0.0" width="300" height="94"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mqS-om-MCZ">
-                                                    <rect key="frame" x="14" y="26" width="32" height="32"/>
+                                                    <rect key="frame" x="14" y="28" width="21" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <state key="normal" backgroundImage="checkbox_empty.png">
@@ -710,7 +712,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tgW-sC-daG">
-                                                    <rect key="frame" x="14" y="65" width="32" height="32"/>
+                                                    <rect key="frame" x="14" y="59" width="21" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <state key="normal" backgroundImage="checkbox_empty.png">
@@ -725,7 +727,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Новости" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8hl-py-yyz">
-                                                    <rect key="frame" x="54" y="31" width="99" height="21"/>
+                                                    <rect key="frame" x="43" y="28" width="99" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -739,7 +741,7 @@
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Уведомления об успешном платеже" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" id="D36-14-ryf">
-                                                    <rect key="frame" x="54" y="70" width="238" height="21"/>
+                                                    <rect key="frame" x="43" y="59" width="238" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1570,6 +1572,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSFirstViewController.h"/>
             <relationships>
                 <relationship kind="action" name="changeNewsPage:"/>
+                <relationship kind="action" name="profileButtonPressed:"/>
                 <relationship kind="action" name="sendCode:" candidateClass="UIButton"/>
                 <relationship kind="action" name="takePhoto:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="codeInputView" candidateClass="UIView"/>
@@ -1578,10 +1581,9 @@
                 <relationship kind="outlet" name="newsScrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="newsView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="photoButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="profileBarButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="sendCodeButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="tintLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="MSInquirerDetailViewController" superclassName="UIViewController">
@@ -1683,9 +1685,10 @@
         <class className="MSSubCatalogueCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSSubCatalogueCell.h"/>
             <relationships>
-                <relationship kind="outlet" name="productImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="productBrandName" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="productName" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="productRatingImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="productSmallImage" candidateClass="UIImageView"/>
             </relationships>
         </class>
         <class className="MSSubCatalogueViewController" superclassName="UITableViewController">
