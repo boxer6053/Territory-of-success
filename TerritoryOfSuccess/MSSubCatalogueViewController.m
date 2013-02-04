@@ -11,7 +11,7 @@
 
 @implementation MSSubCatalogueViewController
 @synthesize arrayOfProducts;
-@synthesize productsCounter;
+@synthesize productsCounter = _productsCounter;
 @synthesize productsTableView;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -44,27 +44,28 @@
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.productsCounter;
+    return [self productsCounter];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"subCatalogueCellIdentifier";
-    MSSubCatalogueCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    MSSubCatalogueCell *cell = [[self productsTableView] dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     if (cell == nil) {
         cell = [[MSSubCatalogueCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
     cell.productName.text = [[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"title"];
-    [cell.productImage setImageWithURL:[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"image"] placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
+    [cell.productSmallImage setImageWithURL:[[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"image"] valueForKey:@"small"] placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
     cell.productRatingImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%dstar.png",[[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"rating"]integerValue]]];
+    cell.productBrandName.text = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"brand"] valueForKey:@"title"];
     
     //на экспорт в MSDetailViewController
     cell.productAdviceNumber = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"advises"] integerValue];
     cell.productCommentsNumber = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"comments"] integerValue];
     cell.productRatingNumber = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"rating"] integerValue];
-    cell.productImageURL = [[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"image"];
+    cell.productBigImageURL = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"image"] valueForKey:@"big"];
     cell.productDesctiptionText = [[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"content"];
     
     cell.tag = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
@@ -84,7 +85,7 @@
     if ([segue.identifier isEqualToString:@"toDetailView"])
     {
         MSSubCatalogueCell *currentCell = sender;
-        [segue.destinationViewController sentProductName:currentCell.productName.text andRating:currentCell.productRatingNumber andCommentsNumber:currentCell.productCommentsNumber andAdvisesNumber:currentCell.productAdviceNumber andImageURL:currentCell.productImageURL andDescriptionText:currentCell.productDesctiptionText];
+        [segue.destinationViewController sentProductName:currentCell.productName.text andRating:currentCell.productRatingNumber andCommentsNumber:currentCell.productCommentsNumber andAdvisesNumber:currentCell.productAdviceNumber andImageURL:currentCell.productBigImageURL andDescriptionText:currentCell.productDesctiptionText];
     }
 }
 #pragma mark - Web Methods
@@ -103,12 +104,14 @@
     if (type == kCatalog)
     {
         self.arrayOfProducts = [dictionary valueForKey:@"list"];
-        for(int i = 0; i < self.arrayOfProducts.count; i++)
-        {
-            NSArray *insertIndexPath = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.productsCounter inSection:0]];
-            self.productsCounter++;
-            [self.productsTableView insertRowsAtIndexPaths:insertIndexPath withRowAnimation:NO];
-        }
+        self.productsCounter = [[self arrayOfProducts] count];
+//        for(int i = 0; i < self.arrayOfProducts.count; i++)
+//        {
+//            NSArray *insertIndexPath = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.productsCounter inSection:0]];
+//            self.productsCounter++;
+//            [self.productsTableView insertRowsAtIndexPaths:insertIndexPath withRowAnimation:NO];
+//        }
     }
+    [[self productsTableView] reloadData];
 }
 @end
