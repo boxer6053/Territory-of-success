@@ -2,6 +2,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "MSSubCatalogueViewController.h"
 #import "MSBrandsAndCategoryCell.h"
+#import "SVProgressHUD.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface MSCatalogueViewController ()
@@ -38,6 +39,7 @@
     [super viewDidLoad];
     [[self tableView] setDelegate:self];
     [[self tableView] setDataSource:self];
+    [SVProgressHUD showWithStatus:@"Загрузка контента..."];
     [self.api getCategories];
     
     if ([[UIScreen mainScreen] bounds].size.height == 568)

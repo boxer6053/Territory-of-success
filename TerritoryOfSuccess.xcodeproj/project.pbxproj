@@ -52,7 +52,6 @@
 		F5F6ADC5169C4F21000247D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC4169C4F21000247D9 /* Foundation.framework */; };
 		F5F6ADC7169C4F21000247D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC6169C4F21000247D9 /* CoreGraphics.framework */; };
 		F5F6ADC9169C4F21000247D9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC8169C4F21000247D9 /* CoreData.framework */; };
-		F5F6ADCF169C4F21000247D9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5F6ADCD169C4F21000247D9 /* InfoPlist.strings */; };
 		F5F6ADD1169C4F21000247D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F6ADD0169C4F21000247D9 /* main.m */; };
 		F5F6ADD5169C4F21000247D9 /* MSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F6ADD4169C4F21000247D9 /* MSAppDelegate.m */; };
 		F5F6ADDE169C4F22000247D9 /* TerritoryOfSuccess.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5F6ADDC169C4F22000247D9 /* TerritoryOfSuccess.xcdatamodeld */; };
@@ -82,7 +81,6 @@
 		FA44436616BBAB2D0009FC03 /* cancellVKButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA44436516BBAB2D0009FC03 /* cancellVKButton.png */; };
 		FA44436816BBAD270009FC03 /* cancelVKButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA44436716BBAD270009FC03 /* cancelVKButton.png */; };
 		FA44436B16BBBDD60009FC03 /* iPhoneStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA44436D16BBBDD60009FC03 /* iPhoneStoryboard.storyboard */; };
-		FA44437716BBC7320009FC03 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA44437916BBC7320009FC03 /* Localizable.strings */; };
 		FA55C14016A069C400671CAB /* logoBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = FA55C13E16A069C400671CAB /* logoBackground.png */; };
 		FA55C14116A069C400671CAB /* mainLogoBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = FA55C13F16A069C400671CAB /* mainLogoBackground.png */; };
 		FA55C14916A071AA00671CAB /* MSCatalogueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA55C14816A071AA00671CAB /* MSCatalogueViewController.m */; };
@@ -185,7 +183,6 @@
 		F5F6ADC6169C4F21000247D9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		F5F6ADC8169C4F21000247D9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		F5F6ADCC169C4F21000247D9 /* TerritoryOfSuccess-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TerritoryOfSuccess-Info.plist"; sourceTree = "<group>"; };
-		F5F6ADCE169C4F21000247D9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F5F6ADD0169C4F21000247D9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F5F6ADD2169C4F21000247D9 /* TerritoryOfSuccess-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TerritoryOfSuccess-Prefix.pch"; sourceTree = "<group>"; };
 		F5F6ADD3169C4F21000247D9 /* MSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSAppDelegate.h; sourceTree = "<group>"; };
@@ -636,11 +633,9 @@
 			isa = PBXGroup;
 			children = (
 				F5F6ADCC169C4F21000247D9 /* TerritoryOfSuccess-Info.plist */,
-				F5F6ADCD169C4F21000247D9 /* InfoPlist.strings */,
 				F5F6ADD0169C4F21000247D9 /* main.m */,
 				F5F6ADD2169C4F21000247D9 /* TerritoryOfSuccess-Prefix.pch */,
 				FA884BC716B82B74002A7FDC /* Settings.bundle */,
-				FA44437916BBC7320009FC03 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -955,7 +950,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5F6ADCF169C4F21000247D9 /* InfoPlist.strings in Resources */,
 				F5F6AE7C169C4F5A000247D9 /* .gitignore in Resources */,
 				F5F6AE7F169C4F5A000247D9 /* README.md in Resources */,
 				F5F6AE87169C4F65000247D9 /* LICENSE in Resources */,
@@ -1019,7 +1013,6 @@
 				FA44435F16BB9B2F0009FC03 /* vkActionButton.png in Resources */,
 				FA44436616BBAB2D0009FC03 /* cancellVKButton.png in Resources */,
 				FA44436816BBAD270009FC03 /* cancelVKButton.png in Resources */,
-				FA44437716BBC7320009FC03 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1075,31 +1068,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		F5F6ADCD169C4F21000247D9 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F5F6ADCE169C4F21000247D9 /* en */,
-				FA44436A16BBBD890009FC03 /* uk */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		FA44436D16BBBDD60009FC03 /* iPhoneStoryboard.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				FA44436E16BBBDDF0009FC03 /* uk */,
 				FA44436F16BBBDF00009FC03 /* Base */,
-				FA44437416BBBE510009FC03 /* en */,
 			);
 			name = iPhoneStoryboard.storyboard;
-			sourceTree = "<group>";
-		};
-		FA44437916BBC7320009FC03 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FA44437816BBC7320009FC03 /* uk */,
-			);
-			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
