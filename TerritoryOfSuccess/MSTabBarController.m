@@ -17,6 +17,8 @@
 @synthesize myTabBarController = _myTabBarController;
 @synthesize receivedData = _receivedData;
 
+@synthesize iteamSelectedTag = _iteamSelectedTag;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -29,6 +31,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.iteamSelectedTag = 1;
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,7 +43,8 @@
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
 {
-    
+    self.iteamSelectedTag = item.tag;
+        
 }
 
 @end

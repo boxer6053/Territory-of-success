@@ -21,6 +21,7 @@
 		F54DC3FC16B666D5001385CB /* MSInquirerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54DC3FB16B666D5001385CB /* MSInquirerDetailViewController.m */; };
 		F54DC41316B6C048001385CB /* appllee.png in Resources */ = {isa = PBXBuildFile; fileRef = F54DC41216B6C048001385CB /* appllee.png */; };
 		F54DC41916B6C861001385CB /* appllee2.png in Resources */ = {isa = PBXBuildFile; fileRef = F54DC41816B6C860001385CB /* appllee2.png */; };
+		F54E86C616BC2415001B9D3B /* logo_color_invert_40*147.png in Resources */ = {isa = PBXBuildFile; fileRef = F54E86C516BC2415001B9D3B /* logo_color_invert_40*147.png */; };
 		F552752616B06AEA0086AE53 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F552752516B06AEA0086AE53 /* SDWebImage.framework */; };
 		F552752916B06AFF0086AE53 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F552752816B06AFF0086AE53 /* ImageIO.framework */; };
 		F555201F16B3E240000C0D3E /* MSDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = F555201E16B3E240000C0D3E /* MSDialogView.m */; };
@@ -137,6 +138,7 @@
 		F54DC3FB16B666D5001385CB /* MSInquirerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSInquirerDetailViewController.m; sourceTree = "<group>"; };
 		F54DC41216B6C048001385CB /* appllee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appllee.png; sourceTree = "<group>"; };
 		F54DC41816B6C860001385CB /* appllee2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appllee2.png; sourceTree = "<group>"; };
+		F54E86C516BC2415001B9D3B /* logo_color_invert_40*147.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_color_invert_40*147.png"; sourceTree = "<group>"; };
 		F552752516B06AEA0086AE53 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
 		F552752816B06AFF0086AE53 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		F555201D16B3E240000C0D3E /* MSDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDialogView.h; sourceTree = "<group>"; };
@@ -500,6 +502,7 @@
 		F59AEB7E16AF1770004519B9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F54E86C516BC2415001B9D3B /* logo_color_invert_40*147.png */,
 				F5B1884016BBCA2F00290F27 /* logo_text_30*165.png */,
 				F5B1883E16BBC8D200290F27 /* logo_text_30*167.png */,
 				F5B1883C16BBC6EE00290F27 /* logo_text.png */,
@@ -990,6 +993,7 @@
 				F5B1883D16BBC6EE00290F27 /* logo_text.png in Resources */,
 				F5B1883F16BBC8D200290F27 /* logo_text_30*167.png in Resources */,
 				F5B1884116BBCA2F00290F27 /* logo_text_30*165.png in Resources */,
+				F54E86C616BC2415001B9D3B /* logo_color_invert_40*147.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

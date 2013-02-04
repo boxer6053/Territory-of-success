@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@interface MSTabBarController : UITabBarController<NSURLConnectionDelegate, NSURLConnectionDataDelegate>
+@interface MSTabBarController : UITabBarController
 
 @property (weak, nonatomic) IBOutlet UITabBar *myTabBarController;
 
 @property (strong, nonatomic) NSMutableData *receivedData;
+
+@property (nonatomic) NSInteger *iteamSelectedTag;
 
 @end

@@ -33,6 +33,8 @@
 @property (strong, nonatomic) UILabel *mainFishkaLabel;
 @property (strong, nonatomic) UIView *backAlphaView;
 
+@property (nonatomic, strong) UIImageView *logoBarImageView;
+@property (nonatomic, strong) UIImageView *logoBarTextImageView;
 
 - (IBAction)changeNewsPage:(id)sender;
 - (IBAction)takePhoto:(UIButton *)sender;
