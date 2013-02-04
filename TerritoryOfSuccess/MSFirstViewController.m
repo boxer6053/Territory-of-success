@@ -166,10 +166,8 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [UIView animateWithDuration:0.2 animations:^{
-        [self.logoBarImageView setAlpha:1];
-        [self.logoBarTextImageView setAlpha:1];
-    }];
+    [self.logoBarImageView setAlpha:1];
+    [self.logoBarTextImageView setAlpha:1];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

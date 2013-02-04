@@ -2,7 +2,6 @@
 #import <QuartzCore/QuartzCore.h>
 #import "MSSubCatalogueViewController.h"
 #import "MSBrandsAndCategoryCell.h"
-#import "MSFirstViewController.h"
 
 @interface MSCatalogueViewController ()
 
@@ -12,8 +11,6 @@
 @property (strong, nonatomic) NSMutableData *receivedData;
 @property int numberOfRows;
 
-@property (strong, nonatomic) MSFirstViewController *firstViewController;
-
 @end
 
 @implementation MSCatalogueViewController
@@ -22,8 +19,6 @@
 @synthesize arrayOfBrands = _arrayOfBrands;
 @synthesize arrayOfCategories = _arrayOfCategories;
 @synthesize numberOfRows = _numberOfRows;
-
-@synthesize firstViewController = _firstViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -178,11 +173,4 @@
 
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [UIView animateWithDuration:0.3 animations:^{
-        [self.firstViewController.logoBarImageView setAlpha:1];
-        [self.firstViewController.logoBarTextImageView setAlpha:1];
-    }];
-}
 @end
