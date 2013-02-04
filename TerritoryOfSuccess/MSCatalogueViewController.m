@@ -12,6 +12,7 @@
 @property (strong, nonatomic) MSAPI *api;
 @property (strong, nonatomic) NSMutableData *receivedData;
 @property int numberOfRows;
+
 @end
 
 @implementation MSCatalogueViewController
@@ -187,4 +188,5 @@
     [SVProgressHUD showSuccessWithStatus:@"Загрузка завершена."];
 
 }
+
 @end

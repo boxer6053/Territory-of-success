@@ -23,8 +23,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *codeTextField;
 @property (weak, nonatomic) IBOutlet UIButton *sendCodeButton;
 @property (weak, nonatomic) IBOutlet UIButton *photoButton;
-@property (weak, nonatomic) IBOutlet UILabel *tintLabel;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *profileBarButton;
 @property (strong, nonatomic) NSMutableData *receivedData;
 //@property (strong, nonatomic) UIView *dialogView;
 @property (strong, nonatomic) UIImageView *productImageView;
@@ -33,10 +32,13 @@
 @property (strong, nonatomic) UILabel *mainFishkaLabel;
 @property (strong, nonatomic) UIView *backAlphaView;
 
+@property (nonatomic, strong) UIImageView *logoBarImageView;
+@property (nonatomic, strong) UIImageView *logoBarTextImageView;
 
 - (IBAction)changeNewsPage:(id)sender;
 - (IBAction)takePhoto:(UIButton *)sender;
 - (IBAction)sendCode:(UIButton *)sender;
+- (IBAction)profileButtonPressed:(id)sender;
 - (UIImage *)cropImage:(UIImage *)image withX:(CGFloat)x withY:(CGFloat)y withWidth:(CGFloat)width withHeight:(CGFloat)height;
 - (NSString *)recognizeImage:(UIImage *)image;
 - (void)showDialogView;

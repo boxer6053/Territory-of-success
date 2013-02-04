@@ -8,6 +8,8 @@
 
 #import "MSAPI.h"
 #import "checkConnection.h"
+#import "SVProgressHUD.h"
+
 
 @implementation MSAPI
 
@@ -77,6 +79,9 @@
     else
     {
         //якщо інету нема
+        
+        [SVProgressHUD showErrorWithStatus:@"Not success Internet connection"];
+        
         UIAlertView *connectFailMessage = [[UIAlertView alloc] initWithTitle:@"Internet Connection"
                                                                      message:@"Not success Internet connection"
                                                                     delegate:self
