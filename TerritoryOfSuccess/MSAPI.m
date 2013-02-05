@@ -8,6 +8,8 @@
 
 #import "MSAPI.h"
 #import "checkConnection.h"
+#import "SVProgressHUD.h"
+
 
 @implementation MSAPI
 
@@ -77,6 +79,9 @@
     else
     {
         //якщо інету нема
+        
+        [SVProgressHUD showErrorWithStatus:@"Not success Internet connection"];
+        
         UIAlertView *connectFailMessage = [[UIAlertView alloc] initWithTitle:@"Internet Connection"
                                                                      message:@"Not success Internet connection"
                                                                     delegate:self
@@ -192,7 +197,8 @@
     }
 }
 
-- (void)getFiveBrandsWithOffset:(int)offset{
+- (void)getFiveBrandsWithOffset:(int)offset
+{
     self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/brands"];
     self.checkRequest = kBrands;
     
@@ -247,7 +253,8 @@
     }
 }
 
-- (void)getCategories{
+- (void)getCategories
+{
     self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/categories"];
     self.checkRequest = kCategories;
     

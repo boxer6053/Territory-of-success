@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8kx-JT-nNm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8kx-JT-nNm">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
         <!--Catalogue View Controller - Каталог-->
@@ -19,6 +19,7 @@
                                     <segment title="Категории"/>
                                     <segment title="Бренды"/>
                                 </segments>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="segmentPressed:" destination="7i8-cs-uKQ" eventType="valueChanged" id="B0A-F0-CrX"/>
                                 </connections>
@@ -69,7 +70,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Каталог" id="BAi-Sz-OmZ"/>
                     <connections>
-                        <outlet property="productAndBonusesControl" destination="JVi-72-uhQ" id="EjB-xq-0Xn"/>
+                        <outlet property="categoryAndBrandsControl" destination="JVi-72-uhQ" id="lHo-ME-9Zi"/>
                         <outlet property="tableView" destination="LKh-YK-2uW" id="oTe-rI-xuF"/>
                     </connections>
                 </viewController>
@@ -106,7 +107,7 @@
                                                 <rect key="frame" x="0.0" y="45" width="310" height="160"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="exampleDetailImage.png" id="tj3-bn-Fpr">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" id="tj3-bn-Fpr">
                                                         <rect key="frame" x="0.0" y="0.0" width="310" height="160"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     </imageView>
@@ -352,7 +353,7 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
-                                    <navigationItem title="Ваш комментарий" id="Kfj-BY-01N">
+                                    <navigationItem id="Kfj-BY-01N">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ihU-EN-RiF">
                                             <color key="tintColor" red="1" green="0.48933537269999999" blue="0.032153169990000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -503,7 +504,7 @@
                         <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="S0C-j4-tdR">
-                        <barButtonItem key="rightBarButtonItem" image="Profile-Picture_40*28.png" id="xiG-LB-pWW">
+                        <barButtonItem key="rightBarButtonItem" image="Profile-Picture_40*28_white.png" id="xiG-LB-pWW">
                             <connections>
                                 <action selector="profileButtonPressed:" destination="jKd-fR-cIU" id="m6R-Tb-sE8"/>
                             </connections>
@@ -806,10 +807,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9Ii-AZ-dCD">
-                                <rect key="frame" x="20" y="20" width="280" height="33"/>
+                                <rect key="frame" x="5" y="20" width="310" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Опросники" backgroundImage="commentsButton.png">
+                                <state key="normal" title="Опросники" backgroundImage="button_310_32-1.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
@@ -821,10 +822,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ZHN-GQ-oad">
-                                <rect key="frame" x="20" y="60" width="280" height="33"/>
+                                <rect key="frame" x="5" y="60" width="310" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Вопросы о товарах" backgroundImage="commentsButton.png">
+                                <state key="normal" title="Вопросы о товарах" backgroundImage="button_310_32-1.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -927,13 +928,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NPl-TN-7Hd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1775" y="322"/>
+            <point key="canvasLocation" x="1880" y="322"/>
         </scene>
         <!--Sub Catalogue View Controller - Продукты-->
         <scene sceneID="Uvl-TC-9RE">
             <objects>
                 <tableViewController id="KBZ-t0-Wfq" customClass="MSSubCatalogueViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="93" sectionHeaderHeight="22" sectionFooterHeight="22" id="Gth-UE-yCl">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="Gth-UE-yCl">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -946,7 +947,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Название продукта" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" id="jyC-nb-exs">
-                                            <rect key="frame" x="139" y="11" width="152" height="42"/>
+                                            <rect key="frame" x="139" y="11" width="152" height="40"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1004,7 +1005,7 @@
         <scene sceneID="kUx-Pn-sSh">
             <objects>
                 <navigationController id="WMr-Z5-3IS" customClass="MSFirstNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Главная" image="home_TOS.png" id="vHN-4a-EzM"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Главная" image="home_TOS.png" id="vHN-4a-EzM"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="F3A-Mp-SZr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1024,7 +1025,7 @@
         <scene sceneID="2yE-Ac-aRf">
             <objects>
                 <navigationController id="rKH-MI-8hw" customClass="MSFirstNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Каталог" image="catalogue_TOS.png" id="D8e-iH-KKD"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="Каталог" image="catalogue_TOS.png" id="D8e-iH-KKD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bK7-ec-7vO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1043,7 +1044,7 @@
         <scene sceneID="TOo-i4-P61">
             <objects>
                 <navigationController id="TsD-xh-9RE" customClass="MSFirstNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Опросы" image="questions1.png" id="xr2-ka-6RV"/>
+                    <tabBarItem key="tabBarItem" tag="3" title="Опросы" image="questions1.png" id="xr2-ka-6RV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FJa-KM-BR9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1426,7 +1427,7 @@
         <scene sceneID="03Y-68-yoo">
             <objects>
                 <navigationController id="BIb-F4-6Wk" customClass="MSFirstNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Новости" image="news_TOS.png" id="xPw-kQ-uM6"/>
+                    <tabBarItem key="tabBarItem" tag="4" title="Новости" image="news_TOS.png" id="xPw-kQ-uM6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nw1-zZ-O4a">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1444,7 +1445,7 @@
     </scenes>
     <resources>
         <image name="3star.png" width="87" height="20"/>
-        <image name="Profile-Picture_40*28.png" width="40" height="28"/>
+        <image name="Profile-Picture_40*28_white.png" width="40" height="28"/>
         <image name="button_185_45.png" width="185" height="45"/>
         <image name="button_300*43.png" width="300" height="43"/>
         <image name="button_310_32-1.png" width="310" height="32"/>
@@ -1453,7 +1454,6 @@
         <image name="checkbox_full.png" width="32" height="32"/>
         <image name="commentsButton.png" width="280" height="32"/>
         <image name="commentsNumberImage.png" width="15" height="15"/>
-        <image name="exampleDetailImage.png" width="320" height="212"/>
         <image name="fbButton.png" width="32" height="33"/>
         <image name="home_TOS.png" width="34" height="34"/>
         <image name="inquirerPic.png" width="320" height="220"/>
@@ -1508,7 +1508,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSCatalogueViewController.h"/>
             <relationships>
                 <relationship kind="action" name="segmentPressed:"/>
-                <relationship kind="outlet" name="productAndBonusesControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="categoryAndBrandsControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>

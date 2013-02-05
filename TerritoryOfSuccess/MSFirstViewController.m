@@ -29,6 +29,7 @@
 @property NSTimer *userTouchTimer;
 
 @property (strong, nonatomic) MSAPI *api;
+//@property (strong, nonatomic) MSTabBarController *tabBarController;
 
 @property (strong, nonatomic) UITapGestureRecognizer *tapRecognizer;
 
@@ -70,8 +71,9 @@
 @synthesize backAlphaView = _backAlphaView;
 
 @synthesize logoBarImageView = _logoBarImageView;
+@synthesize logoBarTextImageView = _logoBarTextImageView;
 
--(MSAPI *)api
+- (MSAPI *)api
 {
     if(!_api)
     {
@@ -85,10 +87,28 @@
 {
     [super viewDidLoad];
     
-    self.logoBarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(250, 10, 40, 25)];
-    [self.logoBarImageView setImage:[UIImage imageNamed:@"iconWhite57.png"]];
+//    [self.tabBarInfo getInfo];
     
-//    [self.navigationController.navigationBar addSubview:self.logoBarImageView];
+//    self.logoBarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 2, 35, 40)];
+//    [self.logoBarImageView setImage:[UIImage imageNamed:@"logo_color_35*40.png"]];
+    //------------------------------------------------------
+    self.logoBarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 2, 147, 40)];
+    [self.logoBarImageView setImage:[UIImage imageNamed:@"logo_color_invert_40*147.png"]];
+    
+    self.logoBarTextImageView = [[UIImageView alloc] initWithFrame:CGRectMake(77.5, 7, 165, 30)];
+    [self.logoBarTextImageView setImage:[UIImage imageNamed:@"logo_text_30*165.png"]];
+    
+    [self.navigationController.navigationBar addSubview:self.logoBarImageView];
+    //------------------------------------------------------
+    
+//    [self.navigationController.navigationBar addSubview:self.logoBarTextImageView];
+    
+    
+    if (self == [self.navigationController.viewControllers objectAtIndex:0]) {
+        NSLog(@"Root view controller");
+    }
+    
+//    self.navigationController.navigationItem;
     
     [self.api getFiveNewsWithOffset:0];
     
@@ -136,10 +156,25 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.logoBarImageView setAlpha:1];
+        [self.logoBarTextImageView setAlpha:1];
+    }];
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
-    [UIView animateWithDuration:0.4 animations:^{
-        [self.logoBarImageView setAlpha:1];
+    [self.logoBarImageView setAlpha:1];
+    [self.logoBarTextImageView setAlpha:1];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.logoBarImageView setAlpha:0];
+        [self.logoBarTextImageView setAlpha:0];
     }];
 }
 
@@ -181,7 +216,13 @@
 
 - (void)picturePressed:(UIButton *)sender
 {
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.logoBarImageView setAlpha:0];
+        [self.logoBarTextImageView setAlpha:0];
+    }];
+    
     [self.logoBarImageView setAlpha:0];
+    [self.logoBarTextImageView setAlpha:0];
     
     [self performSegueWithIdentifier:@"newsDetailsFromHome" sender:sender];
 }
@@ -303,9 +344,10 @@
     
     [self.api setDelegate:self];
     
+    NSString *codeStr = @"4444-2AED-2354-865E";
 //    NSString *codeStr = @"2EA4-29E9-CCE0-90EB";
 //    NSString *codeStr = @"37B9-45A4-3711-2DA2";
-    NSString *codeStr = [self.codeTextField text];
+//    NSString *codeStr = [self.codeTextField text];
     
 //    [self.api checkCode:[self.codeTextField text]];
     
@@ -479,7 +521,7 @@
             [self.dialogView.categoryDescripptionLabel sizeToFit];
             
             [self.dialogView.bonusLabel setText:@"Бонус за продукт:"];
-            [self.dialogView.bonusValueLabel setText:@"5.00"];
+            [self.dialogView.bonusValueLabel setText:[dictionary valueForKey:@"bonus"]];
             
             [self.dialogView.messageLabel setText:[[dictionary valueForKey:@"message"] objectAtIndex:1]];
             [self.dialogView.messageLabel sizeToFit];
@@ -540,7 +582,7 @@
                 [self.dialogView.categoryDescripptionLabel sizeToFit];
                 
                 [self.dialogView.bonusLabel setText:@"Бонус за продукт:"];
-                [self.dialogView.bonusValueLabel setText:@"5.00"];
+                [self.dialogView.bonusValueLabel setText:[dictionary valueForKey:@"bonus"]];
                 
                 [self.dialogView.messageLabel setText:[[dictionary valueForKey:@"message"] objectAtIndex:1]];
                 [self.dialogView.messageLabel sizeToFit];
@@ -551,7 +593,7 @@
             }
             else
             {
-                if ([[dictionary valueForKey:@"status"] isEqualToString:@"notfound"]) {
+                if ([[dictionary valueForKey:@"status"] isEqualToString:@"notfound"] || [[dictionary valueForKey:@"status"] isEqualToString:@"already"]) {
                     
                     NSLog(@"notfound");
                     
@@ -640,6 +682,13 @@
         self.newsScrollView.contentSize = CGSizeMake(self.newsScrollView.frame.size.width * arrayOfNews.count, self.newsScrollView.frame.size.height);
         [self.newsScrollView.layer setCornerRadius:5.0];
         self.newsPageControl.numberOfPages = arrayOfNews.count;
+    }
+}
+
+- (void)didSelectTabBarItem:(UITabBarItem *)item
+{
+    if ([item tag] == 1) {
+        NSLog(@"Ніхуя собі");
     }
 }
 
