@@ -13,7 +13,6 @@
 #import "SVProgressHUD.h"
 #import <SDWebImage/UIButton+WebCache.h>
 #import <SDWebImage/UIImageView+WebCache.h>
-#import "MSLogInView.h"
 
 @interface MSFirstViewController ()
 
@@ -33,6 +32,9 @@
 //@property (strong, nonatomic) MSTabBarController *tabBarController;
 
 @property (strong, nonatomic) UITapGestureRecognizer *tapRecognizer;
+
+@property (nonatomic, strong) MSLogInView *loginView;
+@property (nonatomic, strong) UIView *shieldView;
 
 @end
 
@@ -59,6 +61,8 @@
 @synthesize receivedData = _receivedData;
 
 @synthesize dialogView = _dialogView;
+@synthesize loginView = _loginView;
+@synthesize shieldView = _shieldView;
 @synthesize productImageView = _productImageView;
 @synthesize mainFishkaImageView = _mainFishkaImageView;
 @synthesize mainFishkaLabel = _mainFishkaLabel;
@@ -121,11 +125,6 @@
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
         self.codeInputView.frame = CGRectMake(self.codeInputView.frame.origin.x, self.codeInputView.frame.origin.y - 55, self.codeInputView.frame.size.width, self.codeInputView.frame.size.height);
-        //self.titleLabel.frame = CGRectMake(self.titleLabel.frame.origin.x, self.titleLabel.frame.origin.y - 35, self.titleLabel.frame.size.width, self.titleLabel.frame.size.height);
-        //self.sendCodeButton.frame = CGRectMake(self.sendCodeButton.frame.origin.x, self.sendCodeButton.frame.origin.y - 10, self.sendCodeButton.frame.size.width, self.sendCodeButton.frame.size.height);
-        //self.photoButton.frame = CGRectMake(self.photoButton.frame.origin.x, self.photoButton.frame.origin.y - 10, self.photoButton.frame.size.width, self.photoButton.frame.size.height);
-        //self.tintLabel.frame = CGRectMake(self.tintLabel.frame.origin.x, self.tintLabel.frame.origin.y - 10, self.tintLabel.frame.size.width, self.tintLabel.frame.size.height);
-        //self.codeTextField.frame = CGRectMake(self.codeTextField.frame.origin.x, self.codeTextField.frame.origin.y - 10, self.codeTextField.frame.size.width, self.codeTextField.frame.size.height);
     }
     
     CGRect frame = CGRectMake(self.codeTextField.frame.origin.x, self.codeTextField.frame.origin.y, self.codeTextField.frame.size.width, 45);
@@ -386,9 +385,37 @@
     }
     else
     {
-        MSLogInView *loginView = [[MSLogInView alloc]initWithScreenFrame: self.scrollView.frame LoginButtonText:@"Login" CancelButtonText:@"Cancel" EmailLabelText:@"e-mail:" PasswordLabelText:@"password:"];
-        [self.view addSubview:loginView];
+        if (!self.loginView)
+        {
+            self.shieldView = [[UIView alloc] initWithFrame:self.view.bounds];
+            self.shieldView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.0];
+            [self.view addSubview:self.shieldView];
+            self.loginView = [[MSLogInView alloc]init];
+            [UIView animateWithDuration:0.5 animations:^{
+            self.shieldView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.7];
+            }completion:^(BOOL finished){
+                [self.view addSubview:self.loginView];
+                [self.loginView attachPopUpAnimation];
+            }];
+            self.loginView.delegate = self;
+        }
     }
+}
+
+-(void)dismissPopView
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        self.loginView.alpha = 0.0;
+        self.shieldView.alpha = 0.0;
+    }
+    completion:^(BOOL finished){
+        [self.shieldView removeFromSuperview];
+        [self.loginView removeFromSuperview];
+        self.shieldView = nil;
+        self.loginView = nil;
+    }
+    ];
+    
 }
 
 - (void)showDialogView

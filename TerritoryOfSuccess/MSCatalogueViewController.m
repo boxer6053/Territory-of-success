@@ -40,7 +40,7 @@
     [super viewDidLoad];
     [[self tableView] setDelegate:self];
     [[self tableView] setDataSource:self];
-    [SVProgressHUD showWithStatus:@"Загрузка контента..."];
+    [SVProgressHUD showWithStatus:@"Загрузка категорий..."];
     [self.api getCategories];
     
     if ([[UIScreen mainScreen] bounds].size.height == 568)
@@ -54,26 +54,37 @@
     [self.tableView.layer setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0].CGColor];
 }
 
--(void)viewDidAppear:(BOOL)animated{
+- (void)viewDidAppear:(BOOL)animated
+{
     [super viewDidAppear:YES];
     [self makeWrightSegmentColor];
 }
 
+#pragma marl ScrollView Delegate Methods
+- (void)scrollViewWillBeginDragging:(UITableView *)tableView
+{
+    [[self categoryAndBrandsControl] setUserInteractionEnabled:NO];
+}
+
+- (void)scrollViewDidEndDecelerating:(UITableView *)tableView
+{
+    [[self categoryAndBrandsControl] setUserInteractionEnabled:YES];
+}
 #pragma mark SegmentControl
 // Изменение цвета СегментКонтролa при нажатии
--(void) makeWrightSegmentColor
+- (void)makeWrightSegmentColor
 {
     // выбраны категории
-    if (self.productAndBonusesControl.selectedSegmentIndex == 0)
+    if (self.categoryAndBrandsControl.selectedSegmentIndex == 0)
     {
-       [[self.productAndBonusesControl.subviews objectAtIndex:1] setTintColor:[UIColor colorWithRed:255.0/255.0 green:140.0/255.0 blue:0 alpha:1.0]];
-        [[self.productAndBonusesControl.subviews objectAtIndex:0] setTintColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1.0]];
+       [[self.categoryAndBrandsControl.subviews objectAtIndex:1] setTintColor:[UIColor colorWithRed:255.0/255.0 green:140.0/255.0 blue:0 alpha:1.0]];
+        [[self.categoryAndBrandsControl.subviews objectAtIndex:0] setTintColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1.0]];
     }
     // выбраны бренды
     else
     {
-        [[self.productAndBonusesControl.subviews objectAtIndex:0] setTintColor:[UIColor colorWithRed:255.0/255.0 green:140.0/255.0 blue:0 alpha:1.0]];
-        [[self.productAndBonusesControl.subviews objectAtIndex:1] setTintColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1.0]];
+        [[self.categoryAndBrandsControl.subviews objectAtIndex:0] setTintColor:[UIColor colorWithRed:255.0/255.0 green:140.0/255.0 blue:0 alpha:1.0]];
+        [[self.categoryAndBrandsControl.subviews objectAtIndex:1] setTintColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1.0]];
     }
 }
 
@@ -81,23 +92,25 @@
 {
     [self makeWrightSegmentColor];
     // запретить использование сегмент контрола до окончания дозагрузки информации (защита от идиота)
-    [self.productAndBonusesControl setUserInteractionEnabled:NO];
-    if (self.productAndBonusesControl.selectedSegmentIndex == 0)
+    [self.categoryAndBrandsControl setUserInteractionEnabled:NO];
+    if (self.categoryAndBrandsControl.selectedSegmentIndex == 0)
     {
+        [SVProgressHUD showWithStatus:@"Загрузка категорий..."];
         [[self api] getCategories];
     }
     else
     {
+        [SVProgressHUD showWithStatus:@"Загрузка брендов..."];
         [[self api] getFiveBrandsWithOffset:0];
     }
 }
 
 #pragma mark Table View
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [self numberOfRows];
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MSBrandsAndCategoryCell *cell;
     static NSString *myIdentifier = @"cellIdentifier";
     cell = [[self tableView] dequeueReusableCellWithIdentifier:myIdentifier];
@@ -107,7 +120,7 @@
     
 //Проверка на СегментКонтрол и подгрузка соответствующего контента в ячейки
     //категории
-    if (self.productAndBonusesControl.selectedSegmentIndex == 0)
+    if (self.categoryAndBrandsControl.selectedSegmentIndex == 0)
     {
         cell.categoryOrBrandName.text = [[[self arrayOfCategories] objectAtIndex:indexPath.row] valueForKey:@"title"];
         cell.categoryOrBrandImage.image = [UIImage imageNamed:@"bag.png"];
@@ -126,17 +139,17 @@
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    //UITableViewCell * currentCell = [[self tableView] cellForRowAtIndexPath:indexPath];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     [self performSegueWithIdentifier:@"toSubCatalogue" sender:[[self tableView] cellForRowAtIndexPath:indexPath]];
     [[self tableView] deselectRowAtIndexPath:indexPath animated:YES];
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableView *)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableView *)sender
 {
     if([segue.identifier isEqualToString:@"toSubCatalogue"])
     {
-        if (self.productAndBonusesControl.selectedSegmentIndex == 0)
+        if (self.categoryAndBrandsControl.selectedSegmentIndex == 0)
         {
             [segue.destinationViewController sentWithBrandId:0 withCategoryId:sender.tag];
         }
@@ -157,7 +170,7 @@
     return _api;
 }
 
--(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
+- (void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
 {
     if (type == kCategories)
     {
@@ -172,9 +185,8 @@
     }
     
     [[self tableView] reloadData];
-    [self.productAndBonusesControl setUserInteractionEnabled:YES];
-    
-    [SVProgressHUD showSuccessWithStatus:@"Загрузка завершина."];
+    [self.categoryAndBrandsControl setUserInteractionEnabled:YES];
+    [SVProgressHUD showSuccessWithStatus:@"Загрузка завершена."];
 
 }
 

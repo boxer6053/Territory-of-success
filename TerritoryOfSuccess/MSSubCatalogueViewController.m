@@ -2,10 +2,12 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "MSSubCatalogueCell.h"
 #import "MSDetailViewController.h"
+#import "SVProgressHUD.h"
 
 @interface MSSubCatalogueViewController ()
 @property (strong, nonatomic) MSAPI *api;
 @property NSArray *arrayOfProducts;
+@property NSDictionary *brandDictionaryIfWeComeFromBrandsSegment;
 @property int productsCounter;
 @end
 
@@ -13,6 +15,7 @@
 @synthesize arrayOfProducts;
 @synthesize productsCounter = _productsCounter;
 @synthesize productsTableView;
+@synthesize brandDictionaryIfWeComeFromBrandsSegment = _brandDictionaryIfWeComeFromBrandsSegment;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -28,6 +31,7 @@
     self.productsTableView.delegate = self;
     self.productsTableView.dataSource = self;
     [self.productsTableView setBackgroundView:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"bg.png"]]];
+    [SVProgressHUD showWithStatus:@"Загрузка продуктов..."];
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,6 +46,11 @@
 }
 
 #pragma mark - Table view data source
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 93;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self productsCounter];
@@ -59,7 +68,15 @@
     cell.productName.text = [[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"title"];
     [cell.productSmallImage setImageWithURL:[[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"image"] valueForKey:@"small"] placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
     cell.productRatingImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%dstar.png",[[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"rating"]integerValue]]];
-    cell.productBrandName.text = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"brand"] valueForKey:@"title"];
+    
+    if([[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"brand"])
+    {
+        cell.productBrandName.text = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"brand"] valueForKey:@"title"];
+    }
+    else
+    {
+        cell.productBrandName.text = [self.brandDictionaryIfWeComeFromBrandsSegment valueForKey:@"title"];
+    }
     
     //на экспорт в MSDetailViewController
     cell.productAdviceNumber = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"advises"] integerValue];
@@ -105,13 +122,9 @@
     {
         self.arrayOfProducts = [dictionary valueForKey:@"list"];
         self.productsCounter = [[self arrayOfProducts] count];
-//        for(int i = 0; i < self.arrayOfProducts.count; i++)
-//        {
-//            NSArray *insertIndexPath = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.productsCounter inSection:0]];
-//            self.productsCounter++;
-//            [self.productsTableView insertRowsAtIndexPaths:insertIndexPath withRowAnimation:NO];
-//        }
+        self.brandDictionaryIfWeComeFromBrandsSegment = [dictionary valueForKey:@"brand"];
     }
     [[self productsTableView] reloadData];
+    [SVProgressHUD showSuccessWithStatus:@"Загрузка завершена."];
 }
 @end

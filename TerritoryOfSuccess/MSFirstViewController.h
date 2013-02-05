@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "MSAPI.h"
 #import "MSDialogView.h"
+#import "MSLogInView.h"
 
-@interface MSFirstViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, UITextFieldDelegate, WsCompleteDelegate>
+@interface MSFirstViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, UITextFieldDelegate, WsCompleteDelegate, dismissView>
 {
     UIImagePickerController *imagePickerController;
 }
