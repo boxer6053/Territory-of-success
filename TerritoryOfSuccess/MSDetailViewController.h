@@ -1,7 +1,6 @@
 #import <UIKit/UIKit.h>
 #import "MSAPI.h"
-#import "Vkontakte.h"
-@interface MSDetailViewController : UIViewController <VkontakteDelegate>
+@interface MSDetailViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UIView *likeView;
 @property (strong, nonatomic) IBOutlet UIView *starView;

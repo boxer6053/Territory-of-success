@@ -9,11 +9,13 @@
 #import "MSNewsDetailsViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <QuartzCore/QuartzCore.h>
+#import "MSShare.h"
 
 @interface MSNewsDetailsViewController ()
 
 @property (nonatomic) MSAPI *dbApi;
 @property (nonatomic) BOOL shareButtonsShowed;
+@property (strong, nonatomic) MSShare *share;
 
 @end
 
@@ -30,8 +32,9 @@
 @synthesize articleShareFbButton = _articleShareFbButton;
 @synthesize articleShareTwButton = _articleShareTwButton;
 @synthesize articleShareVkButton = _articleShareVkButton;
+@synthesize share = _share;
 
--(MSAPI *)dbApi
+- (MSAPI *)dbApi
 {
     if(!_dbApi)
     {
@@ -80,13 +83,35 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)vkButtonPressed:(id)sender {
+#pragma mark Share Methods
+
+- (MSShare *)share
+{
+    if (!_share) {
+        _share = [[MSShare alloc] init];
+    }
+    return _share;
+}
+- (IBAction)vkButtonPressed:(id)sender
+{
+    self.share.mainView = self;
+    [[self share] shareOnVK];
+    [self.view addSubview:self.share.vkBackgroundView];
 }
 
-- (IBAction)twbButtonPressed:(id)sender {
+- (IBAction)twbButtonPressed:(id)sender
+{
+    [[self share] shareOnTwitterWithText:@"Trololo"
+                               withImage:[UIImage imageNamed:@"twButton.png"]
+                   currentViewController:self];
+
 }
 
-- (IBAction)fbButtonPressed:(id)sender {
+- (IBAction)fbButtonPressed:(id)sender
+{
+    [[self share] shareOnFacebookWithText:@"Trololo"
+                                withImage:[UIImage imageNamed:@"fbButton.png"]
+                    currentViewController:self];
 }
 
 - (IBAction)shareButtonPressed:(id)sender

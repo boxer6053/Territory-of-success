@@ -15,10 +15,6 @@
 @property (strong, nonatomic) NSString *productSentName;
 @property (strong, nonatomic) NSString *productSentDescription;
 @property (strong, nonatomic) MSShare *share;
-@property (nonatomic) Vkontakte *vkontakte;
-@property (nonatomic) UIButton *loginVKButton;
-@property (nonatomic) UIButton *postVKButton;
-@property (nonatomic) UIView *vkView;
 
 @end
 
@@ -29,10 +25,6 @@
 @synthesize ratingDetail = _ratingDetail;
 @synthesize productName = _productName;
 @synthesize share = _share;
-@synthesize vkontakte = _vkontakte;
-@synthesize loginVKButton = _loginVKButton;
-@synthesize postVKButton = _postVKButton;
-@synthesize vkView = _vkView;
 @synthesize productSentDescription = _productSentDescription;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -118,17 +110,12 @@
 }
 
 #pragma mark Share Methods
-- (MSShare *) share
+- (MSShare *)share
 {
     if (!_share) {
         _share = [[MSShare alloc] init];
     }
     return _share;
-}
-
-- (void)setShare:(MSShare *)share
-{
-    _share = share;
 }
 
 //необходим рефакторинг
@@ -159,7 +146,7 @@
 
 - (IBAction)fbButtonPressed:(id)sender
 {
-    [[self share] shareOnFacebookWithText:@"I like Territory of Success"
+    [[self share] shareOnFacebookWithText:self.productName.text
                                 withImage:[UIImage imageNamed:@"fbButton.png"]
                     currentViewController:self];
 }
@@ -170,121 +157,11 @@
                                withImage:[UIImage imageNamed:@"twButton.png"]
                    currentViewController:self];
 }
+
 - (IBAction)vkButtonPressed:(id)sender
 {
-    _vkontakte = [Vkontakte sharedInstance];
-    _vkontakte.delegate = self;
-    
-    self.vkView = [[UIView alloc] initWithFrame:CGRectMake(70, 100, 180, 195)];
-    [self.vkView setBackgroundColor:[UIColor whiteColor]];
-    [self.vkView.layer setBorderColor:[UIColor colorWithRed:75/255.0 green:110/255.0 blue:148/255.0 alpha:1].CGColor];
-    [self.vkView.layer setCornerRadius:10];
-    [self.vkView.layer setBorderWidth:1.0f];
-    self.vkView.clipsToBounds = YES;
-    [self.view addSubview:self.vkView];
-    
-    UIImageView *vkHeaderImage = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"vkHeader.png"]];
-    vkHeaderImage.frame = CGRectMake(0, 0, 180, 45);
-    [self.vkView addSubview:vkHeaderImage];
-    
-    UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [cancelButton setBackgroundImage:[UIImage imageNamed:@"cancelVKButton.png"] forState:UIControlStateNormal];
-    [cancelButton addTarget:self action:@selector(closeVKView) forControlEvents:UIControlEventTouchUpInside];
-    cancelButton.frame = CGRectMake(162, 3, 15, 15);
-    cancelButton.hidden = NO;
-    [self.vkView addSubview:cancelButton];
-    
-    self.loginVKButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.loginVKButton setBackgroundImage:[UIImage imageNamed:@"vkActionButton.png"] forState:UIControlStateNormal];
-    [self.loginVKButton addTarget:self action:@selector(loginPressed) forControlEvents:UIControlEventTouchUpInside];
-    self.loginVKButton.hidden = NO;
-    [self.vkView addSubview:self.loginVKButton];
-    [self refreshButtonState];
-    
-    self.postVKButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.postVKButton addTarget:self action:@selector(postImageWithTextAndLink) forControlEvents:UIControlEventTouchUpInside];
-    self.postVKButton.frame = CGRectMake (self.vkView.frame.size.width/2 - 58, 130, 117, 27);
-    [self.postVKButton setBackgroundImage:[UIImage imageNamed:@"vkActionButton.png"] forState:UIControlStateNormal];
-    self.postVKButton.hidden = YES;
-    [self.postVKButton setTitle:@"Post" forState:UIControlStateNormal];
-    [self.vkView addSubview:self.postVKButton];
-}
-
-- (void)refreshButtonState
-{
-    if (![_vkontakte isAuthorized])
-    {
-        self.loginVKButton.frame = CGRectMake(self.vkView.frame.size.width/2 - 58, 100, 117, 27);
-        [self.loginVKButton setTitle:@"LogIn"
-                            forState:UIControlStateNormal];
-        self.postVKButton.hidden = YES;
-    }
-    else
-    {
-        self.loginVKButton.frame = CGRectMake(self.vkView.frame.size.width/2 - 58, 70, 117, 27);
-        [self.loginVKButton setTitle:@"LogOut"
-                            forState:UIControlStateNormal];
-        self.postVKButton.hidden = NO;
-    }
-}
-
-- (void)loginPressed
-{
-    if (![_vkontakte isAuthorized])
-    {
-        [_vkontakte authenticate];
-    }
-    else
-    {
-        [_vkontakte logout];
-    }
-}
-
-- (void)postImageWithTextAndLink
-{
-    [_vkontakte postImageToWall:[UIImage imageNamed:@"test.jpg"]
-                           text:@"Vkontakte iOS SDK Trololo"
-                           link:[NSURL URLWithString:@"https://www.ex.ua"]];
-}
-
-- (void)vkontakteDidFinishPostingToWall:(NSDictionary *)responce
-{
-    NSLog(@"%@", responce);
-    UIAlertView *alertVK = [[UIAlertView alloc] initWithTitle:nil message:@"Posted successfully" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [alertVK show];
-    [self.vkView removeFromSuperview];
-}
-
-#pragma mark - VkontakteDelegate
-
-- (void)vkontakteDidFailedWithError:(NSError *)error
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)showVkontakteAuthController:(UIViewController *)controller
-{
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    {
-        controller.modalPresentationStyle = UIModalPresentationFormSheet;
-    }
-    
-    [self presentViewController:controller animated:YES completion:nil];
-}
-
-- (void)vkontakteAuthControllerDidCancelled
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)vkontakteDidFinishLogin:(Vkontakte *)vkontakte
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-    [self refreshButtonState];
-}
-
-- (void)vkontakteDidFinishLogOut:(Vkontakte *)vkontakte
-{
-    [self refreshButtonState];
+    self.share.mainView = self;
+    [[self share] shareOnVK];
+    [self.view addSubview:self.share.vkBackgroundView];
 }
 @end

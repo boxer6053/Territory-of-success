@@ -197,7 +197,8 @@
     }
 }
 
-- (void)getFiveBrandsWithOffset:(int)offset{
+- (void)getFiveBrandsWithOffset:(int)offset
+{
     self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/brands"];
     self.checkRequest = kBrands;
     
@@ -252,7 +253,8 @@
     }
 }
 
-- (void)getCategories{
+- (void)getCategories
+{
     self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/categories"];
     self.checkRequest = kCategories;
     
