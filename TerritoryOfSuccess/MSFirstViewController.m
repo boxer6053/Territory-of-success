@@ -33,8 +33,6 @@
 
 @property (strong, nonatomic) UITapGestureRecognizer *tapRecognizer;
 
-@property (nonatomic, strong) UIImageView *logoBarImageView;
-
 @property (nonatomic, strong) MSLogInView *loginView;
 @property (nonatomic, strong) UIView *shieldView;
 

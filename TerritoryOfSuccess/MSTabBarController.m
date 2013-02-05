@@ -31,8 +31,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.iteamSelectedTag = 1;
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,8 +41,7 @@
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
 {
-    self.iteamSelectedTag = item.tag;
-        
+
 }
 
 @end
