@@ -29,7 +29,7 @@
 //@property (strong, nonatomic) UIView *dialogView;
 @property (strong, nonatomic) UIImageView *productImageView;
 @property (strong, nonatomic) MSDialogView *dialogView;
-@property (strong, nonatomic) UIImageView *mainFishkaImageView;
+//@property (strong, nonatomic) UIImageView *mainFishkaImageView;
 @property (strong, nonatomic) UILabel *mainFishkaLabel;
 @property (strong, nonatomic) UIView *backAlphaView;
 

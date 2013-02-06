@@ -29,5 +29,8 @@
 @property (strong, nonatomic) UILabel *bonusLabel;
 @property (strong, nonatomic) UILabel *bonusValueLabel;
 @property (strong, nonatomic) UILabel *bonusNameLabel;
+@property (strong, nonatomic) UIImageView *mainFishkaImageView;
+@property (strong, nonatomic) UILabel *mainFishkaLabel;
+@property (strong, nonatomic) UIView *contentView;
 
 @end
