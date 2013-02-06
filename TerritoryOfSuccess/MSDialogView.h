@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import "MSAnimationView.h"
 
-@interface MSDialogView : UIView
+@interface MSDialogView : MSAnimationView
 
 @property (strong, nonatomic) UIButton *closeButton;
 @property (strong, nonatomic) UILabel *captionLabel;
@@ -28,5 +29,8 @@
 @property (strong, nonatomic) UILabel *bonusLabel;
 @property (strong, nonatomic) UILabel *bonusValueLabel;
 @property (strong, nonatomic) UILabel *bonusNameLabel;
+@property (strong, nonatomic) UIImageView *mainFishkaImageView;
+@property (strong, nonatomic) UILabel *mainFishkaLabel;
+@property (strong, nonatomic) UIView *contentView;
 
 @end
