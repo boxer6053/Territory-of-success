@@ -23,6 +23,7 @@
 @synthesize registrationButton = _registrationButton;
 @synthesize registrationMode = _registrationMode;
 @synthesize backToLoginButton = _backToLoginButton;
+@synthesize loginView = _loginView;
 @synthesize api =_api;
 
 - (MSAPI *)api
@@ -47,16 +48,20 @@
 
 - (id)init
 {
-    self = [super initWithFrame:CGRectMake(25, 170, 270, 180)];
+    self = [super initWithFrame:[UIScreen mainScreen].bounds];
     if (self)
     {
         self.registrationMode = NO;
         
-        [self setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"dialogViewGradient.png"]]];
-        [self.layer setCornerRadius:10.0];
-        [self.layer setBorderColor:[UIColor colorWithWhite:0.5 alpha:1.0].CGColor];
-        [self.layer setBorderWidth:2.0];
-        [self setClipsToBounds:YES];
+        [self setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.0]];
+        
+        self.loginView = [[UIView alloc]initWithFrame:CGRectMake(25, 170, 270, 180)];
+        [self.loginView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"dialogViewGradient.png"]]];
+        [self.loginView.layer setCornerRadius:10.0];
+        [self.loginView.layer setBorderColor:[UIColor colorWithWhite:0.5 alpha:1.0].CGColor];
+        [self.loginView.layer setBorderWidth:2.0];
+        [self.loginView setClipsToBounds:YES];
+        [self addSubview:self.loginView];
         
         //email input
         self.emailLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 20, 70, 21)];
@@ -64,11 +69,11 @@
         self.emailLabel.font = [UIFont fontWithName:@"Helvetica" size:14];
         self.emailLabel.textColor = [UIColor whiteColor];
         self.emailLabel.backgroundColor = [UIColor clearColor];
-        [self addSubview:self.emailLabel];
+        [self.loginView addSubview:self.emailLabel];
         
         self.emailTextField = [[UITextField alloc]initWithFrame:CGRectMake(85, 15, 175, 30)];
         self.emailTextField.borderStyle = UITextBorderStyleRoundedRect;
-        [self addSubview:self.emailTextField];
+        [self.loginView addSubview:self.emailTextField];
         
         //password input
         self.passwordLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 56, 70, 21)];
@@ -76,11 +81,11 @@
         self.passwordLabel.font = [UIFont fontWithName:@"Helvetica" size:14];
         self.passwordLabel.textColor = [UIColor whiteColor];
         self.passwordLabel.backgroundColor = [UIColor clearColor];
-        [self addSubview:self.passwordLabel];
+        [self.loginView addSubview:self.passwordLabel];
         
         self.passwordTextField = [[UITextField alloc]initWithFrame:CGRectMake(85, 51, 175, 30)];
         self.passwordTextField.borderStyle = UITextBorderStyleRoundedRect;
-        [self addSubview:self.passwordTextField];
+        [self.loginView addSubview:self.passwordTextField];
         
         //confrim password input for registration
         self.passwordConfirmLabel = [[UILabel alloc]initWithFrame:CGRectMake(280, 92, 70, 21)];
@@ -88,18 +93,18 @@
         self.passwordConfirmLabel.font = [UIFont fontWithName:@"Helvetica" size:14];
         self.passwordConfirmLabel.textColor = [UIColor whiteColor];
         self.passwordConfirmLabel.backgroundColor = [UIColor clearColor];
-        [self addSubview:self.passwordConfirmLabel];
+        [self.loginView addSubview:self.passwordConfirmLabel];
         
         self.passwordConfirmTextField = [[UITextField alloc]initWithFrame:CGRectMake(355, 87, 125, 30)];
         self.passwordConfirmTextField.borderStyle = UITextBorderStyleRoundedRect;
-        [self addSubview:self.passwordConfirmTextField];
+        [self.loginView addSubview:self.passwordConfirmTextField];
         
         self.backToLoginButton = [[UIButton alloc]initWithFrame:CGRectMake(485, 87, 45, 30)];
         [self.backToLoginButton setBackgroundColor:[UIColor clearColor]];
         self.backToLoginButton.titleLabel.textColor = [UIColor orangeColor];
         [self.backToLoginButton setTitle:@">" forState:UIControlStateNormal];
         [self.backToLoginButton addTarget:self action:@selector(backToLoginButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:self.backToLoginButton];
+        [self.loginView addSubview:self.backToLoginButton];
         
         //buttons
         self.cancelButton = [[UIButton alloc]initWithFrame:CGRectMake(10, 131, 120, 35)];
@@ -108,7 +113,7 @@
         self.cancelButton.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
         [self.cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
         [self.cancelButton addTarget:self action:@selector(cancelPressed) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:self.cancelButton];
+        [self.loginView addSubview:self.cancelButton];
         
         self.loginButton = [[UIButton alloc]initWithFrame:CGRectMake(140, 131, 120, 35)];
         [self.loginButton setBackgroundImage:[UIImage imageNamed:@"button_120*35_new.png"] forState:UIControlStateNormal];
@@ -116,7 +121,7 @@
         self.loginButton.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
         [self.loginButton setTitle:@"Login" forState:UIControlStateNormal];
         [self.loginButton addTarget:self action:@selector(loginPressed) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:self.loginButton];
+        [self.loginView addSubview:self.loginButton];
         
         self.registrationButton = [[UIButton alloc]initWithFrame:CGRectMake(140, 91, 120, 30)];
         [self.registrationButton setBackgroundColor:[UIColor clearColor]];
@@ -124,48 +129,22 @@
         self.registrationButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:14];
         [self.registrationButton setTitle:@"Registrate" forState:UIControlStateNormal];
         [self.registrationButton addTarget:self action:@selector(registrationPressed) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:self.registrationButton];
-        
+        [self.loginView addSubview:self.registrationButton];
     }
     return self;
 }
 
-- (void) attachPopUpAnimation
+-(void)blackOutOfBackground
 {
-    CAKeyframeAnimation *animation = [CAKeyframeAnimation
-                                      animationWithKeyPath:@"transform"];
-    
-    CATransform3D scale1 = CATransform3DMakeScale(0.5, 0.5, 1);
-    CATransform3D scale2 = CATransform3DMakeScale(1.2, 1.2, 1);
-    CATransform3D scale3 = CATransform3DMakeScale(0.9, 0.9, 1);
-    CATransform3D scale4 = CATransform3DMakeScale(1.0, 1.0, 1);
-    
-    NSArray *frameValues = [NSArray arrayWithObjects:
-                            [NSValue valueWithCATransform3D:scale1],
-                            [NSValue valueWithCATransform3D:scale2],
-                            [NSValue valueWithCATransform3D:scale3],
-                            [NSValue valueWithCATransform3D:scale4],
-                            nil];
-    [animation setValues:frameValues];
-    
-    NSArray *frameTimes = [NSArray arrayWithObjects:
-                           [NSNumber numberWithFloat:0.0],
-                           [NSNumber numberWithFloat:0.5],
-                           [NSNumber numberWithFloat:0.9],
-                           [NSNumber numberWithFloat:1.0],
-                           nil];
-    [animation setKeyTimes:frameTimes];
-    
-    animation.fillMode = kCAFillModeForwards;
-    animation.removedOnCompletion = NO;
-    animation.duration = .2;
-    
-    [self.layer addAnimation:animation forKey:@"popup"];
+    [UIView animateWithDuration:0.3 animations:^
+    {
+        [self setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.7]];
+    }];
 }
 
 -(void)cancelPressed
 {
-    [self.delegate dismissPopView:NO];
+    [self dismissLoginViewWithResult:NO];
 }
 
 -(void)loginPressed
@@ -232,7 +211,7 @@
                 NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
                 [userDefults setObject:[dictionary valueForKey:@"token"] forKey:@"authorization_Token"];
                 [userDefults synchronize];
-                [self.delegate dismissPopView:YES];
+                [self dismissLoginViewWithResult:YES];
             }
         }
         else
@@ -247,7 +226,7 @@
             [SVProgressHUD showSuccessWithStatus:@"Регистрация прошла успешно."];
             UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Регистрация" message:[dictionary valueForKey:@"message"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alertView show];
-            [self.delegate dismissPopView:YES];
+            [self dismissLoginViewWithResult:YES];
         }
         else //if([[dictionary valueForKey:@"message"] isEqualToString:@"!-- is_unique --!"])
         {
@@ -264,6 +243,18 @@
         UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Ошибка" message:error.localizedDescription delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertView show];
     }
+}
+
+-(void)dismissLoginViewWithResult:(BOOL)result
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        self.alpha = 0.0;
+    }
+    completion:^(BOOL finished)
+    {
+        [self removeFromSuperview];
+        [self.delegate dismissPopView:result];
+    }];
 }
 
 @end
