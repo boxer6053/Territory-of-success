@@ -1107,6 +1107,7 @@
 				F59884E216C16DCA009FBF48 /* MSQuestionCell.m in Sources */,
 				F59884E516C28437009FBF48 /* MSQuestionDetailViewController.m in Sources */,
 				F5F1E5F616C298A000418FC5 /* MSAnswerViewController.m in Sources */,
+				FAFB5E0B16C2650F001B692B /* MSAnimationView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
