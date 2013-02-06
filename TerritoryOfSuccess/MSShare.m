@@ -77,19 +77,27 @@
     
     self.vkBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen]bounds].size.width, [[UIScreen mainScreen]bounds].size.height)];
     [self.vkBackgroundView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0]];
-    [UIView animateWithDuration:0.2 animations:^
+    [UIView animateWithDuration:0.4 animations:^
     {
         [self.vkBackgroundView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
     }];
     [self addSubview:self.vkBackgroundView];
     
+    UITapGestureRecognizer *singleCloseTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeVKView)];
+    [self.vkBackgroundView addGestureRecognizer:singleCloseTap];
+    
     self.vkView = [[UIView alloc] initWithFrame:CGRectMake(70, 100, 180, 195)];
-    [self.vkView setBackgroundColor:[UIColor whiteColor]];
-    [self.vkView.layer setBorderColor:[UIColor colorWithRed:75/255.0 green:110/255.0 blue:148/255.0 alpha:1].CGColor];
+    [[self vkView] setBackgroundColor:[UIColor whiteColor]];
+    [[self vkView] setAlpha:0];
+    [self.vkView.layer setBorderColor:[UIColor colorWithRed:75/255.0 green:110/255.0 blue:148/255.0 alpha:0].CGColor];
+    [UIView animateWithDuration:0.4 animations:^
+     {
+         [[self vkView]setAlpha:1];
+     }];
     [self.vkView.layer setCornerRadius:10];
     [self.vkView.layer setBorderWidth:1.0f];
     self.vkView.clipsToBounds = YES;
-    [self.vkBackgroundView addSubview:self.vkView];
+    [self addSubview:self.vkView];
 
     UIImageView *vkHeaderImage = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"vkHeader.png"]];
     vkHeaderImage.frame = CGRectMake(0, 0, 180, 45);
@@ -122,7 +130,14 @@
 
 - (void)closeVKView
 {
-    [[self vkBackgroundView] removeFromSuperview];
+    [UIView animateWithDuration:0.4 animations:^{
+        [self.vkBackgroundView setAlpha:0];
+        [self.vkView setAlpha:0];
+    } completion:^(BOOL finished){
+            [[self vkBackgroundView] removeFromSuperview];
+            [[self vkView]removeFromSuperview];
+    }];
+
 }
 
 - (void)refreshButtonState
