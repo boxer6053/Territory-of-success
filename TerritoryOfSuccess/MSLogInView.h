@@ -25,8 +25,8 @@
 @property (strong, nonatomic) UITextField *emailTextField;
 @property (strong, nonatomic) UILabel *passwordLabel;
 @property (strong, nonatomic) UITextField *passwordTextField;
-@property (strong, nonatomic) UILabel *passwordConfrimLabel;
-@property (strong, nonatomic) UITextField *passwordConfrimTextField;
+@property (strong, nonatomic) UILabel *passwordConfirmLabel;
+@property (strong, nonatomic) UITextField *passwordConfirmTextField;
 @property (strong, nonatomic) UIButton *loginButton;
 @property (strong, nonatomic) UIButton *cancelButton;
 @property (strong, nonatomic) UIButton *registrationButton;

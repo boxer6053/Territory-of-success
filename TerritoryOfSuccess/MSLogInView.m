@@ -16,8 +16,8 @@
 @synthesize emailTextField = _emailTextField;
 @synthesize passwordLabel = _passwordLabel;
 @synthesize passwordTextField = _passwordTextField;
-@synthesize passwordConfrimLabel = _passwordConfrimLabel;
-@synthesize passwordConfrimTextField = _passwordConfrimTextField;
+@synthesize passwordConfirmLabel = _passwordConfirmLabel;
+@synthesize passwordConfirmTextField = _passwordConfirmTextField;
 @synthesize loginButton = _loginButton;
 @synthesize cancelButton = _cancelButton;
 @synthesize registrationButton = _registrationButton;
@@ -83,16 +83,16 @@
         [self addSubview:self.passwordTextField];
         
         //confrim password input for registration
-        self.passwordConfrimLabel = [[UILabel alloc]initWithFrame:CGRectMake(280, 92, 70, 21)];
-        self.passwordConfrimLabel.text = @"password:";
-        self.passwordConfrimLabel.font = [UIFont fontWithName:@"Helvetica" size:14];
-        self.passwordConfrimLabel.textColor = [UIColor whiteColor];
-        self.passwordConfrimLabel.backgroundColor = [UIColor clearColor];
-        [self addSubview:self.passwordConfrimLabel];
+        self.passwordConfirmLabel = [[UILabel alloc]initWithFrame:CGRectMake(280, 92, 70, 21)];
+        self.passwordConfirmLabel.text = @"password:";
+        self.passwordConfirmLabel.font = [UIFont fontWithName:@"Helvetica" size:14];
+        self.passwordConfirmLabel.textColor = [UIColor whiteColor];
+        self.passwordConfirmLabel.backgroundColor = [UIColor clearColor];
+        [self addSubview:self.passwordConfirmLabel];
         
-        self.passwordConfrimTextField = [[UITextField alloc]initWithFrame:CGRectMake(355, 87, 125, 30)];
-        self.passwordConfrimTextField.borderStyle = UITextBorderStyleRoundedRect;
-        [self addSubview:self.passwordConfrimTextField];
+        self.passwordConfirmTextField = [[UITextField alloc]initWithFrame:CGRectMake(355, 87, 125, 30)];
+        self.passwordConfirmTextField.borderStyle = UITextBorderStyleRoundedRect;
+        [self addSubview:self.passwordConfirmTextField];
         
         self.backToLoginButton = [[UIButton alloc]initWithFrame:CGRectMake(485, 87, 45, 30)];
         [self.backToLoginButton setBackgroundColor:[UIColor clearColor]];
@@ -170,8 +170,25 @@
 
 -(void)loginPressed
 {
-    [SVProgressHUD showWithStatus:@"Авторизация"];
-    [self.api logInWithMail:self.emailTextField.text Password:self.passwordTextField.text];
+    if(self.registrationMode)
+    {
+        if ([self.passwordConfirmTextField.text isEqualToString:self.passwordTextField.text])
+        {
+            [SVProgressHUD showWithStatus:@"Регистрация"];
+            [self.api registrationWithEmail:self.emailTextField.text Password:self.passwordTextField.text ConfirmPassword:self.passwordConfirmTextField.text];
+        }
+        else
+        {
+            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Ошибка" message:@"Поля пароль и подтверждение пароля неодинаковые" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alertView show];
+        }
+        
+    }
+    else
+    {
+        [SVProgressHUD showWithStatus:@"Авторизация"];
+        [self.api logInWithMail:self.emailTextField.text Password:self.passwordTextField.text];
+    }
 }
 
 -(void)registrationPressed
@@ -179,8 +196,8 @@
     [UIView animateWithDuration:1.0 animations:^
      {
          self.registrationButton.frame = CGRectMake(-130, 91, self.registrationButton.frame.size.width, self.registrationButton.frame.size.height);
-         self.passwordConfrimLabel.frame = CGRectMake(10, self.passwordConfrimLabel.frame.origin.y, self.passwordConfrimLabel.frame.size.width, self.passwordConfrimLabel.frame.size.height);
-         self.passwordConfrimTextField.frame = CGRectMake(85, self.passwordConfrimTextField.frame.origin.y, self.passwordConfrimTextField.frame.size.width, self.passwordConfrimTextField.frame.size.height);
+         self.passwordConfirmLabel.frame = CGRectMake(10, self.passwordConfirmLabel.frame.origin.y, self.passwordConfirmLabel.frame.size.width, self.passwordConfirmLabel.frame.size.height);
+         self.passwordConfirmTextField.frame = CGRectMake(85, self.passwordConfirmTextField.frame.origin.y, self.passwordConfirmTextField.frame.size.width, self.passwordConfirmTextField.frame.size.height);
          self.backToLoginButton.frame = CGRectMake(215, self.backToLoginButton.frame.origin.y, self.backToLoginButton.frame.size.width, self.backToLoginButton.frame.size.height);
          [self.loginButton setTitle:@"Register" forState:UIControlStateNormal];
      }];
@@ -191,8 +208,8 @@
     [UIView animateWithDuration:1.0 animations:^
      {
          self.registrationButton.frame = CGRectMake(140, 91, self.registrationButton.frame.size.width, self.registrationButton.frame.size.height);
-         self.passwordConfrimLabel.frame = CGRectMake(280, self.passwordConfrimLabel.frame.origin.y, self.passwordConfrimLabel.frame.size.width, self.passwordConfrimLabel.frame.size.height);
-         self.passwordConfrimTextField.frame = CGRectMake(355, self.passwordConfrimTextField.frame.origin.y, self.passwordConfrimTextField.frame.size.width, self.passwordConfrimTextField.frame.size.height);
+         self.passwordConfirmLabel.frame = CGRectMake(280, self.passwordConfirmLabel.frame.origin.y, self.passwordConfirmLabel.frame.size.width, self.passwordConfirmLabel.frame.size.height);
+         self.passwordConfirmTextField.frame = CGRectMake(355, self.passwordConfirmTextField.frame.origin.y, self.passwordConfirmTextField.frame.size.width, self.passwordConfirmTextField.frame.size.height);
          self.backToLoginButton.frame = CGRectMake(455, self.backToLoginButton.frame.origin.y, self.backToLoginButton.frame.size.width, self.backToLoginButton.frame.size.height);
          [self.loginButton setTitle:@"Login" forState:UIControlStateNormal];
      }];
@@ -201,24 +218,51 @@
 
 -(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
 {
-    if ([[dictionary valueForKey:@"status"] isEqualToString:@"ok"])
+    if (type == kAuth)
     {
-        if ([dictionary valueForKey:@"token"] == nil)
+        if ([[dictionary valueForKey:@"status"] isEqualToString:@"ok"])
         {
-            [SVProgressHUD showErrorWithStatus:@"Ошибка на сервере"];
+            if ([dictionary valueForKey:@"token"] == nil)
+            {
+                [SVProgressHUD showErrorWithStatus:@"Ошибка на сервере"];
+            }
+            else
+            {
+                [SVProgressHUD showSuccessWithStatus:@"Авторизация прошла успешно."];
+                NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
+                [userDefults setObject:[dictionary valueForKey:@"token"] forKey:@"authorization_Token"];
+                [userDefults synchronize];
+                [self.delegate dismissPopView:YES];
+            }
         }
         else
         {
-            [SVProgressHUD showSuccessWithStatus:@"Авторизация прошла успешно."];
-            NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
-            [userDefults setObject:[dictionary valueForKey:@"token"] forKey:@"authorization_Token"];
-            [userDefults synchronize];
-            [self.delegate dismissPopView:YES];
+            [SVProgressHUD showErrorWithStatus:@"Неправильный пароль или  email"];
         }
     }
-    else
+    if (type == kRegist)
     {
-        [SVProgressHUD showErrorWithStatus:@"Неправильный пароль или  email"];
+        if ([[dictionary valueForKey:@"status"] isEqualToString:@"ok"])
+        {
+            [SVProgressHUD showSuccessWithStatus:@"Регистрация прошла успешно."];
+            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Регистрация" message:[dictionary valueForKey:@"message"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alertView show];
+            [self.delegate dismissPopView:YES];
+        }
+        else //if([[dictionary valueForKey:@"message"] isEqualToString:@"!-- is_unique --!"])
+        {
+            [SVProgressHUD showErrorWithStatus:@"Ошибка"];
+            [SVProgressHUD showErrorWithStatus:@"Такой email уже используется"];
+        }
+    }
+}
+
+-(void)finishedWithError:(NSError *)error TypeRequest:(requestTypes)type
+{
+    if (type == kRegist)
+    {
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Ошибка" message:error.localizedDescription delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
     }
 }
 
