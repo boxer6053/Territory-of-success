@@ -35,6 +35,7 @@
 
 @property (nonatomic, strong) MSLogInView *loginView;
 @property (nonatomic) BOOL isAuthorized;
+@property (nonatomic, strong) NSNotificationCenter *nc;
 
 @end
 
@@ -141,12 +142,12 @@
     [self.codeInputView.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:0.7].CGColor];
     [self.codeInputView.layer setBorderWidth:1.0f];
     
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    self.nc = [NSNotificationCenter defaultCenter];
     
-    [nc addObserver:self selector:@selector(keyboardWillShow:) name:
+    [self.nc addObserver:self selector:@selector(keyboardWillShow:) name:
      UIKeyboardWillShowNotification object:nil];
     
-    [nc addObserver:self selector:@selector(keyboardWillHide:) name:
+    [self.nc addObserver:self selector:@selector(keyboardWillHide:) name:
      UIKeyboardWillHideNotification object:nil];
     
     self.slideShowTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(slide) userInfo:nil repeats:YES];
@@ -397,11 +398,16 @@
     {
         if (!self.loginView)
         {
-            self.loginView = [[MSLogInView alloc]init];
+            self.loginView = [[MSLogInView alloc]initWithOrigin:CGPointMake(25, self.view.frame.size.height/2 - 90)];
             [self.view addSubview:self.loginView];
             [self.loginView blackOutOfBackground];
             [self.loginView attachPopUpAnimationForView:self.loginView.loginView];
             self.loginView.delegate = self;
+            self.loginView.emailTextField.delegate = self;
+            self.loginView.passwordConfirmTextField.delegate = self;
+            self.loginView.passwordTextField.delegate = self;
+            [self.nc removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+            [self.nc removeObserver:self name:UIKeyboardWillHideNotification object:nil];
         }
     }
 }
@@ -414,6 +420,11 @@
         [self.profileBarButton setImage:[UIImage imageNamed:@"Profile-Picture_40*28_white.png"]];
     }
     self.loginView = nil;
+    [self.nc addObserver:self selector:@selector(keyboardWillShow:) name:
+     UIKeyboardWillShowNotification object:nil];
+    
+    [self.nc addObserver:self selector:@selector(keyboardWillHide:) name:
+     UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)showDialogView

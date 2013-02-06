@@ -34,7 +34,7 @@
 @property (strong, nonatomic) UIButton *backToLoginButton;
 @property (strong, nonatomic) UIView *loginView;
 
-- (id)init;
+-(id)initWithOrigin:(CGPoint)origin;
 -(void)blackOutOfBackground;
 
 @end

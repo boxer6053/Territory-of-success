@@ -46,7 +46,7 @@
     return self;
 }
 
-- (id)init
+- (id)initWithOrigin:(CGPoint)origin
 {
     self = [super initWithFrame:[UIScreen mainScreen].bounds];
     if (self)
@@ -55,7 +55,7 @@
         
         [self setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.0]];
         
-        self.loginView = [[UIView alloc]initWithFrame:CGRectMake(25, 170, 270, 180)];
+        self.loginView = [[UIView alloc]initWithFrame:CGRectMake(origin.x, origin.y, 270, 180)];
         [self.loginView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"dialogViewGradient.png"]]];
         [self.loginView.layer setCornerRadius:10.0];
         [self.loginView.layer setBorderColor:[UIColor colorWithWhite:0.5 alpha:1.0].CGColor];
@@ -136,7 +136,7 @@
 
 -(void)blackOutOfBackground
 {
-    [UIView animateWithDuration:0.3 animations:^
+    [UIView animateWithDuration:0.2 animations:^
     {
         [self setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.7]];
     }];
