@@ -10,5 +10,6 @@
 
 @interface MSProfileViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *profileTableView;
-
+- (IBAction)logoutButtonPressed:(id)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *logoutButton;
 @end

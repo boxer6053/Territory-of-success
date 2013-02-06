@@ -15,6 +15,8 @@ typedef enum {kAuth = 1, kRegist = 2, kNews = 3, kNewsWithId = 4, kCode = 5, kBr
 
 - (void)finishedWithDictionary:(NSDictionary *)dictionary
                withTypeRequest:(requestTypes)type;
+@optional
+- (void)finishedWithError:(NSError *)error TypeRequest:(requestTypes)type;
 
 @end
 
@@ -39,4 +41,6 @@ typedef enum {kAuth = 1, kRegist = 2, kNews = 3, kNewsWithId = 4, kCode = 5, kBr
 - (void)getCategories;
 - (void)getProductsWithOffset:(int)offset withBrandId:(int)brandId withCategoryId:(int)categoryId;
 -(void)getQuestionsWithParentID:(int)parentId;
+- (void)logInWithMail:(NSString *)email Password:(NSString *)password;
+- (void)registrationWithEmail:(NSString *)email Password:(NSString *)password ConfirmPassword:(NSString *)confirmPassword;
 @end

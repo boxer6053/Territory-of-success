@@ -10,6 +10,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <QuartzCore/QuartzCore.h>
 #import "MSShare.h"
+#import "SVProgressHUD.h"
 
 @interface MSNewsDetailsViewController ()
 
@@ -27,7 +28,6 @@
 @synthesize articleImageView = _articleImageView;
 @synthesize articleTitleLabel = _articleTitleLabel;
 @synthesize articleScrollView = _articleScrollView;
-@synthesize articleActivityIndicator = _articleActivityIndicator;
 @synthesize articleShareButton = _articleShareButton;
 @synthesize articleShareFbButton = _articleShareFbButton;
 @synthesize articleShareTwButton = _articleShareTwButton;
@@ -69,8 +69,6 @@
     self.articleScrollView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.0];
     self.articleTextWebView.backgroundColor = [UIColor clearColor];
     self.articleTextWebView.opaque = NO;
-    [self.articleActivityIndicator startAnimating];
-    self.articleActivityIndicator.hidesWhenStopped = YES;
     self.articleTextWebView.hidden = YES;
    // self.articleScrollView.layer.cornerRadius = 10.0;
     
@@ -97,6 +95,7 @@
     self.share.mainView = self;
     [[self share] shareOnVK];
     [self.view addSubview:self.share.vkBackgroundView];
+    [self.view addSubview:self.share.vkView];
 }
 
 - (IBAction)twbButtonPressed:(id)sender
@@ -143,6 +142,7 @@
 - (void)setContentOfArticleWithId:(NSString *)articleId
 {
     [self.dbApi getNewsWithId:articleId];
+    [SVProgressHUD showWithStatus:@"Загрузка информации"];
 }
 
 -(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
@@ -157,7 +157,7 @@
         //change iframe size for youtube video
 
         NSString *articleText = [[dictionary valueForKey:@"post"] valueForKey:@"content"];
-        articleText  = [articleText stringByReplacingOccurrencesOfString:@"width=\"327\" height=\"245\"><\/iframe>" withString:@"width=\"300\" height=\"224\"><\/iframe>"];
+        articleText  = [articleText stringByReplacingOccurrencesOfString:@"width=\"327\" height=\"245\"></iframe>" withString:@"width=\"300\" height=\"224\"></iframe>"];
         
         [self.articleTextWebView loadHTMLString:[NSString stringWithFormat:@"<div background-color:transparent>%@<div>",articleText] baseURL:nil];
         
@@ -171,10 +171,10 @@
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [self.articleActivityIndicator stopAnimating];
     [self.articleTextWebView sizeToFit];
     self.articleTextWebView.frame = CGRectMake(self.articleTextWebView.frame.origin.x, self.articleBriefTextView.frame.origin.y + self.articleBriefTextView.frame.size.height, 320, self.articleTextWebView.frame.size.height);
     self.articleScrollView.contentSize= CGSizeMake(self.articleScrollView.contentSize.width, self.articleTextWebView.frame.origin.y + self.articleTextWebView.frame.size.height + 5);
     self.articleTextWebView.hidden = NO;
+    [SVProgressHUD showSuccessWithStatus:@"Загрузка завершена"];
 }
 @end

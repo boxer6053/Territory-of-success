@@ -104,6 +104,10 @@
     [self.request setHTTPMethod:@"POST"];
     
     self.params = [NSMutableString stringWithFormat:@"offset=%d", offset];
+    [self.params appendFormat:@"&lang=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
+    
+    [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
+
     
     //перевірка наявності інету
     if (checkConnection.hasConnectivity) {
@@ -314,6 +318,115 @@
 
 }
 
+- (void)logInWithMail:(NSString *)email Password:(NSString *)password
+{
+    self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/auth"];
+    
+    self.checkRequest = kAuth;
+    
+    //створюемо запит
+    self.request = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
+    
+    //вказуэм протокол доступу
+    [self.request setHTTPMethod:@"POST"];
+    
+    self.params = [NSMutableString stringWithFormat:@"email=%@", email];
+    [self.params appendFormat:@"&password=%@",password];
+
+    [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
+
+    
+    //перевірка наявності інету
+    if (checkConnection.hasConnectivity) {
+        //створюєм з'єднання і начинаєм загрузку
+        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self];
+        //перевірка з'єднання
+        if (connection) {
+            NSLog(@"З'єднання почалось");
+            self.receivedData = [[NSMutableData alloc] init];
+            
+            CFDictionaryAddValue(self.connectionToInfoMapping, CFBridgingRetain(connection), CFBridgingRetain([NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInt:self.checkRequest] forKey:@"requestType"]));
+        }
+        else
+        {
+            //якщо з'єднання нема
+            // Inform the user that the connection failed.
+            NSLog(@"Помилка з'єднання");
+            UIAlertView *connectFailMessage = [[UIAlertView alloc] initWithTitle:@"URL Connection"
+                                                                         message:@"Not success URL connection"
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"Ok"
+                                                               otherButtonTitles:nil];
+            [connectFailMessage show];
+        }
+    }
+    else
+    {
+        //якщо інету нема
+        UIAlertView *connectFailMessage = [[UIAlertView alloc] initWithTitle:@"Internet Connection"
+                                                                     message:@"Not success Internet connection"
+                                                                    delegate:self
+                                                           cancelButtonTitle:@"Ok"
+                                                           otherButtonTitles:nil];
+        [connectFailMessage show];
+    }
+}
+
+- (void)registrationWithEmail:(NSString *)email Password:(NSString *)password ConfirmPassword:(NSString *)confirmPassword
+{
+    self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/register"];
+    
+    self.checkRequest = kRegist;
+    
+    //створюемо запит
+    self.request = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
+    
+    //вказуэм протокол доступу
+    [self.request setHTTPMethod:@"POST"];
+    
+    self.params = [NSMutableString stringWithFormat:@"email=%@", email];
+    [self.params appendFormat:@"&password=%@",password];
+    [self.params appendFormat:@"&repassword=%@",confirmPassword];
+    
+    [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    
+    //перевірка наявності інету
+    if (checkConnection.hasConnectivity) {
+        //створюєм з'єднання і начинаєм загрузку
+        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self];
+        //перевірка з'єднання
+        if (connection) {
+            NSLog(@"З'єднання почалось");
+            self.receivedData = [[NSMutableData alloc] init];
+            
+            CFDictionaryAddValue(self.connectionToInfoMapping, CFBridgingRetain(connection), CFBridgingRetain([NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInt:self.checkRequest] forKey:@"requestType"]));
+        }
+        else
+        {
+            //якщо з'єднання нема
+            // Inform the user that the connection failed.
+            NSLog(@"Помилка з'єднання");
+            UIAlertView *connectFailMessage = [[UIAlertView alloc] initWithTitle:@"URL Connection"
+                                                                         message:@"Not success URL connection"
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"Ok"
+                                                               otherButtonTitles:nil];
+            [connectFailMessage show];
+        }
+    }
+    else
+    {
+        //якщо інету нема
+        UIAlertView *connectFailMessage = [[UIAlertView alloc] initWithTitle:@"Internet Connection"
+                                                                     message:@"Not success Internet connection"
+                                                                    delegate:self
+                                                           cancelButtonTitle:@"Ok"
+                                                           otherButtonTitles:nil];
+        [connectFailMessage show];
+    }
+}
+
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
     //отримано відповідь від сервера
@@ -334,6 +447,9 @@
                              [error description],
                              [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]];
     NSLog(@"%@", errorString);
+    
+    self.connectionInfo = CFBridgingRelease(CFDictionaryGetValue(self.connectionToInfoMapping, CFBridgingRetain(connection)));
+    [self.delegate finishedWithError:error TypeRequest:[[self.connectionInfo objectForKey:@"requestType" ] integerValue]];
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
