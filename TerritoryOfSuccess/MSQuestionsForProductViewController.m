@@ -8,6 +8,7 @@
 
 #import "MSQuestionsForProductViewController.h"
 #import "MSQuestionCell.h"
+#import "MSQuestionDetailViewController.h"
 
 
 @interface MSQuestionsForProductViewController ()
@@ -18,15 +19,17 @@
 @synthesize gettedUrlImage = _gettedUrlImage;
 @synthesize questionsArray = _questionsArray;
 @synthesize gettedProductTitle = _gettedProductTitle;
+@synthesize sendingDetail = _sendingDetail;
+@synthesize sendingName = _sendingName;
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    NSArray *oneQuestion = [[NSArray alloc] initWithObjects:@"FirstName",@"First comment", nil];
-    NSArray *twoQuestion = [[NSArray alloc] initWithObjects:@"SecondName",@"Second Comment", nil];
-    NSArray *threeQuestion = [[NSArray alloc] initWithObjects:@"ThirdName",@"Third Comment", nil];
+    NSArray *oneQuestion = [[NSArray alloc] initWithObjects:@"FirstName",@"First question", nil];
+    NSArray *twoQuestion = [[NSArray alloc] initWithObjects:@"SecondName",@"Second question", nil];
+    NSArray *threeQuestion = [[NSArray alloc] initWithObjects:@"ThirdName",@"Third question", nil];
     _questionsArray = [NSMutableArray arrayWithObjects:oneQuestion,twoQuestion,threeQuestion, nil];
     NSLog(@"HHHHHHH %@",_gettedProductTitle);
 	// Do any additional setup after loading the view.
@@ -46,6 +49,13 @@
         controller.productTitle = _gettedProductTitle;
         controller.imageURL = _gettedUrlImage;
         controller.delegate = self;
+        
+    }
+    if([segue.identifier isEqualToString:@"toQuestionDetail"])
+    {
+        MSQuestionDetailViewController *controller = [segue destinationViewController];
+        controller.gettedDescription = _sendingDetail;
+        controller.gettedName = _sendingName;
         
     }
 }
@@ -73,6 +83,13 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    _sendingName = [[_questionsArray objectAtIndex:indexPath.row] objectAtIndex:0];
+    _sendingDetail = [[_questionsArray objectAtIndex:indexPath.row] objectAtIndex:1];
+    [self performSegueWithIdentifier:@"toQuestionDetail" sender:self];
+    NSLog(@"name %@", _sendingName);
+}
 -(void) addNewQuestion:(NSArray *)array{
     [_questionsArray addObject:array];
     [_tableOfQuestions reloadData];
