@@ -10,6 +10,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 
 #import "MSCreateQuestionViewController.h"
+#import "MSQuestionsForProductViewController.h"
 
 @interface MSQuiestionProductDetailViewController ()
 
@@ -20,7 +21,7 @@
 @synthesize gettedProductTitle = _gettedProductTitle;
 @synthesize productImage = _productImage;
 @synthesize productTitleLabel = _productTitleLabel;
-@synthesize tableOfAnswers = _tableOfAnswers;
+
 @synthesize sendingTitle = _sendingTitle;
 @synthesize sendingURL = _sendingURL;
 
@@ -42,7 +43,7 @@
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
-    [_tableOfAnswers setShowsVerticalScrollIndicator:NO];
+    
 
     NSLog(@"Hello %@",_gettedProductTitle);
     NSLog(@"Hi %@", _gettedUrlImage);
@@ -60,11 +61,11 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([segue.identifier isEqualToString:@"toCreateQuestion"])
+    if([segue.identifier isEqualToString:@"toQuestionList"])
     {
-        MSCreateQuestionViewController *controller = (MSCreateQuestionViewController *)segue.destinationViewController;
-        controller.productTitle = _sendingTitle;
-        controller.imageURL = _sendingURL;
+       MSQuestionsForProductViewController *controller = (MSQuestionsForProductViewController *)segue.destinationViewController;
+        controller.gettedProductTitle = _sendingTitle;
+        controller.gettedUrlImage = _sendingURL;
     }
 }
 - (void)didReceiveMemoryWarning

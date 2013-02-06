@@ -32,9 +32,11 @@
 //@property (strong, nonatomic) MSTabBarController *tabBarController;
 
 @property (strong, nonatomic) UITapGestureRecognizer *tapRecognizer;
+@property (strong, nonatomic) UITapGestureRecognizer *loginTabRecognizer;
 
 @property (nonatomic, strong) MSLogInView *loginView;
 @property (nonatomic, strong) UIView *shieldView;
+@property (nonatomic) BOOL isAuthorized;
 
 @end
 
@@ -50,6 +52,7 @@
 @synthesize photoButton = _photoButton;
 
 @synthesize tapRecognizer = _tapRecognizer;
+@synthesize loginTabRecognizer = _loginTabRecognizer;
 
 @synthesize screenWidth = _screenWidth;
 @synthesize screenHeight = _screenHeight;
@@ -62,6 +65,7 @@
 
 @synthesize dialogView = _dialogView;
 @synthesize loginView = _loginView;
+@synthesize isAuthorized = _isAuthorized;
 @synthesize shieldView = _shieldView;
 @synthesize productImageView = _productImageView;
 @synthesize mainFishkaImageView = _mainFishkaImageView;
@@ -160,6 +164,18 @@
         [self.logoBarImageView setAlpha:1];
         [self.logoBarTextImageView setAlpha:1];
     }];
+    NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
+    NSString *token = [userDefults valueForKey:@"authorization_Token" ];
+    if(token.length)
+        self.isAuthorized = YES;
+    else
+        self.isAuthorized = NO;
+    
+    if(!self.isAuthorized)
+    {
+        [self.profileBarButton setImage:nil];
+        [self.profileBarButton setTitle:@"Войти"];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -377,9 +393,7 @@
 
 - (IBAction)profileButtonPressed:(id)sender
 {
-    NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
-    NSString *token = [userDefults objectForKey:@"authorization_Token" ];
-    if (token.length)
+    if (self.isAuthorized)
     {
         [self performSegueWithIdentifier:@"toProfile" sender:self];
     }
@@ -398,12 +412,19 @@
                 [self.loginView attachPopUpAnimation];
             }];
             self.loginView.delegate = self;
+            self.loginTabRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(shieldViewTapped)];
+            [self.view addGestureRecognizer:self.loginTabRecognizer];
         }
     }
 }
 
--(void)dismissPopView
+-(void)dismissPopView:(BOOL)result
 {
+    if(result)
+    {
+        self.isAuthorized = YES;
+        [self.profileBarButton setImage:[UIImage imageNamed:@"Profile-Picture_40*28_white.png"]];
+    }
     [UIView animateWithDuration:0.5 animations:^{
         self.loginView.alpha = 0.0;
         self.shieldView.alpha = 0.0;
@@ -415,7 +436,12 @@
         self.loginView = nil;
     }
     ];
-    
+}
+
+-(void)shieldViewTapped
+{
+    [self dismissPopView:NO];
+    [self.view removeGestureRecognizer:self.loginTabRecognizer];
 }
 
 - (void)showDialogView

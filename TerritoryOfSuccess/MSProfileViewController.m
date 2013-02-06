@@ -230,4 +230,11 @@
     return YES;
 }
 
+- (IBAction)logoutButtonPressed:(id)sender
+{
+    NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
+    [userDefults setObject:nil forKey:@"authorization_Token"];
+    [userDefults synchronize];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

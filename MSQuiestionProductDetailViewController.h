@@ -11,7 +11,7 @@
 @interface MSQuiestionProductDetailViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIImageView *productImage;
 @property (weak, nonatomic) IBOutlet UILabel *productTitleLabel;
-@property (weak, nonatomic) IBOutlet UITableView *tableOfAnswers;
+
 @property (strong, nonatomic) NSURL *gettedUrlImage;
 @property (strong, nonatomic) NSString *gettedProductTitle;
 @property (weak, nonatomic) NSString *sendingTitle;

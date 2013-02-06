@@ -8,6 +8,7 @@
 
 #import "MSLogInView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "SVProgressHUD.h"
 
 @implementation MSLogInView
 
@@ -22,6 +23,17 @@
 @synthesize registrationButton = _registrationButton;
 @synthesize registrationMode = _registrationMode;
 @synthesize backToLoginButton = _backToLoginButton;
+@synthesize api =_api;
+
+- (MSAPI *)api
+{
+    if(!_api)
+    {
+        _api = [[MSAPI alloc]init];
+        _api.delegate = self;
+    }
+    return _api;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -35,7 +47,7 @@
 
 - (id)init
 {
-    self = [super initWithFrame:CGRectMake(25, 150, 270, 180)];
+    self = [super initWithFrame:CGRectMake(25, 170, 270, 180)];
     if (self)
     {
         self.registrationMode = NO;
@@ -95,7 +107,7 @@
         self.cancelButton.titleLabel.textColor = [UIColor whiteColor];
         self.cancelButton.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
         [self.cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
-        [self.cancelButton addTarget:self action:@selector(screenWasTapped:) forControlEvents:UIControlEventTouchUpInside];
+        [self.cancelButton addTarget:self action:@selector(cancelPressed) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.cancelButton];
         
         self.loginButton = [[UIButton alloc]initWithFrame:CGRectMake(140, 131, 120, 35)];
@@ -114,9 +126,6 @@
         [self.registrationButton addTarget:self action:@selector(registrationPressed) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.registrationButton];
         
-        
-        UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(screenWasTapped:)];
-        [self addGestureRecognizer:gestureRecognizer];
     }
     return self;
 }
@@ -154,14 +163,15 @@
     [self.layer addAnimation:animation forKey:@"popup"];
 }
 
--(void)screenWasTapped:(id)sender
+-(void)cancelPressed
 {
-    [self.delegate dismissPopView];
+    [self.delegate dismissPopView:NO];
 }
 
 -(void)loginPressed
 {
-    
+    [SVProgressHUD showWithStatus:@"Авторизация"];
+    [self.api logInWithMail:self.emailTextField.text Password:self.passwordTextField.text];
 }
 
 -(void)registrationPressed
@@ -187,6 +197,29 @@
          [self.loginButton setTitle:@"Login" forState:UIControlStateNormal];
      }];
     self.registrationMode = NO;
+}
+
+-(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
+{
+    if ([[dictionary valueForKey:@"status"] isEqualToString:@"ok"])
+    {
+        if ([dictionary valueForKey:@"token"] == nil)
+        {
+            [SVProgressHUD showErrorWithStatus:@"Ошибка на сервере"];
+        }
+        else
+        {
+            [SVProgressHUD showSuccessWithStatus:@"Авторизация прошла успешно."];
+            NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
+            [userDefults setObject:[dictionary valueForKey:@"token"] forKey:@"authorization_Token"];
+            [userDefults synchronize];
+            [self.delegate dismissPopView:YES];
+        }
+    }
+    else
+    {
+        [SVProgressHUD showErrorWithStatus:@"Неправильный пароль или  email"];
+    }
 }
 
 @end
