@@ -104,6 +104,7 @@
     [self.request setHTTPMethod:@"POST"];
     
     self.params = [NSMutableString stringWithFormat:@"offset=%d", offset];
+    [self.params appendFormat:@"&lang=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
     
     [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
 
