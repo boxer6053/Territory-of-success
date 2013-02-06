@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MSAnimationView.h"
 #import "MSAPI.h"
 @protocol dismissView
 
@@ -15,7 +16,7 @@
 
 @end
 
-@interface MSLogInView : UIView <WsCompleteDelegate>
+@interface MSLogInView : MSAnimationView <WsCompleteDelegate>
 
 @property (strong, nonatomic) id <dismissView> delegate;
 @property (nonatomic) BOOL registrationMode;
@@ -25,14 +26,15 @@
 @property (strong, nonatomic) UITextField *emailTextField;
 @property (strong, nonatomic) UILabel *passwordLabel;
 @property (strong, nonatomic) UITextField *passwordTextField;
-@property (strong, nonatomic) UILabel *passwordConfrimLabel;
-@property (strong, nonatomic) UITextField *passwordConfrimTextField;
+@property (strong, nonatomic) UILabel *passwordConfirmLabel;
+@property (strong, nonatomic) UITextField *passwordConfirmTextField;
 @property (strong, nonatomic) UIButton *loginButton;
 @property (strong, nonatomic) UIButton *cancelButton;
 @property (strong, nonatomic) UIButton *registrationButton;
 @property (strong, nonatomic) UIButton *backToLoginButton;
+@property (strong, nonatomic) UIView *loginView;
 
 - (id)init;
-- (void) attachPopUpAnimation;
+-(void)blackOutOfBackground;
 
 @end

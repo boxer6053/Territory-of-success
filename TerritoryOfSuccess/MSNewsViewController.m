@@ -76,9 +76,11 @@
     self.footerButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
     [self.footerButton setTitleColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4] forState:UIControlStateNormal];
     [self.footerButton addTarget:self action:@selector(moreNews) forControlEvents:UIControlEventTouchDown];
-    self.newsTableView.tableFooterView = self.footerButton;
+    
     self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.activityIndicator.hidesWhenStopped = YES;
+    self.newsTableView.tableFooterView = self.activityIndicator;
+    [self.activityIndicator startAnimating];
 }
 
 - (void)didReceiveMemoryWarning
@@ -99,7 +101,6 @@
     {
         [self.footerButton setTitle:NSLocalizedString(@"AllNewsDownloadedKey",nil) forState:UIControlStateNormal];
     }
-
 }
 
 -(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)typefinished

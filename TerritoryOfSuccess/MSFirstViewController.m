@@ -32,10 +32,8 @@
 //@property (strong, nonatomic) MSTabBarController *tabBarController;
 
 @property (strong, nonatomic) UITapGestureRecognizer *tapRecognizer;
-@property (strong, nonatomic) UITapGestureRecognizer *loginTabRecognizer;
 
 @property (nonatomic, strong) MSLogInView *loginView;
-@property (nonatomic, strong) UIView *shieldView;
 @property (nonatomic) BOOL isAuthorized;
 
 @end
@@ -52,7 +50,6 @@
 @synthesize photoButton = _photoButton;
 
 @synthesize tapRecognizer = _tapRecognizer;
-@synthesize loginTabRecognizer = _loginTabRecognizer;
 
 @synthesize screenWidth = _screenWidth;
 @synthesize screenHeight = _screenHeight;
@@ -66,7 +63,6 @@
 @synthesize dialogView = _dialogView;
 @synthesize loginView = _loginView;
 @synthesize isAuthorized = _isAuthorized;
-@synthesize shieldView = _shieldView;
 @synthesize productImageView = _productImageView;
 @synthesize mainFishkaImageView = _mainFishkaImageView;
 @synthesize mainFishkaLabel = _mainFishkaLabel;
@@ -401,19 +397,11 @@
     {
         if (!self.loginView)
         {
-            self.shieldView = [[UIView alloc] initWithFrame:self.view.bounds];
-            self.shieldView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.0];
-            [self.view addSubview:self.shieldView];
             self.loginView = [[MSLogInView alloc]init];
-            [UIView animateWithDuration:0.5 animations:^{
-            self.shieldView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.7];
-            }completion:^(BOOL finished){
-                [self.view addSubview:self.loginView];
-                [self.loginView attachPopUpAnimation];
-            }];
+            [self.view addSubview:self.loginView];
+            [self.loginView blackOutOfBackground];
+            [self.loginView attachPopUpAnimationForView:self.loginView.loginView];
             self.loginView.delegate = self;
-            self.loginTabRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(shieldViewTapped)];
-            [self.view addGestureRecognizer:self.loginTabRecognizer];
         }
     }
 }
@@ -425,23 +413,7 @@
         self.isAuthorized = YES;
         [self.profileBarButton setImage:[UIImage imageNamed:@"Profile-Picture_40*28_white.png"]];
     }
-    [UIView animateWithDuration:0.5 animations:^{
-        self.loginView.alpha = 0.0;
-        self.shieldView.alpha = 0.0;
-    }
-    completion:^(BOOL finished){
-        [self.shieldView removeFromSuperview];
-        [self.loginView removeFromSuperview];
-        self.shieldView = nil;
-        self.loginView = nil;
-    }
-    ];
-}
-
--(void)shieldViewTapped
-{
-    [self dismissPopView:NO];
-    [self.view removeGestureRecognizer:self.loginTabRecognizer];
+    self.loginView = nil;
 }
 
 - (void)showDialogView
