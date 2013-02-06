@@ -7,17 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MSAPI.h"
 @protocol dismissView
 
 @required
--(void)dismissPopView;
+-(void)dismissPopView:(BOOL)loginResult;
 
 @end
 
-@interface MSLogInView : UIView
+@interface MSLogInView : UIView <WsCompleteDelegate>
 
 @property (strong, nonatomic) id <dismissView> delegate;
 @property (nonatomic) BOOL registrationMode;
+@property (nonatomic, strong) MSAPI *api;
 
 @property (strong, nonatomic) UILabel *emailLabel;
 @property (strong, nonatomic) UITextField *emailTextField;

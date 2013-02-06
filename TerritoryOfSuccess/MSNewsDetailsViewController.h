@@ -17,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UITextView *articleBriefTextView;
 @property (weak, nonatomic) IBOutlet UILabel *articleDateLabel;
 @property (weak, nonatomic) IBOutlet UIWebView *articleTextWebView;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *articleActivityIndicator;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *articleShareButton;
 @property (weak, nonatomic) IBOutlet UIButton *articleShareVkButton;
 @property (weak, nonatomic) IBOutlet UIButton *articleShareTwButton;
