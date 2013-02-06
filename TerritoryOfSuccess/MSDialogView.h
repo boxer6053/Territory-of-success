@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import "MSAnimationView.h"
 
-@interface MSDialogView : UIView
+@interface MSDialogView : MSAnimationView
 
 @property (strong, nonatomic) UIButton *closeButton;
 @property (strong, nonatomic) UILabel *captionLabel;
