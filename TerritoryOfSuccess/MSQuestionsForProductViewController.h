@@ -15,5 +15,7 @@
 @property (strong, nonatomic) NSString *gettedProductTitle;
 @property (weak, nonatomic) IBOutlet UITableView *tableOfQuestions;
 @property (strong, nonatomic) NSMutableArray *questionsArray;
+@property (weak, nonatomic) NSString *sendingName;
+@property (weak, nonatomic) NSString *sendingDetail;
 
 @end
