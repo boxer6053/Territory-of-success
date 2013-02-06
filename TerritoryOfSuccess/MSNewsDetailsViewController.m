@@ -94,8 +94,7 @@
 {
     self.share.mainView = self;
     [[self share] shareOnVK];
-    [self.view addSubview:self.share.vkBackgroundView];
-    [self.view addSubview:self.share.vkView];
+    [self.view addSubview:self.share];
 }
 
 - (IBAction)twbButtonPressed:(id)sender
@@ -142,7 +141,7 @@
 - (void)setContentOfArticleWithId:(NSString *)articleId
 {
     [self.dbApi getNewsWithId:articleId];
-    [SVProgressHUD showWithStatus:@"Загрузка информации"];
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadingInformationKey",nil)];
 }
 
 -(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
@@ -175,6 +174,6 @@
     self.articleTextWebView.frame = CGRectMake(self.articleTextWebView.frame.origin.x, self.articleBriefTextView.frame.origin.y + self.articleBriefTextView.frame.size.height, 320, self.articleTextWebView.frame.size.height);
     self.articleScrollView.contentSize= CGSizeMake(self.articleScrollView.contentSize.width, self.articleTextWebView.frame.origin.y + self.articleTextWebView.frame.size.height + 5);
     self.articleTextWebView.hidden = NO;
-    [SVProgressHUD showSuccessWithStatus:@"Загрузка завершена"];
+    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
 }
 @end

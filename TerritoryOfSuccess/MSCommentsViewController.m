@@ -48,7 +48,7 @@
         cell = [[MSCommentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     NSMutableString *name = [NSString stringWithFormat:@"%@",[[_commentsArray objectAtIndex:indexPath.row] objectAtIndex:0]];
-    cell.commentatorName.text =[name stringByAppendingString:@" написал:"];
+    cell.commentatorName.text =[name stringByAppendingString:@":"];
     [cell.commentText setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0]];
     cell.commentText.text = [[_commentsArray objectAtIndex:indexPath.row] objectAtIndex:1];
     

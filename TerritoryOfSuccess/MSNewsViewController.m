@@ -72,7 +72,7 @@
 
     self.newsTableView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.0];
     self.footerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.newsTableView.frame.size.width, 20)];
-    [self.footerButton setTitle:@"Загрузить еще" forState:UIControlStateNormal];
+    [self.footerButton setTitle:NSLocalizedString(@"DownloadMoreKey",nil) forState:UIControlStateNormal];
     self.footerButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
     [self.footerButton setTitleColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4] forState:UIControlStateNormal];
     [self.footerButton addTarget:self action:@selector(moreNews) forControlEvents:UIControlEventTouchDown];
@@ -97,7 +97,7 @@
     }
     else
     {
-        [self.footerButton setTitle:@"Загружены все новости" forState:UIControlStateNormal];
+        [self.footerButton setTitle:NSLocalizedString(@"AllNewsDownloadedKey",nil) forState:UIControlStateNormal];
     }
 
 }

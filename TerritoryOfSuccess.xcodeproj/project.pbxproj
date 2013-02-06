@@ -87,10 +87,10 @@
 		FA44435F16BB9B2F0009FC03 /* vkActionButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA44435E16BB9B2F0009FC03 /* vkActionButton.png */; };
 		FA44436616BBAB2D0009FC03 /* cancellVKButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA44436516BBAB2D0009FC03 /* cancellVKButton.png */; };
 		FA44436816BBAD270009FC03 /* cancelVKButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA44436716BBAD270009FC03 /* cancelVKButton.png */; };
-		FA44436B16BBBDD60009FC03 /* iPhoneStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA44436D16BBBDD60009FC03 /* iPhoneStoryboard.storyboard */; };
 		FA55C14016A069C400671CAB /* logoBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = FA55C13E16A069C400671CAB /* logoBackground.png */; };
 		FA55C14116A069C400671CAB /* mainLogoBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = FA55C13F16A069C400671CAB /* mainLogoBackground.png */; };
 		FA55C14916A071AA00671CAB /* MSCatalogueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA55C14816A071AA00671CAB /* MSCatalogueViewController.m */; };
+		FA5A26BD16C257B00020DDB5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA5A26BF16C257B00020DDB5 /* Localizable.strings */; };
 		FA5D725216A174BE00D2E050 /* photo_camera_1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5D725116A174BE00D2E050 /* photo_camera_1.png */; };
 		FA626B9916A1970B002BB7F6 /* bg_image.png in Resources */ = {isa = PBXBuildFile; fileRef = FA626B9816A1970B002BB7F6 /* bg_image.png */; };
 		FA6DE84016BACA8600B48434 /* MSProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6DE83F16BACA8600B48434 /* MSProfileViewController.m */; };
@@ -108,6 +108,7 @@
 		FA87C70016AAE0EE00784A0D /* MSAddingCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA87C6FF16AAE0EE00784A0D /* MSAddingCommentViewController.m */; };
 		FA884BBE16B7FB35002A7FDC /* shareButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA884BBD16B7FB35002A7FDC /* shareButton.png */; };
 		FA884BC816B82B74002A7FDC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FA884BC716B82B74002A7FDC /* Settings.bundle */; };
+		FA8AB81416C2594C00B98EA3 /* iPhoneStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8AB81616C2594C00B98EA3 /* iPhoneStoryboard.storyboard */; };
 		FA90193716BFEB5E00D028AD /* MSLogInView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA90193616BFEB5E00D028AD /* MSLogInView.m */; };
 		FAA0FCB416BAA856005AF32E /* button_310_32-1.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA0FCB316BAA856005AF32E /* button_310_32-1.png */; };
 		FAA0FCB816BAB190005AF32E /* MSShare.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA0FCB716BAB190005AF32E /* MSShare.m */; };
@@ -126,6 +127,7 @@
 		FAFC778216BAE3B00025275D /* Vkontakte.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA0FCBE16BAD1D8005AF32E /* Vkontakte.m */; };
 		FAFC778316BAE3BB0025275D /* VkontakteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA0FCC016BAD20A005AF32E /* VkontakteViewController.m */; };
 		FAFC778716BAEF5A0025275D /* vkHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFC778616BAEF5A0025275D /* vkHeader.png */; };
+		FAFCF0E516C2873A00ABD178 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAFCF0E716C2873A00ABD178 /* InfoPlist.strings */; };
 		FAFF40F416BAF4F100D020FE /* MSReceiveProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFF40F316BAF4F100D020FE /* MSReceiveProfileCell.m */; };
 /* End PBXBuildFile section */
 
@@ -198,8 +200,7 @@
 		F5F6ADC4169C4F21000247D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F5F6ADC6169C4F21000247D9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		F5F6ADC8169C4F21000247D9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		F5F6ADCC169C4F21000247D9 /* TerritoryOfSuccess-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TerritoryOfSuccess-Info.plist"; sourceTree = "<group>"; };
-		F5F6ADD0169C4F21000247D9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F5F6ADD0169C4F21000247D9 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F5F6ADD2169C4F21000247D9 /* TerritoryOfSuccess-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TerritoryOfSuccess-Prefix.pch"; sourceTree = "<group>"; };
 		F5F6ADD3169C4F21000247D9 /* MSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSAppDelegate.h; sourceTree = "<group>"; };
 		F5F6ADD4169C4F21000247D9 /* MSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSAppDelegate.m; sourceTree = "<group>"; };
@@ -381,11 +382,13 @@
 		FA44435E16BB9B2F0009FC03 /* vkActionButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vkActionButton.png; sourceTree = "<group>"; };
 		FA44436516BBAB2D0009FC03 /* cancellVKButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancellVKButton.png; sourceTree = "<group>"; };
 		FA44436716BBAD270009FC03 /* cancelVKButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancelVKButton.png; sourceTree = "<group>"; };
-		FA44436F16BBBDF00009FC03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/iPhoneStoryboard.storyboard; sourceTree = "<group>"; };
 		FA55C13E16A069C400671CAB /* logoBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoBackground.png; sourceTree = "<group>"; };
 		FA55C13F16A069C400671CAB /* mainLogoBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainLogoBackground.png; sourceTree = "<group>"; };
 		FA55C14716A071AA00671CAB /* MSCatalogueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCatalogueViewController.h; sourceTree = "<group>"; };
 		FA55C14816A071AA00671CAB /* MSCatalogueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCatalogueViewController.m; sourceTree = "<group>"; };
+		FA5A26BE16C257B00020DDB5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FA5A26C016C257B20020DDB5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FA5A26C116C257B30020DDB5 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FA5D725116A174BE00D2E050 /* photo_camera_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo_camera_1.png; sourceTree = "<group>"; };
 		FA626B9816A1970B002BB7F6 /* bg_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_image.png; sourceTree = "<group>"; };
 		FA6DE83E16BACA8600B48434 /* MSProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSProfileViewController.h; sourceTree = "<group>"; };
@@ -410,6 +413,10 @@
 		FA87C6FF16AAE0EE00784A0D /* MSAddingCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSAddingCommentViewController.m; sourceTree = "<group>"; };
 		FA884BBD16B7FB35002A7FDC /* shareButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareButton.png; sourceTree = "<group>"; };
 		FA884BC716B82B74002A7FDC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		FA8AB81816C2596B00B98EA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/iPhoneStoryboard.storyboard; sourceTree = "<group>"; };
+		FA8AB81A16C2599900B98EA3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/iPhoneStoryboard.strings; sourceTree = "<group>"; };
+		FA8AB81C16C259A300B98EA3 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/iPhoneStoryboard.strings; sourceTree = "<group>"; };
+		FA8AB81E16C259A500B98EA3 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/iPhoneStoryboard.strings; sourceTree = "<group>"; };
 		FA90193516BFEB5E00D028AD /* MSLogInView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSLogInView.h; sourceTree = "<group>"; };
 		FA90193616BFEB5E00D028AD /* MSLogInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSLogInView.m; sourceTree = "<group>"; };
 		FAA0FCB316BAA856005AF32E /* button_310_32-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_310_32-1.png"; sourceTree = "<group>"; };
@@ -434,6 +441,10 @@
 		FADA3FD016AD8A0C008D2C7E /* 2star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2star.png; sourceTree = "<group>"; };
 		FADA3FD116AD8A0C008D2C7E /* 3star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3star.png; sourceTree = "<group>"; };
 		FAFC778616BAEF5A0025275D /* vkHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vkHeader.png; sourceTree = "<group>"; };
+		FAFCF0E116C283F300ABD178 /* TerritoryOfSuccess-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TerritoryOfSuccess-Info.plist"; sourceTree = "<group>"; };
+		FAFCF0E616C2873A00ABD178 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FAFCF0E816C2873D00ABD178 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FAFCF0E916C2873D00ABD178 /* uk */ = {isa = PBXFileReference; lastKnownFileType = file; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FAFF40F216BAF4F100D020FE /* MSReceiveProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSReceiveProfileCell.h; sourceTree = "<group>"; };
 		FAFF40F316BAF4F100D020FE /* MSReceiveProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSReceiveProfileCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -641,7 +652,7 @@
 				F5F6ADD3169C4F21000247D9 /* MSAppDelegate.h */,
 				F5F6ADD4169C4F21000247D9 /* MSAppDelegate.m */,
 				F5F6ADDC169C4F22000247D9 /* TerritoryOfSuccess.xcdatamodeld */,
-				FA44436D16BBBDD60009FC03 /* iPhoneStoryboard.storyboard */,
+				FA8AB81616C2594C00B98EA3 /* iPhoneStoryboard.storyboard */,
 				FA1BEA8E16A813BF00F2C219 /* Pauli */,
 				F5F6ADCB169C4F21000247D9 /* Supporting Files */,
 			);
@@ -651,8 +662,10 @@
 		F5F6ADCB169C4F21000247D9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F5F6ADCC169C4F21000247D9 /* TerritoryOfSuccess-Info.plist */,
+				FA5A26BF16C257B00020DDB5 /* Localizable.strings */,
+				FAFCF0E716C2873A00ABD178 /* InfoPlist.strings */,
 				F5F6ADD0169C4F21000247D9 /* main.m */,
+				FAFCF0E116C283F300ABD178 /* TerritoryOfSuccess-Info.plist */,
 				F5F6ADD2169C4F21000247D9 /* TerritoryOfSuccess-Prefix.pch */,
 				FA884BC716B82B74002A7FDC /* Settings.bundle */,
 			);
@@ -943,7 +956,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = MS;
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Matrix Soft";
 			};
 			buildConfigurationList = F5F6ADB8169C4F21000247D9 /* Build configuration list for PBXProject "TerritoryOfSuccess" */;
@@ -993,7 +1006,6 @@
 				F59B7FA816A86E540084FEE3 /* catalogue_TOS.png in Resources */,
 				F59B7FAA16A86E600084FEE3 /* news_TOS.png in Resources */,
 				F59B7FAE16A874950084FEE3 /* questions1.png in Resources */,
-				FA44436B16BBBDD60009FC03 /* iPhoneStoryboard.storyboard in Resources */,
 				FA167C4816A969920008561D /* commentsNumberImage.png in Resources */,
 				FA167C4C16A9699B0008561D /* starOffImage.png in Resources */,
 				FA167C4D16A9699B0008561D /* starOnImage.png in Resources */,
@@ -1039,6 +1051,9 @@
 				FA44435F16BB9B2F0009FC03 /* vkActionButton.png in Resources */,
 				FA44436616BBAB2D0009FC03 /* cancellVKButton.png in Resources */,
 				FA44436816BBAD270009FC03 /* cancelVKButton.png in Resources */,
+				FA8AB81416C2594C00B98EA3 /* iPhoneStoryboard.storyboard in Resources */,
+				FA5A26BD16C257B00020DDB5 /* Localizable.strings in Resources */,
+				FAFCF0E516C2873A00ABD178 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1096,12 +1111,35 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		FA44436D16BBBDD60009FC03 /* iPhoneStoryboard.storyboard */ = {
+		FA5A26BF16C257B00020DDB5 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				FA44436F16BBBDF00009FC03 /* Base */,
+				FA5A26BE16C257B00020DDB5 /* en */,
+				FA5A26C016C257B20020DDB5 /* ru */,
+				FA5A26C116C257B30020DDB5 /* uk */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		FA8AB81616C2594C00B98EA3 /* iPhoneStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA8AB81816C2596B00B98EA3 /* Base */,
+				FA8AB81A16C2599900B98EA3 /* en */,
+				FA8AB81C16C259A300B98EA3 /* ru */,
+				FA8AB81E16C259A500B98EA3 /* uk */,
 			);
 			name = iPhoneStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		FAFCF0E716C2873A00ABD178 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAFCF0E616C2873A00ABD178 /* ru */,
+				FAFCF0E816C2873D00ABD178 /* en */,
+				FAFCF0E916C2873D00ABD178 /* uk */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -1,7 +1,32 @@
-/* 
-  Localizable.strings
-  TerritoryOfSuccess
+// Главная станица
 
-  Created by matrixsoft on 01.02.13.
-  Copyright (c) 2013 Matrix Soft. All rights reserved.
-*/
+
+
+
+
+
+
+// Каталог + Share
+"CategoriesKey" = "Категорії";
+"BrandsKey" = "Бренди";
+"DownloadIsCompletedKey" = "Завантаження закінчено.";
+"DownloadCategoriesKey" = "Завантаєуються категорії...";
+"DownloadBrandsKey" = "Завантажуються бренди...";
+"DownloadProductsKey" = "Завантажуються товари";
+"PostedSuccessfullyKey" = "Опубліковано успішно!";
+"PostKey" = "Опублікувати";
+"LogOutKey" = "Вийти";
+"LogInKey" = "Увійти";
+
+// Опросы
+
+
+
+
+
+
+
+// Новости
+"DownloadingInformationKey" = "Завантаження інформації...";
+"AllNewsDownloadedKey" = "Всі новини завантаженні.";
+"DownloadMoreKey" = "Завантажити ще";

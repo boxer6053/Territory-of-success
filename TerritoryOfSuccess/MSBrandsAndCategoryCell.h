@@ -12,5 +12,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *categoryOrBrandImage;
 @property (strong, nonatomic) IBOutlet UILabel *categoryOrBrandName;
 @property (strong, nonatomic) IBOutlet UILabel *categoryOrBrandAvailable;
+@property (strong, nonatomic) IBOutlet UILabel *categoryOrBrandNumber;
 
 @end

@@ -57,12 +57,11 @@
          switch (result)
          {
              case SLComposeViewControllerResultCancelled:
-                 NSLog(@"Post cancelled");
                  break;
                  
              case SLComposeViewControllerResultDone:
              {
-                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Facebook" message:@"Posted successfully" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Facebook" message:NSLocalizedString(@"PostedSuccessfullyKey",nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                  [alertView show];
              }
                  break;
@@ -81,7 +80,7 @@
     {
         [self.vkBackgroundView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
     }];
-    [self addSubview:self.vkBackgroundView];
+    [self.mainView.view addSubview:self.vkBackgroundView];
     
     UITapGestureRecognizer *singleCloseTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeVKView)];
     [self.vkBackgroundView addGestureRecognizer:singleCloseTap];
@@ -97,7 +96,7 @@
     [self.vkView.layer setCornerRadius:10];
     [self.vkView.layer setBorderWidth:1.0f];
     self.vkView.clipsToBounds = YES;
-    [self addSubview:self.vkView];
+    [self.mainView.view addSubview:self.vkView];
 
     UIImageView *vkHeaderImage = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"vkHeader.png"]];
     vkHeaderImage.frame = CGRectMake(0, 0, 180, 45);
@@ -124,7 +123,7 @@
     if (![_vkontakte isAuthorized])
         self.postVKButton.hidden = YES;
     else self.postVKButton.hidden = NO;
-    [self.postVKButton setTitle:@"Post" forState:UIControlStateNormal];
+    [self.postVKButton setTitle:NSLocalizedString(@"PostKey",nil) forState:UIControlStateNormal];
     [self.vkView addSubview:self.postVKButton];
 }
 
@@ -145,14 +144,14 @@
     if (![_vkontakte isAuthorized])
     {
         self.loginVKButton.frame = CGRectMake(self.vkView.frame.size.width/2 - 58, 100, 117, 27);
-        [self.loginVKButton setTitle:@"LogIn"
+        [self.loginVKButton setTitle:NSLocalizedString(@"LogInKey",nil)
                             forState:UIControlStateNormal];
         self.postVKButton.hidden = YES;
     }
     else
     {
         self.loginVKButton.frame = CGRectMake(self.vkView.frame.size.width/2 - 58, 70, 117, 27);
-        [self.loginVKButton setTitle:@"LogOut"
+        [self.loginVKButton setTitle:NSLocalizedString(@"LogOutKey",nil)
                             forState:UIControlStateNormal];
         self.postVKButton.hidden = NO;
     }
@@ -179,8 +178,7 @@
 
 - (void)vkontakteDidFinishPostingToWall:(NSDictionary *)responce
 {
-    NSLog(@"%@", responce);
-    UIAlertView *alertVK = [[UIAlertView alloc] initWithTitle:nil message:@"Posted successfully" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    UIAlertView *alertVK = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"PostedSuccessfullyKey",nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alertVK show];
     [self.vkView removeFromSuperview];
 }

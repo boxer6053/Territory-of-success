@@ -1,0 +1,33 @@
+// Главная станица
+
+
+
+
+
+
+
+// Каталог + Share
+"CategoriesKey" = "Categories";
+"BrandsKey" = "Brands";
+"DownloadIsCompletedKey" = "Download is completed.";
+"DownloadCategoriesKey" = "Loading categories...";
+"DownloadBrandsKey" = "Loading brands...";
+"DownloadProductsKey" = "Loading products...";
+"PostedSuccessfullyKey" = "Posted successfully!";
+"PostKey" = "Post";
+"LogOutKey" = "Logout";
+"LogInKey" = "Login";
+
+
+// Опросы
+
+
+
+
+
+
+
+// Новости
+"DownloadingInformationKey" = "Downloading information...";
+"AllNewsDownloadedKey" = "All news are downloaded";
+"DownloadMoreKey" = "Download more news";

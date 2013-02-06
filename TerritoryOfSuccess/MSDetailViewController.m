@@ -162,7 +162,6 @@
 {
     self.share.mainView = self;
     [[self share] shareOnVK];
-    [self.view addSubview:self.share.vkBackgroundView];
-    [self.view addSubview:self.share.vkView];
+    [self.view addSubview:self.share];
 }
 @end
