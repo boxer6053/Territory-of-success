@@ -85,6 +85,7 @@
         
         self.passwordTextField = [[UITextField alloc]initWithFrame:CGRectMake(85, 51, 175, 30)];
         self.passwordTextField.borderStyle = UITextBorderStyleRoundedRect;
+        self.passwordTextField.secureTextEntry = YES;
         [self.loginView addSubview:self.passwordTextField];
         
         //confrim password input for registration
@@ -97,6 +98,7 @@
         
         self.passwordConfirmTextField = [[UITextField alloc]initWithFrame:CGRectMake(355, 87, 125, 30)];
         self.passwordConfirmTextField.borderStyle = UITextBorderStyleRoundedRect;
+        self.passwordConfirmTextField.secureTextEntry = YES;
         [self.loginView addSubview:self.passwordConfirmTextField];
         
         self.backToLoginButton = [[UIButton alloc]initWithFrame:CGRectMake(485, 87, 45, 30)];

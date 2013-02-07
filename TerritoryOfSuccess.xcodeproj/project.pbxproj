@@ -1070,6 +1070,9 @@
 				FA44436616BBAB2D0009FC03 /* cancellVKButton.png in Resources */,
 				FA44436816BBAD270009FC03 /* cancelVKButton.png in Resources */,
 				FA167DB816C394D700B08904 /* button_80_44.png in Resources */,
+				FA8AB81416C2594C00B98EA3 /* iPhoneStoryboard.storyboard in Resources */,
+				FA5A26BD16C257B00020DDB5 /* Localizable.strings in Resources */,
+				FAFCF0E516C2873A00ABD178 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
