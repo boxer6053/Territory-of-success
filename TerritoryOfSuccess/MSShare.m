@@ -7,6 +7,8 @@
 @property (nonatomic) Vkontakte *vkontakte;
 @property (nonatomic) UIButton *loginVKButton;
 @property (nonatomic) UIButton *postVKButton;
+@property (nonatomic) NSString *postTextVK;
+@property (nonatomic) NSString *postImageVK;
 @end
 
 @implementation MSShare
@@ -17,6 +19,8 @@
 @synthesize vkView = _vkView;
 @synthesize vkBackgroundView = _vkBackgroundView;
 @synthesize mainView = _mainView;
+@synthesize postImageVK = _postImageVK;
+@synthesize postTextVK = _postTextVK;
 
 - (void)shareOnFacebookWithText:(NSString *)shareText
                     withImage:(UIImage *)shareImage
@@ -28,6 +32,7 @@
         self.slComposeSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
         [self.slComposeSheet setInitialText:shareText];
         [self.slComposeSheet addImage:shareImage];
+        [self.slComposeSheet addURL:[NSURL URLWithString:@"http://id-bonus.com"]];
         [viewController presentViewController:self.slComposeSheet animated:YES completion:nil];
         [self slComposeSheetHandlerMethod];
     }
@@ -43,7 +48,7 @@
         self.slComposeSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
         [self.slComposeSheet setInitialText:shareText];
         [self.slComposeSheet addImage:shareImage];
-        [self.slComposeSheet addURL:[NSURL URLWithString:@"id-bonus.com"]];
+        [self.slComposeSheet addURL:[NSURL URLWithString:@"http://id-bonus.com"]];
         [viewController presentViewController:self.slComposeSheet animated:YES completion:nil];
         [self slComposeSheetHandlerMethod];
 
@@ -69,10 +74,12 @@
      }];
 
 }
-- (void)shareOnVK
+- (void)shareOnVKWithText:(NSString *)shareText withImage:(NSString *)shareImage
 {
     _vkontakte = [Vkontakte sharedInstance];
     _vkontakte.delegate = self;
+    self.postTextVK = shareText;
+    self.postImageVK = shareImage;
     
     self.vkBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen]bounds].size.width, [[UIScreen mainScreen]bounds].size.height)];
     [self.vkBackgroundView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0]];
@@ -117,7 +124,7 @@
     [self refreshButtonState];
 
     self.postVKButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.postVKButton addTarget:self action:@selector(postImageWithTextAndLink) forControlEvents:UIControlEventTouchUpInside];
+    [self.postVKButton addTarget:self action:@selector(post) forControlEvents:UIControlEventTouchUpInside];
     self.postVKButton.frame = CGRectMake (self.vkView.frame.size.width/2 - 58, 130, 117, 27);
     [self.postVKButton setBackgroundImage:[UIImage imageNamed:@"vkActionButton.png"] forState:UIControlStateNormal];
     if (![_vkontakte isAuthorized])
@@ -169,11 +176,11 @@
     }
 }
 
-- (void)postImageWithTextAndLink
+- (void)post
 {
-    [_vkontakte postImageToWall:[UIImage imageNamed:@"test.jpg"]
-                           text:@"Vkontakte iOS SDK Trololo"
-                           link:[NSURL URLWithString:@"https://www.ex.ua"]];
+    [_vkontakte postImageToWall:[UIImage imageNamed:self.postImageVK]
+                           text:self.postTextVK
+                           link:[NSURL URLWithString:@"http://id-bonus.com"]];
 }
 
 - (void)vkontakteDidFinishPostingToWall:(NSDictionary *)responce
@@ -181,6 +188,7 @@
     UIAlertView *alertVK = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"PostedSuccessfullyKey",nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alertVK show];
     [self.vkView removeFromSuperview];
+    [[self vkBackgroundView] removeFromSuperview];
 }
 
 #pragma mark - VkontakteDelegate

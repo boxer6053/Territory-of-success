@@ -93,7 +93,7 @@
 - (IBAction)vkButtonPressed:(id)sender
 {
     self.share.mainView = self;
-    [[self share] shareOnVK];
+    [[self share] shareOnVKWithText:@"trololo" withImage:@"trololo"];
     [self.view addSubview:self.share];
 }
 

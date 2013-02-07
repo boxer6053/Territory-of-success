@@ -15,5 +15,5 @@
                      withImage:(UIImage *)shareImage
          currentViewController:(UIViewController *)viewController;
 
-- (void)shareOnVK;
+- (void)shareOnVKWithText:(NSString *)shareText withImage:(NSString *)shareImage;
 @end
