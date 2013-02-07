@@ -36,6 +36,7 @@
 @property (nonatomic, strong) MSLogInView *loginView;
 @property (nonatomic) BOOL isAuthorized;
 @property (nonatomic, strong) NSNotificationCenter *nc;
+@property (nonatomic, strong) UITextField *activeField;
 
 @end
 
@@ -63,6 +64,7 @@
 
 @synthesize dialogView = _dialogView;
 @synthesize loginView = _loginView;
+@synthesize activeField = _activeField;
 @synthesize isAuthorized = _isAuthorized;
 @synthesize productImageView = _productImageView;
 //@synthesize mainFishkaImageView = _mainFishkaImageView;
@@ -398,7 +400,7 @@
     {
         if (!self.loginView)
         {
-            self.loginView = [[MSLogInView alloc]initWithOrigin:CGPointMake(25, self.view.frame.size.height/2 - 90)];
+            self.loginView = [[MSLogInView alloc]initWithOrigin:CGPointMake(25, self.view.frame.size.height/2 - 120)];
             [self.view addSubview:self.loginView];
             [self.loginView blackOutOfBackground];
             [self.loginView attachPopUpAnimationForView:self.loginView.loginView];
@@ -406,8 +408,6 @@
             self.loginView.emailTextField.delegate = self;
             self.loginView.passwordConfirmTextField.delegate = self;
             self.loginView.passwordTextField.delegate = self;
-            [self.nc removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-            [self.nc removeObserver:self name:UIKeyboardWillHideNotification object:nil];
         }
     }
 }
@@ -420,11 +420,6 @@
         [self.profileBarButton setImage:[UIImage imageNamed:@"Profile-Picture_40*28_white.png"]];
     }
     self.loginView = nil;
-    [self.nc addObserver:self selector:@selector(keyboardWillShow:) name:
-     UIKeyboardWillShowNotification object:nil];
-    
-    [self.nc addObserver:self selector:@selector(keyboardWillHide:) name:
-     UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)showDialogView
@@ -834,61 +829,65 @@ static inline double radians (double degrees)
 {
     NSLog(@"Screen height: %f", [[UIScreen mainScreen] bounds].size.height);
     
-    if ([[UIScreen mainScreen] bounds].size.height == 568) {
-        [self.scrollView setScrollEnabled:NO];
-        [self.scrollView setContentSize:CGSizeMake(320.0, 568.0 + 40.0)];
-        
-        CGFloat tempy = 568.0 + 40.0;//self.scrollView.contentSize.height;
-        CGFloat tempx = 320.0;//self.scrollView.contentSize.width;;
-        CGRect zoomRect = CGRectMake((tempx/2), (tempy/2), tempy, tempx);
-        
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:0.25];
-        [self.scrollView scrollRectToVisible:zoomRect animated:NO];
-        [UIView commitAnimations];
-    }
-    
-    else
+    if (self.activeField == self.codeTextField)
     {
-        [self.scrollView setScrollEnabled:NO];
-        [self.scrollView setContentSize:CGSizeMake(320.0, 480.0 + 55.0)];
+        if ([[UIScreen mainScreen] bounds].size.height == 568) {
+            [self.scrollView setScrollEnabled:NO];
+            [self.scrollView setContentSize:CGSizeMake(320.0, 568.0 + 40.0)];
+            
+            CGFloat tempy = 568.0 + 40.0;//self.scrollView.contentSize.height;
+            CGFloat tempx = 320.0;//self.scrollView.contentSize.width;;
+            CGRect zoomRect = CGRectMake((tempx/2), (tempy/2), tempy, tempx);
+            
+            [UIView beginAnimations:nil context:nil];
+            [UIView setAnimationDuration:0.25];
+            [self.scrollView scrollRectToVisible:zoomRect animated:NO];
+            [UIView commitAnimations];
+        }
         
-        CGFloat tempy = 480.0 + 55.0;//self.scrollView.contentSize.height;
-        CGFloat tempx = 320.0;//self.scrollView.contentSize.width;;
-        CGRect zoomRect = CGRectMake((tempx/2), (tempy/2), tempy, tempx);
-        
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:0.25];
-        [self.scrollView scrollRectToVisible:zoomRect animated:NO];
-        [UIView commitAnimations];
+        else
+        {
+            [self.scrollView setScrollEnabled:NO];
+            [self.scrollView setContentSize:CGSizeMake(320.0, 480.0 + 55.0)];
+            
+            CGFloat tempy = 480.0 + 55.0;//self.scrollView.contentSize.height;
+            CGFloat tempx = 320.0;//self.scrollView.contentSize.width;;
+            CGRect zoomRect = CGRectMake((tempx/2), (tempy/2), tempy, tempx);
+            
+            [UIView beginAnimations:nil context:nil];
+            [UIView setAnimationDuration:0.25];
+            [self.scrollView scrollRectToVisible:zoomRect animated:NO];
+            [UIView commitAnimations];
+        }
     }
-        
     [self.view addGestureRecognizer:self.tapRecognizer];
 }
 
 - (void)keyboardWillHide:(NSNotification *)note
 {
-    if ([[UIScreen mainScreen] bounds].size.height == 568) {
-        CGRect zoomRect = CGRectMake(0, 0, 320, 568);
-        
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:0.25];
-        [self.scrollView scrollRectToVisible:zoomRect animated:NO];
-        [UIView commitAnimations];
-    }
-    
-    else
+    if (self.activeField == self.codeTextField)
     {
-        CGRect zoomRect = CGRectMake(0, 0, 320, 480);
+        if ([[UIScreen mainScreen] bounds].size.height == 568) {
+            CGRect zoomRect = CGRectMake(0, 0, 320, 568);
+            
+            [UIView beginAnimations:nil context:nil];
+            [UIView setAnimationDuration:0.25];
+            [self.scrollView scrollRectToVisible:zoomRect animated:NO];
+            [UIView commitAnimations];
+        }
         
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:0.25];
-        [self.scrollView scrollRectToVisible:zoomRect animated:NO];
-        [UIView commitAnimations];
+        else
+        {
+            CGRect zoomRect = CGRectMake(0, 0, 320, 480);
+            
+            [UIView beginAnimations:nil context:nil];
+            [UIView setAnimationDuration:0.25];
+            [self.scrollView scrollRectToVisible:zoomRect animated:NO];
+            [UIView commitAnimations];
+        }
+        
+        [self.scrollView setScrollEnabled:NO];
     }
-    
-    [self.scrollView setScrollEnabled:NO];
-    
     [self.view removeGestureRecognizer:self.tapRecognizer];
 }
 
@@ -899,50 +898,63 @@ static inline double radians (double degrees)
     return YES;
 }
 
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    self.activeField = textField;
+    return YES;
+}
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     //бидло код трололо
-    if ((range.location == 4 || range.location == 9 || range.location == 14) && range.location != 0 && ![string isEqualToString:@""]) {
-        
-        NSRange myRange;
-        myRange.location = range.location + 1;
-        myRange.length = 1;
-        
-        NSMutableString *tempMutStr = [NSMutableString stringWithString:textField.text];
-        
-        if ([string isEqualToString:@"-"]) {
-            return YES;
-        }
-        else
-        {
-            if (range.location < [textField.text length]) {
-                return  NO;
+    if (textField == self.codeTextField)
+    {
+        if ((range.location == 4 || range.location == 9 || range.location == 14) && range.location != 0 && ![string isEqualToString:@""]) {
+            
+            NSRange myRange;
+            myRange.location = range.location + 1;
+            myRange.length = 1;
+            
+            NSMutableString *tempMutStr = [NSMutableString stringWithString:textField.text];
+            
+            if ([string isEqualToString:@"-"]) {
+                return YES;
             }
             else
             {
-                [tempMutStr insertString:@"-" atIndex:range.location];
-                textField.text = [NSString stringWithString:tempMutStr];
+                if (range.location < [textField.text length]) {
+                    return  NO;
+                }
+                else
+                {
+                    [tempMutStr insertString:@"-" atIndex:range.location];
+                    textField.text = [NSString stringWithString:tempMutStr];
+                }
             }
         }
-    }
-    
-    NSUInteger newLength = [textField.text length] + [string length] - range.length;
-    
-    if ([string isEqualToString:@""]) {
-        return YES;
-    }
-    else
-    {
         
-        if (newLength > 19) {
-            return NO;
+        NSUInteger newLength = [textField.text length] + [string length] - range.length;
+        
+        if ([string isEqualToString:@""]) {
+            return YES;
         }
         else
         {
-            return YES;
+            
+            if (newLength > 19) {
+                return NO;
+            }
+            else
+            {
+                return YES;
+            }
+            
+            //        return (newLength > 19) ? NO : YES;
         }
-        
-//        return (newLength > 19) ? NO : YES;
+    }
+    else
+    {
+        return YES;
     }
 }
 

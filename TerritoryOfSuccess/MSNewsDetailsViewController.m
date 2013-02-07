@@ -120,9 +120,9 @@
         self.shareButtonsShowed = YES;
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:0.25];
-        self.articleShareVkButton.frame = CGRectMake(self.articleShareVkButton.frame.origin.x, self.articleShareVkButton.frame.origin.y + 40, self.articleShareVkButton.frame.size.width, self.articleShareVkButton.frame.size.height);
-        self.articleShareTwButton.frame = CGRectMake(self.articleShareTwButton.frame.origin.x, self.articleShareTwButton.frame.origin.y + 40, self.articleShareTwButton.frame.size.width, self.articleShareTwButton.frame.size.height);
-        self.articleShareFbButton.frame = CGRectMake(self.articleShareFbButton.frame.origin.x, self.articleShareFbButton.frame.origin.y + 40, self.articleShareFbButton.frame.size.width, self.articleShareFbButton.frame.size.height);
+        self.articleShareVkButton.frame = CGRectMake(self.articleShareVkButton.frame.origin.x, self.articleShareVkButton.frame.origin.y + 35, self.articleShareVkButton.frame.size.width, self.articleShareVkButton.frame.size.height);
+        self.articleShareTwButton.frame = CGRectMake(self.articleShareTwButton.frame.origin.x, self.articleShareTwButton.frame.origin.y + 35, self.articleShareTwButton.frame.size.width, self.articleShareTwButton.frame.size.height);
+        self.articleShareFbButton.frame = CGRectMake(self.articleShareFbButton.frame.origin.x, self.articleShareFbButton.frame.origin.y + 35, self.articleShareFbButton.frame.size.width, self.articleShareFbButton.frame.size.height);
         self.articleScrollView.frame = CGRectMake(0, 35, self.articleScrollView.frame.size.width, self.articleScrollView.frame.size.height);
         [UIView commitAnimations];
     }

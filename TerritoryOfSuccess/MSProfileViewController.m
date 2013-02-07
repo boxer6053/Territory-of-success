@@ -186,6 +186,7 @@
             if (indexPath.row == 3)
             {
                 cell.standartTitleLabel.text = @"Квартира";
+                cell.standartTextField.keyboardType = UIKeyboardTypeDefault;
             }
         }
         
