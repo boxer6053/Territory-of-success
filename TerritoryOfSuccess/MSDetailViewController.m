@@ -161,8 +161,7 @@
 - (IBAction)vkButtonPressed:(id)sender
 {
     self.share.mainView = self;
-    [[self share] shareOnVK];
-    [self.view addSubview:self.share.vkBackgroundView];
-    [self.view addSubview:self.share.vkView];
+    [[self share] shareOnVKWithText:self.productName.text withImage:@"twButton.png"];
+    [self.view addSubview:self.share];
 }
 @end

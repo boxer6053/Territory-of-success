@@ -1,0 +1,33 @@
+// Главная станица
+
+
+
+
+
+
+
+// Каталог + Share
+"CategoriesKey" = "Категории";
+"BrandsKey" = "Бренды";
+"DownloadIsCompletedKey" = "Загрузка завершена.";
+"DownloadCategoriesKey" = "Загрузка категорий...";
+"DownloadBrandsKey" = "Загрузка брендов...";
+"DownloadProductsKey" = "Загрузка продуктов...";
+"PostedSuccessfullyKey" = "Успешно опубликовано!";
+"PostKey" = "Опубликовать";
+"LogOutKey" = "Выйти";
+"LogInKey" = "Войти";
+
+
+// Опросы
+
+
+
+
+
+
+
+// Новости
+"DownloadingInformationKey" = "Загрузка информации...";
+"AllNewsDownloadedKey" = "Все новости загружены.";
+"DownloadMoreKey" = "Загрузить еще";
