@@ -31,7 +31,7 @@
     self.productsTableView.delegate = self;
     self.productsTableView.dataSource = self;
     [self.productsTableView setBackgroundView:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"bg.png"]]];
-    [SVProgressHUD showWithStatus:@"Загрузка продуктов..."];
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadProductsKey",nil)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -125,6 +125,6 @@
         self.brandDictionaryIfWeComeFromBrandsSegment = [dictionary valueForKey:@"brand"];
     }
     [[self productsTableView] reloadData];
-    [SVProgressHUD showSuccessWithStatus:@"Загрузка завершена."];
+    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
 }
 @end

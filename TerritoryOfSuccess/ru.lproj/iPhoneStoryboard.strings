@@ -53,6 +53,9 @@
 /* Class = "IBUIButton"; normalTitle = "Комментарии"; ObjectID = "Gce-Jt-I9L"; */
 "Gce-Jt-I9L.normalTitle" = "Комментарии";
 
+/* Class = "IBUINavigationItem"; title = "Title"; ObjectID = "GmM-9s-ilq"; */
+"GmM-9s-ilq.title" = "Title";
+
 /* Class = "IBUINavigationItem"; title = "Опросы"; ObjectID = "Hdt-dX-Gwp"; */
 "Hdt-dX-Gwp.title" = "Опросы";
 
@@ -64,9 +67,6 @@
 
 /* Class = "IBUISegmentedControl"; JVi-72-uhQ.segmentTitles[1] = "Бренды"; ObjectID = "JVi-72-uhQ"; */
 "JVi-72-uhQ.segmentTitles[1]" = "Бренды";
-
-/* Class = "IBUINavigationItem"; title = "Ваш комментарий"; ObjectID = "Kfj-BY-01N"; */
-"Kfj-BY-01N.title" = "Ваш комментарий";
 
 /* Class = "IBUITextField"; placeholder = "Введите информацию"; ObjectID = "KlH-NJ-SHx"; */
 "KlH-NJ-SHx.placeholder" = "Введите информацию";
@@ -82,6 +82,12 @@
 
 /* Class = "IBUILabel"; text = "Label"; ObjectID = "O72-VX-RvM"; */
 "O72-VX-RvM.text" = "Label";
+
+/* Class = "IBUITextView"; text = "Описание товара"; ObjectID = "Oyn-7Q-ohz"; */
+"Oyn-7Q-ohz.text" = "Описание товара";
+
+/* Class = "IBUIButton"; normalTitle = "Вопросы"; ObjectID = "QKf-wA-BOS"; */
+"QKf-wA-BOS.normalTitle" = "Вопросы";
 
 /* Class = "IBUINavigationItem"; title = "Комментарии"; ObjectID = "RbH-Fm-UVP"; */
 "RbH-Fm-UVP.title" = "Комментарии";
@@ -110,6 +116,9 @@
 /* Class = "IBUIBarButtonItem"; title = "Наверх"; ObjectID = "aJJ-ZY-1Ox"; */
 "aJJ-ZY-1Ox.title" = "Наверх";
 
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "aKs-rz-OzK"; */
+"aKs-rz-OzK.text" = "Label";
+
 /* Class = "IBUINavigationItem"; title = "Новости"; ObjectID = "bGf-Y1-16V"; */
 "bGf-Y1-16V.title" = "Новости";
 
@@ -131,6 +140,9 @@
 /* Class = "IBUITextView"; text = "Краткие ведомости"; ObjectID = "gLo-hx-YhH"; */
 "gLo-hx-YhH.text" = "Краткие ведомости";
 
+/* Class = "IBUILabel"; text = "Имя бренда"; ObjectID = "gld-gI-lwW"; */
+"gld-gI-lwW.text" = "Имя бренда";
+
 /* Class = "IBUIButton"; normalTitle = "Отправить"; ObjectID = "h7L-XQ-A7e"; */
 "h7L-XQ-A7e.normalTitle" = "Отправить";
 
@@ -149,6 +161,9 @@
 /* Class = "IBUILabel"; text = "Количество баллов"; ObjectID = "pLv-Lo-miT"; */
 "pLv-Lo-miT.text" = "Количество баллов";
 
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "pwG-Z8-5OB"; */
+"pwG-Z8-5OB.text" = "Label";
+
 /* Class = "IBUILabel"; text = "Имя бренда/категории"; ObjectID = "r9V-mx-GJf"; */
 "r9V-mx-GJf.text" = "Имя бренда/категории";
 
@@ -164,6 +179,12 @@
 /* Class = "IBUITabBarItem"; title = "Главная"; ObjectID = "vHN-4a-EzM"; */
 "vHN-4a-EzM.title" = "Главная";
 
+/* Class = "IBUITextField"; placeholder = "Введите свой вопрос про этот товар"; ObjectID = "vfq-33-Wr8"; */
+"vfq-33-Wr8.placeholder" = "Введите свой вопрос про этот товар";
+
+/* Class = "IBUILabel"; text = "Бренд:"; ObjectID = "wZI-Qp-x1P"; */
+"wZI-Qp-x1P.text" = "Бренд:";
+
 /* Class = "IBUILabel"; text = "88"; ObjectID = "woN-Cs-LyZ"; */
 "woN-Cs-LyZ.text" = "88";
 
@@ -178,3 +199,6 @@
 
 /* Class = "IBUIButton"; normalTitle = "LikeButton"; ObjectID = "yFI-9D-ys6"; */
 "yFI-9D-ys6.normalTitle" = "LikeButton";
+
+/* Class = "IBUIBarButtonItem"; title = "Выйти"; ObjectID = "yxf-3h-xzN"; */
+"yxf-3h-xzN.title" = "Выйти";

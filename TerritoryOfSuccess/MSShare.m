@@ -7,6 +7,8 @@
 @property (nonatomic) Vkontakte *vkontakte;
 @property (nonatomic) UIButton *loginVKButton;
 @property (nonatomic) UIButton *postVKButton;
+@property (nonatomic) NSString *postTextVK;
+@property (nonatomic) NSString *postImageVK;
 @end
 
 @implementation MSShare
@@ -17,6 +19,8 @@
 @synthesize vkView = _vkView;
 @synthesize vkBackgroundView = _vkBackgroundView;
 @synthesize mainView = _mainView;
+@synthesize postImageVK = _postImageVK;
+@synthesize postTextVK = _postTextVK;
 
 - (void)shareOnFacebookWithText:(NSString *)shareText
                     withImage:(UIImage *)shareImage
@@ -28,6 +32,7 @@
         self.slComposeSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
         [self.slComposeSheet setInitialText:shareText];
         [self.slComposeSheet addImage:shareImage];
+        [self.slComposeSheet addURL:[NSURL URLWithString:@"http://id-bonus.com"]];
         [viewController presentViewController:self.slComposeSheet animated:YES completion:nil];
         [self slComposeSheetHandlerMethod];
     }
@@ -43,7 +48,7 @@
         self.slComposeSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
         [self.slComposeSheet setInitialText:shareText];
         [self.slComposeSheet addImage:shareImage];
-        [self.slComposeSheet addURL:[NSURL URLWithString:@"id-bonus.com"]];
+        [self.slComposeSheet addURL:[NSURL URLWithString:@"http://id-bonus.com"]];
         [viewController presentViewController:self.slComposeSheet animated:YES completion:nil];
         [self slComposeSheetHandlerMethod];
 
@@ -57,12 +62,11 @@
          switch (result)
          {
              case SLComposeViewControllerResultCancelled:
-                 NSLog(@"Post cancelled");
                  break;
                  
              case SLComposeViewControllerResultDone:
              {
-                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Facebook" message:@"Posted successfully" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Facebook" message:NSLocalizedString(@"PostedSuccessfullyKey",nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                  [alertView show];
              }
                  break;
@@ -70,10 +74,12 @@
      }];
 
 }
-- (void)shareOnVK
+- (void)shareOnVKWithText:(NSString *)shareText withImage:(NSString *)shareImage
 {
     _vkontakte = [Vkontakte sharedInstance];
     _vkontakte.delegate = self;
+    self.postTextVK = shareText;
+    self.postImageVK = shareImage;
     
     self.vkBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen]bounds].size.width, [[UIScreen mainScreen]bounds].size.height)];
     [self.vkBackgroundView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0]];
@@ -81,7 +87,7 @@
     {
         [self.vkBackgroundView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
     }];
-    [self addSubview:self.vkBackgroundView];
+    [self.mainView.view addSubview:self.vkBackgroundView];
     
     UITapGestureRecognizer *singleCloseTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeVKView)];
     [self.vkBackgroundView addGestureRecognizer:singleCloseTap];
@@ -97,7 +103,7 @@
     [self.vkView.layer setCornerRadius:10];
     [self.vkView.layer setBorderWidth:1.0f];
     self.vkView.clipsToBounds = YES;
-    [self addSubview:self.vkView];
+    [self.mainView.view addSubview:self.vkView];
 
     UIImageView *vkHeaderImage = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"vkHeader.png"]];
     vkHeaderImage.frame = CGRectMake(0, 0, 180, 45);
@@ -118,13 +124,13 @@
     [self refreshButtonState];
 
     self.postVKButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.postVKButton addTarget:self action:@selector(postImageWithTextAndLink) forControlEvents:UIControlEventTouchUpInside];
+    [self.postVKButton addTarget:self action:@selector(post) forControlEvents:UIControlEventTouchUpInside];
     self.postVKButton.frame = CGRectMake (self.vkView.frame.size.width/2 - 58, 130, 117, 27);
     [self.postVKButton setBackgroundImage:[UIImage imageNamed:@"vkActionButton.png"] forState:UIControlStateNormal];
     if (![_vkontakte isAuthorized])
         self.postVKButton.hidden = YES;
     else self.postVKButton.hidden = NO;
-    [self.postVKButton setTitle:@"Post" forState:UIControlStateNormal];
+    [self.postVKButton setTitle:NSLocalizedString(@"PostKey",nil) forState:UIControlStateNormal];
     [self.vkView addSubview:self.postVKButton];
 }
 
@@ -145,14 +151,14 @@
     if (![_vkontakte isAuthorized])
     {
         self.loginVKButton.frame = CGRectMake(self.vkView.frame.size.width/2 - 58, 100, 117, 27);
-        [self.loginVKButton setTitle:@"LogIn"
+        [self.loginVKButton setTitle:NSLocalizedString(@"LogInKey",nil)
                             forState:UIControlStateNormal];
         self.postVKButton.hidden = YES;
     }
     else
     {
         self.loginVKButton.frame = CGRectMake(self.vkView.frame.size.width/2 - 58, 70, 117, 27);
-        [self.loginVKButton setTitle:@"LogOut"
+        [self.loginVKButton setTitle:NSLocalizedString(@"LogOutKey",nil)
                             forState:UIControlStateNormal];
         self.postVKButton.hidden = NO;
     }
@@ -170,19 +176,19 @@
     }
 }
 
-- (void)postImageWithTextAndLink
+- (void)post
 {
-    [_vkontakte postImageToWall:[UIImage imageNamed:@"test.jpg"]
-                           text:@"Vkontakte iOS SDK Trololo"
-                           link:[NSURL URLWithString:@"https://www.ex.ua"]];
+    [_vkontakte postImageToWall:[UIImage imageNamed:self.postImageVK]
+                           text:self.postTextVK
+                           link:[NSURL URLWithString:@"http://id-bonus.com"]];
 }
 
 - (void)vkontakteDidFinishPostingToWall:(NSDictionary *)responce
 {
-    NSLog(@"%@", responce);
-    UIAlertView *alertVK = [[UIAlertView alloc] initWithTitle:nil message:@"Posted successfully" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    UIAlertView *alertVK = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"PostedSuccessfullyKey",nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alertVK show];
     [self.vkView removeFromSuperview];
+    [[self vkBackgroundView] removeFromSuperview];
 }
 
 #pragma mark - VkontakteDelegate

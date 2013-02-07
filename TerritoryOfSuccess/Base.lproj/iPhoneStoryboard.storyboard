@@ -45,8 +45,15 @@
                                                     <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="доступно: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Z7t-D9-JOX">
-                                                    <rect key="frame" x="70" y="31" width="192" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="доступно:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" id="Z7t-D9-JOX">
+                                                    <rect key="frame" x="70" y="31" width="62" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YGd-X7-c8T">
+                                                    <rect key="frame" x="127" y="31" width="38" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -60,6 +67,7 @@
                                             <outlet property="categoryOrBrandAvailable" destination="Z7t-D9-JOX" id="JKt-MV-VVy"/>
                                             <outlet property="categoryOrBrandImage" destination="X5n-sD-Rd0" id="Jn1-Ku-6Hf"/>
                                             <outlet property="categoryOrBrandName" destination="r9V-mx-GJf" id="vYU-qV-mc0"/>
+                                            <outlet property="categoryOrBrandNumber" destination="YGd-X7-c8T" id="Jv8-Y7-VUw"/>
                                             <segue destination="KBZ-t0-Wfq" kind="push" identifier="toSubCatalogue" trigger="accessoryAction" id="c2x-m8-SNe"/>
                                         </connections>
                                     </tableViewCell>

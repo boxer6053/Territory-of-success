@@ -40,7 +40,9 @@
     [super viewDidLoad];
     [[self tableView] setDelegate:self];
     [[self tableView] setDataSource:self];
-    [SVProgressHUD showWithStatus:@"Загрузка категорий..."];
+    [self.categoryAndBrandsControl setTitle:NSLocalizedString(@"CategoriesKey", nil) forSegmentAtIndex:0];
+    [self.categoryAndBrandsControl setTitle:NSLocalizedString(@"BrandsKey", nil) forSegmentAtIndex:1];
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadCategoriesKey",nil)];
     [self.api getCategories];
     
     if ([[UIScreen mainScreen] bounds].size.height == 568)
@@ -95,12 +97,12 @@
     [self.categoryAndBrandsControl setUserInteractionEnabled:NO];
     if (self.categoryAndBrandsControl.selectedSegmentIndex == 0)
     {
-        [SVProgressHUD showWithStatus:@"Загрузка категорий..."];
+        [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadCategoriesKey",nil)];
         [[self api] getCategories];
     }
     else
     {
-        [SVProgressHUD showWithStatus:@"Загрузка брендов..."];
+        [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadBrandsKey",nil)];
         [[self api] getFiveBrandsWithOffset:0];
     }
 }
@@ -124,7 +126,7 @@
     {
         cell.categoryOrBrandName.text = [[[self arrayOfCategories] objectAtIndex:indexPath.row] valueForKey:@"title"];
         cell.categoryOrBrandImage.image = [UIImage imageNamed:@"bag.png"];
-        cell.categoryOrBrandAvailable.text = [NSString stringWithFormat:@"Доступно: %d", [[[[self arrayOfCategories] objectAtIndex:indexPath.row] valueForKey:@"count"]integerValue]];
+        cell.categoryOrBrandNumber.text = [NSString stringWithFormat:@"%d", [[[[self arrayOfCategories] objectAtIndex:indexPath.row] valueForKey:@"count"]integerValue]];
         cell.tag = [[[[self arrayOfCategories] objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
     }
     //бренды
@@ -132,7 +134,7 @@
     {
         cell.categoryOrBrandName.text = [[_arrayOfBrands objectAtIndex:indexPath.row] valueForKey:@"title"];
         [cell.categoryOrBrandImage setImageWithURL:[[[self arrayOfBrands] objectAtIndex:indexPath.row]valueForKey:@"image"]];
-        cell.categoryOrBrandAvailable.text = [NSString stringWithFormat:@"Доступно: %d",[[[[self arrayOfBrands] objectAtIndex:indexPath.row] valueForKey:@"count"]integerValue]];
+        cell.categoryOrBrandNumber.text = [NSString stringWithFormat:@"%d",[[[[self arrayOfBrands] objectAtIndex:indexPath.row] valueForKey:@"count"]integerValue]];
         cell.tag = [[[[self arrayOfBrands] objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
     }
 
@@ -186,7 +188,7 @@
     
     [[self tableView] reloadData];
     [self.categoryAndBrandsControl setUserInteractionEnabled:YES];
-    [SVProgressHUD showSuccessWithStatus:@"Загрузка завершена."];
+    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
 
 }
 
