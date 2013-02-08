@@ -105,7 +105,7 @@
 "YJZ-17-LGK.text" = "Получать:";
 
 /* Class = "IBUILabel"; text = "доступно: 0"; ObjectID = "Z7t-D9-JOX"; */
-"Z7t-D9-JOX.text" = "доступно: 0";
+"Z7t-D9-JOX.text" = "доступно:";
 
 /* Class = "IBUIButton"; normalTitle = "Вопросы о товарах"; ObjectID = "ZHN-GQ-oad"; */
 "ZHN-GQ-oad.normalTitle" = "Вопросы о товарах";
