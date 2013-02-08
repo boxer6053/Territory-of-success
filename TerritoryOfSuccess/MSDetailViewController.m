@@ -162,6 +162,6 @@
 {
     self.share.mainView = self;
     [[self share] shareOnVKWithText:self.productName.text withImage:@"twButton.png"];
-    [self.view addSubview:self.share];
+    [self.share attachPopUpAnimationForView:self.share.vkView];
 }
 @end

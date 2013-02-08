@@ -94,7 +94,7 @@
 {
     self.share.mainView = self;
     [[self share] shareOnVKWithText:@"trololo" withImage:@"trololo"];
-    [self.view addSubview:self.share];
+        [self.share attachPopUpAnimationForView:self.share.vkView];
 }
 
 - (IBAction)twbButtonPressed:(id)sender
