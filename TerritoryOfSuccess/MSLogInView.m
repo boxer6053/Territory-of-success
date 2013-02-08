@@ -77,7 +77,7 @@
         
         //password input
         self.passwordLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 56, 70, 21)];
-        self.passwordLabel.text = @"password:";
+        self.passwordLabel.text = NSLocalizedString(@"пароль:", nil);
         self.passwordLabel.font = [UIFont fontWithName:@"Helvetica" size:14];
         self.passwordLabel.textColor = [UIColor whiteColor];
         self.passwordLabel.backgroundColor = [UIColor clearColor];
@@ -90,7 +90,7 @@
         
         //confrim password input for registration
         self.passwordConfirmLabel = [[UILabel alloc]initWithFrame:CGRectMake(280, 92, 70, 21)];
-        self.passwordConfirmLabel.text = @"password:";
+        self.passwordConfirmLabel.text = NSLocalizedString(@"пароль:", nil);
         self.passwordConfirmLabel.font = [UIFont fontWithName:@"Helvetica" size:14];
         self.passwordConfirmLabel.textColor = [UIColor whiteColor];
         self.passwordConfirmLabel.backgroundColor = [UIColor clearColor];
@@ -113,7 +113,7 @@
         [self.cancelButton setBackgroundImage:[UIImage imageNamed:@"button_120*35_new.png"] forState:UIControlStateNormal];
         self.cancelButton.titleLabel.textColor = [UIColor whiteColor];
         self.cancelButton.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
-        [self.cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
+        [self.cancelButton setTitle:NSLocalizedString(@"Отмена", nil) forState:UIControlStateNormal];
         [self.cancelButton addTarget:self action:@selector(cancelPressed) forControlEvents:UIControlEventTouchUpInside];
         [self.loginView addSubview:self.cancelButton];
         
@@ -121,7 +121,7 @@
         [self.loginButton setBackgroundImage:[UIImage imageNamed:@"button_120*35_new.png"] forState:UIControlStateNormal];
         self.loginButton.titleLabel.textColor = [UIColor whiteColor];
         self.loginButton.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
-        [self.loginButton setTitle:@"Login" forState:UIControlStateNormal];
+        [self.loginButton setTitle:NSLocalizedString(@"Войти", nil) forState:UIControlStateNormal];
         [self.loginButton addTarget:self action:@selector(loginPressed) forControlEvents:UIControlEventTouchUpInside];
         [self.loginView addSubview:self.loginButton];
         
@@ -129,7 +129,7 @@
         [self.registrationButton setBackgroundColor:[UIColor clearColor]];
         [self.registrationButton.titleLabel setTextColor:[UIColor orangeColor]];
         self.registrationButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:14];
-        [self.registrationButton setTitle:@"Registrate" forState:UIControlStateNormal];
+        [self.registrationButton setTitle:NSLocalizedString(@"Зарегестрироваться", nil) forState:UIControlStateNormal];
         [self.registrationButton addTarget:self action:@selector(registrationPressed) forControlEvents:UIControlEventTouchUpInside];
         [self.loginView addSubview:self.registrationButton];
     }
@@ -155,19 +155,19 @@
     {
         if ([self.passwordConfirmTextField.text isEqualToString:self.passwordTextField.text])
         {
-            [SVProgressHUD showWithStatus:@"Регистрация"];
+            [SVProgressHUD showWithStatus:NSLocalizedString(@"Регистрация...", nil)];
             [self.api registrationWithEmail:self.emailTextField.text Password:self.passwordTextField.text ConfirmPassword:self.passwordConfirmTextField.text];
         }
         else
         {
-            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Ошибка" message:@"Поля пароль и подтверждение пароля неодинаковые" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Ошибка", nil) message:NSLocalizedString(@"Поля пароль и подтверждение пароля неодинаковые", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alertView show];
         }
         
     }
     else
     {
-        [SVProgressHUD showWithStatus:@"Авторизация"];
+        [SVProgressHUD showWithStatus:NSLocalizedString(@"Авторизация",nil)];
         [self.api logInWithMail:self.emailTextField.text Password:self.passwordTextField.text];
     }
 }
@@ -180,7 +180,7 @@
          self.passwordConfirmLabel.frame = CGRectMake(10, self.passwordConfirmLabel.frame.origin.y, self.passwordConfirmLabel.frame.size.width, self.passwordConfirmLabel.frame.size.height);
          self.passwordConfirmTextField.frame = CGRectMake(85, self.passwordConfirmTextField.frame.origin.y, self.passwordConfirmTextField.frame.size.width, self.passwordConfirmTextField.frame.size.height);
          self.backToLoginButton.frame = CGRectMake(215, self.backToLoginButton.frame.origin.y, self.backToLoginButton.frame.size.width, self.backToLoginButton.frame.size.height);
-         [self.loginButton setTitle:@"Register" forState:UIControlStateNormal];
+         [self.loginButton setTitle:NSLocalizedString(@"Зарегестрироваться",nil) forState:UIControlStateNormal];
      }];
     self.registrationMode = YES;
 }
@@ -192,7 +192,7 @@
          self.passwordConfirmLabel.frame = CGRectMake(280, self.passwordConfirmLabel.frame.origin.y, self.passwordConfirmLabel.frame.size.width, self.passwordConfirmLabel.frame.size.height);
          self.passwordConfirmTextField.frame = CGRectMake(355, self.passwordConfirmTextField.frame.origin.y, self.passwordConfirmTextField.frame.size.width, self.passwordConfirmTextField.frame.size.height);
          self.backToLoginButton.frame = CGRectMake(455, self.backToLoginButton.frame.origin.y, self.backToLoginButton.frame.size.width, self.backToLoginButton.frame.size.height);
-         [self.loginButton setTitle:@"Login" forState:UIControlStateNormal];
+         [self.loginButton setTitle:NSLocalizedString(@"Войти",nil) forState:UIControlStateNormal];
      }];
     self.registrationMode = NO;
 }
@@ -205,11 +205,11 @@
         {
             if ([dictionary valueForKey:@"token"] == nil)
             {
-                [SVProgressHUD showErrorWithStatus:@"Ошибка на сервере"];
+                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Ошибка на сервере",nil)];
             }
             else
             {
-                [SVProgressHUD showSuccessWithStatus:@"Авторизация прошла успешно."];
+                [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Авторизация прошла успешно.",nil)];
                 NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
                 [userDefults setObject:[dictionary valueForKey:@"token"] forKey:@"authorization_Token"];
                 [userDefults synchronize];
@@ -218,22 +218,22 @@
         }
         else
         {
-            [SVProgressHUD showErrorWithStatus:@"Неправильный пароль или  email"];
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Неправильный пароль или email",nil)];
         }
     }
     if (type == kRegist)
     {
         if ([[dictionary valueForKey:@"status"] isEqualToString:@"ok"])
         {
-            [SVProgressHUD showSuccessWithStatus:@"Регистрация прошла успешно."];
-            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Регистрация" message:[dictionary valueForKey:@"message"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Регистрация прошла успешно.",nil)];
+            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Регистрация",nil) message:[dictionary valueForKey:@"message"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alertView show];
             [self dismissLoginViewWithResult:YES];
         }
         else //if([[dictionary valueForKey:@"message"] isEqualToString:@"!-- is_unique --!"])
         {
-            [SVProgressHUD showErrorWithStatus:@"Ошибка"];
-            [SVProgressHUD showErrorWithStatus:@"Такой email уже используется"];
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Ошибка",nil)];
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Такой email уже используется",nil)];
         }
     }
 }
@@ -242,7 +242,7 @@
 {
     if (type == kRegist)
     {
-        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Ошибка" message:error.localizedDescription delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Ошибка",nil) message:error.localizedDescription delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertView show];
     }
 }

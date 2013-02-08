@@ -173,7 +173,7 @@
     if(!self.isAuthorized)
     {
         [self.profileBarButton setImage:nil];
-        [self.profileBarButton setTitle:@"Войти"];
+        [self.profileBarButton setTitle:NSLocalizedString(@"Войти",nil)];
     }
 }
 
@@ -339,7 +339,7 @@
     else
     {
         //якщо нема
-        UIAlertView *cameraNotAvailableMessage = [[UIAlertView alloc] initWithTitle:@"Ошибка камеры" message:@"Камера не тоступна" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        UIAlertView *cameraNotAvailableMessage = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Ошибка камеры",nil) message:NSLocalizedString(@"Камера не доступна",nil) delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         
         [cameraNotAvailableMessage show];
     }
@@ -370,14 +370,14 @@
     
     
     if (![codeStr isEqualToString:@""] && codeStr.length == 19) {
-        [SVProgressHUD showWithStatus:@"Sending code..."];
+        [SVProgressHUD showWithStatus:NSLocalizedString(@"Отправка кода...",nil)];
         
         [self.api checkCode:codeStr];
     }
     else
     {
-        UIAlertView *codeFailMessage = [[UIAlertView alloc] initWithTitle:@"Ошибка кода"
-                                                                     message:@"Код должен включать 16 символов"
+        UIAlertView *codeFailMessage = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Ошибка кода",nil)
+                                                                     message:NSLocalizedString(@"Код должен включать 16 символов",nil)
                                                                     delegate:self
                                                            cancelButtonTitle:@"Ok"
                                                            otherButtonTitles:nil];
@@ -488,10 +488,10 @@
             [self.mainFishkaLabel setTextColor:[UIColor whiteColor]];
             [self.mainFishkaLabel setBackgroundColor:[UIColor clearColor]];
             [self.mainFishkaLabel setTextAlignment:NSTextAlignmentCenter];
-            [self.mainFishkaLabel setText:@"ПРОВЕРКА КОДА"];
+            [self.mainFishkaLabel setText:NSLocalizedString(@"ПРОВЕРКА КОДА",nil)];
                         
             [self.dialogView.captionLabel setText:[[dictionary valueForKey:@"message"] objectAtIndex:0]];
-            [self.dialogView.productLabel setText:@"Товар:"];
+            [self.dialogView.productLabel setText:NSLocalizedString(@"Товар:",nil)];
             NSURL *imageUrl = [NSURL URLWithString:[[dictionary valueForKey:@"product"] valueForKey:@"image"]];
             [self.dialogView.productImageView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
             
@@ -501,11 +501,11 @@
             [self.dialogView.productDescripptionLabel setText:productString];
             [self.dialogView.productDescripptionLabel sizeToFit];
             
-            [self.dialogView.categoryLabel setText:@"Категория:"];
+            [self.dialogView.categoryLabel setText:NSLocalizedString(@"Категория:",nil)];
             [self.dialogView.categoryDescripptionLabel setText:[[dictionary valueForKey:@"category"] valueForKey:@"title"]];
             [self.dialogView.categoryDescripptionLabel sizeToFit];
             
-            [self.dialogView.bonusLabel setText:@"Бонус за продукт:"];
+            [self.dialogView.bonusLabel setText:NSLocalizedString(@"Бонус за продукт:",nil)];
             [self.dialogView.bonusValueLabel setText:[dictionary valueForKey:@"bonus"]];
             
             [self.dialogView.messageLabel setText:[[dictionary valueForKey:@"message"] objectAtIndex:1]];
@@ -542,10 +542,10 @@
                 [self.mainFishkaLabel setTextColor:[UIColor whiteColor]];
                 [self.mainFishkaLabel setBackgroundColor:[UIColor clearColor]];
                 [self.mainFishkaLabel setTextAlignment:NSTextAlignmentCenter];
-                [self.mainFishkaLabel setText:@"ПРОВЕРКА КОДА"];
+                [self.mainFishkaLabel setText:NSLocalizedString(@"ПРОВЕРКА КОДА",nil)];
                 
                 [self.dialogView.captionLabel setText:[[dictionary valueForKey:@"message"] objectAtIndex:0]];
-                [self.dialogView.productLabel setText:@"Товар:"];
+                [self.dialogView.productLabel setText:NSLocalizedString(@"Товар:",nil)];
                 NSURL *imageUrl = [NSURL URLWithString:[[dictionary valueForKey:@"product"] valueForKey:@"image"]];
                 [self.dialogView.productImageView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
                 
@@ -555,11 +555,11 @@
                 [self.dialogView.productDescripptionLabel setText:productString];
                 [self.dialogView.productDescripptionLabel sizeToFit];
                 
-                [self.dialogView.categoryLabel setText:@"Категория:"];
+                [self.dialogView.categoryLabel setText:NSLocalizedString(@"Категория:",nil)];
                 [self.dialogView.categoryDescripptionLabel setText:[[dictionary valueForKey:@"category"] valueForKey:@"title"]];
                 [self.dialogView.categoryDescripptionLabel sizeToFit];
                 
-                [self.dialogView.bonusLabel setText:@"Бонус за продукт:"];
+                [self.dialogView.bonusLabel setText:NSLocalizedString(@"Бонус за продукт:",nil)];
                 [self.dialogView.bonusValueLabel setText:[dictionary valueForKey:@"bonus"]];
                 
                 [self.dialogView.messageLabel setText:[[dictionary valueForKey:@"message"] objectAtIndex:1]];
@@ -596,7 +596,7 @@
                     [self.mainFishkaLabel setTextColor:[UIColor whiteColor]];
                     [self.mainFishkaLabel setBackgroundColor:[UIColor clearColor]];
                     [self.mainFishkaLabel setTextAlignment:NSTextAlignmentCenter];
-                    [self.mainFishkaLabel setText:@"ПРОВЕРКА КОДА"];
+                    [self.mainFishkaLabel setText:NSLocalizedString(@"ПРОВЕРКА КОДА",nil)];
                     
                     [self.dialogView.captionLabel setText:[[dictionary valueForKey:@"message"] objectAtIndex:0]];
                     
