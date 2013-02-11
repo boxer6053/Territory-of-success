@@ -127,6 +127,8 @@
 		FADC925816C5098D006BD95C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FADC925A16C5098D006BD95C /* Default.png */; };
 		FADC925D16C50995006BD95C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FADC925F16C50995006BD95C /* Default-568h@2x.png */; };
 		FADC926816C50C70006BD95C /* logo_color_invert_40*147.png in Resources */ = {isa = PBXBuildFile; fileRef = FADC926A16C50C70006BD95C /* logo_color_invert_40*147.png */; };
+		FADC927016C52F06006BD95C /* bigStar.png in Resources */ = {isa = PBXBuildFile; fileRef = FADC926E16C52F06006BD95C /* bigStar.png */; };
+		FADC927116C52F06006BD95C /* bigStarBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = FADC926F16C52F06006BD95C /* bigStarBlack.png */; };
 		FAFB5E0B16C2650F001B692B /* MSAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFB5E0A16C2650F001B692B /* MSAnimationView.m */; };
 		FAFC778216BAE3B00025275D /* Vkontakte.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA0FCBE16BAD1D8005AF32E /* Vkontakte.m */; };
 		FAFC778316BAE3BB0025275D /* VkontakteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA0FCC016BAD20A005AF32E /* VkontakteViewController.m */; };
@@ -457,6 +459,8 @@
 		FADC926916C50C70006BD95C /* ru */ = {isa = PBXFileReference; lastKnownFileType = file; name = ru; path = "ru.lproj/logo_color_invert_40*147.png"; sourceTree = "<group>"; };
 		FADC926C16C50C7D006BD95C /* uk */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uk; path = "uk.lproj/logo_color_invert_40*147.png"; sourceTree = "<group>"; };
 		FADC926D16C50E83006BD95C /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/logo_color_invert_40*147.png"; sourceTree = "<group>"; };
+		FADC926E16C52F06006BD95C /* bigStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigStar.png; sourceTree = "<group>"; };
+		FADC926F16C52F06006BD95C /* bigStarBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigStarBlack.png; sourceTree = "<group>"; };
 		FAFB5E0916C2650F001B692B /* MSAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAnimationView.h; sourceTree = "<group>"; };
 		FAFB5E0A16C2650F001B692B /* MSAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSAnimationView.m; sourceTree = "<group>"; };
 		FAFC778616BAEF5A0025275D /* vkHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vkHeader.png; sourceTree = "<group>"; };
@@ -570,6 +574,8 @@
 		F59AEB7E16AF1770004519B9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FADC926E16C52F06006BD95C /* bigStar.png */,
+				FADC926F16C52F06006BD95C /* bigStarBlack.png */,
 				FA167DB716C394D700B08904 /* button_80_44.png */,
 				FADC926A16C50C70006BD95C /* logo_color_invert_40*147.png */,
 				F5B1884016BBCA2F00290F27 /* logo_text_30*165.png */,
@@ -1081,6 +1087,8 @@
 				FADC925D16C50995006BD95C /* Default-568h@2x.png in Resources */,
 				FADC925816C5098D006BD95C /* Default.png in Resources */,
 				FADC925316C50799006BD95C /* Default@2x.png in Resources */,
+				FADC927016C52F06006BD95C /* bigStar.png in Resources */,
+				FADC927116C52F06006BD95C /* bigStarBlack.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

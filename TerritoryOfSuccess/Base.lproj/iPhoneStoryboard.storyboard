@@ -389,31 +389,100 @@
                                         <fontDescription key="fontDescription" name="TimesNewRomanPS-ItalicMT" family="Times New Roman" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" enablesReturnKeyAutomatically="YES"/>
                                     </textView>
-                                    <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minimumValue="1" maximumValue="5" id="Do3-Qt-VBY">
-                                        <rect key="frame" x="34" y="431" width="94" height="27"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <connections>
-                                            <action selector="starStepper:" destination="VxG-hA-1PC" eventType="valueChanged" id="TZh-bp-Nl5"/>
-                                        </connections>
-                                    </stepper>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Оцените, пожалуйста, продукт:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="knp-U3-zNU">
-                                        <rect key="frame" x="14" y="395" width="280" height="30"/>
+                                        <rect key="frame" x="14" y="369" width="280" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" id="IKz-de-Fkw">
-                                        <rect key="frame" x="164" y="433" width="110" height="25"/>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="rqg-ol-sgC">
+                                        <rect key="frame" x="14" y="407" width="50" height="47"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="3star.png" id="uUB-Bd-Aqc">
-                                                <rect key="frame" x="12" y="3" width="87" height="20"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" backgroundImage="bigStarBlack.png">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="starButtonPressed:" destination="VxG-hA-1PC" eventType="touchUpInside" id="CT4-27-ZQg"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="dSQ-h7-hPc">
+                                        <rect key="frame" x="72" y="407" width="50" height="47"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" backgroundImage="bigStarBlack.png">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="starButtonPressed:" destination="VxG-hA-1PC" eventType="touchUpInside" id="hAe-Fd-6Dg"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="bhU-ZD-VGJ">
+                                        <rect key="frame" x="129" y="407" width="50" height="47"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" backgroundImage="bigStarBlack.png">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="starButtonPressed:" destination="VxG-hA-1PC" eventType="touchUpInside" id="r7I-ID-BFZ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gKu-Wn-ojZ">
+                                        <rect key="frame" x="187" y="407" width="50" height="47"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" backgroundImage="bigStarBlack.png">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="hhX-Lz-WQB">
+                                        <rect key="frame" x="244" y="407" width="50" height="47"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" backgroundImage="bigStarBlack.png">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="starButtonPressed:" destination="VxG-hA-1PC" eventType="touchUpInside" id="l4k-U0-0VJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="jGp-z4-tjK">
+                                        <rect key="frame" x="187" y="407" width="50" height="47"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" backgroundImage="bigStarBlack.png">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="starButtonPressed:" destination="VxG-hA-1PC" eventType="touchUpInside" id="7bb-mg-CMQ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -427,9 +496,11 @@
                         <outlet property="navigation" destination="Kfj-BY-01N" id="6dj-Qv-MkE"/>
                         <outlet property="navigationBar" destination="NWo-ep-Vgk" id="6kO-IY-CO0"/>
                         <outlet property="pleaseLabel" destination="knp-U3-zNU" id="3wd-gk-K55"/>
-                        <outlet property="starImage" destination="uUB-Bd-Aqc" id="FSS-o8-W4m"/>
-                        <outlet property="starView" destination="IKz-de-Fkw" id="yRS-k3-A22"/>
-                        <outlet property="stepper" destination="Do3-Qt-VBY" id="37H-9U-ixt"/>
+                        <outlet property="starButton1" destination="rqg-ol-sgC" id="xyr-dF-bE6"/>
+                        <outlet property="starButton2" destination="dSQ-h7-hPc" id="6ab-VF-m11"/>
+                        <outlet property="starButton3" destination="bhU-ZD-VGJ" id="VVm-2a-O4w"/>
+                        <outlet property="starButton4" destination="jGp-z4-tjK" id="rNx-v0-3WG"/>
+                        <outlet property="starButton5" destination="hhX-Lz-WQB" id="u4q-F9-hme"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gfw-pX-eHu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -789,7 +860,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zHV-Iu-Ol0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1354" y="-1044"/>
+            <point key="canvasLocation" x="1414" y="-1043"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="x9U-XE-zf6">
@@ -865,7 +936,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q3i-81-c2y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="875" y="322"/>
+            <point key="canvasLocation" x="875" y="342"/>
         </scene>
         <!--Types Of Inquirers View Controller - Опросы-->
         <scene sceneID="gic-uz-iAW">
@@ -912,7 +983,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mHa-AF-by9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1359" y="322"/>
+            <point key="canvasLocation" x="1880" y="350"/>
         </scene>
         <!--Inquirer Detail View Controller-->
         <scene sceneID="qDi-WC-Aap">
@@ -943,7 +1014,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NPl-TN-7Hd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1880" y="322"/>
+            <point key="canvasLocation" x="2369" y="350"/>
         </scene>
         <!--Sub Catalogue View Controller - Продукты-->
         <scene sceneID="Uvl-TC-9RE">
@@ -1014,7 +1085,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0r6-hP-HG3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1359" y="-348"/>
+            <point key="canvasLocation" x="1414" y="-348"/>
         </scene>
         <!--First Navigation Controller - Главная-->
         <scene sceneID="kUx-Pn-sSh">
@@ -1072,7 +1143,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OCX-bf-geq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="349" y="322"/>
+            <point key="canvasLocation" x="349" y="342"/>
         </scene>
         <!--News View Controller - Новости-->
         <scene sceneID="WN0-wI-NeY">
@@ -1146,7 +1217,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="seV-FP-qjx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="875" y="980"/>
+            <point key="canvasLocation" x="875" y="-1808"/>
         </scene>
         <!--News Details View Controller-->
         <scene sceneID="gRx-6b-mO6">
@@ -1266,7 +1337,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ey-D1-THQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1407" y="980"/>
+            <point key="canvasLocation" x="1408" y="-1808"/>
         </scene>
         <!--Ask View Controller-->
         <scene sceneID="t8L-Mk-wXP">
@@ -1326,7 +1397,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZt-ZS-LiA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1803" y="980"/>
+            <point key="canvasLocation" x="1880" y="1036"/>
         </scene>
         <!--Quiestion Product Detail View Controller-->
         <scene sceneID="xRv-b5-fbx">
@@ -1380,7 +1451,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0QY-KW-WEk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2251" y="980"/>
+            <point key="canvasLocation" x="2369" y="1036"/>
         </scene>
         <!--Create Question View Controller-->
         <scene sceneID="KKb-wL-Ths">
@@ -1457,7 +1528,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9jf-aO-1Rm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3167" y="682"/>
+            <point key="canvasLocation" x="3417" y="350"/>
         </scene>
         <!--Question Detail View Controller-->
         <scene sceneID="aw8-zg-aJF">
@@ -1539,7 +1610,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9dX-nV-HWR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3167" y="1285"/>
+            <point key="canvasLocation" x="3417" y="1036"/>
         </scene>
         <!--Questions For Product View Controller-->
         <scene sceneID="LyK-Bw-RM4">
@@ -1606,7 +1677,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zIU-Ju-wHV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2627" y="980"/>
+            <point key="canvasLocation" x="2877" y="1036"/>
         </scene>
         <!--Answer View Controller-->
         <scene sceneID="KXC-vT-ZwT">
@@ -1653,7 +1724,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qOA-QF-10U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3600" y="1285"/>
+            <point key="canvasLocation" x="3916" y="1036"/>
         </scene>
         <!--First Navigation Controller - Новости-->
         <scene sceneID="03Y-68-yoo">
@@ -1672,12 +1743,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tp5-vj-fjD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="357" y="980"/>
+            <point key="canvasLocation" x="349" y="-1808"/>
         </scene>
     </scenes>
     <resources>
         <image name="3star.png" width="87" height="20"/>
         <image name="Profile-Picture_40*28_white.png" width="40" height="28"/>
+        <image name="bigStarBlack.png" width="50" height="47"/>
         <image name="button_120*32.png" width="120" height="32"/>
         <image name="button_185_45.png" width="185" height="45"/>
         <image name="button_300*43.png" width="300" height="43"/>
@@ -1703,15 +1775,17 @@
             <relationships>
                 <relationship kind="action" name="cancel:"/>
                 <relationship kind="action" name="save:"/>
-                <relationship kind="action" name="starStepper:"/>
+                <relationship kind="action" name="starButtonPressed:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="containView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="inputText" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="navigation" candidateClass="UINavigationItem"/>
                 <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
                 <relationship kind="outlet" name="pleaseLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="starImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="starView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="stepper" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="starButton1" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="starButton2" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="starButton3" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="starButton4" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="starButton5" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="MSAnswerViewController" superclassName="UIViewController">
@@ -1981,6 +2055,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ffa-R0-niF"/>
+        <segue reference="f75-2Y-K7q"/>
     </inferredMetricsTieBreakers>
 </document>
