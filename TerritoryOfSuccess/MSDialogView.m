@@ -55,7 +55,7 @@
         [self.mainFishkaLabel setTextColor:[UIColor whiteColor]];
         [self.mainFishkaLabel setBackgroundColor:[UIColor clearColor]];
         [self.mainFishkaLabel setTextAlignment:NSTextAlignmentCenter];
-        [self.mainFishkaLabel setText:@"ПРОВЕРКА КОДА"];
+        [self.mainFishkaLabel setText:NSLocalizedString(@"ПРОВЕРКА КОДА",nil)];
         [self.mainFishkaImageView addSubview:self.mainFishkaLabel];
         
         //кнопка Close
@@ -150,7 +150,7 @@
         [self.bonusNameLabel setTextColor:[UIColor whiteColor]];
         [self.bonusNameLabel setBackgroundColor:[UIColor clearColor]];
         [self.bonusNameLabel setTextAlignment:NSTextAlignmentLeft];
-        [self.bonusNameLabel setText:@"баллов"];
+        [self.bonusNameLabel setText:NSLocalizedString(@"баллов",nil)];
         [self.contentView addSubview:self.bonusNameLabel];
         
         //View message
@@ -194,14 +194,5 @@
     }
     return self;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

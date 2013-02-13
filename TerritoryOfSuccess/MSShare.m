@@ -83,7 +83,7 @@
     
     self.vkBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen]bounds].size.width, [[UIScreen mainScreen]bounds].size.height)];
     [self.vkBackgroundView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0]];
-    [UIView animateWithDuration:0.4 animations:^
+    [UIView animateWithDuration:0.5 animations:^
     {
         [self.vkBackgroundView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
     }];

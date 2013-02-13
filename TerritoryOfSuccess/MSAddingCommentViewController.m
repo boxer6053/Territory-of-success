@@ -2,17 +2,24 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface MSAddingCommentViewController ()
+@property (nonatomic) int starsCounter;
+@property (nonatomic) NSArray *arrayOfStars;
 @end
 
 @implementation MSAddingCommentViewController
 @synthesize delegate = _delegate;
 @synthesize sentArray = _sentArray;
+@synthesize starsCounter = _starsCounter;
+@synthesize arrayOfStars = _arrayOfStars;
 
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.starsCounter = 0;
+    self.arrayOfStars = [[NSArray alloc] initWithObjects:self.starButton1,self.starButton2,self.starButton3,self.starButton4, self.starButton5, nil];
+    
     if ([[UIScreen mainScreen] bounds].size.height == 568)
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
@@ -22,8 +29,6 @@
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
         self.inputText.frame = CGRectMake(self.inputText.frame.origin.x, self.inputText.frame.origin.y - 20, self.inputText.frame.size.width, self.inputText.frame.size.width);
         self.containView.frame = CGRectMake(self.containView.frame.origin.x, self.containView.frame.origin.y, self.containView.frame.size.width, self.containView.frame.size.height - 88);
-        self.starView.frame = CGRectMake(self.starView.frame.origin.x, self.stepper.frame.origin.y, self.starView.frame.size.width, self.starView.frame.size.height);
-        self.pleaseLabel.frame = CGRectMake(self.pleaseLabel.frame.origin.x, self.stepper.frame.origin.y - 30, self.pleaseLabel.frame.size.width, self.pleaseLabel.frame.size.height);
     }
     [self.navigationBar setTintColor:[UIColor whiteColor]];
     [self.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor blackColor],UITextAttributeTextColor, nil]];
@@ -38,9 +43,6 @@
     self.inputText.layer.borderWidth = 1.0f;
     self.inputText.layer.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1].CGColor;
     
-    self.starView.layer.cornerRadius = 10;
-    [self.starView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.6]];
-    
     self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapPressed:)];
     [self.view addGestureRecognizer:self.tap];
 }
@@ -54,7 +56,7 @@
     self.sentArray = [[NSMutableArray alloc]init];
     NSString *name = @"Egor";
     NSString *comment = self.inputText.text;
-    NSNumber *starsNumber = [NSNumber numberWithInt:(int)self.stepper.value];
+    NSNumber *starsNumber = [NSNumber numberWithInt:self.starsCounter];
     [[self sentArray] addObject:name];
     [[self sentArray] addObject:comment];
     [[self sentArray] addObject:starsNumber];
@@ -67,23 +69,15 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)starStepper:(id)sender {
-    switch ((int)self.stepper.value) {
-        case 1:
-            self.starImage.image = [UIImage imageNamed:@"1star.png"];
-            break;
-        case 2:
-            self.starImage.image = [UIImage imageNamed:@"2star.png"];
-            break;
-        case 3:
-            self.starImage.image = [UIImage imageNamed:@"3star.png"];
-            break;
-        case 4:
-            self.starImage.image = [UIImage imageNamed:@"4star.png"];
-            break;
-        case 5:
-            self.starImage.image = [UIImage imageNamed:@"5star.png"];
-            break;
+- (IBAction)starButtonPressed:(UIButton *)sender
+{
+    self.starsCounter = sender.tag;
+    
+    for (int i = 0; i < self.starsCounter; i++) {
+        [[[self arrayOfStars] objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"bigStar.png"] forState:UIControlStateNormal];
+    }
+    for (int j = 4; j >= self.starsCounter; j--) {
+        [[[self arrayOfStars] objectAtIndex:j] setBackgroundImage:[UIImage imageNamed:@"bigStarBlack.png"] forState:UIControlStateNormal];
     }
 }
 

@@ -35,6 +35,8 @@
 
 @property (nonatomic, strong) MSLogInView *loginView;
 @property (nonatomic) BOOL isAuthorized;
+@property (nonatomic, strong) NSNotificationCenter *nc;
+@property (nonatomic, strong) UITextField *activeField;
 
 @end
 
@@ -62,6 +64,7 @@
 
 @synthesize dialogView = _dialogView;
 @synthesize loginView = _loginView;
+@synthesize activeField = _activeField;
 @synthesize isAuthorized = _isAuthorized;
 @synthesize productImageView = _productImageView;
 //@synthesize mainFishkaImageView = _mainFishkaImageView;
@@ -141,12 +144,12 @@
     [self.codeInputView.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:0.7].CGColor];
     [self.codeInputView.layer setBorderWidth:1.0f];
     
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    self.nc = [NSNotificationCenter defaultCenter];
     
-    [nc addObserver:self selector:@selector(keyboardWillShow:) name:
+    [self.nc addObserver:self selector:@selector(keyboardWillShow:) name:
      UIKeyboardWillShowNotification object:nil];
     
-    [nc addObserver:self selector:@selector(keyboardWillHide:) name:
+    [self.nc addObserver:self selector:@selector(keyboardWillHide:) name:
      UIKeyboardWillHideNotification object:nil];
     
     self.slideShowTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(slide) userInfo:nil repeats:YES];
@@ -170,7 +173,7 @@
     if(!self.isAuthorized)
     {
         [self.profileBarButton setImage:nil];
-        [self.profileBarButton setTitle:@"Войти"];
+        [self.profileBarButton setTitle:NSLocalizedString(@"Войти",nil)];
     }
 }
 
@@ -336,7 +339,7 @@
     else
     {
         //якщо нема
-        UIAlertView *cameraNotAvailableMessage = [[UIAlertView alloc] initWithTitle:@"Ошибка камеры" message:@"Камера не тоступна" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        UIAlertView *cameraNotAvailableMessage = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Ошибка камеры",nil) message:NSLocalizedString(@"Камера не доступна",nil) delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         
         [cameraNotAvailableMessage show];
     }
@@ -367,14 +370,14 @@
     
     
     if (![codeStr isEqualToString:@""] && codeStr.length == 19) {
-        [SVProgressHUD showWithStatus:@"Sending code..."];
+        [SVProgressHUD showWithStatus:NSLocalizedString(@"Отправка кода...",nil)];
         
         [self.api checkCode:codeStr];
     }
     else
     {
-        UIAlertView *codeFailMessage = [[UIAlertView alloc] initWithTitle:@"Ошибка кода"
-                                                                     message:@"Код должен включать 16 символов"
+        UIAlertView *codeFailMessage = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Ошибка кода",nil)
+                                                                     message:NSLocalizedString(@"Код должен включать 16 символов",nil)
                                                                     delegate:self
                                                            cancelButtonTitle:@"Ok"
                                                            otherButtonTitles:nil];
@@ -397,11 +400,14 @@
     {
         if (!self.loginView)
         {
-            self.loginView = [[MSLogInView alloc]init];
+            self.loginView = [[MSLogInView alloc]initWithOrigin:CGPointMake(25, self.view.frame.size.height/2 - 120)];
             [self.view addSubview:self.loginView];
             [self.loginView blackOutOfBackground];
             [self.loginView attachPopUpAnimationForView:self.loginView.loginView];
             self.loginView.delegate = self;
+            self.loginView.emailTextField.delegate = self;
+            self.loginView.passwordConfirmTextField.delegate = self;
+            self.loginView.passwordTextField.delegate = self;
         }
     }
 }
@@ -528,10 +534,10 @@
             [self.mainFishkaLabel setTextColor:[UIColor whiteColor]];
             [self.mainFishkaLabel setBackgroundColor:[UIColor clearColor]];
             [self.mainFishkaLabel setTextAlignment:NSTextAlignmentCenter];
-            [self.mainFishkaLabel setText:@"ПРОВЕРКА КОДА"];
+            [self.mainFishkaLabel setText:NSLocalizedString(@"ПРОВЕРКА КОДА",nil)];
                         
             [self.dialogView.captionLabel setText:[[dictionary valueForKey:@"message"] objectAtIndex:0]];
-            [self.dialogView.productLabel setText:@"Товар:"];
+            [self.dialogView.productLabel setText:NSLocalizedString(@"Товар:",nil)];
             NSURL *imageUrl = [NSURL URLWithString:[[dictionary valueForKey:@"product"] valueForKey:@"image"]];
             [self.dialogView.productImageView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
             
@@ -541,11 +547,11 @@
             [self.dialogView.productDescripptionLabel setText:productString];
             [self.dialogView.productDescripptionLabel sizeToFit];
             
-            [self.dialogView.categoryLabel setText:@"Категория:"];
+            [self.dialogView.categoryLabel setText:NSLocalizedString(@"Категория:",nil)];
             [self.dialogView.categoryDescripptionLabel setText:[[dictionary valueForKey:@"category"] valueForKey:@"title"]];
             [self.dialogView.categoryDescripptionLabel sizeToFit];
             
-            [self.dialogView.bonusLabel setText:@"Бонус за продукт:"];
+            [self.dialogView.bonusLabel setText:NSLocalizedString(@"Бонус за продукт:",nil)];
             [self.dialogView.bonusValueLabel setText:[dictionary valueForKey:@"bonus"]];
             
             [self.dialogView.messageLabel setText:[[dictionary valueForKey:@"message"] objectAtIndex:1]];
@@ -582,10 +588,10 @@
                 [self.mainFishkaLabel setTextColor:[UIColor whiteColor]];
                 [self.mainFishkaLabel setBackgroundColor:[UIColor clearColor]];
                 [self.mainFishkaLabel setTextAlignment:NSTextAlignmentCenter];
-                [self.mainFishkaLabel setText:@"ПРОВЕРКА КОДА"];
+                [self.mainFishkaLabel setText:NSLocalizedString(@"ПРОВЕРКА КОДА",nil)];
                 
                 [self.dialogView.captionLabel setText:[[dictionary valueForKey:@"message"] objectAtIndex:0]];
-                [self.dialogView.productLabel setText:@"Товар:"];
+                [self.dialogView.productLabel setText:NSLocalizedString(@"Товар:",nil)];
                 NSURL *imageUrl = [NSURL URLWithString:[[dictionary valueForKey:@"product"] valueForKey:@"image"]];
                 [self.dialogView.productImageView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
                 
@@ -595,11 +601,11 @@
                 [self.dialogView.productDescripptionLabel setText:productString];
                 [self.dialogView.productDescripptionLabel sizeToFit];
                 
-                [self.dialogView.categoryLabel setText:@"Категория:"];
+                [self.dialogView.categoryLabel setText:NSLocalizedString(@"Категория:",nil)];
                 [self.dialogView.categoryDescripptionLabel setText:[[dictionary valueForKey:@"category"] valueForKey:@"title"]];
                 [self.dialogView.categoryDescripptionLabel sizeToFit];
                 
-                [self.dialogView.bonusLabel setText:@"Бонус за продукт:"];
+                [self.dialogView.bonusLabel setText:NSLocalizedString(@"Бонус за продукт:",nil)];
                 [self.dialogView.bonusValueLabel setText:[dictionary valueForKey:@"bonus"]];
                 
                 [self.dialogView.messageLabel setText:[[dictionary valueForKey:@"message"] objectAtIndex:1]];
@@ -636,7 +642,7 @@
                     [self.mainFishkaLabel setTextColor:[UIColor whiteColor]];
                     [self.mainFishkaLabel setBackgroundColor:[UIColor clearColor]];
                     [self.mainFishkaLabel setTextAlignment:NSTextAlignmentCenter];
-                    [self.mainFishkaLabel setText:@"ПРОВЕРКА КОДА"];
+                    [self.mainFishkaLabel setText:NSLocalizedString(@"ПРОВЕРКА КОДА",nil)];
                     
                     [self.dialogView.captionLabel setText:[[dictionary valueForKey:@"message"] objectAtIndex:0]];
                     
@@ -890,61 +896,65 @@ static inline double radians (double degrees)
 {
     NSLog(@"Screen height: %f", [[UIScreen mainScreen] bounds].size.height);
     
-    if ([[UIScreen mainScreen] bounds].size.height == 568) {
-        [self.scrollView setScrollEnabled:NO];
-        [self.scrollView setContentSize:CGSizeMake(320.0, 568.0 + 40.0)];
-        
-        CGFloat tempy = 568.0 + 40.0;//self.scrollView.contentSize.height;
-        CGFloat tempx = 320.0;//self.scrollView.contentSize.width;;
-        CGRect zoomRect = CGRectMake((tempx/2), (tempy/2), tempy, tempx);
-        
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:0.25];
-        [self.scrollView scrollRectToVisible:zoomRect animated:NO];
-        [UIView commitAnimations];
-    }
-    
-    else
+    if (self.activeField == self.codeTextField)
     {
-        [self.scrollView setScrollEnabled:NO];
-        [self.scrollView setContentSize:CGSizeMake(320.0, 480.0 + 55.0)];
+        if ([[UIScreen mainScreen] bounds].size.height == 568) {
+            [self.scrollView setScrollEnabled:NO];
+            [self.scrollView setContentSize:CGSizeMake(320.0, 568.0 + 40.0)];
+            
+            CGFloat tempy = 568.0 + 40.0;//self.scrollView.contentSize.height;
+            CGFloat tempx = 320.0;//self.scrollView.contentSize.width;;
+            CGRect zoomRect = CGRectMake((tempx/2), (tempy/2), tempy, tempx);
+            
+            [UIView beginAnimations:nil context:nil];
+            [UIView setAnimationDuration:0.25];
+            [self.scrollView scrollRectToVisible:zoomRect animated:NO];
+            [UIView commitAnimations];
+        }
         
-        CGFloat tempy = 480.0 + 55.0;//self.scrollView.contentSize.height;
-        CGFloat tempx = 320.0;//self.scrollView.contentSize.width;;
-        CGRect zoomRect = CGRectMake((tempx/2), (tempy/2), tempy, tempx);
-        
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:0.25];
-        [self.scrollView scrollRectToVisible:zoomRect animated:NO];
-        [UIView commitAnimations];
+        else
+        {
+            [self.scrollView setScrollEnabled:NO];
+            [self.scrollView setContentSize:CGSizeMake(320.0, 480.0 + 55.0)];
+            
+            CGFloat tempy = 480.0 + 55.0;//self.scrollView.contentSize.height;
+            CGFloat tempx = 320.0;//self.scrollView.contentSize.width;;
+            CGRect zoomRect = CGRectMake((tempx/2), (tempy/2), tempy, tempx);
+            
+            [UIView beginAnimations:nil context:nil];
+            [UIView setAnimationDuration:0.25];
+            [self.scrollView scrollRectToVisible:zoomRect animated:NO];
+            [UIView commitAnimations];
+        }
     }
-        
     [self.view addGestureRecognizer:self.tapRecognizer];
 }
 
 - (void)keyboardWillHide:(NSNotification *)note
 {
-    if ([[UIScreen mainScreen] bounds].size.height == 568) {
-        CGRect zoomRect = CGRectMake(0, 0, 320, 568);
-        
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:0.25];
-        [self.scrollView scrollRectToVisible:zoomRect animated:NO];
-        [UIView commitAnimations];
-    }
-    
-    else
+    if (self.activeField == self.codeTextField)
     {
-        CGRect zoomRect = CGRectMake(0, 0, 320, 480);
+        if ([[UIScreen mainScreen] bounds].size.height == 568) {
+            CGRect zoomRect = CGRectMake(0, 0, 320, 568);
+            
+            [UIView beginAnimations:nil context:nil];
+            [UIView setAnimationDuration:0.25];
+            [self.scrollView scrollRectToVisible:zoomRect animated:NO];
+            [UIView commitAnimations];
+        }
         
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:0.25];
-        [self.scrollView scrollRectToVisible:zoomRect animated:NO];
-        [UIView commitAnimations];
+        else
+        {
+            CGRect zoomRect = CGRectMake(0, 0, 320, 480);
+            
+            [UIView beginAnimations:nil context:nil];
+            [UIView setAnimationDuration:0.25];
+            [self.scrollView scrollRectToVisible:zoomRect animated:NO];
+            [UIView commitAnimations];
+        }
+        
+        [self.scrollView setScrollEnabled:NO];
     }
-    
-    [self.scrollView setScrollEnabled:NO];
-    
     [self.view removeGestureRecognizer:self.tapRecognizer];
 }
 
@@ -955,50 +965,63 @@ static inline double radians (double degrees)
     return YES;
 }
 
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    self.activeField = textField;
+    return YES;
+}
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     //бидло код трололо
-    if ((range.location == 4 || range.location == 9 || range.location == 14) && range.location != 0 && ![string isEqualToString:@""]) {
-        
-        NSRange myRange;
-        myRange.location = range.location + 1;
-        myRange.length = 1;
-        
-        NSMutableString *tempMutStr = [NSMutableString stringWithString:textField.text];
-        
-        if ([string isEqualToString:@"-"]) {
-            return YES;
-        }
-        else
-        {
-            if (range.location < [textField.text length]) {
-                return  NO;
+    if (textField == self.codeTextField)
+    {
+        if ((range.location == 4 || range.location == 9 || range.location == 14) && range.location != 0 && ![string isEqualToString:@""]) {
+            
+            NSRange myRange;
+            myRange.location = range.location + 1;
+            myRange.length = 1;
+            
+            NSMutableString *tempMutStr = [NSMutableString stringWithString:textField.text];
+            
+            if ([string isEqualToString:@"-"]) {
+                return YES;
             }
             else
             {
-                [tempMutStr insertString:@"-" atIndex:range.location];
-                textField.text = [NSString stringWithString:tempMutStr];
+                if (range.location < [textField.text length]) {
+                    return  NO;
+                }
+                else
+                {
+                    [tempMutStr insertString:@"-" atIndex:range.location];
+                    textField.text = [NSString stringWithString:tempMutStr];
+                }
             }
         }
-    }
-    
-    NSUInteger newLength = [textField.text length] + [string length] - range.length;
-    
-    if ([string isEqualToString:@""]) {
-        return YES;
-    }
-    else
-    {
         
-        if (newLength > 19) {
-            return NO;
+        NSUInteger newLength = [textField.text length] + [string length] - range.length;
+        
+        if ([string isEqualToString:@""]) {
+            return YES;
         }
         else
         {
-            return YES;
+            
+            if (newLength > 19) {
+                return NO;
+            }
+            else
+            {
+                return YES;
+            }
+            
+            //        return (newLength > 19) ? NO : YES;
         }
-        
-//        return (newLength > 19) ? NO : YES;
+    }
+    else
+    {
+        return YES;
     }
 }
 

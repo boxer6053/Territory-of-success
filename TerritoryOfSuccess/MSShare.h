@@ -1,8 +1,9 @@
 #import <Foundation/Foundation.h>
 #import <Social/Social.h>
+#import "MSAnimationView.h"
 #import "Vkontakte.h"
 
-@interface MSShare : UIView <VkontakteDelegate>
+@interface MSShare :MSAnimationView <VkontakteDelegate>
 @property (nonatomic) UIViewController *mainView;
 @property (nonatomic) UIView *vkView;
 @property (nonatomic) UIView *vkBackgroundView;

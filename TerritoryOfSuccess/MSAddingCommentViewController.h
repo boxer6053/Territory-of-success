@@ -10,16 +10,19 @@
 @property (strong, nonatomic) IBOutlet UINavigationItem *navigation;
 @property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (strong, nonatomic) IBOutlet UITextView *inputText;
-@property (strong, nonatomic) IBOutlet UIImageView *starImage;
-@property (strong, nonatomic) IBOutlet UIView *starView;
 @property (strong, nonatomic) UITapGestureRecognizer *tap;
-@property (strong, nonatomic) IBOutlet UIStepper *stepper;
 @property (strong, nonatomic) IBOutlet UIView *containView;
 @property (strong, nonatomic) IBOutlet UILabel *pleaseLabel;
 @property (strong, nonatomic) id <AddingCommentDelegate> delegate;
 @property (strong, nonatomic) NSMutableArray *sentArray;
 
-- (IBAction)starStepper:(id)sender;
+@property (strong, nonatomic) IBOutlet UIButton *starButton1;
+@property (strong, nonatomic) IBOutlet UIButton *starButton2;
+@property (strong, nonatomic) IBOutlet UIButton *starButton3;
+@property (strong, nonatomic) IBOutlet UIButton *starButton4;
+@property (strong, nonatomic) IBOutlet UIButton *starButton5;
+
+- (IBAction)starButtonPressed:(UIButton *)sender;
 - (IBAction)save:(id)sender;
 - (IBAction)cancel:(id)sender;
 @end
