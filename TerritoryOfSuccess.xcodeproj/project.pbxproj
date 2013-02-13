@@ -589,6 +589,10 @@
 				F5B2D23616C4180900EC7F00 /* logo_color_invert_40*147_ukr.png */,
 				F5B2D23416C416DC00EC7F00 /* logo_color_invert_40*147_en.png */,
 				F54E86C516BC2415001B9D3B /* logo_color_invert_40*147.png */,
+				FADC926E16C52F06006BD95C /* bigStar.png */,
+				FADC926F16C52F06006BD95C /* bigStarBlack.png */,
+				FA167DB716C394D700B08904 /* button_80_44.png */,
+				FADC926A16C50C70006BD95C /* logo_color_invert_40*147.png */,
 				F5B1884016BBCA2F00290F27 /* logo_text_30*165.png */,
 				F5B1883E16BBC8D200290F27 /* logo_text_30*167.png */,
 				F5B1883C16BBC6EE00290F27 /* logo_text.png */,
@@ -1098,6 +1102,11 @@
 				F5B2D23516C416DC00EC7F00 /* logo_color_invert_40*147_en.png in Resources */,
 				F5B2D23716C4180900EC7F00 /* logo_color_invert_40*147_ukr.png in Resources */,
 				F5815A9916CA8BFC004E5595 /* button_140*35.png in Resources */,
+				FADC925D16C50995006BD95C /* Default-568h@2x.png in Resources */,
+				FADC925816C5098D006BD95C /* Default.png in Resources */,
+				FADC925316C50799006BD95C /* Default@2x.png in Resources */,
+				FADC927016C52F06006BD95C /* bigStar.png in Resources */,
+				FADC927116C52F06006BD95C /* bigStarBlack.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

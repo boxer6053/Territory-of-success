@@ -9,12 +9,11 @@
 #import "MSAnimationView.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface MSComplaintView : MSAnimationView<UITextFieldDelegate, UITextViewDelegate>
+@interface MSComplaintView : MSAnimationView<UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) UIView *contentView;
 @property (strong, nonatomic) UIImageView *mainFishkaImageView;
 @property (strong, nonatomic) UILabel *mainFishkaLabel;
-@property (strong, nonatomic) UIImageView *productImageView;
 @property (strong, nonatomic) UILabel *productLabel;
 @property (strong, nonatomic) UITextField *productTextField;
 @property (strong, nonatomic) UILabel *codeLabel;
@@ -25,5 +24,6 @@
 @property (strong, nonatomic) UIButton *sendComplaintButton;
 @property (strong, nonatomic) UIButton *cancelButton;
 @property (strong, nonatomic) UIButton *closeButton;
+@property (strong, nonatomic) UIButton *productImageButton;
 
 @end

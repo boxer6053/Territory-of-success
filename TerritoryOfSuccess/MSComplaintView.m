@@ -13,7 +13,6 @@
 @synthesize contentView = _contentView;
 @synthesize mainFishkaImageView = _mainFishkaImageView;
 @synthesize mainFishkaLabel = _mainFishkaLabel;
-@synthesize productImageView = _productImageView;
 @synthesize productLabel = _productLabel;
 @synthesize productTextField = _productTextField;
 @synthesize codeLabel = _codeLabel;
@@ -24,6 +23,7 @@
 @synthesize sendComplaintButton = _sendComplaintButton;
 @synthesize cancelButton = _cancelButton;
 @synthesize closeButton = _closeButton;
+@synthesize productImageButton = _productImageButton;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -57,18 +57,18 @@
         [self.closeButton setFrame:CGRectMake(287, 8, 15, 15)];
         [self.closeButton setBackgroundImage:[UIImage imageNamed:@"closeIcon.png"] forState:UIControlStateNormal];
         [self.contentView addSubview:self.closeButton];
-        
-        //product imageView
-        self.productImageView = [[UIImageView alloc] init];
-        [self.productImageView setFrame:CGRectMake(10, 40, 100, 100)];
-        [self.productImageView setClipsToBounds:YES];
-        [self.productImageView.layer setCornerRadius:5.0];
-        [self.productImageView setBackgroundColor:[UIColor whiteColor]];
-        [self.productImageView setImage:[UIImage imageNamed:@"photo_camera_1.png"]];
-        [self.contentView addSubview:self.productImageView];
                 
+        //productImageButton
+        self.productImageButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [self.productImageButton setFrame:CGRectMake(10, 40, 100, 100)];
+        [self.productImageButton.layer setCornerRadius:5.0];
+        [self.productImageButton setBackgroundColor:[UIColor whiteColor]];
+        [self.productImageButton setBackgroundImage:[UIImage imageNamed:@"photo_camera_1.png"] forState:UIControlStateNormal];
+        [self.productImageButton addTarget:self action:@selector(takeProductPhoto) forControlEvents:UIControlEventTouchUpInside];
+        [self.contentView addSubview:self.productImageButton];
+        
         //textField назви продукта
-        self.productTextField = [[UITextField alloc] initWithFrame:CGRectMake(120, self.productImageView.frame.origin.y, self.frame.size.width - 120 - 10, 30)];
+        self.productTextField = [[UITextField alloc] initWithFrame:CGRectMake(120, self.productImageButton.frame.origin.y, self.frame.size.width - 120 - 10, 30)];
         [self.productTextField setBorderStyle:UITextBorderStyleRoundedRect];
         self.productTextField.font = [UIFont fontWithName:@"Helvetica" size:12.0];
         [self.productTextField setContentVerticalAlignment:UIControlContentHorizontalAlignmentCenter];
@@ -95,7 +95,7 @@
         [self.contentView addSubview:self.locationTextField];
         
         //comment textView
-        self.commentTextView = [[UITextView alloc] initWithFrame:CGRectMake(self.productImageView.frame.origin.x, self.productImageView.frame.origin.y + self.productImageView.frame.size.height + 10, 290, 100)];
+        self.commentTextView = [[UITextView alloc] initWithFrame:CGRectMake(self.productImageButton.frame.origin.x, self.productImageButton.frame.origin.y + self.productImageButton.frame.size.height + 10, 290, 100)];
         [self.commentTextView.layer setCornerRadius:5.0];
         [self.commentTextView setText:@"Напышыте коментарий к жалобе!"];
         [self.commentTextView setTextColor:[UIColor lightGrayColor]];
@@ -172,6 +172,20 @@
     }
     
     return YES;
+}
+
+//зробити фто продукта
+- (void)takeProductPhoto
+{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+        [imagePickerController setDelegate:self];
+        [imagePickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
+        
+//        self pre
+        
+    }
 }
 
 /*
