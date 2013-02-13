@@ -9,7 +9,16 @@
 #import "MSAnimationView.h"
 #import <QuartzCore/QuartzCore.h>
 
+@protocol MSComplaintViewDelegate
+
+- (void)startCameraWithImagePickerController:(UIImagePickerController *)pickerController;
+- (void)closeCameraWithImagePickerController:(UIImagePickerController *)pickerController;
+
+@end
+
 @interface MSComplaintView : MSAnimationView<UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
+@property (strong, nonatomic) id<MSComplaintViewDelegate> delegate;
 
 @property (strong, nonatomic) UIView *contentView;
 @property (strong, nonatomic) UIImageView *mainFishkaImageView;
@@ -25,5 +34,7 @@
 @property (strong, nonatomic) UIButton *cancelButton;
 @property (strong, nonatomic) UIButton *closeButton;
 @property (strong, nonatomic) UIButton *productImageButton;
+
+@property (strong, nonatomic) UIImagePickerController *imagePickerController;
 
 @end

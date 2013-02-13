@@ -24,6 +24,8 @@
 @synthesize cancelButton = _cancelButton;
 @synthesize closeButton = _closeButton;
 @synthesize productImageButton = _productImageButton;
+@synthesize delegate = _delegate;
+@synthesize imagePickerController = _imagePickerController;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -61,7 +63,10 @@
         //productImageButton
         self.productImageButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [self.productImageButton setFrame:CGRectMake(10, 40, 100, 100)];
+        [self.productImageButton setClipsToBounds:YES];
         [self.productImageButton.layer setCornerRadius:5.0];
+        [self.productImageButton.layer setBorderColor:[UIColor colorWithWhite:0.5 alpha:1.0].CGColor];
+        [self.productImageButton.layer setBorderWidth:1.0];
         [self.productImageButton setBackgroundColor:[UIColor whiteColor]];
         [self.productImageButton setBackgroundImage:[UIImage imageNamed:@"photo_camera_1.png"] forState:UIControlStateNormal];
         [self.productImageButton addTarget:self action:@selector(takeProductPhoto) forControlEvents:UIControlEventTouchUpInside];
@@ -179,22 +184,90 @@
 {
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
-        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-        [imagePickerController setDelegate:self];
-        [imagePickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
+        self.imagePickerController = [[UIImagePickerController alloc] init];
+        [self.imagePickerController setDelegate:self];
+        [self.imagePickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
+        [self.imagePickerController setAllowsEditing:YES];
         
-//        self pre
+        [self.delegate startCameraWithImagePickerController:self.imagePickerController];
         
     }
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    // Drawing code
+    UIImage *editedProductImage = [info objectForKey:UIImagePickerControllerEditedImage];
+    
+    NSLog(@"Picture width: %f", editedProductImage.size.width);
+    NSLog(@"Picture hight: %f", editedProductImage.size.height);
+    
+    CGSize sizeToScale;
+    sizeToScale.width = 320.0;
+    sizeToScale.height = 320.0;
+        
+    editedProductImage = [self scalingImage:editedProductImage toSize:sizeToScale];
+    
+    NSLog(@"Picture width: %f", editedProductImage.size.width);
+    NSLog(@"Picture hight: %f", editedProductImage.size.height);
+        
+    [self.productImageButton setBackgroundImage:editedProductImage forState:UIControlStateNormal];
+    
+    [self.delegate closeCameraWithImagePickerController:self.imagePickerController];
 }
-*/
+
+static inline double radians (double degrees) {return degrees * M_PI/180;}
+
+- (UIImage *)scalingImage:(UIImage *)image toSize:(CGSize)targetSize
+{
+    CGFloat targetWidth = targetSize.width;
+	CGFloat targetHeight = targetSize.height;
+    
+    CGImageRef imageRef = [image CGImage];
+    CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(imageRef);
+    CGColorSpaceRef colorSpaceInfo = CGImageGetColorSpace(imageRef);
+    
+    if (bitmapInfo == kCGImageAlphaNone)
+    {
+        bitmapInfo = kCGImageAlphaNoneSkipLast;
+    }
+    
+    CGContextRef bitmap;
+    
+    if (image.imageOrientation == UIImageOrientationUp || image.imageOrientation == UIImageOrientationDown)
+    {
+		bitmap = CGBitmapContextCreate(NULL, targetWidth, targetHeight, CGImageGetBitsPerComponent(imageRef), CGImageGetBytesPerRow(imageRef), colorSpaceInfo, bitmapInfo);
+        
+	}
+    else
+    {
+		bitmap = CGBitmapContextCreate(NULL, targetHeight, targetWidth, CGImageGetBitsPerComponent(imageRef), CGImageGetBytesPerRow(imageRef), colorSpaceInfo, bitmapInfo);
+        
+	}
+    
+    if (image.imageOrientation == UIImageOrientationLeft) {
+		CGContextRotateCTM (bitmap, radians(90));
+		CGContextTranslateCTM (bitmap, 0, -targetHeight);
+        
+	} else if (image.imageOrientation == UIImageOrientationRight) {
+		CGContextRotateCTM (bitmap, radians(-90));
+		CGContextTranslateCTM (bitmap, -targetWidth, 0);
+        
+	} else if (image.imageOrientation == UIImageOrientationUp) {
+		// NOTHING
+	} else if (image.imageOrientation == UIImageOrientationDown) {
+		CGContextTranslateCTM (bitmap, targetWidth, targetHeight);
+		CGContextRotateCTM (bitmap, radians(-180.));
+	}
+    
+    CGContextDrawImage(bitmap, CGRectMake(0, 0, targetWidth, targetHeight), imageRef);
+	CGImageRef ref = CGBitmapContextCreateImage(bitmap);
+	UIImage *newImage = [UIImage imageWithCGImage:ref];
+        
+	CGContextRelease(bitmap);
+	CGImageRelease(ref);
+    
+	return newImage;
+    
+}
 
 @end

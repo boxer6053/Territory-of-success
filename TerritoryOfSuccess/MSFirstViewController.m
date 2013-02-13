@@ -635,6 +635,7 @@ static inline double radians (double degrees)
         [self.dialogView setAlpha:0];
     } completion:^(BOOL finished) {
         self.complaintView = [[MSComplaintView alloc] initWithFrame:CGRectMake(5, ([[UIScreen mainScreen] bounds].size.height - 311)/2 - 54, 310, 311)];
+        [self.complaintView setDelegate:self];
         [self.view addSubview:self.complaintView];
         [self.complaintView attachPopUpAnimationForView:self.complaintView];
         [self.dialogView removeFromSuperview];
@@ -661,6 +662,19 @@ static inline double radians (double degrees)
                                                        otherButtonTitles:nil, nil];
         [complaintError show];
     }
+}
+
+- (void)startCameraWithImagePickerController:(UIImagePickerController *)pickerController
+{
+    [self presentViewController:pickerController animated:YES completion:^{
+        
+    }];
+
+}
+
+- (void)closeCameraWithImagePickerController:(UIImagePickerController *)pickerController
+{
+    [pickerController dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark finishedWithDictionary:withTypeRequest:
