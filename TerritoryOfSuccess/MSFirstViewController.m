@@ -71,6 +71,8 @@
 @synthesize logoBarImageView = _logoBarImageView;
 @synthesize logoBarTextImageView = _logoBarTextImageView;
 
+@synthesize complaintView = _complaintView;
+
 - (MSAPI *)api
 {
     if(!_api)
@@ -85,10 +87,8 @@
 {
     [super viewDidLoad];
     
-//    [self.tabBarInfo getInfo];
+//    [self.api getQuestionListFrom10];
     
-//    self.logoBarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 2, 35, 40)];
-//    [self.logoBarImageView setImage:[UIImage imageNamed:@"logo_color_35*40.png"]];
     //------------------------------------------------------
     self.logoBarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 2, 147, 40)];
     [self.logoBarImageView setImage:[UIImage imageNamed:@"logo_color_invert_40*147.png"]];
@@ -427,12 +427,13 @@
     [UIView animateWithDuration:0.5 animations:^{
         [self.backAlphaView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
     } completion:^(BOOL finished) {
-        [self.dialogView setFrame:CGRectMake(5, ([[UIScreen mainScreen] bounds].size.height - self.dialogView.frame.size.height)/2 - 54, 310, 350)];
+        [self.dialogView setFrame:CGRectMake(5, ([[UIScreen mainScreen] bounds].size.height - self.dialogView.frame.size.height)/2 - 54, 310, 295)];
 //        [self.mainFishkaImageView setFrame:CGRectMake(56, ([[UIScreen mainScreen] bounds].size.height - self.dialogView.frame.size.height)/2 - 54 - 4, 198, 33)];
         [self.dialogView attachPopUpAnimationForView:self.dialogView];
         
         [self.dialogView.closeButton addTarget:self action:@selector(closeDialogView) forControlEvents:UIControlEventTouchUpInside];
         [self.dialogView.okButton addTarget:self action:@selector(closeDialogView) forControlEvents:UIControlEventTouchUpInside];
+        [self.dialogView.complaint addTarget:self action:@selector(showComplaintView) forControlEvents:UIControlEventTouchUpInside];
     }];
     
 }
@@ -450,6 +451,51 @@
     [self.scrollView insertSubview:self.backAlphaView atIndex:0];
 }
 
+- (void)closeComplaintView
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        [self.backAlphaView setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.0]];
+        [self.complaintView setAlpha:0];
+    } completion:^(BOOL finished) {
+        [self.backAlphaView removeFromSuperview];
+        [self.complaintView removeFromSuperview];
+    }];
+}
+
+- (void)showComplaintView
+{        
+    [UIView animateWithDuration:0.5 animations:^{
+        [self.dialogView setAlpha:0];
+    } completion:^(BOOL finished) {
+        self.complaintView = [[MSComplaintView alloc] initWithFrame:CGRectMake(5, ([[UIScreen mainScreen] bounds].size.height - 311)/2 - 54, 310, 311)];
+        [self.view addSubview:self.complaintView];
+        [self.complaintView attachPopUpAnimationForView:self.complaintView];
+        [self.dialogView removeFromSuperview];
+        
+        [self.complaintView.cancelButton addTarget:self action:@selector(closeComplaintView) forControlEvents:UIControlEventTouchUpInside];
+        [self.complaintView.closeButton addTarget:self action:@selector(closeComplaintView) forControlEvents:UIControlEventTouchUpInside];
+        [self.complaintView.sendComplaintButton addTarget:self action:@selector(sendComplaint) forControlEvents:UIControlEventTouchUpInside];
+    }];
+}
+
+- (void)sendComplaint
+{
+    if ([self.complaintView.productTextField text] != nil && [self.complaintView.codeTextField text] != nil && [self.complaintView.locationTextField text] != nil && [self.complaintView.commentTextView text] != nil) {
+        [self.api sendComplaintForProduct:[self.complaintView.productTextField text]
+                                 withCode:[self.complaintView.codeTextField text]
+                             withLocation:[self.complaintView.locationTextField text]
+                              withComment:[self.complaintView.commentTextView text]];
+    }
+    else
+    {
+        UIAlertView *complaintError = [[UIAlertView alloc] initWithTitle:@"Ошибка жалобы"
+                                                                 message:@"Заполныте все поля!"
+                                                                delegate:nil cancelButtonTitle:@"OK"
+                                                       otherButtonTitles:nil, nil];
+        [complaintError show];
+    }
+}
+
 #pragma mark finishedWithDictionary:withTypeRequest:
 
 - (void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
@@ -462,13 +508,13 @@
             NSLog(@"valid");
             
             if ([[UIScreen mainScreen] bounds].size.height == 568) {
-                self.dialogView = [[MSDialogView alloc] initWithFrame:CGRectMake(5, 568, 310, 350)];
+                self.dialogView = [[MSDialogView alloc] initWithFrame:CGRectMake(5, 568, 310, 295)];
                 
                 self.backAlphaView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)];
             }
             else
             {
-                self.dialogView = [[MSDialogView alloc] initWithFrame:CGRectMake(5, 480, 310, 350)];
+                self.dialogView = [[MSDialogView alloc] initWithFrame:CGRectMake(5, 480, 310, 295)];
                 
                 self.backAlphaView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
                 
@@ -646,6 +692,23 @@
         [self.newsScrollView.layer setCornerRadius:5.0];
         self.newsPageControl.numberOfPages = arrayOfNews.count;
     }
+    if (type == kQuestions) {
+        NSLog(@"");
+    }
+    if (type == kComplaint) {
+        if ([[dictionary valueForKey:@"status"] isEqualToString:@"ok"])
+        {
+            [self closeComplaintView];
+        }
+        else
+        {
+            UIAlertView *authorisationError = [[UIAlertView alloc] initWithTitle:[[dictionary valueForKey:@"message"] valueForKey:@"title"]
+                                                                         message:[[dictionary valueForKey:@"message"] valueForKey:@"text"]
+                                                                        delegate:nil cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil, nil];
+            [authorisationError show];
+        }
+    }
 }
 
 - (void)didSelectTabBarItem:(UITabBarItem *)item
@@ -817,6 +880,10 @@ static inline double radians (double degrees)
 - (void)didTapAnywhere:(UITapGestureRecognizer*)recognizer
 {
     [self.codeTextField resignFirstResponder];
+    [self.complaintView.productTextField resignFirstResponder];
+    [self.complaintView.codeTextField resignFirstResponder];
+    [self.complaintView.locationTextField resignFirstResponder];
+    [self.complaintView.commentTextView resignFirstResponder];
 }
 
 - (void)keyboardWillShow:(NSNotification *)note
