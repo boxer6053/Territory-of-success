@@ -188,8 +188,10 @@
 //зробити фто продукта
 - (void)takeProductPhoto
 {
+    //перевірка наявності камери на девайсі
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
+        //якщо є
         self.imagePickerController = [[UIImagePickerController alloc] init];
         [self.imagePickerController setDelegate:self];
         [self.imagePickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
@@ -197,6 +199,13 @@
         
         [self.delegate startCameraWithImagePickerController:self.imagePickerController];
         
+    }
+    else
+    {
+        //якщо нема
+        UIAlertView *cameraNotAvailableMessage = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Ошибка камеры",nil) message:NSLocalizedString(@"Камера не доступна",nil) delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        
+        [cameraNotAvailableMessage show];
     }
 }
 

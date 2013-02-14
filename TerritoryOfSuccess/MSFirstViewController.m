@@ -649,10 +649,6 @@ static inline double radians (double degrees)
 - (void)sendComplaint
 {
     if ([self.complaintView.productTextField text] != nil && [self.complaintView.codeTextField text] != nil && [self.complaintView.locationTextField text] != nil && [self.complaintView.commentTextView text] != nil) {
-//        [self.api sendComplaintForProduct:[self.complaintView.productTextField text]
-//                                 withCode:[self.complaintView.codeTextField text]
-//                             withLocation:[self.complaintView.locationTextField text]
-//                              withComment:[self.complaintView.commentTextView text]];
         
         [self.api sendComplaintForProduct:[self.complaintView.productTextField text]
                                  withCode:[self.complaintView.codeTextField text]
