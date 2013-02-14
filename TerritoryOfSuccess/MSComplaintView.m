@@ -32,8 +32,10 @@
     self = [super initWithFrame:frame];
     if (self) {
         
+        //колір фонової view
         [self setBackgroundColor:[UIColor clearColor]];
         
+        //вікно complaint
         self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 4, self.frame.size.width, self.frame.size.height - 4)];
         [self.contentView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"dialogViewGradient.png"]]];
         [self.contentView.layer setCornerRadius:10.0];
@@ -42,10 +44,12 @@
         [self.contentView setClipsToBounds:YES];
         [self addSubview:self.contentView];
         
+        //малюнок TOS
         self.mainFishkaImageView = [[UIImageView alloc] initWithFrame:CGRectMake(56, 0, 198, 33)];
         [self.mainFishkaImageView setImage:[UIImage imageNamed:@"TOS cap.png"]];
         [self addSubview:self.mainFishkaImageView];
         
+        //мітка в TOS
         self.mainFishkaLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, 178, 20)];
         self.mainFishkaLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:14.0];
         [self.mainFishkaLabel setTextColor:[UIColor whiteColor]];
@@ -102,6 +106,8 @@
         //comment textView
         self.commentTextView = [[UITextView alloc] initWithFrame:CGRectMake(self.productImageButton.frame.origin.x, self.productImageButton.frame.origin.y + self.productImageButton.frame.size.height + 10, 290, 100)];
         [self.commentTextView.layer setCornerRadius:5.0];
+        [self.commentTextView.layer setBorderWidth:1.0];
+        [self.commentTextView.layer setBorderColor:[[UIColor colorWithWhite:0.5 alpha:1.0] CGColor]];
         [self.commentTextView setText:@"Напышыте коментарий к жалобе!"];
         [self.commentTextView setTextColor:[UIColor lightGrayColor]];
         [self.commentTextView setDelegate:self];
@@ -204,19 +210,25 @@
     CGSize sizeToScale;
     sizeToScale.width = 320.0;
     sizeToScale.height = 320.0;
-        
+    
+    //зміна розміру фото
     editedProductImage = [self scalingImage:editedProductImage toSize:sizeToScale];
     
     NSLog(@"Picture width: %f", editedProductImage.size.width);
     NSLog(@"Picture hight: %f", editedProductImage.size.height);
-        
-    [self.productImageButton setBackgroundImage:editedProductImage forState:UIControlStateNormal];
+    
+    //стискання фото
+    NSData *data = UIImageJPEGRepresentation(editedProductImage, 0.5);
+    UIImage *compressedImage = [UIImage imageWithData:data];
+            
+    [self.productImageButton setBackgroundImage:compressedImage forState:UIControlStateNormal];
     
     [self.delegate closeCameraWithImagePickerController:self.imagePickerController];
 }
 
 static inline double radians (double degrees) {return degrees * M_PI/180;}
 
+//зміна розміру фото
 - (UIImage *)scalingImage:(UIImage *)image toSize:(CGSize)targetSize
 {
     CGFloat targetWidth = targetSize.width;
