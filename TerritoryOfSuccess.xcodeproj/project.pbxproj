@@ -142,6 +142,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F510C26716CCF36A0058AB31 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		F510C26916CCF37C0058AB31 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		F510C26B16CCF38F0058AB31 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		F51CCD5116B95B4400029B9B /* button_185_45.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_185_45.png; sourceTree = "<group>"; };
 		F51CCD5316B95C6F00029B9B /* button_120*32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_120*32.png"; sourceTree = "<group>"; };
 		F526D77616B3009D0027BF21 /* button55*30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button55*30.png"; sourceTree = "<group>"; };
@@ -456,16 +459,16 @@
 		FADA3FCF16AD8A0C008D2C7E /* 1star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1star.png; sourceTree = "<group>"; };
 		FADA3FD016AD8A0C008D2C7E /* 2star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2star.png; sourceTree = "<group>"; };
 		FADA3FD116AD8A0C008D2C7E /* 3star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3star.png; sourceTree = "<group>"; };
-		FADC925416C50799006BD95C /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = "en.lproj/Default@2x.png"; sourceTree = "<group>"; };
-		FADC925616C5079D006BD95C /* ru */ = {isa = PBXFileReference; lastKnownFileType = file; name = ru; path = "ru.lproj/Default@2x.png"; sourceTree = "<group>"; };
-		FADC925716C5079E006BD95C /* uk */ = {isa = PBXFileReference; lastKnownFileType = file; name = uk; path = "uk.lproj/Default@2x.png"; sourceTree = "<group>"; };
-		FADC925916C5098D006BD95C /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Default.png; sourceTree = "<group>"; };
-		FADC925B16C50990006BD95C /* ru */ = {isa = PBXFileReference; lastKnownFileType = file; name = ru; path = ru.lproj/Default.png; sourceTree = "<group>"; };
-		FADC925C16C50991006BD95C /* uk */ = {isa = PBXFileReference; lastKnownFileType = file; name = uk; path = uk.lproj/Default.png; sourceTree = "<group>"; };
-		FADC925E16C50995006BD95C /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = "en.lproj/Default-568h@2x.png"; sourceTree = "<group>"; };
-		FADC926016C50998006BD95C /* ru */ = {isa = PBXFileReference; lastKnownFileType = file; name = ru; path = "ru.lproj/Default-568h@2x.png"; sourceTree = "<group>"; };
-		FADC926116C50998006BD95C /* uk */ = {isa = PBXFileReference; lastKnownFileType = file; name = uk; path = "uk.lproj/Default-568h@2x.png"; sourceTree = "<group>"; };
-		FADC926916C50C70006BD95C /* ru */ = {isa = PBXFileReference; lastKnownFileType = file; name = ru; path = "ru.lproj/logo_color_invert_40*147.png"; sourceTree = "<group>"; };
+		FADC925416C50799006BD95C /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/Default@2x.png"; sourceTree = "<group>"; };
+		FADC925616C5079D006BD95C /* ru */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ru; path = "ru.lproj/Default@2x.png"; sourceTree = "<group>"; };
+		FADC925716C5079E006BD95C /* uk */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uk; path = "uk.lproj/Default@2x.png"; sourceTree = "<group>"; };
+		FADC925916C5098D006BD95C /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/Default.png; sourceTree = "<group>"; };
+		FADC925B16C50990006BD95C /* ru */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ru; path = ru.lproj/Default.png; sourceTree = "<group>"; };
+		FADC925C16C50991006BD95C /* uk */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uk; path = uk.lproj/Default.png; sourceTree = "<group>"; };
+		FADC925E16C50995006BD95C /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/Default-568h@2x.png"; sourceTree = "<group>"; };
+		FADC926016C50998006BD95C /* ru */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ru; path = "ru.lproj/Default-568h@2x.png"; sourceTree = "<group>"; };
+		FADC926116C50998006BD95C /* uk */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uk; path = "uk.lproj/Default-568h@2x.png"; sourceTree = "<group>"; };
+		FADC926916C50C70006BD95C /* ru */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ru; path = "ru.lproj/logo_color_invert_40*147.png"; sourceTree = "<group>"; };
 		FADC926C16C50C7D006BD95C /* uk */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uk; path = "uk.lproj/logo_color_invert_40*147.png"; sourceTree = "<group>"; };
 		FADC926D16C50E83006BD95C /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/logo_color_invert_40*147.png"; sourceTree = "<group>"; };
 		FADC926E16C52F06006BD95C /* bigStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigStar.png; sourceTree = "<group>"; };
@@ -588,7 +591,6 @@
 				F5815A9816CA8BFC004E5595 /* button_140*35.png */,
 				F5B2D23616C4180900EC7F00 /* logo_color_invert_40*147_ukr.png */,
 				F5B2D23416C416DC00EC7F00 /* logo_color_invert_40*147_en.png */,
-				F54E86C516BC2415001B9D3B /* logo_color_invert_40*147.png */,
 				FADC926E16C52F06006BD95C /* bigStar.png */,
 				FADC926F16C52F06006BD95C /* bigStarBlack.png */,
 				FA167DB716C394D700B08904 /* button_80_44.png */,
@@ -677,6 +679,9 @@
 		F5F6ADC1169C4F21000247D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F510C26716CCF36A0058AB31 /* libz.dylib */,
+				F510C26B16CCF38F0058AB31 /* MobileCoreServices.framework */,
+				F510C26916CCF37C0058AB31 /* CFNetwork.framework */,
 				FAA0FCB916BAB1F6005AF32E /* Social.framework */,
 				F552752816B06AFF0086AE53 /* ImageIO.framework */,
 				F552752516B06AEA0086AE53 /* SDWebImage.framework */,

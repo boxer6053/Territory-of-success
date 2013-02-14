@@ -47,5 +47,7 @@ typedef enum {kAuth = 1, kRegist = 2, kNews = 3, kNewsWithId = 4, kCode = 5, kBr
 - (void)sendComplaintForProduct:(NSString *)product
                        withCode:(NSString *)code
                    withLocation:(NSString *)location
-                    withComment:(NSString *)comment;
+                    withComment:(NSString *)comment
+                  withImage:(UIImage *)image
+                  withImageName:(NSString *)imageName;
 @end
