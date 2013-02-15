@@ -113,8 +113,6 @@
     } completion:^(BOOL finished){
         [self removeFromSuperview];
         [self.delegate closeAddingCommentSubviewWithAdditionalActions];
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[self.messageDictionary valueForKey:@"title"] message:[self.messageDictionary valueForKey:@"text"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alertView show];
     }];
 }
 
@@ -125,7 +123,11 @@
 
 - (void)sentComment
 {
-    if ([self.inputCommentTextView.text isEqualToString:NSLocalizedString(@"writeWhatYouThinkKey", nil)])
+    if(![[NSUserDefaults standardUserDefaults] valueForKey:@"authorization_Token"])
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Ошибка", nil) message:NSLocalizedString(@"NeedToAuthorizedKey", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+    } else if ([self.inputCommentTextView.text isEqualToString:NSLocalizedString(@"writeWhatYouThinkKey", nil)])
     {
         NSString *message = NSLocalizedString(@"YouShouldEnterCommentKey", nil);
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Ошибка", nil) message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -192,5 +194,7 @@
 - (void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
 {
     self.messageDictionary = [dictionary valueForKey:@"message"];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[self.messageDictionary valueForKey:@"title"] message:[self.messageDictionary valueForKey:@"text"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alertView show];
 }
 @end
