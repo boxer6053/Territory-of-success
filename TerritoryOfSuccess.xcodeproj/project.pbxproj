@@ -109,6 +109,7 @@
 		FA884BC816B82B74002A7FDC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FA884BC716B82B74002A7FDC /* Settings.bundle */; };
 		FA8AB81416C2594C00B98EA3 /* iPhoneStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8AB81616C2594C00B98EA3 /* iPhoneStoryboard.storyboard */; };
 		FA90193716BFEB5E00D028AD /* MSLogInView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA90193616BFEB5E00D028AD /* MSLogInView.m */; };
+		FA9094D716CA7B8D007F9441 /* MSAddCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9094D616CA7B8D007F9441 /* MSAddCommentView.m */; };
 		FAA0FCB416BAA856005AF32E /* button_310_32-1.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA0FCB316BAA856005AF32E /* button_310_32-1.png */; };
 		FAA0FCB816BAB190005AF32E /* MSShare.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA0FCB716BAB190005AF32E /* MSShare.m */; };
 		FAA0FCBA16BAB1F6005AF32E /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA0FCB916BAB1F6005AF32E /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -426,6 +427,8 @@
 		FA8AB81E16C259A500B98EA3 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/iPhoneStoryboard.strings; sourceTree = "<group>"; };
 		FA90193516BFEB5E00D028AD /* MSLogInView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSLogInView.h; sourceTree = "<group>"; };
 		FA90193616BFEB5E00D028AD /* MSLogInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSLogInView.m; sourceTree = "<group>"; };
+		FA9094D516CA7B8D007F9441 /* MSAddCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAddCommentView.h; sourceTree = "<group>"; };
+		FA9094D616CA7B8D007F9441 /* MSAddCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSAddCommentView.m; sourceTree = "<group>"; };
 		FAA0FCB316BAA856005AF32E /* button_310_32-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_310_32-1.png"; sourceTree = "<group>"; };
 		FAA0FCB616BAB190005AF32E /* MSShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSShare.h; sourceTree = "<group>"; };
 		FAA0FCB716BAB190005AF32E /* MSShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSShare.m; sourceTree = "<group>"; };
@@ -447,16 +450,16 @@
 		FADA3FCF16AD8A0C008D2C7E /* 1star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1star.png; sourceTree = "<group>"; };
 		FADA3FD016AD8A0C008D2C7E /* 2star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2star.png; sourceTree = "<group>"; };
 		FADA3FD116AD8A0C008D2C7E /* 3star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3star.png; sourceTree = "<group>"; };
-		FADC925416C50799006BD95C /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = "en.lproj/Default@2x.png"; sourceTree = "<group>"; };
-		FADC925616C5079D006BD95C /* ru */ = {isa = PBXFileReference; lastKnownFileType = file; name = ru; path = "ru.lproj/Default@2x.png"; sourceTree = "<group>"; };
-		FADC925716C5079E006BD95C /* uk */ = {isa = PBXFileReference; lastKnownFileType = file; name = uk; path = "uk.lproj/Default@2x.png"; sourceTree = "<group>"; };
-		FADC925916C5098D006BD95C /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Default.png; sourceTree = "<group>"; };
-		FADC925B16C50990006BD95C /* ru */ = {isa = PBXFileReference; lastKnownFileType = file; name = ru; path = ru.lproj/Default.png; sourceTree = "<group>"; };
-		FADC925C16C50991006BD95C /* uk */ = {isa = PBXFileReference; lastKnownFileType = file; name = uk; path = uk.lproj/Default.png; sourceTree = "<group>"; };
-		FADC925E16C50995006BD95C /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = "en.lproj/Default-568h@2x.png"; sourceTree = "<group>"; };
-		FADC926016C50998006BD95C /* ru */ = {isa = PBXFileReference; lastKnownFileType = file; name = ru; path = "ru.lproj/Default-568h@2x.png"; sourceTree = "<group>"; };
-		FADC926116C50998006BD95C /* uk */ = {isa = PBXFileReference; lastKnownFileType = file; name = uk; path = "uk.lproj/Default-568h@2x.png"; sourceTree = "<group>"; };
-		FADC926916C50C70006BD95C /* ru */ = {isa = PBXFileReference; lastKnownFileType = file; name = ru; path = "ru.lproj/logo_color_invert_40*147.png"; sourceTree = "<group>"; };
+		FADC925416C50799006BD95C /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/Default@2x.png"; sourceTree = "<group>"; };
+		FADC925616C5079D006BD95C /* ru */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ru; path = "ru.lproj/Default@2x.png"; sourceTree = "<group>"; };
+		FADC925716C5079E006BD95C /* uk */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uk; path = "uk.lproj/Default@2x.png"; sourceTree = "<group>"; };
+		FADC925916C5098D006BD95C /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/Default.png; sourceTree = "<group>"; };
+		FADC925B16C50990006BD95C /* ru */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ru; path = ru.lproj/Default.png; sourceTree = "<group>"; };
+		FADC925C16C50991006BD95C /* uk */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uk; path = uk.lproj/Default.png; sourceTree = "<group>"; };
+		FADC925E16C50995006BD95C /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/Default-568h@2x.png"; sourceTree = "<group>"; };
+		FADC926016C50998006BD95C /* ru */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ru; path = "ru.lproj/Default-568h@2x.png"; sourceTree = "<group>"; };
+		FADC926116C50998006BD95C /* uk */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uk; path = "uk.lproj/Default-568h@2x.png"; sourceTree = "<group>"; };
+		FADC926916C50C70006BD95C /* ru */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ru; path = "ru.lproj/logo_color_invert_40*147.png"; sourceTree = "<group>"; };
 		FADC926C16C50C7D006BD95C /* uk */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uk; path = "uk.lproj/logo_color_invert_40*147.png"; sourceTree = "<group>"; };
 		FADC926D16C50E83006BD95C /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/logo_color_invert_40*147.png"; sourceTree = "<group>"; };
 		FADC926E16C52F06006BD95C /* bigStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigStar.png; sourceTree = "<group>"; };
@@ -567,6 +570,8 @@
 				FAA0FCC016BAD20A005AF32E /* VkontakteViewController.m */,
 				FAFB5E0916C2650F001B692B /* MSAnimationView.h */,
 				FAFB5E0A16C2650F001B692B /* MSAnimationView.m */,
+				FA9094D516CA7B8D007F9441 /* MSAddCommentView.h */,
+				FA9094D616CA7B8D007F9441 /* MSAddCommentView.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1143,6 +1148,7 @@
 				F59884E516C28437009FBF48 /* MSQuestionDetailViewController.m in Sources */,
 				F5F1E5F616C298A000418FC5 /* MSAnswerViewController.m in Sources */,
 				FAFB5E0B16C2650F001B692B /* MSAnimationView.m in Sources */,
+				FA9094D716CA7B8D007F9441 /* MSAddCommentView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

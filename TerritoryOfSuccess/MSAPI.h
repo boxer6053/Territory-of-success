@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "JSONParserForDataEntenties.h"
 
-typedef enum {kAuth = 1, kRegist = 2, kNews = 3, kNewsWithId = 4, kCode = 5, kBrands = 6, kCategories = 7, kCatalog = 8, kQuestCateg = 9} requestTypes;
+typedef enum {kAuth, kRegist, kNews, kNewsWithId, kCode, kBrands, kCategories, kCatalog, kQuestCateg, kComment} requestTypes;
 
 @protocol WsCompleteDelegate
 
@@ -40,7 +40,8 @@ typedef enum {kAuth = 1, kRegist = 2, kNews = 3, kNewsWithId = 4, kCode = 5, kBr
 - (void)getFiveBrandsWithOffset:(int)offset;
 - (void)getCategories;
 - (void)getProductsWithOffset:(int)offset withBrandId:(int)brandId withCategoryId:(int)categoryId;
--(void)getQuestionsWithParentID:(int)parentId;
+- (void)getQuestionsWithParentID:(int)parentId;
 - (void)logInWithMail:(NSString *)email Password:(NSString *)password;
 - (void)registrationWithEmail:(NSString *)email Password:(NSString *)password ConfirmPassword:(NSString *)confirmPassword;
+- (void)sentCommentWithProductId:(int)productId andText:(NSString *)text;
 @end

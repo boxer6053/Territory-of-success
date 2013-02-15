@@ -51,44 +51,7 @@
     //вказуэм тіло запиту
     [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
     
-    //перевірка наявності інету
-    if (checkConnection.hasConnectivity) {
-        //створюєм з'єднання і начинаєм загрузку
-        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self];
-        
-        //перевірка з'єднання
-        if (connection) {
-            NSLog(@"З'єднання почалось");
-            self.receivedData = [[NSMutableData alloc] init];
-            
-            CFDictionaryAddValue(self.connectionToInfoMapping, CFBridgingRetain(connection), CFBridgingRetain([NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInt:self.checkRequest] forKey:@"requestType"]));
-        }
-        else
-        {
-            //якщо з'єднання нема
-            // Inform the user that the connection failed.
-            NSLog(@"Помилка з'єднання");
-            UIAlertView *connectFailMessage = [[UIAlertView alloc] initWithTitle:@"URL Connection"
-                                                                         message:@"Not success URL connection"
-                                                                        delegate:self
-                                                               cancelButtonTitle:@"Ok"
-                                                               otherButtonTitles:nil];
-            [connectFailMessage show];
-        }
-    }
-    else
-    {
-        //якщо інету нема
-        
-        [SVProgressHUD showErrorWithStatus:@"Not success Internet connection"];
-        
-        UIAlertView *connectFailMessage = [[UIAlertView alloc] initWithTitle:@"Internet Connection"
-                                                                     message:@"Not success Internet connection"
-                                                                    delegate:self
-                                                           cancelButtonTitle:@"Ok"
-                                                           otherButtonTitles:nil];
-        [connectFailMessage show];
-    }
+    [self connectionVerification];
 }
 
 - (void)getFiveNewsWithOffset:(int)offset
@@ -108,41 +71,7 @@
     
     [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
 
-    
-    //перевірка наявності інету
-    if (checkConnection.hasConnectivity) {
-        //створюєм з'єднання і начинаєм загрузку
-        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self];
-        //перевірка з'єднання
-        if (connection) {
-            NSLog(@"З'єднання почалось");
-            self.receivedData = [[NSMutableData alloc] init];
-                        
-            CFDictionaryAddValue(self.connectionToInfoMapping, CFBridgingRetain(connection), CFBridgingRetain([NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInt:self.checkRequest] forKey:@"requestType"]));            
-        }
-        else
-        {
-            //якщо з'єднання нема
-            // Inform the user that the connection failed.
-            NSLog(@"Помилка з'єднання");
-            UIAlertView *connectFailMessage = [[UIAlertView alloc] initWithTitle:@"URL Connection"
-                                                                         message:@"Not success URL connection"
-                                                                        delegate:self
-                                                               cancelButtonTitle:@"Ok"
-                                                               otherButtonTitles:nil];
-            [connectFailMessage show];
-        }
-    }
-    else
-    {
-        //якщо інету нема
-        UIAlertView *connectFailMessage = [[UIAlertView alloc] initWithTitle:@"Internet Connection"
-                                                                     message:@"Not success Internet connection"
-                                                                    delegate:self
-                                                           cancelButtonTitle:@"Ok"
-                                                           otherButtonTitles:nil];
-        [connectFailMessage show];
-    }
+    [self connectionVerification];
 }
 
 - (void)getNewsWithId:(NSString *)newsId
@@ -164,41 +93,7 @@
     //вказуэм тіло запиту
     [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
     
-    //перевірка наявності інету
-    if (checkConnection.hasConnectivity) {
-        //створюєм з'єднання і начинаєм загрузку
-        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self];
-                
-        //перевірка з'єднання
-        if (connection) {
-            NSLog(@"З'єднання почалось");
-            self.receivedData = [[NSMutableData alloc] init];
-                        
-            CFDictionaryAddValue(self.connectionToInfoMapping, CFBridgingRetain(connection), CFBridgingRetain([NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInt:self.checkRequest] forKey:@"requestType"]));
-        }
-        else
-        {
-            //якщо з'єднання нема
-            // Inform the user that the connection failed.
-            NSLog(@"Помилка з'єднання");
-            UIAlertView *connectFailMessage = [[UIAlertView alloc] initWithTitle:@"URL Connection"
-                                                                         message:@"Not success URL connection"
-                                                                        delegate:self
-                                                               cancelButtonTitle:@"Ok"
-                                                               otherButtonTitles:nil];
-            [connectFailMessage show];
-        }
-    }
-    else
-    {
-        //якщо інету нема
-        UIAlertView *connectFailMessage = [[UIAlertView alloc] initWithTitle:@"Internet Connection"
-                                                                     message:@"Not success Internet connection"
-                                                                    delegate:self
-                                                           cancelButtonTitle:@"Ok"
-                                                           otherButtonTitles:nil];
-        [connectFailMessage show];
-    }
+    [self connectionVerification];
 }
 
 - (void)getFiveBrandsWithOffset:(int)offset
@@ -213,21 +108,7 @@
     [self.params appendFormat:@"&lang=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
     [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
     
-    if (checkConnection.hasConnectivity) {
-        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self];
-        
-        if(connection){
-            self.receivedData = [[NSMutableData alloc]init];
-            
-            CFDictionaryAddValue(self.connectionToInfoMapping, CFBridgingRetain(connection), CFBridgingRetain([NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInt:self.checkRequest] forKey:@"requestType"]));
-        }else{
-            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"URL Connection" message:@"Not seccess URL Connection" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-            [failmessage show];
-        }
-    }else{
-        UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Internet Connection" message:@"Not seccess Internet Connection" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        [failmessage show];
-    }
+    [self connectionVerification];
 }
 
 - (void)getQuestionsWithParentID:(int)parentId{
@@ -240,21 +121,7 @@
     self.params = [NSMutableString stringWithFormat:@"parent_id=%d",parentId];
     [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
     
-    if (checkConnection.hasConnectivity) {
-        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self];
-        
-        if(connection){
-            self.receivedData = [[NSMutableData alloc]init];
-            
-            CFDictionaryAddValue(self.connectionToInfoMapping, CFBridgingRetain(connection), CFBridgingRetain([NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInt:self.checkRequest] forKey:@"requestType"]));
-        }else{
-            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"URL Connection" message:@"Not seccess URL Connection" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-            [failmessage show];
-        }
-    }else{
-        UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Internet Connection" message:@"Not seccess Internet Connection" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        [failmessage show];
-    }
+    [self connectionVerification];
 }
 
 - (void)getCategories
@@ -267,21 +134,7 @@
     self.params = [NSString stringWithFormat:@"&lang=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
     [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
     
-    if (checkConnection.hasConnectivity) {
-        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self];
-        
-        if(connection){
-            self.receivedData = [[NSMutableData alloc]init];
-            
-            CFDictionaryAddValue(self.connectionToInfoMapping, CFBridgingRetain(connection), CFBridgingRetain([NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInt:self.checkRequest] forKey:@"requestType"]));
-        }else{
-            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"URL Connection" message:@"Not seccess URL Connection" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-            [failmessage show];
-        }
-    }else{
-        UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Internet Connection" message:@"Not seccess Internet Connection" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        [failmessage show];
-    }
+    [self connectionVerification];
 }
 
 - (void)getProductsWithOffset:(int)offset withBrandId:(int)brandId withCategoryId:(int)categoryId{
@@ -300,22 +153,37 @@
     [self.params appendFormat:@"&lang=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
     [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
     
-    if (checkConnection.hasConnectivity) {
-        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self];
-        
-        if(connection){
-            self.receivedData = [[NSMutableData alloc]init];
-            
-            CFDictionaryAddValue(self.connectionToInfoMapping, CFBridgingRetain(connection), CFBridgingRetain([NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInt:self.checkRequest] forKey:@"requestType"]));
-        }else{
-            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"URL Connection" message:@"Not seccess URL Connection" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-            [failmessage show];
-        }
-    }else{
-        UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Internet Connection" message:@"Not seccess Internet Connection" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        [failmessage show];
-    }
+    [self connectionVerification];
 
+}
+
+- (void)getCommentWithProductId:(int)productId andOffset:(NSString *)offset
+{
+    self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/catalog/comment"];
+    self.checkRequest = kComment;
+    
+    self.request  = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
+    [self.request setHTTPMethod:@"POST"];
+    self.params = [NSMutableString stringWithFormat:@"product_id=%d", productId];
+    [self.params appendFormat:@"&offset=%@", offset];
+    [[self params]appendFormat:@"&lang=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
+    [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
+    [self connectionVerification];
+}
+
+- (void)sentCommentWithProductId:(int)productId andText:(NSString *)text
+{
+    self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/catalog/comment"];
+    self.checkRequest = kComment;
+    
+    self.request  = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
+    [self.request setHTTPMethod:@"POST"];
+    self.params = [NSMutableString stringWithFormat:@"product_id=%d",productId];
+    [self.params appendFormat:@"&text=%@",text];
+    [[self params]appendFormat:@"&lang=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
+    [[self params] appendFormat:@"&token=%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"authorization_Token"]];
+    [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
+    [self connectionVerification];
 }
 
 - (void)logInWithMail:(NSString *)email Password:(NSString *)password
@@ -336,40 +204,7 @@
     [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
 
     
-    //перевірка наявності інету
-    if (checkConnection.hasConnectivity) {
-        //створюєм з'єднання і начинаєм загрузку
-        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self];
-        //перевірка з'єднання
-        if (connection) {
-            NSLog(@"З'єднання почалось");
-            self.receivedData = [[NSMutableData alloc] init];
-            
-            CFDictionaryAddValue(self.connectionToInfoMapping, CFBridgingRetain(connection), CFBridgingRetain([NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInt:self.checkRequest] forKey:@"requestType"]));
-        }
-        else
-        {
-            //якщо з'єднання нема
-            // Inform the user that the connection failed.
-            NSLog(@"Помилка з'єднання");
-            UIAlertView *connectFailMessage = [[UIAlertView alloc] initWithTitle:@"URL Connection"
-                                                                         message:@"Not success URL connection"
-                                                                        delegate:self
-                                                               cancelButtonTitle:@"Ok"
-                                                               otherButtonTitles:nil];
-            [connectFailMessage show];
-        }
-    }
-    else
-    {
-        //якщо інету нема
-        UIAlertView *connectFailMessage = [[UIAlertView alloc] initWithTitle:@"Internet Connection"
-                                                                     message:@"Not success Internet connection"
-                                                                    delegate:self
-                                                           cancelButtonTitle:@"Ok"
-                                                           otherButtonTitles:nil];
-        [connectFailMessage show];
-    }
+    [self connectionVerification];
 }
 
 - (void)registrationWithEmail:(NSString *)email Password:(NSString *)password ConfirmPassword:(NSString *)confirmPassword
@@ -390,43 +225,28 @@
     
     [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
     
-    
-    //перевірка наявності інету
-    if (checkConnection.hasConnectivity) {
-        //створюєм з'єднання і начинаєм загрузку
-        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self];
-        //перевірка з'єднання
-        if (connection) {
-            NSLog(@"З'єднання почалось");
-            self.receivedData = [[NSMutableData alloc] init];
-            
-            CFDictionaryAddValue(self.connectionToInfoMapping, CFBridgingRetain(connection), CFBridgingRetain([NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInt:self.checkRequest] forKey:@"requestType"]));
-        }
-        else
-        {
-            //якщо з'єднання нема
-            // Inform the user that the connection failed.
-            NSLog(@"Помилка з'єднання");
-            UIAlertView *connectFailMessage = [[UIAlertView alloc] initWithTitle:@"URL Connection"
-                                                                         message:@"Not success URL connection"
-                                                                        delegate:self
-                                                               cancelButtonTitle:@"Ok"
-                                                               otherButtonTitles:nil];
-            [connectFailMessage show];
-        }
-    }
-    else
-    {
-        //якщо інету нема
-        UIAlertView *connectFailMessage = [[UIAlertView alloc] initWithTitle:@"Internet Connection"
-                                                                     message:@"Not success Internet connection"
-                                                                    delegate:self
-                                                           cancelButtonTitle:@"Ok"
-                                                           otherButtonTitles:nil];
-        [connectFailMessage show];
-    }
+    [self connectionVerification];
 }
 
+- (void)connectionVerification
+{
+    if (checkConnection.hasConnectivity) {
+        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self];
+        
+        if(connection){
+            self.receivedData = [[NSMutableData alloc]init];
+            
+            CFDictionaryAddValue(self.connectionToInfoMapping, CFBridgingRetain(connection), CFBridgingRetain([NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInt:self.checkRequest] forKey:@"requestType"]));
+        }else{
+            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"URL Connection" message:@"Not seccess URL Connection" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [failmessage show];
+        }
+    }else{
+        UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Internet Connection" message:@"Not seccess Internet Connection" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [failmessage show];
+    }
+
+}
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
     //отримано відповідь від сервера

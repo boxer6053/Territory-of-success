@@ -11,7 +11,5 @@
 @interface MSCommentCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *commentatorName;
 @property (strong, nonatomic) IBOutlet UITextView *commentText;
-@property (strong, nonatomic) IBOutlet UIView *starView;
-@property (strong, nonatomic) IBOutlet UIImageView *starsImage;
-
+@property (strong, nonatomic) IBOutlet UILabel *commentdate;
 @end

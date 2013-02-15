@@ -37,7 +37,11 @@
 "PostKey" = "Опубликовать";
 "LogOutKey" = "Выйти";
 "LogInKey" = "Войти";
-
+"YourCommentKey" = "Ваш комментарий";
+"SendKey" = "Отправить";
+"writeWhatYouThinkKey" = "Напишите что Вы думаете бо этом продукте...";
+"YouShouldEnterCommentKey" = "Введите, пожалуйста, свой комментарий";
+"NeedToAuthorizedKey" = "Вам неободимо авторизироваться";
 
 // Опросы
 

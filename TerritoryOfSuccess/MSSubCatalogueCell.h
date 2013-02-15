@@ -8,6 +8,7 @@
 @property (nonatomic) int productAdviceNumber;
 @property (nonatomic) int productCommentsNumber;
 @property (nonatomic) int productRatingNumber;
+@property (nonatomic) int productId;
 @property (strong, nonatomic) NSString *productBigImageURL;
 @property (strong, nonatomic) NSString *productDesctiptionText;
 @end

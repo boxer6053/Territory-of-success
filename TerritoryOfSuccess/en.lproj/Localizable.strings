@@ -28,7 +28,6 @@
 
 
 
-
 // Каталог + Share
 "CategoriesKey" = "Categories";
 "BrandsKey" = "Brands";
@@ -40,7 +39,11 @@
 "PostKey" = "Post";
 "LogOutKey" = "Logout";
 "LogInKey" = "Login";
-
+"YourCommentKey" = "Your comment";
+"SendKey" = "Send";
+"writeWhatYouThinkKey" = "Please, write what do you think about this product...";
+"YouShouldEnterCommentKey" = "You should enter a comment";
+"NeedToAuthorizedKey" = "You need to login";
 
 // Опросы
 

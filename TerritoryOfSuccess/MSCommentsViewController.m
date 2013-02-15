@@ -1,13 +1,18 @@
 #import "MSCommentsViewController.h"
 #import "MSCommentCell.h"
 #import <QuartzCore/QuartzCore.h>
+#import "MSAddCommentView.h"
 
 @interface MSCommentsViewController ()
+@property (nonatomic, strong) MSAddCommentView *addCommentView;
+@property (nonatomic) int prodId;
 @end
 
 @implementation MSCommentsViewController
 @synthesize commentsArray = _commentsArray;
 @synthesize commentNew = _commentNew;
+@synthesize addCommentView = _addCommentView;
+@synthesize prodId = _prodId;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -52,28 +57,34 @@
     [cell.commentText setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0]];
     cell.commentText.text = [[_commentsArray objectAtIndex:indexPath.row] objectAtIndex:1];
     
-    NSString *imageName = [NSString stringWithFormat:@"%@star.png",[[_commentsArray objectAtIndex:indexPath.row] objectAtIndex:2]];
-    cell.starsImage.image = [UIImage imageNamed:imageName];
-    
-    cell.starView.layer.cornerRadius = 10;
-    [cell.starView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.6]];
-    
     return cell;
 }
 
-
-#pragma mark - Table view delegate
-- (IBAction)addComment:(id)sender {
-    [self performSegueWithIdentifier:@"toAddingCommentView" sender:self];
+-(void)sentProductId:(int)sentProductId
+{
+    self.prodId = sentProductId;
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-        MSAddingCommentViewController *acvc = [segue destinationViewController];
-        acvc.delegate = self;
+- (IBAction)addComment:(id)sender
+{
+    if(![[NSUserDefaults standardUserDefaults] valueForKey:@"authorization_Token"])
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Ошибка", nil) message:NSLocalizedString(@"NeedToAuthorizedKey", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+    } else if(!self.addCommentView)
+    {
+        self.commentTableView.scrollEnabled = NO;
+        self.addCommentView = [[MSAddCommentView alloc] initCommentAdder];
+        [self.view addSubview:self.addCommentView];
+        [self.addCommentView setProductId:self.prodId];
+        [[self addCommentView] attachPopUpAnimationForView:self.addCommentView.containerView];
+        self.addCommentView.delegate = self;
+    }
 }
 
--(void) addNewComment:(NSArray *)array{
-    [[self commentsArray] addObject:array];
-    [[self commentTableView] reloadData];
+- (void)closeAddingCommentSubviewWithAdditionalActions
+{
+    self.commentTableView.scrollEnabled = YES;
+    self.addCommentView = nil;
 }
 @end
