@@ -1,20 +1,16 @@
 #import <UIKit/UIKit.h>
-
-@protocol AddingQuestionDelegate <NSObject>
-
--(void) addNewQuestion:(NSArray *) array;
-
-@end
-@interface MSCreateQuestionViewController : UIViewController <UITextViewDelegate, UITextFieldDelegate>
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *productImage;
-@property (weak, nonatomic) IBOutlet UITextField *textField;
-- (IBAction)askQuestionButton:(id)sender;
-@property (weak, nonatomic) NSString *productTitle;
-@property (weak, nonatomic) NSURL *imageURL;
-@property (strong, nonatomic) UITapGestureRecognizer *tap;
-@property (strong, nonatomic) id <AddingQuestionDelegate> delegate;
-@property (strong, nonatomic) NSMutableArray *sentArray;
-- (IBAction)cancelAction:(id)sender;
-
+#import "MSAskViewController.h"
+#import "MSAPI.h"
+@interface MSCreateQuestionViewController : UIViewController <UIGestureRecognizerDelegate, AddingRequestStringDelegate, WsCompleteDelegate>
+@property (weak, nonatomic) IBOutlet UIImageView *productView1;
+@property (weak, nonatomic) IBOutlet UIImageView *productView2;
+@property (weak, nonatomic) IBOutlet UIImageView *productView3;
+@property (weak, nonatomic) IBOutlet UIImageView *productView4;
+@property (weak, nonatomic) IBOutlet UIImageView *productView5;
+@property (weak, nonatomic) IBOutlet UIImageView *productView6;
+@property (strong, nonatomic) NSMutableString *requestString;
+- (IBAction)addMoreProduct:(id)sender;
+@property (strong, nonatomic) NSMutableArray *gettedImages;
+- (IBAction)startButton:(id)sender;
+@property (strong, nonatomic) NSArray *arrayOfProducts;
 @end

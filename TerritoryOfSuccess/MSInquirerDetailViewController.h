@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MSAPI.h"
 
-@interface MSInquirerDetailViewController : UIViewController
+@interface MSInquirerDetailViewController : UIViewController <WsCompleteDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *inquirerTitle;
 @property (nonatomic) NSInteger inquirerType;
 @property   (strong, nonatomic) NSString *test;
-
+@property (nonatomic) NSString * itemID;
+@property (strong, nonatomic) NSArray *arrayOfProducts;
+@property (nonatomic) int count;
 @end
+
