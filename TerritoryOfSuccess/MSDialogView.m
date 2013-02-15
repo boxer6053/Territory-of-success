@@ -66,7 +66,7 @@
         
         //мітка стану коду
         self.captionLabel = [[UILabel alloc] init];
-        [self.captionLabel setFrame:CGRectMake(93, 50, 124, 21)];
+        [self.captionLabel setFrame:CGRectMake(93, 40, 124, 21)];
         self.captionLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:17.0];
         [self.captionLabel setTextColor:[UIColor colorWithRed:255.0 green:102/255.0 blue:0 alpha:1.0]];
         [self.captionLabel setBackgroundColor:[UIColor clearColor]];
@@ -75,13 +75,15 @@
         
         //product imageView
         self.productImageView = [[UIImageView alloc] init];
-        [self.productImageView setFrame:CGRectMake(10, 80, 100, 100)];
+        [self.productImageView setFrame:CGRectMake(10, 71, 100, 100)];
         [self.productImageView setClipsToBounds:YES];
         [self.productImageView.layer setCornerRadius:5.0];
+        [self.productImageView.layer setBorderWidth:1.0];
+        [self.productImageView.layer setBorderColor:[[UIColor colorWithWhite:0.5 alpha:1.0] CGColor]];
         [self.contentView addSubview:self.productImageView];
         
         //мітка заголовку продукта
-        self.productLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 80, 40, 11)];
+        self.productLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, self.productImageView.frame.origin.y, 40, 11)];
         self.productLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:11.0];
         [self.productLabel setTextColor:[UIColor colorWithRed:255.0 green:102/255.0 blue:0 alpha:1.0]];
         [self.productLabel setBackgroundColor:[UIColor clearColor]];
@@ -89,14 +91,14 @@
         [self.contentView addSubview:self.productLabel];
         
         //View опису продукта
-        self.productDescriptionView = [[UIView alloc] initWithFrame:CGRectMake(120, 91, self.frame.size.width - 10 - 120, 14)];
+        self.productDescriptionView = [[UIView alloc] initWithFrame:CGRectMake(120, self.productLabel.frame.origin.y + self.productLabel.frame.size.height, self.frame.size.width - 10 - 120, 14)];
         [self.productDescriptionView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0]];
         [self.productDescriptionView setClipsToBounds:YES];
         [self.productDescriptionView.layer setCornerRadius:5.0];
         [self.contentView addSubview:self.productDescriptionView];
         
         //мітка опису продукта
-        self.productDescripptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(3, 0, self.productDescriptionView.frame.size.width - 6, self.productDescriptionView.frame.size.height)];
+        self.productDescripptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.productDescriptionView.frame.size.width - 6, self.productDescriptionView.frame.size.height)];
         [self.productDescripptionLabel setNumberOfLines:0];
         [self.productDescripptionLabel setLineBreakMode:NSLineBreakByWordWrapping];
         [self.productDescripptionLabel setBackgroundColor:[UIColor clearColor]];
@@ -120,7 +122,7 @@
         [self.contentView addSubview:self.categoryDescriptionView];
         
         //мітка опису категорії
-        self.categoryDescripptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(3, 0, self.categoryDescriptionView.frame.size.width - 6, self.categoryDescriptionView.frame.size.height)];
+        self.categoryDescripptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.categoryDescriptionView.frame.size.width - 6, self.categoryDescriptionView.frame.size.height)];
         [self.categoryDescripptionLabel setNumberOfLines:0];
         [self.categoryDescripptionLabel setLineBreakMode:NSLineBreakByWordWrapping];
         [self.categoryDescripptionLabel setBackgroundColor:[UIColor clearColor]];
@@ -154,7 +156,7 @@
         [self.contentView addSubview:self.bonusNameLabel];
         
         //View message
-        self.messageView = [[UIView alloc] initWithFrame:CGRectMake(10, self.bonusNameLabel.frame.origin.y + self.bonusNameLabel.frame.size.height + 20, 290, 50)];
+        self.messageView = [[UIView alloc] initWithFrame:CGRectMake(10, self.bonusNameLabel.frame.origin.y + self.bonusNameLabel.frame.size.height + 10, 290, 50)];
         [self.messageView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0]];
         [self.messageView setClipsToBounds:YES];
         [self.messageView.layer setCornerRadius:5.0];
@@ -175,8 +177,8 @@
         //        [self addSubview:self.mainFishkaImageView];
         
         self.okButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [self.okButton setFrame:CGRectMake(20, self.messageView.frame.origin.y + self.messageView.frame.size.height + 20, 120, 35)];
-        [self.okButton setBackgroundImage:[UIImage imageNamed:@"button_120*35_new.png"] forState:UIControlStateNormal];
+        [self.okButton setFrame:CGRectMake(10, self.messageView.frame.origin.y + self.messageView.frame.size.height + 5, 140, 35)];
+        [self.okButton setBackgroundImage:[UIImage imageNamed:@"button_140*35.png"] forState:UIControlStateNormal];
         [self.okButton setTitle:@"OK" forState:UIControlStateNormal];
         [self.okButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         self.okButton.titleLabel.font
@@ -184,9 +186,9 @@
         [self.contentView addSubview:self.okButton];
         
         self.complaint = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [self.complaint setFrame:CGRectMake(310 - 120 - 20, self.messageView.frame.origin.y + self.messageView.frame.size.height + 20, 120, 35)];
-        [self.complaint setBackgroundImage:[UIImage imageNamed:@"button_120*35_new.png"] forState:UIControlStateNormal];
-        [self.complaint setTitle:NSLocalizedString(@"Отправить жалобу",nil) forState:UIControlStateNormal];
+        [self.complaint setFrame:CGRectMake(160, self.messageView.frame.origin.y + self.messageView.frame.size.height + 5, 140, 35)];
+        [self.complaint setBackgroundImage:[UIImage imageNamed:@"button_140*35.png"] forState:UIControlStateNormal];
+        [self.complaint setTitle:@"Отправить жалобу" forState:UIControlStateNormal];
         [self.complaint setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         self.complaint.titleLabel.font
         = [UIFont fontWithName:@"Helvetica-Bold" size:12.0];

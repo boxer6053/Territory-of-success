@@ -32,6 +32,153 @@
     return _connectionToInfoMapping;
 }
 
+- (void)sendComplaintForProduct:(NSString *)product withCode:(NSString *)code withLocation:(NSString *)location withComment:(NSString *)comment withImage:(UIImage *)image withImageName:(NSString *)imageName
+{
+    self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/complaint"];
+    
+    self.checkRequest = kComplaint;
+        
+    //створюемо запит
+    self.request = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
+    
+    NSString *boundary = @"MY_BOUNDARY_STRING";
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+    
+    NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
+    
+    [self.request addValue:contentType forHTTPHeaderField:@"Content-Type"];
+    
+    NSMutableData *body = [NSMutableData data];
+    
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"photo\"; filename=\"%@.jpg\"\r\n", imageName] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[NSData dataWithData:imageData]];
+    
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"product\"\r\n\r\n%@", product] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"location\"\r\n\r\n%@", location] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"comment\"\r\n\r\n%@", comment] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"code\"\r\n\r\n%@", code] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"lang\"\r\n\r\n%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"token\"\r\n\r\n%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"authorization_Token"]] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    //вказуэм тіло запиту
+    [self.request setHTTPBody:body];
+    
+    //вказуэм протокол доступу
+    [self.request setHTTPMethod:@"POST"];
+    
+    //перевірка наявності інету
+    if (checkConnection.hasConnectivity) {
+        //створюєм з'єднання і начинаєм загрузку
+        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self];
+        
+        //перевірка з'єднання
+        if (connection) {
+            NSLog(@"З'єднання почалось");
+            self.receivedData = [[NSMutableData alloc] init];
+            
+            CFDictionaryAddValue(self.connectionToInfoMapping, CFBridgingRetain(connection), CFBridgingRetain([NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInt:self.checkRequest] forKey:@"requestType"]));
+        }
+        else
+        {
+            //якщо з'єднання нема
+            // Inform the user that the connection failed.
+            NSLog(@"Помилка з'єднання");
+            UIAlertView *connectFailMessage = [[UIAlertView alloc] initWithTitle:@"URL Connection"
+                                                                         message:@"Not success URL connection"
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"Ok"
+                                                               otherButtonTitles:nil];
+            [connectFailMessage show];
+        }
+    }
+    else
+    {
+        //якщо інету нема
+        
+        [SVProgressHUD showErrorWithStatus:@"Not success Internet connection"];
+        
+        UIAlertView *connectFailMessage = [[UIAlertView alloc] initWithTitle:@"Internet Connection"
+                                                                     message:@"Not success Internet connection"
+                                                                    delegate:self
+                                                           cancelButtonTitle:@"Ok"
+                                                           otherButtonTitles:nil];
+        [connectFailMessage show];
+    }
+}
+
+- (void)getQuestionListFrom10
+{
+    self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/question"];
+    
+    self.checkRequest = kQuestions;
+    
+    //створюемо запит
+    self.request = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
+    
+    //вказуэм протокол доступу
+    [self.request setHTTPMethod:@"POST"];
+    
+    //вказуэм параметри POST запиту
+    self.params = [NSMutableString stringWithFormat:@"operation=%@", @"list"];
+    [self.params appendFormat:@"&lang=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
+    [self.params appendFormat:@"&token=%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"authorization_Token"]];
+    
+    //вказуэм тіло запиту
+    [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    //перевірка наявності інету
+    if (checkConnection.hasConnectivity) {
+        //створюєм з'єднання і начинаєм загрузку
+        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self];
+        
+        //перевірка з'єднання
+        if (connection) {
+            NSLog(@"З'єднання почалось");
+            self.receivedData = [[NSMutableData alloc] init];
+            
+            CFDictionaryAddValue(self.connectionToInfoMapping, CFBridgingRetain(connection), CFBridgingRetain([NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInt:self.checkRequest] forKey:@"requestType"]));
+        }
+        else
+        {
+            //якщо з'єднання нема
+            // Inform the user that the connection failed.
+            NSLog(@"Помилка з'єднання");
+            UIAlertView *connectFailMessage = [[UIAlertView alloc] initWithTitle:@"URL Connection"
+                                                                         message:@"Not success URL connection"
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"Ok"
+                                                               otherButtonTitles:nil];
+            [connectFailMessage show];
+        }
+    }
+    else
+    {
+        //якщо інету нема
+        
+        [SVProgressHUD showErrorWithStatus:@"Not success Internet connection"];
+        
+        UIAlertView *connectFailMessage = [[UIAlertView alloc] initWithTitle:@"Internet Connection"
+                                                                     message:@"Not success Internet connection"
+                                                                    delegate:self
+                                                           cancelButtonTitle:@"Ok"
+                                                           otherButtonTitles:nil];
+        [connectFailMessage show];
+    }
+}
+
 - (void)checkCode:(NSString *)code
 {
     self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/code"];

@@ -74,6 +74,8 @@
 @synthesize logoBarImageView = _logoBarImageView;
 @synthesize logoBarTextImageView = _logoBarTextImageView;
 
+@synthesize complaintView = _complaintView;
+
 - (MSAPI *)api
 {
     if(!_api)
@@ -88,10 +90,8 @@
 {
     [super viewDidLoad];
     
-//    [self.tabBarInfo getInfo];
+//    [self.api getQuestionListFrom10];
     
-//    self.logoBarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 2, 35, 40)];
-//    [self.logoBarImageView setImage:[UIImage imageNamed:@"logo_color_35*40.png"]];
     //------------------------------------------------------
     self.logoBarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 2, 147, 40)];
     [self.logoBarImageView setImage:[UIImage imageNamed:@"logo_color_invert_40*147.png"]];
@@ -276,6 +276,8 @@
     self.userTouchTimer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(touchDelay) userInfo:nil repeats:NO];
 }
 
+#pragma mark working with camera and processing photo
+
 //зробити фото коду
 - (void)takePhoto:(UIButton *)sender
 {
@@ -343,6 +345,165 @@
         
         [cameraNotAvailableMessage show];
     }
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *img = [info objectForKey:UIImagePickerControllerOriginalImage];
+    
+    NSLog(@"Picture width: %f", img.size.width);
+    NSLog(@"Picture hight: %f", img.size.height);
+    
+    UIImage *tempImage = [self cropImage:[info objectForKey:UIImagePickerControllerOriginalImage] withX:(self.screenWidth - self.frameMarkWidth)/2 withY:(self.screenHeight - 54 - self.frameMarkHeight)/2 withWidth:self.frameMarkWidth withHeight:self.frameMarkHeight];
+    
+    //------------------------------
+    NSString *recognizedText = [NSString stringWithString:[self recognizeImage:tempImage]];
+    
+    NSLog(@"%@", recognizedText);
+    
+    recognizedText = [recognizedText stringByReplacingOccurrencesOfString:@" " withString:@""];
+    recognizedText = [recognizedText stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    //розкоментити код нище для додавання тире між цифрами
+    //------------------------------------------------------------------
+    //    NSMutableArray *substringsArray = [[NSMutableArray alloc] init];
+    //    NSRange substringRange;
+    //    for (int i = 0; i < recognizedText.length; i++) {
+    //        if (i%4 == 0) {
+    //            NSLog(@"%d", i);
+    //            substringRange.location = i;
+    //            substringRange.length = 4;
+    //            [substringsArray addObject:[recognizedText substringWithRange:substringRange]];
+    //        }
+    //    }
+    //
+    //    NSMutableString *combiningString = [NSMutableString stringWithFormat:@"%@", [substringsArray objectAtIndex:0]];
+    //    for (int i = 1; i < substringsArray.count; i++) {
+    //        [combiningString appendFormat:@"-%@", [substringsArray objectAtIndex:i]];
+    //    }
+    //------------------------------------------------------------------
+    
+    [self.codeTextField setText:[self filtringCode:recognizedText]];
+    
+    //------------------------------
+    
+    [imagePickerController dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    
+    [imagePickerController dismissViewControllerAnimated:YES completion:NULL];
+}
+
+static inline double radians (double degrees)
+{
+    return degrees * M_PI/180;
+}
+
+//обрізка фото
+- (UIImage *)cropImage:(UIImage *)image withX:(CGFloat)x withY:(CGFloat)y withWidth:(CGFloat)cropWidth withHeight:(CGFloat)cropHeight
+{
+    CGImageRef imageRef = [image CGImage];
+	CGImageAlphaInfo alphaInfo = CGImageGetAlphaInfo(imageRef);
+	CGColorSpaceRef colorSpaceInfo = CGColorSpaceCreateDeviceRGB();
+	
+	if (alphaInfo == kCGImageAlphaNone)
+		alphaInfo = kCGImageAlphaNoneSkipLast;
+	
+	CGFloat width, height;
+    
+	width = [image size].width;
+	height = [image size].height;
+    
+    NSLog(@"%f", image.size.width);
+    NSLog(@"%f", image.size.height);
+	
+	CGContextRef bitmap;
+	
+	if (image.imageOrientation == UIImageOrientationUp | image.imageOrientation == UIImageOrientationDown) {
+		bitmap = CGBitmapContextCreate(NULL, width, height, CGImageGetBitsPerComponent(imageRef), CGImageGetBytesPerRow(imageRef), colorSpaceInfo, alphaInfo);
+		
+	} else {
+		bitmap = CGBitmapContextCreate(NULL, height, width, CGImageGetBitsPerComponent(imageRef), CGImageGetBytesPerRow(imageRef), colorSpaceInfo, alphaInfo);
+		
+	}
+	
+	if (image.imageOrientation == UIImageOrientationLeft) {
+		NSLog(@"image orientation left");
+		CGContextRotateCTM (bitmap, radians(90));
+		CGContextTranslateCTM (bitmap, 0, -height);
+		
+	} else if (image.imageOrientation == UIImageOrientationRight) {
+		NSLog(@"image orientation right");
+		CGContextRotateCTM (bitmap, radians(-90));
+		CGContextTranslateCTM (bitmap, -width, 0);
+		
+	} else if (image.imageOrientation == UIImageOrientationUp) {
+		NSLog(@"image orientation up");
+		
+	} else if (image.imageOrientation == UIImageOrientationDown) {
+		NSLog(@"image orientation down");
+		CGContextTranslateCTM (bitmap, width,height);
+		CGContextRotateCTM (bitmap, radians(-180.));
+		
+	}
+	
+	CGContextDrawImage(bitmap, CGRectMake(0, 0, width, height), imageRef);
+    
+    CGFloat koefForWidth, koefForHeight;
+    
+    koefForWidth = 8.1;
+    koefForHeight = 4.5;
+    
+    CGRect rect;
+    rect.origin.x = x * koefForWidth;
+    rect.origin.y = y * koefForHeight;
+    rect.size.width = cropWidth * koefForWidth;
+    rect.size.height = cropHeight * koefForHeight;
+    
+	CGImageRef ref = CGBitmapContextCreateImage(bitmap);
+    
+	UIImage *result = [UIImage imageWithCGImage:ref];
+    
+    CGImageRef resultRef = CGImageCreateWithImageInRect([result CGImage], rect);
+    UIImage *cropedImage = [UIImage imageWithCGImage:resultRef];
+	
+	CGContextRelease(bitmap);
+	CGImageRelease(ref);
+    
+    NSLog(@"Croped image size: %f * %f", cropedImage.size.width, cropedImage.size.height);
+    
+	return cropedImage;
+}
+
+//роспізнавання коду
+- (NSString *)recognizeImage:(UIImage *)image
+{
+    Tesseract* tesseract = [[Tesseract alloc] initWithDataPath:@"tessdata" language:@"eng"];
+    [tesseract setImage:image];
+    [tesseract recognize];
+    
+    return [tesseract recognizedText];
+}
+
+//фільтрування коду
+- (NSString *)filtringCode:(NSString *)code
+{
+    NSMutableString *filtredString = [[NSMutableString alloc] init];
+    
+    for (int i = 0; i < code.length; i++) {
+        unichar ch = [code characterAtIndex:i];
+        if ((ch >= 48 && ch <= 57) || (ch >= 65 && ch <= 90) || ch == 45 || ch == 8212 || ch == 8211)
+        {
+            if (ch == 8212) {
+                ch = 45;
+            }
+            NSLog(@"%@", [NSString stringWithFormat:@"%c", ch]);
+            [filtredString appendString:[NSString stringWithFormat:@"%c", ch]];
+        }
+    }
+    
+    return filtredString;
 }
 
 //перевірка коду
@@ -433,12 +594,13 @@
     [UIView animateWithDuration:0.5 animations:^{
         [self.backAlphaView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
     } completion:^(BOOL finished) {
-        [self.dialogView setFrame:CGRectMake(5, ([[UIScreen mainScreen] bounds].size.height - self.dialogView.frame.size.height)/2 - 54, 310, 350)];
+        [self.dialogView setFrame:CGRectMake(5, ([[UIScreen mainScreen] bounds].size.height - self.dialogView.frame.size.height)/2 - 54, 310, 295)];
 //        [self.mainFishkaImageView setFrame:CGRectMake(56, ([[UIScreen mainScreen] bounds].size.height - self.dialogView.frame.size.height)/2 - 54 - 4, 198, 33)];
         [self.dialogView attachPopUpAnimationForView:self.dialogView];
         
         [self.dialogView.closeButton addTarget:self action:@selector(closeDialogView) forControlEvents:UIControlEventTouchUpInside];
         [self.dialogView.okButton addTarget:self action:@selector(closeDialogView) forControlEvents:UIControlEventTouchUpInside];
+        [self.dialogView.complaint addTarget:self action:@selector(showComplaintView) forControlEvents:UIControlEventTouchUpInside];
     }];
     
 }
@@ -456,6 +618,68 @@
     [self.scrollView insertSubview:self.backAlphaView atIndex:0];
 }
 
+- (void)closeComplaintView
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        [self.backAlphaView setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.0]];
+        [self.complaintView setAlpha:0];
+    } completion:^(BOOL finished) {
+        [self.backAlphaView removeFromSuperview];
+        [self.complaintView removeFromSuperview];
+    }];
+}
+
+- (void)showComplaintView
+{        
+    [UIView animateWithDuration:0.5 animations:^{
+        [self.dialogView setAlpha:0];
+    } completion:^(BOOL finished) {
+        self.complaintView = [[MSComplaintView alloc] initWithFrame:CGRectMake(5, ([[UIScreen mainScreen] bounds].size.height - 311)/2 - 54, 310, 311)];
+        [self.complaintView setDelegate:self];
+        [self.view addSubview:self.complaintView];
+        [self.complaintView attachPopUpAnimationForView:self.complaintView];
+        [self.dialogView removeFromSuperview];
+        
+        [self.complaintView.cancelButton addTarget:self action:@selector(closeComplaintView) forControlEvents:UIControlEventTouchUpInside];
+        [self.complaintView.closeButton addTarget:self action:@selector(closeComplaintView) forControlEvents:UIControlEventTouchUpInside];
+        [self.complaintView.sendComplaintButton addTarget:self action:@selector(sendComplaint) forControlEvents:UIControlEventTouchUpInside];
+    }];
+}
+
+- (void)sendComplaint
+{
+    if ([self.complaintView.productTextField text] != nil && [self.complaintView.codeTextField text] != nil && [self.complaintView.locationTextField text] != nil && [self.complaintView.commentTextView text] != nil) {
+        
+        [self.api sendComplaintForProduct:[self.complaintView.productTextField text]
+                                 withCode:[self.complaintView.codeTextField text]
+                             withLocation:[self.complaintView.locationTextField text]
+                              withComment:[self.complaintView.commentTextView text]
+                                withImage:[self.complaintView.productImageButton backgroundImageForState:UIControlStateNormal]
+                            withImageName:@"productImage"];
+    }
+    else
+    {
+        UIAlertView *complaintError = [[UIAlertView alloc] initWithTitle:@"Ошибка жалобы"
+                                                                 message:@"Заполныте все поля!"
+                                                                delegate:nil cancelButtonTitle:@"OK"
+                                                       otherButtonTitles:nil, nil];
+        [complaintError show];
+    }
+}
+
+- (void)startCameraWithImagePickerController:(UIImagePickerController *)pickerController
+{
+    [self presentViewController:pickerController animated:YES completion:^{
+        
+    }];
+
+}
+
+- (void)closeCameraWithImagePickerController:(UIImagePickerController *)pickerController
+{
+    [pickerController dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark finishedWithDictionary:withTypeRequest:
 
 - (void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
@@ -468,13 +692,13 @@
             NSLog(@"valid");
             
             if ([[UIScreen mainScreen] bounds].size.height == 568) {
-                self.dialogView = [[MSDialogView alloc] initWithFrame:CGRectMake(5, 568, 310, 350)];
+                self.dialogView = [[MSDialogView alloc] initWithFrame:CGRectMake(5, 568, 310, 295)];
                 
                 self.backAlphaView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)];
             }
             else
             {
-                self.dialogView = [[MSDialogView alloc] initWithFrame:CGRectMake(5, 480, 310, 350)];
+                self.dialogView = [[MSDialogView alloc] initWithFrame:CGRectMake(5, 480, 310, 295)];
                 
                 self.backAlphaView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
                 
@@ -652,6 +876,23 @@
         [self.newsScrollView.layer setCornerRadius:5.0];
         self.newsPageControl.numberOfPages = arrayOfNews.count;
     }
+    if (type == kQuestions) {
+        NSLog(@"");
+    }
+    if (type == kComplaint) {
+        if ([[dictionary valueForKey:@"status"] isEqualToString:@"ok"])
+        {
+            [self closeComplaintView];
+        }
+        else
+        {
+            UIAlertView *authorisationError = [[UIAlertView alloc] initWithTitle:[[dictionary valueForKey:@"message"] valueForKey:@"title"]
+                                                                         message:[[dictionary valueForKey:@"message"] valueForKey:@"text"]
+                                                                        delegate:nil cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil, nil];
+            [authorisationError show];
+        }
+    }
 }
 
 - (void)didSelectTabBarItem:(UITabBarItem *)item
@@ -661,168 +902,13 @@
     }
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{    
-    UIImage *img = [info objectForKey:UIImagePickerControllerOriginalImage];
-    
-    NSLog(@"Picture width: %f", img.size.width);
-    NSLog(@"Picture hight: %f", img.size.height);
-    
-    UIImage *tempImage = [self cropImage:[info objectForKey:UIImagePickerControllerOriginalImage] withX:(self.screenWidth - self.frameMarkWidth)/2 withY:(self.screenHeight - 54 - self.frameMarkHeight)/2 withWidth:self.frameMarkWidth withHeight:self.frameMarkHeight];
-    
-    //------------------------------
-    NSString *recognizedText = [NSString stringWithString:[self recognizeImage:tempImage]];
-    
-    NSLog(@"%@", recognizedText);
-    
-    recognizedText = [recognizedText stringByReplacingOccurrencesOfString:@" " withString:@""];
-    recognizedText = [recognizedText stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-    //розкоментити код нище для додавання тире між цифрами
-    //------------------------------------------------------------------
-//    NSMutableArray *substringsArray = [[NSMutableArray alloc] init];
-//    NSRange substringRange;
-//    for (int i = 0; i < recognizedText.length; i++) {
-//        if (i%4 == 0) {
-//            NSLog(@"%d", i);
-//            substringRange.location = i;
-//            substringRange.length = 4;
-//            [substringsArray addObject:[recognizedText substringWithRange:substringRange]];
-//        }
-//    }
-//    
-//    NSMutableString *combiningString = [NSMutableString stringWithFormat:@"%@", [substringsArray objectAtIndex:0]];
-//    for (int i = 1; i < substringsArray.count; i++) {
-//        [combiningString appendFormat:@"-%@", [substringsArray objectAtIndex:i]];
-//    }
-    //------------------------------------------------------------------
-    
-    [self.codeTextField setText:[self filtringCode:recognizedText]];
-        
-    //------------------------------
-    
-    [imagePickerController dismissViewControllerAnimated:YES completion:NULL];
-}
-
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
-    
-    [imagePickerController dismissViewControllerAnimated:YES completion:NULL];
-}
-
-static inline double radians (double degrees)
-{
-    return degrees * M_PI/180;
-}
-
-//обрізка фото
-- (UIImage *)cropImage:(UIImage *)image withX:(CGFloat)x withY:(CGFloat)y withWidth:(CGFloat)cropWidth withHeight:(CGFloat)cropHeight
-{
-    CGImageRef imageRef = [image CGImage];
-	CGImageAlphaInfo alphaInfo = CGImageGetAlphaInfo(imageRef);
-	CGColorSpaceRef colorSpaceInfo = CGColorSpaceCreateDeviceRGB();
-	
-	if (alphaInfo == kCGImageAlphaNone)
-		alphaInfo = kCGImageAlphaNoneSkipLast;
-	
-	CGFloat width, height;
-    
-	width = [image size].width;
-	height = [image size].height;
-    
-    NSLog(@"%f", image.size.width);
-    NSLog(@"%f", image.size.height);
-	
-	CGContextRef bitmap;
-	
-	if (image.imageOrientation == UIImageOrientationUp | image.imageOrientation == UIImageOrientationDown) {
-		bitmap = CGBitmapContextCreate(NULL, width, height, CGImageGetBitsPerComponent(imageRef), CGImageGetBytesPerRow(imageRef), colorSpaceInfo, alphaInfo);
-		
-	} else {
-		bitmap = CGBitmapContextCreate(NULL, height, width, CGImageGetBitsPerComponent(imageRef), CGImageGetBytesPerRow(imageRef), colorSpaceInfo, alphaInfo);
-		
-	}
-	
-	if (image.imageOrientation == UIImageOrientationLeft) {
-		NSLog(@"image orientation left");
-		CGContextRotateCTM (bitmap, radians(90));
-		CGContextTranslateCTM (bitmap, 0, -height);
-		
-	} else if (image.imageOrientation == UIImageOrientationRight) {
-		NSLog(@"image orientation right");
-		CGContextRotateCTM (bitmap, radians(-90));
-		CGContextTranslateCTM (bitmap, -width, 0);
-		
-	} else if (image.imageOrientation == UIImageOrientationUp) {
-		NSLog(@"image orientation up");
-		
-	} else if (image.imageOrientation == UIImageOrientationDown) {
-		NSLog(@"image orientation down");
-		CGContextTranslateCTM (bitmap, width,height);
-		CGContextRotateCTM (bitmap, radians(-180.));
-		
-	}
-	
-	CGContextDrawImage(bitmap, CGRectMake(0, 0, width, height), imageRef);
-    
-    CGFloat koefForWidth, koefForHeight;
-    
-    koefForWidth = 8.1;
-    koefForHeight = 4.5;
-    
-    CGRect rect;
-    rect.origin.x = x * koefForWidth;
-    rect.origin.y = y * koefForHeight;
-    rect.size.width = cropWidth * koefForWidth;
-    rect.size.height = cropHeight * koefForHeight;
-    
-	CGImageRef ref = CGBitmapContextCreateImage(bitmap);
-    
-	UIImage *result = [UIImage imageWithCGImage:ref];
-    
-    CGImageRef resultRef = CGImageCreateWithImageInRect([result CGImage], rect);
-    UIImage *cropedImage = [UIImage imageWithCGImage:resultRef];
-	
-	CGContextRelease(bitmap);
-	CGImageRelease(ref);
-    
-    NSLog(@"Croped image size: %f * %f", cropedImage.size.width, cropedImage.size.height);
-    	
-	return cropedImage;
-}
-
-//роспізнавання коду
-- (NSString *)recognizeImage:(UIImage *)image
-{    
-    Tesseract* tesseract = [[Tesseract alloc] initWithDataPath:@"tessdata" language:@"eng"];
-    [tesseract setImage:image];
-    [tesseract recognize];
-    
-    return [tesseract recognizedText];
-}
-
-//фільтрування коду
-- (NSString *)filtringCode:(NSString *)code
-{
-    NSMutableString *filtredString = [[NSMutableString alloc] init];
-    
-    for (int i = 0; i < code.length; i++) {
-        unichar ch = [code characterAtIndex:i];
-        if ((ch >= 48 && ch <= 57) || (ch >= 65 && ch <= 90) || ch == 45 || ch == 8212 || ch == 8211)
-        {
-            if (ch == 8212) {
-                ch = 45;
-            }
-            NSLog(@"%@", [NSString stringWithFormat:@"%c", ch]);
-            [filtredString appendString:[NSString stringWithFormat:@"%c", ch]];
-        }
-    }
-    
-    return filtredString;
-}
-
 - (void)didTapAnywhere:(UITapGestureRecognizer*)recognizer
 {
     [self.codeTextField resignFirstResponder];
+    [self.complaintView.productTextField resignFirstResponder];
+    [self.complaintView.codeTextField resignFirstResponder];
+    [self.complaintView.locationTextField resignFirstResponder];
+    [self.complaintView.commentTextView resignFirstResponder];
 }
 
 - (void)keyboardWillShow:(NSNotification *)note

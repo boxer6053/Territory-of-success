@@ -10,8 +10,9 @@
 #import "MSAPI.h"
 #import "MSDialogView.h"
 #import "MSLogInView.h"
+#import "MSComplaintView.h"
 
-@interface MSFirstViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, UITextFieldDelegate, WsCompleteDelegate, dismissView>
+@interface MSFirstViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, UITextFieldDelegate, WsCompleteDelegate, dismissView, MSComplaintViewDelegate>
 {
     UIImagePickerController *imagePickerController;
 }
@@ -32,6 +33,7 @@
 //@property (strong, nonatomic) UIImageView *mainFishkaImageView;
 @property (strong, nonatomic) UILabel *mainFishkaLabel;
 @property (strong, nonatomic) UIView *backAlphaView;
+@property (strong, nonatomic) MSComplaintView *complaintView;
 
 @property (nonatomic, strong) UIImageView *logoBarImageView;
 @property (nonatomic, strong) UIImageView *logoBarTextImageView;
