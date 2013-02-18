@@ -8,6 +8,12 @@
 
 #import "MSComplaintView.h"
 
+@interface MSComplaintView()
+
+@property (nonatomic) CGRect selfRect;
+
+@end
+
 @implementation MSComplaintView
 
 @synthesize contentView = _contentView;
@@ -26,11 +32,14 @@
 @synthesize productImageButton = _productImageButton;
 @synthesize delegate = _delegate;
 @synthesize imagePickerController = _imagePickerController;
+@synthesize selfRect = _selfRect;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
+        self.selfRect = self.frame;
         
         //колір фонової view
         [self setBackgroundColor:[UIColor clearColor]];
@@ -82,7 +91,7 @@
         self.productTextField.font = [UIFont fontWithName:@"Helvetica" size:12.0];
         [self.productTextField setContentVerticalAlignment:UIControlContentHorizontalAlignmentCenter];
         [self.productTextField setPlaceholder:@"Название продукта"];
-        [self.productTextField setDelegate:self];
+//        [self.productTextField setDelegate:self];
         [self.contentView addSubview:self.productTextField];
                 
         //textField коду
@@ -91,7 +100,7 @@
         self.codeTextField.font = [UIFont fontWithName:@"Helvetica" size:12.0];
         [self.codeTextField setContentVerticalAlignment:UIControlContentHorizontalAlignmentCenter];
         [self.codeTextField setPlaceholder:@"Код на упаковке"];
-        [self.codeTextField setDelegate:self];
+//        [self.codeTextField setDelegate:self];
         [self.contentView addSubview:self.codeTextField];
                 
         //textField location
@@ -100,7 +109,7 @@
         self.locationTextField.font = [UIFont fontWithName:@"Helvetica" size:12.0];
         [self.locationTextField setContentVerticalAlignment:UIControlContentHorizontalAlignmentCenter];
         [self.locationTextField setPlaceholder:@"Место покупки"];
-        [self.locationTextField setDelegate:self];
+//        [self.locationTextField setDelegate:self];
         [self.contentView addSubview:self.locationTextField];
         
         //comment textView
@@ -110,7 +119,7 @@
         [self.commentTextView.layer setBorderColor:[[UIColor colorWithWhite:0.5 alpha:1.0] CGColor]];
         [self.commentTextView setText:@"Напышыте коментарий к жалобе!"];
         [self.commentTextView setTextColor:[UIColor lightGrayColor]];
-        [self.commentTextView setDelegate:self];
+//        [self.commentTextView setDelegate:self];
         self.commentTextView.returnKeyType = UIReturnKeyDone;
         [self.contentView addSubview:self.commentTextView];
                 
@@ -149,6 +158,16 @@
     if([textView.text isEqualToString:@"Напышыте коментарий к жалобе!"])
         textView.text = @"";
     textView.textColor = [UIColor blackColor];
+    if ([[UIScreen mainScreen] bounds].size.height == 568)
+    {
+        [UIView animateWithDuration:0.25 animations:^{
+            [self setFrame:CGRectMake(self.frame.origin.x, 0, self.frame.size.width, self.frame.size.height)];
+        }];
+    }
+    else
+    {
+        
+    }
     
     return YES;
 }
@@ -158,6 +177,16 @@
     if ([textView.text isEqualToString:@""]){
         textView.text = @"Напышыте коментарий к жалобе!";
         textView.textColor = [UIColor lightGrayColor];
+    }
+    
+    if ([[UIScreen mainScreen] bounds].size.height == 568) {
+        [UIView animateWithDuration:0.25 animations:^{
+            [self setFrame:CGRectMake(self.frame.origin.x, self.selfRect.origin.y, self.frame.size.width, self.frame.size.height)];
+        }];
+    }
+    else
+    {
+        
     }
 }
 

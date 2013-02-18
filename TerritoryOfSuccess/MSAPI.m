@@ -33,7 +33,7 @@
 }
 
 - (void)sendComplaintForProduct:(NSString *)product withCode:(NSString *)code withLocation:(NSString *)location withComment:(NSString *)comment withImage:(UIImage *)image withImageName:(NSString *)imageName
-{
+{    
     self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/complaint"];
     
     self.checkRequest = kComplaint;
@@ -647,8 +647,17 @@
     NSLog(@"%@", errorString);
     
     self.connectionInfo = CFBridgingRelease(CFDictionaryGetValue(self.connectionToInfoMapping, CFBridgingRetain(connection)));
-    [self.delegate finishedWithError:error TypeRequest:[[self.connectionInfo objectForKey:@"requestType" ] integerValue]];
-    
+    @try {
+        [self.delegate finishedWithError:error TypeRequest:[[self.connectionInfo objectForKey:@"requestType" ] integerValue]];
+    }
+    @catch (NSException *exception) {
+        UIAlertView *connectFailMessage = [[UIAlertView alloc] initWithTitle:@"Internet Connection"
+                                                                     message:@"Not success Internet connection"
+                                                                    delegate:self
+                                                           cancelButtonTitle:@"Ok"
+                                                           otherButtonTitles:nil];
+        [connectFailMessage show];
+    }
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
 
@@ -668,6 +677,9 @@
     [self.delegate finishedWithDictionary:receivedDictionary withTypeRequest:[[self.connectionInfo objectForKey:@"requestType"] intValue]];
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    
+    [SVProgressHUD showSuccessWithStatus:@"OK"];
+
 }
 
 @end
