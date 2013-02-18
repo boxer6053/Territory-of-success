@@ -863,33 +863,33 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="iQz-dm-XRu">
                                 <rect key="frame" x="20" y="31" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="efW-aX-cXv">
                                 <rect key="frame" x="20" y="139" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="xtW-gz-fTk">
                                 <rect key="frame" x="20" y="247" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="uCM-eZ-5BX">
                                 <rect key="frame" x="200" y="31" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="RtS-BV-zQH">
                                 <rect key="frame" x="200" y="139" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="EuY-Sv-Utn">
                                 <rect key="frame" x="200" y="247" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pNu-G9-IJC">
                                 <rect key="frame" x="124" y="319" width="73" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Ask" backgroundImage="button55*30.png">
+                                <state key="normal" title="Ask" backgroundImage="button_185_45.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
@@ -912,6 +912,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="askButton" destination="pNu-G9-IJC" id="Qfx-rA-fNm"/>
                         <outlet property="productView1" destination="iQz-dm-XRu" id="1a1-fh-x1Z"/>
                         <outlet property="productView2" destination="uCM-eZ-5BX" id="yqA-4b-Fh2"/>
                         <outlet property="productView3" destination="efW-aX-cXv" id="3DU-sq-YeD"/>
@@ -1342,7 +1343,6 @@
     <resources>
         <image name="3star.png" width="87" height="20"/>
         <image name="Profile-Picture_40*28_white.png" width="40" height="28"/>
-        <image name="button55*30.png" width="55" height="30"/>
         <image name="button_185_45.png" width="185" height="45"/>
         <image name="button_300*43.png" width="300" height="43"/>
         <image name="button_310_32-1.png" width="310" height="32"/>
@@ -1416,6 +1416,7 @@
             <relationships>
                 <relationship kind="action" name="addMoreProduct:"/>
                 <relationship kind="action" name="startButton:"/>
+                <relationship kind="outlet" name="askButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="productView1" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="productView2" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="productView3" candidateClass="UIImageView"/>

@@ -28,7 +28,8 @@
 @synthesize gettedImages = _gettedImages;
 @synthesize api = _api;
 @synthesize receivedData = _receivedData;
-
+@synthesize upperID = _upperID;
+@synthesize askButton = _askButton;
 - (MSAPI *) api{
     if(!_api){
         _api = [[MSAPI alloc]init];
@@ -62,7 +63,11 @@
         [[self.arrayOfProducts objectAtIndex:i] setImage:[UIImage imageNamed:@"bag.png"]];
     }
     
-    
+    if ([[UIScreen mainScreen] bounds].size.height == 568)
+    {
+        self.askButton.frame = CGRectMake(40, 400, 250, 32);
+    }
+
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
@@ -77,6 +82,12 @@
 {
     MSAskViewController *avc = [segue destinationViewController];
     avc.delegate = self;
+    
+    if([segue.identifier isEqualToString:@"pickAProduct"]){
+        MSAskViewController *controller = (MSAskViewController *)segue.destinationViewController;
+        controller.defaultID = self.upperID;
+        NSLog(@"gonna be id %d", self.upperID   );
+    }
 }
 - (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer {
     NSLog(@"tap");
@@ -96,7 +107,10 @@
     }
     
 }
-
+-(void)setUpperId:(int)upperId
+{
+    self.upperID = upperId;
+}
 -(void)addImageURL:(NSString *)string
 {
     [self.gettedImages addObject:string];

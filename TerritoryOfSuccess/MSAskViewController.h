@@ -11,16 +11,19 @@
 @protocol AddingRequestStringDelegate <NSObject>
 -(void)addProduct:(NSString *)string withURL:(NSString *)ulr;
 -(void)addImageURL:(NSString *)string;
+-(void)setUpperId:(int)upperId;
 @end
 
 @interface MSAskViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, WsCompleteDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableOfCategories;
 @property (nonatomic) id translatingValue;
+@property (nonatomic) int defaultID;
 @property (weak, nonatomic) NSURL *translatingUrl;
 @property (weak, nonatomic) NSString *sendingTitle;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *upButton;
 @property (strong, nonatomic) id <AddingRequestStringDelegate> delegate;
 @property (nonatomic) NSInteger upperID;
+@property (nonatomic) int finalID;
 @property (strong, nonatomic) NSMutableString *requestItemsString;
 @property (nonatomic) BOOL isAuthorized;
 
