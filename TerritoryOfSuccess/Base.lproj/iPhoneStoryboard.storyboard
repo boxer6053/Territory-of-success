@@ -728,7 +728,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9Ii-AZ-dCD">
-                                <rect key="frame" x="5" y="20" width="310" height="32"/>
+                                <rect key="frame" x="5" y="95" width="310" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Опросники" backgroundImage="button_310_32-1.png">
@@ -742,22 +742,17 @@
                                     <segue destination="XDR-nH-Zyd" kind="push" identifier="toInquirers" id="zm2-Yt-p04"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ZHN-GQ-oad">
-                                <rect key="frame" x="5" y="60" width="310" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Вопросы о товарах" backgroundImage="button_310_32-1.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="inquirerPic.png" id="s3J-Hl-xuL">
                                 <rect key="frame" x="20" y="163" width="280" height="220"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Создайте опросник чтобы узнать, как люди оценивают выбранный Вами продукт" textAlignment="center" id="M1S-nw-nJD">
+                                <rect key="frame" x="15" y="20" width="285" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPS-ItalicMT" family="Times New Roman" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -820,7 +815,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mHa-AF-by9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1880" y="350"/>
+            <point key="canvasLocation" x="1324" y="342"/>
         </scene>
         <!--Inquirer Detail View Controller-->
         <scene sceneID="qDi-WC-Aap">
@@ -851,7 +846,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NPl-TN-7Hd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2369" y="350"/>
+            <point key="canvasLocation" x="1813" y="342"/>
         </scene>
         <!--Create Question View Controller-->
         <scene sceneID="qBn-0V-Ldb">
@@ -861,30 +856,6 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="iQz-dm-XRu">
-                                <rect key="frame" x="20" y="31" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="efW-aX-cXv">
-                                <rect key="frame" x="20" y="139" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="xtW-gz-fTk">
-                                <rect key="frame" x="20" y="247" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="uCM-eZ-5BX">
-                                <rect key="frame" x="200" y="31" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="RtS-BV-zQH">
-                                <rect key="frame" x="200" y="139" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="EuY-Sv-Utn">
-                                <rect key="frame" x="200" y="247" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pNu-G9-IJC">
                                 <rect key="frame" x="124" y="319" width="73" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -900,6 +871,13 @@
                                     <action selector="startButton:" destination="gib-UJ-LPj" eventType="touchUpInside" id="DC8-Oc-efS"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Выберите продукты" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gh6-OG-W9P">
+                                <rect key="frame" x="79" y="10" width="162" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -913,17 +891,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="askButton" destination="pNu-G9-IJC" id="Qfx-rA-fNm"/>
-                        <outlet property="productView1" destination="iQz-dm-XRu" id="1a1-fh-x1Z"/>
-                        <outlet property="productView2" destination="uCM-eZ-5BX" id="yqA-4b-Fh2"/>
-                        <outlet property="productView3" destination="efW-aX-cXv" id="3DU-sq-YeD"/>
-                        <outlet property="productView4" destination="RtS-BV-zQH" id="s6U-vR-hhj"/>
-                        <outlet property="productView5" destination="xtW-gz-fTk" id="ZsL-aB-guS"/>
-                        <outlet property="productView6" destination="EuY-Sv-Utn" id="G0j-Yq-yf1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RXH-jk-oBd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2374" y="949"/>
+            <point key="canvasLocation" x="1818" y="941"/>
         </scene>
         <!--Sub Catalogue View Controller - Продукты-->
         <scene sceneID="Uvl-TC-9RE">
@@ -1318,7 +1290,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZt-ZS-LiA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2728" y="777"/>
+            <point key="canvasLocation" x="2282" y="941"/>
         </scene>
         <!--First Navigation Controller - Новости-->
         <scene sceneID="03Y-68-yoo">
@@ -1417,12 +1389,6 @@
                 <relationship kind="action" name="addMoreProduct:"/>
                 <relationship kind="action" name="startButton:"/>
                 <relationship kind="outlet" name="askButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="productView1" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="productView2" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="productView3" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="productView4" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="productView5" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="productView6" candidateClass="UIImageView"/>
             </relationships>
         </class>
         <class className="MSDetailViewController" superclassName="UIViewController">

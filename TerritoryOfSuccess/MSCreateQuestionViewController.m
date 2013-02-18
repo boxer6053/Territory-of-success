@@ -8,6 +8,7 @@
 
 #import "MSCreateQuestionViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <SDWebImage/UIButton+WebCache.h>
 
 
 @interface MSCreateQuestionViewController ()
@@ -17,12 +18,7 @@
 @end
 
 @implementation MSCreateQuestionViewController
-@synthesize productView1 = _productView1;
-@synthesize productView2 = _productView2;
-@synthesize productView3 = _productView3;
-@synthesize productView4 = _productView4;
-@synthesize productView5 = _productView5;
-@synthesize productView6 = _productView6;
+@synthesize arrayOfViews = _arrayOfViews;
 @synthesize arrayOfProducts = _arrayOfProducts;
 @synthesize requestString = _requestString;
 @synthesize gettedImages = _gettedImages;
@@ -30,6 +26,7 @@
 @synthesize api = _api;
 @synthesize receivedData = _receivedData;
 @synthesize upperID = _upperID;
+@synthesize savedIndex = _savedIndex;
 @synthesize askButton = _askButton;
 - (MSAPI *) api{
     if(!_api){
@@ -41,29 +38,61 @@
 
 - (void)viewDidLoad
 {
-    [self performSegueWithIdentifier:@"pickAProduct" sender:self];
+   // [self performSegueWithIdentifier:@"pickAProduct" sender:self];
     self.requestString = [[NSMutableString alloc] initWithString:@""];
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
-    [tap setNumberOfTapsRequired:1];
+    UIButton *image1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIButton *image2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIButton *image3 = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIButton *image4 = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIButton *image5 = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIButton *image6 = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    //фреймы для разных экранов (4 и 5 айфон)
+    if ([[UIScreen mainScreen] bounds].size.height == 568)
+    {
+        [image1 setFrame:CGRectMake(20, 58, 100, 100)];
+        [image2 setFrame:CGRectMake(200, 58, 100, 100)];
+        [image3 setFrame:CGRectMake(20, 168, 100, 100)];
+        [image4 setFrame:CGRectMake(200, 168, 100, 100)];
+        [image5 setFrame:CGRectMake(20, 278, 100, 100)];
+        [image6 setFrame:CGRectMake(200, 278, 100, 100)];
+        
+    }
+    else
+    {
+        
+        [image1 setFrame:CGRectMake(20, 36, 100, 100)];
+        [image2 setFrame:CGRectMake(200, 36, 100, 100)];
+        [image3 setFrame:CGRectMake(20, 146, 100, 100)];
+        [image4 setFrame:CGRectMake(200, 146, 100, 100)];
+        [image5 setFrame:CGRectMake(20, 256, 100, 100)];
+        [image6 setFrame:CGRectMake(200, 256, 100, 100)];
+    }
+
+    self.arrayOfViews = [[NSArray alloc] initWithObjects:image1,image2,image3,image4,image5,image6, nil];
+    for(int i=0;i<self.arrayOfViews.count;i++)
+    {
+        [[self.arrayOfViews objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"bag.png"] forState:UIControlStateNormal];
+        [[self.arrayOfViews objectAtIndex:i] addTarget:self action:@selector(assignAPicture:)forControlEvents:UIControlEventTouchUpInside ];
+        [[self.arrayOfViews objectAtIndex:i] setTag:i];
+        [self.view addSubview:[self.arrayOfViews objectAtIndex:i]];
+    }
+
+    
     
     self.gettedImages = [[NSMutableArray alloc] init];
-    [self.productView1 addGestureRecognizer:tap];
-    [self.productView2 addGestureRecognizer:tap];
-    [self.productView3 addGestureRecognizer:tap];
-    [self.productView4 addGestureRecognizer:tap];
-    [self.productView5 addGestureRecognizer:tap];
-    [self.productView6 addGestureRecognizer:tap];
+
     
     
-    self.arrayOfProducts = [[NSArray alloc] initWithObjects:self.productView1,self.productView2,self.productView3,self.productView4,self.productView5,self.productView6, nil];
-    for(int i=0;i<self.arrayOfProducts.count;i++)
-    {
-        // [[self.arrayOfProducts objectAtIndex:i] addGestureRecognizer:tap];
-        [[self.arrayOfProducts objectAtIndex:i] setUserInteractionEnabled:YES];
-        [[self.arrayOfProducts objectAtIndex:i] setImage:[UIImage imageNamed:@"bag.png"]];
-    }
-    
+//    self.arrayOfProducts = [[NSArray alloc] initWithObjects:self.productView1,self.productView2,self.productView3,self.productView4,self.productView5,self.productView6, nil];
+//    for(int i=0;i<self.arrayOfProducts.count;i++)
+//    {
+//        // [[self.arrayOfProducts objectAtIndex:i] addGestureRecognizer:tap];
+//        [[self.arrayOfProducts objectAtIndex:i] setUserInteractionEnabled:YES];
+//        [[self.arrayOfProducts objectAtIndex:i] setImage:[UIImage imageNamed:@"bag.png"]];
+//    }
+//    
     if ([[UIScreen mainScreen] bounds].size.height == 568)
     {
         self.askButton.frame = CGRectMake(40, 400, 250, 32);
@@ -74,6 +103,13 @@
 	// Do any additional setup after loading the view.
 }
 
+-(void)assignAPicture:(id)sender
+{
+    NSLog(@"TAP %d", [sender tag]);
+    self.savedIndex = [sender tag];
+    NSLog(@"Saved index =%d", self.savedIndex);
+    [self performSegueWithIdentifier:@"pickAProduct" sender:self];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -101,11 +137,14 @@
     NSLog(@"request String %@", self.requestString);
     
     NSLog(@"firstObject %@", [self.gettedImages objectAtIndex:0]);
-    for(int i=0;i<self.gettedImages.count;i++)
-    {
-        [[self.arrayOfProducts objectAtIndex:i] setUserInteractionEnabled:YES];
-        [[self.arrayOfProducts objectAtIndex:i] setImageWithURL:[self.gettedImages objectAtIndex:i]];
-    }
+//    for(int i=0;i<self.gettedImages.count;i++)
+//    {
+//        [[self.arrayOfProducts objectAtIndex:i] setUserInteractionEnabled:YES];
+//        [[self.arrayOfProducts objectAtIndex:i] setImageWithURL:[self.gettedImages objectAtIndex:i]];
+//    }
+    
+    NSURL *urll = [NSURL URLWithString:[ulr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    [[self.arrayOfViews objectAtIndex:self.savedIndex] setBackgroundImageWithURL:urll forState:UIControlStateNormal];
     
 }
 -(void)setUpperId:(int)upperId
