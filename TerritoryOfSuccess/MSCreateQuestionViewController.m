@@ -9,33 +9,68 @@
 #import "MSCreateQuestionViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
+
 @interface MSCreateQuestionViewController ()
+@property (strong, nonatomic) NSMutableData *receivedData;
+@property (strong, nonatomic) MSAPI *api;
 
 @end
 
 @implementation MSCreateQuestionViewController
-@synthesize titleLabel = _titleLabel;
-@synthesize productImage = _productImage;
-@synthesize textField = _textField;
-@synthesize productTitle = _productTitle;
-@synthesize imageURL = _imageURL;
-@synthesize delegate = _delegate;
-@synthesize tap = _tap;
-@synthesize sentArray = _sentArray;
-
-
+@synthesize productView1 = _productView1;
+@synthesize productView2 = _productView2;
+@synthesize productView3 = _productView3;
+@synthesize productView4 = _productView4;
+@synthesize productView5 = _productView5;
+@synthesize productView6 = _productView6;
+@synthesize arrayOfProducts = _arrayOfProducts;
+@synthesize requestString = _requestString;
+@synthesize gettedImages = _gettedImages;
+@synthesize response = _response;
+@synthesize api = _api;
+@synthesize receivedData = _receivedData;
+@synthesize upperID = _upperID;
+@synthesize askButton = _askButton;
+- (MSAPI *) api{
+    if(!_api){
+        _api = [[MSAPI alloc]init];
+        _api.delegate = self;
+    }
+    return _api;
+}
 
 - (void)viewDidLoad
 {
+    [self performSegueWithIdentifier:@"pickAProduct" sender:self];
+    self.requestString = [[NSMutableString alloc] initWithString:@""];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    [tap setNumberOfTapsRequired:1];
+    
+    self.gettedImages = [[NSMutableArray alloc] init];
+    [self.productView1 addGestureRecognizer:tap];
+    [self.productView2 addGestureRecognizer:tap];
+    [self.productView3 addGestureRecognizer:tap];
+    [self.productView4 addGestureRecognizer:tap];
+    [self.productView5 addGestureRecognizer:tap];
+    [self.productView6 addGestureRecognizer:tap];
+    
+    
+    self.arrayOfProducts = [[NSArray alloc] initWithObjects:self.productView1,self.productView2,self.productView3,self.productView4,self.productView5,self.productView6, nil];
+    for(int i=0;i<self.arrayOfProducts.count;i++)
+    {
+        // [[self.arrayOfProducts objectAtIndex:i] addGestureRecognizer:tap];
+        [[self.arrayOfProducts objectAtIndex:i] setUserInteractionEnabled:YES];
+        [[self.arrayOfProducts objectAtIndex:i] setImage:[UIImage imageNamed:@"bag.png"]];
+    }
+    
+    if ([[UIScreen mainScreen] bounds].size.height == 568)
+    {
+        self.askButton.frame = CGRectMake(40, 400, 250, 32);
+    }
+
+    
     [super viewDidLoad];
-
-    NSLog(@"HEEEE %@", _productTitle);
-    NSLog(@"HOOOO %@", _imageURL);
-    [_productImage setImageWithURL:_imageURL placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
-    _titleLabel.text = _productTitle;
-    _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapPressed:)];
-    [self.view addGestureRecognizer:_tap];
-
 	// Do any additional setup after loading the view.
 }
 
@@ -44,23 +79,70 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-- (IBAction)askQuestionButton:(id)sender {
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    MSAskViewController *avc = [segue destinationViewController];
+    avc.delegate = self;
     
-    _sentArray = [[NSMutableArray alloc] init];
-    NSString *name = @"Me";
-    NSString *question = _textField.text;
-    [_sentArray addObject:name];
-    [_sentArray addObject:question];
-    [self.delegate addNewQuestion:[self sentArray]];
-    [self dismissViewControllerAnimated:YES completion:nil];
-    NSLog(@"send question");
+    if([segue.identifier isEqualToString:@"pickAProduct"]){
+        MSAskViewController *controller = (MSAskViewController *)segue.destinationViewController;
+        controller.defaultID = self.upperID;
+        NSLog(@"gonna be id %d", self.upperID   );
+    }
 }
--(void)tapPressed:(UITapGestureRecognizer *)recognizer{
-    [_textField resignFirstResponder];
+- (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer {
+    NSLog(@"tap");
 }
+-(void)addProduct:(NSString *)string withURL:(NSString *)ulr
+{
+    [self.requestString appendString:@"&items[]="];
+    [self.requestString appendString:string];
+    [self.gettedImages addObject:ulr];
+    NSLog(@"request String %@", self.requestString);
+    
+    NSLog(@"firstObject %@", [self.gettedImages objectAtIndex:0]);
+    for(int i=0;i<self.gettedImages.count;i++)
+    {
+        [[self.arrayOfProducts objectAtIndex:i] setUserInteractionEnabled:YES];
+        [[self.arrayOfProducts objectAtIndex:i] setImageWithURL:[self.gettedImages objectAtIndex:i]];
+    }
+    
+}
+-(void)setUpperId:(int)upperId
+{
+    self.upperID = upperId;
+}
+-(void)addImageURL:(NSString *)string
+{
+    [self.gettedImages addObject:string];
+    NSLog(@"firstObject %@", [self.gettedImages objectAtIndex:0]);
+}
+- (IBAction)addMoreProduct:(id)sender {
+    [self performSegueWithIdentifier:@"pickAProduct" sender:self];
+}
+- (IBAction)startButton:(id)sender {
+    
+    [self.api createQuestionWithItems:self.requestString];
+}
+-(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
+{
+    if (type ==kCreateQuest)
+    {
+        self.response = [dictionary valueForKey:@"message"];
+        NSString *wantedString = @"!-- question-created --!";
+        NSLog(@"Result is %@", self.response);
+        if([self.response isEqualToString:wantedString])
+        {
+            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Успех" message:@"Опрос успешно создан!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
+            [failmessage show];
 
-- (IBAction)cancelAction:(id)sender {
-     [self dismissViewControllerAnimated:YES completion:nil];
+        }
+    else
+        {
+            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Произошла ошибка!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
+            [failmessage show];
+        }
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 @end

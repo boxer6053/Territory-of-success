@@ -753,9 +753,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="mc9-cG-NdE" kind="push" id="pVA-c4-ufE"/>
-                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="inquirerPic.png" id="s3J-Hl-xuL">
                                 <rect key="frame" x="20" y="163" width="280" height="220"/>
@@ -808,9 +805,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Опросы" id="Hdt-dX-Gwp">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="OPS-Dn-j0k"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="OPS-Dn-j0k">
+                            <connections>
+                                <segue destination="gib-UJ-LPj" kind="push" id="BzK-eT-NzE"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addQuestionButton" destination="OPS-Dn-j0k" id="zR8-lV-g3b"/>
                         <outlet property="inquirerTypeSegment" destination="uU7-wQ-Ng3" id="T94-9W-baF"/>
                         <outlet property="tableOfInquirers" destination="dGO-Bo-MLa" id="Gki-c3-qA4"/>
                         <segue destination="xlL-gh-fab" kind="push" identifier="toInquirerDetail" id="jsp-kh-fjf"/>
@@ -850,6 +852,78 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NPl-TN-7Hd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2369" y="350"/>
+        </scene>
+        <!--Create Question View Controller-->
+        <scene sceneID="qBn-0V-Ldb">
+            <objects>
+                <viewController id="gib-UJ-LPj" customClass="MSCreateQuestionViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KP8-v8-c3c">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="iQz-dm-XRu">
+                                <rect key="frame" x="20" y="31" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="efW-aX-cXv">
+                                <rect key="frame" x="20" y="139" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="xtW-gz-fTk">
+                                <rect key="frame" x="20" y="247" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="uCM-eZ-5BX">
+                                <rect key="frame" x="200" y="31" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="RtS-BV-zQH">
+                                <rect key="frame" x="200" y="139" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="EuY-Sv-Utn">
+                                <rect key="frame" x="200" y="247" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pNu-G9-IJC">
+                                <rect key="frame" x="124" y="319" width="73" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Ask" backgroundImage="button_185_45.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startButton:" destination="gib-UJ-LPj" eventType="touchUpInside" id="DC8-Oc-efS"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="hPp-RO-unh">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="bC2-FT-KTp">
+                            <connections>
+                                <action selector="addMoreProduct:" destination="gib-UJ-LPj" id="ok4-rF-abb"/>
+                                <segue destination="mc9-cG-NdE" kind="modal" identifier="pickAProduct" id="Zz3-Sf-in3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="askButton" destination="pNu-G9-IJC" id="Qfx-rA-fNm"/>
+                        <outlet property="productView1" destination="iQz-dm-XRu" id="1a1-fh-x1Z"/>
+                        <outlet property="productView2" destination="uCM-eZ-5BX" id="yqA-4b-Fh2"/>
+                        <outlet property="productView3" destination="efW-aX-cXv" id="3DU-sq-YeD"/>
+                        <outlet property="productView4" destination="RtS-BV-zQH" id="s6U-vR-hhj"/>
+                        <outlet property="productView5" destination="xtW-gz-fTk" id="ZsL-aB-guS"/>
+                        <outlet property="productView6" destination="EuY-Sv-Utn" id="G0j-Yq-yf1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RXH-jk-oBd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2374" y="949"/>
         </scene>
         <!--Sub Catalogue View Controller - Продукты-->
         <scene sceneID="Uvl-TC-9RE">
@@ -1342,10 +1416,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Title" id="GmM-9s-ilq">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="AyU-qB-9wC">
+                                    <navigationItem title="Title" id="0kr-2q-qV8">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ZnA-8E-mt0">
                                             <connections>
-                                                <action selector="cancelAction:" destination="Iaw-PT-elc" id="ohu-al-cYu"/>
+                                                <action selector="cancel:" destination="mc9-cG-NdE" id="C26-NG-DOR"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -1501,7 +1575,7 @@
                     <navigationItem key="navigationItem" id="TYQ-xS-iTH">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DNZ-CJ-gvn">
                             <connections>
-                                <segue destination="Iaw-PT-elc" kind="modal" identifier="toAskQuestion" modalTransitionStyle="flipHorizontal" id="X8z-DF-7z5"/>
+                                <action selector="upAction:" destination="mc9-cG-NdE" id="YGW-ZX-ugW"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1557,9 +1631,9 @@
                         <outlet property="answerField" destination="h1O-2Y-ybE" id="JMA-yH-8eC"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qOA-QF-10U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WZt-ZS-LiA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3916" y="1036"/>
+            <point key="canvasLocation" x="2728" y="777"/>
         </scene>
         <!--First Navigation Controller - Новости-->
         <scene sceneID="03Y-68-yoo">
@@ -1584,7 +1658,6 @@
     <resources>
         <image name="3star.png" width="87" height="20"/>
         <image name="Profile-Picture_40*28_white.png" width="40" height="28"/>
-        <image name="button_120*32.png" width="120" height="32"/>
         <image name="button_185_45.png" width="185" height="45"/>
         <image name="button_300*43.png" width="300" height="43"/>
         <image name="button_310_32-1.png" width="310" height="32"/>

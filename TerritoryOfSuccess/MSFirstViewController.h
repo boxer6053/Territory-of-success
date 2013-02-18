@@ -12,7 +12,7 @@
 #import "MSLogInView.h"
 #import "MSComplaintView.h"
 
-@interface MSFirstViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, UITextFieldDelegate, WsCompleteDelegate, dismissView, MSComplaintViewDelegate>
+@interface MSFirstViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, UITextFieldDelegate, UITextViewDelegate, WsCompleteDelegate, dismissView, MSComplaintViewDelegate>
 {
     UIImagePickerController *imagePickerController;
 }

@@ -38,6 +38,16 @@
 @property (nonatomic, strong) NSNotificationCenter *nc;
 @property (nonatomic, strong) UITextField *activeField;
 
+@property (nonatomic) CGRect complaintViewFrame;
+
+@property (nonatomic) BOOL isTextFieldEtiting;
+@property (nonatomic) BOOL isFromBeginEditing;
+
+@property (nonatomic) BOOL textViewBeginEditing;
+
+@property (nonatomic) int beginCount;
+@property (nonatomic) int endCount;
+
 @end
 
 @implementation MSFirstViewController
@@ -76,6 +86,16 @@
 
 @synthesize complaintView = _complaintView;
 
+@synthesize complaintViewFrame = _complaintViewFrame;
+
+@synthesize isTextFieldEtiting = _isTextFieldEtiting;
+@synthesize isFromBeginEditing = _isFromBeginEditing;
+
+@synthesize textViewBeginEditing = _textViewBeginEditing;
+
+@synthesize beginCount = _beginCount;
+@synthesize endCount = _endCount;
+
 - (MSAPI *)api
 {
     if(!_api)
@@ -90,7 +110,8 @@
 {
     [super viewDidLoad];
     
-//    [self.api getQuestionListFrom10];
+    self.beginCount = 0;
+    self.endCount = 0;
     
     //------------------------------------------------------
     self.logoBarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 2, 147, 40)];
@@ -585,7 +606,7 @@ static inline double radians (double degrees)
 
 - (void)showDialogView
 {
-    [SVProgressHUD showSuccessWithStatus:@"Ok"];
+//    [SVProgressHUD showSuccessWithStatus:@"Ok"];
     
     [self.sendCodeButton setEnabled:YES];
     
@@ -635,6 +656,7 @@ static inline double radians (double degrees)
         [self.dialogView setAlpha:0];
     } completion:^(BOOL finished) {
         self.complaintView = [[MSComplaintView alloc] initWithFrame:CGRectMake(5, ([[UIScreen mainScreen] bounds].size.height - 311)/2 - 54, 310, 311)];
+        self.complaintViewFrame = self.complaintView.frame;
         [self.complaintView setDelegate:self];
         [self.view addSubview:self.complaintView];
         [self.complaintView attachPopUpAnimationForView:self.complaintView];
@@ -643,12 +665,20 @@ static inline double radians (double degrees)
         [self.complaintView.cancelButton addTarget:self action:@selector(closeComplaintView) forControlEvents:UIControlEventTouchUpInside];
         [self.complaintView.closeButton addTarget:self action:@selector(closeComplaintView) forControlEvents:UIControlEventTouchUpInside];
         [self.complaintView.sendComplaintButton addTarget:self action:@selector(sendComplaint) forControlEvents:UIControlEventTouchUpInside];
+        
+        [self.complaintView.productTextField setDelegate:self];
+        [self.complaintView.codeTextField setDelegate:self];
+        [self.complaintView.locationTextField setDelegate:self];
+        
+        [self.complaintView.commentTextView setDelegate:self];
     }];
 }
 
 - (void)sendComplaint
 {
     if ([self.complaintView.productTextField text] != nil && [self.complaintView.codeTextField text] != nil && [self.complaintView.locationTextField text] != nil && [self.complaintView.commentTextView text] != nil) {
+        
+        [SVProgressHUD showWithStatus:@"Complaint sending..."];
         
         [self.api sendComplaintForProduct:[self.complaintView.productTextField text]
                                  withCode:[self.complaintView.codeTextField text]
@@ -974,6 +1004,11 @@ static inline double radians (double degrees)
         
         [self.scrollView setScrollEnabled:NO];
     }
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        [self.complaintView setFrame:CGRectMake(self.complaintView.frame.origin.x, self.complaintViewFrame.origin.y, self.complaintView.frame.size.width, self.complaintView.frame.size.height)];
+    }];
+    
     [self.view removeGestureRecognizer:self.tapRecognizer];
 }
 
@@ -986,8 +1021,63 @@ static inline double radians (double degrees)
 
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+    self.beginCount++;
+    
+//    self.isFromBeginEditing = YES;
+    self.isTextFieldEtiting = YES;
+    
     self.activeField = textField;
+    
+    self.complaintView.productTextField = textField;
+    
+    if (YES) {
+        if ([[UIScreen mainScreen] bounds].size.height == 480)
+        {
+            [UIView animateWithDuration:0.25 animations:^{
+                [self.complaintView setFrame:CGRectMake(self.complaintView.frame.origin.x, 0, self.complaintView.frame.size.width, self.complaintView.frame.size.height)];
+            }];
+            
+            self.isTextFieldEtiting = YES;
+        }
+        else
+        {
+            [UIView animateWithDuration:0.25 animations:^{
+                [self.complaintView setFrame:CGRectMake(self.complaintView.frame.origin.x, 0, self.complaintView.frame.size.width, self.complaintView.frame.size.height)];
+            }];
+        }
+    }
+    
     return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    self.endCount++;
+    
+    if (self.beginCount == self.endCount)
+    {
+        if ([[UIScreen mainScreen] bounds].size.height == 480 && self.textViewBeginEditing == NO) {
+            [UIView animateWithDuration:0.25 animations:^{
+                [self.complaintView setFrame:CGRectMake(self.complaintView.frame.origin.x, self.complaintViewFrame.origin.y, self.complaintView.frame.size.width, self.complaintView.frame.size.height)];
+            }];
+            
+            self.isTextFieldEtiting = NO;
+            
+            self.beginCount = 0;
+            self.endCount = 0;
+        }
+        else
+        {
+            if (self.textViewBeginEditing == NO) {
+                [UIView animateWithDuration:0.25 animations:^{
+                    [self.complaintView setFrame:CGRectMake(self.complaintView.frame.origin.x, self.complaintViewFrame.origin.y, self.complaintView.frame.size.width, self.complaintView.frame.size.height)];
+                }];
+            }
+        }
+    }
+    else
+    {
+    }
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
@@ -1042,6 +1132,79 @@ static inline double radians (double degrees)
     {
         return YES;
     }
+}
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
+{
+    self.textViewBeginEditing = YES;
+    
+    if([textView.text isEqualToString:@"Напышыте коментарий к жалобе!"])
+        textView.text = @"";
+    textView.textColor = [UIColor blackColor];
+    if ([[UIScreen mainScreen] bounds].size.height == 568)
+    {
+        [UIView animateWithDuration:0.25 animations:^{
+            [self.complaintView setFrame:CGRectMake(self.complaintView.frame.origin.x, 0, self.complaintView.frame.size.width, self.complaintView.frame.size.height)];
+        }];
+    }
+    else
+    {
+        [UIView animateWithDuration:0.25 animations:^{
+            [self.complaintView setFrame:CGRectMake(self.complaintView.frame.origin.x, -100, self.complaintView.frame.size.width, self.complaintView.frame.size.height)];
+        }];
+    }
+    
+    return YES;
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    self.textViewBeginEditing = NO;
+    
+    if ([textView.text isEqualToString:@""]){
+        textView.text = @"Напышыте коментарий к жалобе!";
+        textView.textColor = [UIColor lightGrayColor];
+    }
+    
+    if ([[UIScreen mainScreen] bounds].size.height == 568) {
+        if (self.isTextFieldEtiting == NO) {
+            [UIView animateWithDuration:0.25 animations:^{
+                [self.complaintView setFrame:CGRectMake(self.complaintView.frame.origin.x, self.complaintViewFrame.origin.y, self.complaintView.frame.size.width, self.complaintView.frame.size.height)];
+            }];
+        }
+    }
+    else
+    {
+        if (self.isTextFieldEtiting == NO) {
+            [UIView animateWithDuration:0.25 animations:^{
+                [self.complaintView setFrame:CGRectMake(self.complaintView.frame.origin.x, self.complaintViewFrame.origin.y, self.complaintView.frame.size.width, self.complaintView.frame.size.height)];
+            }];
+        }
+    }
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    NSCharacterSet *doneButtonCharacterSet = [NSCharacterSet newlineCharacterSet];
+    NSRange replacementTextRange = [text rangeOfCharacterFromSet:doneButtonCharacterSet];
+    NSUInteger location = replacementTextRange.location;
+    
+    if (textView.text.length + text.length > 140)
+    {
+        if (location != NSNotFound)
+        {
+            [textView resignFirstResponder];
+        }
+        return NO;
+    }
+    
+    else if (location != NSNotFound)
+    {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    
+    return YES;
 }
 
 @end

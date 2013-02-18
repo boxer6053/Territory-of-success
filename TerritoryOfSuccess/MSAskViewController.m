@@ -8,7 +8,7 @@
 
 #import "MSAskViewController.h"
 
-#import "MSQuiestionProductDetailViewController.h"
+
 
 
 
@@ -28,12 +28,18 @@
 @synthesize questionsCount = _questionsCount;
 @synthesize receivedData = _receivedData;
 @synthesize api = _api;
+@synthesize defaultID = _defaultID;
+@synthesize finalID = _finalID;
 @synthesize translatingValue;
 @synthesize upButtonShows;
 @synthesize upButton = _upButton;
 @synthesize sendingTitle = _sendingTitle;
 @synthesize translatingUrl = _translatingUrl;
 @synthesize upperID = _upperID;
+@synthesize requestItemsString = _requestItemsString;
+@synthesize isAuthorized = _isAuthorized;
+@synthesize delegate = _delegate;
+
 
 - (MSAPI *) api{
     if(!_api){
@@ -56,10 +62,12 @@
 {
     [_tableOfCategories setShowsVerticalScrollIndicator:NO];
     [self.navigationItem.rightBarButtonItem setEnabled:NO];
+    
     self.upButtonShows = NO;
     [super viewDidLoad];
     _tableOfCategories.delegate = self;
     _tableOfCategories.dataSource = self;
+    self.requestItemsString = [[NSMutableString alloc] initWithString:@""];
     
     if ([[UIScreen mainScreen] bounds].size.height == 568) {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
@@ -68,12 +76,20 @@
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
- 
+    if(!self.defaultID){
     [self.api getQuestionsWithParentID:0];
+    }
+    else
+    {
+        [self.api getQuestionsWithParentID:self.defaultID];
+    }
+    NSLog(@"NEWWWW");
     
-	// Do any additional setup after loading the view.
+    }
+-(void)dismiss
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
-
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -87,12 +103,12 @@
 {
     UITableViewCell *cell;
     static NSString* cellIdentifier = @"questCellID";
-        cell = [_tableOfCategories dequeueReusableCellWithIdentifier:cellIdentifier];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
-        }
-        cell.textLabel.text = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];            cell.detailTextLabel.text = @"Оценка";
-        return cell;
+    cell = [_tableOfCategories dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+    }
+    cell.textLabel.text = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];            cell.detailTextLabel.text = @"Оценка";
+    return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -102,14 +118,15 @@
     
     
     if([[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"] integerValue] != 0)
-        {
-    _questionsCount = 0;
-    [_tableOfCategories reloadData];
-    [self.api getQuestionsWithParentID:[[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue]];
-            _upperID = [[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
-    
-    NSLog(@"translate %@", self.translatingValue);
-        }
+    {
+        _questionsCount = 0;
+        [_tableOfCategories reloadData];
+        [self.api getQuestionsWithParentID:[[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue]];
+        _upperID = [[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
+        NSLog(@"Upper ID = %d", _upperID);
+        
+        NSLog(@"translate %@", self.translatingValue);
+    }
     else
     {
         if([[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"] isEqualToString:@""])
@@ -119,26 +136,28 @@
         }
         else
         {
-        _translatingUrl = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"];
-        _sendingTitle = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
-        NSLog(@"wazaaaa %@",_translatingUrl);
-        NSLog(@"asdadsfdsfsf %@",_sendingTitle);
-        [self performSegueWithIdentifier:@"toQuestionProductDetail" sender:self];
+            _translatingUrl = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"];
+            _sendingTitle = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
+            self.finalID = self.upperID;
+            NSLog(@"finalID = %d", self.finalID);
+            
+            NSLog(@"wazaaaa %@",_translatingUrl);
+            NSLog(@"asdadsfdsfsf %@",_sendingTitle);
+            [self.delegate setUpperId:self.finalID];
+            
+            [self.delegate addProduct:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] withURL:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"]];
+            
+            //
+            //            [self.requestItemsString appendString:@"hello1"];
+            //            NSLog(@"reqyest %@", self.requestItemsString);
+            [self dismissViewControllerAnimated:YES completion:nil];
+            // [self performSegueWithIdentifier:@"toQuestionProductDetail" sender:self];
         }
         
     }
- 
-}
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if([segue.identifier isEqualToString:@"toQuestionProductDetail"])
-    {
-        MSQuiestionProductDetailViewController *controller = (MSQuiestionProductDetailViewController *)segue.destinationViewController;
-        controller.gettedProductTitle = _sendingTitle;
-        controller.gettedUrlImage = _translatingUrl;
     
-    }
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -147,25 +166,30 @@
 }
 -(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)typefinished
 {
-   
+    
     if(typefinished == kQuestCateg)
     {
         NSLog(@"zzzzzzz %u", _questionsCount);
         _questionsArray = [dictionary valueForKey:@"list"];
-    
+        
         for (int i  = 0; i<_questionsArray.count; i++)
         {
             NSArray *insertIndexPath = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:_questionsCount inSection:0]];
             _questionsCount++;
             [_tableOfCategories insertRowsAtIndexPaths: insertIndexPath withRowAnimation:NO];
         }
-              [_tableOfCategories reloadData];
-      //  _questionsCount = 0;
-
-
-       
+        [_tableOfCategories reloadData];
+        //  _questionsCount = 0;
     }
-   
+    if(typefinished == kLastQuest)
+    {
+        
+    }
+    
+}
+
+- (IBAction)cancel:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)upAction:(id)sender {
@@ -173,6 +197,6 @@
     [_tableOfCategories reloadData];
     [self.api getQuestionsWithParentID:0];
     [_upButton setEnabled:NO];
-
+    
 }
 @end
