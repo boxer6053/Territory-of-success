@@ -41,6 +41,8 @@
     NSLog(@"adfdsfsdf%d", _inquirerType);
     int item = [self.itemID integerValue];
     NSLog(@"gonnatakeID %d", item);
+    NSLog(@"Now Statistics");
+    //[self.api getStatisticQuestionWithID:item];
     [self.api getDetailQuestionWithID:item];
     if ([[UIScreen mainScreen] bounds].size.height == 568) {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
@@ -148,7 +150,13 @@
             for (int i = 0;i<self.arrayOfProducts.count;i++)
             {
                 NSURL *imageUrl = [NSURL URLWithString:[[self.arrayOfProducts objectAtIndex:i] valueForKey:@"image" ]];
+                [[arrayOfViews objectAtIndex:i] setTag:[[self.arrayOfProducts objectAtIndex:i] valueForKey:@"id" ]];
                 [[arrayOfViews objectAtIndex:i]setBackgroundImageWithURL:imageUrl forState:UIControlStateNormal];
+            }
+            for (int i = self.arrayOfProducts.count;i<arrayOfViews.count;i++)
+            {
+               [[arrayOfViews objectAtIndex:i] setHidden:YES];
+
             }
         }
         else
@@ -170,7 +178,7 @@
             for(int i=0;i<6;i++)
             {
                 [[arrayOfViews objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"bag"] forState:UIControlStateNormal];
-                [[arrayOfViews objectAtIndex:i] addTarget:self action:@selector(chooseAProduct) forControlEvents:UIControlEventTouchUpInside];
+               
                 [self.view addSubview:[arrayOfViews objectAtIndex:i]];
             }
             
@@ -179,7 +187,13 @@
                 
                 NSURL *imageUrl = [NSURL URLWithString:[[self.arrayOfProducts objectAtIndex:i] valueForKey:@"image" ]];
                 [[arrayOfViews objectAtIndex:i]setBackgroundImageWithURL:imageUrl forState:UIControlStateNormal];
-                
+                [[arrayOfViews objectAtIndex:i] setTag:[[[self.arrayOfProducts objectAtIndex:i] valueForKey:@"id" ] integerValue]];
+                NSLog(@"IDD %@", [[self.arrayOfProducts objectAtIndex:i] valueForKey:@"id"]);
+                [[arrayOfViews objectAtIndex:i] addTarget:self action:@selector(chooseAProduct:) forControlEvents:UIControlEventTouchUpInside];
+            }
+            for (int i = self.arrayOfProducts.count;i<arrayOfViews.count;i++)
+            {
+                [[arrayOfViews objectAtIndex:i] setHidden:YES];
                 
             }
         }
@@ -193,9 +207,13 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(void)chooseAProduct
+-(void)chooseAProduct:(id)sender
 {
-    NSLog(@"TAP");
+    NSLog(@"TAP %d", [sender tag]);
+}
+-(void)selectAProductWithID:(int)tag
+{
+    
 }
 -(void)likeAction{
     NSLog(@"LIKE");
