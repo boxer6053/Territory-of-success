@@ -48,6 +48,10 @@
 @property (nonatomic) int beginCount;
 @property (nonatomic) int endCount;
 
+@property (strong, nonatomic) NSString *codeStr;
+
+@property (strong, nonatomic) NSMutableString *productString;
+
 @end
 
 @implementation MSFirstViewController
@@ -95,6 +99,9 @@
 
 @synthesize beginCount = _beginCount;
 @synthesize endCount = _endCount;
+
+@synthesize codeStr = _codeStr;
+@synthesize productString = _productString;
 
 - (MSAPI *)api
 {
@@ -567,7 +574,7 @@ static inline double radians (double degrees)
     
 //    NSString *codeStr = @"4444-2AED-2354-865E";
 //    NSString *codeStr = @"2EA4-29E9-CCE0-90EB";
-    NSString *codeStr = @"37B9-45A4-3711-2DA2";
+    self.codeStr = @"37B9-45A4-3711-2DA2";
 //    NSString *codeStr = [self.codeTextField text];
     
 //    [self.api checkCode:[self.codeTextField text]];
@@ -577,10 +584,10 @@ static inline double radians (double degrees)
     
     
     
-    if (![codeStr isEqualToString:@""] && codeStr.length == 19) {
+    if (![self.codeStr isEqualToString:@""] && self.codeStr.length == 19) {
         [SVProgressHUD showWithStatus:NSLocalizedString(@"Отправка кода...",nil)];
         
-        [self.api checkCode:codeStr];
+        [self.api checkCode:self.codeStr];
     }
     else
     {
@@ -688,6 +695,9 @@ static inline double radians (double degrees)
         [self.complaintView attachPopUpAnimationForView:self.complaintView];
         [self.dialogView removeFromSuperview];
         
+        [self.complaintView.productTextField setText:self.productString];
+        [self.complaintView.codeTextField setText:self.codeStr];
+        
         [self.complaintView.cancelButton addTarget:self action:@selector(closeComplaintView) forControlEvents:UIControlEventTouchUpInside];
         [self.complaintView.closeButton addTarget:self action:@selector(closeComplaintView) forControlEvents:UIControlEventTouchUpInside];
         [self.complaintView.sendComplaintButton addTarget:self action:@selector(sendComplaint) forControlEvents:UIControlEventTouchUpInside];
@@ -775,10 +785,10 @@ static inline double radians (double degrees)
             NSURL *imageUrl = [NSURL URLWithString:[[dictionary valueForKey:@"product"] valueForKey:@"image"]];
             [self.dialogView.productImageView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
             
-            NSMutableString *productString = [NSMutableString stringWithString:[[dictionary valueForKey:@"brand"] valueForKey:@"title"]];
-            [productString appendFormat:@" / %@", [[dictionary valueForKey:@"product"] valueForKey:@"title"]];
+            self.productString = [NSMutableString stringWithString:[[dictionary valueForKey:@"brand"] valueForKey:@"title"]];
+            [self.productString appendFormat:@" / %@", [[dictionary valueForKey:@"product"] valueForKey:@"title"]];
             
-            [self.dialogView.productDescripptionLabel setText:productString];
+            [self.dialogView.productDescripptionLabel setText:self.productString];
             [self.dialogView.productDescripptionLabel sizeToFit];
             
             [self.dialogView.categoryLabel setText:NSLocalizedString(@"Категория:",nil)];
@@ -829,10 +839,10 @@ static inline double radians (double degrees)
                 NSURL *imageUrl = [NSURL URLWithString:[[dictionary valueForKey:@"product"] valueForKey:@"image"]];
                 [self.dialogView.productImageView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
                 
-                NSMutableString *productString = [NSMutableString stringWithString:[[dictionary valueForKey:@"brand"] valueForKey:@"title"]];
-                [productString appendFormat:@" / %@", [[dictionary valueForKey:@"product"] valueForKey:@"title"]];
+                self.productString = [NSMutableString stringWithString:[[dictionary valueForKey:@"brand"] valueForKey:@"title"]];
+                [self.productString appendFormat:@" / %@", [[dictionary valueForKey:@"product"] valueForKey:@"title"]];
                 
-                [self.dialogView.productDescripptionLabel setText:productString];
+                [self.dialogView.productDescripptionLabel setText:self.productString];
                 [self.dialogView.productDescripptionLabel sizeToFit];
                 
                 [self.dialogView.categoryLabel setText:NSLocalizedString(@"Категория:",nil)];
@@ -1110,7 +1120,7 @@ static inline double radians (double degrees)
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     //бидло код трололо
-    if (textField == self.codeTextField)
+    if (textField == self.codeTextField || textField == self.complaintView.codeTextField)
     {
         if ((range.location == 4 || range.location == 9 || range.location == 14) && range.location != 0 && ![string isEqualToString:@""]) {
             
