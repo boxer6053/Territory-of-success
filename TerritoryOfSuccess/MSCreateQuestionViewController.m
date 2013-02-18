@@ -26,6 +26,7 @@
 @synthesize arrayOfProducts = _arrayOfProducts;
 @synthesize requestString = _requestString;
 @synthesize gettedImages = _gettedImages;
+@synthesize response = _response;
 @synthesize api = _api;
 @synthesize receivedData = _receivedData;
 @synthesize upperID = _upperID;
@@ -125,6 +126,23 @@
 }
 -(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
 {
-    
+    if (type ==kCreateQuest)
+    {
+        self.response = [dictionary valueForKey:@"message"];
+        NSString *wantedString = @"!-- question-created --!";
+        NSLog(@"Result is %@", self.response);
+        if([self.response isEqualToString:wantedString])
+        {
+            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Успех" message:@"Опрос успешно создан!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
+            [failmessage show];
+
+        }
+    else
+        {
+            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Произошла ошибка!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
+            [failmessage show];
+        }
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 @end
