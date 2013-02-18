@@ -1,8 +1,8 @@
 #import <UIKit/UIKit.h>
 #import "MSAddCommentView.h"
+#import "MSAPI.h"
 
-@interface MSCommentsViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, AddingCommentDelegate, UIAlertViewDelegate>
-@property (strong, nonatomic) NSMutableArray *commentsArray;
+@interface MSCommentsViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, AddingCommentDelegate, UIAlertViewDelegate, WsCompleteDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *commentTableView;
 @property (strong, nonatomic) NSMutableArray *commentNew;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *addCommentButton;

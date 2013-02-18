@@ -9,14 +9,7 @@
 #import "MSCommentCell.h"
 
 @implementation MSCommentCell
-
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-    }
-    return self;
-}
+@synthesize commentText = _contentText;
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {

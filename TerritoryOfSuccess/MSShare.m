@@ -8,7 +8,7 @@
 @property (nonatomic) UIButton *loginVKButton;
 @property (nonatomic) UIButton *postVKButton;
 @property (nonatomic) NSString *postTextVK;
-@property (nonatomic) NSString *postImageVK;
+@property (nonatomic, strong) UIImage *postImageVK;
 @end
 
 @implementation MSShare
@@ -74,7 +74,7 @@
      }];
 
 }
-- (void)shareOnVKWithText:(NSString *)shareText withImage:(NSString *)shareImage
+- (void)shareOnVKWithText:(NSString *)shareText withImage:(UIImage *)shareImage
 {
     _vkontakte = [Vkontakte sharedInstance];
     _vkontakte.delegate = self;
@@ -178,7 +178,7 @@
 
 - (void)post
 {
-    [_vkontakte postImageToWall:[UIImage imageNamed:self.postImageVK]
+    [_vkontakte postImageToWall:self.postImageVK
                            text:self.postTextVK
                            link:[NSURL URLWithString:@"http://id-bonus.com"]];
 }

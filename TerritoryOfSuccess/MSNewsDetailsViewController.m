@@ -93,7 +93,7 @@
 - (IBAction)vkButtonPressed:(id)sender
 {
     self.share.mainView = self;
-    [[self share] shareOnVKWithText:@"trololo" withImage:@"trololo"];
+    //[[self share] shareOnVKWithText:@"trololo" withImage:@"trololo"];
         [self.share attachPopUpAnimationForView:self.share.vkView];
 }
 

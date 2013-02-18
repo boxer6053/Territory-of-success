@@ -51,7 +51,7 @@
         [self.commentBackgroundView addGestureRecognizer:tap];
         [self addSubview:[self commentBackgroundView]];
     
-        self.containerView = [[UIView alloc]initWithFrame:CGRectMake(10, 50, [UIScreen mainScreen].bounds.size.width - 20, 310)];
+        self.containerView = [[UIView alloc]initWithFrame:CGRectMake(10, 100, [UIScreen mainScreen].bounds.size.width - 20, 310)];
         [self addSubview:[self containerView]];
     
         self.commentView = [[UIView alloc] initWithFrame:CGRectMake(0, 10, [UIScreen mainScreen].bounds.size.width - 20, 300)];
@@ -98,6 +98,7 @@
         self.inputCommentTextView.layer.borderColor = [UIColor colorWithWhite:0.5 alpha:1].CGColor;
         self.inputCommentTextView.layer.borderWidth = 1.0f;
         self.inputCommentTextView.layer.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1].CGColor;
+        self.inputCommentTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.inputCommentTextView.textColor = [UIColor lightGrayColor];
         [self.commentView addSubview:self.inputCommentTextView];
     }
@@ -136,6 +137,7 @@
     {
         [self.api sentCommentWithProductId:self.productId andText:self.inputCommentTextView.text];
         [self closeAddingCommentSubview];
+        [self.delegate closeAfterSuccessSentComment];
     }
 }
 
@@ -145,6 +147,13 @@
     if([self.inputCommentTextView.text isEqualToString:NSLocalizedString(@"writeWhatYouThinkKey", nil)])
         self.inputCommentTextView.text = @"";
     self.inputCommentTextView.textColor = [UIColor blackColor];
+    
+    if ([UIScreen mainScreen].bounds.size.height == 480)
+    {
+        [UIView animateWithDuration:0.5 animations:^{
+            self.containerView.frame = CGRectMake(10, 10, [UIScreen mainScreen].bounds.size.width - 20, 310);
+        }];
+    }
     return YES;
 }
 
@@ -155,6 +164,14 @@
         self.inputCommentTextView.text = NSLocalizedString(@"writeWhatYouThinkKey", nil);
         self.inputCommentTextView.textColor = [UIColor lightGrayColor];
     }
+    
+    if ([UIScreen mainScreen].bounds.size.height == 480)
+    {
+        [UIView animateWithDuration:0.5 animations:^{
+            self.containerView.frame = CGRectMake(10, 100, [UIScreen mainScreen].bounds.size.width - 20, 310);
+        }];
+    }
+
 }
 // ввод текста комментария
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
