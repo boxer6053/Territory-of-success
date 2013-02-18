@@ -153,7 +153,8 @@
         for (int i = 0;i<self.arrayOfProducts.count;i++)
         {
             NSURL *imageUrl = [NSURL URLWithString:[[self.arrayOfProducts objectAtIndex:i] valueForKey:@"image" ]];
-            [[arrayOfViews objectAtIndex:i] setTag:[[self.arrayOfProducts objectAtIndex:i] valueForKey:@"id" ]];
+            [[arrayOfViews objectAtIndex:i] setTag:[[[self.arrayOfProducts objectAtIndex:i] valueForKey:@"id" ] integerValue]];
+            [[arrayOfViews objectAtIndex:i] addTarget:self action:@selector(chooseAProduct:)forControlEvents:UIControlEventTouchUpInside];
             [[arrayOfViews objectAtIndex:i]setBackgroundImageWithURL:imageUrl forState:UIControlStateNormal];
         }
         for (int i = self.arrayOfProducts.count;i<arrayOfViews.count;i++)
