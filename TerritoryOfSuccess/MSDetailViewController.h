@@ -15,6 +15,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *commentsLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *ratingImage;
 @property (strong, nonatomic) IBOutlet UIImageView *detailImage;
+@property (nonatomic) int productSentId;
 
 @property (strong, nonatomic) IBOutlet UIButton *fbButton;
 - (IBAction)fbButtonPressed:(id)sender;
@@ -28,6 +29,7 @@
 - (IBAction)shareButtonPressed:(id)sender;
 
 - (void)sentProductName:(NSString *)name
+                  andId:(int)prodId
               andRating:(int)rating
       andCommentsNumber:(int)comments
        andAdvisesNumber:(int)advises

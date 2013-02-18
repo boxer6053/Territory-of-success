@@ -11,7 +11,8 @@
 #import "MSInquirerDetailViewController.h"
 
 @interface MSTypesOfInquirersViewController ()
-
+@property (strong, nonatomic) NSMutableData *receivedData;
+@property (strong, nonatomic) MSAPI *api;
 @end
 
 
@@ -22,15 +23,40 @@
 @synthesize allInquirerMode;
 @synthesize myInquirerMode;
 @synthesize inquirerTypeSegment = _inquirerTypeSegment;
+@synthesize isAuthorized = _isAuthorized;
+@synthesize addQuestionButton = _addQuestionButton;
+@synthesize myQuestionsArray = _myQuestionsArray;
+@synthesize allQuestionsArray = _allQuestionsArray;
+@synthesize sendingID = _sendingID;
 
-
+- (MSAPI *) api{
+    if(!_api){
+        _api = [[MSAPI alloc]init];
+        _api.delegate = self;
+    }
+    return _api;
+}
 
 - (void)viewDidLoad
 {
     
-    
+
     [super viewDidLoad];
-    NSLog(@"VIEW DID LOAD");
+    NSLog(@"AllQuestions");
+    [self.api getLastQuestions];
+    self.allInquirerMode=YES;
+    self.myInquirerMode = NO;
+    
+    NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
+    NSString *token = [userDefults valueForKey:@"authorization_Token" ];
+    if(token.length)
+        self.isAuthorized = YES;
+    else
+        self.isAuthorized = NO;
+    
+    if(!self.isAuthorized){
+        [self.addQuestionButton setEnabled:NO];
+    }
     [_inquirerTypeSegment setTintColor:[UIColor blackColor]];
     _tableOfInquirers.delegate = self;
     _tableOfInquirers.dataSource = self;
@@ -44,7 +70,7 @@
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
     
-    	// Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
 }
 -(void)setSegmentControlColor
 {
@@ -65,7 +91,13 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _testInquirers.count;
+    if(allInquirerMode)
+    {
+        return self.allQuestionsArray.count;
+    }
+    else{
+        return self.myQuestionsArray.count;
+    }
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -82,9 +114,16 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
         
     }
-    cell.textLabel.text = [_testInquirers objectAtIndex:indexPath.row];
-    cell.detailTextLabel.text = @"Детали опроса";
-    cell.imageView.image = [UIImage imageNamed:@"photo_camera_1.png"];
+    if(allInquirerMode) {
+        cell.textLabel.text = [[self.allQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
+        // cell.imageView.image = [UIImage imageNamed:@"photo_camera_1.png"];
+    }
+    else{
+        cell.textLabel.text = [[self.myQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
+        
+        //cell.imageView.image = [UIImage imageNamed:@"photo_camera_1.png"];
+        
+    }
     
     return cell;
 }
@@ -92,6 +131,13 @@
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     _selectedValue = cell.textLabel.text;
+    if(allInquirerMode) {
+        self.sendingID =  [[self.allQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"id"];
+    }
+    else{
+        self.sendingID = [[self.myQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"id"];
+    }
+    NSLog(@"ID%@",  self.sendingID);
     NSLog (@"%@", _selectedValue);
     [self performSegueWithIdentifier:@"toInquirerDetail" sender:self];
 }
@@ -101,6 +147,7 @@
     if([segue.identifier isEqualToString:@"toInquirerDetail"]){
         MSInquirerDetailViewController *controller = (MSInquirerDetailViewController *)segue.destinationViewController;
         controller.inquirerType = [_selectedValue integerValue];
+        controller.itemID = self.sendingID;
         NSLog(@"ss %@", _selectedValue);
     }
 }
@@ -114,6 +161,36 @@
 - (IBAction)inquirerTypeSwitch:(id)sender {
     
     [self setSegmentControlColor];
-    [_tableOfInquirers reloadData];
+    if(self.inquirerTypeSegment.selectedSegmentIndex == 0)
+    {
+        self.allInquirerMode = YES;
+        self.myInquirerMode = NO;
+        [self.api getLastQuestions];
+    }
+    else
+    {
+        self.allInquirerMode = NO;
+        self.myInquirerMode = YES;
+        [self.api getMyQuestionsWithOffset:0];
+    }
+    // [_tableOfInquirers reloadData];
+}
+
+-(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type{
+    if (type == kLastQuest)
+    {
+        self.allQuestionsArray = [dictionary valueForKey:@"list"];
+        // self.numberOfRows = [[self arrayOfCategories] count];
+    }
+    
+    if (type == kMyQuestions)
+    {
+        self.myQuestionsArray = [dictionary valueForKey:@"list"];
+        //self.numberOfRows = [[self arrayOfBrands] count];
+    }
+    
+    [[self tableOfInquirers] reloadData];
+    
+    
 }
 @end

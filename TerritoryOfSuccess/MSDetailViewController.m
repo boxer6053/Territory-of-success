@@ -2,6 +2,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "MSShare.h"
+#import "MSCommentsViewController.h"
 #import <Social/Social.h>
 
 @interface MSDetailViewController ()
@@ -15,7 +16,6 @@
 @property (strong, nonatomic) NSString *productSentName;
 @property (strong, nonatomic) NSString *productSentDescription;
 @property (strong, nonatomic) MSShare *share;
-
 @end
 
 @implementation MSDetailViewController
@@ -26,6 +26,7 @@
 @synthesize productName = _productName;
 @synthesize share = _share;
 @synthesize productSentDescription = _productSentDescription;
+@synthesize productSentId = _productSentId;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -95,12 +96,14 @@
 //необходим рефакторинг
 //метод получения информации о продукте от сигвея
 - (void)sentProductName:(NSString *)name
+                  andId:(int)prodId
               andRating:(int)rating
       andCommentsNumber:(int)comments
        andAdvisesNumber:(int)advises
             andImageURL:(NSString *)imageURL
      andDescriptionText:(NSString *) descriptionText
 {
+    self.productSentId = prodId;
     self.productSentName = name;
     self.productImageURL = imageURL;
     self.ratingDetail = rating;
@@ -109,6 +112,13 @@
     self.productSentDescription = descriptionText;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"toComments"])
+    {
+        [segue.destinationViewController sentProductId:self.productSentId];
+    }
+}
 #pragma mark Share Methods
 - (MSShare *)share
 {

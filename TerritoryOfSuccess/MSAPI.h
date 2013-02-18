@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "JSONParserForDataEntenties.h"
 
-typedef enum {kAuth = 1, kRegist = 2, kNews = 3, kNewsWithId = 4, kCode = 5, kBrands = 6, kCategories = 7, kCatalog = 8, kQuestCateg = 9, kQuestions = 13, kComplaint = 14} requestTypes;
+typedef enum {kAuth, kRegist, kNews, kNewsWithId, kCode, kBrands, kCategories, kCatalog, kQuestCateg, kComment, kComplaint, kQuestions, kCreateQuest, kMyQuestions, kQuestDetail, kQuestStat, kLastQuest } requestTypes;
 
 @protocol WsCompleteDelegate
 
@@ -40,10 +40,16 @@ typedef enum {kAuth = 1, kRegist = 2, kNews = 3, kNewsWithId = 4, kCode = 5, kBr
 - (void)getFiveBrandsWithOffset:(int)offset;
 - (void)getCategories;
 - (void)getProductsWithOffset:(int)offset withBrandId:(int)brandId withCategoryId:(int)categoryId;
--(void)getQuestionsWithParentID:(int)parentId;
+- (void)getQuestionsWithParentID:(int)parentId;
 - (void)logInWithMail:(NSString *)email Password:(NSString *)password;
 - (void)registrationWithEmail:(NSString *)email Password:(NSString *)password ConfirmPassword:(NSString *)confirmPassword;
+-(void)getLastQuestions;
 - (void)getQuestionListFrom10;
+- (void)sentCommentWithProductId:(int)productId andText:(NSString *)text;
+-(void)getMyQuestionsWithOffset:(int)offset;
+-(void)createQuestionWithItems:(NSMutableString *)string;
+-(void)getDetailQuestionWithID:(NSInteger)questionId;
+-(void)getStatisticQuestionWithID:(NSInteger)questionId;
 - (void)sendComplaintForProduct:(NSString *)product
                        withCode:(NSString *)code
                    withLocation:(NSString *)location

@@ -84,6 +84,7 @@
     cell.productRatingNumber = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"rating"] integerValue];
     cell.productBigImageURL = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"image"] valueForKey:@"big"];
     cell.productDesctiptionText = [[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"content"];
+    cell.productId = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"id"]integerValue];
     
     cell.tag = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
     
@@ -102,7 +103,7 @@
     if ([segue.identifier isEqualToString:@"toDetailView"])
     {
         MSSubCatalogueCell *currentCell = sender;
-        [segue.destinationViewController sentProductName:currentCell.productName.text andRating:currentCell.productRatingNumber andCommentsNumber:currentCell.productCommentsNumber andAdvisesNumber:currentCell.productAdviceNumber andImageURL:currentCell.productBigImageURL andDescriptionText:currentCell.productDesctiptionText];
+        [segue.destinationViewController sentProductName:currentCell.productName.text andId:currentCell.productId andRating:currentCell.productRatingNumber andCommentsNumber:currentCell.productCommentsNumber andAdvisesNumber:currentCell.productAdviceNumber andImageURL:currentCell.productBigImageURL andDescriptionText:currentCell.productDesctiptionText];
     }
 }
 #pragma mark - Web Methods

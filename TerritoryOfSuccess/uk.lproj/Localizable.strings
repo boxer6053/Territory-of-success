@@ -26,7 +26,6 @@
 "Бонус за продукт:" = "Бонус за продукт:";
 
 
-
 // Каталог + Share
 "CategoriesKey" = "Категорії";
 "BrandsKey" = "Бренди";
@@ -38,7 +37,11 @@
 "PostKey" = "Опублікувати";
 "LogOutKey" = "Вийти";
 "LogInKey" = "Увійти";
-
+"YourCommentKey" = "Ваш коментар";
+"SendKey" = "Надіслати";
+"writeWhatYouThinkKey" = "Напишіть що Ви думаєте про цей товар...";
+"YouShouldEnterCommentKey" = "Введіть, будь ласка, свій коментар";
+"NeedToAuthorizedKey" = "Вам необхідно авторизуватись";
 // Опросы
 
 

@@ -4,14 +4,15 @@
 @interface MSAddingCommentViewController ()
 @property (nonatomic) int starsCounter;
 @property (nonatomic) NSArray *arrayOfStars;
+@property (strong, nonatomic) MSAPI *api;
 @end
 
 @implementation MSAddingCommentViewController
-@synthesize delegate = _delegate;
+//@synthesize delegate = _delegate;
 @synthesize sentArray = _sentArray;
 @synthesize starsCounter = _starsCounter;
 @synthesize arrayOfStars = _arrayOfStars;
-
+@synthesize api = _api;
 
 
 - (void)viewDidLoad
@@ -53,15 +54,16 @@
 }
 
 - (IBAction)save:(id)sender {
-    self.sentArray = [[NSMutableArray alloc]init];
-    NSString *name = @"Egor";
-    NSString *comment = self.inputText.text;
-    NSNumber *starsNumber = [NSNumber numberWithInt:self.starsCounter];
-    [[self sentArray] addObject:name];
-    [[self sentArray] addObject:comment];
-    [[self sentArray] addObject:starsNumber];
+    //self.sentArray = [[NSMutableArray alloc]init];
+    [self.api sentCommentWithProductId:12 andText:self.inputText.text];
+    //NSString *name = @"Egor";
+    //NSString *comment = self.inputText.text;
+    //NSNumber *starsNumber = [NSNumber numberWithInt:self.starsCounter];
+    //[[self sentArray] addObject:name];
+    //[[self sentArray] addObject:comment];
+    //[[self sentArray] addObject:starsNumber];
     
-    [self.delegate addNewComment:[self sentArray]];
+    //[self.delegate addNewComment:[self sentArray]];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -122,4 +124,18 @@
     [self.inputText resignFirstResponder];
 }
 
+- (MSAPI *)api
+{
+    if(!_api){
+        _api = [[MSAPI alloc]init];
+        [_api setDelegate:self];
+    }
+    return _api;
+}
+
+- (void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
+{
+    if (type  == kComment)
+        NSLog(@"trololo");
+}
 @end

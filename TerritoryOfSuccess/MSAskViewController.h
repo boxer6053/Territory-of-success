@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "MSAPI.h"
+@protocol AddingRequestStringDelegate <NSObject>
+-(void)addProduct:(NSString *)string withURL:(NSString *)ulr;
+-(void)addImageURL:(NSString *)string;
+@end
 
 @interface MSAskViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, WsCompleteDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableOfCategories;
@@ -15,7 +19,12 @@
 @property (weak, nonatomic) NSURL *translatingUrl;
 @property (weak, nonatomic) NSString *sendingTitle;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *upButton;
+@property (strong, nonatomic) id <AddingRequestStringDelegate> delegate;
 @property (nonatomic) NSInteger upperID;
+@property (strong, nonatomic) NSMutableString *requestItemsString;
+@property (nonatomic) BOOL isAuthorized;
+
+- (IBAction)cancel:(id)sender;
 
 - (IBAction)upAction:(id)sender;
 
