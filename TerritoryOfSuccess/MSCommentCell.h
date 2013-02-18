@@ -12,4 +12,5 @@
 @property (strong, nonatomic) IBOutlet UILabel *commentatorName;
 @property (strong, nonatomic) IBOutlet UITextView *commentText;
 @property (strong, nonatomic) IBOutlet UILabel *commentdate;
+
 @end

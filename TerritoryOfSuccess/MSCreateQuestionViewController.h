@@ -11,6 +11,9 @@
 @property (strong, nonatomic) NSMutableString *requestString;
 - (IBAction)addMoreProduct:(id)sender;
 @property (strong, nonatomic) NSMutableArray *gettedImages;
+@property (strong, nonatomic) NSString *response;
+@property (nonatomic) int upperID;
 - (IBAction)startButton:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *askButton;
 @property (strong, nonatomic) NSArray *arrayOfProducts;
 @end

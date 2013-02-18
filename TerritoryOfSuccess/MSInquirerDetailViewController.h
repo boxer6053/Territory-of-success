@@ -16,5 +16,7 @@
 @property (nonatomic) NSString * itemID;
 @property (strong, nonatomic) NSArray *arrayOfProducts;
 @property (nonatomic) int count;
+
+-(void)selectAProductWithID:(int)tag;
 @end
 

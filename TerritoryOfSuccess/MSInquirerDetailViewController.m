@@ -41,6 +41,8 @@
     NSLog(@"adfdsfsdf%d", _inquirerType);
     int item = [self.itemID integerValue];
     NSLog(@"gonnatakeID %d", item);
+    NSLog(@"Now Statistics");
+    //[self.api getStatisticQuestionWithID:item];
     [self.api getDetailQuestionWithID:item];
     if ([[UIScreen mainScreen] bounds].size.height == 568) {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
@@ -73,129 +75,109 @@
     NSLog(@"comparing %d", self.count);
     if(self.count == 1)
     {
+        
+        //ВИД ОПРОСА "ОЦЕНИТЕ ТОВАР"
+        UIImageView *imageForInquirer1 = [[UIImageView alloc] init];
+        [imageForInquirer1 setImageWithURL:[[self.arrayOfProducts objectAtIndex:0] valueForKey:@"image"]];
+        [self.view addSubview:imageForInquirer1];
+        UIButton *likeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        
+        [likeButton setBackgroundImage:[UIImage imageNamed:@"button_310_32-1.png"] forState:UIControlStateNormal];
+        [likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [likeButton setTitle:@"Like it!" forState:UIControlStateNormal];
+        [likeButton addTarget:self action:@selector(likeAction)  forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:likeButton];
+        UIButton *dislikeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [dislikeButton setBackgroundImage:[UIImage imageNamed:@"button_310_32-1.png"] forState:UIControlStateNormal];
+        [dislikeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [dislikeButton setTitle:@"Hate it!" forState:UIControlStateNormal];
+        [dislikeButton addTarget:self action:@selector(dislikeAction) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:dislikeButton];
+
+
         _inquirerTitle.text = @"Оцените товар";
+        //фреймы для разных экранов (4 и 5 айфон)
         if ([[UIScreen mainScreen] bounds].size.height == 568)
-        { UIImageView *imageForInquirer1 = [[UIImageView alloc] initWithFrame:CGRectMake(60, 78, 200, 200)];
-            [imageForInquirer1 setImageWithURL:[[self.arrayOfProducts objectAtIndex:0] valueForKey:@"image"]];
-            [self.view addSubview:imageForInquirer1];
-            UIButton *likeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            
+        {
+            [imageForInquirer1 setFrame:CGRectMake(60, 78, 200, 200)];
             likeButton.frame = CGRectMake(20, 330, 120, 32);
-            
-            [likeButton setBackgroundImage:[UIImage imageNamed:@"button_310_32-1.png"] forState:UIControlStateNormal];
-            [likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            [likeButton setTitle:@"Like it!" forState:UIControlStateNormal];
-            [likeButton addTarget:self action:@selector(likeAction)  forControlEvents:UIControlEventTouchUpInside];
-            [self.view addSubview:likeButton];
-            UIButton *dislikeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
             dislikeButton.frame = CGRectMake(180, 330, 120, 32);
-            [dislikeButton setBackgroundImage:[UIImage imageNamed:@"button_310_32-1.png"] forState:UIControlStateNormal];
-            [dislikeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            [dislikeButton setTitle:@"Hate it!" forState:UIControlStateNormal];
-            [dislikeButton addTarget:self action:@selector(dislikeAction) forControlEvents:UIControlEventTouchUpInside];
-            [self.view addSubview:dislikeButton];
-            
-            
         }
         
         else{
-            UIImageView *imageForInquirer1 = [[UIImageView alloc] initWithFrame:CGRectMake(60, 48, 200, 200)];
-            [imageForInquirer1 setImageWithURL:[[self.arrayOfProducts objectAtIndex:0] valueForKey:@"image"]];
-            [self.view addSubview:imageForInquirer1];
-            UIButton *likeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            [imageForInquirer1 setFrame:CGRectMake(60, 48, 200, 200)];
             likeButton.frame = CGRectMake(20, 300, 120, 32);
-            
-            [likeButton setBackgroundImage:[UIImage imageNamed:@"button_310_32-1.png"] forState:UIControlStateNormal];
-            [likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            [likeButton setTitle:@"Like it!" forState:UIControlStateNormal];
-            [likeButton addTarget:self action:@selector(likeAction)  forControlEvents:UIControlEventTouchUpInside];
-            [self.view addSubview:likeButton];
-            UIButton *dislikeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
             dislikeButton.frame = CGRectMake(180, 300, 120, 32);
-            [dislikeButton setBackgroundImage:[UIImage imageNamed:@"button_310_32-1.png"] forState:UIControlStateNormal];
-            [dislikeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            [dislikeButton setTitle:@"Hate it!" forState:UIControlStateNormal];
-            [dislikeButton addTarget:self action:@selector(dislikeAction) forControlEvents:UIControlEventTouchUpInside];
-            [self.view addSubview:dislikeButton];
-            
         }
     }
     else{
+        //ВИД ОПРОСА КАКОЙ ТОВАР ЛУЧШЕ
         _inquirerTitle.text = @"Какой товар лучше";
         UITapGestureRecognizer *selectProduct = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chooseAProduct:)];
         [selectProduct setNumberOfTapsRequired:1];
+        UIButton *image1 = [UIButton buttonWithType:UIButtonTypeCustom];
+        UIButton *image2 = [UIButton buttonWithType:UIButtonTypeCustom];
+        UIButton *image3 = [UIButton buttonWithType:UIButtonTypeCustom];
+        UIButton *image4 = [UIButton buttonWithType:UIButtonTypeCustom];
+        UIButton *image5 = [UIButton buttonWithType:UIButtonTypeCustom];
+        UIButton *image6 = [UIButton buttonWithType:UIButtonTypeCustom];
         
+                //фреймы для разных экранов (4 и 5 айфон)
         if ([[UIScreen mainScreen] bounds].size.height == 568)
         {
-            UIButton *image1 = [UIButton buttonWithType:UIButtonTypeCustom];
             [image1 setFrame:CGRectMake(20, 78, 100, 100)];
-            UIButton *image2 = [UIButton buttonWithType:UIButtonTypeCustom];
             [image2 setFrame:CGRectMake(200, 78, 100, 100)];
-            UIButton *image3 = [UIButton buttonWithType:UIButtonTypeCustom];
             [image3 setFrame:CGRectMake(20, 188, 100, 100)];
-            UIButton *image4 = [UIButton buttonWithType:UIButtonTypeCustom];
             [image4 setFrame:CGRectMake(200, 188, 100, 100)];
-            UIButton *image5 = [UIButton buttonWithType:UIButtonTypeCustom];
             [image5 setFrame:CGRectMake(20, 298, 100, 100)];
-            UIButton *image6 = [UIButton buttonWithType:UIButtonTypeCustom];
             [image6 setFrame:CGRectMake(200, 298, 100, 100)];
-            
-            NSArray *arrayOfViews = [[NSArray alloc] initWithObjects:image1,image2,image3,image4,image5,image6, nil];
-            for(int i=0;i<6;i++)
-            {
-                [[arrayOfViews objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"bag.png"] forState:UIControlStateNormal];
-                [self.view addSubview:[arrayOfViews objectAtIndex:i]];
-            }
-            for (int i = 0;i<self.arrayOfProducts.count;i++)
-            {
-                NSURL *imageUrl = [NSURL URLWithString:[[self.arrayOfProducts objectAtIndex:i] valueForKey:@"image" ]];
-                [[arrayOfViews objectAtIndex:i]setBackgroundImageWithURL:imageUrl forState:UIControlStateNormal];
-            }
+
         }
         else
         {
-            UIButton *image1 = [UIButton buttonWithType:UIButtonTypeCustom];
+         
             [image1 setFrame:CGRectMake(20, 36, 100, 100)];
-            UIButton *image2 = [UIButton buttonWithType:UIButtonTypeCustom];
             [image2 setFrame:CGRectMake(200, 36, 100, 100)];
-            UIButton *image3 = [UIButton buttonWithType:UIButtonTypeCustom];
             [image3 setFrame:CGRectMake(20, 146, 100, 100)];
-            UIButton *image4 = [UIButton buttonWithType:UIButtonTypeCustom];
             [image4 setFrame:CGRectMake(200, 146, 100, 100)];
-            UIButton *image5 = [UIButton buttonWithType:UIButtonTypeCustom];
             [image5 setFrame:CGRectMake(20, 256, 100, 100)];
-            UIButton *image6 = [UIButton buttonWithType:UIButtonTypeCustom];
             [image6 setFrame:CGRectMake(200, 256, 100, 100)];
-            
-            NSArray *arrayOfViews = [[NSArray alloc] initWithObjects:image1,image2,image3,image4,image5,image6, nil];
-            for(int i=0;i<6;i++)
-            {
-                [[arrayOfViews objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"bag"] forState:UIControlStateNormal];
-                [[arrayOfViews objectAtIndex:i] addTarget:self action:@selector(chooseAProduct) forControlEvents:UIControlEventTouchUpInside];
-                [self.view addSubview:[arrayOfViews objectAtIndex:i]];
-            }
-            
-            for (int i = 0;i<self.arrayOfProducts.count;i++)
-            {
-                
-                NSURL *imageUrl = [NSURL URLWithString:[[self.arrayOfProducts objectAtIndex:i] valueForKey:@"image" ]];
-                [[arrayOfViews objectAtIndex:i]setBackgroundImageWithURL:imageUrl forState:UIControlStateNormal];
-                
-                
-            }
         }
+        NSArray *arrayOfViews = [[NSArray alloc] initWithObjects:image1,image2,image3,image4,image5,image6, nil];
+        for(int i=0;i<6;i++)
+        {
+            [[arrayOfViews objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"bag.png"] forState:UIControlStateNormal];
+            [self.view addSubview:[arrayOfViews objectAtIndex:i]];
+        }
+        for (int i = 0;i<self.arrayOfProducts.count;i++)
+        {
+            NSURL *imageUrl = [NSURL URLWithString:[[self.arrayOfProducts objectAtIndex:i] valueForKey:@"image" ]];
+            [[arrayOfViews objectAtIndex:i] setTag:[[[self.arrayOfProducts objectAtIndex:i] valueForKey:@"id" ] integerValue]];
+            [[arrayOfViews objectAtIndex:i] addTarget:self action:@selector(chooseAProduct:)forControlEvents:UIControlEventTouchUpInside];
+            [[arrayOfViews objectAtIndex:i]setBackgroundImageWithURL:imageUrl forState:UIControlStateNormal];
+        }
+        for (int i = self.arrayOfProducts.count;i<arrayOfViews.count;i++)
+        {
+            [[arrayOfViews objectAtIndex:i] setHidden:YES];
+            
+        }
+
     }
-    //    int item = [self.itemID integerValue];
-    //    NSLog(@"Now Statistics");
-    //    [self.api getStatisticQuestionWithID:item];
+   
 }
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(void)chooseAProduct
+-(void)chooseAProduct:(id)sender
 {
-    NSLog(@"TAP");
+    NSLog(@"TAP %d", [sender tag]);
+}
+-(void)selectAProductWithID:(int)tag
+{
+    
 }
 -(void)likeAction{
     NSLog(@"LIKE");

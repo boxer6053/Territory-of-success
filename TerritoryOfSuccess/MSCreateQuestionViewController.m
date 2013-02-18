@@ -26,9 +26,11 @@
 @synthesize arrayOfProducts = _arrayOfProducts;
 @synthesize requestString = _requestString;
 @synthesize gettedImages = _gettedImages;
+@synthesize response = _response;
 @synthesize api = _api;
 @synthesize receivedData = _receivedData;
-
+@synthesize upperID = _upperID;
+@synthesize askButton = _askButton;
 - (MSAPI *) api{
     if(!_api){
         _api = [[MSAPI alloc]init];
@@ -62,7 +64,11 @@
         [[self.arrayOfProducts objectAtIndex:i] setImage:[UIImage imageNamed:@"bag.png"]];
     }
     
-    
+    if ([[UIScreen mainScreen] bounds].size.height == 568)
+    {
+        self.askButton.frame = CGRectMake(40, 400, 250, 32);
+    }
+
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
@@ -77,6 +83,12 @@
 {
     MSAskViewController *avc = [segue destinationViewController];
     avc.delegate = self;
+    
+    if([segue.identifier isEqualToString:@"pickAProduct"]){
+        MSAskViewController *controller = (MSAskViewController *)segue.destinationViewController;
+        controller.defaultID = self.upperID;
+        NSLog(@"gonna be id %d", self.upperID   );
+    }
 }
 - (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer {
     NSLog(@"tap");
@@ -96,7 +108,10 @@
     }
     
 }
-
+-(void)setUpperId:(int)upperId
+{
+    self.upperID = upperId;
+}
 -(void)addImageURL:(NSString *)string
 {
     [self.gettedImages addObject:string];
@@ -111,6 +126,23 @@
 }
 -(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
 {
-    
+    if (type ==kCreateQuest)
+    {
+        self.response = [dictionary valueForKey:@"message"];
+        NSString *wantedString = @"!-- question-created --!";
+        NSLog(@"Result is %@", self.response);
+        if([self.response isEqualToString:wantedString])
+        {
+            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Успех" message:@"Опрос успешно создан!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
+            [failmessage show];
+
+        }
+    else
+        {
+            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Произошла ошибка!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
+            [failmessage show];
+        }
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 @end

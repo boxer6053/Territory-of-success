@@ -1,7 +1,8 @@
 #import "MSAnimationView.h"
 #import "MSAPI.h"
 @protocol AddingCommentDelegate <NSObject>
--(void) closeAddingCommentSubviewWithAdditionalActions;
+- (void) closeAddingCommentSubviewWithAdditionalActions;
+- (void) closeAfterSuccessSentComment;
 @end
 
 @interface MSAddCommentView : MSAnimationView <UITextViewDelegate, WsCompleteDelegate, UIAlertViewDelegate>

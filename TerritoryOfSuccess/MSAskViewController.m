@@ -28,6 +28,8 @@
 @synthesize questionsCount = _questionsCount;
 @synthesize receivedData = _receivedData;
 @synthesize api = _api;
+@synthesize defaultID = _defaultID;
+@synthesize finalID = _finalID;
 @synthesize translatingValue;
 @synthesize upButtonShows;
 @synthesize upButton = _upButton;
@@ -74,14 +76,16 @@
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
-    
+    if(!self.defaultID){
     [self.api getQuestionsWithParentID:0];
+    }
+    else
+    {
+        [self.api getQuestionsWithParentID:self.defaultID];
+    }
     NSLog(@"NEWWWW");
     
-    //[self.api getLastQuestions];
-    //[self.api createQuestion];
-    //	// Do any additional setup after loading the view.
-}
+    }
 -(void)dismiss
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -119,6 +123,7 @@
         [_tableOfCategories reloadData];
         [self.api getQuestionsWithParentID:[[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue]];
         _upperID = [[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
+        NSLog(@"Upper ID = %d", _upperID);
         
         NSLog(@"translate %@", self.translatingValue);
     }
@@ -133,9 +138,12 @@
         {
             _translatingUrl = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"];
             _sendingTitle = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
+            self.finalID = self.upperID;
+            NSLog(@"finalID = %d", self.finalID);
             
             NSLog(@"wazaaaa %@",_translatingUrl);
             NSLog(@"asdadsfdsfsf %@",_sendingTitle);
+            [self.delegate setUpperId:self.finalID];
             
             [self.delegate addProduct:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] withURL:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"]];
             
