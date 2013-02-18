@@ -91,7 +91,7 @@
         self.productTextField.font = [UIFont fontWithName:@"Helvetica" size:12.0];
         [self.productTextField setContentVerticalAlignment:UIControlContentHorizontalAlignmentCenter];
         [self.productTextField setPlaceholder:@"Название продукта"];
-//        [self.productTextField setDelegate:self];
+        [self.productTextField setTag:1];
         [self.contentView addSubview:self.productTextField];
                 
         //textField коду
@@ -100,7 +100,7 @@
         self.codeTextField.font = [UIFont fontWithName:@"Helvetica" size:12.0];
         [self.codeTextField setContentVerticalAlignment:UIControlContentHorizontalAlignmentCenter];
         [self.codeTextField setPlaceholder:@"Код на упаковке"];
-//        [self.codeTextField setDelegate:self];
+        [self.codeTextField setTag:2];
         [self.contentView addSubview:self.codeTextField];
                 
         //textField location
@@ -109,7 +109,7 @@
         self.locationTextField.font = [UIFont fontWithName:@"Helvetica" size:12.0];
         [self.locationTextField setContentVerticalAlignment:UIControlContentHorizontalAlignmentCenter];
         [self.locationTextField setPlaceholder:@"Место покупки"];
-//        [self.locationTextField setDelegate:self];
+        [self.locationTextField setTag:3];
         [self.contentView addSubview:self.locationTextField];
         
         //comment textView

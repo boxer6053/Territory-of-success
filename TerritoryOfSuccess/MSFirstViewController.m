@@ -1023,14 +1023,14 @@ static inline double radians (double degrees)
 {
     self.beginCount++;
     
-//    self.isFromBeginEditing = YES;
     self.isTextFieldEtiting = YES;
     
     self.activeField = textField;
     
     self.complaintView.productTextField = textField;
     
-    if (YES) {
+    if (textField.tag == 1 || textField.tag == 2 || textField.tag == 3)
+    {
         if ([[UIScreen mainScreen] bounds].size.height == 480)
         {
             [UIView animateWithDuration:0.25 animations:^{
@@ -1054,30 +1054,31 @@ static inline double radians (double degrees)
 {
     self.endCount++;
     
-    if (self.beginCount == self.endCount)
+    if (textField.tag == 1 || textField.tag == 2 || textField.tag == 3)
     {
-        if ([[UIScreen mainScreen] bounds].size.height == 480 && self.textViewBeginEditing == NO) {
-            [UIView animateWithDuration:0.25 animations:^{
-                [self.complaintView setFrame:CGRectMake(self.complaintView.frame.origin.x, self.complaintViewFrame.origin.y, self.complaintView.frame.size.width, self.complaintView.frame.size.height)];
-            }];
-            
-            self.isTextFieldEtiting = NO;
-            
-            self.beginCount = 0;
-            self.endCount = 0;
-        }
-        else
+        if (self.beginCount == self.endCount)
         {
-            if (self.textViewBeginEditing == NO) {
+            if ([[UIScreen mainScreen] bounds].size.height == 480 && self.textViewBeginEditing == NO) {
                 [UIView animateWithDuration:0.25 animations:^{
                     [self.complaintView setFrame:CGRectMake(self.complaintView.frame.origin.x, self.complaintViewFrame.origin.y, self.complaintView.frame.size.width, self.complaintView.frame.size.height)];
                 }];
+                
+                self.isTextFieldEtiting = NO;
+                
+                self.beginCount = 0;
+                self.endCount = 0;
+            }
+            else
+            {
+                if (self.textViewBeginEditing == NO) {
+                    [UIView animateWithDuration:0.25 animations:^{
+                        [self.complaintView setFrame:CGRectMake(self.complaintView.frame.origin.x, self.complaintViewFrame.origin.y, self.complaintView.frame.size.width, self.complaintView.frame.size.height)];
+                    }];
+                }
             }
         }
     }
-    else
-    {
-    }
+    
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
