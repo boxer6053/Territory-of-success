@@ -60,9 +60,12 @@
 
 - (void)viewDidLoad
 {
+    
+    NSLog(@"ASK VIEW CONTROLLER");
     [_tableOfCategories setShowsVerticalScrollIndicator:NO];
     [self.navigationItem.rightBarButtonItem setEnabled:NO];
-    
+    NSLog(@"upper %d", self.upperID);
+    NSLog(@"ask %d", self.defaultID);
     self.upButtonShows = NO;
     [super viewDidLoad];
     _tableOfCategories.delegate = self;
@@ -76,6 +79,8 @@
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
+    
+    
     if(!self.defaultID){
     [self.api getQuestionsWithParentID:0];
     }
@@ -129,6 +134,9 @@
     }
     else
     {
+        if(self.defaultID)
+        {self.upperID = self.defaultID;
+        }
         if([[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"] isEqualToString:@""])
         {
             UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Sorry" message:@"No picture or not enough data =(" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
@@ -138,14 +146,19 @@
         {
             _translatingUrl = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"];
             _sendingTitle = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
-            self.finalID = self.upperID;
+            self.finalID = self.defaultID;
             NSLog(@"finalID = %d", self.finalID);
-            
+            //self.upperID = self.finalID;
             NSLog(@"wazaaaa %@",_translatingUrl);
             NSLog(@"asdadsfdsfsf %@",_sendingTitle);
-            [self.delegate setUpperId:self.finalID];
+            NSLog(@"After select %d", self.upperID);
+            [self.delegate setUpperId:self.upperID];
+            if([[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"]){
+                
+                [self.delegate addProduct:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] withURL:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"]];}
+           // [self.delegate setUpperId:self.finalID];
             
-            [self.delegate addProduct:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] withURL:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"]];
+            //[self.delegate addProduct:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] withURL:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"]];
             
             //
             //            [self.requestItemsString appendString:@"hello1"];
@@ -155,6 +168,7 @@
         }
         
     }
+   
     
 }
 
@@ -190,6 +204,7 @@
 
 - (IBAction)cancel:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+    [self.delegate setUpperId:0];
 }
 
 - (IBAction)upAction:(id)sender {

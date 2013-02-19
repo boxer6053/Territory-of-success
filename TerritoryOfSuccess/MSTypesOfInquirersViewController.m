@@ -182,17 +182,39 @@
     if (type == kLastQuest)
     {
         self.allQuestionsArray = [dictionary valueForKey:@"list"];
+        NSString *response = [[dictionary valueForKey:@"message"] valueForKey:@"text"];
+        if([response isEqualToString:@"To get access to this page please log in to the system."]){
+            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Пожалуйста перезайдите в систему!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
+            [failmessage show];
+            
+        }
         // self.numberOfRows = [[self arrayOfCategories] count];
     }
     
     if (type == kMyQuestions)
     {
         self.myQuestionsArray = [dictionary valueForKey:@"list"];
+     
         //self.numberOfRows = [[self arrayOfBrands] count];
+        self.allQuestionsArray = [dictionary valueForKey:@"list"];
+        NSString *response = [[dictionary valueForKey:@"message"] valueForKey:@"text"];
+        if([response isEqualToString:@"To get access to this page please log in to the system."]){
+            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Пожалуйста перезайдите в систему!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
+            [failmessage show];
+            
+        }
+
     }
     
     [[self tableOfInquirers] reloadData];
     
     
+}
+- (void)alertView:(UIAlertView *)alertView
+clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0){
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    }
 }
 @end

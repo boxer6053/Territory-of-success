@@ -119,6 +119,7 @@
 {
     MSAskViewController *avc = [segue destinationViewController];
     avc.delegate = self;
+    NSLog(@"id %d", self.upperID);
     
     if([segue.identifier isEqualToString:@"pickAProduct"]){
         MSAskViewController *controller = (MSAskViewController *)segue.destinationViewController;

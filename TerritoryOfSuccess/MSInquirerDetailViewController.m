@@ -9,6 +9,7 @@
 #import "MSInquirerDetailViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SDWebImage/UIButton+WebCache.h>
+#import "MSStatisticViewController.h"
 
 
 @interface MSInquirerDetailViewController ()
@@ -196,6 +197,18 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString: @"toStat"]){
+        MSStatisticViewController *controller = (MSStatisticViewController *)segue.destinationViewController;
+        controller.questionID = [self.itemID integerValue];
+        
+        
+        
+        
+    }
 }
 -(void)chooseAProduct:(id)sender
 {
