@@ -25,6 +25,7 @@
 @synthesize receivedData = _receivedData;
 @synthesize api = _api;
 @synthesize count = _count;
+@synthesize optionForAnswer = _optionForAnswer;
 
 - (MSAPI *) api{
     if(!_api){
@@ -68,7 +69,31 @@
         NSLog(@"COUNT %d", self.count);
         [self buildView];
     }
-    
+     if (type == kSendAnswer)
+     {
+         NSString *answer = [dictionary valueForKey:@"status"];
+         NSDictionary *message = [dictionary valueForKey:@"message"];
+         NSString *goodAnswer = @"ok";
+         NSString *alreadyAnswer = @"!-- already-voted --!";
+         if([answer isEqualToString:goodAnswer]){
+             NSLog(@"Everything's fine");
+         }
+         else{
+             NSLog(@"Trouble");
+         }
+         if([answer isEqualToString:goodAnswer])
+         {
+             UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Успех" message:@"Ваш ответ засчитан!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
+             [failmessage show];
+             
+         }
+         if([[message valueForKey:@"text"]isEqualToString:alreadyAnswer])
+         {
+             UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Вы уже ответили!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
+             [failmessage show];
+         }
+
+     }
 }
 -(void)buildView
 {
@@ -78,6 +103,7 @@
         
         //ВИД ОПРОСА "ОЦЕНИТЕ ТОВАР"
         UIImageView *imageForInquirer1 = [[UIImageView alloc] init];
+        self.optionForAnswer = [[[self.arrayOfProducts objectAtIndex:0] valueForKey:@"id"] integerValue];
         [imageForInquirer1 setImageWithURL:[[self.arrayOfProducts objectAtIndex:0] valueForKey:@"image"]];
         [self.view addSubview:imageForInquirer1];
         UIButton *likeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -173,16 +199,30 @@
 }
 -(void)chooseAProduct:(id)sender
 {
+    NSInteger *questionID = [self.itemID integerValue];
+    NSInteger *optionID = [sender tag];
     NSLog(@"TAP %d", [sender tag]);
+    [self.api answerToQuestionWithID:questionID andOptionID:optionID];
+         
 }
--(void)selectAProductWithID:(int)tag
-{
-    
+- (void)alertView:(UIAlertView *)alertView
+clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0){
+        [self.navigationController popViewControllerAnimated:YES];
+
+        }
 }
 -(void)likeAction{
+      NSInteger *questionID = [self.itemID integerValue];
+    NSLog(@"pressed option %d", self.optionForAnswer);
+    [self.api answerToQuestionWithID:questionID andOptionID:self.optionForAnswer];
+    //[self.navigationController popViewControllerAnimated:YES];
     NSLog(@"LIKE");
 }
 -(void)dislikeAction{
+    NSInteger *questionID = [self.itemID integerValue];
+    [self.api answerToQuestionWithID:questionID andOptionID:0];
+  //   [self.navigationController popViewControllerAnimated:YES];
     NSLog(@"DISLIKE");
 }
 @end
