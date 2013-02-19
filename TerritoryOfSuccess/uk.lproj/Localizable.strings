@@ -42,6 +42,8 @@
 "writeWhatYouThinkKey" = "Напишіть що Ви думаєте про цей товар...";
 "YouShouldEnterCommentKey" = "Введіть, будь ласка, свій коментар";
 "NeedToAuthorizedKey" = "Вам необхідно авторизуватись";
+"AllCommentsDownloadedKey" = "Завантаженні всі коментарі";
+"DownloadCommentsKey" = "Завантажуються коментарі...";
 // Опросы
 
 

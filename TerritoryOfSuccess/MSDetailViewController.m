@@ -53,46 +53,46 @@
     
     [self.productDescriptionTextView setBackgroundColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:0.0]];
     
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
+
+    
+    if ([[UIScreen mainScreen] bounds].size.height == 480)
+    {
+        self.detailScrollView.frame = CGRectMake(self.detailScrollView.frame.origin.x, self.detailScrollView.frame.origin.y, self.detailScrollView.frame.size.width, self.detailScrollView.frame.size.height - 88);
+        self.commentsButton.frame = CGRectMake(self.commentsButton.frame.origin.x, 325, self.commentsButton.frame.size.width, self.commentsButton.frame.size.height);
+    }
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 }
-
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     self.commentsLabel.text = [NSString stringWithFormat:@"%d",self.commentsDetail];
     self.advisesLabel.text = [NSString stringWithFormat:@"%d",self.advisesDetail];
     self.productName.text = self.productSentName;
     self.ratingImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%dstar",self.ratingDetail]];
     [self.detailImage setImageWithURL:[NSURL URLWithString:self.productImageURL]];
     self.productDescriptionTextView.text = self.productSentDescription;
+    
     CGRect frame = self.productDescriptionTextView.frame;
     frame.size.height = self.productDescriptionTextView.contentSize.height;
     self.productDescriptionTextView.frame = frame;
     
-    // проверка на развер экрана
+    
     if ([[UIScreen mainScreen] bounds].size.height == 568)
     {
-        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
-        [self.detailScrollView setContentSize:CGSizeMake(self.detailScrollView .frame.size.width, self.imageView.frame.size.height + self.productDescriptionTextView.frame.size.height + 50)];
+        [self.detailScrollView setContentSize:CGSizeMake(self.detailScrollView.frame.size.width, self.imageView.frame.size.height + self.productDescriptionTextView.frame.size.height + 50)];
     }
     else
     {
-        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
-        self.imageView.frame = CGRectMake(self.imageView.frame.origin.x, self.imageView.frame.origin.y + 85, self.imageView.frame.size.width, self.imageView.frame.size.height);
-        self.productDescriptionTextView.frame = CGRectMake(self.productDescriptionTextView.frame.origin.x, self.productDescriptionTextView.frame.origin.y + 85, self.productDescriptionTextView.frame.size.width, self.productDescriptionTextView.frame.size.height);
-        self.detailScrollView.frame = CGRectMake(self.detailScrollView.frame.origin.x, self.detailScrollView.frame.origin.y, self.detailScrollView.frame.size.width, self.detailScrollView.frame.size.height);
-        self.commentsButton.frame = CGRectMake(self.commentsButton.frame.origin.x, 325, self.commentsButton.frame.size.width, self.commentsButton.frame.size.height);
-        self.mainView.frame = CGRectMake(self.mainView.frame.origin.x, self.mainView.frame.origin.y, self.mainView.frame.size.width, self.mainView.frame.size.height - 85);
-        self.productName.frame = CGRectMake(self.productName.frame.origin.x , self.productName.frame.origin.y + 85, self.productName.frame.size.width, self.productName.frame.size.height);
-        self.fbButton.frame = CGRectMake(self.fbButton.frame.origin.x, self.fbButton.frame.origin.y + 85, self.fbButton.frame.size.width, self.fbButton.frame.size.height);
-        self.vkButton.frame = CGRectMake(self.vkButton.frame.origin.x, self.vkButton.frame.origin.y + 85, self.vkButton.frame.size.width, self.vkButton.frame.size.height);
-        self.twButton.frame = CGRectMake(self.twButton.frame.origin.x, self.twButton.frame.origin.y + 85, self.twButton.frame.size.width, self.twButton.frame.size.height);
-        [self.detailScrollView setContentSize:CGSizeMake(self.detailScrollView .frame.size.width, self.imageView.frame.size.height + self.productDescriptionTextView.frame.size.height + 135)];
+        [self.detailScrollView setContentSize:CGSizeMake(self.detailScrollView.frame.size.width, self.imageView.frame.size.height + self.productDescriptionTextView.contentSize.height + 50)];
     }
 }
+
 //необходим рефакторинг
 //метод получения информации о продукте от сигвея
 - (void)sentProductName:(NSString *)name
@@ -170,8 +170,10 @@
 
 - (IBAction)vkButtonPressed:(id)sender
 {
+    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.productImageURL]];
+    UIImage *image = [UIImage imageWithData:imageData];
     self.share.mainView = self;
-    [[self share] shareOnVKWithText:self.productName.text withImage:@"twButton.png"];
+    [[self share] shareOnVKWithText:self.productName.text withImage:image];
     [self.share attachPopUpAnimationForView:self.share.vkView];
 }
 @end

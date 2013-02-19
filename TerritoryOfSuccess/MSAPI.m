@@ -304,20 +304,6 @@
 
 }
 
-- (void)getCommentWithProductId:(int)productId andOffset:(NSString *)offset
-{
-    self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/catalog/comment"];
-    self.checkRequest = kComment;
-    
-    self.request  = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
-    [self.request setHTTPMethod:@"POST"];
-    self.params = [NSMutableString stringWithFormat:@"product_id=%d", productId];
-    [self.params appendFormat:@"&offset=%@", offset];
-    [[self params]appendFormat:@"&lang=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
-    [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
-    [self connectionVerification];
-}
-
 - (void)sentCommentWithProductId:(int)productId andText:(NSString *)text
 {
     self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/catalog/comment"];
@@ -329,6 +315,21 @@
     [self.params appendFormat:@"&text=%@",text];
     [[self params]appendFormat:@"&lang=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
     [[self params] appendFormat:@"&token=%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"authorization_Token"]];
+    [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
+    [self connectionVerification];
+}
+
+- (void)getCommentsWithProductId:(int)productId andOffset:(int)offset
+{
+    self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/catalog/comments"];
+    self.checkRequest = kComments;
+    
+    self.request  = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
+    [self.request setHTTPMethod:@"POST"];
+    self.params = [NSMutableString stringWithFormat:@"product_id=%d",productId];
+    [self.params appendFormat:@"&offset=%d",offset];
+    [[self params]appendFormat:@"&lang=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
+    //[[self params] appendFormat:@"&token=%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"authorization_Token"]];
     [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
     [self connectionVerification];
 }
