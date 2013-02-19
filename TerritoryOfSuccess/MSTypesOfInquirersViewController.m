@@ -108,12 +108,14 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
-    static NSString* cellIdentifier = @"inquirerCellID";
+    static NSString* cellIdentifier = @"customInqCell";
     cell = [_tableOfInquirers dequeueReusableCellWithIdentifier:cellIdentifier];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
         
     }
+    
     if(allInquirerMode) {
         cell.textLabel.text = [[self.allQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
         // cell.imageView.image = [UIImage imageNamed:@"photo_camera_1.png"];
