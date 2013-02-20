@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NSArray *arrayOfProducts;
 @property (nonatomic) int count;
 @property (nonatomic) NSInteger optionForAnswer;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *toStatButton;
 
 
 @end
