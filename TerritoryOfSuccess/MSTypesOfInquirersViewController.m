@@ -46,6 +46,15 @@
     [self.api getLastQuestions];
     self.allInquirerMode=YES;
     self.myInquirerMode = NO;
+    if ([[UIScreen mainScreen] bounds].size.height == 568)
+    {
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
+    }
+    else
+    {
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
+    }
+
     
     NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
     NSString *token = [userDefults valueForKey:@"authorization_Token" ];

@@ -31,6 +31,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if ([[UIScreen mainScreen] bounds].size.height == 568)
+    {
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
+    }
+    else
+    {
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
+    }
+
     NSLog(@"id question %d", self.questionID);
     NSLog(@"interfaceIndex %d", self.interfaceIndex);
     [self.api getStatisticQuestionWithID:self.questionID];
@@ -44,11 +53,17 @@
         UILabel *answer1 = [[UILabel alloc]initWithFrame:CGRectMake(180, 60, 120, 20)];
         UILabel *answer2 = [[UILabel alloc]initWithFrame:CGRectMake(180, 110, 120, 20)];
         [answer1 setText:@"0"];
+        [answer1 setBackgroundColor:[UIColor clearColor]];
+        [answer2 setBackgroundColor:[UIColor clearColor]];
         [answer2 setText:@"0"];
         [self.view addSubview:answer1];
         [self.view addSubview:answer2];
-       // NSArray *arrayOfTitles = [[NSArray alloc] initWithObjects:firstLabel, secondLabel, nil];
-       NSArray *arrayOfAnswers = [[NSArray alloc] initWithObjects:answer1,answer2, nil];
+        NSArray *arrayOfTitles = [[NSArray alloc] initWithObjects:firstLabel, secondLabel, nil];
+        for(int i=0;i<arrayOfTitles.count;i++){
+            UILabel *currentTitle = [arrayOfTitles objectAtIndex:i];
+            [currentTitle setBackgroundColor:[UIColor clearColor]];
+        }
+        NSArray *arrayOfAnswers = [[NSArray alloc] initWithObjects:answer1,answer2, nil];
         for(int i=0;i<self.receivedArray.count;i++)
         {
             UILabel *currentAnswerLabel = [arrayOfAnswers objectAtIndex:i];
@@ -56,6 +71,7 @@
             
             
             [currentAnswerLabel setText:[value stringByAppendingString:@"  Голосов"]];
+            [currentAnswerLabel setBackgroundColor:[UIColor clearColor]];
             // currentAnswerLabel.text = [[self.receivedArray objectAtIndex:i] valueForKey:@"cnt"];
             [self.view addSubview:currentAnswerLabel];
         }
@@ -85,6 +101,7 @@
         NSString *title = @"Товар  ";
         NSString *title1 = [title stringByAppendingString:[NSString stringWithFormat:@"%i",i+1]];
         [currentLabel setText:title1];
+        [currentLabel setBackgroundColor:[UIColor clearColor]];
         [self.view addSubview:currentLabel];
     }
         for(int i=0;i<self.receivedArray.count;i++){
@@ -93,6 +110,7 @@
            
 
             [currentAnswerLabel setText:[value stringByAppendingString:@"  Голосов"]];
+            [currentAnswerLabel setBackgroundColor:[UIColor clearColor]];
            // currentAnswerLabel.text = [[self.receivedArray objectAtIndex:i] valueForKey:@"cnt"];
             [self.view addSubview:currentAnswerLabel];
         }

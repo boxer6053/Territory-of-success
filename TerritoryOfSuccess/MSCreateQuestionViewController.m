@@ -38,6 +38,16 @@
 
 - (void)viewDidLoad
 {
+    
+    if ([[UIScreen mainScreen] bounds].size.height == 568)
+    {
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
+    }
+    else
+    {
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
+    }
+
    // [self performSegueWithIdentifier:@"pickAProduct" sender:self];
     self.requestString = [[NSMutableString alloc] initWithString:@""];
     
