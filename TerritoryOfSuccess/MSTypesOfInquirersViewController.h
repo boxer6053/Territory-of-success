@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MSAPI.h"
 
-@interface MSTypesOfInquirersViewController : UIViewController <UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, WsCompleteDelegate>
+@interface MSTypesOfInquirersViewController : UIViewController <UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, WsCompleteDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableOfInquirers;
 @property (strong, nonatomic) NSArray *testInquirers;
 @property (strong, nonatomic) NSArray *myQuestionsArray;

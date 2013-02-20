@@ -9,6 +9,7 @@
 
 #import "MSTypesOfInquirersViewController.h"
 #import "MSInquirerDetailViewController.h"
+#import "SVProgressHUD.h"
 
 @interface MSTypesOfInquirersViewController ()
 @property (strong, nonatomic) NSMutableData *receivedData;
@@ -46,6 +47,15 @@
     [self.api getLastQuestions];
     self.allInquirerMode=YES;
     self.myInquirerMode = NO;
+    if ([[UIScreen mainScreen] bounds].size.height == 568)
+    {
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
+    }
+    else
+    {
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
+    }
+
     
     NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
     NSString *token = [userDefults valueForKey:@"authorization_Token" ];
@@ -108,12 +118,14 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
-    static NSString* cellIdentifier = @"inquirerCellID";
+    static NSString* cellIdentifier = @"customInqCell";
     cell = [_tableOfInquirers dequeueReusableCellWithIdentifier:cellIdentifier];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
         
     }
+    
     if(allInquirerMode) {
         cell.textLabel.text = [[self.allQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
         // cell.imageView.image = [UIImage imageNamed:@"photo_camera_1.png"];
@@ -180,17 +192,40 @@
     if (type == kLastQuest)
     {
         self.allQuestionsArray = [dictionary valueForKey:@"list"];
+        NSString *response = [[dictionary valueForKey:@"message"] valueForKey:@"text"];
+        if([response isEqualToString:@"To get access to this page please log in to the system."]){
+            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Пожалуйста перезайдите в систему!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
+            [failmessage show];
+            
+        }
         // self.numberOfRows = [[self arrayOfCategories] count];
     }
     
     if (type == kMyQuestions)
     {
         self.myQuestionsArray = [dictionary valueForKey:@"list"];
+     
         //self.numberOfRows = [[self arrayOfBrands] count];
+        self.allQuestionsArray = [dictionary valueForKey:@"list"];
+        NSString *response = [[dictionary valueForKey:@"message"] valueForKey:@"text"];
+        if([response isEqualToString:@"To get access to this page please log in to the system."]){
+            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Пожалуйста перезайдите в систему!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
+            [failmessage show];
+            
+        }
+
     }
     
     [[self tableOfInquirers] reloadData];
+      
     
     
+}
+- (void)alertView:(UIAlertView *)alertView
+clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0){
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    }
 }
 @end

@@ -9,6 +9,7 @@
 #import "MSInquirerDetailViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SDWebImage/UIButton+WebCache.h>
+#import "MSStatisticViewController.h"
 
 
 @interface MSInquirerDetailViewController ()
@@ -24,7 +25,9 @@
 @synthesize arrayOfProducts = _arrayOfProducts;
 @synthesize receivedData = _receivedData;
 @synthesize api = _api;
+@synthesize toStatButton = _toStatButton;
 @synthesize count = _count;
+@synthesize optionForAnswer = _optionForAnswer;
 
 - (MSAPI *) api{
     if(!_api){
@@ -42,7 +45,6 @@
     int item = [self.itemID integerValue];
     NSLog(@"gonnatakeID %d", item);
     NSLog(@"Now Statistics");
-    //[self.api getStatisticQuestionWithID:item];
     [self.api getDetailQuestionWithID:item];
     if ([[UIScreen mainScreen] bounds].size.height == 568) {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
@@ -51,6 +53,7 @@
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
+    [self.api getStatisticQuestionWithID:item];
     
     
     
@@ -68,7 +71,40 @@
         NSLog(@"COUNT %d", self.count);
         [self buildView];
     }
-    
+     if (type == kSendAnswer)
+     {
+         NSString *answer = [dictionary valueForKey:@"status"];
+         NSDictionary *message = [dictionary valueForKey:@"message"];
+         NSString *goodAnswer = @"ok";
+         NSString *alreadyAnswer = @"!-- already-voted --!";
+         if([answer isEqualToString:goodAnswer]){
+             NSLog(@"Everything's fine");
+         }
+         else{
+             NSLog(@"Trouble");
+         }
+         if([answer isEqualToString:goodAnswer])
+         {
+             UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Успех" message:@"Ваш ответ засчитан!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
+             [failmessage show];
+             
+         }
+         if([[message valueForKey:@"text"]isEqualToString:alreadyAnswer])
+         {
+             UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Вы уже ответили!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
+             [failmessage show];
+         }
+
+     }
+    if(type == kQuestStat){
+        NSString *message = [dictionary valueForKey:@"message"];
+        if([message isEqualToString:@"An error occurred"]){
+            //self.toStatButton.title = @"";
+            self.navigationItem.rightBarButtonItem.enabled = NO ;
+
+        }
+        
+    }
 }
 -(void)buildView
 {
@@ -78,6 +114,7 @@
         
         //ВИД ОПРОСА "ОЦЕНИТЕ ТОВАР"
         UIImageView *imageForInquirer1 = [[UIImageView alloc] init];
+        self.optionForAnswer = [[[self.arrayOfProducts objectAtIndex:0] valueForKey:@"id"] integerValue];
         [imageForInquirer1 setImageWithURL:[[self.arrayOfProducts objectAtIndex:0] valueForKey:@"image"]];
         [self.view addSubview:imageForInquirer1];
         UIButton *likeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -171,18 +208,45 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString: @"toStat"]){
+        MSStatisticViewController *controller = (MSStatisticViewController *)segue.destinationViewController;
+        controller.interfaceIndex = self.count;
+        controller.questionID = [self.itemID integerValue];
+        
+        
+        
+        
+    }
+}
 -(void)chooseAProduct:(id)sender
 {
+    NSInteger *questionID = [self.itemID integerValue];
+    NSInteger *optionID = [sender tag];
     NSLog(@"TAP %d", [sender tag]);
+    [self.api answerToQuestionWithID:questionID andOptionID:optionID];
+         
 }
--(void)selectAProductWithID:(int)tag
-{
-    
+- (void)alertView:(UIAlertView *)alertView
+clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0){
+        [self.navigationController popViewControllerAnimated:YES];
+
+        }
 }
 -(void)likeAction{
+      NSInteger *questionID = [self.itemID integerValue];
+    NSLog(@"pressed option %d", self.optionForAnswer);
+    [self.api answerToQuestionWithID:questionID andOptionID:self.optionForAnswer];
+    //[self.navigationController popViewControllerAnimated:YES];
     NSLog(@"LIKE");
 }
 -(void)dislikeAction{
+    NSInteger *questionID = [self.itemID integerValue];
+    [self.api answerToQuestionWithID:questionID andOptionID:0];
+  //   [self.navigationController popViewControllerAnimated:YES];
     NSLog(@"DISLIKE");
 }
 @end

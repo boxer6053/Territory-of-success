@@ -9,14 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "MSAPI.h"
 
-@interface MSInquirerDetailViewController : UIViewController <WsCompleteDelegate>
+@interface MSInquirerDetailViewController : UIViewController <WsCompleteDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *inquirerTitle;
 @property (nonatomic) NSInteger inquirerType;
-@property   (strong, nonatomic) NSString *test;
 @property (nonatomic) NSString * itemID;
 @property (strong, nonatomic) NSArray *arrayOfProducts;
 @property (nonatomic) int count;
+@property (nonatomic) NSInteger optionForAnswer;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *toStatButton;
 
--(void)selectAProductWithID:(int)tag;
+
 @end
 
