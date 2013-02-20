@@ -664,6 +664,46 @@
     [self connectionVerification];
 }
 
+- (void)getProfileData
+{
+    self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/profile"];
+    
+    self.checkRequest = kProfileInfo;
+    
+    //створюемо запит
+    self.request = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
+    
+    //вказуэм протокол доступу
+    [self.request setHTTPMethod:@"POST"];
+    
+    self.params = [NSMutableString stringWithFormat:@"token=%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"authorization_Token"]];
+    [self.params appendFormat:@"&lang=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
+    
+    [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [self connectionVerification];
+}
+
+- (void)getProfileDataForEdit
+{
+    self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/profile/edit"];
+    
+    self.checkRequest = kProfileEdit;
+    
+    //створюемо запит
+    self.request = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
+    
+    //вказуэм протокол доступу
+    [self.request setHTTPMethod:@"POST"];
+    
+    self.params = [NSMutableString stringWithFormat:@"token=%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"authorization_Token"]];
+    [self.params appendFormat:@"&lang=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
+    
+    [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [self connectionVerification];
+}
+
 - (void)connectionVerification
 {
     if (checkConnection.hasConnectivity) {
