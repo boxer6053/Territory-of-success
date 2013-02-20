@@ -62,6 +62,7 @@
         for(int i=0;i<arrayOfTitles.count;i++){
             UILabel *currentTitle = [arrayOfTitles objectAtIndex:i];
             [currentTitle setBackgroundColor:[UIColor clearColor]];
+            [currentTitle setFont:[UIFont fontWithName:@"TimesNewRomanPS-ItalicMT" size:17]];
         }
         NSArray *arrayOfAnswers = [[NSArray alloc] initWithObjects:answer1,answer2, nil];
         for(int i=0;i<self.receivedArray.count;i++)
@@ -70,8 +71,9 @@
             NSString *value = [[self.receivedArray objectAtIndex:i] valueForKey:@"cnt"];
             
             
-            [currentAnswerLabel setText:[value stringByAppendingString:@"  Голосов"]];
+            [currentAnswerLabel setText:[value stringByAppendingString:@"  Голос(ов)"]];
             [currentAnswerLabel setBackgroundColor:[UIColor clearColor]];
+            [currentAnswerLabel setFont:[UIFont fontWithName:@"TimesNewRomanPS-ItalicMT" size:17]];
             // currentAnswerLabel.text = [[self.receivedArray objectAtIndex:i] valueForKey:@"cnt"];
             [self.view addSubview:currentAnswerLabel];
         }
@@ -101,6 +103,7 @@
         NSString *title = @"Товар  ";
         NSString *title1 = [title stringByAppendingString:[NSString stringWithFormat:@"%i",i+1]];
         [currentLabel setText:title1];
+        [currentLabel setFont:[UIFont fontWithName:@"TimesNewRomanPS-ItalicMT" size:17]];
         [currentLabel setBackgroundColor:[UIColor clearColor]];
         [self.view addSubview:currentLabel];
     }
@@ -109,7 +112,8 @@
             NSString *value = [[self.receivedArray objectAtIndex:i] valueForKey:@"cnt"];
            
 
-            [currentAnswerLabel setText:[value stringByAppendingString:@"  Голосов"]];
+            [currentAnswerLabel setText:[value stringByAppendingString:@"  Голос(ов)"]];
+            [currentAnswerLabel setFont:[UIFont fontWithName:@"TimesNewRomanPS-ItalicMT" size:17]];
             [currentAnswerLabel setBackgroundColor:[UIColor clearColor]];
            // currentAnswerLabel.text = [[self.receivedArray objectAtIndex:i] valueForKey:@"cnt"];
             [self.view addSubview:currentAnswerLabel];

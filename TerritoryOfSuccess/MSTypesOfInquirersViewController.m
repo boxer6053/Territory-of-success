@@ -9,6 +9,7 @@
 
 #import "MSTypesOfInquirersViewController.h"
 #import "MSInquirerDetailViewController.h"
+#import "SVProgressHUD.h"
 
 @interface MSTypesOfInquirersViewController ()
 @property (strong, nonatomic) NSMutableData *receivedData;
@@ -216,6 +217,7 @@
     }
     
     [[self tableOfInquirers] reloadData];
+      
     
     
 }
