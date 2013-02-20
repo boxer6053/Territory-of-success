@@ -572,10 +572,10 @@ static inline double radians (double degrees)
     
     [self.api setDelegate:self];
     
-//    NSString *codeStr = @"4444-2AED-2354-865E";
-//    NSString *codeStr = @"2EA4-29E9-CCE0-90EB";
-    self.codeStr = @"37B9-45A4-3711-2DA2";
-//    NSString *codeStr = [self.codeTextField text];
+    self.codeStr = @"4444-2AED-2354-865E";
+//    self.codeStr = @"2EA4-29E9-CCE0-90EB";
+//    self.codeStr = @"37B9-45A4-3711-2DA2";
+//    self.codeStr = [self.codeTextField text];
     
 //    [self.api checkCode:[self.codeTextField text]];
     
@@ -850,7 +850,8 @@ static inline double radians (double degrees)
                 [self.dialogView.categoryDescripptionLabel sizeToFit];
                 
                 [self.dialogView.bonusLabel setText:NSLocalizedString(@"Бонус за продукт:",nil)];
-                [self.dialogView.bonusValueLabel setText:[dictionary valueForKey:@"bonus"]];
+//                [self.dialogView.bonusValueLabel setText:[dictionary valueForKey:@"bonus"]];
+                [self.dialogView.bonusValueLabel setText:@"0"];
                 
                 [self.dialogView.messageLabel setText:[[dictionary valueForKey:@"message"] objectAtIndex:1]];
                 [self.dialogView.messageLabel sizeToFit];
@@ -897,7 +898,7 @@ static inline double radians (double degrees)
                     messageStr = [messageStr stringByReplacingOccurrencesOfString:@"<p>" withString:@""];
                     messageStr = [messageStr stringByReplacingOccurrencesOfString:@"</p>" withString:@"\n"];
                     
-                    UILabel *notFoundMessageLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, self.dialogView.captionLabel.frame.origin.y + self.dialogView.captionLabel.frame.size.height + 30, 290, 100)];
+                    UILabel *notFoundMessageLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, self.dialogView.captionLabel.frame.origin.y + self.dialogView.captionLabel.frame.size.height + 10, 290, 100)];
                     [notFoundMessageLabel setNumberOfLines:0];
                     [notFoundMessageLabel setLineBreakMode:NSLineBreakByWordWrapping];
                     [notFoundMessageLabel setBackgroundColor:[UIColor clearColor]];
@@ -909,6 +910,7 @@ static inline double radians (double degrees)
                     [self.dialogView addSubview:notFoundMessageLabel];
                     
                     [self.dialogView.bonusNameLabel setText:@""];
+                    [self.dialogView.productImageView setHidden:YES];
                     
                     [self showDialogView];
                 }
@@ -1013,6 +1015,7 @@ static inline double radians (double degrees)
         }
     }
     [self.view addGestureRecognizer:self.tapRecognizer];
+    [self.view.window addGestureRecognizer:self.tapRecognizer];
 }
 
 - (void)keyboardWillHide:(NSNotification *)note
@@ -1046,6 +1049,7 @@ static inline double radians (double degrees)
     }];
     
     [self.view removeGestureRecognizer:self.tapRecognizer];
+    [self.view.window removeGestureRecognizer:self.tapRecognizer];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
