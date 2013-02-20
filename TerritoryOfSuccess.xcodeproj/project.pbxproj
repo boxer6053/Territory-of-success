@@ -1153,6 +1153,8 @@
 				F5CFE32816C95E6900B67C0F /* MSComplaintView.m in Sources */,
 				FA9094D716CA7B8D007F9441 /* MSAddCommentView.m in Sources */,
 				F5100A3E16D3B01000A49FD7 /* MSStatisticViewController.m in Sources */,
+				FA9CFEFB16D3E6C100CDA519 /* MSProfileViewController.m in Sources */,
+				FA9CFF0216D3EBA600CDA519 /* MSCheckBoxCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
