@@ -74,10 +74,12 @@
 		FA167C5616A993940008561D /* MSCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA167C5516A993940008561D /* MSCommentsViewController.m */; };
 		FA167C6116A9A5BB0008561D /* MSSubCatalogueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA167C6016A9A5BB0008561D /* MSSubCatalogueViewController.m */; };
 		FA167DB816C394D700B08904 /* button_80_44.png in Resources */ = {isa = PBXBuildFile; fileRef = FA167DB716C394D700B08904 /* button_80_44.png */; };
+		FA1853C016D401BB00BAF298 /* MSPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1853BF16D401BB00BAF298 /* MSPickerView.m */; };
 		FA1AB2E916B27E43001827A6 /* MSNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1AB2E816B27E43001827A6 /* MSNewsCell.m */; };
 		FA1AB2ED16B2B936001827A6 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1AB2EC16B2B935001827A6 /* bg.png */; };
 		FA1BEA8C16A813B200F2C219 /* MSDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1BEA8B16A813B200F2C219 /* MSDetailViewController.m */; };
 		FA1BEA9616A842A200F2C219 /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1BEA9516A842A100F2C219 /* like.png */; };
+		FA1E940516D522F3007D7BE3 /* MSDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1E940416D522F3007D7BE3 /* MSDatePickerView.m */; };
 		FA283CCD16A0890F00DBDC19 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA283CCC16A0890F00DBDC19 /* QuartzCore.framework */; };
 		FA3B6F1916B6C30C0095A851 /* MSBrandsAndCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3B6F1816B6C30C0095A851 /* MSBrandsAndCategoryCell.m */; };
 		FA3B6F1B16B6C6300095A851 /* brandLogoExample.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3B6F1A16B6C6300095A851 /* brandLogoExample.png */; };
@@ -374,12 +376,16 @@
 		FA167C5F16A9A5BA0008561D /* MSSubCatalogueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSubCatalogueViewController.h; sourceTree = "<group>"; };
 		FA167C6016A9A5BB0008561D /* MSSubCatalogueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSubCatalogueViewController.m; sourceTree = "<group>"; };
 		FA167DB716C394D700B08904 /* button_80_44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_80_44.png; sourceTree = "<group>"; };
+		FA1853BE16D401BB00BAF298 /* MSPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSPickerView.h; sourceTree = "<group>"; };
+		FA1853BF16D401BB00BAF298 /* MSPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSPickerView.m; sourceTree = "<group>"; };
 		FA1AB2E716B27E43001827A6 /* MSNewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSNewsCell.h; sourceTree = "<group>"; };
 		FA1AB2E816B27E43001827A6 /* MSNewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSNewsCell.m; sourceTree = "<group>"; };
 		FA1AB2EC16B2B935001827A6 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		FA1BEA8A16A813B200F2C219 /* MSDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDetailViewController.h; sourceTree = "<group>"; };
 		FA1BEA8B16A813B200F2C219 /* MSDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDetailViewController.m; sourceTree = "<group>"; };
 		FA1BEA9516A842A100F2C219 /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
+		FA1E940316D522F3007D7BE3 /* MSDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDatePickerView.h; sourceTree = "<group>"; };
+		FA1E940416D522F3007D7BE3 /* MSDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDatePickerView.m; sourceTree = "<group>"; };
 		FA283CCC16A0890F00DBDC19 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FA3B6F1716B6C30C0095A851 /* MSBrandsAndCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSBrandsAndCategoryCell.h; sourceTree = "<group>"; };
 		FA3B6F1816B6C30C0095A851 /* MSBrandsAndCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSBrandsAndCategoryCell.m; sourceTree = "<group>"; };
@@ -566,6 +572,10 @@
 				FAFB5E0A16C2650F001B692B /* MSAnimationView.m */,
 				FA9094D516CA7B8D007F9441 /* MSAddCommentView.h */,
 				FA9094D616CA7B8D007F9441 /* MSAddCommentView.m */,
+				FA1853BE16D401BB00BAF298 /* MSPickerView.h */,
+				FA1853BF16D401BB00BAF298 /* MSPickerView.m */,
+				FA1E940316D522F3007D7BE3 /* MSDatePickerView.h */,
+				FA1E940416D522F3007D7BE3 /* MSDatePickerView.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1149,6 +1159,8 @@
 				FA9094D716CA7B8D007F9441 /* MSAddCommentView.m in Sources */,
 				FA9CFEFB16D3E6C100CDA519 /* MSProfileViewController.m in Sources */,
 				FA9CFF0216D3EBA600CDA519 /* MSCheckBoxCell.m in Sources */,
+				FA1853C016D401BB00BAF298 /* MSPickerView.m in Sources */,
+				FA1E940516D522F3007D7BE3 /* MSDatePickerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

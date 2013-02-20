@@ -13,6 +13,7 @@
 #import "MSReceiveProfileCell.h"
 #import "MSProfileSaveCell.h"
 #import "MSCheckBoxCell.h"
+#import "MSPickerView.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface MSProfileViewController ()
@@ -22,7 +23,7 @@
 }
 
 @property (nonatomic) UIDatePicker *datePicker;
-@property (nonatomic) UIPickerView *pickerView;
+//@property (nonatomic) UIPickerView *pickerView;
 @property (strong, nonatomic) MSAPI *api;
 @property (strong, nonatomic) NSMutableArray *profileArray;
 @property (strong, nonatomic) NSMutableArray *profileStandartFields;
@@ -39,7 +40,7 @@
 @synthesize profileStandartFields = _profileStandartFields;
 @synthesize profileCheckboxFields = _profileCheckboxFields;
 @synthesize profileDictionary = _profileDictionary;
-@synthesize pickerView = _pickerView;
+//@synthesize pickerView = _pickerView;
 
 - (MSAPI *)api
 {
@@ -56,6 +57,8 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
     [self.api getProfileData];
+//    self.pickerView.delegate = self;
+//    self.pickerView.dataSource = self;
     _downloadIsComplete = NO;
 }
 
@@ -165,6 +168,23 @@
                     value = @"";
                 }
                 cell.standartTextField.text = value;
+                
+                if([[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"type"] isEqualToString:@"select"])
+                {
+                    MSPickerView *picker = [[MSPickerView alloc]initWithFrame:CGRectMake(0, 0, 320, 261)];
+                    picker.delegate = self;
+                    picker.target = cell.standartTextField;
+                    picker.dataSource = [[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"values"];
+                    cell.standartTextField.inputView = picker;
+                }
+                
+                if([[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"key"] isEqualToString:@"birthday"])
+                {
+                    MSDatePickerView *picker = [[MSDatePickerView alloc]initWithFrame:CGRectMake(0, 0, 320, 261)];
+                    picker.delegate = self;
+                    picker.target = cell.standartTextField;
+                    cell.standartTextField.inputView = picker;
+                }
             }
             else
             {
@@ -180,44 +200,6 @@
                 }
                 cell.standartTextField.text = value;
             }
-            
-            if([[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"type"] isEqualToString:@"select"])
-            {
-                UIView *basePickerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 261)];
-                self.pickerView = [[UIPickerView alloc]initWithFrame:CGRectMake(0, 44, basePickerView.frame.size.width, basePickerView.frame.size.height - 44)];
-                self.pickerView.delegate = self;
-                self.pickerView.dataSource = self;
-                UIToolbar *PickerToolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, basePickerView.frame.size.width, 44)];
-                PickerToolBar.barStyle = UIBarStyleBlackTranslucent;
-                UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(pickerViewDonePressed)];
-                [doneButton setTintColor:[UIColor orangeColor]];
-                UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(pickerViewCancelPressed)];
-                [cancelButton setTintColor:[UIColor orangeColor]];
-                UIBarButtonItem *spacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-                PickerToolBar.items = [NSArray arrayWithObjects:cancelButton, spacer, doneButton, nil];
-                [basePickerView addSubview:PickerToolBar];
-                [basePickerView addSubview:self.datePicker];
-                cell.standartTextField.inputView = basePickerView;
-            }
-            
-//            if (indexPath.row == 3)
-//            {
-//                cell.standartTitleLabel.text = @"Дата Рождения";
-//                UIView *myView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 261)];
-//                self.datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 44, myView.frame.size.width, myView.frame.size.height - 44)];
-//                self.datePicker.datePickerMode = UIDatePickerModeDate;
-//                UIToolbar *datePickerToolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, myView.frame.size.width, 44)];
-//                datePickerToolBar.barStyle = UIBarStyleBlackTranslucent;
-//                UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(pickerViewDonePressed)];
-//                [doneButton setTintColor:[UIColor orangeColor]];
-//                UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(pickerViewCancelPressed)];
-//                [cancelButton setTintColor:[UIColor orangeColor]];
-//                UIBarButtonItem *spacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-//                datePickerToolBar.items = [NSArray arrayWithObjects:cancelButton, spacer, doneButton, nil];
-//                [myView addSubview:datePickerToolBar];
-//                [myView addSubview:self.datePicker];
-//                cell.standartTextField.inputView = myView;
-//            }
             
             cell.standartTextField.delegate = self;
             [cell.standartTextField addTarget:self action:@selector(TextFieldStartEditing:) forControlEvents:UIControlEventEditingDidBegin];
@@ -269,27 +251,7 @@
     }
 }
 
--(void)pickerViewDonePressed
-{
-    NSIndexPath * indexPath = [NSIndexPath indexPathForItem:3 inSection:1];
-    MSStandardProfileCell *cell = (MSStandardProfileCell *)[self.profileTableView cellForRowAtIndexPath:indexPath];
-    NSDate *date = [self.datePicker date];
-    //format it
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
-    [dateFormat setDateFormat:@"yyyy-mm-dd"];
-    
-    NSString *dateString = [dateFormat stringFromDate:date];
-    cell.standartTextField.text = dateString;
-    [cell.standartTextField resignFirstResponder];
-}
-
--(void)pickerViewCancelPressed
-{
-    NSIndexPath * indexPath = [NSIndexPath indexPathForItem:3 inSection:1];
-    MSStandardProfileCell *cell = (MSStandardProfileCell *)[self.profileTableView cellForRowAtIndexPath:indexPath];
-    [cell.standartTextField resignFirstResponder];
-}
-
+#pragma mark - UITextField Delegate
 -(void)TextFieldStartEditing:(id)sender
 {
     UITableViewCell *cell = (UITableViewCell*) [[sender superview] superview];
@@ -299,7 +261,6 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
-    
     return YES;
 }
 
@@ -314,6 +275,11 @@
 -(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
 {
     self.profileDictionary = dictionary;
+    if([[dictionary valueForKey:@"status"] isEqualToString:@"failed"])
+    {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:[[dictionary valueForKey:@"message"] valueForKey:@"title"] message:[[dictionary valueForKey:@"message"] valueForKey:@"text"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+    }
     if(type == kProfileInfo)
     {
         if([[dictionary valueForKey:@"status"] isEqualToString:@"ok"])
@@ -352,20 +318,28 @@
         }
     }
 }
-
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView
+#pragma mark - MSPickerViewDelegate
+-(void)msPickerViewDoneButtonPressed:(MSPickerView *)pickerView
 {
-    return 1;
+    pickerView.target.text = pickerView.selectedItem;
+    [pickerView.target resignFirstResponder];
 }
 
-- (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component
+-(void)msPickerViewCancelButtonPressed:(MSPickerView *)pickerView
 {
-    return 3;
+    [pickerView.target resignFirstResponder];
 }
 
-- (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+#pragma mark - MSDatePickeViewDelegate
+-(void)msDatePickerViewCancelButtonPressed:(MSDatePickerView *)pickerView
 {
-    return @"lol";
+    [pickerView.target resignFirstResponder];
+}
+
+-(void)msDatePickerViewDoneButtonPressed:(MSDatePickerView *)pickerView
+{
+    pickerView.target.text = pickerView.selectedDate;
+    [pickerView.target resignFirstResponder];
 }
 
 @end
