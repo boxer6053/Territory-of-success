@@ -9,6 +9,7 @@
 #import "MSInquirerDetailViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SDWebImage/UIButton+WebCache.h>
+#import "MSStatisticViewController.h"
 
 
 @interface MSInquirerDetailViewController ()
@@ -24,6 +25,7 @@
 @synthesize arrayOfProducts = _arrayOfProducts;
 @synthesize receivedData = _receivedData;
 @synthesize api = _api;
+@synthesize toStatButton = _toStatButton;
 @synthesize count = _count;
 @synthesize optionForAnswer = _optionForAnswer;
 
@@ -43,7 +45,6 @@
     int item = [self.itemID integerValue];
     NSLog(@"gonnatakeID %d", item);
     NSLog(@"Now Statistics");
-    //[self.api getStatisticQuestionWithID:item];
     [self.api getDetailQuestionWithID:item];
     if ([[UIScreen mainScreen] bounds].size.height == 568) {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
@@ -52,6 +53,7 @@
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
+    [self.api getStatisticQuestionWithID:item];
     
     
     
@@ -94,6 +96,15 @@
          }
 
      }
+    if(type == kQuestStat){
+        NSString *message = [dictionary valueForKey:@"message"];
+        if([message isEqualToString:@"An error occurred"]){
+            //self.toStatButton.title = @"";
+            self.navigationItem.rightBarButtonItem.enabled = NO ;
+
+        }
+        
+    }
 }
 -(void)buildView
 {
@@ -196,6 +207,19 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString: @"toStat"]){
+        MSStatisticViewController *controller = (MSStatisticViewController *)segue.destinationViewController;
+        controller.interfaceIndex = self.count;
+        controller.questionID = [self.itemID integerValue];
+        
+        
+        
+        
+    }
 }
 -(void)chooseAProduct:(id)sender
 {

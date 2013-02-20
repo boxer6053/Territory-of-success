@@ -38,6 +38,16 @@
 
 - (void)viewDidLoad
 {
+    
+    if ([[UIScreen mainScreen] bounds].size.height == 568)
+    {
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
+    }
+    else
+    {
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
+    }
+
    // [self performSegueWithIdentifier:@"pickAProduct" sender:self];
     self.requestString = [[NSMutableString alloc] initWithString:@""];
     
@@ -119,6 +129,7 @@
 {
     MSAskViewController *avc = [segue destinationViewController];
     avc.delegate = self;
+    NSLog(@"id %d", self.upperID);
     
     if([segue.identifier isEqualToString:@"pickAProduct"]){
         MSAskViewController *controller = (MSAskViewController *)segue.destinationViewController;

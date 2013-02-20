@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F5100A3E16D3B01000A49FD7 /* MSStatisticViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5100A3D16D3B01000A49FD7 /* MSStatisticViewController.m */; };
 		F51CCD5216B95B4400029B9B /* button_185_45.png in Resources */ = {isa = PBXBuildFile; fileRef = F51CCD5116B95B4400029B9B /* button_185_45.png */; };
 		F51CCD5416B95C6F00029B9B /* button_120*32.png in Resources */ = {isa = PBXBuildFile; fileRef = F51CCD5316B95C6F00029B9B /* button_120*32.png */; };
 		F526D77716B3009D0027BF21 /* button55*30.png in Resources */ = {isa = PBXBuildFile; fileRef = F526D77616B3009D0027BF21 /* button55*30.png */; };
@@ -141,6 +142,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F5100A3C16D3B01000A49FD7 /* MSStatisticViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSStatisticViewController.h; sourceTree = "<group>"; };
+		F5100A3D16D3B01000A49FD7 /* MSStatisticViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSStatisticViewController.m; sourceTree = "<group>"; };
 		F510C26716CCF36A0058AB31 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		F510C26916CCF37C0058AB31 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		F510C26B16CCF38F0058AB31 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -535,6 +538,8 @@
 				F5AA6B0E16B82A2F009EB16C /* MSAskViewController.m */,
 				F59884A816BACE7C009FBF48 /* MSCreateQuestionViewController.h */,
 				F59884A916BACE7C009FBF48 /* MSCreateQuestionViewController.m */,
+				F5100A3C16D3B01000A49FD7 /* MSStatisticViewController.h */,
+				F5100A3D16D3B01000A49FD7 /* MSStatisticViewController.m */,
 				F5603C42169C6E6400667203 /* MSFirstNavigationController.h */,
 				F5603C43169C6E6400667203 /* MSFirstNavigationController.m */,
 				F5603C4F169C802100667203 /* MSTabBarController.h */,
@@ -1157,6 +1162,7 @@
 				FAFB5E0B16C2650F001B692B /* MSAnimationView.m in Sources */,
 				F5CFE32816C95E6900B67C0F /* MSComplaintView.m in Sources */,
 				FA9094D716CA7B8D007F9441 /* MSAddCommentView.m in Sources */,
+				F5100A3E16D3B01000A49FD7 /* MSStatisticViewController.m in Sources */,
 				FA9CFEFB16D3E6C100CDA519 /* MSProfileViewController.m in Sources */,
 				FA9CFF0216D3EBA600CDA519 /* MSCheckBoxCell.m in Sources */,
 				FA1853C016D401BB00BAF298 /* MSPickerView.m in Sources */,

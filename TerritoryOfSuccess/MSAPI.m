@@ -597,7 +597,7 @@
     self.params = [NSMutableString stringWithFormat:@"item_id=%d", questionID];
     if(optionID !=0)
     {
-        [self.params appendFormat:@"&optionID=%d", optionID];
+        [self.params appendFormat:@"&option_id=%d", optionID];
     }
     [self.params appendFormat:@"&lang=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
     [self.params appendFormat:@"&token=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"authorization_Token"]];
