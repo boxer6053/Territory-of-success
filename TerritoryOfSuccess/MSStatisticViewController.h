@@ -10,6 +10,7 @@
 #import "MSAPI.h"
 
 @interface MSStatisticViewController : UIViewController <WsCompleteDelegate>
+@property (nonatomic) NSInteger interfaceIndex;
 @property (nonatomic) NSInteger questionID;
 @property (strong, nonatomic) NSArray *receivedArray;
 

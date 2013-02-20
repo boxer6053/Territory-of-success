@@ -203,6 +203,7 @@
 {
     if([segue.identifier isEqualToString: @"toStat"]){
         MSStatisticViewController *controller = (MSStatisticViewController *)segue.destinationViewController;
+        controller.interfaceIndex = self.count;
         controller.questionID = [self.itemID integerValue];
         
         

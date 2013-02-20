@@ -16,6 +16,7 @@
 
 @implementation MSStatisticViewController
 @synthesize questionID = _questionID;
+@synthesize interfaceIndex = _interfaceIndex;
 @synthesize receivedData = _receivedData;
 @synthesize receivedArray = _receivedArray;
 @synthesize api = _api;
@@ -31,11 +32,39 @@
 {
     [super viewDidLoad];
     NSLog(@"id question %d", self.questionID);
+    NSLog(@"interfaceIndex %d", self.interfaceIndex);
     [self.api getStatisticQuestionWithID:self.questionID];
    
 	// Do any additional setup after loading the view.
 }
 -(void)buildView{
+    if(self.interfaceIndex ==1){
+        UILabel *firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 60, 120, 20)];
+        UILabel *secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 110, 160, 20)];
+        UILabel *answer1 = [[UILabel alloc]initWithFrame:CGRectMake(180, 60, 120, 20)];
+        UILabel *answer2 = [[UILabel alloc]initWithFrame:CGRectMake(180, 110, 120, 20)];
+        [answer1 setText:@"0"];
+        [answer2 setText:@"0"];
+        [self.view addSubview:answer1];
+        [self.view addSubview:answer2];
+       // NSArray *arrayOfTitles = [[NSArray alloc] initWithObjects:firstLabel, secondLabel, nil];
+       NSArray *arrayOfAnswers = [[NSArray alloc] initWithObjects:answer1,answer2, nil];
+        for(int i=0;i<self.receivedArray.count;i++)
+        {
+            UILabel *currentAnswerLabel = [arrayOfAnswers objectAtIndex:i];
+            NSString *value = [[self.receivedArray objectAtIndex:i] valueForKey:@"cnt"];
+            
+            
+            [currentAnswerLabel setText:[value stringByAppendingString:@"  Голосов"]];
+            // currentAnswerLabel.text = [[self.receivedArray objectAtIndex:i] valueForKey:@"cnt"];
+            [self.view addSubview:currentAnswerLabel];
+        }
+        [self.view addSubview:firstLabel];
+        [self.view addSubview:secondLabel];
+        [firstLabel setText:@"Голосов ЗА"];
+        [secondLabel setText:@"Голосов ПРОТИВ"];
+    }
+    else{
     UILabel *firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 60, 120, 20)];
     UILabel *secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 110, 120, 20)];
     UILabel *thirdLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 160, 120, 20)];
@@ -72,7 +101,7 @@
         [[arrayOfTitles objectAtIndex:i]  setHidden:YES];
         [[arrayOfAnswers objectAtIndex:i] setHidden:YES];
     }
-    
+    }
 }
 - (void)didReceiveMemoryWarning
 {
