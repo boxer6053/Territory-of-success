@@ -8,7 +8,7 @@
 
 #import "MSStatisticViewController.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "SVProgressHUD.h"
 @interface MSStatisticViewController ()
 @property (strong, nonatomic) NSMutableData *receivedData;
 @property (strong, nonatomic) MSAPI *api;
@@ -32,6 +32,7 @@
 }
 - (void)viewDidLoad
 {
+   
     [super viewDidLoad];
     if ([[UIScreen mainScreen] bounds].size.height == 568)
     {
@@ -41,7 +42,7 @@
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
-
+ [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadingInquirerStatKey",nil)];
     NSLog(@"id question %d", self.questionID);
     NSLog(@"interfaceIndex %d", self.interfaceIndex);
     [self.api getStatisticQuestionWithID:self.questionID];
@@ -94,27 +95,39 @@
     UILabel *fifthLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 260, 60, 20)];
     UILabel *sixthLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 310, 60, 20)];
     NSArray *arrayOfTitles = [[NSArray alloc] initWithObjects:firstLabel,secondLabel,thirdLabel,fourthLabel,fifthLabel,sixthLabel, nil];
-    UILabel *answer1 = [[UILabel alloc]initWithFrame:CGRectMake(220, 60, 80, 20)];
-    UILabel *answer2 = [[UILabel alloc]initWithFrame:CGRectMake(220, 110, 80, 20)];
-    UILabel *answer3 = [[UILabel alloc]initWithFrame:CGRectMake(220, 160, 80, 20)];
-    UILabel *answer4 = [[UILabel alloc]initWithFrame:CGRectMake(220, 210, 80, 20)];
-    UILabel *answer5 = [[UILabel alloc]initWithFrame:CGRectMake(220, 260, 80, 20)];
-    UILabel *answer6 = [[UILabel alloc]initWithFrame:CGRectMake(220, 310, 80, 20)];
+    UILabel *answer1 = [[UILabel alloc]initWithFrame:CGRectMake(200, 60, 100, 20)];
+    UILabel *answer2 = [[UILabel alloc]initWithFrame:CGRectMake(200, 110, 100, 20)];
+    UILabel *answer3 = [[UILabel alloc]initWithFrame:CGRectMake(200, 160, 100, 20)];
+    UILabel *answer4 = [[UILabel alloc]initWithFrame:CGRectMake(200, 210, 100, 20)];
+    UILabel *answer5 = [[UILabel alloc]initWithFrame:CGRectMake(200, 260, 100, 20)];
+    UILabel *answer6 = [[UILabel alloc]initWithFrame:CGRectMake(200, 310, 100, 20)];
         
+//        UIImageView *rate1 = [[UIImageView alloc] init];
+//        [rate1 setImage:[UIImage imageNamed:@"blueRate.png"]];
+//        UIImageView *rate2 = [[UIImageView alloc] init];
+//                [rate2 setImage:[UIImage imageNamed:@"greenRate.png"]];
+//        UIImageView *rate3 = [[UIImageView alloc] init];
+//                [rate3 setImage:[UIImage imageNamed:@"lightGreenRate.png"]];
+//        UIImageView *rate4 = [[UIImageView alloc] init];
+//                [rate4 setImage:[UIImage imageNamed:@"purpleRate.png"]];
+//        UIImageView *rate5 = [[UIImageView alloc] init];
+//                [rate5 setImage:[UIImage imageNamed:@"redRate.png"]];
+//        UIImageView *rate6 = [[UIImageView alloc] init];
+//                [rate6 setImage:[UIImage imageNamed:@"yellowRate.png"]];
         UIImageView *rate1 = [[UIImageView alloc] init];
-        [rate1 setImage:[UIImage imageNamed:@"blueRate.png"]];
+        [rate1 setImage:[UIImage imageNamed:@"terrRate.png"]];
         UIImageView *rate2 = [[UIImageView alloc] init];
-                [rate2 setImage:[UIImage imageNamed:@"greenRate.png"]];
+        [rate2 setImage:[UIImage imageNamed:@"terrRate.png"]];
         UIImageView *rate3 = [[UIImageView alloc] init];
-                [rate3 setImage:[UIImage imageNamed:@"lightGreenRate.png"]];
+        [rate3 setImage:[UIImage imageNamed:@"terrRate.png"]];
         UIImageView *rate4 = [[UIImageView alloc] init];
-                [rate4 setImage:[UIImage imageNamed:@"purpleRate.png"]];
+        [rate4 setImage:[UIImage imageNamed:@"terrRate.png"]];
         UIImageView *rate5 = [[UIImageView alloc] init];
-                [rate5 setImage:[UIImage imageNamed:@"redRate.png"]];
+        [rate5 setImage:[UIImage imageNamed:@"terrRate.png"]];
         UIImageView *rate6 = [[UIImageView alloc] init];
-                [rate6 setImage:[UIImage imageNamed:@"yellowRate.png"]];
+        [rate6 setImage:[UIImage imageNamed:@"terrRate.png"]];
         NSArray *arrayOfRates = [[NSArray alloc] initWithObjects:rate1, rate2,rate3,rate4,rate5,rate6, nil];
-        [rate1 setFrame:CGRectMake(85, 60, 130, 20)];
+        
         [self.view addSubview:rate1];
     
     NSArray *arrayOfAnswers = [[NSArray alloc] initWithObjects:answer1, answer2, answer3, answer4,answer5,answer6, nil];
@@ -144,11 +157,13 @@
             NSInteger heigh = (i+1)*50+10;
             NSLog(@"height = %d", heigh);
             CGFloat integer = 1.0/2.0;
+            NSInteger percents = index*100;
+            
             
             NSLog(@"testt %f", integer);
-            [[arrayOfRates objectAtIndex:i] setFrame:CGRectMake(85, (i+1)*50+10, 1+index*130, 20)];
+            [[arrayOfRates objectAtIndex:i] setFrame:CGRectMake(85, (i+1)*50+10, 1+index*110, 20)];
             
-            [currentAnswerLabel setText:[value stringByAppendingString:@"  Голосов"]];
+            [currentAnswerLabel setText:[[NSString stringWithFormat:@"%d", percents] stringByAppendingString:@" % Голосов"]];
             [currentAnswerLabel setFont:[UIFont fontWithName:@"TimesNewRomanPS-ItalicMT" size:17]];
             [currentAnswerLabel setBackgroundColor:[UIColor clearColor]];
            // currentAnswerLabel.text = [[self.receivedArray objectAtIndex:i] valueForKey:@"cnt"];
@@ -173,6 +188,7 @@
     self.receivedArray = [dictionary valueForKey:@"options"];
         [self buildView];
     }
+     [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
     NSLog(@"COUNT %d", self.receivedArray.count);
 
     

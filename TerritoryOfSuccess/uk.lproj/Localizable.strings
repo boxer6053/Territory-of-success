@@ -46,7 +46,13 @@
 "DownloadCommentsKey" = "Завантажуються коментарі...";
 // Опросы
 
-
+//"" = "DownloadInquirersKey";
+//"DownloadInquirersKey" = "Завантаження питань";
+//"DownloadInquirerDetailKey" = "Завантаження деталей питання";
+//"DownloadingInquirerStatKey" = "Завантаження відповідей";
+"DownloadInquirersKey" = "Завантаження питань";
+"DownloadInquirerDetailKey" = "Завантаження деталей питання";
+"DownloadingInquirerStatKey" = "Завантаження відповідей";
 
 
 

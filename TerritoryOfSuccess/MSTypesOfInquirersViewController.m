@@ -42,6 +42,7 @@
 {
     [super viewDidLoad];
     NSLog(@"AllQuestions");
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadInquirersKey",nil)];
     [self.api getLastQuestions];
     self.allInquirerMode=YES;
     UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 100, 320, 220)];
@@ -219,7 +220,7 @@
         }
 
     }
-    
+    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
     [[self tableOfInquirers] reloadData];
       
     

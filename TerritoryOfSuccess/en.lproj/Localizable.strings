@@ -47,8 +47,9 @@
 "AllCommentsDownloadedKey" = "All comments are downloaded";
 "DownloadCommentsKey" = "Loading comments...";
 // Опросы
-
-
+"DownloadInquirersKey" = "Loading interogation";
+"DownloadInquirerDetailKey" = "Loading detail";
+"DownloadingInquirerStatKey" = "Loading answers";
 
 
 
