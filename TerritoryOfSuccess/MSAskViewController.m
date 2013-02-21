@@ -7,7 +7,7 @@
 //
 
 #import "MSAskViewController.h"
-
+#import "SVProgressHUD.h"
 
 
 
@@ -82,10 +82,12 @@
     
     
     if(!self.defaultID){
+        [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadingInquirerListKey",nil)];
     [self.api getQuestionsWithParentID:0];
     }
     else
     {
+        [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadingInquirerListKey",nil)];
         [self.api getQuestionsWithParentID:self.defaultID];
     }
     NSLog(@"NEWWWW");
@@ -126,6 +128,7 @@
     {
         _questionsCount = 0;
         [_tableOfCategories reloadData];
+        [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadingInquirerListKey",nil)];
         [self.api getQuestionsWithParentID:[[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue]];
         _upperID = [[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
         NSLog(@"Upper ID = %d", _upperID);
@@ -195,6 +198,7 @@
         [_tableOfCategories reloadData];
         //  _questionsCount = 0;
     }
+     [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
     if(typefinished == kLastQuest)
     {
         
