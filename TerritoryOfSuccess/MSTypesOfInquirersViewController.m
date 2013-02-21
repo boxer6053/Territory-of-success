@@ -40,8 +40,6 @@
 
 - (void)viewDidLoad
 {
-    
-
     [super viewDidLoad];
     NSLog(@"AllQuestions");
     [self.api getLastQuestions];
