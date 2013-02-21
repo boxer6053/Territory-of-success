@@ -7,10 +7,12 @@
 //
 
 #import "MSStatisticViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface MSStatisticViewController ()
 @property (strong, nonatomic) NSMutableData *receivedData;
 @property (strong, nonatomic) MSAPI *api;
+@property  (nonatomic) CGFloat totalVotes;
 
 @end
 
@@ -48,6 +50,7 @@
 }
 -(void)buildView{
     if(self.interfaceIndex ==1){
+         
         UILabel *firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 60, 120, 20)];
         UILabel *secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 110, 160, 20)];
         UILabel *answer1 = [[UILabel alloc]initWithFrame:CGRectMake(180, 60, 120, 20)];
@@ -83,21 +86,44 @@
         [secondLabel setText:@"Голосов ПРОТИВ"];
     }
     else{
-    UILabel *firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 60, 120, 20)];
-    UILabel *secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 110, 120, 20)];
-    UILabel *thirdLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 160, 120, 20)];
-    UILabel *fourthLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 210, 120, 20)];
-    UILabel *fifthLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 260, 120, 20)];
-    UILabel *sixthLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 310, 120, 20)];
+
+    UILabel *firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 60, 60, 20)];
+    UILabel *secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 110, 60, 20)];
+    UILabel *thirdLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 160, 60, 20)];
+    UILabel *fourthLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 210, 60, 20)];
+    UILabel *fifthLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 260, 60, 20)];
+    UILabel *sixthLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 310, 60, 20)];
     NSArray *arrayOfTitles = [[NSArray alloc] initWithObjects:firstLabel,secondLabel,thirdLabel,fourthLabel,fifthLabel,sixthLabel, nil];
-    UILabel *answer1 = [[UILabel alloc]initWithFrame:CGRectMake(180, 60, 120, 20)];
-    UILabel *answer2 = [[UILabel alloc]initWithFrame:CGRectMake(180, 110, 120, 20)];
-    UILabel *answer3 = [[UILabel alloc]initWithFrame:CGRectMake(180, 160, 120, 20)];
-    UILabel *answer4 = [[UILabel alloc]initWithFrame:CGRectMake(180, 210, 120, 20)];
-    UILabel *answer5 = [[UILabel alloc]initWithFrame:CGRectMake(180, 260, 120, 20)];
-    UILabel *answer6 = [[UILabel alloc]initWithFrame:CGRectMake(180, 310, 120, 20)];
+    UILabel *answer1 = [[UILabel alloc]initWithFrame:CGRectMake(220, 60, 80, 20)];
+    UILabel *answer2 = [[UILabel alloc]initWithFrame:CGRectMake(220, 110, 80, 20)];
+    UILabel *answer3 = [[UILabel alloc]initWithFrame:CGRectMake(220, 160, 80, 20)];
+    UILabel *answer4 = [[UILabel alloc]initWithFrame:CGRectMake(220, 210, 80, 20)];
+    UILabel *answer5 = [[UILabel alloc]initWithFrame:CGRectMake(220, 260, 80, 20)];
+    UILabel *answer6 = [[UILabel alloc]initWithFrame:CGRectMake(220, 310, 80, 20)];
+        
+        UIImageView *rate1 = [[UIImageView alloc] init];
+        [rate1 setImage:[UIImage imageNamed:@"blueRate.png"]];
+        UIImageView *rate2 = [[UIImageView alloc] init];
+                [rate2 setImage:[UIImage imageNamed:@"greenRate.png"]];
+        UIImageView *rate3 = [[UIImageView alloc] init];
+                [rate3 setImage:[UIImage imageNamed:@"lightGreenRate.png"]];
+        UIImageView *rate4 = [[UIImageView alloc] init];
+                [rate4 setImage:[UIImage imageNamed:@"purpleRate.png"]];
+        UIImageView *rate5 = [[UIImageView alloc] init];
+                [rate5 setImage:[UIImage imageNamed:@"redRate.png"]];
+        UIImageView *rate6 = [[UIImageView alloc] init];
+                [rate6 setImage:[UIImage imageNamed:@"yellowRate.png"]];
+        NSArray *arrayOfRates = [[NSArray alloc] initWithObjects:rate1, rate2,rate3,rate4,rate5,rate6, nil];
+        [rate1 setFrame:CGRectMake(85, 60, 130, 20)];
+        [self.view addSubview:rate1];
     
     NSArray *arrayOfAnswers = [[NSArray alloc] initWithObjects:answer1, answer2, answer3, answer4,answer5,answer6, nil];
+        for(int i=0;i<self.receivedArray.count;i++){
+            NSString *votesForProduct = [[self.receivedArray objectAtIndex:i] valueForKey:@"cnt"];
+          //  NSLog(@" gg %d", [votesForProduct integerValue  ])   ;
+            self.totalVotes = self.totalVotes + [votesForProduct integerValue] ;
+        }
+        NSLog(@"Total votes =%f", self.totalVotes);
     for(int i=0;i<arrayOfTitles.count;i++){
         UILabel *currentLabel = [arrayOfTitles objectAtIndex:i];
         NSString *title = @"Товар  ";
@@ -107,15 +133,26 @@
         [currentLabel setBackgroundColor:[UIColor clearColor]];
         [self.view addSubview:currentLabel];
     }
+        
+        
         for(int i=0;i<self.receivedArray.count;i++){
             UILabel *currentAnswerLabel = [arrayOfAnswers objectAtIndex:i];
             NSString *value = [[self.receivedArray objectAtIndex:i] valueForKey:@"cnt"];
-           
-
-            [currentAnswerLabel setText:[value stringByAppendingString:@"  Голос(ов)"]];
+            NSLog(@"value %f = ", [value floatValue]);
+            CGFloat index = [value floatValue]/self.totalVotes;
+            NSLog(@"index =%f",index);
+            NSInteger heigh = (i+1)*50+10;
+            NSLog(@"height = %d", heigh);
+            CGFloat integer = 1.0/2.0;
+            
+            NSLog(@"testt %f", integer);
+            [[arrayOfRates objectAtIndex:i] setFrame:CGRectMake(85, (i+1)*50+10, 1+index*130, 20)];
+            
+            [currentAnswerLabel setText:[value stringByAppendingString:@"  Голосов"]];
             [currentAnswerLabel setFont:[UIFont fontWithName:@"TimesNewRomanPS-ItalicMT" size:17]];
             [currentAnswerLabel setBackgroundColor:[UIColor clearColor]];
            // currentAnswerLabel.text = [[self.receivedArray objectAtIndex:i] valueForKey:@"cnt"];
+            [self.view addSubview:[arrayOfRates objectAtIndex:i]];
             [self.view addSubview:currentAnswerLabel];
         }
     for(int i=self.receivedArray.count;i<arrayOfTitles.count;i++)
@@ -140,5 +177,7 @@
 
     
 }
+
+
 
 @end
