@@ -644,13 +644,12 @@ static inline double radians (double degrees)
     [self.sendCodeButton setEnabled:YES];
     
 //    [self.scrollView addSubview:self.dialogView];
-    [self.view.window addSubview:self.dialogView];
+    [self.view addSubview:self.dialogView];
     
     [UIView animateWithDuration:0.5 animations:^{
         [self.backAlphaView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
     } completion:^(BOOL finished) {
-        [self.dialogView setFrame:CGRectMake(5, ([[UIScreen mainScreen] bounds].size.height - self.dialogView.frame.size.height)/2, 310, 295)];
-//        [self.mainFishkaImageView setFrame:CGRectMake(56, ([[UIScreen mainScreen] bounds].size.height - self.dialogView.frame.size.height)/2 - 54 - 4, 198, 33)];
+        [self.dialogView setFrame:CGRectMake(5, ([[UIScreen mainScreen] bounds].size.height - self.dialogView.frame.size.height)/2 - 54, 310, 295)];
         [self.dialogView attachPopUpAnimationForView:self.dialogView];
         
         [self.dialogView.closeButton addTarget:self action:@selector(closeDialogView) forControlEvents:UIControlEventTouchUpInside];
@@ -687,11 +686,11 @@ static inline double radians (double degrees)
     [UIView animateWithDuration:0.5 animations:^{
         [self.dialogView setAlpha:0];
     } completion:^(BOOL finished) {
-        self.complaintView = [[MSComplaintView alloc] initWithFrame:CGRectMake(5, ([[UIScreen mainScreen] bounds].size.height - 311)/2, 310, 311)];
+        self.complaintView = [[MSComplaintView alloc] initWithFrame:CGRectMake(5, ([[UIScreen mainScreen] bounds].size.height - 311)/2 - 54, 310, 311)];
         self.complaintViewFrame = self.complaintView.frame;
         [self.complaintView setDelegate:self];
 //        [self.view addSubview:self.complaintView];
-        [self.view.window addSubview:self.complaintView];
+        [self.view addSubview:self.complaintView];
         [self.complaintView attachPopUpAnimationForView:self.complaintView];
         [self.dialogView removeFromSuperview];
         
@@ -771,7 +770,7 @@ static inline double radians (double degrees)
             }
             
             [self.backAlphaView setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0]];
-            [self.view.window insertSubview:self.backAlphaView belowSubview:self.dialogView];
+            [self.view insertSubview:self.backAlphaView belowSubview:self.dialogView];
             
             self.mainFishkaLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, 178, 20)];
             self.mainFishkaLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15.0];
@@ -825,7 +824,7 @@ static inline double radians (double degrees)
                 }
                 
                 [self.backAlphaView setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0]];
-                [self.view.window insertSubview:self.backAlphaView belowSubview:self.dialogView];
+                [self.view insertSubview:self.backAlphaView belowSubview:self.dialogView];
                 
                 self.mainFishkaLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, 178, 20)];
                 self.mainFishkaLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15.0];
@@ -880,7 +879,7 @@ static inline double radians (double degrees)
                     }
                     
                     [self.backAlphaView setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0]];
-                    [self.view.window insertSubview:self.backAlphaView belowSubview:self.dialogView];
+                    [self.view insertSubview:self.backAlphaView belowSubview:self.dialogView];
                     
                     self.mainFishkaLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, 178, 20)];
                     self.mainFishkaLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15.0];

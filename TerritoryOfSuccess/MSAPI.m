@@ -757,6 +757,8 @@
         [connectFailMessage show];
     }
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    
+    [SVProgressHUD showErrorWithStatus:@"Ошибка загрузки"];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
@@ -776,7 +778,7 @@
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     
-    [SVProgressHUD showSuccessWithStatus:@"OK"];
+    [SVProgressHUD dismiss];
 
 }
 
