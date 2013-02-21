@@ -50,6 +50,8 @@
 "DownloadInquirersKey" = "Loading interogation";
 "DownloadInquirerDetailKey" = "Loading detail";
 "DownloadingInquirerStatKey" = "Loading answers";
+"SendingInquirerKey" = "Creating interogation";
+"DownloadingInquirerListKey" = "Loading catalogue";
 
 
 

@@ -9,6 +9,7 @@
 #import "MSCreateQuestionViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SDWebImage/UIButton+WebCache.h>
+#import "SVProgressHUD.h"
 
 
 @interface MSCreateQuestionViewController ()
@@ -61,29 +62,29 @@
     //фреймы для разных экранов (4 и 5 айфон)
     if ([[UIScreen mainScreen] bounds].size.height == 568)
     {
-        [image1 setFrame:CGRectMake(20, 58, 100, 100)];
-        [image2 setFrame:CGRectMake(200, 58, 100, 100)];
-        [image3 setFrame:CGRectMake(20, 168, 100, 100)];
-        [image4 setFrame:CGRectMake(200, 168, 100, 100)];
-        [image5 setFrame:CGRectMake(20, 278, 100, 100)];
-        [image6 setFrame:CGRectMake(200, 278, 100, 100)];
+        [image1 setFrame:CGRectMake(40, 58, 80,80)];
+        [image2 setFrame:CGRectMake(200, 58, 80,80)];
+        [image3 setFrame:CGRectMake(40, 168, 80,80)];
+        [image4 setFrame:CGRectMake(200, 168, 80,80)];
+        [image5 setFrame:CGRectMake(40, 278, 80,80)];
+        [image6 setFrame:CGRectMake(200, 278, 80,80)];
         
     }
     else
     {
         
-        [image1 setFrame:CGRectMake(20, 36, 100, 100)];
-        [image2 setFrame:CGRectMake(200, 36, 100, 100)];
-        [image3 setFrame:CGRectMake(20, 146, 100, 100)];
-        [image4 setFrame:CGRectMake(200, 146, 100, 100)];
-        [image5 setFrame:CGRectMake(20, 256, 100, 100)];
-        [image6 setFrame:CGRectMake(200, 256, 100, 100)];
+        [image1 setFrame:CGRectMake(40, 36, 80,80)];
+        [image2 setFrame:CGRectMake(200, 36, 80,80)];
+        [image3 setFrame:CGRectMake(40, 146, 80,80)];
+        [image4 setFrame:CGRectMake(200, 146, 80,80)];
+        [image5 setFrame:CGRectMake(40, 256, 80,80)];
+        [image6 setFrame:CGRectMake(200, 256, 80,80)];
     }
 
     self.arrayOfViews = [[NSArray alloc] initWithObjects:image1,image2,image3,image4,image5,image6, nil];
     for(int i=0;i<self.arrayOfViews.count;i++)
     {
-        [[self.arrayOfViews objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"bag.png"] forState:UIControlStateNormal];
+        [[self.arrayOfViews objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"plus_icon.png"] forState:UIControlStateNormal];
         [[self.arrayOfViews objectAtIndex:i] addTarget:self action:@selector(assignAPicture:)forControlEvents:UIControlEventTouchUpInside ];
         [[self.arrayOfViews objectAtIndex:i] setTag:i];
         [self.view addSubview:[self.arrayOfViews objectAtIndex:i]];
@@ -171,7 +172,7 @@
     [self performSegueWithIdentifier:@"pickAProduct" sender:self];
 }
 - (IBAction)startButton:(id)sender {
-    
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"SendingInquirerKey",nil)];
     [self.api createQuestionWithItems:self.requestString];
 }
 -(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
@@ -192,6 +193,8 @@
             UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Произошла ошибка!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
             [failmessage show];
         }
+        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
+
         [self.navigationController popViewControllerAnimated:YES];
     }
 }

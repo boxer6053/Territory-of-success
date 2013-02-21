@@ -53,6 +53,8 @@
 "DownloadInquirersKey" = "Завантаження питань";
 "DownloadInquirerDetailKey" = "Завантаження деталей питання";
 "DownloadingInquirerStatKey" = "Завантаження відповідей";
+"SendingInquirerKey" = "Створення питання";
+"DownloadingInquirerListKey" = "Завантаження списку товарів";
 
 
 
