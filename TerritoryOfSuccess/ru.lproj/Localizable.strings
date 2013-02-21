@@ -45,7 +45,16 @@
 "AllCommentsDownloadedKey" = "Все комментарии загружены";
 "DownloadCommentsKey" = "Загрузка комментариев...";
 // Опросы
+"DownloadInquirersKey" = "Загрузка опросов";
+"DownloadInquirerDetailKey" = "Загрузка деталей";
+"DownloadingInquirerStatKey" = "Загрузка ответов";
+"SendingInquirerKey" = "Создание опроса";
 
+"DownloadingInquirerListKey" = "Загрузка каталога";
+
+//"DownloadInquirersKey" = ";
+//"DownloadInquirerDetailKey" = "опроса";
+//"DownloadingInquirerStatKey" = "";
 
 // Новости
 "DownloadingInformationKey" = "Загрузка информации...";

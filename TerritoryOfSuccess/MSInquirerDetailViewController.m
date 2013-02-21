@@ -10,7 +10,8 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SDWebImage/UIButton+WebCache.h>
 #import "MSStatisticViewController.h"
-
+#import <QuartzCore/QuartzCore.h>
+#import "SVProgressHUD.h"
 
 @interface MSInquirerDetailViewController ()
 @property (strong, nonatomic) NSMutableData *receivedData;
@@ -45,6 +46,7 @@
     int item = [self.itemID integerValue];
     NSLog(@"gonnatakeID %d", item);
     NSLog(@"Now Statistics");
+     [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadInquirerDetailKey",nil)];
     [self.api getDetailQuestionWithID:item];
     if ([[UIScreen mainScreen] bounds].size.height == 568) {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
@@ -53,6 +55,11 @@
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 100, 320, 220)];
+    [imageView setImage:[UIImage imageNamed:@"inquirerPic.png"]];
+    [imageView setAlpha:0.3];
+    [self.view addSubview:imageView];
+
     [self.api getStatisticQuestionWithID:item];
     
     
@@ -103,7 +110,7 @@
             self.navigationItem.rightBarButtonItem.enabled = NO ;
 
         }
-        
+        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
     }
 }
 -(void)buildView
@@ -119,13 +126,14 @@
         [self.view addSubview:imageForInquirer1];
         UIButton *likeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         
-        [likeButton setBackgroundImage:[UIImage imageNamed:@"button_310_32-1.png"] forState:UIControlStateNormal];
+        [likeButton setBackgroundImage:[UIImage imageNamed:@"button_140*35.png"] forState:UIControlStateNormal];
         [likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [likeButton setTitle:@"Like it!" forState:UIControlStateNormal];
         [likeButton addTarget:self action:@selector(likeAction)  forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:likeButton];
         UIButton *dislikeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [dislikeButton setBackgroundImage:[UIImage imageNamed:@"button_310_32-1.png"] forState:UIControlStateNormal];
+        [dislikeButton setBackgroundImage:[UIImage imageNamed:@"button_140*35.png"] forState:UIControlStateNormal];
+        //[dislikeButton setBackgroundColor:[UIColor blackColor]];
         [dislikeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [dislikeButton setTitle:@"Hate it!" forState:UIControlStateNormal];
         [dislikeButton addTarget:self action:@selector(dislikeAction) forControlEvents:UIControlEventTouchUpInside];
@@ -151,7 +159,7 @@
     else{
         //ВИД ОПРОСА КАКОЙ ТОВАР ЛУЧШЕ
         _inquirerTitle.text = @"Какой товар лучше";
-        UITapGestureRecognizer *selectProduct = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chooseAProduct:)];
+               UITapGestureRecognizer *selectProduct = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chooseAProduct:)];
         [selectProduct setNumberOfTapsRequired:1];
         UIButton *image1 = [UIButton buttonWithType:UIButtonTypeCustom];
         UIButton *image2 = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -159,44 +167,77 @@
         UIButton *image4 = [UIButton buttonWithType:UIButtonTypeCustom];
         UIButton *image5 = [UIButton buttonWithType:UIButtonTypeCustom];
         UIButton *image6 = [UIButton buttonWithType:UIButtonTypeCustom];
+        UILabel *nameLabel1 = [[UILabel alloc] init];
+        UILabel *nameLabel2 = [[UILabel alloc] init];
+        UILabel *nameLabel3 = [[UILabel alloc] init];
+        UILabel *nameLabel4 = [[UILabel alloc] init];
+        UILabel *nameLabel5 = [[UILabel alloc] init];
+        UILabel *nameLabel6 = [[UILabel alloc] init];
         
                 //фреймы для разных экранов (4 и 5 айфон)
         if ([[UIScreen mainScreen] bounds].size.height == 568)
         {
-            [image1 setFrame:CGRectMake(20, 78, 100, 100)];
-            [image2 setFrame:CGRectMake(200, 78, 100, 100)];
-            [image3 setFrame:CGRectMake(20, 188, 100, 100)];
-            [image4 setFrame:CGRectMake(200, 188, 100, 100)];
-            [image5 setFrame:CGRectMake(20, 298, 100, 100)];
-            [image6 setFrame:CGRectMake(200, 298, 100, 100)];
+            [image1 setFrame:CGRectMake(30, 50, 100, 100)];
+                        [nameLabel1 setFrame:CGRectMake(20, 155, 130, 13)];
+            [image2 setFrame:CGRectMake(190, 50, 100, 100)];
+                        [nameLabel2 setFrame:CGRectMake(180, 155, 130, 13)];
+            [image3 setFrame:CGRectMake(30, 180, 100, 100)];
+                        [nameLabel3 setFrame:CGRectMake(20, 285, 130, 13)];
+            [image4 setFrame:CGRectMake(190, 180, 100, 100)];
+                        [nameLabel4 setFrame:CGRectMake(180, 285, 130, 13)];
+            [image5 setFrame:CGRectMake(30, 300, 100, 100)];
+                        [nameLabel5 setFrame:CGRectMake(20, 415, 130, 13)];
+            [image6 setFrame:CGRectMake(190, 300, 100, 100)];
+                        [nameLabel6 setFrame:CGRectMake(180, 415, 130, 13)];
 
         }
         else
         {
          
-            [image1 setFrame:CGRectMake(20, 36, 100, 100)];
-            [image2 setFrame:CGRectMake(200, 36, 100, 100)];
-            [image3 setFrame:CGRectMake(20, 146, 100, 100)];
-            [image4 setFrame:CGRectMake(200, 146, 100, 100)];
-            [image5 setFrame:CGRectMake(20, 256, 100, 100)];
-            [image6 setFrame:CGRectMake(200, 256, 100, 100)];
+            [image1 setFrame:CGRectMake(35, 36, 75, 75)];
+                [nameLabel1 setFrame:CGRectMake(20, 115, 130, 21)];
+            [image2 setFrame:CGRectMake(200, 36, 75, 75)];
+                [nameLabel2 setFrame:CGRectMake(170, 115, 130, 21)];
+            [image3 setFrame:CGRectMake(35, 146, 75, 75)];
+                [nameLabel3 setFrame:CGRectMake(20, 225, 130, 21)];
+            [image4 setFrame:CGRectMake(200, 146, 75, 75)];
+                [nameLabel4 setFrame:CGRectMake(170, 225, 130, 21)];
+            [image5 setFrame:CGRectMake(35, 256, 75, 75)];
+                [nameLabel5 setFrame:CGRectMake(20, 335, 130, 21)];
+            [image6 setFrame:CGRectMake(200, 256, 75, 75)];
+                [nameLabel6 setFrame:CGRectMake(170, 335, 130, 21)];
         }
+        NSArray *arrayOfNames = [[NSArray alloc] initWithObjects:nameLabel1,nameLabel2,nameLabel3,nameLabel4,nameLabel5,nameLabel6, nil];
         NSArray *arrayOfViews = [[NSArray alloc] initWithObjects:image1,image2,image3,image4,image5,image6, nil];
         for(int i=0;i<6;i++)
         {
+            //UIButton *currentButton = [arrayOfViews objectAtIndex:i];
             [[arrayOfViews objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"bag.png"] forState:UIControlStateNormal];
-            [self.view addSubview:[arrayOfViews objectAtIndex:i]];
+            UIButton *currentButton = [arrayOfViews objectAtIndex:i];
+            currentButton.layer.cornerRadius = 10;
+            currentButton.clipsToBounds= YES;
+            UILabel *currentLabel = [arrayOfNames objectAtIndex:i];
+            [currentLabel setText:@"name"];
+            [currentLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12]];
+            [currentLabel setBackgroundColor:[UIColor clearColor]];
+//            [[[arrayOfViews objectAtIndex:i] layer] setCornerRadius:10];
+            [[arrayOfViews objectAtIndex:i] setAlpha:0.85];
+            [self.view addSubview:currentLabel];
+            [self.view addSubview:currentButton];
         }
         for (int i = 0;i<self.arrayOfProducts.count;i++)
         {
             NSURL *imageUrl = [NSURL URLWithString:[[self.arrayOfProducts objectAtIndex:i] valueForKey:@"image" ]];
             [[arrayOfViews objectAtIndex:i] setTag:[[[self.arrayOfProducts objectAtIndex:i] valueForKey:@"id" ] integerValue]];
+            UILabel *currentLabel = [arrayOfNames objectAtIndex:i];
+            [currentLabel setText:[[self.arrayOfProducts objectAtIndex:i] valueForKey:@"title"]];
             [[arrayOfViews objectAtIndex:i] addTarget:self action:@selector(chooseAProduct:)forControlEvents:UIControlEventTouchUpInside];
             [[arrayOfViews objectAtIndex:i]setBackgroundImageWithURL:imageUrl forState:UIControlStateNormal];
         }
         for (int i = self.arrayOfProducts.count;i<arrayOfViews.count;i++)
         {
             [[arrayOfViews objectAtIndex:i] setHidden:YES];
+            [[arrayOfNames objectAtIndex:i] setHidden:YES];
             
         }
 
