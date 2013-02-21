@@ -13,6 +13,8 @@
 #import "MSReceiveProfileCell.h"
 #import "MSProfileSaveCell.h"
 #import "MSCheckBoxCell.h"
+#import "MSPickerView.h"
+#import "MSEditButtonsCell.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface MSProfileViewController ()
@@ -22,7 +24,7 @@
 }
 
 @property (nonatomic) UIDatePicker *datePicker;
-@property (nonatomic) UIPickerView *pickerView;
+//@property (nonatomic) UIPickerView *pickerView;
 @property (strong, nonatomic) MSAPI *api;
 @property (strong, nonatomic) NSMutableArray *profileArray;
 @property (strong, nonatomic) NSMutableArray *profileStandartFields;
@@ -39,7 +41,7 @@
 @synthesize profileStandartFields = _profileStandartFields;
 @synthesize profileCheckboxFields = _profileCheckboxFields;
 @synthesize profileDictionary = _profileDictionary;
-@synthesize pickerView = _pickerView;
+//@synthesize pickerView = _pickerView;
 
 - (MSAPI *)api
 {
@@ -56,6 +58,8 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
     [self.api getProfileData];
+//    self.pickerView.delegate = self;
+//    self.pickerView.dataSource = self;
     _downloadIsComplete = NO;
 }
 
@@ -80,7 +84,14 @@
 {
     if (section == 0)
     {
-        return 1;
+        if (_downloadIsComplete)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
     }
     else if (section == 1)
     {
@@ -106,7 +117,14 @@
     }
     else if (section == 3)
     {
-        return 1;
+        if (_downloadIsComplete)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
     }
     else
     {
@@ -121,7 +139,7 @@
     {
         if (indexPath.section == 0)
         {
-            static NSString *CellIdentifier = @"bonusProfileCell";
+            NSString *CellIdentifier = @"bonusProfileCell";
             MSBonusCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
             
             cell.bonusCountLabel.text = [self.profileDictionary valueForKey:@"balance"];
@@ -130,26 +148,38 @@
         }
         if (indexPath.section == 2)
         {
-            static NSString *CellIdentifier = @"checkboxCell";
+            NSString *CellIdentifier = @"checkboxCell";
             MSCheckBoxCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
             
             cell.checkboxLabel.text = [[self.profileCheckboxFields objectAtIndex:indexPath.row] valueForKey:@"title"];
             cell.isChecked = [[[self.profileCheckboxFields objectAtIndex:indexPath.row] valueForKey:@"value"] boolValue];
             [cell setSelection];
+            [cell.checkboxButton addTarget:self action:@selector(checkboxPressed:) forControlEvents:UIControlEventTouchUpInside];
             
             return cell;
         }
         
         if (indexPath.section == 3)
         {
-            static NSString *CellIdentifier = @"saveProfileCell";
-            MSProfileSaveCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-            [cell.SaveButton addTarget:self action:@selector(SaveButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-            return cell;
+            if(!_isEditMode)
+            {
+                NSString *CellIdentifier = @"saveProfileCell";
+                MSProfileSaveCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+                [cell.SaveButton addTarget:self action:@selector(SaveButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+                return cell;
+            }
+            else
+            {
+                NSString *CellIdentifier = @"editButtonsCell";
+                MSEditButtonsCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+                [cell.cancelButton addTarget:self action:@selector(dismissChanges) forControlEvents:UIControlEventTouchUpInside];
+                [cell.saveButton addTarget:self action:@selector(saveChanges) forControlEvents:UIControlEventTouchUpInside];
+                return cell;
+            }
         }
         else
         {
-            static NSString *CellIdentifier = @"standardProfileCell";
+            NSString *CellIdentifier = @"standardProfileCell";
             MSStandardProfileCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
             
             if (_isEditMode)
@@ -165,6 +195,23 @@
                     value = @"";
                 }
                 cell.standartTextField.text = value;
+                
+                if([[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"type"] isEqualToString:@"select"])
+                {
+                    MSPickerView *picker = [[MSPickerView alloc]initWithFrame:CGRectMake(0, 0, 320, 261)];
+                    picker.delegate = self;
+                    picker.target = cell.standartTextField;
+                    picker.dataSource = [[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"values"];
+                    cell.standartTextField.inputView = picker;
+                }
+                
+                if([[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"key"] isEqualToString:@"birthday"])
+                {
+                    MSDatePickerView *picker = [[MSDatePickerView alloc]initWithFrame:CGRectMake(0, 0, 320, 261)];
+                    picker.delegate = self;
+                    picker.target = cell.standartTextField;
+                    cell.standartTextField.inputView = picker;
+                }
             }
             else
             {
@@ -181,44 +228,6 @@
                 cell.standartTextField.text = value;
             }
             
-            if([[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"type"] isEqualToString:@"select"])
-            {
-                UIView *basePickerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 261)];
-                self.pickerView = [[UIPickerView alloc]initWithFrame:CGRectMake(0, 44, basePickerView.frame.size.width, basePickerView.frame.size.height - 44)];
-                self.pickerView.delegate = self;
-                self.pickerView.dataSource = self;
-                UIToolbar *PickerToolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, basePickerView.frame.size.width, 44)];
-                PickerToolBar.barStyle = UIBarStyleBlackTranslucent;
-                UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(pickerViewDonePressed)];
-                [doneButton setTintColor:[UIColor orangeColor]];
-                UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(pickerViewCancelPressed)];
-                [cancelButton setTintColor:[UIColor orangeColor]];
-                UIBarButtonItem *spacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-                PickerToolBar.items = [NSArray arrayWithObjects:cancelButton, spacer, doneButton, nil];
-                [basePickerView addSubview:PickerToolBar];
-                [basePickerView addSubview:self.datePicker];
-                cell.standartTextField.inputView = basePickerView;
-            }
-            
-//            if (indexPath.row == 3)
-//            {
-//                cell.standartTitleLabel.text = @"Дата Рождения";
-//                UIView *myView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 261)];
-//                self.datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 44, myView.frame.size.width, myView.frame.size.height - 44)];
-//                self.datePicker.datePickerMode = UIDatePickerModeDate;
-//                UIToolbar *datePickerToolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, myView.frame.size.width, 44)];
-//                datePickerToolBar.barStyle = UIBarStyleBlackTranslucent;
-//                UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(pickerViewDonePressed)];
-//                [doneButton setTintColor:[UIColor orangeColor]];
-//                UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(pickerViewCancelPressed)];
-//                [cancelButton setTintColor:[UIColor orangeColor]];
-//                UIBarButtonItem *spacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-//                datePickerToolBar.items = [NSArray arrayWithObjects:cancelButton, spacer, doneButton, nil];
-//                [myView addSubview:datePickerToolBar];
-//                [myView addSubview:self.datePicker];
-//                cell.standartTextField.inputView = myView;
-//            }
-            
             cell.standartTextField.delegate = self;
             [cell.standartTextField addTarget:self action:@selector(TextFieldStartEditing:) forControlEvents:UIControlEventEditingDidBegin];
             
@@ -227,7 +236,7 @@
     }
     else
     {
-        static NSString *CellIdentifier = @"Cell";
+        NSString *CellIdentifier = @"Cell";
         
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
@@ -246,21 +255,15 @@
     }
     return value;
 }
-
+#pragma mark - selectors
 -(void)SaveButtonPressed
 {
     if (!_isEditMode)
     {
-        if(!self.profileStandartFields || !self.profileCheckboxFields)
-        {
-            [self.api  getProfileDataForEdit];
-            _isEditMode = YES;
-        }
-        else
-        {
-            _isEditMode = YES;
-            [self.profileTableView reloadData];
-        }
+        [self.api  getProfileDataForEdit];
+        _downloadIsComplete = NO;
+        _isEditMode = YES;
+        [self.profileTableView reloadData];
     }
     else
     {
@@ -269,41 +272,76 @@
     }
 }
 
--(void)pickerViewDonePressed
+-(void)saveChanges
 {
-    NSIndexPath * indexPath = [NSIndexPath indexPathForItem:3 inSection:1];
-    MSStandardProfileCell *cell = (MSStandardProfileCell *)[self.profileTableView cellForRowAtIndexPath:indexPath];
-    NSDate *date = [self.datePicker date];
-    //format it
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
-    [dateFormat setDateFormat:@"yyyy-mm-dd"];
+    NSMutableArray *array = [[NSMutableArray alloc]initWithArray:self.profileStandartFields];
+    [array addObjectsFromArray:self.profileCheckboxFields];
     
-    NSString *dateString = [dateFormat stringFromDate:date];
-    cell.standartTextField.text = dateString;
-    [cell.standartTextField resignFirstResponder];
 }
 
--(void)pickerViewCancelPressed
+-(void)checkboxPressed:(id)sender
 {
-    NSIndexPath * indexPath = [NSIndexPath indexPathForItem:3 inSection:1];
-    MSStandardProfileCell *cell = (MSStandardProfileCell *)[self.profileTableView cellForRowAtIndexPath:indexPath];
-    [cell.standartTextField resignFirstResponder];
+    MSCheckBoxCell *cell = (MSCheckBoxCell *) [[sender superview] superview];
+    NSIndexPath *indexPath = [[NSIndexPath alloc]init];
+    indexPath = [self.profileTableView indexPathForCell:cell];
+    [self changeValueAtIndexPath:indexPath with:cell.isChecked ? @"1" : @"0"];
 }
 
+#pragma mark - UITextField Delegate
 -(void)TextFieldStartEditing:(id)sender
 {
     UITableViewCell *cell = (UITableViewCell*) [[sender superview] superview];
     [self.profileTableView scrollToRowAtIndexPath:[self.profileTableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    MSStandardProfileCell *cell = (MSStandardProfileCell *)textField.superview.superview;
+    NSIndexPath *indexPath = [[NSIndexPath alloc]init];
+    indexPath = [self.profileTableView indexPathForCell:cell];
+    [self changeValueAtIndexPath:indexPath with:textField.text];
+}
+
+-(void)changeValueAtIndexPath:(NSIndexPath *)indexPath with:(NSString*)value
+{
+    NSArray *objArray;
+    NSArray *keyArray;
+    if(indexPath.section == 1)
+    {
+        if([[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"type"] isEqualToString:@"select"])
+        {
+            objArray = [[NSArray alloc]initWithObjects:[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"key"], value, [[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"title"], [[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"type"],[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"values"],nil];
+            keyArray = [[NSArray alloc]initWithObjects:@"key", @"value", @"title", @"type",@"values",nil];
+        }
+        else
+        {
+            objArray = [[NSArray alloc]initWithObjects:[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"key"], value, [[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"title"], [[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"type"],nil];
+            keyArray = [[NSArray alloc]initWithObjects:@"key", @"value", @"title", @"type",nil];
+        }
+        NSDictionary *resultDict = [[NSDictionary alloc]initWithObjects:objArray forKeys:keyArray];
+        [self.profileStandartFields replaceObjectAtIndex:indexPath.row withObject:resultDict];
+    }
+    else if (indexPath.section == 2)
+    {
+        objArray = [[NSArray alloc]initWithObjects:[[self.profileCheckboxFields objectAtIndex:indexPath.row] valueForKey:@"key"], value, [[self.profileCheckboxFields objectAtIndex:indexPath.row] valueForKey:@"title"], [[self.profileCheckboxFields objectAtIndex:indexPath.row] valueForKey:@"type"],nil];
+        keyArray = [[NSArray alloc]initWithObjects:@"key", @"value", @"title", @"type",nil];
+        NSDictionary *resultDict = [[NSDictionary alloc]initWithObjects:objArray forKeys:keyArray];
+        [self.profileCheckboxFields replaceObjectAtIndex:indexPath.row withObject:resultDict];
+    }
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
-    
     return YES;
 }
 
 - (IBAction)logoutButtonPressed:(id)sender
+{
+    [self logout];
+}
+
+-(void)logout
 {
     NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
     [userDefults setObject:nil forKey:@"authorization_Token"];
@@ -314,6 +352,12 @@
 -(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
 {
     self.profileDictionary = dictionary;
+    if([[dictionary valueForKey:@"status"] isEqualToString:@"failed"])
+    {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:[[dictionary valueForKey:@"message"] valueForKey:@"title"] message:[[dictionary valueForKey:@"message"] valueForKey:@"text"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        alert.tag = 1;
+         [alert show];
+    }
     if(type == kProfileInfo)
     {
         if([[dictionary valueForKey:@"status"] isEqualToString:@"ok"])
@@ -352,20 +396,35 @@
         }
     }
 }
-
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView
+#pragma mark - UIAlertViewDelegate
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    return 1;
+    if(buttonIndex == 0 && alertView.tag == 1)
+        [self logout];
 }
 
-- (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component
+#pragma mark - MSPickerViewDelegate
+-(void)msPickerViewDoneButtonPressed:(MSPickerView *)pickerView
 {
-    return 3;
+    pickerView.target.text = pickerView.selectedItem;
+    [pickerView.target resignFirstResponder];
 }
 
-- (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+-(void)msPickerViewCancelButtonPressed:(MSPickerView *)pickerView
 {
-    return @"lol";
+    [pickerView.target resignFirstResponder];
+}
+
+#pragma mark - MSDatePickeViewDelegate
+-(void)msDatePickerViewCancelButtonPressed:(MSDatePickerView *)pickerView
+{
+    [pickerView.target resignFirstResponder];
+}
+
+-(void)msDatePickerViewDoneButtonPressed:(MSDatePickerView *)pickerView
+{
+    pickerView.target.text = pickerView.selectedDate;
+    [pickerView.target resignFirstResponder];
 }
 
 @end

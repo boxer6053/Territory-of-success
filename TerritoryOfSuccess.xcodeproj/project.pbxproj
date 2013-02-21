@@ -83,10 +83,12 @@
 		FA167C5616A993940008561D /* MSCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA167C5516A993940008561D /* MSCommentsViewController.m */; };
 		FA167C6116A9A5BB0008561D /* MSSubCatalogueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA167C6016A9A5BB0008561D /* MSSubCatalogueViewController.m */; };
 		FA167DB816C394D700B08904 /* button_80_44.png in Resources */ = {isa = PBXBuildFile; fileRef = FA167DB716C394D700B08904 /* button_80_44.png */; };
+		FA1853C016D401BB00BAF298 /* MSPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1853BF16D401BB00BAF298 /* MSPickerView.m */; };
 		FA1AB2E916B27E43001827A6 /* MSNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1AB2E816B27E43001827A6 /* MSNewsCell.m */; };
 		FA1AB2ED16B2B936001827A6 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1AB2EC16B2B935001827A6 /* bg.png */; };
 		FA1BEA8C16A813B200F2C219 /* MSDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1BEA8B16A813B200F2C219 /* MSDetailViewController.m */; };
 		FA1BEA9616A842A200F2C219 /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1BEA9516A842A100F2C219 /* like.png */; };
+		FA1E940516D522F3007D7BE3 /* MSDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1E940416D522F3007D7BE3 /* MSDatePickerView.m */; };
 		FA283CCD16A0890F00DBDC19 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA283CCC16A0890F00DBDC19 /* QuartzCore.framework */; };
 		FA3B6F1916B6C30C0095A851 /* MSBrandsAndCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3B6F1816B6C30C0095A851 /* MSBrandsAndCategoryCell.m */; };
 		FA3B6F1B16B6C6300095A851 /* brandLogoExample.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3B6F1A16B6C6300095A851 /* brandLogoExample.png */; };
@@ -117,6 +119,9 @@
 		FA8AB81416C2594C00B98EA3 /* iPhoneStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8AB81616C2594C00B98EA3 /* iPhoneStoryboard.storyboard */; };
 		FA90193716BFEB5E00D028AD /* MSLogInView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA90193616BFEB5E00D028AD /* MSLogInView.m */; };
 		FA9094D716CA7B8D007F9441 /* MSAddCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9094D616CA7B8D007F9441 /* MSAddCommentView.m */; };
+		FA99139A16D64EF900BEBAB0 /* MSEditButtonsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA99139916D64EF900BEBAB0 /* MSEditButtonsCell.m */; };
+		FA9913A116D6919500BEBAB0 /* button_80_44-1_right.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9913A016D6919500BEBAB0 /* button_80_44-1_right.png */; };
+		FA9913A316D691A600BEBAB0 /* button_80_44-1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9913A216D691A600BEBAB0 /* button_80_44-1.png */; };
 		FA9CFEFB16D3E6C100CDA519 /* MSProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9CFEFA16D3E6C100CDA519 /* MSProfileViewController.m */; };
 		FA9CFF0216D3EBA600CDA519 /* MSCheckBoxCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9CFF0116D3EBA600CDA519 /* MSCheckBoxCell.m */; };
 		FAA0FCB416BAA856005AF32E /* button_310_32-1.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA0FCB316BAA856005AF32E /* button_310_32-1.png */; };
@@ -393,12 +398,16 @@
 		FA167C5F16A9A5BA0008561D /* MSSubCatalogueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSubCatalogueViewController.h; sourceTree = "<group>"; };
 		FA167C6016A9A5BB0008561D /* MSSubCatalogueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSubCatalogueViewController.m; sourceTree = "<group>"; };
 		FA167DB716C394D700B08904 /* button_80_44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_80_44.png; sourceTree = "<group>"; };
+		FA1853BE16D401BB00BAF298 /* MSPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSPickerView.h; sourceTree = "<group>"; };
+		FA1853BF16D401BB00BAF298 /* MSPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSPickerView.m; sourceTree = "<group>"; };
 		FA1AB2E716B27E43001827A6 /* MSNewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSNewsCell.h; sourceTree = "<group>"; };
 		FA1AB2E816B27E43001827A6 /* MSNewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSNewsCell.m; sourceTree = "<group>"; };
 		FA1AB2EC16B2B935001827A6 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		FA1BEA8A16A813B200F2C219 /* MSDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDetailViewController.h; sourceTree = "<group>"; };
 		FA1BEA8B16A813B200F2C219 /* MSDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDetailViewController.m; sourceTree = "<group>"; };
 		FA1BEA9516A842A100F2C219 /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
+		FA1E940316D522F3007D7BE3 /* MSDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDatePickerView.h; sourceTree = "<group>"; };
+		FA1E940416D522F3007D7BE3 /* MSDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDatePickerView.m; sourceTree = "<group>"; };
 		FA283CCC16A0890F00DBDC19 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FA3B6F1716B6C30C0095A851 /* MSBrandsAndCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSBrandsAndCategoryCell.h; sourceTree = "<group>"; };
 		FA3B6F1816B6C30C0095A851 /* MSBrandsAndCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSBrandsAndCategoryCell.m; sourceTree = "<group>"; };
@@ -444,6 +453,10 @@
 		FA90193616BFEB5E00D028AD /* MSLogInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSLogInView.m; sourceTree = "<group>"; };
 		FA9094D516CA7B8D007F9441 /* MSAddCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAddCommentView.h; sourceTree = "<group>"; };
 		FA9094D616CA7B8D007F9441 /* MSAddCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSAddCommentView.m; sourceTree = "<group>"; };
+		FA99139816D64EF900BEBAB0 /* MSEditButtonsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEditButtonsCell.h; sourceTree = "<group>"; };
+		FA99139916D64EF900BEBAB0 /* MSEditButtonsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEditButtonsCell.m; sourceTree = "<group>"; };
+		FA9913A016D6919500BEBAB0 /* button_80_44-1_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_80_44-1_right.png"; sourceTree = "<group>"; };
+		FA9913A216D691A600BEBAB0 /* button_80_44-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_80_44-1.png"; sourceTree = "<group>"; };
 		FA9CFEF916D3E6C100CDA519 /* MSProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSProfileViewController.h; sourceTree = "<group>"; };
 		FA9CFEFA16D3E6C100CDA519 /* MSProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSProfileViewController.m; sourceTree = "<group>"; };
 		FA9CFF0016D3EBA600CDA519 /* MSCheckBoxCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCheckBoxCell.h; sourceTree = "<group>"; };
@@ -587,6 +600,10 @@
 				FAFB5E0A16C2650F001B692B /* MSAnimationView.m */,
 				FA9094D516CA7B8D007F9441 /* MSAddCommentView.h */,
 				FA9094D616CA7B8D007F9441 /* MSAddCommentView.m */,
+				FA1853BE16D401BB00BAF298 /* MSPickerView.h */,
+				FA1853BF16D401BB00BAF298 /* MSPickerView.m */,
+				FA1E940316D522F3007D7BE3 /* MSDatePickerView.h */,
+				FA1E940416D522F3007D7BE3 /* MSDatePickerView.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -594,6 +611,8 @@
 		F59AEB7E16AF1770004519B9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FA9913A216D691A600BEBAB0 /* button_80_44-1.png */,
+				FA9913A016D6919500BEBAB0 /* button_80_44-1_right.png */,
 				F5815A9816CA8BFC004E5595 /* button_140*35.png */,
 				F5B2D23616C4180900EC7F00 /* logo_color_invert_40*147_ukr.png */,
 				F5FF667616D66DD900E64AD9 /* terrRate.png */,
@@ -962,6 +981,8 @@
 				FAFF40F316BAF4F100D020FE /* MSReceiveProfileCell.m */,
 				F59884E016C16DCA009FBF48 /* MSQuestionCell.h */,
 				F59884E116C16DCA009FBF48 /* MSQuestionCell.m */,
+				FA99139816D64EF900BEBAB0 /* MSEditButtonsCell.h */,
+				FA99139916D64EF900BEBAB0 /* MSEditButtonsCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1126,14 +1147,8 @@
 				FADC925316C50799006BD95C /* Default@2x.png in Resources */,
 				FADC927016C52F06006BD95C /* bigStar.png in Resources */,
 				FADC927116C52F06006BD95C /* bigStarBlack.png in Resources */,
-				F5FF667016D65BAB00E64AD9 /* blueRate.png in Resources */,
-				F5FF667116D65BAB00E64AD9 /* greenRate.png in Resources */,
-				F5FF667216D65BAB00E64AD9 /* lightGreenRate.png in Resources */,
-				F5FF667316D65BAB00E64AD9 /* purpleRate.png in Resources */,
-				F5FF667416D65BAB00E64AD9 /* redRate.png in Resources */,
-				F5FF667516D65BAB00E64AD9 /* yellowRate.png in Resources */,
-				F5FF667716D66DD900E64AD9 /* terrRate.png in Resources */,
-				F5FF667916D689DC00E64AD9 /* plus_icon.png in Resources */,
+				FA9913A116D6919500BEBAB0 /* button_80_44-1_right.png in Resources */,
+				FA9913A316D691A600BEBAB0 /* button_80_44-1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1187,6 +1202,9 @@
 				F5100A3E16D3B01000A49FD7 /* MSStatisticViewController.m in Sources */,
 				FA9CFEFB16D3E6C100CDA519 /* MSProfileViewController.m in Sources */,
 				FA9CFF0216D3EBA600CDA519 /* MSCheckBoxCell.m in Sources */,
+				FA1853C016D401BB00BAF298 /* MSPickerView.m in Sources */,
+				FA1E940516D522F3007D7BE3 /* MSDatePickerView.m in Sources */,
+				FA99139A16D64EF900BEBAB0 /* MSEditButtonsCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

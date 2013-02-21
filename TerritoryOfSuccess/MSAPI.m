@@ -671,7 +671,7 @@
     self.checkRequest = kProfileInfo;
     
     //створюемо запит
-    self.request = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
+    self.request = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30];
     
     //вказуэм протокол доступу
     [self.request setHTTPMethod:@"POST"];
@@ -691,7 +691,7 @@
     self.checkRequest = kProfileEdit;
     
     //створюемо запит
-    self.request = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
+    self.request = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30];
     
     //вказуэм протокол доступу
     [self.request setHTTPMethod:@"POST"];
@@ -704,6 +704,20 @@
     [self connectionVerification];
 }
 
+- (void)sendProfileChanges:(NSString *)jsonRequest
+{
+    self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/profile"];
+    self.checkRequest = kProfileInfo;
+    self.request = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30];
+    NSData *requestData = [NSData dataWithBytes:[jsonRequest UTF8String] length:[jsonRequest length]];
+    
+    [self.request setHTTPMethod:@"POST"];
+    [self.request setHTTPBody:requestData];
+    
+    [self connectionVerification];
+}
+
+//check conection and send request
 - (void)connectionVerification
 {
     if (checkConnection.hasConnectivity) {
