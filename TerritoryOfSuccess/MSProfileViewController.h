@@ -11,7 +11,7 @@
 #import "MSDatePickerView.h"
 #import "MSAPI.h"
 
-@interface MSProfileViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, WsCompleteDelegate, MSPickerViewDelegate, MSDatePickerViewDelegate>
+@interface MSProfileViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, WsCompleteDelegate, MSPickerViewDelegate, MSDatePickerViewDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *profileTableView;
 - (IBAction)logoutButtonPressed:(id)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *logoutButton;

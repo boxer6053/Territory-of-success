@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "JSONParserForDataEntenties.h"
 
-typedef enum {kAuth, kRegist, kNews, kNewsWithId, kCode, kBrands, kCategories, kCatalog, kQuestCateg, kComment, kComplaint, kQuestions, kCreateQuest, kMyQuestions, kQuestDetail, kQuestStat, kLastQuest,kSendAnswer, kComments, kProfileEdit, kProfileInfo } requestTypes;
+typedef enum {kAuth, kRegist, kNews, kNewsWithId, kCode, kBrands, kCategories, kCatalog, kQuestCateg, kComment, kComplaint, kQuestions, kCreateQuest, kMyQuestions, kQuestDetail, kQuestStat, kLastQuest,kSendAnswer, kComments, kProfileEdit, kProfileInfo, kProfileChange } requestTypes;
 
 @protocol WsCompleteDelegate
 

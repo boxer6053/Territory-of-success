@@ -14,6 +14,7 @@
 #import "MSProfileSaveCell.h"
 #import "MSCheckBoxCell.h"
 #import "MSPickerView.h"
+#import "MSEditButtonsCell.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface MSProfileViewController ()
@@ -83,7 +84,14 @@
 {
     if (section == 0)
     {
-        return 1;
+        if (_downloadIsComplete)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
     }
     else if (section == 1)
     {
@@ -109,7 +117,14 @@
     }
     else if (section == 3)
     {
-        return 1;
+        if (_downloadIsComplete)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
     }
     else
     {
@@ -124,7 +139,7 @@
     {
         if (indexPath.section == 0)
         {
-            static NSString *CellIdentifier = @"bonusProfileCell";
+            NSString *CellIdentifier = @"bonusProfileCell";
             MSBonusCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
             
             cell.bonusCountLabel.text = [self.profileDictionary valueForKey:@"balance"];
@@ -133,26 +148,38 @@
         }
         if (indexPath.section == 2)
         {
-            static NSString *CellIdentifier = @"checkboxCell";
+            NSString *CellIdentifier = @"checkboxCell";
             MSCheckBoxCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
             
             cell.checkboxLabel.text = [[self.profileCheckboxFields objectAtIndex:indexPath.row] valueForKey:@"title"];
             cell.isChecked = [[[self.profileCheckboxFields objectAtIndex:indexPath.row] valueForKey:@"value"] boolValue];
             [cell setSelection];
+            [cell.checkboxButton addTarget:self action:@selector(checkboxPressed:) forControlEvents:UIControlEventTouchUpInside];
             
             return cell;
         }
         
         if (indexPath.section == 3)
         {
-            static NSString *CellIdentifier = @"saveProfileCell";
-            MSProfileSaveCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-            [cell.SaveButton addTarget:self action:@selector(SaveButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-            return cell;
+            if(!_isEditMode)
+            {
+                NSString *CellIdentifier = @"saveProfileCell";
+                MSProfileSaveCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+                [cell.SaveButton addTarget:self action:@selector(SaveButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+                return cell;
+            }
+            else
+            {
+                NSString *CellIdentifier = @"editButtonsCell";
+                MSEditButtonsCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+                [cell.cancelButton addTarget:self action:@selector(dismissChanges) forControlEvents:UIControlEventTouchUpInside];
+                [cell.saveButton addTarget:self action:@selector(saveChanges) forControlEvents:UIControlEventTouchUpInside];
+                return cell;
+            }
         }
         else
         {
-            static NSString *CellIdentifier = @"standardProfileCell";
+            NSString *CellIdentifier = @"standardProfileCell";
             MSStandardProfileCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
             
             if (_isEditMode)
@@ -209,7 +236,7 @@
     }
     else
     {
-        static NSString *CellIdentifier = @"Cell";
+        NSString *CellIdentifier = @"Cell";
         
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
@@ -228,27 +255,36 @@
     }
     return value;
 }
-
+#pragma mark - selectors
 -(void)SaveButtonPressed
 {
     if (!_isEditMode)
     {
-        if(!self.profileStandartFields || !self.profileCheckboxFields)
-        {
-            [self.api  getProfileDataForEdit];
-            _isEditMode = YES;
-        }
-        else
-        {
-            _isEditMode = YES;
-            [self.profileTableView reloadData];
-        }
+        [self.api  getProfileDataForEdit];
+        _downloadIsComplete = NO;
+        _isEditMode = YES;
+        [self.profileTableView reloadData];
     }
     else
     {
         _isEditMode = NO;
         [self.profileTableView reloadData];
     }
+}
+
+-(void)saveChanges
+{
+    NSMutableArray *array = [[NSMutableArray alloc]initWithArray:self.profileStandartFields];
+    [array addObjectsFromArray:self.profileCheckboxFields];
+    
+}
+
+-(void)checkboxPressed:(id)sender
+{
+    MSCheckBoxCell *cell = (MSCheckBoxCell *) [[sender superview] superview];
+    NSIndexPath *indexPath = [[NSIndexPath alloc]init];
+    indexPath = [self.profileTableView indexPathForCell:cell];
+    [self changeValueAtIndexPath:indexPath with:cell.isChecked ? @"1" : @"0"];
 }
 
 #pragma mark - UITextField Delegate
@@ -258,6 +294,42 @@
     [self.profileTableView scrollToRowAtIndexPath:[self.profileTableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    MSStandardProfileCell *cell = (MSStandardProfileCell *)textField.superview.superview;
+    NSIndexPath *indexPath = [[NSIndexPath alloc]init];
+    indexPath = [self.profileTableView indexPathForCell:cell];
+    [self changeValueAtIndexPath:indexPath with:textField.text];
+}
+
+-(void)changeValueAtIndexPath:(NSIndexPath *)indexPath with:(NSString*)value
+{
+    NSArray *objArray;
+    NSArray *keyArray;
+    if(indexPath.section == 1)
+    {
+        if([[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"type"] isEqualToString:@"select"])
+        {
+            objArray = [[NSArray alloc]initWithObjects:[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"key"], value, [[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"title"], [[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"type"],[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"values"],nil];
+            keyArray = [[NSArray alloc]initWithObjects:@"key", @"value", @"title", @"type",@"values",nil];
+        }
+        else
+        {
+            objArray = [[NSArray alloc]initWithObjects:[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"key"], value, [[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"title"], [[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"type"],nil];
+            keyArray = [[NSArray alloc]initWithObjects:@"key", @"value", @"title", @"type",nil];
+        }
+        NSDictionary *resultDict = [[NSDictionary alloc]initWithObjects:objArray forKeys:keyArray];
+        [self.profileStandartFields replaceObjectAtIndex:indexPath.row withObject:resultDict];
+    }
+    else if (indexPath.section == 2)
+    {
+        objArray = [[NSArray alloc]initWithObjects:[[self.profileCheckboxFields objectAtIndex:indexPath.row] valueForKey:@"key"], value, [[self.profileCheckboxFields objectAtIndex:indexPath.row] valueForKey:@"title"], [[self.profileCheckboxFields objectAtIndex:indexPath.row] valueForKey:@"type"],nil];
+        keyArray = [[NSArray alloc]initWithObjects:@"key", @"value", @"title", @"type",nil];
+        NSDictionary *resultDict = [[NSDictionary alloc]initWithObjects:objArray forKeys:keyArray];
+        [self.profileCheckboxFields replaceObjectAtIndex:indexPath.row withObject:resultDict];
+    }
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
@@ -265,6 +337,11 @@
 }
 
 - (IBAction)logoutButtonPressed:(id)sender
+{
+    [self logout];
+}
+
+-(void)logout
 {
     NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
     [userDefults setObject:nil forKey:@"authorization_Token"];
@@ -278,7 +355,8 @@
     if([[dictionary valueForKey:@"status"] isEqualToString:@"failed"])
     {
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:[[dictionary valueForKey:@"message"] valueForKey:@"title"] message:[[dictionary valueForKey:@"message"] valueForKey:@"text"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [alert show];
+        alert.tag = 1;
+         [alert show];
     }
     if(type == kProfileInfo)
     {
@@ -318,6 +396,13 @@
         }
     }
 }
+#pragma mark - UIAlertViewDelegate
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 0 && alertView.tag == 1)
+        [self logout];
+}
+
 #pragma mark - MSPickerViewDelegate
 -(void)msPickerViewDoneButtonPressed:(MSPickerView *)pickerView
 {

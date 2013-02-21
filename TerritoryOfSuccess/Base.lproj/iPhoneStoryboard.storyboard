@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8kx-JT-nNm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8kx-JT-nNm">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
     <scenes>
         <!--Catalogue View Controller - Каталог-->
@@ -642,7 +642,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="receiveProfileCell" rowHeight="95" id="7hS-Q6-rBF" customClass="MSReceiveProfileCell">
-                                        <rect key="frame" x="0.0" y="267" width="320" height="96"/>
+                                        <rect key="frame" x="0.0" y="267" width="320" height="95"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="94"/>
@@ -707,6 +707,45 @@
                                             <outlet property="receiveNewsLabel" destination="8hl-py-yyz" id="6Pj-q1-ZNh"/>
                                             <outlet property="receiveNoticeButton" destination="tgW-sC-daG" id="V1K-BI-8uO"/>
                                             <outlet property="receiveNoticeLabel" destination="D36-14-ryf" id="J80-FD-Z6X"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="editButtonsCell" id="a8S-tF-d3S" customClass="MSEditButtonsCell">
+                                        <rect key="frame" x="0.0" y="362" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TPA-lV-Cj4">
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" title="Cancel" backgroundImage="button_80_44-1.png">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="D8I-pm-UuG">
+                                                    <rect key="frame" x="150" y="0.0" width="150" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" title="Save" backgroundImage="button_80_44-1_right.png">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="cancelButton" destination="TPA-lV-Cj4" id="Ip8-HH-obI"/>
+                                            <outlet property="saveButton" destination="D8I-pm-UuG" id="uUC-xV-V64"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1407,6 +1446,8 @@
         <image name="button_185_45.png" width="185" height="45"/>
         <image name="button_300*43.png" width="300" height="43"/>
         <image name="button_310_32-1.png" width="310" height="32"/>
+        <image name="button_80_44-1.png" width="80" height="44"/>
+        <image name="button_80_44-1_right.png" width="80" height="44"/>
         <image name="button_80_44.png" width="80" height="44"/>
         <image name="catalogue_TOS.png" width="38" height="38"/>
         <image name="checkbox_empty.png" width="32" height="32"/>
@@ -1510,6 +1551,13 @@
                 <relationship kind="outlet" name="starView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="twButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="vkButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="MSEditButtonsCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSEditButtonsCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="cancelButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="saveButton" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="MSFirstNavigationController" superclassName="UINavigationController">
