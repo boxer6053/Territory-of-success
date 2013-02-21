@@ -10,7 +10,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SDWebImage/UIButton+WebCache.h>
 #import "MSStatisticViewController.h"
-
+#import <QuartzCore/QuartzCore.h>
 
 @interface MSInquirerDetailViewController ()
 @property (strong, nonatomic) NSMutableData *receivedData;
@@ -119,13 +119,14 @@
         [self.view addSubview:imageForInquirer1];
         UIButton *likeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         
-        [likeButton setBackgroundImage:[UIImage imageNamed:@"button_310_32-1.png"] forState:UIControlStateNormal];
+        [likeButton setBackgroundImage:[UIImage imageNamed:@"button_140*35.png"] forState:UIControlStateNormal];
         [likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [likeButton setTitle:@"Like it!" forState:UIControlStateNormal];
         [likeButton addTarget:self action:@selector(likeAction)  forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:likeButton];
         UIButton *dislikeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [dislikeButton setBackgroundImage:[UIImage imageNamed:@"button_310_32-1.png"] forState:UIControlStateNormal];
+        [dislikeButton setBackgroundImage:[UIImage imageNamed:@"button_140*35.png"] forState:UIControlStateNormal];
+        //[dislikeButton setBackgroundColor:[UIColor blackColor]];
         [dislikeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [dislikeButton setTitle:@"Hate it!" forState:UIControlStateNormal];
         [dislikeButton addTarget:self action:@selector(dislikeAction) forControlEvents:UIControlEventTouchUpInside];
@@ -151,9 +152,15 @@
     else{
         //ВИД ОПРОСА КАКОЙ ТОВАР ЛУЧШЕ
         _inquirerTitle.text = @"Какой товар лучше";
+        UIImageView *background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"inquirerPic.png"]];
+        background.frame = CGRectMake(0, 100, 320, 220);
+        background.alpha = 0.7;
+        [self.view addSubview:background];
         UITapGestureRecognizer *selectProduct = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chooseAProduct:)];
         [selectProduct setNumberOfTapsRequired:1];
         UIButton *image1 = [UIButton buttonWithType:UIButtonTypeCustom];
+        image1.layer.cornerRadius = 10;
+        image1.clipsToBounds = YES;
         UIButton *image2 = [UIButton buttonWithType:UIButtonTypeCustom];
         UIButton *image3 = [UIButton buttonWithType:UIButtonTypeCustom];
         UIButton *image4 = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -184,8 +191,14 @@
         NSArray *arrayOfViews = [[NSArray alloc] initWithObjects:image1,image2,image3,image4,image5,image6, nil];
         for(int i=0;i<6;i++)
         {
+            //UIButton *currentButton = [arrayOfViews objectAtIndex:i];
             [[arrayOfViews objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"bag.png"] forState:UIControlStateNormal];
-            [self.view addSubview:[arrayOfViews objectAtIndex:i]];
+            UIButton *currentButton = [arrayOfViews objectAtIndex:i];
+            currentButton.layer.cornerRadius = 10;
+            currentButton.clipsToBounds= YES;
+//            [[[arrayOfViews objectAtIndex:i] layer] setCornerRadius:10];
+            [[arrayOfViews objectAtIndex:i] setAlpha:0.9];
+            [self.view addSubview:currentButton];
         }
         for (int i = 0;i<self.arrayOfProducts.count;i++)
         {

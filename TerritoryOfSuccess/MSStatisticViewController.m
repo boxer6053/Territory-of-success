@@ -62,7 +62,7 @@
         for(int i=0;i<arrayOfTitles.count;i++){
             UILabel *currentTitle = [arrayOfTitles objectAtIndex:i];
             [currentTitle setBackgroundColor:[UIColor clearColor]];
-            [currentTitle setFont:[UIFont fontWithName:@"TimesNewRomanPS-ItalicMT" size:17]];
+            [currentTitle setFont:[UIFont fontWithName:@"Helvetica-Bold" size:17]];
         }
         NSArray *arrayOfAnswers = [[NSArray alloc] initWithObjects:answer1,answer2, nil];
         for(int i=0;i<self.receivedArray.count;i++)
@@ -73,7 +73,7 @@
             
             [currentAnswerLabel setText:[value stringByAppendingString:@"  Голос(ов)"]];
             [currentAnswerLabel setBackgroundColor:[UIColor clearColor]];
-            [currentAnswerLabel setFont:[UIFont fontWithName:@"TimesNewRomanPS-ItalicMT" size:17]];
+            [currentAnswerLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:17]];
             // currentAnswerLabel.text = [[self.receivedArray objectAtIndex:i] valueForKey:@"cnt"];
             [self.view addSubview:currentAnswerLabel];
         }
