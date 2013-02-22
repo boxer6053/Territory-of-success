@@ -48,6 +48,10 @@
 @property (nonatomic) int beginCount;
 @property (nonatomic) int endCount;
 
+@property (strong, nonatomic) NSString *codeStr;
+
+@property (strong, nonatomic) NSMutableString *productString;
+
 @end
 
 @implementation MSFirstViewController
@@ -95,6 +99,9 @@
 
 @synthesize beginCount = _beginCount;
 @synthesize endCount = _endCount;
+
+@synthesize codeStr = _codeStr;
+@synthesize productString = _productString;
 
 - (MSAPI *)api
 {
@@ -378,12 +385,29 @@
     UIImage *tempImage = [self cropImage:[info objectForKey:UIImagePickerControllerOriginalImage] withX:(self.screenWidth - self.frameMarkWidth)/2 withY:(self.screenHeight - 54 - self.frameMarkHeight)/2 withWidth:self.frameMarkWidth withHeight:self.frameMarkHeight];
     
     //------------------------------
-    NSString *recognizedText = [NSString stringWithString:[self recognizeImage:tempImage]];
+    NSString *recognizedText;
+    @try {
+        recognizedText = [NSString stringWithString:[self recognizeImage:tempImage]];
+        
+        NSLog(@"%@", recognizedText);
+        
+        recognizedText = [recognizedText stringByReplacingOccurrencesOfString:@" " withString:@""];
+        recognizedText = [recognizedText stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+        
+        [self.codeTextField setText:[self filtringCode:recognizedText]];
+                
+        [imagePickerController dismissViewControllerAnimated:YES completion:NULL];
+    }
+    @catch (NSException *exception) {
+        [imagePickerController dismissViewControllerAnimated:YES completion:NULL];
+        
+        UIAlertView *recognizingCodeError = [[UIAlertView alloc] initWithTitle:@"Ошибка распознания"
+                                                                       message:@"Не удалось распознать код"
+                                                                      delegate:nil cancelButtonTitle:@"OK"
+                                                             otherButtonTitles:nil, nil];
+        [recognizingCodeError show];
+    }
     
-    NSLog(@"%@", recognizedText);
-    
-    recognizedText = [recognizedText stringByReplacingOccurrencesOfString:@" " withString:@""];
-    recognizedText = [recognizedText stringByReplacingOccurrencesOfString:@"\n" withString:@""];
     //розкоментити код нище для додавання тире між цифрами
     //------------------------------------------------------------------
     //    NSMutableArray *substringsArray = [[NSMutableArray alloc] init];
@@ -403,11 +427,9 @@
     //    }
     //------------------------------------------------------------------
     
-    [self.codeTextField setText:[self filtringCode:recognizedText]];
     
     //------------------------------
     
-    [imagePickerController dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
@@ -511,13 +533,24 @@ static inline double radians (double degrees)
 - (NSString *)filtringCode:(NSString *)code
 {
     NSMutableString *filtredString = [[NSMutableString alloc] init];
+    NSMutableString *tempStr = [NSMutableString stringWithString:code];
     
-    for (int i = 0; i < code.length; i++) {
-        unichar ch = [code characterAtIndex:i];
+    for (int i = 0; i < tempStr.length; i++) {
+        unichar ch = [tempStr characterAtIndex:i];
         if ((ch >= 48 && ch <= 57) || (ch >= 65 && ch <= 90) || ch == 45 || ch == 8212 || ch == 8211)
         {
-            if (ch == 8212) {
+            if (ch == 45 || ch == 8211 || ch == 8212) {
                 ch = 45;
+                
+                unichar tempCh = [tempStr characterAtIndex:i+1];
+                
+                if (tempCh == 45 || tempCh == 8211 || tempCh == 8212) {
+                    NSRange charDeleteRange;
+                    charDeleteRange.location = i+1;
+                    charDeleteRange.length = 1;
+                    
+                    [tempStr deleteCharactersInRange:charDeleteRange];
+                }
             }
             NSLog(@"%@", [NSString stringWithFormat:@"%c", ch]);
             [filtredString appendString:[NSString stringWithFormat:@"%c", ch]];
@@ -539,10 +572,11 @@ static inline double radians (double degrees)
     
     [self.api setDelegate:self];
     
-    NSString *codeStr = @"4444-2AED-2354-865E";
-//    NSString *codeStr = @"2EA4-29E9-CCE0-90EB";
-//    NSString *codeStr = @"37B9-45A4-3711-2DA2";
-//    NSString *codeStr = [self.codeTextField text];
+//    self.codeStr = @"4444-2AED-2354-865E";
+    self.codeStr = @"A223-94DF-CE67-B898";
+//    self.codeStr = @"2EA4-29E9-CCE0-90EB";
+//    self.codeStr = @"37B9-45A4-3711-2DA2";
+//    self.codeStr = [self.codeTextField text];
     
 //    [self.api checkCode:[self.codeTextField text]];
     
@@ -551,10 +585,10 @@ static inline double radians (double degrees)
     
     
     
-    if (![codeStr isEqualToString:@""] && codeStr.length == 19) {
+    if (![self.codeStr isEqualToString:@""] && self.codeStr.length == 19) {
         [SVProgressHUD showWithStatus:NSLocalizedString(@"Отправка кода...",nil)];
         
-        [self.api checkCode:codeStr];
+        [self.api checkCode:self.codeStr];
     }
     else
     {
@@ -610,13 +644,13 @@ static inline double radians (double degrees)
     
     [self.sendCodeButton setEnabled:YES];
     
-    [self.scrollView addSubview:self.dialogView];
+//    [self.scrollView addSubview:self.dialogView];
+    [self.view addSubview:self.dialogView];
     
     [UIView animateWithDuration:0.5 animations:^{
         [self.backAlphaView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
     } completion:^(BOOL finished) {
         [self.dialogView setFrame:CGRectMake(5, ([[UIScreen mainScreen] bounds].size.height - self.dialogView.frame.size.height)/2 - 54, 310, 295)];
-//        [self.mainFishkaImageView setFrame:CGRectMake(56, ([[UIScreen mainScreen] bounds].size.height - self.dialogView.frame.size.height)/2 - 54 - 4, 198, 33)];
         [self.dialogView attachPopUpAnimationForView:self.dialogView];
         
         [self.dialogView.closeButton addTarget:self action:@selector(closeDialogView) forControlEvents:UIControlEventTouchUpInside];
@@ -635,8 +669,6 @@ static inline double radians (double degrees)
         [self.backAlphaView removeFromSuperview];
         [self.dialogView removeFromSuperview];
     }];
-    
-    [self.scrollView insertSubview:self.backAlphaView atIndex:0];
 }
 
 - (void)closeComplaintView
@@ -658,9 +690,13 @@ static inline double radians (double degrees)
         self.complaintView = [[MSComplaintView alloc] initWithFrame:CGRectMake(5, ([[UIScreen mainScreen] bounds].size.height - 311)/2 - 54, 310, 311)];
         self.complaintViewFrame = self.complaintView.frame;
         [self.complaintView setDelegate:self];
+//        [self.view addSubview:self.complaintView];
         [self.view addSubview:self.complaintView];
         [self.complaintView attachPopUpAnimationForView:self.complaintView];
         [self.dialogView removeFromSuperview];
+        
+        [self.complaintView.productTextField setText:self.productString];
+        [self.complaintView.codeTextField setText:self.codeStr];
         
         [self.complaintView.cancelButton addTarget:self action:@selector(closeComplaintView) forControlEvents:UIControlEventTouchUpInside];
         [self.complaintView.closeButton addTarget:self action:@selector(closeComplaintView) forControlEvents:UIControlEventTouchUpInside];
@@ -735,8 +771,8 @@ static inline double radians (double degrees)
             }
             
             [self.backAlphaView setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0]];
-            [self.scrollView insertSubview:self.backAlphaView belowSubview:self.dialogView];
-                        
+            [self.view insertSubview:self.backAlphaView belowSubview:self.dialogView];
+            
             self.mainFishkaLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, 178, 20)];
             self.mainFishkaLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15.0];
             [self.mainFishkaLabel setTextColor:[UIColor whiteColor]];
@@ -749,10 +785,10 @@ static inline double radians (double degrees)
             NSURL *imageUrl = [NSURL URLWithString:[[dictionary valueForKey:@"product"] valueForKey:@"image"]];
             [self.dialogView.productImageView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
             
-            NSMutableString *productString = [NSMutableString stringWithString:[[dictionary valueForKey:@"brand"] valueForKey:@"title"]];
-            [productString appendFormat:@" / %@", [[dictionary valueForKey:@"product"] valueForKey:@"title"]];
+            self.productString = [NSMutableString stringWithString:[[dictionary valueForKey:@"brand"] valueForKey:@"title"]];
+            [self.productString appendFormat:@" / %@", [[dictionary valueForKey:@"product"] valueForKey:@"title"]];
             
-            [self.dialogView.productDescripptionLabel setText:productString];
+            [self.dialogView.productDescripptionLabel setText:self.productString];
             [self.dialogView.productDescripptionLabel sizeToFit];
             
             [self.dialogView.categoryLabel setText:NSLocalizedString(@"Категория:",nil)];
@@ -775,22 +811,22 @@ static inline double radians (double degrees)
                 NSLog(@"expiried");
                 
                 if ([[UIScreen mainScreen] bounds].size.height == 568) {
-                    self.dialogView = [[MSDialogView alloc] initWithFrame:CGRectMake(5, 568, 310, 350)];
+                    self.dialogView = [[MSDialogView alloc] initWithFrame:CGRectMake(5, 568, 310, 295)];
                     
                     self.backAlphaView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)];
                     
                 }
                 else
                 {
-                    self.dialogView = [[MSDialogView alloc] initWithFrame:CGRectMake(5, 480, 310, 350)];
+                    self.dialogView = [[MSDialogView alloc] initWithFrame:CGRectMake(5, 480, 310, 295)];
                     
                     self.backAlphaView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
                     
                 }
                 
                 [self.backAlphaView setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0]];
-                [self.scrollView insertSubview:self.backAlphaView belowSubview:self.dialogView];
-                                
+                [self.view insertSubview:self.backAlphaView belowSubview:self.dialogView];
+                
                 self.mainFishkaLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, 178, 20)];
                 self.mainFishkaLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15.0];
                 [self.mainFishkaLabel setTextColor:[UIColor whiteColor]];
@@ -803,10 +839,10 @@ static inline double radians (double degrees)
                 NSURL *imageUrl = [NSURL URLWithString:[[dictionary valueForKey:@"product"] valueForKey:@"image"]];
                 [self.dialogView.productImageView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
                 
-                NSMutableString *productString = [NSMutableString stringWithString:[[dictionary valueForKey:@"brand"] valueForKey:@"title"]];
-                [productString appendFormat:@" / %@", [[dictionary valueForKey:@"product"] valueForKey:@"title"]];
+                self.productString = [NSMutableString stringWithString:[[dictionary valueForKey:@"brand"] valueForKey:@"title"]];
+                [self.productString appendFormat:@" / %@", [[dictionary valueForKey:@"product"] valueForKey:@"title"]];
                 
-                [self.dialogView.productDescripptionLabel setText:productString];
+                [self.dialogView.productDescripptionLabel setText:self.productString];
                 [self.dialogView.productDescripptionLabel sizeToFit];
                 
                 [self.dialogView.categoryLabel setText:NSLocalizedString(@"Категория:",nil)];
@@ -814,7 +850,8 @@ static inline double radians (double degrees)
                 [self.dialogView.categoryDescripptionLabel sizeToFit];
                 
                 [self.dialogView.bonusLabel setText:NSLocalizedString(@"Бонус за продукт:",nil)];
-                [self.dialogView.bonusValueLabel setText:[dictionary valueForKey:@"bonus"]];
+//                [self.dialogView.bonusValueLabel setText:[dictionary valueForKey:@"bonus"]];
+                [self.dialogView.bonusValueLabel setText:@"0"];
                 
                 [self.dialogView.messageLabel setText:[[dictionary valueForKey:@"message"] objectAtIndex:1]];
                 [self.dialogView.messageLabel sizeToFit];
@@ -830,21 +867,21 @@ static inline double radians (double degrees)
                     NSLog(@"notfound");
                     
                     if ([[UIScreen mainScreen] bounds].size.height == 568) {
-                        self.dialogView = [[MSDialogView alloc] initWithFrame:CGRectMake(5, 568, 310, 350)];
+                        self.dialogView = [[MSDialogView alloc] initWithFrame:CGRectMake(5, 568, 310, 295)];
                         
                         self.backAlphaView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)];
                     }
                     else
                     {
-                        self.dialogView = [[MSDialogView alloc] initWithFrame:CGRectMake(5, 480, 310, 350)];
+                        self.dialogView = [[MSDialogView alloc] initWithFrame:CGRectMake(5, 480, 310, 295)];
                         
                         self.backAlphaView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
                                                 
                     }
                     
                     [self.backAlphaView setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0]];
-                    [self.scrollView insertSubview:self.backAlphaView belowSubview:self.dialogView];
-                                        
+                    [self.view insertSubview:self.backAlphaView belowSubview:self.dialogView];
+                    
                     self.mainFishkaLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, 178, 20)];
                     self.mainFishkaLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15.0];
                     [self.mainFishkaLabel setTextColor:[UIColor whiteColor]];
@@ -861,7 +898,7 @@ static inline double radians (double degrees)
                     messageStr = [messageStr stringByReplacingOccurrencesOfString:@"<p>" withString:@""];
                     messageStr = [messageStr stringByReplacingOccurrencesOfString:@"</p>" withString:@"\n"];
                     
-                    UILabel *notFoundMessageLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, self.dialogView.captionLabel.frame.origin.y + self.dialogView.captionLabel.frame.size.height + 30, 290, 100)];
+                    UILabel *notFoundMessageLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, self.dialogView.captionLabel.frame.origin.y + self.dialogView.captionLabel.frame.size.height + 10, 290, 100)];
                     [notFoundMessageLabel setNumberOfLines:0];
                     [notFoundMessageLabel setLineBreakMode:NSLineBreakByWordWrapping];
                     [notFoundMessageLabel setBackgroundColor:[UIColor clearColor]];
@@ -873,6 +910,7 @@ static inline double radians (double degrees)
                     [self.dialogView addSubview:notFoundMessageLabel];
                     
                     [self.dialogView.bonusNameLabel setText:@""];
+                    [self.dialogView.productImageView setHidden:YES];
                     
                     [self showDialogView];
                 }
@@ -977,6 +1015,7 @@ static inline double radians (double degrees)
         }
     }
     [self.view addGestureRecognizer:self.tapRecognizer];
+    [self.view.window addGestureRecognizer:self.tapRecognizer];
 }
 
 - (void)keyboardWillHide:(NSNotification *)note
@@ -1010,6 +1049,7 @@ static inline double radians (double degrees)
     }];
     
     [self.view removeGestureRecognizer:self.tapRecognizer];
+    [self.view.window removeGestureRecognizer:self.tapRecognizer];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -1023,14 +1063,14 @@ static inline double radians (double degrees)
 {
     self.beginCount++;
     
-//    self.isFromBeginEditing = YES;
     self.isTextFieldEtiting = YES;
     
     self.activeField = textField;
     
     self.complaintView.productTextField = textField;
     
-    if (YES) {
+    if (textField.tag == 1 || textField.tag == 2 || textField.tag == 3)
+    {
         if ([[UIScreen mainScreen] bounds].size.height == 480)
         {
             [UIView animateWithDuration:0.25 animations:^{
@@ -1054,36 +1094,37 @@ static inline double radians (double degrees)
 {
     self.endCount++;
     
-    if (self.beginCount == self.endCount)
+    if (textField.tag == 1 || textField.tag == 2 || textField.tag == 3)
     {
-        if ([[UIScreen mainScreen] bounds].size.height == 480 && self.textViewBeginEditing == NO) {
-            [UIView animateWithDuration:0.25 animations:^{
-                [self.complaintView setFrame:CGRectMake(self.complaintView.frame.origin.x, self.complaintViewFrame.origin.y, self.complaintView.frame.size.width, self.complaintView.frame.size.height)];
-            }];
-            
-            self.isTextFieldEtiting = NO;
-            
-            self.beginCount = 0;
-            self.endCount = 0;
-        }
-        else
+        if (self.beginCount == self.endCount)
         {
-            if (self.textViewBeginEditing == NO) {
+            if ([[UIScreen mainScreen] bounds].size.height == 480 && self.textViewBeginEditing == NO) {
                 [UIView animateWithDuration:0.25 animations:^{
                     [self.complaintView setFrame:CGRectMake(self.complaintView.frame.origin.x, self.complaintViewFrame.origin.y, self.complaintView.frame.size.width, self.complaintView.frame.size.height)];
                 }];
+                
+                self.isTextFieldEtiting = NO;
+                
+                self.beginCount = 0;
+                self.endCount = 0;
+            }
+            else
+            {
+                if (self.textViewBeginEditing == NO) {
+                    [UIView animateWithDuration:0.25 animations:^{
+                        [self.complaintView setFrame:CGRectMake(self.complaintView.frame.origin.x, self.complaintViewFrame.origin.y, self.complaintView.frame.size.width, self.complaintView.frame.size.height)];
+                    }];
+                }
             }
         }
     }
-    else
-    {
-    }
+    
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     //бидло код трололо
-    if (textField == self.codeTextField)
+    if (textField == self.codeTextField || textField == self.complaintView.codeTextField)
     {
         if ((range.location == 4 || range.location == 9 || range.location == 14) && range.location != 0 && ![string isEqualToString:@""]) {
             

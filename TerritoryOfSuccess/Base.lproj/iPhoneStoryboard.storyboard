@@ -1474,6 +1474,12 @@
                 <relationship kind="action" name="addMoreProduct:"/>
                 <relationship kind="action" name="startButton:"/>
                 <relationship kind="outlet" name="askButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="productView1" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="productView2" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="productView3" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="productView4" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="productView5" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="productView6" candidateClass="UIImageView"/>
             </relationships>
         </class>
         <class className="MSDetailViewController" superclassName="UIViewController">
@@ -1498,13 +1504,6 @@
                 <relationship kind="outlet" name="starView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="twButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="vkButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="MSEditButtonsCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSEditButtonsCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="cancelButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="saveButton" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="MSFirstNavigationController" superclassName="UINavigationController">
