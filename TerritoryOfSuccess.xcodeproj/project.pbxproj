@@ -80,6 +80,7 @@
 		F5FF668A16D7998F00E64AD9 /* button120*35.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF668916D7998E00E64AD9 /* button120*35.png */; };
 		F5FF668C16D7A1CC00E64AD9 /* terrRate.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF668B16D7A1CB00E64AD9 /* terrRate.png */; };
 		F5FF669016D7B42000E64AD9 /* pluss_.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF668F16D7B42000E64AD9 /* pluss_.png */; };
+		F5FF669316D7BEE100E64AD9 /* MSStatisticCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5FF669216D7BEE000E64AD9 /* MSStatisticCell.m */; };
 		FA167C4816A969920008561D /* commentsNumberImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FA167C4716A969920008561D /* commentsNumberImage.png */; };
 		FA167C4C16A9699B0008561D /* starOffImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FA167C4A16A9699B0008561D /* starOffImage.png */; };
 		FA167C4D16A9699B0008561D /* starOnImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FA167C4B16A9699B0008561D /* starOnImage.png */; };
@@ -398,6 +399,8 @@
 		F5FF668916D7998E00E64AD9 /* button120*35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button120*35.png"; sourceTree = "<group>"; };
 		F5FF668B16D7A1CB00E64AD9 /* terrRate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = terrRate.png; sourceTree = "<group>"; };
 		F5FF668F16D7B42000E64AD9 /* pluss_.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pluss_.png; sourceTree = "<group>"; };
+		F5FF669116D7BEE000E64AD9 /* MSStatisticCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSStatisticCell.h; sourceTree = "<group>"; };
+		F5FF669216D7BEE000E64AD9 /* MSStatisticCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSStatisticCell.m; sourceTree = "<group>"; };
 		FA167C4716A969920008561D /* commentsNumberImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commentsNumberImage.png; sourceTree = "<group>"; };
 		FA167C4A16A9699B0008561D /* starOffImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starOffImage.png; sourceTree = "<group>"; };
 		FA167C4B16A9699B0008561D /* starOnImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starOnImage.png; sourceTree = "<group>"; };
@@ -749,6 +752,8 @@
 				F5F6ADD4169C4F21000247D9 /* MSAppDelegate.m */,
 				F5F6ADDC169C4F22000247D9 /* TerritoryOfSuccess.xcdatamodeld */,
 				FA8AB81616C2594C00B98EA3 /* iPhoneStoryboard.storyboard */,
+				F5FF669116D7BEE000E64AD9 /* MSStatisticCell.h */,
+				F5FF669216D7BEE000E64AD9 /* MSStatisticCell.m */,
 				FA1BEA8E16A813BF00F2C219 /* Pauli */,
 				F5F6ADCB169C4F21000247D9 /* Supporting Files */,
 			);
@@ -1229,6 +1234,7 @@
 				FA1E940516D522F3007D7BE3 /* MSDatePickerView.m in Sources */,
 				FA99139A16D64EF900BEBAB0 /* MSEditButtonsCell.m in Sources */,
 				F5FF667C16D7798F00E64AD9 /* MSInquirerCell.m in Sources */,
+				F5FF669316D7BEE100E64AD9 /* MSStatisticCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

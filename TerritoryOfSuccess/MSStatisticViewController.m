@@ -9,6 +9,7 @@
 #import "MSStatisticViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SVProgressHUD.h"
+#import "MSStatisticCell.h"
 @interface MSStatisticViewController ()
 @property (strong, nonatomic) NSMutableData *receivedData;
 @property (strong, nonatomic) MSAPI *api;
@@ -22,6 +23,7 @@
 @synthesize receivedData = _receivedData;
 @synthesize receivedArray = _receivedArray;
 @synthesize api = _api;
+//@synthesize tableView = _tableView;
 
 - (MSAPI *) api{
     if(!_api){
@@ -34,6 +36,8 @@
 {
    
     [super viewDidLoad];
+//    self.tableView.delegate = self;
+//    self.tableView.dataSource = self;
     if ([[UIScreen mainScreen] bounds].size.height == 568)
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
@@ -43,14 +47,102 @@
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
  [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadingInquirerStatKey",nil)];
+    for(int i=0;i<self.receivedArray.count;i++){
+        NSString *votesForProduct = [[self.receivedArray objectAtIndex:i] valueForKey:@"cnt"];
+        //  NSLog(@" gg %d", [votesForProduct integerValue  ])   ;
+        self.totalVotes = self.totalVotes + [votesForProduct integerValue] ;
+    }
     NSLog(@"id question %d", self.questionID);
     NSLog(@"interfaceIndex %d", self.interfaceIndex);
     [self.api getStatisticQuestionWithID:self.questionID];
-   
+
 	// Do any additional setup after loading the view.
 }
+
+//-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+//    if(self.interfaceIndex ==1){
+//        return 2;
+//    }
+//    else{
+//        return self.receivedArray.count;
+//    }
+//}
+//
+//-(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView  {
+//    return 1;
+//}
+//
+//-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    MSStatisticCell *cell;
+//    static NSString* cellIdentifier = @"statisticCellId";
+//    cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    if (cell == nil) {
+//        cell = [[MSStatisticCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+//        
+//    }
+//    if(self.interfaceIndex ==1){
+//        [self.tableView setFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, 120)];
+//        NSString *value = [[self.receivedArray objectAtIndex:indexPath.row] valueForKey:@"cnt"];
+//        NSLog(@"value %f = ", [value floatValue]);
+//        CGFloat index = [value floatValue]/self.totalVotes;
+//        NSLog(@"index =%f",index);
+//        NSInteger heigh = (indexPath.row+1)*50+10;
+//        NSLog(@"height = %d", heigh);
+//        NSInteger percents = index*100;
+//       // [cell.rateView setFrame:CGRectMake(cell.rateView.frame.origin.x, cell.rateView.frame.origin.y, 1+index*110, cell.rateView.frame.size.height)];
+//        NSString *answer = [NSString stringWithFormat:@"%d",percents];
+//        cell.answerLabel.text = [answer stringByAppendingString:@"%"];
+//        cell.rateView.image = [UIImage imageNamed:@"terrRate.png"];
+//
+//
+//        if(indexPath.row == 0){
+//            cell.titleLabel.text = @"против";
+//                   }
+//        else{
+//            cell.titleLabel.text = @"за";
+//                    }
+//    }
+//    else{
+//        CGFloat height = self.receivedArray.count;
+//        [self.tableView setFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, height*60)];
+//
+//        NSString *number = [NSString stringWithFormat:@"%d",indexPath.row+1];
+//        cell.titleLabel.text = [@"Товар " stringByAppendingString:number];
+//        NSString *value = [[self.receivedArray objectAtIndex:indexPath.row] valueForKey:@"cnt"];
+//        NSLog(@"value %f = ", [value floatValue]);
+//        CGFloat index = [value floatValue]/self.totalVotes;
+//        NSLog(@"index =%f",index);
+//        NSInteger heigh = (indexPath.row+1)*50+10;
+//        NSLog(@"height = %d", heigh);
+//        NSInteger percents = index*100;
+//        //[cell.rateView setFrame:CGRectMake(cell.rateView.frame.origin.x, cell.rateView.frame.origin.y,1+index*110, cell.rateView.frame.size.height)];
+//        cell.rateView.image = [UIImage imageNamed:@"terrRate.png"];
+//        NSString *answer = [NSString stringWithFormat:@"%d",percents];
+//        cell.answerLabel.text = [answer stringByAppendingString:@"%"];
+//
+//        
+//    }
+//    return cell;
+//
+//}
 -(void)buildView{
+    UIImageView * roundedView = [[UIImageView alloc] init];
+    [roundedView setBackgroundColor:[UIColor whiteColor]];
+    // Get the Layer of any view
+    
+    [[roundedView layer] setMasksToBounds:YES];
+    [[roundedView layer] setCornerRadius:10.0];
+    
+    // You can even add a border
+    [[roundedView layer] setBorderWidth:1.0];
+    [[roundedView layer]setBorderColor:[[UIColor blackColor] CGColor]];
     if(self.interfaceIndex ==1){
+        [roundedView setFrame:CGRectMake(5, 55, 310, 85)];
+        [self.view addSubview:roundedView];
+        
+        
         UIImageView *rate1 = [[UIImageView alloc] init];
         [rate1 setImage:[UIImage imageNamed:@"terrRate.png"]];
         UIImageView *rate2 = [[UIImageView alloc] init];
@@ -115,7 +207,9 @@
         [secondLabel setText:@"Голосов за"];
     }
     else{
-
+        NSLog(@"COUNTT %d",self.receivedArray.count);
+        [roundedView setFrame:CGRectMake(5, 55, 310, (self.receivedArray.count)*50+10)];
+        [self.view addSubview:roundedView];
     UILabel *firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 60, 60, 20)];
     UILabel *secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 110, 60, 20)];
     UILabel *thirdLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 160, 60, 20)];
@@ -149,7 +243,7 @@
     
     NSArray *arrayOfAnswers = [[NSArray alloc] initWithObjects:answer1, answer2, answer3, answer4,answer5,answer6, nil];
         for(int i=0;i<self.receivedArray.count;i++){
-            NSString *votesForProduct = [[self.receivedArray objectAtIndex:i] valueForKey:@"cnt"];
+                       NSString *votesForProduct = [[self.receivedArray objectAtIndex:i] valueForKey:@"cnt"];
           //  NSLog(@" gg %d", [votesForProduct integerValue  ])   ;
             self.totalVotes = self.totalVotes + [votesForProduct integerValue] ;
         }
@@ -159,13 +253,14 @@
         NSString *title = @"Товар  ";
         NSString *title1 = [title stringByAppendingString:[NSString stringWithFormat:@"%i",i+1]];
         [currentLabel setText:title1];
-        [currentLabel setFont:[UIFont fontWithName:@"TimesNewRomanPS-ItalicMT" size:17]];
+        [currentLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:13]];
         [currentLabel setBackgroundColor:[UIColor clearColor]];
         [self.view addSubview:currentLabel];
     }
         
-        
+       
         for(int i=0;i<self.receivedArray.count;i++){
+             if(self.totalVotes !=0){
             UILabel *currentAnswerLabel = [arrayOfAnswers objectAtIndex:i];
             NSString *value = [[self.receivedArray objectAtIndex:i] valueForKey:@"cnt"];
             NSLog(@"value %f = ", [value floatValue]);
@@ -181,11 +276,19 @@
             [[arrayOfRates objectAtIndex:i] setFrame:CGRectMake(85, (i+1)*50+10, 1+index*110, 20)];
             
             [currentAnswerLabel setText:[[NSString stringWithFormat:@"%d", percents] stringByAppendingString:@" % Голосов"]];
-            [currentAnswerLabel setFont:[UIFont fontWithName:@"TimesNewRomanPS-ItalicMT" size:17]];
+            [currentAnswerLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:13]];
             [currentAnswerLabel setBackgroundColor:[UIColor clearColor]];
            // currentAnswerLabel.text = [[self.receivedArray objectAtIndex:i] valueForKey:@"cnt"];
             [self.view addSubview:[arrayOfRates objectAtIndex:i]];
             [self.view addSubview:currentAnswerLabel];
+        }
+             else{
+                  UILabel *currentAnswerLabel = [arrayOfAnswers objectAtIndex:i];
+                 [currentAnswerLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:13]];
+                 [currentAnswerLabel setBackgroundColor:[UIColor clearColor]];
+                 currentAnswerLabel.text = @"0%";
+                 [self.view addSubview:currentAnswerLabel];
+             }
         }
     for(int i=self.receivedArray.count;i<arrayOfTitles.count;i++)
     {
@@ -203,7 +306,7 @@
 {
     if(type == kQuestStat){
     self.receivedArray = [dictionary valueForKey:@"options"];
-        [self buildView];
+    [self buildView];
     }
      [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
     NSLog(@"COUNT %d", self.receivedArray.count);
