@@ -10,6 +10,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SDWebImage/UIButton+WebCache.h>
 #import "SVProgressHUD.h"
+#import <QuartzCore/QuartzCore.h>
 
 
 @interface MSCreateQuestionViewController ()
@@ -84,10 +85,17 @@
     self.arrayOfViews = [[NSArray alloc] initWithObjects:image1,image2,image3,image4,image5,image6, nil];
     for(int i=0;i<self.arrayOfViews.count;i++)
     {
-        [[self.arrayOfViews objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"plus_icon.png"] forState:UIControlStateNormal];
-        [[self.arrayOfViews objectAtIndex:i] addTarget:self action:@selector(assignAPicture:)forControlEvents:UIControlEventTouchUpInside ];
-        [[self.arrayOfViews objectAtIndex:i] setTag:i];
-        [self.view addSubview:[self.arrayOfViews objectAtIndex:i]];
+        //UIImage *plus = [UIImage imageNamed:@"plus_icon.png"];
+        
+        [[self.arrayOfViews objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"pluss.png"] forState:UIControlStateNormal];
+        UIButton *current = [self.arrayOfViews objectAtIndex:i];
+        [current addTarget:self action:@selector(assignAPicture:)forControlEvents:UIControlEventTouchUpInside ];
+            
+            current.layer.cornerRadius  = 10.0f;
+        [current setTag:i];
+        [current setAlpha:0.7];
+        current.clipsToBounds= YES;
+        [self.view addSubview:current];
     }
 
     
