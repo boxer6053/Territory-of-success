@@ -130,18 +130,7 @@
     UILabel *answer5 = [[UILabel alloc]initWithFrame:CGRectMake(200, 260, 100, 20)];
     UILabel *answer6 = [[UILabel alloc]initWithFrame:CGRectMake(200, 310, 100, 20)];
         
-//        UIImageView *rate1 = [[UIImageView alloc] init];
-//        [rate1 setImage:[UIImage imageNamed:@"blueRate.png"]];
-//        UIImageView *rate2 = [[UIImageView alloc] init];
-//                [rate2 setImage:[UIImage imageNamed:@"greenRate.png"]];
-//        UIImageView *rate3 = [[UIImageView alloc] init];
-//                [rate3 setImage:[UIImage imageNamed:@"lightGreenRate.png"]];
-//        UIImageView *rate4 = [[UIImageView alloc] init];
-//                [rate4 setImage:[UIImage imageNamed:@"purpleRate.png"]];
-//        UIImageView *rate5 = [[UIImageView alloc] init];
-//                [rate5 setImage:[UIImage imageNamed:@"redRate.png"]];
-//        UIImageView *rate6 = [[UIImageView alloc] init];
-//                [rate6 setImage:[UIImage imageNamed:@"yellowRate.png"]];
+
         UIImageView *rate1 = [[UIImageView alloc] init];
         [rate1 setImage:[UIImage imageNamed:@"terrRate.png"]];
         UIImageView *rate2 = [[UIImageView alloc] init];
