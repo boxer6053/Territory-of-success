@@ -10,6 +10,7 @@
 #import "MSTypesOfInquirersViewController.h"
 #import "MSInquirerDetailViewController.h"
 #import "SVProgressHUD.h"
+#import "MSInquirerCell.h"
 
 @interface MSTypesOfInquirersViewController ()
 @property (strong, nonatomic) NSMutableData *receivedData;
@@ -122,23 +123,34 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell;
-    static NSString* cellIdentifier = @"customInqCell";
+    MSInquirerCell *cell;
+    static NSString* cellIdentifier = @"inquirerCellId";
     cell = [_tableOfInquirers dequeueReusableCellWithIdentifier:cellIdentifier];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+        cell = [[MSInquirerCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
         
     }
-    
+    cell.titleLabel.numberOfLines = 2;
     if(allInquirerMode) {
-        cell.textLabel.text = [[self.allQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
-        // cell.imageView.image = [UIImage imageNamed:@"photo_camera_1.png"];
+        cell.titleLabel.text = [[self.allQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
+        if([[[self.allQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"] integerValue]== 1){
+         cell.typeImage.image = [UIImage imageNamed:@"likeIcon.png"];
+        }
+        else{
+            cell.typeImage.image = [UIImage imageNamed:@"questionMark.png"];
+        }
     }
     else{
-        cell.textLabel.text = [[self.myQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
+        cell.titleLabel.text = [[self.myQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
         
-        //cell.imageView.image = [UIImage imageNamed:@"photo_camera_1.png"];
+        
+        if([[[self.myQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"] integerValue]== 1){
+            cell.typeImage.image = [UIImage imageNamed:@"likeIcon.png"];
+        }
+        else{
+            cell.typeImage.image = [UIImage imageNamed:@"questionMark.png"];
+        }
         
     }
     

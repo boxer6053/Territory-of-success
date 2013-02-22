@@ -69,14 +69,11 @@
 		F5F6AE87169C4F65000247D9 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F5F6AE84169C4F65000247D9 /* LICENSE */; };
 		F5F6AE8A169C4F72000247D9 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = F5F6AE89169C4F72000247D9 /* tessdata */; };
 		F5F6AE8F169C5153000247D9 /* MSFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F6AE8E169C5153000247D9 /* MSFirstViewController.m */; };
-		F5FF667016D65BAB00E64AD9 /* blueRate.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF666A16D65BAB00E64AD9 /* blueRate.png */; };
-		F5FF667116D65BAB00E64AD9 /* greenRate.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF666B16D65BAB00E64AD9 /* greenRate.png */; };
-		F5FF667216D65BAB00E64AD9 /* lightGreenRate.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF666C16D65BAB00E64AD9 /* lightGreenRate.png */; };
-		F5FF667316D65BAB00E64AD9 /* purpleRate.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF666D16D65BAB00E64AD9 /* purpleRate.png */; };
-		F5FF667416D65BAB00E64AD9 /* redRate.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF666E16D65BAB00E64AD9 /* redRate.png */; };
-		F5FF667516D65BAB00E64AD9 /* yellowRate.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF666F16D65BAB00E64AD9 /* yellowRate.png */; };
-		F5FF667716D66DD900E64AD9 /* terrRate.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF667616D66DD900E64AD9 /* terrRate.png */; };
-		F5FF667916D689DC00E64AD9 /* plus_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF667816D689DC00E64AD9 /* plus_icon.png */; };
+		F5FF667C16D7798F00E64AD9 /* MSInquirerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5FF667B16D7798F00E64AD9 /* MSInquirerCell.m */; };
+		F5FF667F16D77EA000E64AD9 /* likeDislike.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF667D16D77EA000E64AD9 /* likeDislike.png */; };
+		F5FF668016D77EA000E64AD9 /* WhitchOneIsBetter.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF667E16D77EA000E64AD9 /* WhitchOneIsBetter.png */; };
+		F5FF668616D7864C00E64AD9 /* likeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF668516D7864B00E64AD9 /* likeIcon.png */; };
+		F5FF668816D7910000E64AD9 /* questionMark.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF668716D7910000E64AD9 /* questionMark.png */; };
 		FA167C4816A969920008561D /* commentsNumberImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FA167C4716A969920008561D /* commentsNumberImage.png */; };
 		FA167C4C16A9699B0008561D /* starOffImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FA167C4A16A9699B0008561D /* starOffImage.png */; };
 		FA167C4D16A9699B0008561D /* starOnImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FA167C4B16A9699B0008561D /* starOnImage.png */; };
@@ -390,6 +387,12 @@
 		F5FF666F16D65BAB00E64AD9 /* yellowRate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowRate.png; sourceTree = "<group>"; };
 		F5FF667616D66DD900E64AD9 /* terrRate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = terrRate.png; sourceTree = "<group>"; };
 		F5FF667816D689DC00E64AD9 /* plus_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus_icon.png; sourceTree = "<group>"; };
+		F5FF667A16D7798F00E64AD9 /* MSInquirerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSInquirerCell.h; sourceTree = "<group>"; };
+		F5FF667B16D7798F00E64AD9 /* MSInquirerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSInquirerCell.m; sourceTree = "<group>"; };
+		F5FF667D16D77EA000E64AD9 /* likeDislike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeDislike.png; sourceTree = "<group>"; };
+		F5FF667E16D77EA000E64AD9 /* WhitchOneIsBetter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WhitchOneIsBetter.png; sourceTree = "<group>"; };
+		F5FF668516D7864B00E64AD9 /* likeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeIcon.png; sourceTree = "<group>"; };
+		F5FF668716D7910000E64AD9 /* questionMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = questionMark.png; sourceTree = "<group>"; };
 		FA167C4716A969920008561D /* commentsNumberImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commentsNumberImage.png; sourceTree = "<group>"; };
 		FA167C4A16A9699B0008561D /* starOffImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starOffImage.png; sourceTree = "<group>"; };
 		FA167C4B16A9699B0008561D /* starOnImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starOnImage.png; sourceTree = "<group>"; };
@@ -627,6 +630,8 @@
 				FADC926E16C52F06006BD95C /* bigStar.png */,
 				FADC926F16C52F06006BD95C /* bigStarBlack.png */,
 				FA167DB716C394D700B08904 /* button_80_44.png */,
+				F5FF667D16D77EA000E64AD9 /* likeDislike.png */,
+				F5FF667E16D77EA000E64AD9 /* WhitchOneIsBetter.png */,
 				FADC926A16C50C70006BD95C /* logo_color_invert_40*147.png */,
 				F5B1884016BBCA2F00290F27 /* logo_text_30*165.png */,
 				F5B1883E16BBC8D200290F27 /* logo_text_30*167.png */,
@@ -671,9 +676,11 @@
 				FA167C4B16A9699B0008561D /* starOnImage.png */,
 				FA167C4716A969920008561D /* commentsNumberImage.png */,
 				F59B7FAD16A874950084FEE3 /* questions1.png */,
+				F5FF668716D7910000E64AD9 /* questionMark.png */,
 				F59B7FA916A86E600084FEE3 /* news_TOS.png */,
 				F59B7FA716A86E540084FEE3 /* catalogue_TOS.png */,
 				F59B7FA516A86E480084FEE3 /* home_TOS.png */,
+				F5FF668516D7864B00E64AD9 /* likeIcon.png */,
 				F545779E16B2DB5100B4221E /* inquirerPic.png */,
 				FA1BEA9516A842A100F2C219 /* like.png */,
 				FAAD062B16A4326A00D37373 /* iconWhite114.png */,
@@ -980,6 +987,8 @@
 				FAFF40F216BAF4F100D020FE /* MSReceiveProfileCell.h */,
 				FAFF40F316BAF4F100D020FE /* MSReceiveProfileCell.m */,
 				F59884E016C16DCA009FBF48 /* MSQuestionCell.h */,
+				F5FF667A16D7798F00E64AD9 /* MSInquirerCell.h */,
+				F5FF667B16D7798F00E64AD9 /* MSInquirerCell.m */,
 				F59884E116C16DCA009FBF48 /* MSQuestionCell.m */,
 				FA99139816D64EF900BEBAB0 /* MSEditButtonsCell.h */,
 				FA99139916D64EF900BEBAB0 /* MSEditButtonsCell.m */,
@@ -1149,6 +1158,10 @@
 				FADC927116C52F06006BD95C /* bigStarBlack.png in Resources */,
 				FA9913A116D6919500BEBAB0 /* button_80_44-1_right.png in Resources */,
 				FA9913A316D691A600BEBAB0 /* button_80_44-1.png in Resources */,
+				F5FF667F16D77EA000E64AD9 /* likeDislike.png in Resources */,
+				F5FF668016D77EA000E64AD9 /* WhitchOneIsBetter.png in Resources */,
+				F5FF668616D7864C00E64AD9 /* likeIcon.png in Resources */,
+				F5FF668816D7910000E64AD9 /* questionMark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1205,6 +1218,7 @@
 				FA1853C016D401BB00BAF298 /* MSPickerView.m in Sources */,
 				FA1E940516D522F3007D7BE3 /* MSDatePickerView.m in Sources */,
 				FA99139A16D64EF900BEBAB0 /* MSEditButtonsCell.m in Sources */,
+				F5FF667C16D7798F00E64AD9 /* MSInquirerCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

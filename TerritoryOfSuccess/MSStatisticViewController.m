@@ -51,11 +51,18 @@
 }
 -(void)buildView{
     if(self.interfaceIndex ==1){
-         
-        UILabel *firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 60, 120, 20)];
-        UILabel *secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 110, 160, 20)];
-        UILabel *answer1 = [[UILabel alloc]initWithFrame:CGRectMake(180, 60, 120, 20)];
-        UILabel *answer2 = [[UILabel alloc]initWithFrame:CGRectMake(180, 110, 120, 20)];
+        UIImageView *rate1 = [[UIImageView alloc] init];
+        [rate1 setImage:[UIImage imageNamed:@"terrRate.png"]];
+        UIImageView *rate2 = [[UIImageView alloc] init];
+        [rate2 setImage:[UIImage imageNamed:@"terrRate.png"]];
+        
+        
+        NSArray *arrayOfRates = [[NSArray alloc] initWithObjects:rate1, rate2, nil];
+        
+        UILabel *firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 60, 110, 20)];
+        UILabel *secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 110, 110, 20)];
+        UILabel *answer1 = [[UILabel alloc]initWithFrame:CGRectMake(250, 60, 50, 20)];
+        UILabel *answer2 = [[UILabel alloc]initWithFrame:CGRectMake(250, 110, 50, 20)];
         [answer1 setText:@"0"];
         [answer1 setBackgroundColor:[UIColor clearColor]];
         [answer2 setBackgroundColor:[UIColor clearColor]];
@@ -66,25 +73,46 @@
         for(int i=0;i<arrayOfTitles.count;i++){
             UILabel *currentTitle = [arrayOfTitles objectAtIndex:i];
             [currentTitle setBackgroundColor:[UIColor clearColor]];
-            [currentTitle setFont:[UIFont fontWithName:@"Helvetica-Bold" size:17]];
+            [currentTitle setFont:[UIFont fontWithName:@"Helvetica-Bold" size:13]];
         }
         NSArray *arrayOfAnswers = [[NSArray alloc] initWithObjects:answer1,answer2, nil];
+        for(int i=0;i<self.receivedArray.count;i++){
+            NSString *votesForProduct = [[self.receivedArray objectAtIndex:i] valueForKey:@"cnt"];
+            //  NSLog(@" gg %d", [votesForProduct integerValue  ])   ;
+            self.totalVotes = self.totalVotes + [votesForProduct integerValue] ;
+        }
         for(int i=0;i<self.receivedArray.count;i++)
         {
+            NSLog(@"total =%f", self.totalVotes);
+          
             UILabel *currentAnswerLabel = [arrayOfAnswers objectAtIndex:i];
             NSString *value = [[self.receivedArray objectAtIndex:i] valueForKey:@"cnt"];
             
+            NSLog(@"value %f = ", [value floatValue]);
+            CGFloat index = [value floatValue]/self.totalVotes;
+            NSLog(@"index =%f",index);
+            NSInteger heigh = (i+1)*50+10;
+            NSLog(@"height = %d", heigh);
+            CGFloat integer = 1.0/2.0;
+            NSInteger percents = index*100;
+            NSLog(@"%d",percents);
             
-            [currentAnswerLabel setText:[value stringByAppendingString:@"  Голос(ов)"]];
+            
+            NSLog(@"testt %f", integer);
+            [[arrayOfRates objectAtIndex:i] setFrame:CGRectMake(125, (i+1)*50+10, 1+index*110, 20)];
+            NSString *answer = [NSString stringWithFormat:@"%d", percents];
+
+            [currentAnswerLabel setText:[answer stringByAppendingString:@" %"]];
             [currentAnswerLabel setBackgroundColor:[UIColor clearColor]];
-            [currentAnswerLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:17]];
+            [currentAnswerLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:13]];
             // currentAnswerLabel.text = [[self.receivedArray objectAtIndex:i] valueForKey:@"cnt"];
+            [self.view addSubview:[arrayOfRates objectAtIndex:i]];
             [self.view addSubview:currentAnswerLabel];
         }
         [self.view addSubview:firstLabel];
         [self.view addSubview:secondLabel];
-        [firstLabel setText:@"Голосов ЗА"];
-        [secondLabel setText:@"Голосов ПРОТИВ"];
+        [firstLabel setText:@"Голосов против"];
+        [secondLabel setText:@"Голосов за"];
     }
     else{
 
