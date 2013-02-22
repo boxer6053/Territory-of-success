@@ -208,7 +208,7 @@
     }
     else{
         NSLog(@"COUNTT %d",self.receivedArray.count);
-        [roundedView setFrame:CGRectMake(5, 55, 310, (self.receivedArray.count)*50+10)];
+        [roundedView setFrame:CGRectMake(5, 55, 310, (self.receivedArray.count)*45+10)];
         [self.view addSubview:roundedView];
     UILabel *firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 60, 60, 20)];
     UILabel *secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 110, 60, 20)];
