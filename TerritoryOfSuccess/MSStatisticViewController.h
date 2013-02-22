@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "MSAPI.h"
 
-@interface MSStatisticViewController : UIViewController <WsCompleteDelegate>
+@interface MSStatisticViewController : UIViewController <WsCompleteDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic) NSInteger interfaceIndex;
 @property (nonatomic) NSInteger questionID;
 @property (strong, nonatomic) NSArray *receivedArray;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
