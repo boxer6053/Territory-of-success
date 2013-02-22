@@ -81,7 +81,7 @@
         [self.productImageButton.layer setBorderColor:[UIColor colorWithWhite:0.5 alpha:1.0].CGColor];
         [self.productImageButton.layer setBorderWidth:1.0];
         [self.productImageButton setBackgroundColor:[UIColor whiteColor]];
-        [self.productImageButton setBackgroundImage:[UIImage imageNamed:@"photo_camera_1.png"] forState:UIControlStateNormal];
+        [self.productImageButton setBackgroundImage:[UIImage imageNamed:@"photoPlaceholder.png"] forState:UIControlStateNormal];
         [self.productImageButton addTarget:self action:@selector(takeProductPhoto) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:self.productImageButton];
         

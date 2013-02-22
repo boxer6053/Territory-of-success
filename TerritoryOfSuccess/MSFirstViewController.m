@@ -572,7 +572,8 @@ static inline double radians (double degrees)
     
     [self.api setDelegate:self];
     
-    self.codeStr = @"4444-2AED-2354-865E";
+//    self.codeStr = @"4444-2AED-2354-865E";
+    self.codeStr = @"A223-94DF-CE67-B898";
 //    self.codeStr = @"2EA4-29E9-CCE0-90EB";
 //    self.codeStr = @"37B9-45A4-3711-2DA2";
 //    self.codeStr = [self.codeTextField text];
