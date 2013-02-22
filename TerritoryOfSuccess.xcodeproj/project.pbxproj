@@ -1165,6 +1165,9 @@
 				F5FF668816D7910000E64AD9 /* questionMark.png in Resources */,
 				F5FF668A16D7998F00E64AD9 /* button120*35.png in Resources */,
 				F5FF668C16D7A1CC00E64AD9 /* terrRate.png in Resources */,
+				F5BD298716D7957F00B190B7 /* placeholder_415*415.png in Resources */,
+				F5BD298916D7970C00B190B7 /* placeholder_622*415.png in Resources */,
+				F5BD298B16D7989400B190B7 /* photoPlaceholder.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
