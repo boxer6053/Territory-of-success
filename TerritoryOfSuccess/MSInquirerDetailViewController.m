@@ -55,11 +55,7 @@
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
-    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 100, 320, 220)];
-    [imageView setImage:[UIImage imageNamed:@"inquirerPic.png"]];
-    [imageView setAlpha:0.3];
-    [self.view addSubview:imageView];
-
+   
     [self.api getStatisticQuestionWithID:item];
     
     

@@ -45,10 +45,10 @@
     [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadInquirersKey",nil)];
     [self.api getLastQuestions];
     self.allInquirerMode=YES;
-    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 100, 320, 220)];
-    [imageView setImage:[UIImage imageNamed:@"inquirerPic.png"]];
-    [imageView setAlpha:0.3];
-    [self.view addSubview:imageView];
+   // UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 100, 320, 220)];
+//    [imageView setImage:[UIImage imageNamed:@"inquirerPic.png"]];
+//    [imageView setAlpha:0.3];
+//    [self.view addSubview:imageView];
     [self.view addSubview:self.tableOfInquirers];
     //[self.view addSubview:[UIImageView *imageView = [UIImageView alloc]init]]
     self.myInquirerMode = NO;
