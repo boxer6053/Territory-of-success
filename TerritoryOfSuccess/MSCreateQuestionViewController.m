@@ -183,6 +183,13 @@
     [SVProgressHUD showWithStatus:NSLocalizedString(@"SendingInquirerKey",nil)];
     [self.api createQuestionWithItems:self.requestString];
 }
+- (void)alertView:(UIAlertView *)alertView
+clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0){
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    }
+}
 -(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
 {
     if (type ==kCreateQuest)
