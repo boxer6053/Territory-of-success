@@ -46,7 +46,13 @@
 "AllBrandsDownloadedKey" = "Все бренды загружены";
 "NeedToLoginKey" = "Вам необходимо авторизироваться";
 
+
 // Опросы
+"DownloadInquirersKey" = "Загрузка опросов";
+"DownloadInquirerDetailKey" = "Загрузка деталей";
+"DownloadingInquirerStatKey" = "Загрузка ответов";
+"SendingInquirerKey" = "Создание опроса";
+"DownloadingInquirerListKey" = "Загрузка каталога";
 
 
 // Новости

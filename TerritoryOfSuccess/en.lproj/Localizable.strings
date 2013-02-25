@@ -26,8 +26,6 @@
 "Бонус за продукт:" = "Product bonus";
 
 
-
-
 // Каталог + Share
 "CategoriesKey" = "Categories";
 "BrandsKey" = "Brands";
@@ -48,12 +46,13 @@
 "AllBrandsDownloadedKey" = "All brands are downloaded";
 "NeedToLoginKey" = "You need to authorize";
 
+
 // Опросы
-
-
-
-
-
+"DownloadInquirersKey" = "Loading interogation";
+"DownloadInquirerDetailKey" = "Loading detail";
+"DownloadingInquirerStatKey" = "Loading answers";
+"SendingInquirerKey" = "Creating interogation";
+"DownloadingInquirerListKey" = "Loading catalogue";
 
 
 // Новости
