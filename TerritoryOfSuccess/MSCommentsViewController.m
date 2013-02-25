@@ -39,9 +39,9 @@
 {
     [super viewDidLoad];
     [[self commentTableView] setBackgroundView:[[UIImageView alloc]
-                                 initWithImage:[UIImage imageNamed:@"bg.png"]]];
+                                                initWithImage:[UIImage imageNamed:@"bg.png"]]];
     
-    self.footerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.commentTableView.frame.size.width, 20)];
+    self.footerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.commentTableView.frame.size.width, 35)];
     [self.footerButton setTitle:NSLocalizedString(@"DownloadMoreKey",nil) forState:UIControlStateNormal];
     self.footerButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
     [self.footerButton setTitleColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4] forState:UIControlStateNormal];
@@ -49,7 +49,7 @@
     
     [self commentTableView].tableFooterView = self.footerButton;
     [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadCommentsKey",nil)];
-
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -98,16 +98,16 @@
     NSString *value = [[[self commentsArray] objectAtIndex:indexPath.row] valueForKey:@"name"];
     NSCharacterSet *set = [NSCharacterSet whitespaceAndNewlineCharacterSet];
     if ([[value stringByTrimmingCharactersInSet:set] length] == 0)
-        {
-            cell.commentatorName.text = @"Noname";
-        }
+    {
+        cell.commentatorName.text = @"Noname";
+    }
     else cell.commentatorName.text = [[[self commentsArray] objectAtIndex:indexPath.row] valueForKey:@"name"];
     
     [cell.commentText setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0]];
     cell.commentText.text = [[[self commentsArray] objectAtIndex:indexPath.row] valueForKey:@"text"];
     
     cell.commentdate.text = [[[self commentsArray] objectAtIndex:indexPath.row] valueForKey:@"date"];
-
+    
     return cell;
 }
 
@@ -140,11 +140,6 @@
     self.commentTableView.scrollEnabled = YES;
     self.addCommentView = nil;
     [self.commentTableView reloadData];
-}
-
-- (void)closeAfterSuccessSentComment
-{
-    [self.api getCommentsWithProductId:self.prodId andOffset:self.commentsCounter];
 }
 
 #pragma mark Web Methods
@@ -180,7 +175,6 @@
                 [self.commentTableView insertRowsAtIndexPaths: insertIndexPath withRowAnimation:NO];
             }
         }
-        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
     }
 }
 @end
