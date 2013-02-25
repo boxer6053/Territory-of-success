@@ -36,6 +36,8 @@
 {
    
     [super viewDidLoad];
+//    [self.tableView setContentOffset:CGPointMake(5, 5)animated:YES];
+    NSLog(@"TOTAL %f", self.totalVotes);
  
     if ([[UIScreen mainScreen] bounds].size.height == 568)
     {
@@ -65,6 +67,7 @@
     }
     else{
         return self.receivedArray.count;
+        NSLog(@"return %d", self.receivedArray.count);
     }
 }
 
@@ -88,7 +91,7 @@
         NSLog(@"value %f = ", [value floatValue]);
         CGFloat index = [value floatValue]/self.totalVotes;
         NSLog(@"index =%f",index);
-        NSInteger heigh = (indexPath.row+1)*50+10;
+        NSInteger heigh = (indexPath.row+1)*45+10;
         NSLog(@"height = %d", heigh);
         NSInteger percents = index*100;
       [cell.rateView setFrame:CGRectMake(65, 15, 1+index*110, 20)];
@@ -105,19 +108,29 @@
                     }
     }
     else{
+        
         CGFloat height = self.receivedArray.count;
         [self.tableView setFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, height*50)];
-
+        NSLog(@"count %d",self.receivedArray.count);
+        NSLog(@"current row %d", indexPath.row);
+        NSLog(@"title %@", [[self.receivedArray objectAtIndex:indexPath.row] valueForKey:@"title"]);
         NSString *number = [NSString stringWithFormat:@"%d",indexPath.row+1];
         cell.titleLabel.text = [@"Товар " stringByAppendingString:number];
         NSString *value = [[self.receivedArray objectAtIndex:indexPath.row] valueForKey:@"cnt"];
-        NSLog(@"value %f = ", [value floatValue]);
+       // NSLog(@"value %f = ", [value floatValue]);
         CGFloat index = [value floatValue]/self.totalVotes;
-        NSLog(@"index =%f",index);
-        NSInteger heigh = (indexPath.row+1)*50+10;
-        NSLog(@"height = %d", heigh);
-        NSInteger percents = index*100;
-        [cell.rateView setFrame:CGRectMake(65, 15,1+index*110, 20)];
+        //NSLog(@"index =%f",index);
+        //NSInteger heigh = (indexPath.row+1)*50+10;
+        //NSLog(@"height = %d", heigh);
+        NSInteger percents;
+        if(self.totalVotes==0){
+            percents = 0;
+        [cell.rateView setFrame:CGRectMake(65, 15,1, 20)];
+        }
+        else{
+            percents = index*100;
+           [cell.rateView setFrame:CGRectMake(65, 15,1+index*110, 20)];
+        }
         cell.rateView.image = [UIImage imageNamed:@"terrRate.png"];
         NSString *answer = [NSString stringWithFormat:@"%d",percents];
         cell.answerLabel.text = [answer stringByAppendingString:@"%"];
@@ -314,6 +327,13 @@
         
     //[self buildView];
     }
+    NSString *response = [[dictionary valueForKey:@"message"] valueForKey:@"text"];
+    if([response isEqualToString:@"To get access to this page please log in to the system."]){
+        UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Пожалуйста перезайдите в систему!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
+        [failmessage show];
+        
+    }
+
      [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
     NSLog(@"COUNT %d", self.receivedArray.count);
     self.tableView.delegate = self;
