@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "MSAPI.h"
+#import "MSLogInView.h"
 
-@interface MSTypesOfInquirersViewController : UIViewController <UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, WsCompleteDelegate, UIAlertViewDelegate>
+
+@interface MSTypesOfInquirersViewController : UIViewController <UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, WsCompleteDelegate, UIAlertViewDelegate, UITextViewDelegate, UITextFieldDelegate, dismissView>
 @property (weak, nonatomic) IBOutlet UITableView *tableOfInquirers;
 @property (strong, nonatomic) NSArray *testInquirers;
 @property (strong, nonatomic) NSArray *myQuestionsArray;
