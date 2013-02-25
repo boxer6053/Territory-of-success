@@ -9,6 +9,8 @@
 @property NSArray *arrayOfProducts;
 @property NSDictionary *brandDictionaryIfWeComeFromBrandsSegment;
 @property int productsCounter;
+@property int tempBrandId;
+@property int tempCategoryId;
 @end
 
 @implementation MSSubCatalogueViewController
@@ -16,6 +18,8 @@
 @synthesize productsCounter = _productsCounter;
 @synthesize productsTableView;
 @synthesize brandDictionaryIfWeComeFromBrandsSegment = _brandDictionaryIfWeComeFromBrandsSegment;
+@synthesize tempBrandId = _tempBrandId;
+@synthesize tempCategoryId = _tempCategoryId;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -33,6 +37,10 @@
     [self.productsTableView setBackgroundView:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"bg.png"]]];
     [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadProductsKey",nil)];
 }
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.api getProductsWithOffset:0 withBrandId:self.tempBrandId withCategoryId:self.tempCategoryId];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -42,7 +50,8 @@
 // Метод вызываемый при переходе на этот контроллер
 -(void) sentWithBrandId:(int)brandId withCategoryId:(int)categoryId
 {
-    [self.api getProductsWithOffset:0 withBrandId:brandId withCategoryId:categoryId];
+    self.tempBrandId = brandId;
+    self.tempCategoryId = categoryId;
 }
 
 #pragma mark - Table view data source
@@ -85,6 +94,7 @@
     cell.productBigImageURL = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"image"] valueForKey:@"big"];
     cell.productDesctiptionText = [[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"content"];
     cell.productId = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"id"]integerValue];
+    cell.productNumberInList = indexPath.row;
     
     cell.tag = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
     
@@ -98,14 +108,25 @@
     [self performSegueWithIdentifier:@"toDetailView" sender:currentCell];
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"toDetailView"])
     {
         MSSubCatalogueCell *currentCell = sender;
-        [segue.destinationViewController sentProductName:currentCell.productName.text andId:currentCell.productId andRating:currentCell.productRatingNumber andCommentsNumber:currentCell.productCommentsNumber andAdvisesNumber:currentCell.productAdviceNumber andImageURL:currentCell.productBigImageURL andDescriptionText:currentCell.productDesctiptionText];
+        [segue.destinationViewController sentProductName:currentCell.productName.text
+                                                   andId:currentCell.productId
+                                               andRating:currentCell.productRatingNumber
+                                       andCommentsNumber:currentCell.productCommentsNumber
+                                        andAdvisesNumber:currentCell.productAdviceNumber
+                                             andImageURL:currentCell.productBigImageURL
+                                      andDescriptionText:currentCell.productDesctiptionText
+                                         andNumberInList:currentCell.productNumberInList
+                                              andBrandId:self.tempBrandId
+                                           andCategoryId:self.tempCategoryId];
+        
     }
 }
+
 #pragma mark - Web Methods
 - (MSAPI *) api
 {
@@ -126,6 +147,5 @@
         self.brandDictionaryIfWeComeFromBrandsSegment = [dictionary valueForKey:@"brand"];
     }
     [[self productsTableView] reloadData];
-    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
 }
 @end

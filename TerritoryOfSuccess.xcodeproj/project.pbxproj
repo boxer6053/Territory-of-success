@@ -94,6 +94,10 @@
 		FA1BEA9616A842A200F2C219 /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1BEA9516A842A100F2C219 /* like.png */; };
 		FA1E940516D522F3007D7BE3 /* MSDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1E940416D522F3007D7BE3 /* MSDatePickerView.m */; };
 		FA283CCD16A0890F00DBDC19 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA283CCC16A0890F00DBDC19 /* QuartzCore.framework */; };
+		FA2CEC1416DBBD42007015BC /* commentButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2CEC1016DBBD42007015BC /* commentButton.png */; };
+		FA2CEC1516DBBD42007015BC /* likeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2CEC1116DBBD42007015BC /* likeButton.png */; };
+		FA2CEC1616DBBD42007015BC /* starButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2CEC1216DBBD42007015BC /* starButton.png */; };
+		FA2CEC1716DBBD42007015BC /* whiteStarButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2CEC1316DBBD42007015BC /* whiteStarButton.png */; };
 		FA3B6F1916B6C30C0095A851 /* MSBrandsAndCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3B6F1816B6C30C0095A851 /* MSBrandsAndCategoryCell.m */; };
 		FA3B6F1B16B6C6300095A851 /* brandLogoExample.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3B6F1A16B6C6300095A851 /* brandLogoExample.png */; };
 		FA3B6F1E16B6EE7E0095A851 /* MSSubCatalogueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3B6F1D16B6EE7E0095A851 /* MSSubCatalogueCell.m */; };
@@ -420,6 +424,10 @@
 		FA1E940316D522F3007D7BE3 /* MSDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDatePickerView.h; sourceTree = "<group>"; };
 		FA1E940416D522F3007D7BE3 /* MSDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDatePickerView.m; sourceTree = "<group>"; };
 		FA283CCC16A0890F00DBDC19 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		FA2CEC1016DBBD42007015BC /* commentButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commentButton.png; sourceTree = "<group>"; };
+		FA2CEC1116DBBD42007015BC /* likeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeButton.png; sourceTree = "<group>"; };
+		FA2CEC1216DBBD42007015BC /* starButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starButton.png; sourceTree = "<group>"; };
+		FA2CEC1316DBBD42007015BC /* whiteStarButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteStarButton.png; sourceTree = "<group>"; };
 		FA3B6F1716B6C30C0095A851 /* MSBrandsAndCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSBrandsAndCategoryCell.h; sourceTree = "<group>"; };
 		FA3B6F1816B6C30C0095A851 /* MSBrandsAndCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSBrandsAndCategoryCell.m; sourceTree = "<group>"; };
 		FA3B6F1A16B6C6300095A851 /* brandLogoExample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brandLogoExample.png; sourceTree = "<group>"; };
@@ -622,6 +630,10 @@
 		F59AEB7E16AF1770004519B9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FA2CEC1016DBBD42007015BC /* commentButton.png */,
+				FA2CEC1116DBBD42007015BC /* likeButton.png */,
+				FA2CEC1216DBBD42007015BC /* starButton.png */,
+				FA2CEC1316DBBD42007015BC /* whiteStarButton.png */,
 				F5BD298A16D7989400B190B7 /* photoPlaceholder.png */,
 				F5BD298816D7970C00B190B7 /* placeholder_622*415.png */,
 				F5BD298616D7957F00B190B7 /* placeholder_415*415.png */,
@@ -1177,6 +1189,10 @@
 				F5BD298916D7970C00B190B7 /* placeholder_622*415.png in Resources */,
 				F5BD298B16D7989400B190B7 /* photoPlaceholder.png in Resources */,
 				F5FF669016D7B42000E64AD9 /* pluss_.png in Resources */,
+				FA2CEC1416DBBD42007015BC /* commentButton.png in Resources */,
+				FA2CEC1516DBBD42007015BC /* likeButton.png in Resources */,
+				FA2CEC1616DBBD42007015BC /* starButton.png in Resources */,
+				FA2CEC1716DBBD42007015BC /* whiteStarButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

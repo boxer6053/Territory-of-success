@@ -45,27 +45,27 @@
         self.commentBackgroundView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320 ,568)];
         [[self commentBackgroundView] setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0]];
         [UIView animateWithDuration:0.3 animations:^{
-        [[self commentBackgroundView] setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
+            [[self commentBackgroundView] setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
         }];
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeAddingCommentSubview)];
         [self.commentBackgroundView addGestureRecognizer:tap];
         [self addSubview:[self commentBackgroundView]];
-    
+        
         self.containerView = [[UIView alloc]initWithFrame:CGRectMake(10, 100, [UIScreen mainScreen].bounds.size.width - 20, 310)];
         [self addSubview:[self containerView]];
-    
+        
         self.commentView = [[UIView alloc] initWithFrame:CGRectMake(0, 10, [UIScreen mainScreen].bounds.size.width - 20, 300)];
         [[self commentView] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"dialogViewGradient.png"]]];
         [[self commentView].layer setBorderWidth:2.0f];
         [[self commentView].layer setBorderColor:[UIColor colorWithWhite:0.5 alpha:1].CGColor];
         [[self commentView].layer setCornerRadius:10];
         [[self containerView] addSubview:[self commentView]];
-    
+        
         UIImage *headerImage = [UIImage imageNamed:@"TOS cap.png"];
         self.headerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.containerView.frame.size.width/2 - headerImage.size.width/2, 6, 198, 33)];
         [self.headerImageView setImage:headerImage];
         [[self containerView] addSubview:[self headerImageView]];
-    
+        
         self.headerTitle = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, 178, 20)];
         [self.headerTitle setText:NSLocalizedString(@"YourCommentKey", nil)];
         self.headerTitle.font = [UIFont fontWithName:@"Helvetica-Bold" size:15.0];
@@ -73,13 +73,13 @@
         [self.headerTitle setBackgroundColor:[UIColor clearColor]];
         [self.headerTitle setTextAlignment:NSTextAlignmentCenter];
         [[self headerImageView] addSubview:[self headerTitle]];
-    
+        
         self.closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.closeButton setFrame:CGRectMake(278, 8, 15, 15)];
         [self.closeButton setBackgroundImage:[UIImage imageNamed:@"closeIcon.png"] forState:UIControlStateNormal];
         [self.closeButton addTarget:self action:@selector(closeAddingCommentSubview) forControlEvents:UIControlEventTouchDown];
         [self.commentView addSubview:self.closeButton];
-    
+        
         self.sentButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [self.sentButton setFrame:CGRectMake(self.containerView.frame.size.width/2 - 60, self.commentView.frame.size.height - 45, 120, 35)];
         [self.sentButton setBackgroundImage:[UIImage imageNamed:@"button_120*35_new.png"] forState:UIControlStateNormal];
@@ -137,7 +137,6 @@
     {
         [self.api sentCommentWithProductId:self.productId andText:self.inputCommentTextView.text];
         [self closeAddingCommentSubview];
-        [self.delegate closeAfterSuccessSentComment];
     }
 }
 
@@ -171,7 +170,7 @@
             self.containerView.frame = CGRectMake(10, 100, [UIScreen mainScreen].bounds.size.width - 20, 310);
         }];
     }
-
+    
 }
 // ввод текста комментария
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
@@ -210,8 +209,17 @@
 
 - (void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
 {
-    self.messageDictionary = [dictionary valueForKey:@"message"];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[self.messageDictionary valueForKey:@"title"] message:[self.messageDictionary valueForKey:@"text"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alertView show];
+    if ([[dictionary objectForKey:@"status"] isEqualToString:@"failed"])
+    {
+        NSString *message = [NSString stringWithFormat:@"%@",[dictionary objectForKey:@"message"]];
+        UIAlertView *alert = [[UIAlertView  alloc] initWithTitle:message message:NSLocalizedString(@"NeedToLoginKey", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+    else
+    {
+        self.messageDictionary = [dictionary valueForKey:@"message"];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[self.messageDictionary valueForKey:@"title"] message:[self.messageDictionary valueForKey:@"text"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+    }
 }
 @end

@@ -29,7 +29,6 @@
 // Каталог + Share
 "CategoriesKey" = "Категорії";
 "BrandsKey" = "Бренди";
-"DownloadIsCompletedKey" = "Завантаження закінчено.";
 "DownloadCategoriesKey" = "Завантажуються категорії...";
 "DownloadBrandsKey" = "Завантажуються бренди...";
 "DownloadProductsKey" = "Завантажуються товари";
@@ -44,17 +43,12 @@
 "NeedToAuthorizedKey" = "Вам необхідно авторизуватись";
 "AllCommentsDownloadedKey" = "Завантаженні всі коментарі";
 "DownloadCommentsKey" = "Завантажуються коментарі...";
+"AllBrandsDownloadedKey" = "Всі бренди завантаженні";
+"NeedToLoginKey" = "Вам необхідно авторизуватись";
+
 // Опросы
 
-//"" = "DownloadInquirersKey";
-//"DownloadInquirersKey" = "Завантаження питань";
-//"DownloadInquirerDetailKey" = "Завантаження деталей питання";
-//"DownloadingInquirerStatKey" = "Завантаження відповідей";
-"DownloadInquirersKey" = "Завантаження питань";
-"DownloadInquirerDetailKey" = "Завантаження деталей питання";
-"DownloadingInquirerStatKey" = "Завантаження відповідей";
-"SendingInquirerKey" = "Створення питання";
-"DownloadingInquirerListKey" = "Завантаження списку товарів";
+
 
 
 
