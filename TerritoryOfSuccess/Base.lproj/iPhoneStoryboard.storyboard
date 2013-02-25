@@ -466,7 +466,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                    <state key="normal" title="Бонусы" backgroundImage="button_80_44.png">
+                                                    <state key="normal" title="Бонусы" backgroundImage="button_80_44-2.png">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -1448,7 +1448,7 @@
         <image name="button_310_32-1.png" width="310" height="32"/>
         <image name="button_80_44-1.png" width="80" height="44"/>
         <image name="button_80_44-1_right.png" width="80" height="44"/>
-        <image name="button_80_44.png" width="80" height="44"/>
+        <image name="button_80_44-2.png" width="80" height="44"/>
         <image name="catalogue_TOS.png" width="38" height="38"/>
         <image name="checkbox_empty.png" width="32" height="32"/>
         <image name="checkbox_full.png" width="32" height="32"/>
