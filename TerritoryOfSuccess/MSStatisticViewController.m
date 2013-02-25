@@ -36,7 +36,7 @@
 {
    
     [super viewDidLoad];
-//    [self.tableView setContentOffset:CGPointMake(5, 5)animated:YES];
+    [self.tableView setContentOffset:CGPointMake(5, 100)animated:YES];
     NSLog(@"TOTAL %f", self.totalVotes);
  
     if ([[UIScreen mainScreen] bounds].size.height == 568)
@@ -110,7 +110,7 @@
     else{
         
         CGFloat height = self.receivedArray.count;
-        [self.tableView setFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, height*45)];
+        [self.tableView setFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, height*50)];
         NSLog(@"count %d",self.receivedArray.count);
         NSLog(@"current row %d", indexPath.row);
         NSLog(@"title %@", [[self.receivedArray objectAtIndex:indexPath.row] valueForKey:@"title"]);

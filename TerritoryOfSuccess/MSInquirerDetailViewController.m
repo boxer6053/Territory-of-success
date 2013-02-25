@@ -72,13 +72,14 @@
         self.arrayOfProducts = [dictionary valueForKey:@"options"];
         self.count = self.arrayOfProducts.count;
         NSLog(@"COUNT %d", self.count);
-        [self buildView];
+        
         NSString *response = [[dictionary valueForKey:@"message"] valueForKey:@"text"];
         if([response isEqualToString:@"To get access to this page please log in to the system."]){
             UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Пожалуйста перезайдите в систему!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
             [failmessage show];
             
         }
+        [self buildView];
     }
      if (type == kSendAnswer)
      {
