@@ -114,6 +114,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
+    cell.textLabel.numberOfLines = 2;
     cell.textLabel.text = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];            cell.detailTextLabel.text = @"Оценка";
     return cell;
 }

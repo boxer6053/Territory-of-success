@@ -83,7 +83,7 @@
         [self.contentView addSubview:self.productImageView];
         
         //мітка заголовку продукта
-        self.productLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, self.productImageView.frame.origin.y, 40, 11)];
+        self.productLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, self.productImageView.frame.origin.y, 50, 11)];
         self.productLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:11.0];
         [self.productLabel setTextColor:[UIColor colorWithRed:255.0 green:102/255.0 blue:0 alpha:1.0]];
         [self.productLabel setBackgroundColor:[UIColor clearColor]];
