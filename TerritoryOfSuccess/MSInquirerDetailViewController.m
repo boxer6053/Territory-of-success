@@ -46,8 +46,10 @@
     int item = [self.itemID integerValue];
     NSLog(@"gonnatakeID %d", item);
     NSLog(@"Now Statistics");
+    self.inquirerTitle.text = NSLocalizedString(@"InquirerDescriptionKey",nil);
      [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadInquirerDetailKey",nil)];
     [self.api getDetailQuestionWithID:item];
+    
     if ([[UIScreen mainScreen] bounds].size.height == 568) {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }

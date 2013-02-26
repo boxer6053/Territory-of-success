@@ -44,6 +44,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+ 
+//    [[self.inquirerTypeSegment.subviews objectAtIndex:0] setTitle:NSLocalizedString(@"AllKey", nil) forState:UIControlStateNormal];
+//     [[self.inquirerTypeSegment.subviews objectAtIndex:1] setTitle:NSLocalizedString(@"MyKey",nil) forState:UIControlStateNormal];
     NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
     NSString *token = [userDefults valueForKey:@"authorization_Token" ];
     if(token.length){
@@ -70,6 +73,7 @@
 //
 //    }
     NSLog(@"AllQuestions");
+    
     [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadInquirersKey",nil)];
     
     

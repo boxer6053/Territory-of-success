@@ -51,7 +51,8 @@
 //        self.isAuthorized = YES;
 //        [self.addQuestionButton setEnabled:YES];
     }
-    
+   [self.cleanButton setTitle:NSLocalizedString(@"CleanKey",nil) forState:UIControlStateNormal];
+    [self.askButton setTitle:NSLocalizedString(@"AskKey",nil) forState:UIControlStateNormal];
     
     if ([[UIScreen mainScreen] bounds].size.height == 568)
     {
@@ -127,7 +128,8 @@
 //    
     if ([[UIScreen mainScreen] bounds].size.height == 568)
     {
-        self.askButton.frame = CGRectMake(40, 400, 250, 32);
+        self.askButton.frame = CGRectMake(20, 400, 120, 35);
+        self.cleanButton.frame = CGRectMake(180, 400, 120, 35);
     }
 
     

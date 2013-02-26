@@ -9,6 +9,8 @@
 #import "MSQuestionCell.h"
 
 @implementation MSQuestionCell
+@synthesize nameLabel = _nameLabel;
+@synthesize countLabel = _countLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
