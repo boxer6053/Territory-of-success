@@ -1192,6 +1192,10 @@
 				F5BD298916D7970C00B190B7 /* placeholder_622*415.png in Resources */,
 				F5BD298B16D7989400B190B7 /* photoPlaceholder.png in Resources */,
 				F5FF669016D7B42000E64AD9 /* pluss_.png in Resources */,
+				FA2CEC1416DBBD42007015BC /* commentButton.png in Resources */,
+				FA2CEC1516DBBD42007015BC /* likeButton.png in Resources */,
+				FA2CEC1616DBBD42007015BC /* starButton.png in Resources */,
+				FA2CEC1716DBBD42007015BC /* whiteStarButton.png in Resources */,
 				FA252B3116D78F22006F6AD6 /* button_80_44-2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
