@@ -436,7 +436,7 @@
     return _api;
 }
 
--(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
+- (void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
 {
     if ((type == kRate) || (type == kRecommend))
     {
