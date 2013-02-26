@@ -24,6 +24,7 @@
 @synthesize receivedArray = _receivedArray;
 @synthesize api = _api;
 @synthesize tableView = _tableView;
+@synthesize nameLabel = _nameLabel;
 
 - (MSAPI *) api{
     if(!_api){
@@ -37,6 +38,7 @@
    
     [super viewDidLoad];
     [self.tableView setContentOffset:CGPointMake(5, 100)animated:YES];
+    [self.nameLabel setText:NSLocalizedString(@"AnswersKey", nil)];
     NSLog(@"TOTAL %f", self.totalVotes);
  
     if ([[UIScreen mainScreen] bounds].size.height == 568)

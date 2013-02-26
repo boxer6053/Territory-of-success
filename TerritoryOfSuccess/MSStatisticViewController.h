@@ -14,5 +14,6 @@
 @property (nonatomic) NSInteger questionID;
 @property (strong, nonatomic) NSArray *receivedArray;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 
 @end

@@ -44,9 +44,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
- 
-//    [[self.inquirerTypeSegment.subviews objectAtIndex:0] setTitle:NSLocalizedString(@"AllKey", nil) forState:UIControlStateNormal];
-//     [[self.inquirerTypeSegment.subviews objectAtIndex:1] setTitle:NSLocalizedString(@"MyKey",nil) forState:UIControlStateNormal];
+    [self.inquirerTypeSegment setTitle:NSLocalizedString(@"AllKey", nil) forSegmentAtIndex:0];
+      [self.inquirerTypeSegment setTitle:NSLocalizedString(@"MyKey", nil) forSegmentAtIndex:1];
+
     NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
     NSString *token = [userDefults valueForKey:@"authorization_Token" ];
     if(token.length){

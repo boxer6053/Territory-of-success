@@ -31,6 +31,7 @@
 @synthesize savedIndex = _savedIndex;
 @synthesize askButton = _askButton;
 @synthesize cleanButton = _cleanButton;
+@synthesize nameLabel = _nameLabel;
 - (MSAPI *) api{
     if(!_api){
         _api = [[MSAPI alloc]init];
@@ -42,6 +43,7 @@
 - (void)viewDidLoad
 {
     NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
+    [self.nameLabel setText:NSLocalizedString(@"PickAProductKey", nil)];
     NSString *token = [userDefults valueForKey:@"authorization_Token" ];
     if(!token.length){
         UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Пожалуйста перезайдите в систему!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
