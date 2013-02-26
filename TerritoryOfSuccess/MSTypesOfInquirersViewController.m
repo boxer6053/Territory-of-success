@@ -11,10 +11,11 @@
 #import "MSInquirerDetailViewController.h"
 #import "SVProgressHUD.h"
 #import "MSInquirerCell.h"
-
+#import "MSLogInView.h"
 @interface MSTypesOfInquirersViewController ()
 @property (strong, nonatomic) NSMutableData *receivedData;
 @property (strong, nonatomic) MSAPI *api;
+@property (nonatomic, strong) MSLogInView *loginView;
 @end
 
 
@@ -30,6 +31,7 @@
 @synthesize myQuestionsArray = _myQuestionsArray;
 @synthesize allQuestionsArray = _allQuestionsArray;
 @synthesize sendingID = _sendingID;
+@synthesize loginView = _loginView;
 
 - (MSAPI *) api{
     if(!_api){
@@ -42,8 +44,36 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
+    NSString *token = [userDefults valueForKey:@"authorization_Token" ];
+    if(token.length){
+        self.isAuthorized = YES;
+        [self.addQuestionButton setEnabled:YES];
+    }
+    else{
+        self.isAuthorized = NO;
+    [self.addQuestionButton setEnabled:NO];
+    }
+//    if(!token.length){
+//        
+//        if (!self.loginView)
+//        {
+//            self.loginView = [[MSLogInView alloc]initWithOrigin:CGPointMake(25, self.view.frame.size.height/2 - 120)];
+//            [self.view addSubview:self.loginView];
+//            [self.loginView blackOutOfBackground];
+//            [self.loginView attachPopUpAnimationForView:self.loginView.loginView];
+//            self.loginView.delegate = self;
+//            self.loginView.emailTextField.delegate = self;
+//            self.loginView.passwordConfirmTextField.delegate = self;
+//            self.loginView.passwordTextField.delegate = self;
+//        }
+//
+//    }
     NSLog(@"AllQuestions");
     [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadInquirersKey",nil)];
+    
+    
+    
     [self.api getLastQuestions];
     self.allInquirerMode=YES;
    // UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 100, 320, 220)];
@@ -63,12 +93,7 @@
     }
 
     
-    NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
-    NSString *token = [userDefults valueForKey:@"authorization_Token" ];
-    if(token.length)
-        self.isAuthorized = YES;
-    else
-        self.isAuthorized = NO;
+   
     
     if(!self.isAuthorized){
         [self.addQuestionButton setEnabled:NO];
@@ -87,6 +112,16 @@
     }
     
     // Do any additional setup after loading the view.
+}
+
+-(void)dismissPopView:(BOOL)result
+{
+    if(result)
+    {
+        self.isAuthorized = YES;
+        //[self.profileBarButton setImage:[UIImage imageNamed:@"Profile-Picture_40*28_white.png"]];
+    }
+    self.loginView = nil;
 }
 -(void)setSegmentControlColor
 {
@@ -209,12 +244,11 @@
     if (type == kLastQuest)
     {
         self.allQuestionsArray = [dictionary valueForKey:@"list"];
-        NSString *response = [[dictionary valueForKey:@"message"] valueForKey:@"text"];
-        if([response isEqualToString:@"To get access to this page please log in to the system."]){
+       NSString *response = [[dictionary valueForKey:@"message"] valueForKey:@"text"];       if([response isEqualToString:@"To get access to this page please log in to the system."])
+       {
             UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Пожалуйста перезайдите в систему!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
             [failmessage show];
-            
-        }
+                    }
         // self.numberOfRows = [[self arrayOfCategories] count];
     }
     
@@ -228,7 +262,6 @@
         if([response isEqualToString:@"To get access to this page please log in to the system."]){
             UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Пожалуйста перезайдите в систему!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
             [failmessage show];
-            
         }
 
     }
@@ -241,6 +274,8 @@
 - (void)alertView:(UIAlertView *)alertView
 clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 0){
+      //  MSFirstViewController *loginViewController = [[MSFirstViewController alloc] init];
+
         [self.navigationController popViewControllerAnimated:YES];
         
     }
