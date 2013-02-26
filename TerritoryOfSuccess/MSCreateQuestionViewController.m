@@ -31,6 +31,7 @@
 @synthesize savedIndex = _savedIndex;
 @synthesize askButton = _askButton;
 @synthesize cleanButton = _cleanButton;
+@synthesize nameLabel = _nameLabel;
 - (MSAPI *) api{
     if(!_api){
         _api = [[MSAPI alloc]init];
@@ -42,6 +43,7 @@
 - (void)viewDidLoad
 {
     NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
+    [self.nameLabel setText:NSLocalizedString(@"PickAProductKey", nil)];
     NSString *token = [userDefults valueForKey:@"authorization_Token" ];
     if(!token.length){
         UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Пожалуйста перезайдите в систему!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
@@ -51,7 +53,8 @@
 //        self.isAuthorized = YES;
 //        [self.addQuestionButton setEnabled:YES];
     }
-    
+   [self.cleanButton setTitle:NSLocalizedString(@"CleanKey",nil) forState:UIControlStateNormal];
+    [self.askButton setTitle:NSLocalizedString(@"AskKey",nil) forState:UIControlStateNormal];
     
     if ([[UIScreen mainScreen] bounds].size.height == 568)
     {
@@ -127,7 +130,8 @@
 //    
     if ([[UIScreen mainScreen] bounds].size.height == 568)
     {
-        self.askButton.frame = CGRectMake(40, 400, 250, 32);
+        self.askButton.frame = CGRectMake(20, 400, 120, 35);
+        self.cleanButton.frame = CGRectMake(180, 400, 120, 35);
     }
 
     

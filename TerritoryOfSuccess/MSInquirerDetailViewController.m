@@ -46,8 +46,11 @@
     int item = [self.itemID integerValue];
     NSLog(@"gonnatakeID %d", item);
     NSLog(@"Now Statistics");
+    [self.inquirerTitle setText:NSLocalizedString(@"InquirerDescriptionKey",nil)];
+    //self.inquirerTitle.text = NSLocalizedString(@"InquirerDescriptionKey",nil);
      [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadInquirerDetailKey",nil)];
     [self.api getDetailQuestionWithID:item];
+    
     if ([[UIScreen mainScreen] bounds].size.height == 568) {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
@@ -143,7 +146,7 @@
         [self.view addSubview:dislikeButton];
 
 
-        _inquirerTitle.text = @"Оцените товар";
+       // _inquirerTitle.text = @"Оцените товар";
         //фреймы для разных экранов (4 и 5 айфон)
         if ([[UIScreen mainScreen] bounds].size.height == 568)
             
@@ -161,7 +164,7 @@
     }
     else{
         //ВИД ОПРОСА КАКОЙ ТОВАР ЛУЧШЕ
-        _inquirerTitle.text = @"Какой товар лучше";
+       // _inquirerTitle.text = @"Какой товар лучше";
                UITapGestureRecognizer *selectProduct = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chooseAProduct:)];
         [selectProduct setNumberOfTapsRequired:1];
         UIButton *image1 = [UIButton buttonWithType:UIButtonTypeCustom];
