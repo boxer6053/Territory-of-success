@@ -72,6 +72,15 @@
 		F5F6AE87169C4F65000247D9 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F5F6AE84169C4F65000247D9 /* LICENSE */; };
 		F5F6AE8A169C4F72000247D9 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = F5F6AE89169C4F72000247D9 /* tessdata */; };
 		F5F6AE8F169C5153000247D9 /* MSFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F6AE8E169C5153000247D9 /* MSFirstViewController.m */; };
+		F5FF667C16D7798F00E64AD9 /* MSInquirerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5FF667B16D7798F00E64AD9 /* MSInquirerCell.m */; };
+		F5FF667F16D77EA000E64AD9 /* likeDislike.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF667D16D77EA000E64AD9 /* likeDislike.png */; };
+		F5FF668016D77EA000E64AD9 /* WhitchOneIsBetter.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF667E16D77EA000E64AD9 /* WhitchOneIsBetter.png */; };
+		F5FF668616D7864C00E64AD9 /* likeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF668516D7864B00E64AD9 /* likeIcon.png */; };
+		F5FF668816D7910000E64AD9 /* questionMark.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF668716D7910000E64AD9 /* questionMark.png */; };
+		F5FF668A16D7998F00E64AD9 /* button120*35.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF668916D7998E00E64AD9 /* button120*35.png */; };
+		F5FF668C16D7A1CC00E64AD9 /* terrRate.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF668B16D7A1CB00E64AD9 /* terrRate.png */; };
+		F5FF669016D7B42000E64AD9 /* pluss_.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF668F16D7B42000E64AD9 /* pluss_.png */; };
+		F5FF669316D7BEE100E64AD9 /* MSStatisticCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5FF669216D7BEE000E64AD9 /* MSStatisticCell.m */; };
 		FA167C4816A969920008561D /* commentsNumberImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FA167C4716A969920008561D /* commentsNumberImage.png */; };
 		FA167C4C16A9699B0008561D /* starOffImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FA167C4A16A9699B0008561D /* starOffImage.png */; };
 		FA167C4D16A9699B0008561D /* starOnImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FA167C4B16A9699B0008561D /* starOnImage.png */; };
@@ -615,6 +624,9 @@
 		F59AEB7E16AF1770004519B9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F5BD298A16D7989400B190B7 /* photoPlaceholder.png */,
+				F5BD298816D7970C00B190B7 /* placeholder_622*415.png */,
+				F5BD298616D7957F00B190B7 /* placeholder_415*415.png */,
 				FA252B3016D78F22006F6AD6 /* button_80_44-2.png */,
 				FA9913A216D691A600BEBAB0 /* button_80_44-1.png */,
 				F5FF668F16D7B42000E64AD9 /* pluss_.png */,
@@ -1158,6 +1170,16 @@
 				FADC927116C52F06006BD95C /* bigStarBlack.png in Resources */,
 				FA9913A116D6919500BEBAB0 /* button_80_44-1_right.png in Resources */,
 				FA9913A316D691A600BEBAB0 /* button_80_44-1.png in Resources */,
+				F5FF667F16D77EA000E64AD9 /* likeDislike.png in Resources */,
+				F5FF668016D77EA000E64AD9 /* WhitchOneIsBetter.png in Resources */,
+				F5FF668616D7864C00E64AD9 /* likeIcon.png in Resources */,
+				F5FF668816D7910000E64AD9 /* questionMark.png in Resources */,
+				F5FF668A16D7998F00E64AD9 /* button120*35.png in Resources */,
+				F5FF668C16D7A1CC00E64AD9 /* terrRate.png in Resources */,
+				F5BD298716D7957F00B190B7 /* placeholder_415*415.png in Resources */,
+				F5BD298916D7970C00B190B7 /* placeholder_622*415.png in Resources */,
+				F5BD298B16D7989400B190B7 /* photoPlaceholder.png in Resources */,
+				F5FF669016D7B42000E64AD9 /* pluss_.png in Resources */,
 				FA252B3116D78F22006F6AD6 /* button_80_44-2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -60,4 +60,5 @@ typedef enum {kAuth, kRegist, kNews, kNewsWithId, kCode, kBrands, kCategories, k
                   withImageName:(NSString *)imageName;
 - (void)getProfileDataForEdit;
 - (void)getProfileData;
+- (void)sendProfileChanges:(NSString *)changedString;
 @end
