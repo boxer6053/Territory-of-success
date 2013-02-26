@@ -53,6 +53,13 @@
 "DownloadingInquirerStatKey" = "Загрузка ответов";
 "SendingInquirerKey" = "Создание опроса";
 "DownloadingInquirerListKey" = "Загрузка каталога";
+"CleanKey" = "Очистить";
+"AskKey" = "Спросить";
+"InquirerDescriptionKey" = "Детали опроса";
+"AllKey" = "Все опросы";
+"MyKey" = "Мои опросы";
+"AnswersKey" = "Ответы";
+"PickAProductKey" = "Выберите продукты";
 
 
 // Новости

@@ -53,6 +53,13 @@
 "DownloadingInquirerStatKey" = "Завантаження відповідей";
 "SendingInquirerKey" = "Створення питання";
 "DownloadingInquirerListKey" = "Завантаження списку товарів";
+"CleanKey" = "Видалити";
+"AskKey" = "Спитати";
+"InquirerDescriptionKey" = "Деталі питання";
+"AllKey" = "Всі питання";
+"MyKey" = "Мої питання";
+"AnswersKey" = "Відповіді";
+"PickAProductKey" = "Оберіть продукти";
 
 
 // Новости

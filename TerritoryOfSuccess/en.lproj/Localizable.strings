@@ -53,6 +53,13 @@
 "DownloadingInquirerStatKey" = "Loading answers";
 "SendingInquirerKey" = "Creating interogation";
 "DownloadingInquirerListKey" = "Loading catalogue";
+"CleanKey" = "Clean";
+"AskKey" = "Ask";
+"InquirerDescriptionKey" = "Interrogation description";
+"AllKey" = "All";
+"MyKey" = "My";
+"AnswersKey" = "Answers";
+"PickAProductKey" = "Pick a product";
 
 
 // Новости
