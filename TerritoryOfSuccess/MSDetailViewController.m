@@ -84,10 +84,12 @@
     [self.transitionView addSubview:self.likeButton];
     
     self.likeButtonLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.likeButton.frame.origin.x, self.likeButton.frame.origin.y + 85, self.likeButton.frame.size.width, 20)];
-    [self.likeButtonLabel setText:@"Recommend"];
-    [self.likeButtonLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:13]];
+    [self.likeButtonLabel setText:NSLocalizedString(@"RecommendKey", nil)];
+    [self.likeButtonLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:10 ]];
     [self.likeButtonLabel setTextColor:[UIColor whiteColor]];
     [self.likeButtonLabel setBackgroundColor:[UIColor clearColor]];
+    [self.likeButtonLabel setMinimumScaleFactor:0.5];
+    self.likeButtonLabel.adjustsFontSizeToFitWidth = YES;
     [self.likeButtonLabel setTextAlignment:NSTextAlignmentCenter];
     [self.transitionView addSubview:self.likeButtonLabel];
     
@@ -103,9 +105,11 @@
     [self.transitionView addSubview:self.commentButton];
     
     self.commentButtonLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.commentButton.frame.origin.x, self.commentButton.frame.origin.y + 85, self.commentButton.frame.size.width, 20)];
-    [self.commentButtonLabel setText:@"Comments"];
-    [self.commentButtonLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:13]];
+    [self.commentButtonLabel setText:NSLocalizedString(@"CommentKey", nil)];
+    [self.commentButtonLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:10]];
     [self.commentButtonLabel setTextColor:[UIColor whiteColor]];
+    [self.commentButtonLabel setMinimumScaleFactor:0.5];
+    self.commentButtonLabel.adjustsFontSizeToFitWidth = YES;
     [self.commentButtonLabel setBackgroundColor:[UIColor clearColor]];
     [self.commentButtonLabel setTextAlignment:NSTextAlignmentCenter];
     [self.transitionView addSubview:self.commentButtonLabel];
@@ -122,10 +126,12 @@
     [self.transitionView addSubview:self.rateButton];
     
     self.rateButtonLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.rateButton.frame.origin.x, self.rateButton.frame.origin.y + 85, self.rateButton.frame.size.width, 20)];
-    [self.rateButtonLabel setText:@"Rate"];
-    [self.rateButtonLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:13]];
+    [self.rateButtonLabel setText:NSLocalizedString(@"RateKey", nil)];
+    [self.rateButtonLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:10]];
     [self.rateButtonLabel setTextColor:[UIColor whiteColor]];
     [self.rateButtonLabel setBackgroundColor:[UIColor clearColor]];
+    [self.rateButtonLabel setMinimumScaleFactor:0.5];
+    self.rateButtonLabel.adjustsFontSizeToFitWidth = YES;
     [self.rateButtonLabel setTextAlignment:NSTextAlignmentCenter];
     [self.transitionView addSubview:self.rateButtonLabel];
     
@@ -293,7 +299,7 @@
         [self.likeButton setAlpha:1];
         
         [self.rateButtonLabel setFrame:CGRectMake(self.rateButtonLabel.frame.origin.x, self.rateButtonLabel.frame.origin.y + 25, self.rateButtonLabel.frame.size.width, self.rateButtonLabel.frame.size.height)];
-        [self.rateButtonLabel setText:@"Rate"];
+        [self.rateButtonLabel setText:NSLocalizedString(@"RateKey", nil)];
         
         [self.likeButtonLabel setFrame:CGRectMake(self.likeButtonLabel.frame.origin.x, self.likeButtonLabel.frame.origin.y + 25, self.likeButtonLabel.frame.size.width, self.likeButtonLabel.frame.size.height)];
         [self.likeButtonLabel setAlpha:1];
@@ -329,7 +335,7 @@
             [self.likeButton setAlpha:0.5];
             
             [self.rateButtonLabel setFrame:CGRectMake(self.rateButtonLabel.frame.origin.x, self.rateButtonLabel.frame.origin.y - 25, self.rateButtonLabel.frame.size.width, self.rateButtonLabel.frame.size.height)];
-            [self.rateButtonLabel setText:@"Confirm"];
+            [self.rateButtonLabel setText:NSLocalizedString(@"ConfirmKey", nil)];
             
             [self.likeButtonLabel setFrame:CGRectMake(self.likeButtonLabel.frame.origin.x, self.likeButtonLabel.frame.origin.y - 25, self.likeButtonLabel.frame.size.width, self.likeButtonLabel.frame.size.height)];
             [self.likeButtonLabel setAlpha:0.3];
@@ -442,9 +448,19 @@
     {
         if ([[dictionary objectForKey:@"status"] isEqualToString:@"failed"])
         {
-            NSString *message = [NSString stringWithFormat:@"%@",[dictionary objectForKey:@"message"]];
-            UIAlertView *alert = [[UIAlertView  alloc] initWithTitle:message message:NSLocalizedString(@"NeedToLoginKey", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
+            if ([[dictionary objectForKey:@"message"] isKindOfClass:[NSDictionary class]])
+            {
+                NSString *messageTitle = [NSString stringWithFormat:@"%@",[[dictionary objectForKey:@"message"] objectForKey:@"title" ]];
+                NSString *messageText = [NSString stringWithFormat:@"%@",[[dictionary objectForKey:@"message"] objectForKey:@"text" ]];
+                UIAlertView *alert = [[UIAlertView  alloc] initWithTitle:messageTitle message:messageText delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];
+            }
+            else
+            {
+                NSString *message = [NSString stringWithFormat:@"%@",[dictionary objectForKey:@"message"]];
+                UIAlertView *alert = [[UIAlertView  alloc] initWithTitle:message message:NSLocalizedString(@"NeedToLoginKey", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];
+            }
         }
         else
         {
@@ -458,9 +474,9 @@
     
     if (type == kCatalog)
     {
-        self.commentsLabel.text = [NSString stringWithFormat:@"%@",[[[dictionary objectForKey:@"list"]objectAtIndex:self.numberInList]valueForKey: @"comments"]];
-        self.advisesLabel.text = [NSString stringWithFormat:@"%@",[[[dictionary objectForKey:@"list"]objectAtIndex:self.numberInList]valueForKey: @"advises"]];
-        self.ratingImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@star",[[[dictionary objectForKey:@"list"]objectAtIndex:self.numberInList]valueForKey: @"rating"]]];
+        self.commentsLabel.text = [NSString stringWithFormat:@"%@",[[[dictionary objectForKey:@"list"] objectAtIndex:self.numberInList]valueForKey: @"comments"]];
+        self.advisesLabel.text = [NSString stringWithFormat:@"%@",[[[dictionary objectForKey:@"list"] objectAtIndex:self.numberInList]valueForKey: @"advises"]];
+        self.ratingImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@star",[[[dictionary objectForKey:@"list"] objectAtIndex:self.numberInList] valueForKey:@"rating"]]];
     }
 }
 
