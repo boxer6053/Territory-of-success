@@ -733,15 +733,17 @@
     [self connectionVerification];
 }
 
-- (void)sendProfileChanges:(NSString *)jsonRequest
+- (void)sendProfileChanges:(NSString *)changedString
 {
-    self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/profile"];
-    self.checkRequest = kProfileInfo;
+    self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/profile/save"];
+    self.checkRequest = kProfileChange;
     self.request = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30];
-    NSData *requestData = [NSData dataWithBytes:[jsonRequest UTF8String] length:[jsonRequest length]];
     
     [self.request setHTTPMethod:@"POST"];
-    [self.request setHTTPBody:requestData];
+    
+    self.params = [NSMutableString stringWithFormat:@"token=%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"authorization_Token"]];
+    [self.params appendString:changedString];
+    [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
     
     [self connectionVerification];
 }

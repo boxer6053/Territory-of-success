@@ -93,6 +93,7 @@
 		FA1BEA8C16A813B200F2C219 /* MSDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1BEA8B16A813B200F2C219 /* MSDetailViewController.m */; };
 		FA1BEA9616A842A200F2C219 /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1BEA9516A842A100F2C219 /* like.png */; };
 		FA1E940516D522F3007D7BE3 /* MSDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1E940416D522F3007D7BE3 /* MSDatePickerView.m */; };
+		FA252B3116D78F22006F6AD6 /* button_80_44-2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA252B3016D78F22006F6AD6 /* button_80_44-2.png */; };
 		FA283CCD16A0890F00DBDC19 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA283CCC16A0890F00DBDC19 /* QuartzCore.framework */; };
 		FA2CEC1416DBBD42007015BC /* commentButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2CEC1016DBBD42007015BC /* commentButton.png */; };
 		FA2CEC1516DBBD42007015BC /* likeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2CEC1116DBBD42007015BC /* likeButton.png */; };
@@ -423,6 +424,7 @@
 		FA1BEA9516A842A100F2C219 /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
 		FA1E940316D522F3007D7BE3 /* MSDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDatePickerView.h; sourceTree = "<group>"; };
 		FA1E940416D522F3007D7BE3 /* MSDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDatePickerView.m; sourceTree = "<group>"; };
+		FA252B3016D78F22006F6AD6 /* button_80_44-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_80_44-2.png"; sourceTree = "<group>"; };
 		FA283CCC16A0890F00DBDC19 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FA2CEC1016DBBD42007015BC /* commentButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commentButton.png; sourceTree = "<group>"; };
 		FA2CEC1116DBBD42007015BC /* likeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeButton.png; sourceTree = "<group>"; };
@@ -637,6 +639,7 @@
 				F5BD298A16D7989400B190B7 /* photoPlaceholder.png */,
 				F5BD298816D7970C00B190B7 /* placeholder_622*415.png */,
 				F5BD298616D7957F00B190B7 /* placeholder_415*415.png */,
+				FA252B3016D78F22006F6AD6 /* button_80_44-2.png */,
 				FA9913A216D691A600BEBAB0 /* button_80_44-1.png */,
 				F5FF668F16D7B42000E64AD9 /* pluss_.png */,
 				FA9913A016D6919500BEBAB0 /* button_80_44-1_right.png */,
@@ -1193,6 +1196,7 @@
 				FA2CEC1516DBBD42007015BC /* likeButton.png in Resources */,
 				FA2CEC1616DBBD42007015BC /* starButton.png in Resources */,
 				FA2CEC1716DBBD42007015BC /* whiteStarButton.png in Resources */,
+				FA252B3116D78F22006F6AD6 /* button_80_44-2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

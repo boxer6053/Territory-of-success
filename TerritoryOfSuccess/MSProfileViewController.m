@@ -58,8 +58,6 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
     [self.api getProfileData];
-//    self.pickerView.delegate = self;
-//    self.pickerView.dataSource = self;
     _downloadIsComplete = NO;
 }
 
@@ -72,7 +70,7 @@
 #pragma mark - Table view data source
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-        return 45;
+    return 45;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -212,10 +210,11 @@
                     picker.target = cell.standartTextField;
                     cell.standartTextField.inputView = picker;
                 }
+                cell.standartTextField.enabled = YES;
             }
             else
             {
-                cell.standartTitleLabel.text = [[self.profileArray objectAtIndex:indexPath.row] valueForKey:@"key"];
+                cell.standartTitleLabel.text = [[self.profileArray objectAtIndex:indexPath.row] valueForKey:@"title"];
                 NSString *value = [[self.profileArray objectAtIndex:indexPath.row] valueForKey:@"value"];
                 if((NSNull *)value != [NSNull null])
                 {
@@ -226,6 +225,7 @@
                     value = @"";
                 }
                 cell.standartTextField.text = value;
+                cell.standartTextField.enabled = NO;
             }
             
             cell.standartTextField.delegate = self;
@@ -276,7 +276,12 @@
 {
     NSMutableArray *array = [[NSMutableArray alloc]initWithArray:self.profileStandartFields];
     [array addObjectsFromArray:self.profileCheckboxFields];
-    
+    NSMutableString *profileSaveString = [[NSMutableString alloc] init];
+    for (int i = 0; i < array.count; i++)
+    {
+        [profileSaveString appendFormat:@"&fields[%@]=%@", [[array objectAtIndex:i] valueForKey:@"key"], [[array objectAtIndex:i] valueForKey:@"value"]];
+    }
+    [self.api sendProfileChanges:profileSaveString];
 }
 
 -(void)checkboxPressed:(id)sender
@@ -366,7 +371,7 @@
             self.profileArray = [[dictionary valueForKey:@"fields"] mutableCopy];
             for(int i = 0; i < self.profileArray.count; i++)
             {
-                if ([[[self.profileArray objectAtIndex:i] valueForKey:@"key"] isEqualToString:@"Balance"])
+                if ([[[self.profileArray objectAtIndex:i] valueForKey:@"key"] isEqualToString:@"balance"])
                 {
                     [self.profileArray removeObjectAtIndex:i];
                 }
@@ -395,7 +400,16 @@
             [self.profileTableView reloadData];
         }
     }
+    if (type == kProfileChange)
+    {
+        if([[dictionary valueForKey:@"status"] isEqualToString:@"ok"])
+        {
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:[[dictionary valueForKey:@"message"] valueForKey:@"title" ] message:[[dictionary valueForKey:@"message"] valueForKey:@"text"] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alert show];
+        }
+    }
 }
+
 #pragma mark - UIAlertViewDelegate
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {

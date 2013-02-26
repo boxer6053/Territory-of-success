@@ -62,4 +62,5 @@ typedef enum {kAuth, kRegist, kNews, kNewsWithId, kCode, kBrands, kCategories, k
 - (void)getProfileData;
 - (void)sentRate:(int)rate withProductId:(int)productId;
 - (void)recommendWithProductId:(int)productId;
+- (void)sendProfileChanges:(NSString *)changedString;
 @end
