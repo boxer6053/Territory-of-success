@@ -334,6 +334,35 @@
     [self connectionVerification];
 }
 
+- (void)sentRate:(int)rate withProductId:(int)productId
+{
+    self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/catalog/rate"];
+    self.checkRequest = kRate;
+    
+    self.request  = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
+    [self.request setHTTPMethod:@"POST"];
+    self.params = [NSMutableString stringWithFormat:@"product_id=%d",productId];
+    [self.params appendFormat:@"&rate=%d",rate];
+    [[self params]appendFormat:@"&lang=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
+    [[self params] appendFormat:@"&token=%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"authorization_Token"]];
+    [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
+    [self connectionVerification];
+}
+
+- (void)recommendWithProductId:(int)productId
+{
+    self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/catalog/recomend"];
+    self.checkRequest = kRecommend;
+    
+    self.request  = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
+    [self.request setHTTPMethod:@"POST"];
+    self.params = [NSMutableString stringWithFormat:@"product_id=%d",productId];
+    [[self params]appendFormat:@"&lang=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
+    [[self params] appendFormat:@"&token=%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"authorization_Token"]];
+    [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
+    [self connectionVerification];
+}
+
 - (void)logInWithMail:(NSString *)email Password:(NSString *)password
 {
     self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/auth"];

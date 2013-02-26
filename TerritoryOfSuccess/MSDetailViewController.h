@@ -1,13 +1,13 @@
 #import <UIKit/UIKit.h>
 #import "MSAPI.h"
-@interface MSDetailViewController : UIViewController
+@interface MSDetailViewController : UIViewController <UIAlertViewDelegate, WsCompleteDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *likeView;
 @property (strong, nonatomic) IBOutlet UIView *starView;
 @property (strong, nonatomic) IBOutlet UITextView *productDescriptionTextView;
 @property (strong, nonatomic) IBOutlet UIView *mainView;
 @property (strong, nonatomic) IBOutlet UIView *imageView;
-@property (strong, nonatomic) IBOutlet UIButton *commentsButton;
+@property (strong, nonatomic) IBOutlet UIView *transitionContainerView;
 @property (strong, nonatomic) IBOutlet UIScrollView *detailScrollView;
 
 @property (strong, nonatomic) IBOutlet UILabel *productName;
@@ -24,8 +24,11 @@
 - (IBAction)twButtonPressed:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UIButton *vkButton;
+
 - (IBAction)vkButtonPressed:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *shareButton;
+@property (strong, nonatomic) UIBarButtonItem *moreActionButton;
 - (IBAction)shareButtonPressed:(id)sender;
 
 - (void)sentProductName:(NSString *)name
@@ -34,5 +37,8 @@
       andCommentsNumber:(int)comments
        andAdvisesNumber:(int)advises
             andImageURL:(NSString *)imageURL
-     andDescriptionText:(NSString *) descriptionText;
+     andDescriptionText:(NSString *) descriptionText
+        andNumberInList:(int)numberInList
+             andBrandId:(int)brandId
+          andCategoryId:(int)categoryId;
 @end
