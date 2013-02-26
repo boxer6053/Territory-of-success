@@ -14,6 +14,8 @@
 #import <SDWebImage/UIButton+WebCache.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 
+#define I 8
+
 @interface MSFirstViewController ()
 
 //розміри екрана
@@ -407,29 +409,6 @@
                                                              otherButtonTitles:nil, nil];
         [recognizingCodeError show];
     }
-    
-    //розкоментити код нище для додавання тире між цифрами
-    //------------------------------------------------------------------
-    //    NSMutableArray *substringsArray = [[NSMutableArray alloc] init];
-    //    NSRange substringRange;
-    //    for (int i = 0; i < recognizedText.length; i++) {
-    //        if (i%4 == 0) {
-    //            NSLog(@"%d", i);
-    //            substringRange.location = i;
-    //            substringRange.length = 4;
-    //            [substringsArray addObject:[recognizedText substringWithRange:substringRange]];
-    //        }
-    //    }
-    //
-    //    NSMutableString *combiningString = [NSMutableString stringWithFormat:@"%@", [substringsArray objectAtIndex:0]];
-    //    for (int i = 1; i < substringsArray.count; i++) {
-    //        [combiningString appendFormat:@"-%@", [substringsArray objectAtIndex:i]];
-    //    }
-    //------------------------------------------------------------------
-    
-    
-    //------------------------------
-    
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
@@ -563,6 +542,10 @@ static inline double radians (double degrees)
 //перевірка коду
 - (IBAction)sendCode:(UIButton *)sender {
     
+    float a = 3.125f;
+    float b = (int)a;
+    NSLog(@"float b = %f", b);
+    
     NSLog(@"You click on send button!!!");
     
     [self.sendCodeButton setEnabled:NO];
@@ -572,11 +555,9 @@ static inline double radians (double degrees)
     
     [self.api setDelegate:self];
     
-//    self.codeStr = @"4444-2AED-2354-865E";
-    self.codeStr = @"A223-94DF-CE67-B898";
-//    self.codeStr = @"2EA4-29E9-CCE0-90EB";
-//    self.codeStr = @"37B9-45A4-3711-2DA2";
-//    self.codeStr = [self.codeTextField text];
+//    self.codeStr = @"01FE-BB0A-E94F-41B6";
+//    self.codeStr = @"CED0-152F-80CC-893E";
+    self.codeStr = [self.codeTextField text];
     
 //    [self.api checkCode:[self.codeTextField text]];
     
@@ -753,7 +734,7 @@ static inline double radians (double degrees)
     if (type == kCode) {
         NSLog(@"checking");
         
-        if ([[dictionary valueForKey:@"status"] isEqualToString:@"valid"]) {
+        if ([[dictionary valueForKey:@"status"] isEqualToString:@"valid"] || [[dictionary valueForKey:@"status"] isEqualToString:@"registered"]) {
             
             NSLog(@"valid");
             
