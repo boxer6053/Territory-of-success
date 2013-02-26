@@ -23,8 +23,8 @@
 @synthesize postTextVK = _postTextVK;
 
 - (void)shareOnFacebookWithText:(NSString *)shareText
-                    withImage:(UIImage *)shareImage
-        currentViewController:(UIViewController *)viewController;
+                      withImage:(UIImage *)shareImage
+          currentViewController:(UIViewController *)viewController;
 {
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
     {
@@ -39,8 +39,8 @@
 }
 
 - (void)shareOnTwitterWithText:(NSString *)shareText
-                      withImage:(UIImage *)shareImage
-          currentViewController:(UIViewController *)viewController;
+                     withImage:(UIImage *)shareImage
+         currentViewController:(UIViewController *)viewController;
 {
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
     {
@@ -51,7 +51,7 @@
         [self.slComposeSheet addURL:[NSURL URLWithString:@"http://id-bonus.com"]];
         [viewController presentViewController:self.slComposeSheet animated:YES completion:nil];
         [self slComposeSheetHandlerMethod];
-
+        
     }
 }
 
@@ -72,7 +72,7 @@
                  break;
          }
      }];
-
+    
 }
 - (void)shareOnVKWithText:(NSString *)shareText withImage:(UIImage *)shareImage
 {
@@ -84,15 +84,15 @@
     self.vkBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen]bounds].size.width, [[UIScreen mainScreen]bounds].size.height)];
     [self.vkBackgroundView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0]];
     [UIView animateWithDuration:0.5 animations:^
-    {
-        [self.vkBackgroundView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
-    }];
-    [self.mainView.view addSubview:self.vkBackgroundView];
+     {
+         [self.vkBackgroundView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
+     }];
+    [self.mainView.view.window addSubview:self.vkBackgroundView];
     
     UITapGestureRecognizer *singleCloseTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeVKView)];
     [self.vkBackgroundView addGestureRecognizer:singleCloseTap];
     
-    self.vkView = [[UIView alloc] initWithFrame:CGRectMake(70, 100, 180, 195)];
+    self.vkView = [[UIView alloc] initWithFrame:CGRectMake(70, 150, 180, 195)];
     [[self vkView] setBackgroundColor:[UIColor whiteColor]];
     [[self vkView] setAlpha:0];
     [self.vkView.layer setBorderColor:[UIColor colorWithRed:75/255.0 green:110/255.0 blue:148/255.0 alpha:0].CGColor];
@@ -103,26 +103,26 @@
     [self.vkView.layer setCornerRadius:10];
     [self.vkView.layer setBorderWidth:1.0f];
     self.vkView.clipsToBounds = YES;
-    [self.mainView.view addSubview:self.vkView];
-
+    [self.mainView.view.window addSubview:self.vkView];
+    
     UIImageView *vkHeaderImage = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"vkHeader.png"]];
     vkHeaderImage.frame = CGRectMake(0, 0, 180, 45);
     [self.vkView addSubview:vkHeaderImage];
-
+    
     UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [cancelButton setBackgroundImage:[UIImage imageNamed:@"cancelVKButton.png"] forState:UIControlStateNormal];
     [cancelButton addTarget:self action:@selector(closeVKView) forControlEvents:UIControlEventTouchUpInside];
     cancelButton.frame = CGRectMake(162, 3, 15, 15);
     cancelButton.hidden = NO;
     [self.vkView addSubview:cancelButton];
-
+    
     self.loginVKButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.loginVKButton setBackgroundImage:[UIImage imageNamed:@"vkActionButton.png"] forState:UIControlStateNormal];
     [self.loginVKButton addTarget:self action:@selector(loginPressed) forControlEvents:UIControlEventTouchUpInside];
     self.loginVKButton.hidden = NO;
     [self.vkView addSubview:self.loginVKButton];
     [self refreshButtonState];
-
+    
     self.postVKButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.postVKButton addTarget:self action:@selector(post) forControlEvents:UIControlEventTouchUpInside];
     self.postVKButton.frame = CGRectMake (self.vkView.frame.size.width/2 - 58, 130, 117, 27);
@@ -140,10 +140,10 @@
         [self.vkBackgroundView setAlpha:0];
         [self.vkView setAlpha:0];
     } completion:^(BOOL finished){
-            [[self vkBackgroundView] removeFromSuperview];
-            [[self vkView]removeFromSuperview];
+        [[self vkBackgroundView] removeFromSuperview];
+        [[self vkView]removeFromSuperview];
     }];
-
+    
 }
 
 - (void)refreshButtonState

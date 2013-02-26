@@ -55,11 +55,7 @@
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
-    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 100, 320, 220)];
-    [imageView setImage:[UIImage imageNamed:@"inquirerPic.png"]];
-    [imageView setAlpha:0.3];
-    [self.view addSubview:imageView];
-
+   
     [self.api getStatisticQuestionWithID:item];
     
     
@@ -76,6 +72,13 @@
         self.arrayOfProducts = [dictionary valueForKey:@"options"];
         self.count = self.arrayOfProducts.count;
         NSLog(@"COUNT %d", self.count);
+        
+        NSString *response = [[dictionary valueForKey:@"message"] valueForKey:@"text"];
+        if([response isEqualToString:@"To get access to this page please log in to the system."]){
+            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Пожалуйста перезайдите в систему!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
+            [failmessage show];
+            
+        }
         [self buildView];
     }
      if (type == kSendAnswer)
@@ -126,13 +129,13 @@
         [self.view addSubview:imageForInquirer1];
         UIButton *likeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         
-        [likeButton setBackgroundImage:[UIImage imageNamed:@"button_140*35.png"] forState:UIControlStateNormal];
+        [likeButton setBackgroundImage:[UIImage imageNamed:@"button120*35.png"] forState:UIControlStateNormal];
         [likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [likeButton setTitle:@"Like it!" forState:UIControlStateNormal];
         [likeButton addTarget:self action:@selector(likeAction)  forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:likeButton];
         UIButton *dislikeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [dislikeButton setBackgroundImage:[UIImage imageNamed:@"button_140*35.png"] forState:UIControlStateNormal];
+        [dislikeButton setBackgroundImage:[UIImage imageNamed:@"button120*35.png"] forState:UIControlStateNormal];
         //[dislikeButton setBackgroundColor:[UIColor blackColor]];
         [dislikeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [dislikeButton setTitle:@"Hate it!" forState:UIControlStateNormal];

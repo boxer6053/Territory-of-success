@@ -58,6 +58,15 @@
 		F5F6AE87169C4F65000247D9 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F5F6AE84169C4F65000247D9 /* LICENSE */; };
 		F5F6AE8A169C4F72000247D9 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = F5F6AE89169C4F72000247D9 /* tessdata */; };
 		F5F6AE8F169C5153000247D9 /* MSFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F6AE8E169C5153000247D9 /* MSFirstViewController.m */; };
+		F5FF667C16D7798F00E64AD9 /* MSInquirerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5FF667B16D7798F00E64AD9 /* MSInquirerCell.m */; };
+		F5FF667F16D77EA000E64AD9 /* likeDislike.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF667D16D77EA000E64AD9 /* likeDislike.png */; };
+		F5FF668016D77EA000E64AD9 /* WhitchOneIsBetter.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF667E16D77EA000E64AD9 /* WhitchOneIsBetter.png */; };
+		F5FF668616D7864C00E64AD9 /* likeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF668516D7864B00E64AD9 /* likeIcon.png */; };
+		F5FF668816D7910000E64AD9 /* questionMark.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF668716D7910000E64AD9 /* questionMark.png */; };
+		F5FF668A16D7998F00E64AD9 /* button120*35.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF668916D7998E00E64AD9 /* button120*35.png */; };
+		F5FF668C16D7A1CC00E64AD9 /* terrRate.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF668B16D7A1CB00E64AD9 /* terrRate.png */; };
+		F5FF669016D7B42000E64AD9 /* pluss_.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF668F16D7B42000E64AD9 /* pluss_.png */; };
+		F5FF669316D7BEE100E64AD9 /* MSStatisticCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5FF669216D7BEE000E64AD9 /* MSStatisticCell.m */; };
 		FA167C4816A969920008561D /* commentsNumberImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FA167C4716A969920008561D /* commentsNumberImage.png */; };
 		FA167C4C16A9699B0008561D /* starOffImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FA167C4A16A9699B0008561D /* starOffImage.png */; };
 		FA167C4D16A9699B0008561D /* starOnImage.png in Resources */ = {isa = PBXBuildFile; fileRef = FA167C4B16A9699B0008561D /* starOnImage.png */; };
@@ -69,6 +78,10 @@
 		FA1BEA8C16A813B200F2C219 /* MSDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1BEA8B16A813B200F2C219 /* MSDetailViewController.m */; };
 		FA1E940516D522F3007D7BE3 /* MSDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1E940416D522F3007D7BE3 /* MSDatePickerView.m */; };
 		FA283CCD16A0890F00DBDC19 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA283CCC16A0890F00DBDC19 /* QuartzCore.framework */; };
+		FA2CEC1416DBBD42007015BC /* commentButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2CEC1016DBBD42007015BC /* commentButton.png */; };
+		FA2CEC1516DBBD42007015BC /* likeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2CEC1116DBBD42007015BC /* likeButton.png */; };
+		FA2CEC1616DBBD42007015BC /* starButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2CEC1216DBBD42007015BC /* starButton.png */; };
+		FA2CEC1716DBBD42007015BC /* whiteStarButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2CEC1316DBBD42007015BC /* whiteStarButton.png */; };
 		FA3B6F1916B6C30C0095A851 /* MSBrandsAndCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3B6F1816B6C30C0095A851 /* MSBrandsAndCategoryCell.m */; };
 		FA3B6F1E16B6EE7E0095A851 /* MSSubCatalogueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3B6F1D16B6EE7E0095A851 /* MSSubCatalogueCell.m */; };
 		FA3B6F2016B700BA0095A851 /* 0star.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3B6F1F16B700BA0095A851 /* 0star.png */; };
@@ -341,14 +354,18 @@
 		F5F6AE89169C4F72000247D9 /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tessdata; sourceTree = "<group>"; };
 		F5F6AE8D169C5153000247D9 /* MSFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSFirstViewController.h; sourceTree = "<group>"; };
 		F5F6AE8E169C5153000247D9 /* MSFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSFirstViewController.m; sourceTree = "<group>"; };
-		F5FF666A16D65BAB00E64AD9 /* blueRate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueRate.png; sourceTree = "<group>"; };
-		F5FF666B16D65BAB00E64AD9 /* greenRate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenRate.png; sourceTree = "<group>"; };
-		F5FF666C16D65BAB00E64AD9 /* lightGreenRate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lightGreenRate.png; sourceTree = "<group>"; };
-		F5FF666D16D65BAB00E64AD9 /* purpleRate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purpleRate.png; sourceTree = "<group>"; };
-		F5FF666E16D65BAB00E64AD9 /* redRate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redRate.png; sourceTree = "<group>"; };
-		F5FF666F16D65BAB00E64AD9 /* yellowRate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowRate.png; sourceTree = "<group>"; };
-		F5FF667616D66DD900E64AD9 /* terrRate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = terrRate.png; sourceTree = "<group>"; };
 		F5FF667816D689DC00E64AD9 /* plus_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus_icon.png; sourceTree = "<group>"; };
+		F5FF667A16D7798F00E64AD9 /* MSInquirerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSInquirerCell.h; sourceTree = "<group>"; };
+		F5FF667B16D7798F00E64AD9 /* MSInquirerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSInquirerCell.m; sourceTree = "<group>"; };
+		F5FF667D16D77EA000E64AD9 /* likeDislike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeDislike.png; sourceTree = "<group>"; };
+		F5FF667E16D77EA000E64AD9 /* WhitchOneIsBetter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WhitchOneIsBetter.png; sourceTree = "<group>"; };
+		F5FF668516D7864B00E64AD9 /* likeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeIcon.png; sourceTree = "<group>"; };
+		F5FF668716D7910000E64AD9 /* questionMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = questionMark.png; sourceTree = "<group>"; };
+		F5FF668916D7998E00E64AD9 /* button120*35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button120*35.png"; sourceTree = "<group>"; };
+		F5FF668B16D7A1CB00E64AD9 /* terrRate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = terrRate.png; sourceTree = "<group>"; };
+		F5FF668F16D7B42000E64AD9 /* pluss_.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pluss_.png; sourceTree = "<group>"; };
+		F5FF669116D7BEE000E64AD9 /* MSStatisticCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSStatisticCell.h; sourceTree = "<group>"; };
+		F5FF669216D7BEE000E64AD9 /* MSStatisticCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSStatisticCell.m; sourceTree = "<group>"; };
 		FA167C4716A969920008561D /* commentsNumberImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commentsNumberImage.png; sourceTree = "<group>"; };
 		FA167C4A16A9699B0008561D /* starOffImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starOffImage.png; sourceTree = "<group>"; };
 		FA167C4B16A9699B0008561D /* starOnImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starOnImage.png; sourceTree = "<group>"; };
@@ -366,6 +383,10 @@
 		FA1E940316D522F3007D7BE3 /* MSDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSDatePickerView.h; sourceTree = "<group>"; };
 		FA1E940416D522F3007D7BE3 /* MSDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSDatePickerView.m; sourceTree = "<group>"; };
 		FA283CCC16A0890F00DBDC19 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		FA2CEC1016DBBD42007015BC /* commentButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commentButton.png; sourceTree = "<group>"; };
+		FA2CEC1116DBBD42007015BC /* likeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeButton.png; sourceTree = "<group>"; };
+		FA2CEC1216DBBD42007015BC /* starButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starButton.png; sourceTree = "<group>"; };
+		FA2CEC1316DBBD42007015BC /* whiteStarButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteStarButton.png; sourceTree = "<group>"; };
 		FA3B6F1716B6C30C0095A851 /* MSBrandsAndCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSBrandsAndCategoryCell.h; sourceTree = "<group>"; };
 		FA3B6F1816B6C30C0095A851 /* MSBrandsAndCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSBrandsAndCategoryCell.m; sourceTree = "<group>"; };
 		FA3B6F1C16B6EE7E0095A851 /* MSSubCatalogueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSubCatalogueCell.h; sourceTree = "<group>"; };
@@ -565,11 +586,8 @@
 				F5BD298816D7970C00B190B7 /* placeholder_622*415.png */,
 				F5BD298616D7957F00B190B7 /* placeholder_415*415.png */,
 				F5B2D23616C4180900EC7F00 /* logo_color_invert_40*147_ukr.png */,
-				F5FF667616D66DD900E64AD9 /* terrRate.png */,
-				F5FF666A16D65BAB00E64AD9 /* blueRate.png */,
-				F5FF666B16D65BAB00E64AD9 /* greenRate.png */,
-				F5FF666C16D65BAB00E64AD9 /* lightGreenRate.png */,
-				F5FF666D16D65BAB00E64AD9 /* purpleRate.png */,
+				F5FF668916D7998E00E64AD9 /* button120*35.png */,
+				F5FF668B16D7A1CB00E64AD9 /* terrRate.png */,
 				F5FF667816D689DC00E64AD9 /* plus_icon.png */,
 				F5FF666E16D65BAB00E64AD9 /* redRate.png */,
 				F5FF666F16D65BAB00E64AD9 /* yellowRate.png */,
@@ -604,9 +622,11 @@
 				FA167C4B16A9699B0008561D /* starOnImage.png */,
 				FA167C4716A969920008561D /* commentsNumberImage.png */,
 				F59B7FAD16A874950084FEE3 /* questions1.png */,
+				F5FF668716D7910000E64AD9 /* questionMark.png */,
 				F59B7FA916A86E600084FEE3 /* news_TOS.png */,
 				F59B7FA716A86E540084FEE3 /* catalogue_TOS.png */,
 				F59B7FA516A86E480084FEE3 /* home_TOS.png */,
+				F5FF668516D7864B00E64AD9 /* likeIcon.png */,
 				F545779E16B2DB5100B4221E /* inquirerPic.png */,
 				FAAD062B16A4326A00D37373 /* iconWhite114.png */,
 				FAAD062916A4326400D37373 /* iconWhite57.png */,
@@ -664,6 +684,8 @@
 				F5F6ADD4169C4F21000247D9 /* MSAppDelegate.m */,
 				F5F6ADDC169C4F22000247D9 /* TerritoryOfSuccess.xcdatamodeld */,
 				FA8AB81616C2594C00B98EA3 /* iPhoneStoryboard.storyboard */,
+				F5FF669116D7BEE000E64AD9 /* MSStatisticCell.h */,
+				F5FF669216D7BEE000E64AD9 /* MSStatisticCell.m */,
 				FA1BEA8E16A813BF00F2C219 /* Pauli */,
 				F5F6ADCB169C4F21000247D9 /* Supporting Files */,
 			);
@@ -906,6 +928,8 @@
 				FAFF40F216BAF4F100D020FE /* MSReceiveProfileCell.h */,
 				FAFF40F316BAF4F100D020FE /* MSReceiveProfileCell.m */,
 				F59884E016C16DCA009FBF48 /* MSQuestionCell.h */,
+				F5FF667A16D7798F00E64AD9 /* MSInquirerCell.h */,
+				F5FF667B16D7798F00E64AD9 /* MSInquirerCell.m */,
 				F59884E116C16DCA009FBF48 /* MSQuestionCell.m */,
 				FA99139816D64EF900BEBAB0 /* MSEditButtonsCell.h */,
 				FA99139916D64EF900BEBAB0 /* MSEditButtonsCell.m */,
@@ -1109,6 +1133,8 @@
 				FA1853C016D401BB00BAF298 /* MSPickerView.m in Sources */,
 				FA1E940516D522F3007D7BE3 /* MSDatePickerView.m in Sources */,
 				FA99139A16D64EF900BEBAB0 /* MSEditButtonsCell.m in Sources */,
+				F5FF667C16D7798F00E64AD9 /* MSInquirerCell.m in Sources */,
+				F5FF669316D7BEE100E64AD9 /* MSStatisticCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
