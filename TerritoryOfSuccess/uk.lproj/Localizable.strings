@@ -45,7 +45,10 @@
 "DownloadCommentsKey" = "Завантажуються коментарі...";
 "AllBrandsDownloadedKey" = "Всі бренди завантаженні";
 "NeedToLoginKey" = "Вам необхідно авторизуватись";
-
+"RecommendKey" = "Рекомендувати";
+"CommentKey" = "Коментарі";
+"RateKey" = "Оцінити";
+"ConfirmKey" = "Підтвердити";
 
 // Опросы
 "DownloadInquirersKey" = "Завантаження питань";
