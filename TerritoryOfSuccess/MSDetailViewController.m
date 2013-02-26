@@ -85,7 +85,7 @@
     
     self.likeButtonLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.likeButton.frame.origin.x, self.likeButton.frame.origin.y + 85, self.likeButton.frame.size.width, 20)];
     [self.likeButtonLabel setText:NSLocalizedString(@"RecommendKey", nil)];
-    [self.likeButtonLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:10 ]];
+    [self.likeButtonLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:11 ]];
     [self.likeButtonLabel setTextColor:[UIColor whiteColor]];
     [self.likeButtonLabel setBackgroundColor:[UIColor clearColor]];
     [self.likeButtonLabel setMinimumScaleFactor:0.5];
@@ -106,7 +106,7 @@
     
     self.commentButtonLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.commentButton.frame.origin.x, self.commentButton.frame.origin.y + 85, self.commentButton.frame.size.width, 20)];
     [self.commentButtonLabel setText:NSLocalizedString(@"CommentKey", nil)];
-    [self.commentButtonLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:10]];
+    [self.commentButtonLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:11]];
     [self.commentButtonLabel setTextColor:[UIColor whiteColor]];
     [self.commentButtonLabel setMinimumScaleFactor:0.5];
     self.commentButtonLabel.adjustsFontSizeToFitWidth = YES;
@@ -127,7 +127,7 @@
     
     self.rateButtonLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.rateButton.frame.origin.x, self.rateButton.frame.origin.y + 85, self.rateButton.frame.size.width, 20)];
     [self.rateButtonLabel setText:NSLocalizedString(@"RateKey", nil)];
-    [self.rateButtonLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:10]];
+    [self.rateButtonLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:11]];
     [self.rateButtonLabel setTextColor:[UIColor whiteColor]];
     [self.rateButtonLabel setBackgroundColor:[UIColor clearColor]];
     [self.rateButtonLabel setMinimumScaleFactor:0.5];
