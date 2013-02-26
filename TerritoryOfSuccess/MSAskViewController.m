@@ -8,6 +8,7 @@
 
 #import "MSAskViewController.h"
 #import "SVProgressHUD.h"
+#import "MSQuestionCell.h"
 
 
 
@@ -108,14 +109,17 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell;
+    MSQuestionCell *cell;
     static NSString* cellIdentifier = @"questCellID";
     cell = [_tableOfCategories dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+        cell = [[MSQuestionCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-    cell.textLabel.numberOfLines = 2;
-    cell.textLabel.text = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];            cell.detailTextLabel.text = @"Оценка";
+    cell.nameLabel.numberOfLines = 2;
+    cell.nameLabel.text = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
+    NSString *countValue = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"];
+    cell.countLabel.text = [@"available :" stringByAppendingString:countValue];
+    //cell.detailTextLabel.text = @"Оценка";
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

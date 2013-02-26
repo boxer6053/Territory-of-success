@@ -45,7 +45,10 @@
 "DownloadCommentsKey" = "Loading comments...";
 "AllBrandsDownloadedKey" = "All brands are downloaded";
 "NeedToLoginKey" = "You need to authorize";
-
+"RecommendKey" = "Recommend";
+"CommentKey" = "Comments";
+"RateKey" = "Rate";
+"ConfirmKey" = "Confirm";
 
 // Опросы
 "DownloadInquirersKey" = "Loading interogation";
@@ -53,6 +56,13 @@
 "DownloadingInquirerStatKey" = "Loading answers";
 "SendingInquirerKey" = "Creating interogation";
 "DownloadingInquirerListKey" = "Loading catalogue";
+"CleanKey" = "Clean";
+"AskKey" = "Ask";
+"InquirerDescriptionKey" = "Interrogation description";
+"AllKey" = "All";
+"MyKey" = "My";
+"AnswersKey" = "Answers";
+"PickAProductKey" = "Pick a product";
 
 
 // Новости
