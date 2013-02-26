@@ -562,9 +562,9 @@
 			isa = PBXGroup;
 			children = (
 				FA1AB2E616B27DE1001827A6 /* Cells */,
-				FABA8A6A16BA85720040EF16 /* MSNewsViewController.h */,
 				FABA8A6B16BA85720040EF16 /* MSNewsViewController.m */,
 				FA9CFEF916D3E6C100CDA519 /* MSProfileViewController.h */,
+				FABA8A6A16BA85720040EF16 /* MSNewsViewController.h */,
 				FA9CFEFA16D3E6C100CDA519 /* MSProfileViewController.m */,
 				FABA8A6716BA82530040EF16 /* MSNewsDetailsViewController.h */,
 				FABA8A6816BA82530040EF16 /* MSNewsDetailsViewController.m */,

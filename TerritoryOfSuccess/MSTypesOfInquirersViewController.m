@@ -46,10 +46,14 @@
     [super viewDidLoad];
     NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
     NSString *token = [userDefults valueForKey:@"authorization_Token" ];
-    if(token.length)
+    if(token.length){
         self.isAuthorized = YES;
-    else
+        [self.addQuestionButton setEnabled:YES];
+    }
+    else{
         self.isAuthorized = NO;
+    [self.addQuestionButton setEnabled:NO];
+    }
 //    if(!token.length){
 //        
 //        if (!self.loginView)
