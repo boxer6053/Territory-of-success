@@ -11,5 +11,7 @@
 @property (nonatomic) int savedIndex;
 - (IBAction)startButton:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *askButton;
+@property (weak, nonatomic) IBOutlet UIButton *cleanButton;
 @property (strong, nonatomic) NSArray *arrayOfProducts;
+- (IBAction)cleanButton:(id)sender;
 @end

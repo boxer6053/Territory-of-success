@@ -30,6 +30,7 @@
 @synthesize upperID = _upperID;
 @synthesize savedIndex = _savedIndex;
 @synthesize askButton = _askButton;
+@synthesize cleanButton = _cleanButton;
 - (MSAPI *) api{
     if(!_api){
         _api = [[MSAPI alloc]init];
@@ -40,6 +41,17 @@
 
 - (void)viewDidLoad
 {
+    NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
+    NSString *token = [userDefults valueForKey:@"authorization_Token" ];
+    if(!token.length){
+        UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Пожалуйста перезайдите в систему!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
+        [failmessage show];
+
+    
+//        self.isAuthorized = YES;
+//        [self.addQuestionButton setEnabled:YES];
+    }
+    
     
     if ([[UIScreen mainScreen] bounds].size.height == 568)
     {
@@ -51,6 +63,7 @@
     }
 
    // [self performSegueWithIdentifier:@"pickAProduct" sender:self];
+    [self.cleanButton setEnabled:NO];
     self.requestString = [[NSMutableString alloc] initWithString:@""];
     
     UIButton *image1 = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -76,10 +89,10 @@
         
         [image1 setFrame:CGRectMake(40, 36, 80,80)];
         [image2 setFrame:CGRectMake(200, 36, 80,80)];
-        [image3 setFrame:CGRectMake(40, 146, 80,80)];
-        [image4 setFrame:CGRectMake(200, 146, 80,80)];
-        [image5 setFrame:CGRectMake(40, 256, 80,80)];
-        [image6 setFrame:CGRectMake(200, 256, 80,80)];
+        [image3 setFrame:CGRectMake(40, 126, 80,80)];
+        [image4 setFrame:CGRectMake(200, 126, 80,80)];
+        [image5 setFrame:CGRectMake(40, 226, 80,80)];
+        [image6 setFrame:CGRectMake(200, 226, 80,80)];
     }
 
     self.arrayOfViews = [[NSArray alloc] initWithObjects:image1,image2,image3,image4,image5,image6, nil];
@@ -164,7 +177,9 @@
 //    }
     
     NSURL *urll = [NSURL URLWithString:[ulr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    [[self.arrayOfViews objectAtIndex:self.savedIndex] setBackgroundImageWithURL:urll forState:UIControlStateNormal];
+    [[self.arrayOfViews objectAtIndex:self.savedIndex] setImageWithURL:urll forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
+    [[self.arrayOfViews objectAtIndex:self.savedIndex] setBackgroundImage:nil forState:UIControlStateNormal];
+    [self.cleanButton setEnabled:YES];
     
 }
 -(void)setUpperId:(int)upperId
@@ -180,8 +195,14 @@
     [self performSegueWithIdentifier:@"pickAProduct" sender:self];
 }
 - (IBAction)startButton:(id)sender {
+    //NSLog(@"Request %@", self.requestString);
+    if(![self.requestString isEqualToString:@""]){
     [SVProgressHUD showWithStatus:NSLocalizedString(@"SendingInquirerKey",nil)];
-    [self.api createQuestionWithItems:self.requestString];
+        [self.api createQuestionWithItems:self.requestString];}
+    else{
+        UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Выберите не меньше 1 продукта!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
+        [failmessage show];
+    }
 }
 - (void)alertView:(UIAlertView *)alertView
 clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -221,5 +242,15 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
         
     
 
+}
+- (IBAction)cleanButton:(id)sender {
+    [self.requestString setString:@""];
+      self.upperID = 0;
+    for(int i=0;i<self.arrayOfViews.count;i++){
+        [[self.arrayOfViews objectAtIndex:i]setBackgroundImage:[UIImage imageNamed:@"pluss.png"] forState:UIControlStateNormal];
+        [[self.arrayOfViews objectAtIndex:i]setImage:nil forState:UIControlStateNormal];
+         }
+    [self.cleanButton setEnabled:NO];
+    
 }
 @end
