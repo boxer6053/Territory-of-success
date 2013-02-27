@@ -228,17 +228,17 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
             [failmessage show];
 
         }
-        
+        else{
         NSString *response = [[dictionary valueForKey:@"message"] valueForKey:@"text"];
         if([response isEqualToString:@"To get access to this page please log in to the system."]){
             UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Пожалуйста перезайдите в систему!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
-            [failmessage show];
+            [failmessage show];}
         }
-    else
-        {
-            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Произошла ошибка!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
-            [failmessage show];
-        }
+//    else
+//        {
+//            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Произошла ошибка!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
+//            [failmessage show];
+//        }
         [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
 
         [self.navigationController popViewControllerAnimated:YES];
