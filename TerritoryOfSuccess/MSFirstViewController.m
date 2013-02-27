@@ -191,24 +191,14 @@
         [self.logoBarImageView setAlpha:1];
         [self.logoBarTextImageView setAlpha:1];
     }];
-    NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
-    NSString *token = [userDefults valueForKey:@"authorization_Token" ];
-    if(token.length)
-        self.isAuthorized = YES;
-    else
-        self.isAuthorized = NO;
-    
-    if(!self.isAuthorized)
-    {
-        [self.profileBarButton setImage:nil];
-        [self.profileBarButton setTitle:NSLocalizedString(@"Войти",nil)];
-    }
+    [self checkAutorization];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [self.logoBarImageView setAlpha:1];
     [self.logoBarTextImageView setAlpha:1];
+    [self checkAutorization];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -1246,6 +1236,23 @@ static inline double radians (double degrees)
     }
     
     return YES;
+}
+
+-(void)checkAutorization
+{
+    NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
+    NSString *token = [userDefults valueForKey:@"authorization_Token" ];
+    if(token.length)
+    {
+        self.isAuthorized = YES;
+        [self.profileBarButton setImage:[UIImage imageNamed:@"Profile-Picture_40*28_white.png"]];
+    }
+    else
+    {
+        self.isAuthorized = NO;
+        [self.profileBarButton setImage:nil];
+        [self.profileBarButton setTitle:NSLocalizedString(@"Войти",nil)];
+    }
 }
 
 @end
