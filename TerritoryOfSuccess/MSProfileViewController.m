@@ -279,9 +279,15 @@
     NSMutableString *profileSaveString = [[NSMutableString alloc] init];
     for (int i = 0; i < array.count; i++)
     {
-        [profileSaveString appendFormat:@"&fields[%@]=%@", [[array objectAtIndex:i] valueForKey:@"key"], [[array objectAtIndex:i] valueForKey:@"value"]];
+        [profileSaveString appendFormat:@"&%@=%@", [[array objectAtIndex:i] valueForKey:@"key"], [[array objectAtIndex:i] valueForKey:@"value"]];
     }
     [self.api sendProfileChanges:profileSaveString];
+}
+
+-(void)dismissChanges
+{
+    [self.api getProfileData];
+    _isEditMode = NO;
 }
 
 -(void)checkboxPressed:(id)sender

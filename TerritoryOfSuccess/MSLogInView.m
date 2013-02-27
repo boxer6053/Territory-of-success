@@ -73,6 +73,7 @@
         
         self.emailTextField = [[UITextField alloc]initWithFrame:CGRectMake(85, 15, 175, 30)];
         self.emailTextField.borderStyle = UITextBorderStyleRoundedRect;
+        self.emailTextField.clearButtonMode = YES;
         [self.loginView addSubview:self.emailTextField];
         
         //password input
@@ -132,6 +133,8 @@
         [self.registrationButton setTitle:NSLocalizedString(@"Зарегестрироваться", nil) forState:UIControlStateNormal];
         [self.registrationButton addTarget:self action:@selector(registrationPressed) forControlEvents:UIControlEventTouchUpInside];
         [self.loginView addSubview:self.registrationButton];
+        
+        [self loadLatestEmail];
     }
     return self;
 }
@@ -213,6 +216,7 @@
                 NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
                 [userDefults setObject:[dictionary valueForKey:@"token"] forKey:@"authorization_Token"];
                 [userDefults synchronize];
+                [userDefults setObject:self.emailTextField.text forKey:@"latestEmail"];
                 [self dismissLoginViewWithResult:YES];
             }
         }
@@ -257,6 +261,14 @@
         [self removeFromSuperview];
         [self.delegate dismissPopView:result];
     }];
+}
+
+-(void)loadLatestEmail
+{
+    NSString *latestEmail = [[NSUserDefaults standardUserDefaults] objectForKey:@"latestEmail"];
+    NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"latestEmail"]);
+    if(latestEmail.length != 0)
+        self.emailTextField.text = latestEmail;
 }
 
 @end

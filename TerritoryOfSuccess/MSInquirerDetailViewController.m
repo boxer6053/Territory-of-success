@@ -8,6 +8,7 @@
 
 #import "MSInquirerDetailViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+//#import <SDWebImage/UIImage+WebCache.h>
 #import <SDWebImage/UIButton+WebCache.h>
 #import "MSStatisticViewController.h"
 #import <QuartzCore/QuartzCore.h>
@@ -59,7 +60,7 @@
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
    
- //  [self.api getStatisticQuestionWithID:item];
+   [self.api getStatisticQuestionWithID:item];
     
     
     
@@ -126,8 +127,11 @@
     {
         
         //ВИД ОПРОСА "ОЦЕНИТЕ ТОВАР"
+        //UIImage *imagge = [UIImage imageWithURL]
         UIImageView *imageForInquirer1 = [[UIImageView alloc] init];
         self.optionForAnswer = [[[self.arrayOfProducts objectAtIndex:0] valueForKey:@"id"] integerValue];
+        imageForInquirer1.layer.cornerRadius = 10.0f;
+        imageForInquirer1.clipsToBounds = YES;
         [imageForInquirer1 setImageWithURL:[[self.arrayOfProducts objectAtIndex:0] valueForKey:@"image"]];
         [self.view addSubview:imageForInquirer1];
         UIButton *likeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
