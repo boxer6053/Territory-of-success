@@ -878,7 +878,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="SuY-sS-Jwi">
-                                <rect key="frame" x="60" y="78" width="200" height="200"/>
+                                <rect key="frame" x="60" y="53" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>

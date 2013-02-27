@@ -46,17 +46,6 @@
     [super viewDidLoad];
     [self.inquirerTypeSegment setTitle:NSLocalizedString(@"AllKey", nil) forSegmentAtIndex:0];
       [self.inquirerTypeSegment setTitle:NSLocalizedString(@"MyKey", nil) forSegmentAtIndex:1];
-
-    NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
-    NSString *token = [userDefults valueForKey:@"authorization_Token" ];
-    if(token.length){
-        self.isAuthorized = YES;
-        [self.addQuestionButton setEnabled:YES];
-    }
-    else{
-        self.isAuthorized = NO;
-    [self.addQuestionButton setEnabled:NO];
-    }
 //    if(!token.length){
 //        
 //        if (!self.loginView)
@@ -77,16 +66,13 @@
     [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadInquirersKey",nil)];
     
     
-    
-    [self.api getLastQuestions];
-    self.allInquirerMode=YES;
-   // UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 100, 320, 220)];
+       // UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 100, 320, 220)];
 //    [imageView setImage:[UIImage imageNamed:@"inquirerPic.png"]];
 //    [imageView setAlpha:0.3];
 //    [self.view addSubview:imageView];
     [self.view addSubview:self.tableOfInquirers];
     //[self.view addSubview:[UIImageView *imageView = [UIImageView alloc]init]]
-    self.myInquirerMode = NO;
+    
     if ([[UIScreen mainScreen] bounds].size.height == 568)
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
@@ -127,6 +113,7 @@
     }
     self.loginView = nil;
 }
+
 -(void)setSegmentControlColor
 {
     if (_inquirerTypeSegment.selectedSegmentIndex == 0) {
@@ -141,6 +128,21 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    
+    NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
+    NSString *token = [userDefults valueForKey:@"authorization_Token" ];
+    if(token.length){
+        self.isAuthorized = YES;
+        [self.addQuestionButton setEnabled:YES];
+    }
+    else{
+        self.isAuthorized = NO;
+        [self.addQuestionButton setEnabled:NO];
+    }
+
+    [self.api getLastQuestions];
+    self.allInquirerMode=YES;
+    self.myInquirerMode = NO;
     [self setSegmentControlColor];
     
 }

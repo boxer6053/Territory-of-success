@@ -45,7 +45,10 @@
 "DownloadCommentsKey" = "Загрузка комментариев...";
 "AllBrandsDownloadedKey" = "Все бренды загружены";
 "NeedToLoginKey" = "Вам необходимо авторизироваться";
-
+"RecommendKey" = "Рекомендовать";
+"CommentKey" = "Комментарии";
+"RateKey" = "Оценить";
+"ConfirmKey" = "Подтвердить"; 
 
 // Опросы
 "DownloadInquirersKey" = "Загрузка опросов";
