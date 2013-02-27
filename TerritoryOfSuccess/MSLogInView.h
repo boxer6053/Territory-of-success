@@ -36,5 +36,6 @@
 
 -(id)initWithOrigin:(CGPoint)origin;
 -(void)blackOutOfBackground;
+-(void)showAutoCompleteForText:(NSString *)subString;
 
 @end

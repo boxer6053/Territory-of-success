@@ -818,6 +818,12 @@
 //    [[self.connectionInfo objectForKey:@"receivedData"] appendData:data];
     
     NSDictionary *receivedDictionary = [JSONParserForDataEntenties parseJSONDataWithData:self.receivedData];
+    NSString *token = [receivedDictionary valueForKey:@"token"];
+    if (token.length != 0) {
+        NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
+        [userDefults setObject:token forKey:@"authorization_Token"];
+        [userDefults synchronize];
+    }
     
     [self.delegate finishedWithDictionary:receivedDictionary withTypeRequest:[[self.connectionInfo objectForKey:@"requestType"] intValue]];
     
