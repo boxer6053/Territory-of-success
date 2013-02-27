@@ -66,7 +66,6 @@
     self.isImageDisplay = YES;
     self.rateButtonPressed = NO;
     self.rateNumber = 1;
-    
     self.transitionView = [[UIView alloc] initWithFrame:CGRectMake(self.imageView.frame.origin.x, self.imageView.frame.origin.y, self.imageView.frame.size.width, self.imageView.frame.size.height)];
     [[self transitionView] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"dialogViewGradient.png"]]];
     [[self transitionView].layer setBorderWidth:2.0f];
