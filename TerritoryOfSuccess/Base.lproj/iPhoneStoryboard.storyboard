@@ -1458,11 +1458,11 @@
         <image name="3star.png" width="87" height="20"/>
         <image name="Profile-Picture_40*28_white.png" width="40" height="28"/>
         <image name="button120*35.png" width="120" height="35"/>
-        <image name="button_120*35_new.png" width="120" height="35"/>
-        <image name="button_185_45.png" width="185" height="45"/>
-        <image name="button_300*43.png" width="300" height="43"/>
-        <image name="button_80_44-1.png" width="80" height="44"/>
-        <image name="button_80_44-1_right.png" width="80" height="44"/>
+        <image name="button_120*35_new.png" width="240" height="70"/>
+        <image name="button_185_45.png" width="370" height="90"/>
+        <image name="button_300*43.png" width="600" height="86"/>
+        <image name="button_80_44-1.png" width="160" height="88"/>
+        <image name="button_80_44-1_right.png" width="160" height="88"/>
         <image name="button_80_44-2.png" width="80" height="44"/>
         <image name="catalogue_TOS.png" width="38" height="38"/>
         <image name="checkbox_empty.png" width="32" height="32"/>

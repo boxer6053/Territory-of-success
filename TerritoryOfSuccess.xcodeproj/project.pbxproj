@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F5100A3E16D3B01000A49FD7 /* MSStatisticViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5100A3D16D3B01000A49FD7 /* MSStatisticViewController.m */; };
+		F536D0A116DE46A400950051 /* button_80_44-1_right.png in Resources */ = {isa = PBXBuildFile; fileRef = F536D09F16DE46A400950051 /* button_80_44-1_right.png */; };
+		F536D0A216DE46A400950051 /* button_80_44-1.png in Resources */ = {isa = PBXBuildFile; fileRef = F536D0A016DE46A400950051 /* button_80_44-1.png */; };
 		F541FDF716BAE1B00021A93F /* rect_220*30.png in Resources */ = {isa = PBXBuildFile; fileRef = F541FDF616BAE1AC0021A93F /* rect_220*30.png */; };
 		F545779F16B2DB5100B4221E /* inquirerPic.png in Resources */ = {isa = PBXBuildFile; fileRef = F545779E16B2DB5100B4221E /* inquirerPic.png */; };
 		F547E1BC16AD556100365FB3 /* MSAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = F547E1BB16AD556100365FB3 /* MSAPI.m */; };
@@ -45,8 +47,6 @@
 		F5D8C64B16DD08C70035EF30 /* button_140*35.png in Resources */ = {isa = PBXBuildFile; fileRef = F5D8C64A16DD08C70035EF30 /* button_140*35.png */; };
 		F5D8C64D16DD09D30035EF30 /* button_120*35_new.png in Resources */ = {isa = PBXBuildFile; fileRef = F5D8C64C16DD09D20035EF30 /* button_120*35_new.png */; };
 		F5D8C64F16DD0ABA0035EF30 /* button_300*43.png in Resources */ = {isa = PBXBuildFile; fileRef = F5D8C64E16DD0AB90035EF30 /* button_300*43.png */; };
-		F5D8C65A16DD13C10035EF30 /* button_80_44-1_right.png in Resources */ = {isa = PBXBuildFile; fileRef = F5D8C65816DD13C10035EF30 /* button_80_44-1_right.png */; };
-		F5D8C65B16DD13C10035EF30 /* button_80_44-1.png in Resources */ = {isa = PBXBuildFile; fileRef = F5D8C65916DD13C10035EF30 /* button_80_44-1.png */; };
 		F5F6ADC3169C4F21000247D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC2169C4F21000247D9 /* UIKit.framework */; };
 		F5F6ADC5169C4F21000247D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC4169C4F21000247D9 /* Foundation.framework */; };
 		F5F6ADC7169C4F21000247D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC6169C4F21000247D9 /* CoreGraphics.framework */; };
@@ -146,6 +146,8 @@
 		F510C26716CCF36A0058AB31 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		F510C26916CCF37C0058AB31 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		F510C26B16CCF38F0058AB31 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		F536D09F16DE46A400950051 /* button_80_44-1_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_80_44-1_right.png"; sourceTree = "<group>"; };
+		F536D0A016DE46A400950051 /* button_80_44-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_80_44-1.png"; sourceTree = "<group>"; };
 		F541FDF616BAE1AC0021A93F /* rect_220*30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rect_220*30.png"; sourceTree = "<group>"; };
 		F545779E16B2DB5100B4221E /* inquirerPic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inquirerPic.png; sourceTree = "<group>"; };
 		F547E1BA16AD556100365FB3 /* MSAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPI.h; sourceTree = "<group>"; };
@@ -197,8 +199,6 @@
 		F5D8C64A16DD08C70035EF30 /* button_140*35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_140*35.png"; sourceTree = "<group>"; };
 		F5D8C64C16DD09D20035EF30 /* button_120*35_new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_120*35_new.png"; sourceTree = "<group>"; };
 		F5D8C64E16DD0AB90035EF30 /* button_300*43.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_300*43.png"; sourceTree = "<group>"; };
-		F5D8C65816DD13C10035EF30 /* button_80_44-1_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_80_44-1_right.png"; sourceTree = "<group>"; };
-		F5D8C65916DD13C10035EF30 /* button_80_44-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_80_44-1.png"; sourceTree = "<group>"; };
 		F5F6ADBE169C4F21000247D9 /* TerritoryOfSuccess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TerritoryOfSuccess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5F6ADC2169C4F21000247D9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F5F6ADC4169C4F21000247D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -590,8 +590,8 @@
 		F59AEB7E16AF1770004519B9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				F5D8C65816DD13C10035EF30 /* button_80_44-1_right.png */,
-				F5D8C65916DD13C10035EF30 /* button_80_44-1.png */,
+				F536D09F16DE46A400950051 /* button_80_44-1_right.png */,
+				F536D0A016DE46A400950051 /* button_80_44-1.png */,
 				F5D8C64E16DD0AB90035EF30 /* button_300*43.png */,
 				F5D8C64C16DD09D20035EF30 /* button_120*35_new.png */,
 				F5D8C64A16DD08C70035EF30 /* button_140*35.png */,
@@ -1111,8 +1111,8 @@
 				F5D8C64B16DD08C70035EF30 /* button_140*35.png in Resources */,
 				F5D8C64D16DD09D30035EF30 /* button_120*35_new.png in Resources */,
 				F5D8C64F16DD0ABA0035EF30 /* button_300*43.png in Resources */,
-				F5D8C65A16DD13C10035EF30 /* button_80_44-1_right.png in Resources */,
-				F5D8C65B16DD13C10035EF30 /* button_80_44-1.png in Resources */,
+				F536D0A116DE46A400950051 /* button_80_44-1_right.png in Resources */,
+				F536D0A216DE46A400950051 /* button_80_44-1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
