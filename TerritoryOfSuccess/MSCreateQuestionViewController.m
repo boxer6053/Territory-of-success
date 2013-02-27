@@ -102,14 +102,17 @@
     for(int i=0;i<self.arrayOfViews.count;i++)
     {
         //UIImage *plus = [UIImage imageNamed:@"plus_icon.png"];
-        
-        [[self.arrayOfViews objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"pluss.png"] forState:UIControlStateNormal];
+        [[self.arrayOfViews objectAtIndex:i] setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3]];
+        [[self.arrayOfViews objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"addButton1.png"] forState:UIControlStateNormal];
         UIButton *current = [self.arrayOfViews objectAtIndex:i];
         [current addTarget:self action:@selector(assignAPicture:)forControlEvents:UIControlEventTouchUpInside ];
-            
             current.layer.cornerRadius  = 10.0f;
+        UIColor *color = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+         CGColorRef borderColor = [color CGColor];
+        current.layer.borderColor = borderColor;
+        current.layer.borderWidth = 1.0;
         [current setTag:i];
-        [current setAlpha:0.7];
+        //[current setAlpha:0.7];
         current.clipsToBounds= YES;
         [self.view addSubview:current];
     }
@@ -181,8 +184,9 @@
 //    }
     
     NSURL *urll = [NSURL URLWithString:[ulr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    [[self.arrayOfViews objectAtIndex:self.savedIndex] setImageWithURL:urll forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
-    [[self.arrayOfViews objectAtIndex:self.savedIndex] setBackgroundImage:nil forState:UIControlStateNormal];
+    [[self.arrayOfViews objectAtIndex:self.savedIndex] setBackgroundImageWithURL:urll forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
+    //[[self.arrayOfViews objectAtIndex:self.savedIndex] setBackgroundImage:nil forState:UIControlStateNormal];
+     //[[self.arrayOfViews objectAtIndex:self.savedIndex] setBackgroundColor:[UIColor clearColor]];
     [self.cleanButton setEnabled:YES];
     
 }
