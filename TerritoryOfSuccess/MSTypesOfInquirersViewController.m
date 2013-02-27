@@ -44,23 +44,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.allInquirerMode=YES;
+    self.myInquirerMode = NO;
     [self.inquirerTypeSegment setTitle:NSLocalizedString(@"AllKey", nil) forSegmentAtIndex:0];
       [self.inquirerTypeSegment setTitle:NSLocalizedString(@"MyKey", nil) forSegmentAtIndex:1];
-//    if(!token.length){
-//        
-//        if (!self.loginView)
-//        {
-//            self.loginView = [[MSLogInView alloc]initWithOrigin:CGPointMake(25, self.view.frame.size.height/2 - 120)];
-//            [self.view addSubview:self.loginView];
-//            [self.loginView blackOutOfBackground];
-//            [self.loginView attachPopUpAnimationForView:self.loginView.loginView];
-//            self.loginView.delegate = self;
-//            self.loginView.emailTextField.delegate = self;
-//            self.loginView.passwordConfirmTextField.delegate = self;
-//            self.loginView.passwordTextField.delegate = self;
-//        }
-//
-//    }
+    
     NSLog(@"AllQuestions");
     
     [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadInquirersKey",nil)];
@@ -109,14 +97,14 @@
     if(result)
     {
         self.isAuthorized = YES;
-        //[self.profileBarButton setImage:[UIImage imageNamed:@"Profile-Picture_40*28_white.png"]];
+        
     }
     self.loginView = nil;
 }
 
 -(void)setSegmentControlColor
 {
-    if (_inquirerTypeSegment.selectedSegmentIndex == 0) {
+    if (self.allInquirerMode) {
         [[_inquirerTypeSegment.subviews objectAtIndex:1] setTintColor:[UIColor colorWithRed:255.0/255.0 green:140.0/255.0 blue:0 alpha:1.0]];
         [[_inquirerTypeSegment.subviews objectAtIndex:0] setTintColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1.0]];
     }else{
@@ -141,8 +129,7 @@
     }
 
     [self.api getLastQuestions];
-    self.allInquirerMode=YES;
-    self.myInquirerMode = NO;
+    
     [self setSegmentControlColor];
     
 }
@@ -229,8 +216,8 @@
 }
 
 - (IBAction)inquirerTypeSwitch:(id)sender {
+    NSLog(@"pressed %d", self.inquirerTypeSegment.selectedSegmentIndex);
     
-    [self setSegmentControlColor];
     if(self.inquirerTypeSegment.selectedSegmentIndex == 0)
     {
         self.allInquirerMode = YES;
@@ -243,6 +230,7 @@
         self.myInquirerMode = YES;
         [self.api getMyQuestionsWithOffset:0];
     }
+    [self setSegmentControlColor];
     // [_tableOfInquirers reloadData];
 }
 
