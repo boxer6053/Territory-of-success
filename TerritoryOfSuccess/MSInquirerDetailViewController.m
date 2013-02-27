@@ -60,7 +60,7 @@
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
    
- //  [self.api getStatisticQuestionWithID:item];
+   [self.api getStatisticQuestionWithID:item];
     
     
     
