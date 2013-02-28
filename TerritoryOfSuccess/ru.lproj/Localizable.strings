@@ -48,7 +48,8 @@
 "RecommendKey" = "Рекомендовать";
 "CommentKey" = "Комментарии";
 "RateKey" = "Оценить";
-"ConfirmKey" = "Подтвердить"; 
+"ConfirmKey" = "Подтвердить";
+"AllProductsDownloadedKey" = "Все продукты загруженны";
 
 // Опросы
 "DownloadInquirersKey" = "Загрузка опросов";

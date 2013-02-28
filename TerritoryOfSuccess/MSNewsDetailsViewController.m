@@ -17,6 +17,9 @@
 @property (nonatomic) MSAPI *dbApi;
 @property (nonatomic) BOOL shareButtonsShowed;
 @property (strong, nonatomic) MSShare *share;
+@property (strong, nonatomic) NSData *shareImageData;
+@property (strong, nonatomic) UIImage *shareImage;
+@property (strong, nonatomic) NSURL *imageUrl;
 
 @end
 
@@ -33,6 +36,9 @@
 @synthesize articleShareTwButton = _articleShareTwButton;
 @synthesize articleShareVkButton = _articleShareVkButton;
 @synthesize share = _share;
+@synthesize shareImageData = _shareImageData;
+@synthesize shareImage = _shareImage;
+@synthesize imageUrl = _imageUrl;
 
 - (MSAPI *)dbApi
 {
@@ -93,27 +99,30 @@
 - (IBAction)vkButtonPressed:(id)sender
 {
     self.share.mainView = self;
-    //[[self share] shareOnVKWithText:@"trololo" withImage:@"trololo"];
+    [[self share] shareOnVKWithText:self.articleBriefTextView.text withImage:self.shareImage];
         [self.share attachPopUpAnimationForView:self.share.vkView];
 }
 
 - (IBAction)twbButtonPressed:(id)sender
 {
-    [[self share] shareOnTwitterWithText:@"Trololo"
-                               withImage:[UIImage imageNamed:@"twButton.png"]
+    [[self share] shareOnTwitterWithText:self.articleBriefTextView.text
+                               withImage:self.shareImage
                    currentViewController:self];
 
 }
 
 - (IBAction)fbButtonPressed:(id)sender
 {
-    [[self share] shareOnFacebookWithText:@"Trololo"
-                                withImage:[UIImage imageNamed:@"fbButton.png"]
+    [[self share] shareOnFacebookWithText:self.articleBriefTextView.text
+                                withImage:self.shareImage
                     currentViewController:self];
 }
 
 - (IBAction)shareButtonPressed:(id)sender
 {
+    self.shareImageData = [NSData dataWithContentsOfURL:self.imageUrl];
+    self.shareImage = [UIImage imageWithData:self.shareImageData];
+    
     if (!self.shareButtonsShowed)
     {
         self.shareButtonsShowed = YES;
@@ -148,8 +157,8 @@
 {
     if (type == kNewsWithId)
     {
-        NSURL *imageUrl = [NSURL URLWithString: [[dictionary valueForKey:@"post"] valueForKey:@"image"]];
-        [self.articleImageView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
+        self.imageUrl = [NSURL URLWithString: [[dictionary valueForKey:@"post"] valueForKey:@"image"]];
+        [self.articleImageView setImageWithURL:self.imageUrl placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
         [self.articleImageView.layer setCornerRadius:5.0];
         self.articleTitleLabel.text = [[dictionary valueForKey:@"post"] valueForKey:@"title"];
         

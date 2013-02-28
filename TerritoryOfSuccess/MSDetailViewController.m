@@ -23,6 +23,9 @@
 @property BOOL *isImageDisplay;
 @property BOOL *rateButtonPressed;
 @property (strong, nonatomic) MSAPI *api;
+@property (strong, nonatomic) NSData *shareImageData;
+@property (strong, nonatomic) UIImage *shareImage;
+@property (strong, nonatomic) NSString *shareString;
 
 @property (strong, nonatomic) NSArray *starsArray;
 @property (weak, nonatomic) UIButton *star1;
@@ -36,6 +39,7 @@
 @property int numberInList;
 @property int brandId;
 @property int categoryId;
+@property int detailProductOffset;
 @end
 
 @implementation MSDetailViewController
@@ -58,6 +62,7 @@
 @synthesize likeButtonLabel = _likeButtonLabel;
 @synthesize commentButtonLabel = _commentButtonLabel;
 @synthesize transitionContainerView = _transitionContainerView;
+@synthesize detailProductOffset = _detailProductOffset;
 
 - (void)viewDidLoad
 {
@@ -233,6 +238,7 @@
         andNumberInList:(int)numberInList
              andBrandId:(int)brandId
           andCategoryId:(int)categoryId
+              andOffset:(int)offset
 {
     self.productSentId = prodId;
     self.productSentName = name;
@@ -245,6 +251,8 @@
     self.numberInList = numberInList;
     self.brandId = brandId;
     self.categoryId = categoryId;
+    
+    self.detailProductOffset = offset;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -385,6 +393,10 @@
 
 - (IBAction)shareButtonPressed:(id)sender
 {
+    self.shareImageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.productImageURL]];
+    self.shareImage = [UIImage imageWithData:self.shareImageData];
+    self.shareString = [NSString stringWithFormat:@"%@ \"%@\" %@ ",NSLocalizedString(@"ProductWasVerificatedKey", nil), self.productName.text, NSLocalizedString(@"WithAppKey", nil)];
+    
     if (self.shareIsPressed == NO)
     {
         [UIView animateWithDuration:0.5 animations:^{
@@ -409,24 +421,22 @@
 
 - (IBAction)fbButtonPressed:(id)sender
 {
-    [[self share] shareOnFacebookWithText:self.productName.text
-                                withImage:[UIImage imageNamed:@"fbButton.png"]
+    [[self share] shareOnFacebookWithText:self.shareString
+                                withImage:self.shareImage
                     currentViewController:self];
 }
 
 - (IBAction)twButtonPressed:(id)sender
 {
-    [[self share] shareOnTwitterWithText:self.productName.text
-                               withImage:[UIImage imageNamed:@"twButton.png"]
+    [[self share] shareOnTwitterWithText:self.shareString 
+                               withImage:self.shareImage
                    currentViewController:self];
 }
 
 - (IBAction)vkButtonPressed:(id)sender
 {
-    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.productImageURL]];
-    UIImage *image = [UIImage imageWithData:imageData];
     self.share.mainView = self;
-    [[self share] shareOnVKWithText:self.productName.text withImage:image];
+    [[self share] shareOnVKWithText:self.shareString withImage:self.shareImage];
     [self.share attachPopUpAnimationForView:self.share.vkView];
 }
 
@@ -467,7 +477,7 @@
             UIAlertView *alert = [[UIAlertView  alloc] initWithTitle:[recommendDictionary objectForKey:@"title"] message:[recommendDictionary objectForKey:@"text"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert show];
             
-            [self.api getProductsWithOffset:0 withBrandId:self.brandId withCategoryId:self.categoryId];
+            [self.api getProductsWithOffset:self.detailProductOffset withBrandId:self.brandId withCategoryId:self.categoryId];
         }
     }
     
