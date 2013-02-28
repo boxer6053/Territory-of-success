@@ -32,9 +32,5 @@
 
 - (IBAction)cancel:(id)sender;
 
-- (IBAction)upAction:(id)sender;
-
-
-
 @property  BOOL upButtonShows;
 @end
