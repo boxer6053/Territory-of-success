@@ -40,6 +40,8 @@
 @synthesize requestItemsString = _requestItemsString;
 @synthesize isAuthorized = _isAuthorized;
 @synthesize delegate = _delegate;
+@synthesize backButton = _backButton;
+@synthesize backIds = _backIds;
 
 
 - (MSAPI *) api{
@@ -50,18 +52,10 @@
     return _api;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
-    
+    [self.backButton setEnabled:NO];
+    self.backIds = [[NSMutableArray alloc] init];
     NSLog(@"ASK VIEW CONTROLLER");
     [_tableOfCategories setShowsVerticalScrollIndicator:NO];
     [self.navigationItem.rightBarButtonItem setEnabled:NO];
@@ -105,10 +99,13 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _questionsCount;
+    return self.questionsArray.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+//    for (id obj in self.questionsArray)
+//    NSLog(@"obj: %@", obj);
+    NSLog(@"CELLFORROW %d", self.questionsArray.count);
     MSQuestionCell *cell;
     static NSString* cellIdentifier = @"questCellID";
     cell = [_tableOfCategories dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -124,6 +121,9 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.backButton setEnabled:YES];
+//    UIViewController *subCategoryController = [[UIViewController alloc] init];
+//    [self.navigationController pushViewController:subCategoryController animated:YES] ;
     self.upButtonShows = YES;
     [self.navigationItem.rightBarButtonItem setEnabled:YES];
     self.translatingValue = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"];
@@ -131,6 +131,10 @@
     
     if([[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"] integerValue] != 0)
     {
+       // NSInteger currentSubCategory = [[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
+        
+        
+        [self.backIds addObject:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"]];
         _questionsCount = 0;
         [_tableOfCategories reloadData];
         [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadingInquirerListKey",nil)];
@@ -193,13 +197,13 @@
     {
         NSLog(@"zzzzzzz %u", _questionsCount);
         _questionsArray = [dictionary valueForKey:@"list"];
-        
-        for (int i  = 0; i<_questionsArray.count; i++)
-        {
-            NSArray *insertIndexPath = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:_questionsCount inSection:0]];
-            _questionsCount++;
-            [_tableOfCategories insertRowsAtIndexPaths: insertIndexPath withRowAnimation:NO];
-        }
+//        
+//        for (int i  = 0; i<_questionsArray.count; i++)
+//        {
+//            NSArray *insertIndexPath = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:_questionsCount inSection:0]];
+//            _questionsCount++;
+//            [_tableOfCategories insertRowsAtIndexPaths: insertIndexPath withRowAnimation:NO];
+//        }
         [_tableOfCategories reloadData];
         //  _questionsCount = 0;
     }
@@ -221,6 +225,23 @@
     [_tableOfCategories reloadData];
     [self.api getQuestionsWithParentID:0];
     [_upButton setEnabled:NO];
+}
+- (IBAction)backButtonPressed:(id)sender {
+    [self.backIds removeLastObject];
+    if(self.backIds.count != 0){
+    NSLog(@"couuuunt %d",self.backIds.count);
+    NSInteger last= [[self.backIds lastObject] integerValue];
+    NSInteger lastId = [[self.backIds objectAtIndex:(self.backIds.count-1)] integerValue];
+    NSLog(@"lastID %d",last);
     
+    
+    [self.api getQuestionsWithParentID:lastId];
+        [self.tableOfCategories reloadData];}
+    else{
+        [self.api getQuestionsWithParentID:0];
+        [self.backButton setEnabled:NO];
+    }
+    for (id obj in self.backIds)
+    NSLog(@"obj: %@", obj);
 }
 @end

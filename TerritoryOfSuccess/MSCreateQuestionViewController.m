@@ -199,9 +199,7 @@
     [self.gettedImages addObject:string];
     NSLog(@"firstObject %@", [self.gettedImages objectAtIndex:0]);
 }
-- (IBAction)addMoreProduct:(id)sender {
-    [self performSegueWithIdentifier:@"pickAProduct" sender:self];
-}
+
 - (IBAction)startButton:(id)sender {
     //NSLog(@"Request %@", self.requestString);
     if(![self.requestString isEqualToString:@""]){
