@@ -102,14 +102,17 @@
     for(int i=0;i<self.arrayOfViews.count;i++)
     {
         //UIImage *plus = [UIImage imageNamed:@"plus_icon.png"];
-        
-        [[self.arrayOfViews objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"pluss.png"] forState:UIControlStateNormal];
+        [[self.arrayOfViews objectAtIndex:i] setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3]];
+        [[self.arrayOfViews objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"addButton1.png"] forState:UIControlStateNormal];
         UIButton *current = [self.arrayOfViews objectAtIndex:i];
         [current addTarget:self action:@selector(assignAPicture:)forControlEvents:UIControlEventTouchUpInside ];
-            
             current.layer.cornerRadius  = 10.0f;
+        UIColor *color = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+         CGColorRef borderColor = [color CGColor];
+        current.layer.borderColor = borderColor;
+        current.layer.borderWidth = 1.0;
         [current setTag:i];
-        [current setAlpha:0.7];
+        //[current setAlpha:0.7];
         current.clipsToBounds= YES;
         [self.view addSubview:current];
     }
@@ -181,8 +184,9 @@
 //    }
     
     NSURL *urll = [NSURL URLWithString:[ulr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    [[self.arrayOfViews objectAtIndex:self.savedIndex] setImageWithURL:urll forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
-    [[self.arrayOfViews objectAtIndex:self.savedIndex] setBackgroundImage:nil forState:UIControlStateNormal];
+    [[self.arrayOfViews objectAtIndex:self.savedIndex] setBackgroundImageWithURL:urll forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
+    //[[self.arrayOfViews objectAtIndex:self.savedIndex] setBackgroundImage:nil forState:UIControlStateNormal];
+     //[[self.arrayOfViews objectAtIndex:self.savedIndex] setBackgroundColor:[UIColor clearColor]];
     [self.cleanButton setEnabled:YES];
     
 }
@@ -195,9 +199,7 @@
     [self.gettedImages addObject:string];
     NSLog(@"firstObject %@", [self.gettedImages objectAtIndex:0]);
 }
-- (IBAction)addMoreProduct:(id)sender {
-    [self performSegueWithIdentifier:@"pickAProduct" sender:self];
-}
+
 - (IBAction)startButton:(id)sender {
     //NSLog(@"Request %@", self.requestString);
     if(![self.requestString isEqualToString:@""]){
@@ -228,17 +230,17 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
             [failmessage show];
 
         }
-        
+        else{
         NSString *response = [[dictionary valueForKey:@"message"] valueForKey:@"text"];
         if([response isEqualToString:@"To get access to this page please log in to the system."]){
             UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Пожалуйста перезайдите в систему!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
-            [failmessage show];
+            [failmessage show];}
         }
-    else
-        {
-            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Произошла ошибка!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
-            [failmessage show];
-        }
+//    else
+//        {
+//            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Произошла ошибка!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
+//            [failmessage show];
+//        }
         [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
 
         [self.navigationController popViewControllerAnimated:YES];
@@ -251,9 +253,18 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     [self.requestString setString:@""];
       self.upperID = 0;
     for(int i=0;i<self.arrayOfViews.count;i++){
-        [[self.arrayOfViews objectAtIndex:i]setBackgroundImage:[UIImage imageNamed:@"pluss.png"] forState:UIControlStateNormal];
-        [[self.arrayOfViews objectAtIndex:i]setImage:nil forState:UIControlStateNormal];
-         }
+        [[self.arrayOfViews objectAtIndex:i] setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3]];
+        [[self.arrayOfViews objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"addButton1.png"] forState:UIControlStateNormal];
+        UIButton *current = [self.arrayOfViews objectAtIndex:i];
+        current.layer.cornerRadius  = 10.0f;
+        UIColor *color = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+        CGColorRef borderColor = [color CGColor];
+        current.layer.borderColor = borderColor;
+        current.layer.borderWidth = 1.0;
+        [current setTag:i];
+        //[current setAlpha:0.7];
+        current.clipsToBounds= YES;
+    }
     [self.cleanButton setEnabled:NO];
     
 }

@@ -4,7 +4,7 @@
 @interface MSCreateQuestionViewController : UIViewController <UIGestureRecognizerDelegate, AddingRequestStringDelegate, WsCompleteDelegate>
 @property (strong, nonatomic) NSArray *arrayOfViews;
 @property (strong, nonatomic) NSMutableString *requestString;
-- (IBAction)addMoreProduct:(id)sender;
+
 @property (strong, nonatomic) NSMutableArray *gettedImages;
 @property (strong, nonatomic) NSString *response;
 @property (nonatomic) int upperID;

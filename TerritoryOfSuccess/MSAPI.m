@@ -194,6 +194,7 @@
     //вказуэм параметри POST запиту
     self.params = [NSMutableString stringWithFormat:@"code=%@", code];
     [self.params appendFormat:@"&lang=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
+    [self.params appendFormat:@"&token=%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"authorization_Token"]];
     
     //вказуэм тіло запиту
     [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
