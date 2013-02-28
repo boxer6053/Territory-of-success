@@ -135,7 +135,7 @@
     
     CGSize textSize = [text drawInRect:rect
                               withFont:font
-                         lineBreakMode:UILineBreakModeTailTruncation 
+                         lineBreakMode:NSLineBreakByTruncatingTail
                              alignment:self.cell.textAlignment];
 
     CGContextRestoreGState(ctx);
@@ -155,7 +155,7 @@
     CGSize detailTextSize;
     detailTextSize = [detailText sizeWithFont:[self fontFromLabel:self.cell.detailTextLabel] 
                             constrainedToSize:CGSizeMake(width, rect.size.height)
-                                lineBreakMode:UILineBreakModeTailTruncation];
+                                lineBreakMode:NSLineBreakByTruncatingTail];
     
     return detailTextSize;
 }
@@ -174,7 +174,7 @@
     
     textSize = [text sizeWithFont:[self fontFromLabel:self.cell.textLabel] 
                 constrainedToSize:CGSizeMake(width, rect.size.height - detailTextSize.height - label_margin*2)
-                    lineBreakMode:UILineBreakModeTailTruncation];
+                    lineBreakMode:NSLineBreakByTruncatingTail];
 
     return textSize;
 }
@@ -446,7 +446,7 @@
         [subview release];
         
         self.elementSelectionStyle = UITableViewCellSelectionStyleBlue;
-        self.textAlignment = UITextAlignmentCenter;
+        self.textAlignment = NSTextAlignmentCenter;
         [self initVars];
     }
     return self;
