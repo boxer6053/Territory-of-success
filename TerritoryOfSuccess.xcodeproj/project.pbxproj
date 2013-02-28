@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		F5100A3E16D3B01000A49FD7 /* MSStatisticViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5100A3D16D3B01000A49FD7 /* MSStatisticViewController.m */; };
+		F512B4F516DF7D7F00FC22A5 /* PrettyCustomViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F512B4E316DF7D7F00FC22A5 /* PrettyCustomViewTableViewCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F512B4F616DF7D7F00FC22A5 /* PrettyGridTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F512B4E516DF7D7F00FC22A5 /* PrettyGridTableViewCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F512B4F716DF7D7F00FC22A5 /* PrettySegmentedControlTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F512B4E716DF7D7F00FC22A5 /* PrettySegmentedControlTableViewCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F512B4F816DF7D7F00FC22A5 /* PrettyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F512B4E916DF7D7F00FC22A5 /* PrettyTableViewCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F512B4F916DF7D7F00FC22A5 /* PrettyDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = F512B4EB16DF7D7F00FC22A5 /* PrettyDrawing.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F512B4FA16DF7D7F00FC22A5 /* PrettyNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F512B4EE16DF7D7F00FC22A5 /* PrettyNavigationBar.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F512B4FB16DF7D7F00FC22A5 /* PrettyShadowPlainTableview.m in Sources */ = {isa = PBXBuildFile; fileRef = F512B4F016DF7D7F00FC22A5 /* PrettyShadowPlainTableview.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F512B4FC16DF7D7F00FC22A5 /* PrettyTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F512B4F216DF7D7F00FC22A5 /* PrettyTabBar.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F512B4FD16DF7D7F00FC22A5 /* PrettyToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = F512B4F416DF7D7F00FC22A5 /* PrettyToolbar.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F536D0A116DE46A400950051 /* button_80_44-1_right.png in Resources */ = {isa = PBXBuildFile; fileRef = F536D09F16DE46A400950051 /* button_80_44-1_right.png */; };
 		F536D0A216DE46A400950051 /* button_80_44-1.png in Resources */ = {isa = PBXBuildFile; fileRef = F536D0A016DE46A400950051 /* button_80_44-1.png */; };
 		F541FDF716BAE1B00021A93F /* rect_220*30.png in Resources */ = {isa = PBXBuildFile; fileRef = F541FDF616BAE1AC0021A93F /* rect_220*30.png */; };
@@ -147,6 +156,25 @@
 		F510C26716CCF36A0058AB31 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		F510C26916CCF37C0058AB31 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		F510C26B16CCF38F0058AB31 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		F512B4E216DF7D7F00FC22A5 /* PrettyCustomViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrettyCustomViewTableViewCell.h; sourceTree = "<group>"; };
+		F512B4E316DF7D7F00FC22A5 /* PrettyCustomViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrettyCustomViewTableViewCell.m; sourceTree = "<group>"; };
+		F512B4E416DF7D7F00FC22A5 /* PrettyGridTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrettyGridTableViewCell.h; sourceTree = "<group>"; };
+		F512B4E516DF7D7F00FC22A5 /* PrettyGridTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrettyGridTableViewCell.m; sourceTree = "<group>"; };
+		F512B4E616DF7D7F00FC22A5 /* PrettySegmentedControlTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrettySegmentedControlTableViewCell.h; sourceTree = "<group>"; };
+		F512B4E716DF7D7F00FC22A5 /* PrettySegmentedControlTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrettySegmentedControlTableViewCell.m; sourceTree = "<group>"; };
+		F512B4E816DF7D7F00FC22A5 /* PrettyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrettyTableViewCell.h; sourceTree = "<group>"; };
+		F512B4E916DF7D7F00FC22A5 /* PrettyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrettyTableViewCell.m; sourceTree = "<group>"; };
+		F512B4EA16DF7D7F00FC22A5 /* PrettyDrawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrettyDrawing.h; sourceTree = "<group>"; };
+		F512B4EB16DF7D7F00FC22A5 /* PrettyDrawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrettyDrawing.m; sourceTree = "<group>"; };
+		F512B4EC16DF7D7F00FC22A5 /* PrettyKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrettyKit.h; sourceTree = "<group>"; };
+		F512B4ED16DF7D7F00FC22A5 /* PrettyNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrettyNavigationBar.h; sourceTree = "<group>"; };
+		F512B4EE16DF7D7F00FC22A5 /* PrettyNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrettyNavigationBar.m; sourceTree = "<group>"; };
+		F512B4EF16DF7D7F00FC22A5 /* PrettyShadowPlainTableview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrettyShadowPlainTableview.h; sourceTree = "<group>"; };
+		F512B4F016DF7D7F00FC22A5 /* PrettyShadowPlainTableview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrettyShadowPlainTableview.m; sourceTree = "<group>"; };
+		F512B4F116DF7D7F00FC22A5 /* PrettyTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrettyTabBar.h; sourceTree = "<group>"; };
+		F512B4F216DF7D7F00FC22A5 /* PrettyTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrettyTabBar.m; sourceTree = "<group>"; };
+		F512B4F316DF7D7F00FC22A5 /* PrettyToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrettyToolbar.h; sourceTree = "<group>"; };
+		F512B4F416DF7D7F00FC22A5 /* PrettyToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrettyToolbar.m; sourceTree = "<group>"; };
 		F536D09F16DE46A400950051 /* button_80_44-1_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_80_44-1_right.png"; sourceTree = "<group>"; };
 		F536D0A016DE46A400950051 /* button_80_44-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_80_44-1.png"; sourceTree = "<group>"; };
 		F541FDF616BAE1AC0021A93F /* rect_220*30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rect_220*30.png"; sourceTree = "<group>"; };
@@ -510,6 +538,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F512B4E016DF7D7F00FC22A5 /* PrettyKit */ = {
+			isa = PBXGroup;
+			children = (
+				F512B4E116DF7D7F00FC22A5 /* Cells */,
+				F512B4EA16DF7D7F00FC22A5 /* PrettyDrawing.h */,
+				F512B4EB16DF7D7F00FC22A5 /* PrettyDrawing.m */,
+				F512B4EC16DF7D7F00FC22A5 /* PrettyKit.h */,
+				F512B4ED16DF7D7F00FC22A5 /* PrettyNavigationBar.h */,
+				F512B4EE16DF7D7F00FC22A5 /* PrettyNavigationBar.m */,
+				F512B4EF16DF7D7F00FC22A5 /* PrettyShadowPlainTableview.h */,
+				F512B4F016DF7D7F00FC22A5 /* PrettyShadowPlainTableview.m */,
+				F512B4F116DF7D7F00FC22A5 /* PrettyTabBar.h */,
+				F512B4F216DF7D7F00FC22A5 /* PrettyTabBar.m */,
+				F512B4F316DF7D7F00FC22A5 /* PrettyToolbar.h */,
+				F512B4F416DF7D7F00FC22A5 /* PrettyToolbar.m */,
+			);
+			path = PrettyKit;
+			sourceTree = "<group>";
+		};
+		F512B4E116DF7D7F00FC22A5 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F512B4E216DF7D7F00FC22A5 /* PrettyCustomViewTableViewCell.h */,
+				F512B4E316DF7D7F00FC22A5 /* PrettyCustomViewTableViewCell.m */,
+				F512B4E416DF7D7F00FC22A5 /* PrettyGridTableViewCell.h */,
+				F512B4E516DF7D7F00FC22A5 /* PrettyGridTableViewCell.m */,
+				F512B4E616DF7D7F00FC22A5 /* PrettySegmentedControlTableViewCell.h */,
+				F512B4E716DF7D7F00FC22A5 /* PrettySegmentedControlTableViewCell.m */,
+				F512B4E816DF7D7F00FC22A5 /* PrettyTableViewCell.h */,
+				F512B4E916DF7D7F00FC22A5 /* PrettyTableViewCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		F559534116A579350079B985 /* SVProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -607,6 +669,7 @@
 				F5BD298616D7957F00B190B7 /* placeholder_415*415.png */,
 				FA252B3016D78F22006F6AD6 /* button_80_44-2.png */,
 				F5FF668F16D7B42000E64AD9 /* pluss_.png */,
+				F5BDD2CB16DE765A00B2E518 /* addButton1.png */,
 				F5B2D23616C4180900EC7F00 /* logo_color_invert_40*147_ukr.png */,
 				F5FF668916D7998E00E64AD9 /* button120*35.png */,
 				F5FF668B16D7A1CB00E64AD9 /* terrRate.png */,
@@ -680,6 +743,7 @@
 		F5F6ADC1169C4F21000247D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F512B4E016DF7D7F00FC22A5 /* PrettyKit */,
 				F510C26716CCF36A0058AB31 /* libz.dylib */,
 				F510C26B16CCF38F0058AB31 /* MobileCoreServices.framework */,
 				F510C26916CCF37C0058AB31 /* CFNetwork.framework */,
@@ -1109,6 +1173,7 @@
 				FA2CEC1616DBBD42007015BC /* starButton.png in Resources */,
 				FA2CEC1716DBBD42007015BC /* whiteStarButton.png in Resources */,
 				FA252B3116D78F22006F6AD6 /* button_80_44-2.png in Resources */,
+				F5BDD2CC16DE765A00B2E518 /* addButton1.png in Resources */,
 				F5D8C64916DD07660035EF30 /* button_185_45.png in Resources */,
 				F5D8C64B16DD08C70035EF30 /* button_140*35.png in Resources */,
 				F5D8C64D16DD09D30035EF30 /* button_120*35_new.png in Resources */,
@@ -1173,6 +1238,15 @@
 				FA99139A16D64EF900BEBAB0 /* MSEditButtonsCell.m in Sources */,
 				F5FF667C16D7798F00E64AD9 /* MSInquirerCell.m in Sources */,
 				F5FF669316D7BEE100E64AD9 /* MSStatisticCell.m in Sources */,
+				F512B4F516DF7D7F00FC22A5 /* PrettyCustomViewTableViewCell.m in Sources */,
+				F512B4F616DF7D7F00FC22A5 /* PrettyGridTableViewCell.m in Sources */,
+				F512B4F716DF7D7F00FC22A5 /* PrettySegmentedControlTableViewCell.m in Sources */,
+				F512B4F816DF7D7F00FC22A5 /* PrettyTableViewCell.m in Sources */,
+				F512B4F916DF7D7F00FC22A5 /* PrettyDrawing.m in Sources */,
+				F512B4FA16DF7D7F00FC22A5 /* PrettyNavigationBar.m in Sources */,
+				F512B4FB16DF7D7F00FC22A5 /* PrettyShadowPlainTableview.m in Sources */,
+				F512B4FC16DF7D7F00FC22A5 /* PrettyTabBar.m in Sources */,
+				F512B4FD16DF7D7F00FC22A5 /* PrettyToolbar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
