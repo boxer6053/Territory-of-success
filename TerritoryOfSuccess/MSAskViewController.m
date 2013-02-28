@@ -103,9 +103,6 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    for (id obj in self.questionsArray)
-//    NSLog(@"obj: %@", obj);
-    NSLog(@"CELLFORROW %d", self.questionsArray.count);
     MSQuestionCell *cell;
     static NSString* cellIdentifier = @"questCellID";
     cell = [_tableOfCategories dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -116,14 +113,12 @@
     cell.nameLabel.text = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
     NSString *countValue = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"];
     cell.countLabel.text = [@"available :" stringByAppendingString:countValue];
-    //cell.detailTextLabel.text = @"Оценка";
+ 
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.backButton setEnabled:YES];
-//    UIViewController *subCategoryController = [[UIViewController alloc] init];
-//    [self.navigationController pushViewController:subCategoryController animated:YES] ;
     self.upButtonShows = YES;
     [self.navigationItem.rightBarButtonItem setEnabled:YES];
     self.translatingValue = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"];
@@ -140,9 +135,7 @@
         [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadingInquirerListKey",nil)];
         [self.api getQuestionsWithParentID:[[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue]];
         _upperID = [[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
-        NSLog(@"Upper ID = %d", _upperID);
-        
-        NSLog(@"translate %@", self.translatingValue);
+      
     }
     else
     {
@@ -159,24 +152,12 @@
             _translatingUrl = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"];
             _sendingTitle = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
             self.finalID = self.defaultID;
-            NSLog(@"finalID = %d", self.finalID);
-            //self.upperID = self.finalID;
-            NSLog(@"wazaaaa %@",_translatingUrl);
-            NSLog(@"asdadsfdsfsf %@",_sendingTitle);
-            NSLog(@"After select %d", self.upperID);
-            [self.delegate setUpperId:self.upperID];
+                        [self.delegate setUpperId:self.upperID];
             if([[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"]){
                 
                 [self.delegate addProduct:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] withURL:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"]];}
-           // [self.delegate setUpperId:self.finalID];
-            
-            //[self.delegate addProduct:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] withURL:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"]];
-            
-            //
-            //            [self.requestItemsString appendString:@"hello1"];
-            //            NSLog(@"reqyest %@", self.requestItemsString);
-            [self dismissViewControllerAnimated:YES completion:nil];
-            // [self performSegueWithIdentifier:@"toQuestionProductDetail" sender:self];
+                      [self dismissViewControllerAnimated:YES completion:nil];
+        
         }
         
     }
@@ -220,19 +201,18 @@
     [self.delegate setUpperId:0];
 }
 
-- (IBAction)upAction:(id)sender {
-    _questionsCount = 0;
-    [_tableOfCategories reloadData];
-    [self.api getQuestionsWithParentID:0];
-    [_upButton setEnabled:NO];
-}
+//- (IBAction)upAction:(id)sender {
+//    _questionsCount = 0;
+//    [_tableOfCategories reloadData];
+//    [self.api getQuestionsWithParentID:0];
+//    [_upButton setEnabled:NO];
+//}
 - (IBAction)backButtonPressed:(id)sender {
     [self.backIds removeLastObject];
     if(self.backIds.count != 0){
-    NSLog(@"couuuunt %d",self.backIds.count);
-    NSInteger last= [[self.backIds lastObject] integerValue];
+
     NSInteger lastId = [[self.backIds objectAtIndex:(self.backIds.count-1)] integerValue];
-    NSLog(@"lastID %d",last);
+
     
     
     [self.api getQuestionsWithParentID:lastId];

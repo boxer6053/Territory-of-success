@@ -253,9 +253,18 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     [self.requestString setString:@""];
       self.upperID = 0;
     for(int i=0;i<self.arrayOfViews.count;i++){
-        [[self.arrayOfViews objectAtIndex:i]setBackgroundImage:[UIImage imageNamed:@"pluss.png"] forState:UIControlStateNormal];
-        [[self.arrayOfViews objectAtIndex:i]setImage:nil forState:UIControlStateNormal];
-         }
+        [[self.arrayOfViews objectAtIndex:i] setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3]];
+        [[self.arrayOfViews objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"addButton1.png"] forState:UIControlStateNormal];
+        UIButton *current = [self.arrayOfViews objectAtIndex:i];
+        current.layer.cornerRadius  = 10.0f;
+        UIColor *color = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+        CGColorRef borderColor = [color CGColor];
+        current.layer.borderColor = borderColor;
+        current.layer.borderWidth = 1.0;
+        [current setTag:i];
+        //[current setAlpha:0.7];
+        current.clipsToBounds= YES;
+    }
     [self.cleanButton setEnabled:NO];
     
 }
