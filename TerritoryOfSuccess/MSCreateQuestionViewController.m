@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSMutableData *receivedData;
 @property (strong, nonatomic) MSAPI *api;
 
+
 @end
 
 @implementation MSCreateQuestionViewController
@@ -32,6 +33,7 @@
 @synthesize askButton = _askButton;
 @synthesize cleanButton = _cleanButton;
 @synthesize nameLabel = _nameLabel;
+@synthesize requestStringArray = _requestStringArray;
 - (MSAPI *) api{
     if(!_api){
         _api = [[MSAPI alloc]init];
@@ -42,6 +44,7 @@
 
 - (void)viewDidLoad
 {
+    self.requestStringArray = [[NSMutableArray alloc] init];
     NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
     [self.nameLabel setText:NSLocalizedString(@"PickAProductKey", nil)];
     NSString *token = [userDefults valueForKey:@"authorization_Token" ];
@@ -116,7 +119,9 @@
         current.clipsToBounds= YES;
         [self.view addSubview:current];
     }
-
+    for(int i=1;i<self.arrayOfViews.count;i++){
+        [[self.arrayOfViews objectAtIndex:i] setHidden:YES];
+    }
     
     
     self.gettedImages = [[NSMutableArray alloc] init];
@@ -144,9 +149,13 @@
 
 -(void)assignAPicture:(id)sender
 {
+   
     NSLog(@"TAP %d", [sender tag]);
     self.savedIndex = [sender tag];
     NSLog(@"Saved index =%d", self.savedIndex);
+//    if(self.requestStringArray.count !=0){
+//        [self.requestStringArray setObject:@"" atIndexedSubscript:self.savedIndex];
+//    }
     [self performSegueWithIdentifier:@"pickAProduct" sender:self];
 }
 - (void)didReceiveMemoryWarning
@@ -171,9 +180,26 @@
 }
 -(void)addProduct:(NSString *)string withURL:(NSString *)ulr
 {
-    [self.requestString appendString:@"&items[]="];
-    [self.requestString appendString:string];
-    [self.gettedImages addObject:ulr];
+    int access;
+    NSLog(@"SSTRing %d",self.savedIndex);
+    for(int i=0;i<self.requestStringArray.count;i++)
+    {
+        if([string isEqualToString:[self.requestStringArray objectAtIndex:i]])
+            access = 1;
+        else
+            access = 0;
+    }
+    if(access ==1){
+        UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Такой продукт уже внесен в опрос!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
+        [failmessage show];
+    }
+    else{
+   [self.requestStringArray setObject:string atIndexedSubscript:self.savedIndex];
+    NSLog(@"At Index! %@",[self.requestStringArray objectAtIndex:self.savedIndex]);
+    for (id obj in self.requestStringArray)
+        NSLog(@"obj: %@", obj);
+     [self.gettedImages addObject:ulr];
+    //[self.requestStringArray addObject:string];
     NSLog(@"request String %@", self.requestString);
     
     NSLog(@"firstObject %@", [self.gettedImages objectAtIndex:0]);
@@ -185,9 +211,14 @@
     
     NSURL *urll = [NSURL URLWithString:[ulr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     [[self.arrayOfViews objectAtIndex:self.savedIndex] setBackgroundImageWithURL:urll forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
-    [[self.arrayOfViews objectAtIndex:self.savedIndex] setUserInteractionEnabled:NO];
+    if(self.savedIndex <5){
+    [[self.arrayOfViews objectAtIndex:(self.savedIndex +1)]setHidden:NO];
+    }
+    
+   // [[self.arrayOfViews objectAtIndex:self.savedIndex] setUserInteractionEnabled:NO];
 
     [self.cleanButton setEnabled:YES];
+    }
     
 }
 -(void)setUpperId:(int)upperId
@@ -201,7 +232,12 @@
 }
 
 - (IBAction)startButton:(id)sender {
-    //NSLog(@"Request %@", self.requestString);
+    for(int i=0;i<self.requestStringArray.count;i++){
+    [self.requestString appendString:@"&items[]="];
+    [self.requestString appendString:[self.requestStringArray objectAtIndex:i]];
+    }
+
+    NSLog(@"Request %@", self.requestString);
     if(![self.requestString isEqualToString:@""]){
     [SVProgressHUD showWithStatus:NSLocalizedString(@"SendingInquirerKey",nil)];
         [self.api createQuestionWithItems:self.requestString];}
@@ -210,13 +246,13 @@
         [failmessage show];
     }
 }
-- (void)alertView:(UIAlertView *)alertView
-clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex == 0){
-        [self.navigationController popViewControllerAnimated:YES];
-        
-    }
-}
+//- (void)alertView:(UIAlertView *)alertView
+//clickedButtonAtIndex:(NSInteger)buttonIndex{
+//    if (buttonIndex == 0){
+//        [self.navigationController popViewControllerAnimated:YES];
+//        
+//    }
+//}
 -(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
 {
     if (type ==kCreateQuest)
@@ -266,6 +302,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
         //[current setAlpha:0.7];
         current.clipsToBounds= YES;
     }
+    
     [self.cleanButton setEnabled:NO];
     
 }
