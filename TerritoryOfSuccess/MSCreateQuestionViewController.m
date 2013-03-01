@@ -79,7 +79,7 @@
     //фреймы для разных экранов (4 и 5 айфон)
     if ([[UIScreen mainScreen] bounds].size.height == 568)
     {
-        [image1 setFrame:CGRectMake(50, 58, 80,80)];
+             [image1 setFrame:CGRectMake(50, 58, 80,80)];
         [image2 setFrame:CGRectMake(190, 58, 80,80)];
         [image3 setFrame:CGRectMake(50, 168, 80,80)];
         [image4 setFrame:CGRectMake(190, 168, 80,80)];
@@ -185,8 +185,8 @@
     
     NSURL *urll = [NSURL URLWithString:[ulr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     [[self.arrayOfViews objectAtIndex:self.savedIndex] setBackgroundImageWithURL:urll forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
-    //[[self.arrayOfViews objectAtIndex:self.savedIndex] setBackgroundImage:nil forState:UIControlStateNormal];
-     //[[self.arrayOfViews objectAtIndex:self.savedIndex] setBackgroundColor:[UIColor clearColor]];
+    [[self.arrayOfViews objectAtIndex:self.savedIndex] setUserInteractionEnabled:NO];
+
     [self.cleanButton setEnabled:YES];
     
 }
@@ -255,6 +255,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     for(int i=0;i<self.arrayOfViews.count;i++){
         [[self.arrayOfViews objectAtIndex:i] setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3]];
         [[self.arrayOfViews objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"addButton1.png"] forState:UIControlStateNormal];
+        [[self.arrayOfViews objectAtIndex:i] setUserInteractionEnabled:YES];
         UIButton *current = [self.arrayOfViews objectAtIndex:i];
         current.layer.cornerRadius  = 10.0f;
         UIColor *color = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
