@@ -1126,7 +1126,7 @@
                 <navigationController id="rKH-MI-8hw" customClass="MSFirstNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="2" title="Каталог" image="catalogue_TOS.png" id="D8e-iH-KKD"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bK7-ec-7vO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bK7-ec-7vO" customClass="PrettyNavigationBar">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1145,7 +1145,7 @@
                 <navigationController id="TsD-xh-9RE" customClass="MSFirstNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="3" title="Опросы" image="questions1.png" id="xr2-ka-6RV"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FJa-KM-BR9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FJa-KM-BR9" customClass="PrettyNavigationBar">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1440,7 +1440,7 @@
                 <navigationController id="BIb-F4-6Wk" customClass="MSFirstNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="4" title="Новости" image="news_TOS.png" id="xPw-kQ-uM6"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nw1-zZ-O4a">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nw1-zZ-O4a" customClass="PrettyNavigationBar">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1481,8 +1481,9 @@
         <class className="MSAskViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSAskViewController.h"/>
             <relationships>
+                <relationship kind="action" name="backButtonPressed:"/>
                 <relationship kind="action" name="cancel:"/>
-                <relationship kind="action" name="upAction:"/>
+                <relationship kind="outlet" name="backButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="tableOfCategories" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="upButton" candidateClass="UIBarButtonItem"/>
             </relationships>
@@ -1538,7 +1539,6 @@
         <class className="MSCreateQuestionViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSCreateQuestionViewController.h"/>
             <relationships>
-                <relationship kind="action" name="addMoreProduct:"/>
                 <relationship kind="action" name="cleanButton:"/>
                 <relationship kind="action" name="startButton:"/>
                 <relationship kind="outlet" name="askButton" candidateClass="UIButton"/>
@@ -1756,6 +1756,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ffa-R0-niF"/>
+        <segue reference="f75-2Y-K7q"/>
     </inferredMetricsTieBreakers>
 </document>
