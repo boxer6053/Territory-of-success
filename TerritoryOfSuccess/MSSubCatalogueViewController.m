@@ -15,6 +15,7 @@
 @property int tempProductsCounter;
 @property (strong, nonatomic)  UIButton *footerButton;
 @property BOOL isFirstTime;
+@property BOOL insertedOperationFinishedTheyWork;
 @end
 
 @implementation MSSubCatalogueViewController
@@ -26,6 +27,7 @@
 @synthesize tempCategoryId = _tempCategoryId;
 @synthesize footerButton = _footerButton;
 @synthesize lastloadedProductsArray = _lastloadedProductsArray;
+@synthesize insertedOperationFinishedTheyWork = _insertedOperationFinishedTheyWork;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -126,6 +128,18 @@
     }
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (self.insertedOperationFinishedTheyWork)
+    {
+        if (self.productsTableView.contentOffset.y + 455 > self.productsTableView.contentSize.height)
+        {
+            [self moreProducts];
+            self.insertedOperationFinishedTheyWork = NO;
+        }
+    }
+}
+
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -197,6 +211,8 @@
                 [self.productsTableView insertRowsAtIndexPaths: insertIndexPath withRowAnimation:NO];
             }
         }
+        
+        self.insertedOperationFinishedTheyWork = YES;
     }
 }
 @end

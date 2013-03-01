@@ -64,6 +64,11 @@
 "MyKey" = "Мои опросы";
 "AnswersKey" = "Ответы";
 "PickAProductKey" = "Выберите продукты";
+"SelectOneProductKey" = "Выберите не меньше одного продукта!";
+"AlreadySelectedProductKey" = "Этот продукт уже выбран";
+"QuestionCreatedKey" = "Опрос создан!";
+"SuccessKey" = "Успех";
+"ErrorKey" = "Ошибка";
 
 
 // Новости
