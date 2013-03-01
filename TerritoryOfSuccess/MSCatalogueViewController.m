@@ -18,6 +18,7 @@
 @property int brandsCounter;
 @property (nonatomic) BOOL isFirstTime;
 @property (nonatomic) BOOL loadMoreButtonWasPressed;
+@property (nonatomic) BOOL insertedOperationFinishedTheyWork;
 
 @end
 
@@ -31,6 +32,7 @@
 @synthesize brandsCounter = _brandsCounter;
 @synthesize footerButton = _footerButton;
 @synthesize lastloadedBrandsArray = _lastloadedBrandsArray;
+@synthesize insertedOperationFinishedTheyWork = _insertedOperationFinishedTheyWork;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -83,17 +85,6 @@
 - (void)scrollViewDidEndDecelerating:(UITableView *)tableView
 {
     [[self categoryAndBrandsControl] setUserInteractionEnabled:YES];
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    if (self.categoryAndBrandsControl.selectedSegmentIndex == 1)
-    {
-        if (self.tableView.contentOffset.y > (63 * self.numberOfBrandsRows))
-        {
-            [self moreBrands];
-        }
-    }
 }
 
 #pragma mark SegmentControl
@@ -152,6 +143,18 @@
     else
     {
         [self.footerButton setTitle:NSLocalizedString(@"AllBrandsDownloadedKey",nil) forState:UIControlStateNormal];
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (self.insertedOperationFinishedTheyWork)
+    {
+        if (self.tableView.contentOffset.y + 455 > self.tableView.contentSize.height)
+        {
+            [self moreBrands];
+            self.insertedOperationFinishedTheyWork = NO;
+        }
     }
 }
 
@@ -253,6 +256,7 @@
                 [self.tableView insertRowsAtIndexPaths: insertIndexPath withRowAnimation:NO];
             }
         }
+        self.insertedOperationFinishedTheyWork = YES;
     }
     
     [self.categoryAndBrandsControl setUserInteractionEnabled:YES];
