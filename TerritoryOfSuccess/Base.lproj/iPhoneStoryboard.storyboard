@@ -237,7 +237,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="x9r-Ks-e1Q">
-                        <barButtonItem key="rightBarButtonItem" title="Share" id="LOb-YF-Ip1">
+                        <barButtonItem key="rightBarButtonItem" title="Share" style="done" id="LOb-YF-Ip1">
                             <connections>
                                 <action selector="shareButtonPressed:" destination="n4h-LN-HLC" id="lJw-7R-W7k"/>
                             </connections>
@@ -255,6 +255,7 @@
                         <outlet property="productDescriptionTextView" destination="WiQ-qI-oGj" id="N3O-Hw-xh2"/>
                         <outlet property="productName" destination="DeZ-HA-pbV" id="8fW-c5-sPd"/>
                         <outlet property="ratingImage" destination="mXs-lz-J8f" id="oDc-RC-aif"/>
+                        <outlet property="shareButton" destination="LOb-YF-Ip1" id="FYN-3P-xIs"/>
                         <outlet property="starView" destination="pYS-CY-0eM" id="i9d-tu-Swq"/>
                         <outlet property="transitionContainerView" destination="tzr-zs-FfV" id="H8m-NG-yfe"/>
                         <outlet property="twButton" destination="Uvw-ed-P2X" id="aNh-dK-J8B"/>

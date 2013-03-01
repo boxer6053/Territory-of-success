@@ -49,6 +49,9 @@
 "CommentKey" = "Comments";
 "RateKey" = "Rate";
 "ConfirmKey" = "Confirm";
+"AllProductsDownloadedKey" = "All products are downloaded";
+"ProductWasVerificatedKey" = "I verified";
+"WithAppKey" = "in \"Territory of Success\" Application";
 
 // Опросы
 "DownloadInquirersKey" = "Loading interogation";
@@ -68,4 +71,4 @@
 // Новости
 "DownloadingInformationKey" = "Downloading information...";
 "AllNewsDownloadedKey" = "All news are downloaded";
-"DownloadMoreKey" = "Download more";
+"DownloadMoreKey" = "Load more";
