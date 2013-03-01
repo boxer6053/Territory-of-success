@@ -14,6 +14,8 @@
 @property (nonatomic) int tempCommentsCounter;
 @property (nonatomic, strong) UIButton *footerButton;
 @property (nonatomic) BOOL isFirstTime;
+@property (nonatomic) BOOL insertedOperationFinishedTheyWork;
+@property dispatch_queue_t queue;
 @end
 
 @implementation MSCommentsViewController
@@ -26,6 +28,7 @@
 @synthesize lastloadedCommentsArray = _lastloadedCommentsArray;
 @synthesize isFirstTime = _isFirstTime;
 @synthesize tempCommentsCounter = _tempCommentsCounter;
+@synthesize insertedOperationFinishedTheyWork = _insertedOperationFinishedTheyWork;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -40,14 +43,14 @@
     [super viewDidLoad];
     [[self commentTableView] setBackgroundView:[[UIImageView alloc]
                                                 initWithImage:[UIImage imageNamed:@"bg.png"]]];
+
+        self.footerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.commentTableView.frame.size.width, 35)];
+        [self.footerButton setTitle:NSLocalizedString(@"DownloadMoreKey",nil) forState:UIControlStateNormal];
+        self.footerButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
+        [self.footerButton setTitleColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4] forState:UIControlStateNormal];
+        [self.footerButton addTarget:self action:@selector(moreComments) forControlEvents:UIControlEventTouchDown];
     
-    self.footerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.commentTableView.frame.size.width, 35)];
-    [self.footerButton setTitle:NSLocalizedString(@"DownloadMoreKey",nil) forState:UIControlStateNormal];
-    self.footerButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
-    [self.footerButton setTitleColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4] forState:UIControlStateNormal];
-    [self.footerButton addTarget:self action:@selector(moreComments) forControlEvents:UIControlEventTouchDown];
-    
-    [self commentTableView].tableFooterView = self.footerButton;
+        [self commentTableView].tableFooterView = self.footerButton;
     [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadCommentsKey",nil)];
     
 }
@@ -67,6 +70,18 @@
     else
     {
         [self.footerButton setTitle:NSLocalizedString(@"AllCommentsDownloadedKey",nil) forState:UIControlStateNormal];
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (self.insertedOperationFinishedTheyWork)
+    {
+        if (self.commentTableView.contentOffset.y + 455 > self.commentTableView.contentSize.height)
+        {
+            [self moreComments];
+            self.insertedOperationFinishedTheyWork = NO;
+        }
     }
 }
 
@@ -162,6 +177,11 @@
             self.commentsArray = [[dictionary valueForKey:@"list"] mutableCopy];
             self.tempCommentsCounter = self.commentsArray.count;
             self.commentsCounter = [[dictionary valueForKey:@"count"]integerValue];
+            if ([self commentsCounter] <= 20)
+            {
+                [[self commentTableView].tableFooterView setHidden:YES];
+                [[self commentTableView].tableFooterView setUserInteractionEnabled:NO];
+            }
             [[self commentTableView] reloadData];
             self.isFirstTime = NO;
         }
@@ -175,6 +195,7 @@
                 [self.commentTableView insertRowsAtIndexPaths: insertIndexPath withRowAnimation:NO];
             }
         }
+        self.insertedOperationFinishedTheyWork = YES;
     }
 }
 @end

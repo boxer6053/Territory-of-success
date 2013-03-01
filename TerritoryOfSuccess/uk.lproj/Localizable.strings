@@ -49,6 +49,7 @@
 "CommentKey" = "Коментарі";
 "RateKey" = "Оцінити";
 "ConfirmKey" = "Підтвердити";
+"AllProductsDownloadedKey" = "Всі продукти завантаженні";
 
 // Опросы
 "DownloadInquirersKey" = "Завантаження питань";

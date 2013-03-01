@@ -17,6 +17,7 @@
 @property int numberOfBrandsRows;
 @property int brandsCounter;
 @property (nonatomic) BOOL isFirstTime;
+@property (nonatomic) BOOL loadMoreButtonWasPressed;
 
 @end
 
@@ -50,6 +51,7 @@
     [[self tableView] setDelegate:self];
     [[self tableView] setDataSource:self];
     self.isFirstTime  = YES;
+    self.loadMoreButtonWasPressed = NO;
     [self.categoryAndBrandsControl setTitle:NSLocalizedString(@"CategoriesKey", nil) forSegmentAtIndex:0];
     [self.categoryAndBrandsControl setTitle:NSLocalizedString(@"BrandsKey", nil) forSegmentAtIndex:1];
     [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadCategoriesKey",nil)];
@@ -82,6 +84,18 @@
 {
     [[self categoryAndBrandsControl] setUserInteractionEnabled:YES];
 }
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (self.categoryAndBrandsControl.selectedSegmentIndex == 1)
+    {
+        if (self.tableView.contentOffset.y > (63 * self.numberOfBrandsRows))
+        {
+            [self moreBrands];
+        }
+    }
+}
+
 #pragma mark SegmentControl
 // Изменение цвета СегментКонтролa при нажатии
 - (void)makeWrightSegmentColor
@@ -128,6 +142,8 @@
 
 - (void)moreBrands
 {
+    self.loadMoreButtonWasPressed = YES;
+    
     if (self.arrayOfBrands.count < self.brandsCounter)
     {
         [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadBrandsKey",nil)];

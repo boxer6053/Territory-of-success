@@ -6,11 +6,15 @@
 
 @interface MSSubCatalogueViewController ()
 @property (strong, nonatomic) MSAPI *api;
-@property NSArray *arrayOfProducts;
+@property NSMutableArray *arrayOfProducts;
+@property NSArray *lastloadedProductsArray;
 @property NSDictionary *brandDictionaryIfWeComeFromBrandsSegment;
 @property int productsCounter;
 @property int tempBrandId;
 @property int tempCategoryId;
+@property int tempProductsCounter;
+@property (strong, nonatomic)  UIButton *footerButton;
+@property BOOL isFirstTime;
 @end
 
 @implementation MSSubCatalogueViewController
@@ -20,6 +24,8 @@
 @synthesize brandDictionaryIfWeComeFromBrandsSegment = _brandDictionaryIfWeComeFromBrandsSegment;
 @synthesize tempBrandId = _tempBrandId;
 @synthesize tempCategoryId = _tempCategoryId;
+@synthesize footerButton = _footerButton;
+@synthesize lastloadedProductsArray = _lastloadedProductsArray;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -32,14 +38,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.isFirstTime = YES;
+    [self.api getProductsWithOffset:0 withBrandId:self.tempBrandId withCategoryId:self.tempCategoryId];
     self.productsTableView.delegate = self;
     self.productsTableView.dataSource = self;
     [self.productsTableView setBackgroundView:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"bg.png"]]];
+    
+    self.footerButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.productsTableView.frame.size.width, 35)];
+    [self.footerButton setTitle:NSLocalizedString(@"DownloadMoreKey", nil) forState:UIControlStateNormal];
+    [self.footerButton addTarget:self action:@selector(moreProducts) forControlEvents:UIControlEventTouchDown];
+    self.footerButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
+    [self.footerButton setTitleColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4] forState:UIControlStateNormal];
+    
+    self.productsTableView.tableFooterView = self.footerButton;
     [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadProductsKey",nil)];
-}
-- (void)viewWillAppear:(BOOL)animated
-{
-    [self.api getProductsWithOffset:0 withBrandId:self.tempBrandId withCategoryId:self.tempCategoryId];
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,7 +74,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self productsCounter];
+    return [self tempProductsCounter];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -101,6 +113,19 @@
     return cell;
 }
 
+- (void)moreProducts
+{
+    if (self.arrayOfProducts.count < self.productsCounter)
+    {
+        [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadProductsKey",nil)];
+        [self.api getProductsWithOffset:self.arrayOfProducts.count withBrandId:self.tempBrandId withCategoryId:self.tempCategoryId];
+    }
+    else
+    {
+        [self.footerButton setTitle:NSLocalizedString(@"AllProductsDownloadedKey",nil) forState:UIControlStateNormal];
+    }
+}
+
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -113,6 +138,9 @@
     if ([segue.identifier isEqualToString:@"toDetailView"])
     {
         MSSubCatalogueCell *currentCell = sender;
+        int offset;
+        if (self.arrayOfProducts.count <= 5) offset = 0;
+        else offset = (self.arrayOfProducts.count - self.lastloadedProductsArray.count);
         [segue.destinationViewController sentProductName:currentCell.productName.text
                                                    andId:currentCell.productId
                                                andRating:currentCell.productRatingNumber
@@ -122,7 +150,8 @@
                                       andDescriptionText:currentCell.productDesctiptionText
                                          andNumberInList:currentCell.productNumberInList
                                               andBrandId:self.tempBrandId
-                                           andCategoryId:self.tempCategoryId];
+                                           andCategoryId:self.tempCategoryId
+                                            andOffset:offset];
         
     }
 }
@@ -142,10 +171,32 @@
 {
     if (type == kCatalog)
     {
-        self.arrayOfProducts = [dictionary valueForKey:@"list"];
-        self.productsCounter = [[self arrayOfProducts] count];
-        self.brandDictionaryIfWeComeFromBrandsSegment = [dictionary valueForKey:@"brand"];
+        if (self.isFirstTime)
+        {
+            self.arrayOfProducts = [[dictionary valueForKey:@"list"] mutableCopy];
+            self.tempProductsCounter = [[self arrayOfProducts] count];
+            self.productsCounter = [[dictionary valueForKey:@"count"] integerValue];
+            if (self.productsCounter <= 20)
+            {
+                [[self productsTableView].tableFooterView setHidden:YES];
+                [[self productsTableView].tableFooterView setUserInteractionEnabled:NO];
+            }
+            
+            [[self productsTableView] reloadData];
+            self.brandDictionaryIfWeComeFromBrandsSegment = [dictionary valueForKey:@"brand"];
+            
+            self.isFirstTime = NO;
+        }
+        else
+        {
+            [self.arrayOfProducts addObjectsFromArray:[dictionary valueForKey:@"list"]];
+            self.lastloadedProductsArray = [dictionary valueForKey:@"list"];
+            for (int i  = 0; i < self.lastloadedProductsArray.count; i++)
+            {
+                NSArray *insertIndexPath = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.tempProductsCounter++  inSection:0]];
+                [self.productsTableView insertRowsAtIndexPaths: insertIndexPath withRowAnimation:NO];
+            }
+        }
     }
-    [[self productsTableView] reloadData];
 }
 @end
