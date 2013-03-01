@@ -12,6 +12,7 @@
 #import "JSONParserForDataEntenties.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "MSNewsCell.h"
+#import "PrettyKit.h"
 
 @interface MSNewsViewController ()
 
@@ -81,6 +82,8 @@
     self.activityIndicator.hidesWhenStopped = YES;
     self.newsTableView.tableFooterView = self.activityIndicator;
     [self.activityIndicator startAnimating];
+    
+    [self customizeNavBar];
 }
 
 - (void)didReceiveMemoryWarning
@@ -153,5 +156,16 @@
         UITableViewCell *currentCell = sender;
         [segue.destinationViewController setContentOfArticleWithId:[NSString stringWithFormat:@"%d",currentCell.tag]];
     }
+}
+
+- (void)customizeNavBar {
+    PrettyNavigationBar *navBar = (PrettyNavigationBar *)self.navigationController.navigationBar;
+    
+    navBar.topLineColor = [UIColor colorWithHex:0x676767];
+    navBar.gradientStartColor = [UIColor colorWithHex:0x373737];
+    navBar.gradientEndColor = [UIColor colorWithHex:0x1a1a1a];
+    navBar.bottomLineColor = [UIColor colorWithHex:0x000000];
+    navBar.tintColor = navBar.gradientEndColor;
+    
 }
 @end
