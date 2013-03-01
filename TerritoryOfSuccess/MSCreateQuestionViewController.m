@@ -264,6 +264,7 @@
         {
             UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Успех" message:@"Опрос успешно создан!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
             [failmessage show];
+            [self.navigationController popViewControllerAnimated:YES];
 
         }
         else{
