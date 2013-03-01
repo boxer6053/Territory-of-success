@@ -40,5 +40,6 @@
      andDescriptionText:(NSString *) descriptionText
         andNumberInList:(int)numberInList
              andBrandId:(int)brandId
-          andCategoryId:(int)categoryId;
+          andCategoryId:(int)categoryId
+              andOffset:(int)offset;
 @end

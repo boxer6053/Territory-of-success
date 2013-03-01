@@ -13,6 +13,9 @@
 #import "SVProgressHUD.h"
 #import <SDWebImage/UIButton+WebCache.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "PrettyKit.h"
+
+#define I 8
 
 @interface MSFirstViewController ()
 
@@ -115,6 +118,8 @@
 
 - (void)viewDidLoad
 {
+    [self customizeNavBar];
+    
     [super viewDidLoad];
     
     self.beginCount = 0;
@@ -397,29 +402,6 @@
                                                              otherButtonTitles:nil, nil];
         [recognizingCodeError show];
     }
-    
-    //розкоментити код нище для додавання тире між цифрами
-    //------------------------------------------------------------------
-    //    NSMutableArray *substringsArray = [[NSMutableArray alloc] init];
-    //    NSRange substringRange;
-    //    for (int i = 0; i < recognizedText.length; i++) {
-    //        if (i%4 == 0) {
-    //            NSLog(@"%d", i);
-    //            substringRange.location = i;
-    //            substringRange.length = 4;
-    //            [substringsArray addObject:[recognizedText substringWithRange:substringRange]];
-    //        }
-    //    }
-    //
-    //    NSMutableString *combiningString = [NSMutableString stringWithFormat:@"%@", [substringsArray objectAtIndex:0]];
-    //    for (int i = 1; i < substringsArray.count; i++) {
-    //        [combiningString appendFormat:@"-%@", [substringsArray objectAtIndex:i]];
-    //    }
-    //------------------------------------------------------------------
-    
-    
-    //------------------------------
-    
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
@@ -553,6 +535,10 @@ static inline double radians (double degrees)
 //перевірка коду
 - (IBAction)sendCode:(UIButton *)sender {
     
+    float a = 3.125f;
+    float b = (int)a;
+    NSLog(@"float b = %f", b);
+    
     NSLog(@"You click on send button!!!");
     
     [self.sendCodeButton setEnabled:NO];
@@ -562,11 +548,9 @@ static inline double radians (double degrees)
     
     [self.api setDelegate:self];
     
-//    self.codeStr = @"4444-2AED-2354-865E";
-    self.codeStr = @"A223-94DF-CE67-B898";
-//    self.codeStr = @"2EA4-29E9-CCE0-90EB";
-//    self.codeStr = @"37B9-45A4-3711-2DA2";
-//    self.codeStr = [self.codeTextField text];
+//    self.codeStr = @"95A4-348F-82A1-D88E";
+//    self.codeStr = @"CED0-152F-80CC-893E";
+    self.codeStr = [self.codeTextField text];
     
 //    [self.api checkCode:[self.codeTextField text]];
     
@@ -743,7 +727,7 @@ static inline double radians (double degrees)
     if (type == kCode) {
         NSLog(@"checking");
         
-        if ([[dictionary valueForKey:@"status"] isEqualToString:@"valid"]) {
+        if ([[dictionary valueForKey:@"status"] isEqualToString:@"valid"] || [[dictionary valueForKey:@"status"] isEqualToString:@"registered"]) {
             
             NSLog(@"valid");
             
@@ -1253,6 +1237,17 @@ static inline double radians (double degrees)
         [self.profileBarButton setImage:nil];
         [self.profileBarButton setTitle:NSLocalizedString(@"Войти",nil)];
     }
+}
+
+- (void)customizeNavBar {
+    PrettyNavigationBar *navBar = (PrettyNavigationBar *)self.navigationController.navigationBar;
+    
+    navBar.topLineColor = [UIColor colorWithHex:0x676767];
+    navBar.gradientStartColor = [UIColor colorWithHex:0x373737];
+    navBar.gradientEndColor = [UIColor colorWithHex:0x1a1a1a];
+    navBar.bottomLineColor = [UIColor colorWithHex:0x000000];
+    navBar.tintColor = navBar.gradientEndColor;
+    
 }
 
 @end

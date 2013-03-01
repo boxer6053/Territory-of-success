@@ -4,6 +4,7 @@
 #import "MSBrandsAndCategoryCell.h"
 #import "SVProgressHUD.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "PrettyKit.h"
 
 @interface MSCatalogueViewController ()
 
@@ -17,6 +18,8 @@
 @property int numberOfBrandsRows;
 @property int brandsCounter;
 @property (nonatomic) BOOL isFirstTime;
+@property (nonatomic) BOOL loadMoreButtonWasPressed;
+@property (nonatomic) BOOL insertedOperationFinishedTheyWork;
 
 @end
 
@@ -30,6 +33,7 @@
 @synthesize brandsCounter = _brandsCounter;
 @synthesize footerButton = _footerButton;
 @synthesize lastloadedBrandsArray = _lastloadedBrandsArray;
+@synthesize insertedOperationFinishedTheyWork = _insertedOperationFinishedTheyWork;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -50,6 +54,7 @@
     [[self tableView] setDelegate:self];
     [[self tableView] setDataSource:self];
     self.isFirstTime  = YES;
+    self.loadMoreButtonWasPressed = NO;
     [self.categoryAndBrandsControl setTitle:NSLocalizedString(@"CategoriesKey", nil) forSegmentAtIndex:0];
     [self.categoryAndBrandsControl setTitle:NSLocalizedString(@"BrandsKey", nil) forSegmentAtIndex:1];
     [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadCategoriesKey",nil)];
@@ -64,6 +69,8 @@
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
     [self.tableView.layer setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0].CGColor];
+    
+    [self customizeNavBar];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -82,6 +89,7 @@
 {
     [[self categoryAndBrandsControl] setUserInteractionEnabled:YES];
 }
+
 #pragma mark SegmentControl
 // Изменение цвета СегментКонтролa при нажатии
 - (void)makeWrightSegmentColor
@@ -128,6 +136,8 @@
 
 - (void)moreBrands
 {
+    self.loadMoreButtonWasPressed = YES;
+    
     if (self.arrayOfBrands.count < self.brandsCounter)
     {
         [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadBrandsKey",nil)];
@@ -136,6 +146,18 @@
     else
     {
         [self.footerButton setTitle:NSLocalizedString(@"AllBrandsDownloadedKey",nil) forState:UIControlStateNormal];
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (self.insertedOperationFinishedTheyWork)
+    {
+        if (self.tableView.contentOffset.y + 455 > self.tableView.contentSize.height)
+        {
+            [self moreBrands];
+            self.insertedOperationFinishedTheyWork = NO;
+        }
     }
 }
 
@@ -237,9 +259,21 @@
                 [self.tableView insertRowsAtIndexPaths: insertIndexPath withRowAnimation:NO];
             }
         }
+        self.insertedOperationFinishedTheyWork = YES;
     }
     
     [self.categoryAndBrandsControl setUserInteractionEnabled:YES];
+    
+}
+
+- (void)customizeNavBar {
+    PrettyNavigationBar *navBar = (PrettyNavigationBar *)self.navigationController.navigationBar;
+    
+    navBar.topLineColor = [UIColor colorWithHex:0x676767];
+    navBar.gradientStartColor = [UIColor colorWithHex:0x373737];
+    navBar.gradientEndColor = [UIColor colorWithHex:0x1a1a1a];
+    navBar.bottomLineColor = [UIColor colorWithHex:0x000000];
+    navBar.tintColor = navBar.gradientEndColor;
     
 }
 

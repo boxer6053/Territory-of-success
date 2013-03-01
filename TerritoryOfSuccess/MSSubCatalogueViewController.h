@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 #import "MSAPI.h"
-@interface MSSubCatalogueViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, WsCompleteDelegate>
+@interface MSSubCatalogueViewController : UITableViewController <UITableViewDataSource,UIScrollViewDelegate, UITableViewDelegate, WsCompleteDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *productsTableView;
 

@@ -40,6 +40,8 @@
 @synthesize requestItemsString = _requestItemsString;
 @synthesize isAuthorized = _isAuthorized;
 @synthesize delegate = _delegate;
+@synthesize backButton = _backButton;
+@synthesize backIds = _backIds;
 
 
 - (MSAPI *) api{
@@ -50,18 +52,10 @@
     return _api;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
-    
+    [self.backButton setEnabled:NO];
+    self.backIds = [[NSMutableArray alloc] init];
     NSLog(@"ASK VIEW CONTROLLER");
     [_tableOfCategories setShowsVerticalScrollIndicator:NO];
     [self.navigationItem.rightBarButtonItem setEnabled:NO];
@@ -105,7 +99,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _questionsCount;
+    return self.questionsArray.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -119,11 +113,12 @@
     cell.nameLabel.text = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
     NSString *countValue = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"];
     cell.countLabel.text = [@"available :" stringByAppendingString:countValue];
-    //cell.detailTextLabel.text = @"Оценка";
+ 
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.backButton setEnabled:YES];
     self.upButtonShows = YES;
     [self.navigationItem.rightBarButtonItem setEnabled:YES];
     self.translatingValue = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"];
@@ -131,14 +126,16 @@
     
     if([[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"] integerValue] != 0)
     {
+       // NSInteger currentSubCategory = [[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
+        
+        
+        [self.backIds addObject:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"]];
         _questionsCount = 0;
         [_tableOfCategories reloadData];
         [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadingInquirerListKey",nil)];
         [self.api getQuestionsWithParentID:[[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue]];
         _upperID = [[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
-        NSLog(@"Upper ID = %d", _upperID);
-        
-        NSLog(@"translate %@", self.translatingValue);
+      
     }
     else
     {
@@ -155,24 +152,12 @@
             _translatingUrl = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"];
             _sendingTitle = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
             self.finalID = self.defaultID;
-            NSLog(@"finalID = %d", self.finalID);
-            //self.upperID = self.finalID;
-            NSLog(@"wazaaaa %@",_translatingUrl);
-            NSLog(@"asdadsfdsfsf %@",_sendingTitle);
-            NSLog(@"After select %d", self.upperID);
-            [self.delegate setUpperId:self.upperID];
+                        [self.delegate setUpperId:self.upperID];
             if([[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"]){
                 
                 [self.delegate addProduct:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] withURL:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"]];}
-           // [self.delegate setUpperId:self.finalID];
-            
-            //[self.delegate addProduct:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] withURL:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"]];
-            
-            //
-            //            [self.requestItemsString appendString:@"hello1"];
-            //            NSLog(@"reqyest %@", self.requestItemsString);
-            [self dismissViewControllerAnimated:YES completion:nil];
-            // [self performSegueWithIdentifier:@"toQuestionProductDetail" sender:self];
+                      [self dismissViewControllerAnimated:YES completion:nil];
+        
         }
         
     }
@@ -193,13 +178,13 @@
     {
         NSLog(@"zzzzzzz %u", _questionsCount);
         _questionsArray = [dictionary valueForKey:@"list"];
-        
-        for (int i  = 0; i<_questionsArray.count; i++)
-        {
-            NSArray *insertIndexPath = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:_questionsCount inSection:0]];
-            _questionsCount++;
-            [_tableOfCategories insertRowsAtIndexPaths: insertIndexPath withRowAnimation:NO];
-        }
+//        
+//        for (int i  = 0; i<_questionsArray.count; i++)
+//        {
+//            NSArray *insertIndexPath = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:_questionsCount inSection:0]];
+//            _questionsCount++;
+//            [_tableOfCategories insertRowsAtIndexPaths: insertIndexPath withRowAnimation:NO];
+//        }
         [_tableOfCategories reloadData];
         //  _questionsCount = 0;
     }
@@ -216,11 +201,27 @@
     [self.delegate setUpperId:0];
 }
 
-- (IBAction)upAction:(id)sender {
-    _questionsCount = 0;
-    [_tableOfCategories reloadData];
-    [self.api getQuestionsWithParentID:0];
-    [_upButton setEnabled:NO];
+//- (IBAction)upAction:(id)sender {
+//    _questionsCount = 0;
+//    [_tableOfCategories reloadData];
+//    [self.api getQuestionsWithParentID:0];
+//    [_upButton setEnabled:NO];
+//}
+- (IBAction)backButtonPressed:(id)sender {
+    [self.backIds removeLastObject];
+    if(self.backIds.count != 0){
+
+    NSInteger lastId = [[self.backIds objectAtIndex:(self.backIds.count-1)] integerValue];
+
     
+    
+    [self.api getQuestionsWithParentID:lastId];
+        [self.tableOfCategories reloadData];}
+    else{
+        [self.api getQuestionsWithParentID:0];
+        [self.backButton setEnabled:NO];
+    }
+    for (id obj in self.backIds)
+    NSLog(@"obj: %@", obj);
 }
 @end

@@ -49,6 +49,9 @@
 "CommentKey" = "Comments";
 "RateKey" = "Rate";
 "ConfirmKey" = "Confirm";
+"AllProductsDownloadedKey" = "All products are downloaded";
+"ProductWasVerificatedKey" = "I verified";
+"WithAppKey" = "in \"Territory of Success\" Application";
 
 // Опросы
 "DownloadInquirersKey" = "Loading interogation";
@@ -63,9 +66,13 @@
 "MyKey" = "My";
 "AnswersKey" = "Answers";
 "PickAProductKey" = "Pick a product";
-
+"SelectOneProductKey" = "Select at least one product!";
+"AlreadySelectedProductKey" = "This product is already selected";
+"QuestionCreatedKey" = "Interrogation created!";
+"SuccessKey" = "Success";
+"ErrorKey" = "Error";
 
 // Новости
 "DownloadingInformationKey" = "Downloading information...";
 "AllNewsDownloadedKey" = "All news are downloaded";
-"DownloadMoreKey" = "Download more";
+"DownloadMoreKey" = "Load more";

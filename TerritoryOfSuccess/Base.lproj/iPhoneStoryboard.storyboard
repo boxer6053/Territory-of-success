@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8kx-JT-nNm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8kx-JT-nNm">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
         <!--Catalogue View Controller - Каталог-->
@@ -237,7 +237,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="x9r-Ks-e1Q">
-                        <barButtonItem key="rightBarButtonItem" title="Share" id="LOb-YF-Ip1">
+                        <barButtonItem key="rightBarButtonItem" title="Share" style="done" id="LOb-YF-Ip1">
                             <connections>
                                 <action selector="shareButtonPressed:" destination="n4h-LN-HLC" id="lJw-7R-W7k"/>
                             </connections>
@@ -255,6 +255,7 @@
                         <outlet property="productDescriptionTextView" destination="WiQ-qI-oGj" id="N3O-Hw-xh2"/>
                         <outlet property="productName" destination="DeZ-HA-pbV" id="8fW-c5-sPd"/>
                         <outlet property="ratingImage" destination="mXs-lz-J8f" id="oDc-RC-aif"/>
+                        <outlet property="shareButton" destination="LOb-YF-Ip1" id="FYN-3P-xIs"/>
                         <outlet property="starView" destination="pYS-CY-0eM" id="i9d-tu-Swq"/>
                         <outlet property="transitionContainerView" destination="tzr-zs-FfV" id="H8m-NG-yfe"/>
                         <outlet property="twButton" destination="Uvw-ed-P2X" id="aNh-dK-J8B"/>
@@ -907,7 +908,7 @@
             <objects>
                 <tabBarController definesPresentationContext="YES" id="8kx-JT-nNm" customClass="MSTabBarController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="gUV-wz-VPI">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="gUV-wz-VPI" customClass="PrettyTabBar">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1052,7 +1053,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" id="dar-Tf-bcB">
-                                <rect key="frame" x="20" y="49" width="280" height="300"/>
+                                <rect key="frame" x="20" y="49" width="280" height="359"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1153,18 +1154,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="hPp-RO-unh">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="bC2-FT-KTp">
-                            <connections>
-                                <action selector="addMoreProduct:" destination="gib-UJ-LPj" id="ok4-rF-abb"/>
-                                <segue destination="mc9-cG-NdE" kind="modal" identifier="pickAProduct" id="Zz3-Sf-in3"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="hPp-RO-unh"/>
                     <connections>
                         <outlet property="askButton" destination="pNu-G9-IJC" id="Qfx-rA-fNm"/>
                         <outlet property="cleanButton" destination="lBi-f4-h2n" id="VUI-Wh-Agq"/>
                         <outlet property="nameLabel" destination="gh6-OG-W9P" id="or6-GD-qug"/>
+                        <segue destination="mc9-cG-NdE" kind="modal" identifier="pickAProduct" id="cCP-0M-vNR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RXH-jk-oBd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1248,7 +1243,7 @@
                 <navigationController id="WMr-Z5-3IS" customClass="MSFirstNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="1" title="Главная" image="home_TOS.png" id="vHN-4a-EzM"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="F3A-Mp-SZr">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="F3A-Mp-SZr" customClass="PrettyNavigationBar">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1268,7 +1263,7 @@
                 <navigationController id="rKH-MI-8hw" customClass="MSFirstNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="2" title="Каталог" image="catalogue_TOS.png" id="D8e-iH-KKD"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bK7-ec-7vO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bK7-ec-7vO" customClass="PrettyNavigationBar">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1287,7 +1282,7 @@
                 <navigationController id="TsD-xh-9RE" customClass="MSFirstNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="3" title="Опросы" image="questions1.png" id="xr2-ka-6RV"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FJa-KM-BR9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FJa-KM-BR9" customClass="PrettyNavigationBar">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1543,7 +1538,12 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Title" id="0kr-2q-qV8">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ZnA-8E-mt0">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="mHL-gX-JVF">
+                                            <connections>
+                                                <action selector="backButtonPressed:" destination="mc9-cG-NdE" id="3wr-Z2-XTc"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="ZnA-8E-mt0">
                                             <connections>
                                                 <action selector="cancel:" destination="mc9-cG-NdE" id="C26-NG-DOR"/>
                                             </connections>
@@ -1562,13 +1562,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backButton" destination="mHL-gX-JVF" id="ceA-5A-eJ3"/>
                         <outlet property="tableOfCategories" destination="seu-Rx-Ovi" id="Beu-JS-2nE"/>
                         <outlet property="upButton" destination="aJJ-ZY-1Ox" id="kKi-hs-syr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZt-ZS-LiA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2266" y="1027"/>
+            <point key="canvasLocation" x="1714" y="1043"/>
         </scene>
         <!--First Navigation Controller - Новости-->
         <scene sceneID="03Y-68-yoo">
@@ -1576,7 +1577,7 @@
                 <navigationController id="BIb-F4-6Wk" customClass="MSFirstNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="4" title="Новости" image="news_TOS.png" id="xPw-kQ-uM6"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nw1-zZ-O4a">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nw1-zZ-O4a" customClass="PrettyNavigationBar">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1594,11 +1595,11 @@
         <image name="3star.png" width="87" height="20"/>
         <image name="Profile-Picture_40*28_white.png" width="40" height="28"/>
         <image name="button120*35.png" width="120" height="35"/>
-        <image name="button_120*35_new.png" width="120" height="35"/>
-        <image name="button_185_45.png" width="185" height="45"/>
-        <image name="button_300*43.png" width="300" height="43"/>
-        <image name="button_80_44-1.png" width="80" height="44"/>
-        <image name="button_80_44-1_right.png" width="80" height="44"/>
+        <image name="button_120*35_new.png" width="240" height="70"/>
+        <image name="button_185_45.png" width="370" height="90"/>
+        <image name="button_300*43.png" width="600" height="86"/>
+        <image name="button_80_44-1.png" width="160" height="88"/>
+        <image name="button_80_44-1_right.png" width="160" height="88"/>
         <image name="button_80_44-2.png" width="80" height="44"/>
         <image name="catalogue_TOS.png" width="38" height="38"/>
         <image name="checkbox_empty.png" width="32" height="32"/>

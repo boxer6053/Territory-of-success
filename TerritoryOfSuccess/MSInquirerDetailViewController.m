@@ -8,7 +8,6 @@
 
 #import "MSInquirerDetailViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-//#import <SDWebImage/UIImage+WebCache.h>
 #import <SDWebImage/UIButton+WebCache.h>
 #import "MSStatisticViewController.h"
 #import <QuartzCore/QuartzCore.h>
@@ -48,7 +47,6 @@
     NSLog(@"gonnatakeID %d", item);
     NSLog(@"Now Statistics");
     [self.inquirerTitle setText:NSLocalizedString(@"InquirerDescriptionKey",nil)];
-    //self.inquirerTitle.text = NSLocalizedString(@"InquirerDescriptionKey",nil);
      [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadInquirerDetailKey",nil)];
     [self.api getDetailQuestionWithID:item];
     
@@ -297,7 +295,6 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
 -(void)dislikeAction{
     NSInteger *questionID = [self.itemID integerValue];
     [self.api answerToQuestionWithID:questionID andOptionID:0];
-  //   [self.navigationController popViewControllerAnimated:YES];
     NSLog(@"DISLIKE");
 }
 @end

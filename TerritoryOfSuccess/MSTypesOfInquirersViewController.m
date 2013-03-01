@@ -12,6 +12,8 @@
 #import "SVProgressHUD.h"
 #import "MSInquirerCell.h"
 #import "MSLogInView.h"
+#import "PrettyKit.h"
+
 @interface MSTypesOfInquirersViewController ()
 @property (strong, nonatomic) NSMutableData *receivedData;
 @property (strong, nonatomic) MSAPI *api;
@@ -52,14 +54,9 @@
     NSLog(@"AllQuestions");
     
     [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadInquirersKey",nil)];
-    
-    
-       // UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 100, 320, 220)];
-//    [imageView setImage:[UIImage imageNamed:@"inquirerPic.png"]];
-//    [imageView setAlpha:0.3];
-//    [self.view addSubview:imageView];
+   
     [self.view addSubview:self.tableOfInquirers];
-    //[self.view addSubview:[UIImageView *imageView = [UIImageView alloc]init]]
+
     
     if ([[UIScreen mainScreen] bounds].size.height == 568)
     {
@@ -90,6 +87,8 @@
     }
     
     // Do any additional setup after loading the view.
+    
+    [self customizeNavBar];
 }
 
 -(void)dismissPopView:(BOOL)result
@@ -163,7 +162,7 @@
     if(allInquirerMode) {
         cell.titleLabel.text = [[self.allQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
         if([[[self.allQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"] integerValue]== 1){
-         cell.typeImage.image = [UIImage imageNamed:@"likeIcon.png"];
+         cell.typeImage.image = [UIImage imageNamed:@"likeIcon1.png"];
         }
         else{
             cell.typeImage.image = [UIImage imageNamed:@"questionMark.png"];
@@ -174,7 +173,7 @@
         
         
         if([[[self.myQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"] integerValue]== 1){
-            cell.typeImage.image = [UIImage imageNamed:@"likeIcon.png"];
+            cell.typeImage.image = [UIImage imageNamed:@"likeIcon1.png"];
         }
         else{
             cell.typeImage.image = [UIImage imageNamed:@"questionMark.png"];
@@ -278,10 +277,21 @@
 - (void)alertView:(UIAlertView *)alertView
 clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 0){
-      //  MSFirstViewController *loginViewController = [[MSFirstViewController alloc] init];
-
+   
         [self.navigationController popViewControllerAnimated:YES];
         
     }
 }
+
+- (void)customizeNavBar {
+    PrettyNavigationBar *navBar = (PrettyNavigationBar *)self.navigationController.navigationBar;
+    
+    navBar.topLineColor = [UIColor colorWithHex:0x676767];
+    navBar.gradientStartColor = [UIColor colorWithHex:0x373737];
+    navBar.gradientEndColor = [UIColor colorWithHex:0x1a1a1a];
+    navBar.bottomLineColor = [UIColor colorWithHex:0x000000];
+    navBar.tintColor = navBar.gradientEndColor;
+    
+}
+
 @end

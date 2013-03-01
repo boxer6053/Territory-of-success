@@ -49,6 +49,7 @@
 "CommentKey" = "Коментарі";
 "RateKey" = "Оцінити";
 "ConfirmKey" = "Підтвердити";
+"AllProductsDownloadedKey" = "Всі продукти завантаженні";
 
 // Опросы
 "DownloadInquirersKey" = "Завантаження питань";
@@ -63,6 +64,11 @@
 "MyKey" = "Мої питання";
 "AnswersKey" = "Відповіді";
 "PickAProductKey" = "Оберіть продукти";
+"SelectOneProductKey" = "Оберіть не менше одного продукту";
+"AlreadySelectedProductKey" = "Цей продукт вже вибраний";
+"QuestionCreatedKey" = "Питання створено!";
+"SuccessKey" = "Успіх";
+"ErrorKey" = "Помилка";
 
 
 // Новости

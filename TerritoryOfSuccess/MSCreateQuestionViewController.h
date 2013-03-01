@@ -4,7 +4,7 @@
 @interface MSCreateQuestionViewController : UIViewController <UIGestureRecognizerDelegate, AddingRequestStringDelegate, WsCompleteDelegate>
 @property (strong, nonatomic) NSArray *arrayOfViews;
 @property (strong, nonatomic) NSMutableString *requestString;
-- (IBAction)addMoreProduct:(id)sender;
+
 @property (strong, nonatomic) NSMutableArray *gettedImages;
 @property (strong, nonatomic) NSString *response;
 @property (nonatomic) int upperID;
@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *cleanButton;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) NSArray *arrayOfProducts;
+@property (strong, nonatomic) NSMutableArray *requestStringArray;
 - (IBAction)cleanButton:(id)sender;
 @end

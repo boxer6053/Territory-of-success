@@ -87,7 +87,7 @@
      {
          [self.vkBackgroundView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
      }];
-    [self.mainView.view.window addSubview:self.vkBackgroundView];
+    [self.mainView.view addSubview:self.vkBackgroundView];
     
     UITapGestureRecognizer *singleCloseTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeVKView)];
     [self.vkBackgroundView addGestureRecognizer:singleCloseTap];
@@ -103,7 +103,7 @@
     [self.vkView.layer setCornerRadius:10];
     [self.vkView.layer setBorderWidth:1.0f];
     self.vkView.clipsToBounds = YES;
-    [self.mainView.view.window addSubview:self.vkView];
+    [self.mainView.view addSubview:self.vkView];
     
     UIImageView *vkHeaderImage = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"vkHeader.png"]];
     vkHeaderImage.frame = CGRectMake(0, 0, 180, 45);
