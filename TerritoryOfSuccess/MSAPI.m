@@ -284,6 +284,47 @@
     [self connectionVerification];
 }
 
+- (void)getBonusCategories
+{
+    self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/bonus"];
+    self.checkRequest = kBonusCategories;
+    
+    self.request  = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
+    [self.request setHTTPMethod:@"POST"];
+    self.params = [NSString stringWithFormat:@"&lang=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
+    [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [self connectionVerification];
+}
+
+- (void)getBonusSubCategories:(int)categoryId
+{
+    self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/bonus"];
+    self.checkRequest = kBonusSubCategories;
+    
+    self.request  = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
+    [self.request setHTTPMethod:@"POST"];
+    self.params = [NSMutableString stringWithFormat:@"&lang=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
+    [self.params appendFormat:@"&category_id=%d",categoryId];
+    [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [self connectionVerification];
+}
+
+- (void)getBonusProduct:(int)productId
+{
+    self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/bonus"];
+    self.checkRequest = kBonusSubCategories;
+    
+    self.request  = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
+    [self.request setHTTPMethod:@"POST"];
+    self.params = [NSMutableString stringWithFormat:@"&lang=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
+    [self.params appendFormat:@"&product_id=%d",productId];
+    [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [self connectionVerification];
+}
+
 - (void)getProductsWithOffset:(int)offset withBrandId:(int)brandId withCategoryId:(int)categoryId{
     self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/catalog"];
     self.checkRequest = kCatalog;
