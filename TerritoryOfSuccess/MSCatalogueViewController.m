@@ -4,6 +4,7 @@
 #import "MSBrandsAndCategoryCell.h"
 #import "SVProgressHUD.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "PrettyKit.h"
 
 @interface MSCatalogueViewController ()
 
@@ -66,6 +67,8 @@
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
     [self.tableView.layer setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0].CGColor];
+    
+    [self customizeNavBar];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -256,6 +259,17 @@
     }
     
     [self.categoryAndBrandsControl setUserInteractionEnabled:YES];
+    
+}
+
+- (void)customizeNavBar {
+    PrettyNavigationBar *navBar = (PrettyNavigationBar *)self.navigationController.navigationBar;
+    
+    navBar.topLineColor = [UIColor colorWithHex:0x676767];
+    navBar.gradientStartColor = [UIColor colorWithHex:0x373737];
+    navBar.gradientEndColor = [UIColor colorWithHex:0x1a1a1a];
+    navBar.bottomLineColor = [UIColor colorWithHex:0x000000];
+    navBar.tintColor = navBar.gradientEndColor;
     
 }
 
