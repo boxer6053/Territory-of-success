@@ -79,23 +79,23 @@
     //фреймы для разных экранов (4 и 5 айфон)
     if ([[UIScreen mainScreen] bounds].size.height == 568)
     {
-        [image1 setFrame:CGRectMake(40, 58, 80,80)];
-        [image2 setFrame:CGRectMake(200, 58, 80,80)];
-        [image3 setFrame:CGRectMake(40, 168, 80,80)];
-        [image4 setFrame:CGRectMake(200, 168, 80,80)];
-        [image5 setFrame:CGRectMake(40, 278, 80,80)];
-        [image6 setFrame:CGRectMake(200, 278, 80,80)];
+        [image1 setFrame:CGRectMake(50, 58, 80,80)];
+        [image2 setFrame:CGRectMake(190, 58, 80,80)];
+        [image3 setFrame:CGRectMake(50, 168, 80,80)];
+        [image4 setFrame:CGRectMake(190, 168, 80,80)];
+        [image5 setFrame:CGRectMake(50, 278, 80,80)];
+        [image6 setFrame:CGRectMake(190, 278, 80,80)];
         
     }
     else
     {
         
-        [image1 setFrame:CGRectMake(40, 36, 80,80)];
-        [image2 setFrame:CGRectMake(200, 36, 80,80)];
-        [image3 setFrame:CGRectMake(40, 126, 80,80)];
-        [image4 setFrame:CGRectMake(200, 126, 80,80)];
-        [image5 setFrame:CGRectMake(40, 226, 80,80)];
-        [image6 setFrame:CGRectMake(200, 226, 80,80)];
+        [image1 setFrame:CGRectMake(50, 36, 80,80)];
+        [image2 setFrame:CGRectMake(190, 36, 80,80)];
+        [image3 setFrame:CGRectMake(50, 126, 80,80)];
+        [image4 setFrame:CGRectMake(190, 126, 80,80)];
+        [image5 setFrame:CGRectMake(50, 226, 80,80)];
+        [image6 setFrame:CGRectMake(190, 226, 80,80)];
     }
 
     self.arrayOfViews = [[NSArray alloc] initWithObjects:image1,image2,image3,image4,image5,image6, nil];
