@@ -771,7 +771,7 @@
             <objects>
                 <tabBarController definesPresentationContext="YES" id="8kx-JT-nNm" customClass="MSTabBarController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="gUV-wz-VPI">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="gUV-wz-VPI" customClass="PrettyTabBar">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1748,6 +1748,9 @@
         </class>
         <class className="PrettyNavigationBar" superclassName="UINavigationBar">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PrettyNavigationBar.h"/>
+        </class>
+        <class className="PrettyTabBar" superclassName="UITabBar">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PrettyTabBar.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
