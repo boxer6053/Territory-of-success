@@ -173,7 +173,7 @@
         
         
         if([[[self.myQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"] integerValue]== 1){
-            cell.typeImage.image = [UIImage imageNamed:@"likeIcon.png"];
+            cell.typeImage.image = [UIImage imageNamed:@"likeIcon1.png"];
         }
         else{
             cell.typeImage.image = [UIImage imageNamed:@"questionMark.png"];
