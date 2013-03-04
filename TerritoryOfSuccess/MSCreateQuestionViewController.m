@@ -190,7 +190,7 @@
             access = 0;
     }
     if(access ==1){
-        UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Такой продукт уже внесен в опрос!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
+        UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ErrorKey",nil)message:NSLocalizedString(@"AlreadySelectedProductKey",nil) delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
         [failmessage show];
     }
     else{
@@ -242,17 +242,11 @@
     [SVProgressHUD showWithStatus:NSLocalizedString(@"SendingInquirerKey",nil)];
         [self.api createQuestionWithItems:self.requestString];}
     else{
-        UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Выберите не меньше 1 продукта!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
+        UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ErrorKey",nil) message:NSLocalizedString(@"SelectOneProductKey",nil) delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
         [failmessage show];
     }
 }
-//- (void)alertView:(UIAlertView *)alertView
-//clickedButtonAtIndex:(NSInteger)buttonIndex{
-//    if (buttonIndex == 0){
-//        [self.navigationController popViewControllerAnimated:YES];
-//        
-//    }
-//}
+
 -(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
 {
     if (type ==kCreateQuest)
@@ -262,7 +256,7 @@
         NSLog(@"Result is %@", self.response);
         if([self.response isEqualToString:wantedString])
         {
-            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Успех" message:@"Опрос успешно создан!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
+            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SuccessKey",nil) message:NSLocalizedString(@"QuestionCreatedKey",nil) delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
             [failmessage show];
             [self.navigationController popViewControllerAnimated:YES];
 

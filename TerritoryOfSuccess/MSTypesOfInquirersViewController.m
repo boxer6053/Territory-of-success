@@ -162,7 +162,7 @@
     if(allInquirerMode) {
         cell.titleLabel.text = [[self.allQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
         if([[[self.allQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"] integerValue]== 1){
-         cell.typeImage.image = [UIImage imageNamed:@"likeIcon.png"];
+         cell.typeImage.image = [UIImage imageNamed:@"likeIcon1.png"];
         }
         else{
             cell.typeImage.image = [UIImage imageNamed:@"questionMark.png"];
@@ -173,7 +173,7 @@
         
         
         if([[[self.myQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"] integerValue]== 1){
-            cell.typeImage.image = [UIImage imageNamed:@"likeIcon.png"];
+            cell.typeImage.image = [UIImage imageNamed:@"likeIcon1.png"];
         }
         else{
             cell.typeImage.image = [UIImage imageNamed:@"questionMark.png"];

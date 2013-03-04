@@ -66,7 +66,11 @@
 "MyKey" = "My";
 "AnswersKey" = "Answers";
 "PickAProductKey" = "Pick a product";
-
+"SelectOneProductKey" = "Select at least one product!";
+"AlreadySelectedProductKey" = "This product is already selected";
+"QuestionCreatedKey" = "Interrogation created!";
+"SuccessKey" = "Success";
+"ErrorKey" = "Error";
 
 // Новости
 "DownloadingInformationKey" = "Downloading information...";
