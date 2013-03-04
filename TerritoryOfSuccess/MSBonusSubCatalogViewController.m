@@ -83,7 +83,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.api getBonusSubCategories:[[[self.subCategoriesList objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue]];
+    MSBrandsAndCategoryCell *cell = (MSBrandsAndCategoryCell *)[tableView cellForRowAtIndexPath:indexPath];
+    if(![cell.categoryOrBrandNumber.text isEqualToString:@"0"])
+        [self.api getBonusSubCategories:[[[self.subCategoriesList objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue]];
 }
 
 - (void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type

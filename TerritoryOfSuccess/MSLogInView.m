@@ -126,7 +126,8 @@
         [self.loginButton addTarget:self action:@selector(loginPressed) forControlEvents:UIControlEventTouchUpInside];
         [self.loginView addSubview:self.loginButton];
         
-        self.registrationButton = [[UIButton alloc]initWithFrame:CGRectMake(140, 91, 120, 30)];
+        self.registrationButton = [[UIButton alloc]initWithFrame:CGRectMake(60, 91, 200, 30)];
+        [self.registrationButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
         [self.registrationButton setBackgroundColor:[UIColor clearColor]];
         [self.registrationButton.titleLabel setTextColor:[UIColor orangeColor]];
         self.registrationButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:14];
@@ -179,7 +180,7 @@
 {
     [UIView animateWithDuration:1.0 animations:^
      {
-         self.registrationButton.frame = CGRectMake(-130, 91, self.registrationButton.frame.size.width, self.registrationButton.frame.size.height);
+         self.registrationButton.frame = CGRectMake(-210, 91, self.registrationButton.frame.size.width, self.registrationButton.frame.size.height);
          self.passwordConfirmLabel.frame = CGRectMake(10, self.passwordConfirmLabel.frame.origin.y, self.passwordConfirmLabel.frame.size.width, self.passwordConfirmLabel.frame.size.height);
          self.passwordConfirmTextField.frame = CGRectMake(85, self.passwordConfirmTextField.frame.origin.y, self.passwordConfirmTextField.frame.size.width, self.passwordConfirmTextField.frame.size.height);
          self.backToLoginButton.frame = CGRectMake(215, self.backToLoginButton.frame.origin.y, self.backToLoginButton.frame.size.width, self.backToLoginButton.frame.size.height);
@@ -191,7 +192,7 @@
 {
     [UIView animateWithDuration:1.0 animations:^
      {
-         self.registrationButton.frame = CGRectMake(140, 91, self.registrationButton.frame.size.width, self.registrationButton.frame.size.height);
+         self.registrationButton.frame = CGRectMake(60, 91, self.registrationButton.frame.size.width, self.registrationButton.frame.size.height);
          self.passwordConfirmLabel.frame = CGRectMake(280, self.passwordConfirmLabel.frame.origin.y, self.passwordConfirmLabel.frame.size.width, self.passwordConfirmLabel.frame.size.height);
          self.passwordConfirmTextField.frame = CGRectMake(355, self.passwordConfirmTextField.frame.origin.y, self.passwordConfirmTextField.frame.size.width, self.passwordConfirmTextField.frame.size.height);
          self.backToLoginButton.frame = CGRectMake(455, self.backToLoginButton.frame.origin.y, self.backToLoginButton.frame.size.width, self.backToLoginButton.frame.size.height);
