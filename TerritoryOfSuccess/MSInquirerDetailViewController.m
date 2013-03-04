@@ -164,10 +164,10 @@
         if ([[UIScreen mainScreen] bounds].size.height == 568)
             
         {
-            [imageForInquirer1 setFrame:CGRectMake(60, 78, 200, 200)];
-            [productTitle setFrame:CGRectMake(20,290,280,40)];
-            likeButton.frame = CGRectMake(20, 350, 120, 32);
-            dislikeButton.frame = CGRectMake(180, 350, 120, 32);
+            [imageForInquirer1 setFrame:CGRectMake(20, 100, 280, 280)];
+            [productTitle setFrame:CGRectMake(20,10,280,40)];
+            likeButton.frame = CGRectMake(50, 310, 60, 60);
+            dislikeButton.frame = CGRectMake(210, 310, 60, 60);
         }
         
         else{
