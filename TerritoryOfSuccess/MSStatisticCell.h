@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PrettyTableViewCell.h"
 
 @interface MSStatisticCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
