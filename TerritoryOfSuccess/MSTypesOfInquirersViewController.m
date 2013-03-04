@@ -43,6 +43,13 @@
     return _api;
 }
 
+- (MSLogInView *) loginView{
+    if(!_loginView){
+        _loginView = [[MSLogInView alloc]init];
+        _loginView.delegate = self;
+    }
+    return _loginView;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -99,6 +106,11 @@
         [self viewDidAppear:YES];
     }
     self.loginView = nil;
+}
+-(void)viewDidDisappear:(BOOL)animated  {
+    if(_loginView){
+    [self.loginView removeFromSuperview];
+    }
 }
 
 -(void)setSegmentControlColor
