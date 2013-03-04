@@ -77,11 +77,11 @@
         self.productImageButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [self.productImageButton setFrame:CGRectMake(10, 40, 100, 100)];
         [self.productImageButton setClipsToBounds:YES];
-        [self.productImageButton.layer setCornerRadius:5.0];
+        [self.productImageButton.layer setCornerRadius:10.0];
         [self.productImageButton.layer setBorderColor:[UIColor colorWithWhite:0.5 alpha:1.0].CGColor];
         [self.productImageButton.layer setBorderWidth:1.0];
         [self.productImageButton setBackgroundColor:[UIColor whiteColor]];
-        [self.productImageButton setBackgroundImage:[UIImage imageNamed:@"photoPlaceholder.png"] forState:UIControlStateNormal];
+        [self.productImageButton setBackgroundImage:[UIImage imageNamed:@"photoPlaceholder1.png"] forState:UIControlStateNormal];
         [self.productImageButton addTarget:self action:@selector(takeProductPhoto) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:self.productImageButton];
         
@@ -114,10 +114,10 @@
         
         //comment textView
         self.commentTextView = [[UITextView alloc] initWithFrame:CGRectMake(self.productImageButton.frame.origin.x, self.productImageButton.frame.origin.y + self.productImageButton.frame.size.height + 10, 290, 100)];
-        [self.commentTextView.layer setCornerRadius:5.0];
+        [self.commentTextView.layer setCornerRadius:10.0];
         [self.commentTextView.layer setBorderWidth:1.0];
         [self.commentTextView.layer setBorderColor:[[UIColor colorWithWhite:0.5 alpha:1.0] CGColor]];
-        [self.commentTextView setText:@"Напышыте коментарий к жалобе!"];
+        [self.commentTextView setText:@"Напишите коментарий к жалобе!"];
         [self.commentTextView setTextColor:[UIColor lightGrayColor]];
 //        [self.commentTextView setDelegate:self];
         self.commentTextView.returnKeyType = UIReturnKeyDone;
@@ -127,7 +127,7 @@
         self.sendComplaintButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [self.sendComplaintButton setFrame:CGRectMake(10, self.commentTextView.frame.origin.y + self.commentTextView.frame.size.height + 10, 140, 35)];
         [self.sendComplaintButton setBackgroundImage:[UIImage imageNamed:@"button_140*35.png"] forState:UIControlStateNormal];
-        [self.sendComplaintButton setTitle:@"Отправыть" forState:UIControlStateNormal];
+        [self.sendComplaintButton setTitle:@"Отправить" forState:UIControlStateNormal];
         [self.sendComplaintButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         self.sendComplaintButton.titleLabel.font
         = [UIFont fontWithName:@"Helvetica-Bold" size:12.0];

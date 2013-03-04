@@ -203,7 +203,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     self.commentsLabel.text = [NSString stringWithFormat:@"%d",self.commentsDetail];
     self.advisesLabel.text = [NSString stringWithFormat:@"%d",self.advisesDetail];
     self.productName.text = self.productSentName;

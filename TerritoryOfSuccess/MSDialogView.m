@@ -77,7 +77,7 @@
         self.productImageView = [[UIImageView alloc] init];
         [self.productImageView setFrame:CGRectMake(10, 71, 100, 100)];
         [self.productImageView setClipsToBounds:YES];
-        [self.productImageView.layer setCornerRadius:5.0];
+        [self.productImageView.layer setCornerRadius:7.0];
         [self.productImageView.layer setBorderWidth:1.0];
         [self.productImageView.layer setBorderColor:[[UIColor colorWithWhite:0.5 alpha:1.0] CGColor]];
         [self.contentView addSubview:self.productImageView];
