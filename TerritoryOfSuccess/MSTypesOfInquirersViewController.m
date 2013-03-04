@@ -18,10 +18,12 @@
 @property (strong, nonatomic) NSMutableData *receivedData;
 @property (strong, nonatomic) MSAPI *api;
 @property (nonatomic, strong) MSLogInView *loginView;
+@property (weak, nonatomic) NSString *sendingName;
 @end
 
 
 @implementation MSTypesOfInquirersViewController
+@synthesize sendingName = _sendingName;
 @synthesize tableOfInquirers = _tableOfInquirers;
 @synthesize testInquirers = _testInquirers;
 @synthesize selectedValue = _selectedValue;
@@ -201,12 +203,14 @@
     _selectedValue = cell.textLabel.text;
     if(allInquirerMode) {
         self.sendingID =  [[self.allQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"id"];
+        self.sendingName = [[self.allQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
     }
     else{
         self.sendingID = [[self.myQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"id"];
+        self.sendingName = [[self.myQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
     }
     NSLog(@"ID%@",  self.sendingID);
-    NSLog (@"%@", _selectedValue);
+    NSLog (@"%@", self.sendingName);
     [self performSegueWithIdentifier:@"toInquirerDetail" sender:self];
 }
 
@@ -216,6 +220,7 @@
         MSInquirerDetailViewController *controller = (MSInquirerDetailViewController *)segue.destinationViewController;
         controller.inquirerType = [_selectedValue integerValue];
         controller.itemID = self.sendingID;
+        controller.productName = self.sendingName;
         NSLog(@"ss %@", _selectedValue);
     }
 }

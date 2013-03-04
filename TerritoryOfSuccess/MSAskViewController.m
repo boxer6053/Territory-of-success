@@ -111,8 +111,14 @@
     }
     cell.nameLabel.numberOfLines = 2;
     cell.nameLabel.text = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
+        if([[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"] isEqualToString:@""])
+        {
     NSString *countValue = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"];
     cell.countLabel.text = [@"available :" stringByAppendingString:countValue];
+    }
+        else{
+            [cell.countLabel setHidden:YES];
+        }
  
     return cell;
 }

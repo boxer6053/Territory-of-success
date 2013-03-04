@@ -21,9 +21,11 @@
 
 @implementation MSInquirerDetailViewController
 @synthesize inquirerType = _inquirerType;
+
 @synthesize inquirerTitle = _inquirerTitle;
 @synthesize itemID = _itemID;
 @synthesize arrayOfProducts = _arrayOfProducts;
+@synthesize productName = _productName;
 @synthesize receivedData = _receivedData;
 @synthesize api = _api;
 @synthesize toStatButton = _toStatButton;
@@ -41,12 +43,12 @@
 - (void)viewDidLoad
 {
     NSLog(@"itemID %ld", (long)self.itemID);
-    
+    NSLog(@"getted %@",self.productName);
     NSLog(@"adfdsfsdf%d", _inquirerType);
     int item = [self.itemID integerValue];
     NSLog(@"gonnatakeID %d", item);
     NSLog(@"Now Statistics");
-    [self.inquirerTitle setText:NSLocalizedString(@"InquirerDescriptionKey",nil)];
+   // [self.inquirerTitle setText:NSLocalizedString(@"InquirerDescriptionKey",nil)];
      [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadInquirerDetailKey",nil)];
     [self.api getDetailQuestionWithID:item];
     
@@ -126,24 +128,33 @@
         
         //ВИД ОПРОСА "ОЦЕНИТЕ ТОВАР"
         //UIImage *imagge = [UIImage imageWithURL]
+        UILabel *productTitle = [[UILabel alloc] init];
+        productTitle.numberOfLines = 2;
+        [productTitle setBackgroundColor:[UIColor clearColor]];
+        [productTitle setText:self.productName];
+        productTitle.textAlignment = NSTextAlignmentCenter;
+        [self.view addSubview:productTitle];
         UIImageView *imageForInquirer1 = [[UIImageView alloc] init];
         self.optionForAnswer = [[[self.arrayOfProducts objectAtIndex:0] valueForKey:@"id"] integerValue];
-        imageForInquirer1.layer.cornerRadius = 10.0f;
-        imageForInquirer1.clipsToBounds = YES;
+//        imageForInquirer1.layer.cornerRadius = 10.0f;
+//        imageForInquirer1.clipsToBounds = YES;
+        [imageForInquirer1.layer setBorderColor:[[UIColor grayColor] CGColor]];
+        [imageForInquirer1.layer setBorderWidth:1];
+        //[imageForInquirer1 setImage:[UIImage imageNamed:@"testPic.png"]];
         [imageForInquirer1 setImageWithURL:[[self.arrayOfProducts objectAtIndex:0] valueForKey:@"image"]];
         [self.view addSubview:imageForInquirer1];
         UIButton *likeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         
-        [likeButton setBackgroundImage:[UIImage imageNamed:@"button120*35.png"] forState:UIControlStateNormal];
-        [likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [likeButton setTitle:@"Like it!" forState:UIControlStateNormal];
+        [likeButton setBackgroundImage:[UIImage imageNamed:@"likeWithOpacity copy.png"] forState:UIControlStateNormal];
+//        [likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//        [likeButton setTitle:@"Like it!" forState:UIControlStateNormal];
         [likeButton addTarget:self action:@selector(likeAction)  forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:likeButton];
         UIButton *dislikeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [dislikeButton setBackgroundImage:[UIImage imageNamed:@"button120*35.png"] forState:UIControlStateNormal];
+        [dislikeButton setBackgroundImage:[UIImage imageNamed:@"dislikeWithOpacity copy.png"] forState:UIControlStateNormal];
         //[dislikeButton setBackgroundColor:[UIColor blackColor]];
-        [dislikeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [dislikeButton setTitle:@"Hate it!" forState:UIControlStateNormal];
+//        [dislikeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//        [dislikeButton setTitle:@"Hate it!" forState:UIControlStateNormal];
         [dislikeButton addTarget:self action:@selector(dislikeAction) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:dislikeButton];
 
@@ -154,14 +165,16 @@
             
         {
             [imageForInquirer1 setFrame:CGRectMake(60, 78, 200, 200)];
-            likeButton.frame = CGRectMake(20, 330, 120, 32);
-            dislikeButton.frame = CGRectMake(180, 330, 120, 32);
+            [productTitle setFrame:CGRectMake(20,290,280,40)];
+            likeButton.frame = CGRectMake(20, 350, 120, 32);
+            dislikeButton.frame = CGRectMake(180, 350, 120, 32);
         }
         
         else{
-            [imageForInquirer1 setFrame:CGRectMake(60, 48, 200, 200)];
-            likeButton.frame = CGRectMake(20, 300, 120, 32);
-            dislikeButton.frame = CGRectMake(180, 300, 120, 32);
+            [productTitle setFrame:CGRectMake(20,10,280,40)];
+            [imageForInquirer1 setFrame:CGRectMake(20, 60, 280, 280)];
+            likeButton.frame = CGRectMake(50, 270, 60, 60);
+            dislikeButton.frame = CGRectMake(210, 270, 60, 60);
         }
     }
     else{
