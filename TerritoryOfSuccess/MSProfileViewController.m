@@ -16,6 +16,7 @@
 #import "MSPickerView.h"
 #import "MSEditButtonsCell.h"
 #import "MSBonusCatalogViewController.h"
+#import "PrettyKit.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface MSProfileViewController ()
