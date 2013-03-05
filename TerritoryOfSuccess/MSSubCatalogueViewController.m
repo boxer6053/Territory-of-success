@@ -65,8 +65,8 @@
     [super didReceiveMemoryWarning];
 }
 
-// Методы вызываемый при переходе на этот контроллер
--(void) sentWithBrandId:(int)brandId withCategoryId:(int)categoryId
+// Метод вызываемый при переходе на этот контроллер
+- (void)sentWithBrandId:(int)brandId withCategoryId:(int)categoryId
 {
     _isFromBonusCatalog = NO;
     self.tempBrandId = brandId;
