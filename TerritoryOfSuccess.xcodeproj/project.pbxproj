@@ -1189,6 +1189,13 @@
 				F536D0A216DE46A400950051 /* button_80_44-1.png in Resources */,
 				F569161316E1140F003CAE0E /* likeIcon1.png in Resources */,
 				FAFB834216E61340006F0F4F /* bag.png in Resources */,
+				F512D75616E4C36B00DCC051 /* photoPlaceholder1.png in Resources */,
+				F569161816E50510003CAE0E /* dislikeWithOpacity.png in Resources */,
+				F569161916E50510003CAE0E /* likeWithOpacity.png in Resources */,
+				F569161B16E509E6003CAE0E /* dislikeWithOpacity copy.png in Resources */,
+				F569161D16E50A21003CAE0E /* likeWithOpacity copy.png in Resources */,
+				F569162216E661A7003CAE0E /* chooseButton copy.png in Resources */,
+				F569162316E661A7003CAE0E /* chooseButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

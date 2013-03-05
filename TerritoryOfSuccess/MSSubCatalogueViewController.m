@@ -71,7 +71,13 @@
     _isFromBonusCatalog = NO;
     self.tempBrandId = brandId;
     self.tempCategoryId = categoryId;
-    
+    [self.api getProductsWithOffset:0 withBrandId:self.tempBrandId withCategoryId:self.tempCategoryId];
+}
+- (void) sentWithBonusCategoryId:(int)categoryId
+{
+    _isFromBonusCatalog = YES;
+    self.tempBonusCategoryId = categoryId;
+    [self.api getBonusSubCategories:categoryId];
 }
 
 #pragma mark - Table view data source
