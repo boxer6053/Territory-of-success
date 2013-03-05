@@ -129,34 +129,49 @@
         //ВИД ОПРОСА "ОЦЕНИТЕ ТОВАР"
         //UIImage *imagge = [UIImage imageWithURL]
         UILabel *productTitle = [[UILabel alloc] init];
+        UIView *productView = [[UIView alloc] init];
+        productView.layer.cornerRadius = 10.0f;
+        productView.clipsToBounds = YES;
         productTitle.numberOfLines = 2;
+//        [productView.layer setBorderColor:[[UIColor blackColor] CGColor]];
+//        [productView.layer setBorderWidth:1];
         [productTitle setBackgroundColor:[UIColor clearColor]];
-        [productTitle setText:self.productName];
+        [productTitle setText:[[self.arrayOfProducts objectAtIndex:0] valueForKey:@"title"]];
+        //[productTitle setFont:[UIFont fontWithName:@"Helvetica" size:14]];
+        productTitle.minimumScaleFactor = 0.3f;
+        productTitle.adjustsFontSizeToFitWidth = YES;
         productTitle.textAlignment = NSTextAlignmentCenter;
         [self.view addSubview:productTitle];
         UIImageView *imageForInquirer1 = [[UIImageView alloc] init];
         self.optionForAnswer = [[[self.arrayOfProducts objectAtIndex:0] valueForKey:@"id"] integerValue];
 //        imageForInquirer1.layer.cornerRadius = 10.0f;
 //        imageForInquirer1.clipsToBounds = YES;
-        [imageForInquirer1.layer setBorderColor:[[UIColor grayColor] CGColor]];
-        [imageForInquirer1.layer setBorderWidth:1];
+//        [imageForInquirer1.layer setBorderColor:[[UIColor grayColor] CGColor]];
+//        [imageForInquirer1.layer setBorderWidth:1];
         //[imageForInquirer1 setImage:[UIImage imageNamed:@"testPic.png"]];
         [imageForInquirer1 setImageWithURL:[[self.arrayOfProducts objectAtIndex:0] valueForKey:@"image"]];
-        [self.view addSubview:imageForInquirer1];
+      //  [self.view addSubview:imageForInquirer1];
         UIButton *likeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        
-        [likeButton setBackgroundImage:[UIImage imageNamed:@"likeWithOpacity copy.png"] forState:UIControlStateNormal];
-//        [likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//        [likeButton setTitle:@"Like it!" forState:UIControlStateNormal];
+
+            [likeButton setBackgroundImage:[UIImage imageNamed:@"chooseButton.png"] forState:UIControlStateNormal];
+           
+//        [likeButton setBackgroundImage:[UIImage imageNamed:@"likeWithOpacity copy.png"] forState:UIControlStateNormal];
+        [likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [likeButton setTitle:@"Like it!" forState:UIControlStateNormal];
         [likeButton addTarget:self action:@selector(likeAction)  forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:likeButton];
+        //[self.view addSubview:likeButton];
         UIButton *dislikeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [dislikeButton setBackgroundImage:[UIImage imageNamed:@"dislikeWithOpacity copy.png"] forState:UIControlStateNormal];
+         [dislikeButton setBackgroundImage:[UIImage imageNamed:@"chooseButton copy.png"] forState:UIControlStateNormal];
         //[dislikeButton setBackgroundColor:[UIColor blackColor]];
-//        [dislikeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//        [dislikeButton setTitle:@"Hate it!" forState:UIControlStateNormal];
+       [dislikeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+       [dislikeButton setTitle:@"Hate it!" forState:UIControlStateNormal];
         [dislikeButton addTarget:self action:@selector(dislikeAction) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:dislikeButton];
+       // [self.view addSubview:dislikeButton];
+        [productView addSubview:imageForInquirer1];
+        [productView addSubview:likeButton];
+        [productView addSubview:dislikeButton];
+        [self.view addSubview:productView];
 
 
        // _inquirerTitle.text = @"Оцените товар";
@@ -164,21 +179,28 @@
         if ([[UIScreen mainScreen] bounds].size.height == 568)
             
         {
-            [imageForInquirer1 setFrame:CGRectMake(5, 60, 310, 310)];
-            [productTitle setFrame:CGRectMake(20,10,280,40)];
-            likeButton.frame = CGRectMake(30, 305, 60, 60);
-            dislikeButton.frame = CGRectMake(230, 305, 60, 60);
+            [productView setFrame:CGRectMake(5, 30, 310, 360)];
+            [productTitle setFrame:CGRectMake(10,10,290,20)];
+            [imageForInquirer1 setFrame:CGRectMake(0, 0, 310, 310)];
+            likeButton.frame = CGRectMake(0, 310, 155, 50);
+            dislikeButton.frame = CGRectMake(155, 310, 155,50);
         }
         
         else{
-            [productTitle setFrame:CGRectMake(20,10,280,40)];
-            [imageForInquirer1 setFrame:CGRectMake(20, 60, 280, 280)];
-            likeButton.frame = CGRectMake(50, 270, 60, 60);
-            dislikeButton.frame = CGRectMake(210, 270, 60, 60);
+            [productView setFrame:CGRectMake(15, 30, 290, 330)];
+            [productTitle setFrame:CGRectMake(10,10,290,20)];
+            [imageForInquirer1 setFrame:CGRectMake(0, 0, 290, 290)];
+            likeButton.frame = CGRectMake(0, 290, 145, 40);
+            dislikeButton.frame = CGRectMake(145, 290, 145, 40);
         }
     }
     else{
         //ВИД ОПРОСА КАКОЙ ТОВАР ЛУЧШЕ
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 5, 200, 20)];
+        [titleLabel setText:@"Какой товар лучше"];
+        titleLabel.textAlignment = NSTextAlignmentCenter;
+        [titleLabel setBackgroundColor:[UIColor clearColor]];
+        [self.view addSubview:titleLabel];
        // _inquirerTitle.text = @"Какой товар лучше";
                UITapGestureRecognizer *selectProduct = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chooseAProduct:)];
         [selectProduct setNumberOfTapsRequired:1];
