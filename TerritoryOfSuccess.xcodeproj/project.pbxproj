@@ -124,6 +124,7 @@
 		FA827C6216B198CA00EAC0DD /* fbButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA827C5F16B198CA00EAC0DD /* fbButton.png */; };
 		FA827C6316B198CA00EAC0DD /* twButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA827C6016B198CA00EAC0DD /* twButton.png */; };
 		FA827C6416B198CA00EAC0DD /* vkButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA827C6116B198CA00EAC0DD /* vkButton.png */; };
+		FA82F7EB16DE58ED00BFDF97 /* MSBonusCatalogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA82F7EA16DE58ED00BFDF97 /* MSBonusCatalogViewController.m */; };
 		FA87C6FC16AACDE400784A0D /* MSCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA87C6FB16AACDE400784A0D /* MSCommentCell.m */; };
 		FA884BBE16B7FB35002A7FDC /* shareButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA884BBD16B7FB35002A7FDC /* shareButton.png */; };
 		FA884BC816B82B74002A7FDC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FA884BC716B82B74002A7FDC /* Settings.bundle */; };
@@ -135,6 +136,8 @@
 		FA9CFF0216D3EBA600CDA519 /* MSCheckBoxCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9CFF0116D3EBA600CDA519 /* MSCheckBoxCell.m */; };
 		FAA0FCB816BAB190005AF32E /* MSShare.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA0FCB716BAB190005AF32E /* MSShare.m */; };
 		FAA0FCBA16BAB1F6005AF32E /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA0FCB916BAB1F6005AF32E /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		FAA2B2C616DF638800A3F847 /* MSBonusSubCatalogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA2B2C516DF638800A3F847 /* MSBonusSubCatalogViewController.m */; };
+		FAAD061F16A410D700D37373 /* bg_color.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD061E16A410D700D37373 /* bg_color.png */; };
 		FAAD062A16A4326400D37373 /* iconWhite57.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD062916A4326400D37373 /* iconWhite57.png */; };
 		FAAD062C16A4326A00D37373 /* iconWhite114.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAD062B16A4326A00D37373 /* iconWhite114.png */; };
 		FABA8A6916BA82530040EF16 /* MSNewsDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FABA8A6816BA82530040EF16 /* MSNewsDetailsViewController.m */; };
@@ -472,6 +475,8 @@
 		FA827C5F16B198CA00EAC0DD /* fbButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fbButton.png; sourceTree = "<group>"; };
 		FA827C6016B198CA00EAC0DD /* twButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twButton.png; sourceTree = "<group>"; };
 		FA827C6116B198CA00EAC0DD /* vkButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vkButton.png; sourceTree = "<group>"; };
+		FA82F7E916DE58EC00BFDF97 /* MSBonusCatalogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSBonusCatalogViewController.h; sourceTree = "<group>"; };
+		FA82F7EA16DE58ED00BFDF97 /* MSBonusCatalogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSBonusCatalogViewController.m; sourceTree = "<group>"; };
 		FA87C6FA16AACDE400784A0D /* MSCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCommentCell.h; sourceTree = "<group>"; };
 		FA87C6FB16AACDE400784A0D /* MSCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCommentCell.m; sourceTree = "<group>"; };
 		FA884BBD16B7FB35002A7FDC /* shareButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareButton.png; sourceTree = "<group>"; };
@@ -496,6 +501,9 @@
 		FAA0FCBE16BAD1D8005AF32E /* Vkontakte.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Vkontakte.m; sourceTree = "<group>"; };
 		FAA0FCBF16BAD20A005AF32E /* VkontakteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VkontakteViewController.h; sourceTree = "<group>"; };
 		FAA0FCC016BAD20A005AF32E /* VkontakteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VkontakteViewController.m; sourceTree = "<group>"; };
+		FAA2B2C416DF638800A3F847 /* MSBonusSubCatalogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSBonusSubCatalogViewController.h; sourceTree = "<group>"; };
+		FAA2B2C516DF638800A3F847 /* MSBonusSubCatalogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSBonusSubCatalogViewController.m; sourceTree = "<group>"; };
+		FAAD061E16A410D700D37373 /* bg_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_color.png; sourceTree = "<group>"; };
 		FAAD062916A4326400D37373 /* iconWhite57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconWhite57.png; path = ../iconWhite57.png; sourceTree = "<group>"; };
 		FAAD062B16A4326A00D37373 /* iconWhite114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconWhite114.png; path = ../iconWhite114.png; sourceTree = "<group>"; };
 		FABA8A6716BA82530040EF16 /* MSNewsDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSNewsDetailsViewController.h; sourceTree = "<group>"; };
@@ -606,6 +614,10 @@
 				FABA8A6B16BA85720040EF16 /* MSNewsViewController.m */,
 				FA9CFEF916D3E6C100CDA519 /* MSProfileViewController.h */,
 				FA9CFEFA16D3E6C100CDA519 /* MSProfileViewController.m */,
+				FA82F7E916DE58EC00BFDF97 /* MSBonusCatalogViewController.h */,
+				FA82F7EA16DE58ED00BFDF97 /* MSBonusCatalogViewController.m */,
+				FAA2B2C416DF638800A3F847 /* MSBonusSubCatalogViewController.h */,
+				FAA2B2C516DF638800A3F847 /* MSBonusSubCatalogViewController.m */,
 				FABA8A6716BA82530040EF16 /* MSNewsDetailsViewController.h */,
 				FABA8A6816BA82530040EF16 /* MSNewsDetailsViewController.m */,
 				F5F6AE8D169C5153000247D9 /* MSFirstViewController.h */,
@@ -1279,6 +1291,8 @@
 				F512B4FB16DF7D7F00FC22A5 /* PrettyShadowPlainTableview.m in Sources */,
 				F512B4FC16DF7D7F00FC22A5 /* PrettyTabBar.m in Sources */,
 				F512B4FD16DF7D7F00FC22A5 /* PrettyToolbar.m in Sources */,
+				FA82F7EB16DE58ED00BFDF97 /* MSBonusCatalogViewController.m in Sources */,
+				FAA2B2C616DF638800A3F847 /* MSBonusSubCatalogViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
