@@ -153,43 +153,6 @@
     return YES;
 }
 
-- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
-{
-    if([textView.text isEqualToString:@"Напышыте коментарий к жалобе!"])
-        textView.text = @"";
-    textView.textColor = [UIColor blackColor];
-    if ([[UIScreen mainScreen] bounds].size.height == 568)
-    {
-        [UIView animateWithDuration:0.25 animations:^{
-            [self setFrame:CGRectMake(self.frame.origin.x, 0, self.frame.size.width, self.frame.size.height)];
-        }];
-    }
-    else
-    {
-        
-    }
-    
-    return YES;
-}
-
-- (void)textViewDidEndEditing:(UITextView *)textView
-{
-    if ([textView.text isEqualToString:@""]){
-        textView.text = @"Напышыте коментарий к жалобе!";
-        textView.textColor = [UIColor lightGrayColor];
-    }
-    
-    if ([[UIScreen mainScreen] bounds].size.height == 568) {
-        [UIView animateWithDuration:0.25 animations:^{
-            [self setFrame:CGRectMake(self.frame.origin.x, self.selfRect.origin.y, self.frame.size.width, self.frame.size.height)];
-        }];
-    }
-    else
-    {
-        
-    }
-}
-
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     NSCharacterSet *doneButtonCharacterSet = [NSCharacterSet newlineCharacterSet];

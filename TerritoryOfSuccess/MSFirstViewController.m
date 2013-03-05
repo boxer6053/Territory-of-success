@@ -548,7 +548,7 @@ static inline double radians (double degrees)
     
     [self.api setDelegate:self];
     
-//    self.codeStr = @"95A4-348F-82A1-D88E";
+//    self.codeStr = @"0353-264A-37AF-4E66";
 //    self.codeStr = @"CED0-152F-80CC-893E";
     self.codeStr = [self.codeTextField text];
     
@@ -1153,7 +1153,7 @@ static inline double radians (double degrees)
 {
     self.textViewBeginEditing = YES;
     
-    if([textView.text isEqualToString:@"Напышыте коментарий к жалобе!"])
+    if([textView.text isEqualToString:@"Напишите коментарий к жалобе!"])
         textView.text = @"";
     textView.textColor = [UIColor blackColor];
     if ([[UIScreen mainScreen] bounds].size.height == 568)
@@ -1177,7 +1177,7 @@ static inline double radians (double degrees)
     self.textViewBeginEditing = NO;
     
     if ([textView.text isEqualToString:@""]){
-        textView.text = @"Напышыте коментарий к жалобе!";
+        textView.text = @"Напишите коментарий к жалобе!";
         textView.textColor = [UIColor lightGrayColor];
     }
     
