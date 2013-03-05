@@ -15,6 +15,8 @@
 #import "MSCheckBoxCell.h"
 #import "MSPickerView.h"
 #import "MSEditButtonsCell.h"
+#import "MSBonusCatalogViewController.h"
+#import "PrettyKit.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface MSProfileViewController ()
@@ -24,12 +26,14 @@
 }
 
 @property (nonatomic) UIDatePicker *datePicker;
-//@property (nonatomic) UIPickerView *pickerView;
 @property (strong, nonatomic) MSAPI *api;
 @property (strong, nonatomic) NSMutableArray *profileArray;
 @property (strong, nonatomic) NSMutableArray *profileStandartFields;
 @property (strong, nonatomic) NSMutableArray *profileCheckboxFields;
 @property (strong, nonatomic) NSDictionary *profileDictionary;
+
+@property (strong, nonatomic) NSArray *catalogList;
+
 @end
 
 @implementation MSProfileViewController
@@ -41,7 +45,7 @@
 @synthesize profileStandartFields = _profileStandartFields;
 @synthesize profileCheckboxFields = _profileCheckboxFields;
 @synthesize profileDictionary = _profileDictionary;
-//@synthesize pickerView = _pickerView;
+@synthesize catalogList = _catalogList;
 
 - (MSAPI *)api
 {
@@ -140,6 +144,7 @@
             NSString *CellIdentifier = @"bonusProfileCell";
             MSBonusCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
             
+            [cell.bonusButton addTarget:self action:@selector(bonusButtonPressed) forControlEvents:UIControlEventTouchUpInside];
             cell.bonusCountLabel.text = [self.profileDictionary valueForKey:@"balance"];
             
             return cell;
@@ -298,6 +303,19 @@
     [self changeValueAtIndexPath:indexPath with:cell.isChecked ? @"1" : @"0"];
 }
 
+-(void)bonusButtonPressed
+{
+    [self.api getBonusCategories];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"toBonusCatalog"])
+    {
+        [segue.destinationViewController setCategoriesList:self.catalogList];
+    }
+}
+
 #pragma mark - UITextField Delegate
 -(void)TextFieldStartEditing:(id)sender
 {
@@ -310,7 +328,20 @@
     MSStandardProfileCell *cell = (MSStandardProfileCell *)textField.superview.superview;
     NSIndexPath *indexPath = [[NSIndexPath alloc]init];
     indexPath = [self.profileTableView indexPathForCell:cell];
-    [self changeValueAtIndexPath:indexPath with:textField.text];
+    if([[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"type"] isEqualToString:@"select"])
+    {
+        for(id obj in [[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"values"])
+        {
+            if ([[obj valueForKey:@"value"] isEqualToString:textField.text])
+            {
+                [self changeValueAtIndexPath:indexPath with:[obj valueForKey:@"key"]];
+            }
+        }
+    }
+    else
+    {
+        [self changeValueAtIndexPath:indexPath with:textField.text];
+    }
 }
 
 -(void)changeValueAtIndexPath:(NSIndexPath *)indexPath with:(NSString*)value
@@ -414,6 +445,14 @@
             [alert show];
         }
     }
+    if (type == kBonusCategories)
+    {
+        if([[dictionary valueForKey:@"status"] isEqualToString:@"ok"])
+        {
+            self.catalogList = [dictionary valueForKey:@"list"];
+            [self performSegueWithIdentifier:@"toBonusCatalog" sender:self];
+        }
+    }
 }
 
 #pragma mark - UIAlertViewDelegate
@@ -426,7 +465,7 @@
 #pragma mark - MSPickerViewDelegate
 -(void)msPickerViewDoneButtonPressed:(MSPickerView *)pickerView
 {
-    pickerView.target.text = pickerView.selectedItem;
+    pickerView.target.text = [pickerView.selectedItem valueForKey:@"value"];
     [pickerView.target resignFirstResponder];
 }
 

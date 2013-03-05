@@ -15,6 +15,7 @@
 @property (nonatomic) NSString * itemID;
 @property (strong, nonatomic) NSArray *arrayOfProducts;
 @property (nonatomic) int count;
+@property (strong, nonatomic) NSString *productName;
 @property (nonatomic) NSInteger optionForAnswer;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *toStatButton;
 
