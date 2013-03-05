@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MSAPI.h"
 
-@interface MSBonusSubCatalogViewController : UITableViewController <WsCompleteDelegate>
+@interface MSBonusSubCatalogViewController : UITableViewController
 
 @property (strong, nonatomic) IBOutlet UITableView *subCatalogTableView;
 

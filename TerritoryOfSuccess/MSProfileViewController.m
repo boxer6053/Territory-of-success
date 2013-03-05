@@ -328,7 +328,20 @@
     MSStandardProfileCell *cell = (MSStandardProfileCell *)textField.superview.superview;
     NSIndexPath *indexPath = [[NSIndexPath alloc]init];
     indexPath = [self.profileTableView indexPathForCell:cell];
-    [self changeValueAtIndexPath:indexPath with:textField.text];
+    if([[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"type"] isEqualToString:@"select"])
+    {
+        for(id obj in [[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"values"])
+        {
+            if ([[obj valueForKey:@"value"] isEqualToString:textField.text])
+            {
+                [self changeValueAtIndexPath:indexPath with:[obj valueForKey:@"key"]];
+            }
+        }
+    }
+    else
+    {
+        [self changeValueAtIndexPath:indexPath with:textField.text];
+    }
 }
 
 -(void)changeValueAtIndexPath:(NSIndexPath *)indexPath with:(NSString*)value
@@ -452,7 +465,7 @@
 #pragma mark - MSPickerViewDelegate
 -(void)msPickerViewDoneButtonPressed:(MSPickerView *)pickerView
 {
-    pickerView.target.text = pickerView.selectedItem;
+    pickerView.target.text = [pickerView.selectedItem valueForKey:@"value"];
     [pickerView.target resignFirstResponder];
 }
 

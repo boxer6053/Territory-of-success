@@ -896,7 +896,7 @@
                     <navigationItem key="navigationItem" id="o9C-7r-7NN"/>
                     <connections>
                         <outlet property="subCatalogTableView" destination="x7g-67-kSx" id="9EA-zr-6H1"/>
-                        <segue destination="KBZ-t0-Wfq" kind="push" identifier="toProducts" id="f0a-Sv-LW2"/>
+                        <segue destination="KBZ-t0-Wfq" kind="push" identifier="toProductList" id="NNN-f2-Sbf"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7JI-A7-hsH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1208,6 +1208,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
+                                    <outlet property="prodactBrandLabel" destination="wZI-Qp-x1P" id="0AY-1J-s2i"/>
                                     <outlet property="productBrandName" destination="gld-gI-lwW" id="MiD-VA-wyO"/>
                                     <outlet property="productName" destination="jyC-nb-exs" id="DAr-tM-9ee"/>
                                     <outlet property="productRatingImage" destination="9Cj-0S-nde" id="CQd-qc-iRT"/>
@@ -1613,7 +1614,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="NNN-f2-Sbf"/>
         <segue reference="ffa-R0-niF"/>
-        <segue reference="f0a-Sv-LW2"/>
     </inferredMetricsTieBreakers>
 </document>

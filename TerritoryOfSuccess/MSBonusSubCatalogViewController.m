@@ -8,28 +8,19 @@
 
 #import "MSBonusSubCatalogViewController.h"
 #import "MSBrandsAndCategoryCell.h"
+#import "MSSubCatalogueViewController.h"
 
 @interface MSBonusSubCatalogViewController ()
 
 @property (strong, nonatomic) NSArray *subCategoriesList;
-@property (strong, nonatomic) MSAPI *api;
+@property int selectedItemId;
 @end
 
 @implementation MSBonusSubCatalogViewController
 
 @synthesize subCategoriesList = _subCategoriesList;
 @synthesize subCatalogTableView = _subCatalogTableView;
-@synthesize api = _api;
-
-- (MSAPI *)api
-{
-    if(!_api)
-    {
-        _api = [[MSAPI alloc]init];
-        _api.delegate = self;
-    }
-    return _api;
-}
+@synthesize selectedItemId = _selectedItemId;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -85,12 +76,18 @@
 {
     MSBrandsAndCategoryCell *cell = (MSBrandsAndCategoryCell *)[tableView cellForRowAtIndexPath:indexPath];
     if(![cell.categoryOrBrandNumber.text isEqualToString:@"0"])
-        [self.api getBonusSubCategories:[[[self.subCategoriesList objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue]];
+    {
+        self.selectedItemId = [[[self.subCategoriesList objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
+        [self performSegueWithIdentifier:@"toProductList" sender:self];
+    }
 }
 
-- (void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
+    if([segue.identifier isEqualToString:@"toProductList"])
+    {
+        [segue.destinationViewController sentWithBonusCategoryId:self.selectedItemId];
+    }
 }
 
 @end

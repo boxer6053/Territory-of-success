@@ -212,6 +212,11 @@
         [self.logoBarImageView setAlpha:0];
         [self.logoBarTextImageView setAlpha:0];
     }];
+    if(self.loginView)
+    {
+        [self.loginView removeFromSuperview];
+        self.loginView = nil;
+    }
 }
 
 - (void)didReceiveMemoryWarning
