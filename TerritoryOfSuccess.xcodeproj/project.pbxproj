@@ -38,6 +38,8 @@
 		F569161916E50510003CAE0E /* likeWithOpacity.png in Resources */ = {isa = PBXBuildFile; fileRef = F569161716E50510003CAE0E /* likeWithOpacity.png */; };
 		F569161B16E509E6003CAE0E /* dislikeWithOpacity copy.png in Resources */ = {isa = PBXBuildFile; fileRef = F569161A16E509E6003CAE0E /* dislikeWithOpacity copy.png */; };
 		F569161D16E50A21003CAE0E /* likeWithOpacity copy.png in Resources */ = {isa = PBXBuildFile; fileRef = F569161C16E50A21003CAE0E /* likeWithOpacity copy.png */; };
+		F569162216E661A7003CAE0E /* chooseButton copy.png in Resources */ = {isa = PBXBuildFile; fileRef = F569162016E661A7003CAE0E /* chooseButton copy.png */; };
+		F569162316E661A7003CAE0E /* chooseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F569162116E661A7003CAE0E /* chooseButton.png */; };
 		F57217D416B6E4AC00705682 /* dialogViewGradient.png in Resources */ = {isa = PBXBuildFile; fileRef = F57217D316B6E4AC00705682 /* dialogViewGradient.png */; };
 		F57217D616B6F3A600705682 /* closeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F57217D516B6F3A600705682 /* closeIcon.png */; };
 		F57217DA16B7004500705682 /* TOS cap.png in Resources */ = {isa = PBXBuildFile; fileRef = F57217D916B7004500705682 /* TOS cap.png */; };
@@ -209,6 +211,8 @@
 		F569161716E50510003CAE0E /* likeWithOpacity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeWithOpacity.png; sourceTree = "<group>"; };
 		F569161A16E509E6003CAE0E /* dislikeWithOpacity copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dislikeWithOpacity copy.png"; sourceTree = "<group>"; };
 		F569161C16E50A21003CAE0E /* likeWithOpacity copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "likeWithOpacity copy.png"; sourceTree = "<group>"; };
+		F569162016E661A7003CAE0E /* chooseButton copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chooseButton copy.png"; sourceTree = "<group>"; };
+		F569162116E661A7003CAE0E /* chooseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chooseButton.png; sourceTree = "<group>"; };
 		F57217D316B6E4AC00705682 /* dialogViewGradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialogViewGradient.png; sourceTree = "<group>"; };
 		F57217D516B6F3A600705682 /* closeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = closeIcon.png; sourceTree = "<group>"; };
 		F57217D916B7004500705682 /* TOS cap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TOS cap.png"; sourceTree = "<group>"; };
@@ -675,6 +679,8 @@
 				F5D8C64816DD07650035EF30 /* button_185_45.png */,
 				FA2CEC1016DBBD42007015BC /* commentButton.png */,
 				F569161616E50510003CAE0E /* dislikeWithOpacity.png */,
+				F569162016E661A7003CAE0E /* chooseButton copy.png */,
+				F569162116E661A7003CAE0E /* chooseButton.png */,
 				F569161716E50510003CAE0E /* likeWithOpacity.png */,
 				F569161C16E50A21003CAE0E /* likeWithOpacity copy.png */,
 				FA2CEC1116DBBD42007015BC /* likeButton.png */,
@@ -1204,6 +1210,8 @@
 				F569161916E50510003CAE0E /* likeWithOpacity.png in Resources */,
 				F569161B16E509E6003CAE0E /* dislikeWithOpacity copy.png in Resources */,
 				F569161D16E50A21003CAE0E /* likeWithOpacity copy.png in Resources */,
+				F569162216E661A7003CAE0E /* chooseButton copy.png in Resources */,
+				F569162316E661A7003CAE0E /* chooseButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
