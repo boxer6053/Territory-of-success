@@ -105,28 +105,23 @@
     if(_isFromBonusCatalog)
     {
         [cell.productSmallImage setImageWithURL:[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"image"] placeholderImage:[UIImage imageNamed:@"placeholder_622*415.png"]];
+        cell.prodactBrandLabel.text = @"Price:";
+        NSString *price = [[NSString alloc]initWithString:[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"price"]];
+        cell.productBrandName.text = price;
     }
     else
     {
         [cell.productSmallImage setImageWithURL:[[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"image"] valueForKey:@"small"] placeholderImage:[UIImage imageNamed:@"placeholder_622*415.png"]];
     }
     cell.productRatingImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%dstar.png",[[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"rating"]integerValue]]];
-    NSString *price = [[NSString alloc]initWithString:[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"price"]];
-    if (price.length == 0)
+
+    if([[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"brand"])
     {
-        if([[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"brand"])
-        {
-            cell.productBrandName.text = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"brand"] valueForKey:@"title"];
-        }
-        else
-        {
-            cell.productBrandName.text = [self.brandDictionaryIfWeComeFromBrandsSegment valueForKey:@"title"];
-        }
+        cell.productBrandName.text = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"brand"] valueForKey:@"title"];
     }
     else
     {
-        cell.prodactBrandLabel.text = @"Price:";
-        cell.productBrandName.text = price;
+        cell.productBrandName.text = [self.brandDictionaryIfWeComeFromBrandsSegment valueForKey:@"title"];
     }
     
     //на экспорт в MSDetailViewController
