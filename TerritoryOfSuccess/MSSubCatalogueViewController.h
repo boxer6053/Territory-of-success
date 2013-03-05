@@ -5,5 +5,6 @@
 @property (strong, nonatomic) IBOutlet UITableView *productsTableView;
 
 -(void) sentWithBrandId:(int)brandId withCategoryId:(int)categoryId;
+- (void) sentWithBonusCategoryId:(int)categoryId;
 
 @end

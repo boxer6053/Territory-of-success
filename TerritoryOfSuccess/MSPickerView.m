@@ -65,7 +65,7 @@
 
 - (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return [self.dataSource valueForKey:@"female"];
+    return [[self.dataSource objectAtIndex:row ] valueForKey:@"value"];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component

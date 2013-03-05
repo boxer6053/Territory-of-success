@@ -283,6 +283,9 @@
 - (IBAction)cleanButton:(id)sender {
     [self.requestString setString:@""];
       self.upperID = 0;
+    for(int i=1;i<self.arrayOfViews.count;i++){
+        [[self.arrayOfViews objectAtIndex:i] setHidden:YES];
+    }
     for(int i=0;i<self.arrayOfViews.count;i++){
         [[self.arrayOfViews objectAtIndex:i] setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3]];
         [[self.arrayOfViews objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"addButton1.png"] forState:UIControlStateNormal];

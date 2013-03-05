@@ -135,7 +135,7 @@
     if (cell == nil) {
         cell = [[MSNewsCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:myIdentifier];
     }
-    [cell.newsImageView setImageWithURL:[[self.arrayOfNews objectAtIndex:indexPath.row] valueForKey:@"image"]  placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
+    [cell.newsImageView setImageWithURL:[[self.arrayOfNews objectAtIndex:indexPath.row] valueForKey:@"image"]  placeholderImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
     cell.newsTitleLabel.text = [[self.arrayOfNews objectAtIndex:indexPath.row] valueForKey:@"title"];
     cell.newsDetailLabel.text = [[self.arrayOfNews objectAtIndex:indexPath.row] valueForKey:@"brief"];
     cell.newsDateLabel.text = [[self.arrayOfNews objectAtIndex:indexPath.row] valueForKey:@"date"];
