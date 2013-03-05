@@ -36,7 +36,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="X5n-sD-Rd0">
-                                                    <rect key="frame" x="6" y="7" width="50" height="50"/>
+                                                    <rect key="frame" x="6" y="7" width="56" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Имя бренда/категории" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="r9V-mx-GJf">
@@ -164,7 +164,7 @@
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yFI-9D-ys6">
-                                                                        <rect key="frame" x="6" y="4" width="18" height="18"/>
+                                                                        <rect key="frame" x="6" y="5" width="18" height="18"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                                         <state key="normal" title="LikeButton" backgroundImage="likeIcon.png">
@@ -1586,7 +1586,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="3star.png" width="87" height="20"/>
+        <image name="3star.png" width="174" height="40"/>
         <image name="Profile-Picture_40*28_white.png" width="40" height="28"/>
         <image name="button120*35.png" width="120" height="35"/>
         <image name="button_120*35_new.png" width="240" height="70"/>
