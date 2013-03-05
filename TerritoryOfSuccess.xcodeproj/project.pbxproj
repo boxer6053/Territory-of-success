@@ -664,6 +664,7 @@
 				F5318DB616E6168A0079EA50 /* mainCameraGrayH.png */,
 				F512D75916E4E86200DCC051 /* mainCameraGray1.png */,
 				F512D75716E4DA3700DCC051 /* mainCameraGray.png */,
+				FAFB834116E61340006F0F4F /* bag.png */,
 				F536D09F16DE46A400950051 /* button_80_44-1_right.png */,
 				F536D0A016DE46A400950051 /* button_80_44-1.png */,
 				F5D8C64E16DD0AB90035EF30 /* button_300*43.png */,
@@ -1185,6 +1186,8 @@
 				F512D75816E4DA3700DCC051 /* mainCameraGray.png in Resources */,
 				F512D75A16E4E86200DCC051 /* mainCameraGray1.png in Resources */,
 				F5318DB716E6168A0079EA50 /* mainCameraGrayH.png in Resources */,
+				F569162216E661A7003CAE0E /* chooseButton copy.png in Resources */,
+				F569162316E661A7003CAE0E /* chooseButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
