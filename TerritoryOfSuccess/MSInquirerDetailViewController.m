@@ -157,7 +157,7 @@
            
 //        [likeButton setBackgroundImage:[UIImage imageNamed:@"likeWithOpacity copy.png"] forState:UIControlStateNormal];
         [likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [likeButton setTitle:@"Like it!" forState:UIControlStateNormal];
+        [likeButton setTitle:NSLocalizedString(@"LikeKey", nil) forState:UIControlStateNormal];
         [likeButton addTarget:self action:@selector(likeAction)  forControlEvents:UIControlEventTouchUpInside];
         //[self.view addSubview:likeButton];
         UIButton *dislikeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -165,7 +165,7 @@
          [dislikeButton setBackgroundImage:[UIImage imageNamed:@"chooseButton copy.png"] forState:UIControlStateNormal];
         //[dislikeButton setBackgroundColor:[UIColor blackColor]];
        [dislikeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-       [dislikeButton setTitle:@"Hate it!" forState:UIControlStateNormal];
+       [dislikeButton setTitle:NSLocalizedString(@"DislikeKey", nil) forState:UIControlStateNormal];
         [dislikeButton addTarget:self action:@selector(dislikeAction) forControlEvents:UIControlEventTouchUpInside];
        // [self.view addSubview:dislikeButton];
         [productView addSubview:imageForInquirer1];
@@ -197,7 +197,7 @@
     else{
         //ВИД ОПРОСА КАКОЙ ТОВАР ЛУЧШЕ
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 5, 200, 20)];
-        [titleLabel setText:@"Какой товар лучше"];
+        [titleLabel setText:NSLocalizedString(@"whatProductIsBetterKey", nil)];
         titleLabel.textAlignment = NSTextAlignmentCenter;
         [titleLabel setBackgroundColor:[UIColor clearColor]];
         [self.view addSubview:titleLabel];

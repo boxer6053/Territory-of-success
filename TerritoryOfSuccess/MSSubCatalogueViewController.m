@@ -102,16 +102,17 @@
     
     cell.productName.text = [[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"title"];
     
+    [cell.productSmallImage setImageWithURL:[[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"image"] valueForKey:@"small"] placeholderImage:[UIImage imageNamed:@"placeholder_622*415.png"]];
+    
     if(_isFromBonusCatalog)
     {
-        [cell.productSmallImage setImageWithURL:[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"image"] placeholderImage:[UIImage imageNamed:@"placeholder_622*415.png"]];
-        cell.prodactBrandLabel.text = @"Price:";
+        cell.prodactBrandLabel.text = NSLocalizedString(@"PriceKey", nil);
         NSString *price = [[NSString alloc]initWithString:[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"price"]];
         cell.productBrandName.text = price;
+        cell.productPrice = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"price"] integerValue];
     }
     else
     {
-        [cell.productSmallImage setImageWithURL:[[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"image"] valueForKey:@"small"] placeholderImage:[UIImage imageNamed:@"placeholder_622*415.png"]];
         if([[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"brand"])
         {
             cell.productBrandName.text = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"brand"] valueForKey:@"title"];
@@ -127,13 +128,7 @@
     cell.productAdviceNumber = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"advises"] integerValue];
     cell.productCommentsNumber = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"comments"] integerValue];
     cell.productRatingNumber = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"rating"] integerValue];
-    if (!_isFromBonusCatalog)
-        cell.productBigImageURL = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"image"] valueForKey:@"big"];
-    else
-    {
-        cell.productBigImageURL = [[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"image"];
-        cell.productPrice = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"price"] integerValue];
-    }
+    cell.productBigImageURL = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"image"] valueForKey:@"big"];
     cell.productDesctiptionText = [[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"content"];
     cell.productId = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"id"]integerValue];
     cell.productNumberInList = indexPath.row;

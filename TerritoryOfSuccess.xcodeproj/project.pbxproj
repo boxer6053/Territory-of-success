@@ -428,7 +428,6 @@
 		FA3B6F1C16B6EE7E0095A851 /* MSSubCatalogueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSubCatalogueCell.h; sourceTree = "<group>"; };
 		FA3B6F1D16B6EE7E0095A851 /* MSSubCatalogueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSubCatalogueCell.m; sourceTree = "<group>"; };
 		FA3B6F1F16B700BA0095A851 /* 0star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0star.png; sourceTree = "<group>"; };
-		FA3E0B0616DD14CB001347F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/iPhoneStoryboard.strings; sourceTree = "<group>"; };
 		FA44435E16BB9B2F0009FC03 /* vkActionButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vkActionButton.png; sourceTree = "<group>"; };
 		FA44436716BBAD270009FC03 /* cancelVKButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancelVKButton.png; sourceTree = "<group>"; };
 		FA55C14716A071AA00671CAB /* MSCatalogueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCatalogueViewController.h; sourceTree = "<group>"; };
@@ -456,8 +455,6 @@
 		FA884BBD16B7FB35002A7FDC /* shareButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareButton.png; sourceTree = "<group>"; };
 		FA884BC716B82B74002A7FDC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		FA8AB81816C2596B00B98EA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/iPhoneStoryboard.storyboard; sourceTree = "<group>"; };
-		FA8AB81C16C259A300B98EA3 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/iPhoneStoryboard.strings; sourceTree = "<group>"; };
-		FA8AB81E16C259A500B98EA3 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/iPhoneStoryboard.strings; sourceTree = "<group>"; };
 		FA90193516BFEB5E00D028AD /* MSLogInView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSLogInView.h; sourceTree = "<group>"; };
 		FA90193616BFEB5E00D028AD /* MSLogInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSLogInView.m; sourceTree = "<group>"; };
 		FA9094D516CA7B8D007F9441 /* MSAddCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAddCommentView.h; sourceTree = "<group>"; };
@@ -501,6 +498,9 @@
 		FADC926C16C50C7D006BD95C /* uk */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uk; path = "uk.lproj/logo_color_invert_40*147.png"; sourceTree = "<group>"; };
 		FADC926D16C50E83006BD95C /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/logo_color_invert_40*147.png"; sourceTree = "<group>"; };
 		FAE8451816E6774800BA513B /* promo_orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = promo_orange.png; sourceTree = "<group>"; };
+		FAF4FAE216E7AA0F00C25AC5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/iPhoneStoryboard.strings; sourceTree = "<group>"; };
+		FAF4FAE416E7AA1200C25AC5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/iPhoneStoryboard.strings; sourceTree = "<group>"; };
+		FAF4FAE616E7AA1B00C25AC5 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/iPhoneStoryboard.strings; sourceTree = "<group>"; };
 		FAFB5E0916C2650F001B692B /* MSAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAnimationView.h; sourceTree = "<group>"; };
 		FAFB5E0A16C2650F001B692B /* MSAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSAnimationView.m; sourceTree = "<group>"; };
 		FAFB834116E61340006F0F4F /* bag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bag.png; sourceTree = "<group>"; };
@@ -1261,9 +1261,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				FA8AB81816C2596B00B98EA3 /* Base */,
-				FA8AB81C16C259A300B98EA3 /* ru */,
-				FA8AB81E16C259A500B98EA3 /* uk */,
-				FA3E0B0616DD14CB001347F5 /* en */,
+				FAF4FAE216E7AA0F00C25AC5 /* en */,
+				FAF4FAE416E7AA1200C25AC5 /* ru */,
+				FAF4FAE616E7AA1B00C25AC5 /* uk */,
 			);
 			name = iPhoneStoryboard.storyboard;
 			sourceTree = "<group>";
