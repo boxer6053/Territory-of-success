@@ -159,6 +159,17 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="310" height="160"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             </imageView>
+                                                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="promo_orange.png" id="BON-Jc-1BP">
+                                                                <rect key="frame" x="10" y="10" width="60" height="60"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            </imageView>
+                                                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="CSH-Yp-Mkl">
+                                                                <rect key="frame" x="22" y="28" width="36" height="21"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                             <view contentMode="scaleToFill" id="Q82-eT-Pr4">
                                                                 <rect key="frame" x="213" y="128" width="84" height="25"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -252,6 +263,8 @@
                         <outlet property="imageView" destination="Yio-TE-PRd" id="KgH-2n-cy2"/>
                         <outlet property="likeView" destination="Q82-eT-Pr4" id="cDR-Dy-aFK"/>
                         <outlet property="mainView" destination="KTp-lC-eYt" id="JBt-2o-HHc"/>
+                        <outlet property="priceImage" destination="BON-Jc-1BP" id="oAi-qJ-a1Z"/>
+                        <outlet property="priceLabel" destination="CSH-Yp-Mkl" id="1lJ-hC-yRB"/>
                         <outlet property="productDescriptionTextView" destination="WiQ-qI-oGj" id="N3O-Hw-xh2"/>
                         <outlet property="productName" destination="DeZ-HA-pbV" id="8fW-c5-sPd"/>
                         <outlet property="ratingImage" destination="mXs-lz-J8f" id="oDc-RC-aif"/>
@@ -1604,6 +1617,7 @@
         <image name="likeIcon.png" width="38" height="50"/>
         <image name="mainCameraGrayH.png" width="2000" height="1540"/>
         <image name="news_TOS.png" width="32" height="32"/>
+        <image name="promo_orange.png" width="256" height="256"/>
         <image name="questions1.png" width="25" height="25"/>
         <image name="twButton.png" width="32" height="33"/>
         <image name="vkButton.png" width="32" height="33"/>

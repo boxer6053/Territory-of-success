@@ -66,6 +66,7 @@
     
     cell.categoryOrBrandName.text = [[self.subCategoriesList objectAtIndex:indexPath.row] valueForKey:@"title"];
     cell.categoryOrBrandNumber.text = [[self.subCategoriesList objectAtIndex:indexPath.row] valueForKey:@"cnt"];
+    cell.categoryOrBrandImage.image = [UIImage imageNamed:@"bag.png"];
     
     return cell;
 }

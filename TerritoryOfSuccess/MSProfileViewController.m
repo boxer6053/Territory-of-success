@@ -206,6 +206,10 @@
                     picker.target = cell.standartTextField;
                     picker.dataSource = [[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"values"];
                     cell.standartTextField.inputView = picker;
+                    if (picker.dataSource.count == 0)
+                    {
+                        cell.standartTextField.userInteractionEnabled = NO;
+                    }
                 }
                 
                 if([[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"key"] isEqualToString:@"birthday"])

@@ -15,6 +15,9 @@
 #import "PrettyKit.h"
 
 @interface MSNewsViewController ()
+{
+    BOOL _isFirstDownload;
+}
 
 @property (nonatomic)  MSAPI *dbApi;
 @property int newsCount;
@@ -61,6 +64,7 @@
     [super viewDidLoad];
     
     self.arrayOfNews = [[NSMutableArray alloc]init];
+    _isFirstDownload = YES;
     [self.dbApi getFiveNewsWithOffset:0];
     
     if ([[UIScreen mainScreen] bounds].size.height == 568) {
@@ -72,7 +76,7 @@
     }
 
     self.newsTableView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.0];
-    self.footerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.newsTableView.frame.size.width, 20)];
+    self.footerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.newsTableView.frame.size.width, 30)];
     [self.footerButton setTitle:NSLocalizedString(@"DownloadMoreKey",nil) forState:UIControlStateNormal];
     self.footerButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
     [self.footerButton setTitleColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4] forState:UIControlStateNormal];
@@ -94,6 +98,7 @@
 
 - (void)moreNews
 {
+    _isFirstDownload = NO;
     if (self.arrayOfNews.count < self.totalNewsCount)
     {
         self.newsTableView.tableFooterView = self.activityIndicator;
@@ -112,11 +117,19 @@
     self.newsTableView.tableFooterView = self.footerButton;
     [self.arrayOfNews addObjectsFromArray: [dictionary valueForKey:@"list"]];
     self.lastDownloadedNews = [dictionary valueForKey:@"list"];
-    for (int i  = 0; i<self.lastDownloadedNews.count; i++)
+    if (!_isFirstDownload)
     {
-        NSArray *insertIndexPath = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.newsCount inSection:0]];
-        self.newsCount++;
-        [self.newsTableView insertRowsAtIndexPaths: insertIndexPath withRowAnimation:NO];
+        for (int i  = 0; i<self.lastDownloadedNews.count; i++)
+        {
+            NSArray *insertIndexPath = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.newsCount inSection:0]];
+            self.newsCount++;
+            [self.newsTableView insertRowsAtIndexPaths: insertIndexPath withRowAnimation:NO];
+        }
+    }
+    else
+    {
+        self.newsCount += self.arrayOfNews.count;
+        [self.newsTableView reloadData];
     }
 }
 

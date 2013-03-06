@@ -90,6 +90,7 @@
     
     cell.categoryOrBrandName.text = [[self.categoriesList objectAtIndex:indexPath.row] valueForKey:@"title"];
     cell.categoryOrBrandNumber.text = [[self.categoriesList objectAtIndex:indexPath.row] valueForKey:@"cnt"];
+    cell.categoryOrBrandImage.image = [UIImage imageNamed:@"bag.png"];
     return cell;
 }
 
@@ -98,7 +99,7 @@
 {
     MSBrandsAndCategoryCell *cell = (MSBrandsAndCategoryCell *)[tableView cellForRowAtIndexPath:indexPath];
     if(![cell.categoryOrBrandNumber.text isEqualToString:@"0"])
-        [self.api getBonusSubCategories:[[[self.categoriesList objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue]];
+        [self.api getBonusSubCategories:[[[self.categoriesList objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue] withOffset:0];
 }
 
 -(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
