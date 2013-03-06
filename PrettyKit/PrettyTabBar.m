@@ -32,7 +32,7 @@
 
 #define default_gradient_start_color [UIColor colorWithHex:0x373737]
 #define default_gradient_end_color [UIColor colorWithHex:0x000000]
-#define default_separator_line_color [UIColor colorWithHex:0x676767]
+#define default_separator_line_color [UIColor colorWithHex:0x545454]
 
 @implementation PrettyTabBar
 @synthesize gradientStartColor, gradientEndColor, separatorLineColor;
