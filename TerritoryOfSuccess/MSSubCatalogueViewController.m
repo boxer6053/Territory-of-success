@@ -210,7 +210,7 @@
                                                  andImageURL:currentCell.productBigImageURL
                                           andDescriptionText:currentCell.productDesctiptionText
                                              andNumberInList:currentCell.productNumberInList
-                                               andCategoryId:self.tempCategoryId
+                                               andCategoryId:self.tempBonusCategoryId
                                                    andOffset:offset
                                                     andPrice:currentCell.productPrice];
         }

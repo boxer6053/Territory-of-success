@@ -406,7 +406,10 @@
     }
     else
     {
-        [self.api sentRate:self.rateNumber withProductId:self.productSentId];
+        if (_isFromBrandCatalog)
+            [self.api sentBonusRate:self.rateNumber withProductId:self.productSentId];
+        else
+            [self.api sentRate:self.rateNumber withProductId:self.productSentId];
         [self closeRateMenu];
     }
 }
@@ -425,7 +428,10 @@
 - (void)likeAction
 {
     if (self.rateButtonPressed) [self closeRateMenu];
-    else [self.api recommendWithProductId:self.productSentId];
+    else if (_isFromBrandCatalog)
+        [self.api recommendBonusWithProductId:self.productSentId];
+        else
+        [self.api recommendWithProductId:self.productSentId];
 }
 
 #pragma mark Share Methods
@@ -499,7 +505,7 @@
 
 - (void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
 {
-    if ((type == kRate) || (type == kRecommend))
+    if ((type == kRate) || (type == kRecommend) || (type == kBonusRate) || (type == kBonusRecommend))
     {
         if ([[dictionary objectForKey:@"status"] isEqualToString:@"failed"])
         {
@@ -522,12 +528,14 @@
             NSDictionary *recommendDictionary = [dictionary objectForKey:@"message"];
             UIAlertView *alert = [[UIAlertView  alloc] initWithTitle:[recommendDictionary objectForKey:@"title"] message:[recommendDictionary objectForKey:@"text"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert show];
-            
-            [self.api getProductsWithOffset:self.detailProductOffset withBrandId:self.brandId withCategoryId:self.categoryId];
+            if (_isFromBrandCatalog)
+                [self.api getBonusSubCategories:self.categoryId withOffset:self.detailProductOffset];
+            else
+                [self.api getProductsWithOffset:self.detailProductOffset withBrandId:self.brandId withCategoryId:self.categoryId];
         }
     }
     
-    if (type == kCatalog)
+    if ((type == kCatalog) || (type == kBonusSubCategories))
     {
         self.commentsLabel.text = [NSString stringWithFormat:@"%@",[[[dictionary objectForKey:@"list"] objectAtIndex:self.numberInList]valueForKey: @"comments"]];
         self.advisesLabel.text = [NSString stringWithFormat:@"%@",[[[dictionary objectForKey:@"list"] objectAtIndex:self.numberInList]valueForKey: @"advises"]];
