@@ -296,16 +296,14 @@
     _isFromBrandCatalog = YES;
 }
 
-- (void)setPriceOnImage:(int)price
-{
-    
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"toComments"])
     {
-        [segue.destinationViewController sentProductId:self.productSentId];
+        if(_isFromBrandCatalog)
+            [segue.destinationViewController sentProductId:self.productSentId isFromBonus:YES];
+        else
+            [segue.destinationViewController sentProductId:self.productSentId isFromBonus:NO];
     }
 }
 
@@ -406,7 +404,7 @@
     }
     else
     {
-        if (_isFromBrandCatalog)
+        if (_isFromBrandCatalog == YES)
             [self.api sentBonusRate:self.rateNumber withProductId:self.productSentId];
         else
             [self.api sentRate:self.rateNumber withProductId:self.productSentId];
