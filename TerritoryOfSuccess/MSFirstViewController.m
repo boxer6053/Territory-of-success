@@ -1073,6 +1073,8 @@ static inline double radians (double degrees)
 {
     self.endCount++;
     
+    self.activeField = nil;
+    
     if (textField.tag == 1 || textField.tag == 2 || textField.tag == 3)
     {
         if (self.beginCount == self.endCount)
