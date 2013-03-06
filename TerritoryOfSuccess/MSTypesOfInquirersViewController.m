@@ -303,7 +303,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
 - (void)customizeNavBar {
     PrettyNavigationBar *navBar = (PrettyNavigationBar *)self.navigationController.navigationBar;
     
-    navBar.topLineColor = [UIColor colorWithHex:0x676767];
+    navBar.topLineColor = [UIColor colorWithHex:0x414141];
     navBar.gradientStartColor = [UIColor colorWithHex:0x373737];
     navBar.gradientEndColor = [UIColor colorWithHex:0x1a1a1a];
     navBar.bottomLineColor = [UIColor colorWithHex:0x000000];

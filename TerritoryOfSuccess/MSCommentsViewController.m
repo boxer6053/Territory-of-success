@@ -5,6 +5,10 @@
 #import "SVProgressHUD.h"
 
 @interface MSCommentsViewController ()
+{
+    BOOL isFromBonus;
+}
+
 @property (nonatomic, strong) MSAddCommentView *addCommentView;
 @property (nonatomic) int prodId;
 @property (nonatomic) MSAPI *api;
@@ -65,7 +69,10 @@
     if (self.commentsArray.count < self.commentsCounter)
     {
         [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadCommentsKey",nil)];
-        [self.api getCommentsWithProductId:self.prodId andOffset:self.commentsArray.count];
+        if (isFromBonus == YES)
+            [self.api getBonusCommentsWithProductId:self.prodId andOffset:self.commentsArray.count];
+        else
+            [self.api getCommentsWithProductId:self.prodId andOffset:self.commentsArray.count];
     }
     else
     {
@@ -126,11 +133,16 @@
     return cell;
 }
 
--(void)sentProductId:(int)sentProductId
+-(void)sentProductId:(int)sentProductId isFromBonus:(BOOL)bonus
 {
     self.prodId = sentProductId;
     self.isFirstTime = YES;
-    [self.api getCommentsWithProductId:self.prodId andOffset:0];
+    isFromBonus = bonus;
+    
+    if (isFromBonus == YES)
+        [self.api getBonusCommentsWithProductId:self.prodId andOffset:0];
+    else
+        [self.api getCommentsWithProductId:self.prodId andOffset:0];
 }
 
 - (IBAction)addComment:(id)sender
@@ -144,7 +156,10 @@
         self.commentTableView.scrollEnabled = NO;
         self.addCommentView = [[MSAddCommentView alloc] initCommentAdder];
         [self.view.window addSubview:self.addCommentView];
-        [self.addCommentView setProductId:self.prodId];
+        if (isFromBonus == YES)
+            [self.addCommentView setProductId:self.prodId isFromBonus:YES];
+        else
+            [self.addCommentView setProductId:self.prodId isFromBonus:NO];
         [[self addCommentView] attachPopUpAnimationForView:self.addCommentView.containerView];
         self.addCommentView.delegate = self;
     }
@@ -170,7 +185,7 @@
 
 -(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
 {
-    if (type == kComments)
+    if ((type == kComments) || (type == kBonusComments))
     {
         if (self.isFirstTime)
         {
