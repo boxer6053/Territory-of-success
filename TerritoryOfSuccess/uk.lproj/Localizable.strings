@@ -50,6 +50,7 @@
 "RateKey" = "Оцінити";
 "ConfirmKey" = "Підтвердити";
 "AllProductsDownloadedKey" = "Всі продукти завантаженні";
+"PriceKey" = "Ціна:";
 
 // Опросы
 "DownloadInquirersKey" = "Завантаження питань";
@@ -69,7 +70,9 @@
 "QuestionCreatedKey" = "Питання створено!";
 "SuccessKey" = "Успіх";
 "ErrorKey" = "Помилка";
-
+"whatProductIsBetterKey" = "Який товар краще";
+"LikeKey" = "Подобається";
+"DislikeKey" = "Не подобається";
 
 // Новости
 "DownloadingInformationKey" = "Завантаження інформації...";
