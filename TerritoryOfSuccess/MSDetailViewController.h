@@ -9,6 +9,8 @@
 @property (strong, nonatomic) IBOutlet UIView *imageView;
 @property (strong, nonatomic) IBOutlet UIView *transitionContainerView;
 @property (strong, nonatomic) IBOutlet UIScrollView *detailScrollView;
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *priceImage;
 
 @property (strong, nonatomic) IBOutlet UILabel *productName;
 @property (strong, nonatomic) IBOutlet UILabel *advisesLabel;
@@ -42,4 +44,15 @@
              andBrandId:(int)brandId
           andCategoryId:(int)categoryId
               andOffset:(int)offset;
+- (void)sentProductName:(NSString *)name
+                  andId:(int)prodId
+              andRating:(int)rating
+      andCommentsNumber:(int)comments
+       andAdvisesNumber:(int)advises
+            andImageURL:(NSString *)imageURL
+     andDescriptionText:(NSString *) descriptionText
+        andNumberInList:(int)numberInList
+          andCategoryId:(int)categoryId
+              andOffset:(int)offset
+               andPrice:(int)price;
 @end

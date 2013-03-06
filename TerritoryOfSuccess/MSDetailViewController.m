@@ -6,11 +6,15 @@
 #import <Social/Social.h>
 
 @interface MSDetailViewController ()
+{
+    BOOL _isFromBrandCatalog;
+}
 
 @property (nonatomic) int commentsDetail, advisesDetail, ratingDetail;
 @property (strong, nonatomic) NSString *productImageURL;
 @property (strong, nonatomic) NSString *productSentName;
 @property (strong, nonatomic) NSString *productSentDescription;
+@property (nonatomic, strong) NSString *productPrice;
 @property (strong, nonatomic) MSShare *share;
 @property (strong, nonatomic) UIView *transitionView;
 @property (strong, nonatomic) UIButton *rateButton;
@@ -63,6 +67,9 @@
 @synthesize commentButtonLabel = _commentButtonLabel;
 @synthesize transitionContainerView = _transitionContainerView;
 @synthesize detailProductOffset = _detailProductOffset;
+@synthesize priceImage = _priceImage;
+@synthesize priceLabel = _priceLabel;
+@synthesize productPrice = _productPrice;
 
 - (void)viewDidLoad
 {
@@ -193,6 +200,14 @@
     {
         self.detailScrollView.frame = CGRectMake(self.detailScrollView.frame.origin.x, self.detailScrollView.frame.origin.y, self.detailScrollView.frame.size.width, self.detailScrollView.frame.size.height - 88);
     }
+    
+    if(_isFromBrandCatalog)
+    {
+        self.priceLabel.text = self.productPrice;
+        self.priceLabel.textAlignment = NSTextAlignmentCenter;
+        self.priceLabel.hidden = NO;
+        self.priceImage.hidden = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -252,6 +267,38 @@
     self.categoryId = categoryId;
     
     self.detailProductOffset = offset;
+}
+
+- (void)sentProductName:(NSString *)name
+                  andId:(int)prodId
+              andRating:(int)rating
+      andCommentsNumber:(int)comments
+       andAdvisesNumber:(int)advises
+            andImageURL:(NSString *)imageURL
+     andDescriptionText:(NSString *) descriptionText
+        andNumberInList:(int)numberInList
+          andCategoryId:(int)categoryId
+              andOffset:(int)offset
+               andPrice:(int)price
+{
+    self.productSentId = prodId;
+    self.productSentName = name;
+    self.productImageURL = imageURL;
+    self.ratingDetail = rating;
+    self.commentsDetail = comments;
+    self.advisesDetail = advises;
+    self.productSentDescription = descriptionText;
+    
+    self.numberInList = numberInList;
+    self.categoryId = categoryId;
+    self.detailProductOffset = offset;
+    self.productPrice = [NSString stringWithFormat:@"%d", price];
+    _isFromBrandCatalog = YES;
+}
+
+- (void)setPriceOnImage:(int)price
+{
+    
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
