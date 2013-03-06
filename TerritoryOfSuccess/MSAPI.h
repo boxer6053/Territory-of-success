@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "JSONParserForDataEntenties.h"
 
-typedef enum {kAuth, kRegist, kNews, kNewsWithId, kCode, kBrands, kCategories, kCatalog, kQuestCateg, kComment, kComplaint, kQuestions, kCreateQuest, kMyQuestions, kQuestDetail, kQuestStat, kLastQuest,kSendAnswer, kComments, kProfileEdit, kProfileInfo, kProfileChange, kRate, kRecommend, kBonusCategories, kBonusSubCategories} requestTypes;
+typedef enum {kAuth, kRegist, kNews, kNewsWithId, kCode, kBrands, kCategories, kCatalog, kQuestCateg, kComment, kComplaint, kQuestions, kCreateQuest, kMyQuestions, kQuestDetail, kQuestStat, kLastQuest,kSendAnswer, kComments, kProfileEdit, kProfileInfo, kProfileChange, kRate, kRecommend, kBonusCategories, kBonusSubCategories, kBonusComment, kBonusComments, kBonusRate, kBonusRecommend} requestTypes;
 
 @protocol WsCompleteDelegate
 
@@ -43,15 +43,15 @@ typedef enum {kAuth, kRegist, kNews, kNewsWithId, kCode, kBrands, kCategories, k
 - (void)getQuestionsWithParentID:(int)parentId;
 - (void)logInWithMail:(NSString *)email Password:(NSString *)password;
 - (void)registrationWithEmail:(NSString *)email Password:(NSString *)password ConfirmPassword:(NSString *)confirmPassword;
--(void)getLastQuestions;
+- (void)getLastQuestions;
 - (void)getQuestionListFrom10;
 - (void)sentCommentWithProductId:(int)productId andText:(NSString *)text;
--(void)getMyQuestionsWithOffset:(int)offset;
--(void)createQuestionWithItems:(NSMutableString *)string;
--(void)getDetailQuestionWithID:(NSInteger)questionId;
--(void)getStatisticQuestionWithID:(NSInteger)questionId;
+- (void)getMyQuestionsWithOffset:(int)offset;
+- (void)createQuestionWithItems:(NSMutableString *)string;
+- (void)getDetailQuestionWithID:(NSInteger)questionId;
+- (void)getStatisticQuestionWithID:(NSInteger)questionId;
 - (void)getCommentsWithProductId:(int)productId andOffset:(int)offset;
--(void)answerToQuestionWithID:(NSInteger)questionID andOptionID:(NSInteger)optionID;
+- (void)answerToQuestionWithID:(NSInteger)questionID andOptionID:(NSInteger)optionID;
 - (void)sendComplaintForProduct:(NSString *)product
                        withCode:(NSString *)code
                    withLocation:(NSString *)location
@@ -64,6 +64,11 @@ typedef enum {kAuth, kRegist, kNews, kNewsWithId, kCode, kBrands, kCategories, k
 - (void)recommendWithProductId:(int)productId;
 - (void)sendProfileChanges:(NSString *)changedString;
 - (void)getBonusCategories;
-- (void)getBonusSubCategories:(int)categoryId;
+- (void)getBonusSubCategories:(int)categoryId withOffset:(int)offset;
 - (void)getBonusProduct:(int)productId;
+
+- (void)sentBonusRate:(int)rate withProductId:(int)productId;
+- (void)recommendBonusWithProductId:(int)productId;
+- (void)getBonusCommentsWithProductId:(int)productId andOffset:(int)offset;
+- (void)sentBonusCommentWithProductId:(int)productId andText:(NSString *)text;
 @end

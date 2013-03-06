@@ -77,7 +77,7 @@
 {
     _isFromBonusCatalog = YES;
     self.tempBonusCategoryId = categoryId;
-    [self.api getBonusSubCategories:categoryId];
+    [self.api getBonusSubCategories:categoryId withOffset:0];
 }
 
 #pragma mark - Table view data source
@@ -154,7 +154,10 @@
     if (self.arrayOfProducts.count < self.productsCounter)
     {
         [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadProductsKey",nil)];
-        [self.api getProductsWithOffset:self.arrayOfProducts.count withBrandId:self.tempBrandId withCategoryId:self.tempCategoryId];
+        if (_isFromBonusCatalog)
+            [self.api getBonusSubCategories:self.tempBonusCategoryId withOffset:self.arrayOfProducts.count];
+        else
+            [self.api getProductsWithOffset:self.arrayOfProducts.count withBrandId:self.tempBrandId withCategoryId:self.tempCategoryId];
     }
     else
     {
