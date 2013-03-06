@@ -2,7 +2,9 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface MSAddCommentView()
-
+{
+    BOOL isFromBonus;
+}
 @property (nonatomic) MSAPI *api;
 @property (strong, nonatomic) UITextView *inputCommentTextView;
 @property (strong, nonatomic) UIButton *sentButton;
@@ -117,9 +119,10 @@
     }];
 }
 
-- (void) setProductId:(int)productId
+- (void) setProductId:(int)productId isFromBonus:(BOOL)bonus
 {
     _productId = productId;
+    isFromBonus = bonus;
 }
 
 - (void)sentComment
@@ -135,7 +138,10 @@
         [alertView show];
     }else
     {
-        [self.api sentCommentWithProductId:self.productId andText:self.inputCommentTextView.text];
+        if (isFromBonus == YES)
+             [self.api sentBonusCommentWithProductId:self.productId andText:self.inputCommentTextView.text];
+        else
+            [self.api sentCommentWithProductId:self.productId andText:self.inputCommentTextView.text];
         [self closeAddingCommentSubview];
     }
 }
