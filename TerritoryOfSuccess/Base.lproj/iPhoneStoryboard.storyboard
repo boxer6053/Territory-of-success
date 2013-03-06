@@ -1718,6 +1718,8 @@
                 <relationship kind="outlet" name="imageView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="likeView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="mainView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="priceImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="priceLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="productDescriptionTextView" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="productName" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="ratingImage" candidateClass="UIImageView"/>
@@ -1917,7 +1919,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="c2x-m8-SNe"/>
-        <segue reference="f75-2Y-K7q"/>
+        <segue reference="ffa-R0-niF"/>
+        <segue reference="NNN-f2-Sbf"/>
     </inferredMetricsTieBreakers>
 </document>
