@@ -18,6 +18,7 @@
 @property (strong, nonatomic) MSAPI *api;
 @property (strong, nonatomic) NSArray *categoriesList;
 @property (strong, nonatomic) NSArray *subCategoriesList;
+@property int selectedCategoryId;
 
 @end
 
@@ -26,6 +27,7 @@
 @synthesize api = _api;
 @synthesize categoriesList = _categoriesList;
 @synthesize subCategoriesList = _subCategoriesList;
+@synthesize selectedCategoryId = _selectedCategoryId;
 
 - (MSAPI *)api
 {
@@ -51,6 +53,10 @@
     [super viewDidLoad];
     //[self.api getBonusCategories];
     [self.bonusCatalog setBackgroundView:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"bg.png"]]];
+    UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.bonusCatalog.frame.size.width, 1)];
+    self.bonusCatalog.tableFooterView = footerView;
+    self.bonusCatalog.tableFooterView.hidden = YES;
+    self.bonusCatalog.tableFooterView.userInteractionEnabled = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,7 +74,7 @@
 {
     if([segue.identifier isEqualToString:@"toBonusSubCatalog"])
     {
-        [segue.destinationViewController setSubCategoriesList:self.subCategoriesList];
+        [segue.destinationViewController setSubCategories:self.subCategoriesList andCategoryId:self.selectedCategoryId];
     }
 }
 #pragma mark - Table view data source
@@ -99,7 +105,10 @@
 {
     MSBrandsAndCategoryCell *cell = (MSBrandsAndCategoryCell *)[tableView cellForRowAtIndexPath:indexPath];
     if(![cell.categoryOrBrandNumber.text isEqualToString:@"0"])
-        [self.api getBonusSubCategories:[[[self.categoriesList objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue] withOffset:0];
+    {
+        self.selectedCategoryId = [[[self.categoriesList objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
+        [self.api getBonusSubCategories:self.selectedCategoryId withOffset:0];
+    }
 }
 
 -(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
