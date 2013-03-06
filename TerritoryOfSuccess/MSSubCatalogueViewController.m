@@ -112,17 +112,16 @@
     else
     {
         [cell.productSmallImage setImageWithURL:[[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"image"] valueForKey:@"small"] placeholderImage:[UIImage imageNamed:@"placeholder_622*415.png"]];
+        if([[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"brand"])
+        {
+            cell.productBrandName.text = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"brand"] valueForKey:@"title"];
+        }
+        else
+        {
+            cell.productBrandName.text = [self.brandDictionaryIfWeComeFromBrandsSegment valueForKey:@"title"];
+        }
     }
     cell.productRatingImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%dstar.png",[[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"rating"]integerValue]]];
-
-    if([[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"brand"])
-    {
-        cell.productBrandName.text = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"brand"] valueForKey:@"title"];
-    }
-    else
-    {
-        cell.productBrandName.text = [self.brandDictionaryIfWeComeFromBrandsSegment valueForKey:@"title"];
-    }
     
     //на экспорт в MSDetailViewController
     cell.productAdviceNumber = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"advises"] integerValue];
@@ -184,7 +183,9 @@
         int offset;
         if (self.arrayOfProducts.count <= 5) offset = 0;
         else offset = (self.arrayOfProducts.count - self.lastloadedProductsArray.count);
-        [segue.destinationViewController sentProductName:currentCell.productName.text
+        if (!_isFromBonusCatalog)
+        {
+            [segue.destinationViewController sentProductName:currentCell.productName.text
                                                    andId:currentCell.productId
                                                andRating:currentCell.productRatingNumber
                                        andCommentsNumber:currentCell.productCommentsNumber
@@ -195,6 +196,22 @@
                                               andBrandId:self.tempBrandId
                                            andCategoryId:self.tempCategoryId
                                             andOffset:offset];
+        }
+        else
+        {
+            [segue.destinationViewController sentProductName:currentCell.productName.text
+                                                       andId:currentCell.productId
+                                                   andRating:currentCell.productRatingNumber
+                                           andCommentsNumber:currentCell.productCommentsNumber
+                                            andAdvisesNumber:currentCell.productAdviceNumber
+                                                 andImageURL:currentCell.productBigImageURL
+                                          andDescriptionText:currentCell.productDesctiptionText
+                                             andNumberInList:currentCell.productNumberInList
+                                               andCategoryId:self.tempCategoryId
+                                                   andOffset:offset
+                                                    andPrice:currentCell.productPrice];
+        }
+            
         
     }
 }
