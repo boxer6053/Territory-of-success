@@ -9,7 +9,7 @@
 #import "MSAskViewController.h"
 #import "SVProgressHUD.h"
 #import "MSQuestionCell.h"
-
+#import "PrettyKit.h"
 
 
 
@@ -43,6 +43,8 @@
 @synthesize backButton = _backButton;
 @synthesize backIds = _backIds;
 
+@synthesize navigationBar = _navigationBar;
+
 
 - (MSAPI *) api{
     if(!_api){
@@ -54,6 +56,8 @@
 
 - (void)viewDidLoad
 {
+    [self customizeNavBar];
+    
     [self.backButton setEnabled:NO];
     self.backIds = [[NSMutableArray alloc] init];
     NSLog(@"ASK VIEW CONTROLLER");
@@ -230,4 +234,17 @@
     for (id obj in self.backIds)
     NSLog(@"obj: %@", obj);
 }
+
+- (void)customizeNavBar {
+    
+    PrettyNavigationBar *navBar = (PrettyNavigationBar *)self.navigationBar;
+    
+    navBar.topLineColor = [UIColor colorWithHex:0x414141];
+    navBar.gradientStartColor = [UIColor colorWithHex:0x373737];
+    navBar.gradientEndColor = [UIColor colorWithHex:0x1a1a1a];
+    navBar.bottomLineColor = [UIColor colorWithHex:0x000000];
+    navBar.tintColor = navBar.gradientEndColor;
+    
+}
+
 @end

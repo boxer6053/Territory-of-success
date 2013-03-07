@@ -262,7 +262,8 @@
 
         }
         else{
-        NSString *response = [[dictionary valueForKey:@"message"] valueForKey:@"text"];
+//        NSString *response = [[dictionary valueForKey:@"message"] valueForKey:@"text"];
+            NSString *response = [dictionary valueForKey:@"message"];
         if([response isEqualToString:@"To get access to this page please log in to the system."]){
             UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Пожалуйста перезайдите в систему!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
             [failmessage show];}

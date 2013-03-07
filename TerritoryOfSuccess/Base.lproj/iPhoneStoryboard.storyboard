@@ -1540,7 +1540,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <navigationBar contentMode="scaleToFill" id="oxn-hP-hnZ">
+                            <navigationBar contentMode="scaleToFill" id="oxn-hP-hnZ" customClass="PrettyNavigationBar">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
@@ -1570,6 +1570,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="backButton" destination="mHL-gX-JVF" id="ceA-5A-eJ3"/>
+                        <outlet property="navigationBar" destination="oxn-hP-hnZ" id="7Zi-bW-8Ff"/>
                         <outlet property="tableOfCategories" destination="seu-Rx-Ovi" id="Beu-JS-2nE"/>
                         <outlet property="upButton" destination="aJJ-ZY-1Ox" id="kKi-hs-syr"/>
                     </connections>
@@ -1629,6 +1630,7 @@
                 <relationship kind="action" name="backButtonPressed:"/>
                 <relationship kind="action" name="cancel:"/>
                 <relationship kind="outlet" name="backButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
                 <relationship kind="outlet" name="tableOfCategories" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="upButton" candidateClass="UIBarButtonItem"/>
             </relationships>
