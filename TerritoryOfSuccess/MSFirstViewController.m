@@ -538,7 +538,8 @@ static inline double radians (double degrees)
 }
 
 //перевірка коду
-- (IBAction)sendCode:(UIButton *)sender {
+- (IBAction)sendCode:(UIButton *)sender
+{
     
     float a = 3.125f;
     float b = (int)a;
