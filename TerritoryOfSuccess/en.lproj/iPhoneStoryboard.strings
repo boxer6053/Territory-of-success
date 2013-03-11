@@ -45,7 +45,7 @@
 "D8I-pm-UuG.normalTitle" = "Save";
 
 /* Class = "IBUITabBarItem"; title = "Каталог"; ObjectID = "D8e-iH-KKD"; */
-"D8e-iH-KKD.title" = "Каталог";
+"D8e-iH-KKD.title" = "Catalogue";
 
 /* Class = "IBUILabel"; text = "Название продукта"; ObjectID = "DeZ-HA-pbV"; */
 "DeZ-HA-pbV.text" = "Название продукта";
@@ -126,7 +126,7 @@
 "dN8-M6-sm3.placeholder" = "Enter a code or make a photo";
 
 /* Class = "IBUINavigationItem"; title = "Продукты"; ObjectID = "dOo-er-6gG"; */
-"dOo-er-6gG.title" = "Продукты";
+"dOo-er-6gG.title" = "Products";
 
 /* Class = "IBUILabel"; text = "0"; ObjectID = "dfH-3t-ahY"; */
 "dfH-3t-ahY.text" = "0";
