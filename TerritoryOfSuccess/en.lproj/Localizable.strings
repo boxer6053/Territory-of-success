@@ -78,10 +78,10 @@
 "LikeKey" = "Like";
 "DislikeKey" = "Dislike";
 
-"GoodKey" = "Good"
-"BadKey" = "Bad"
-"ItemKey" = "Item"
-"DescriptionCreatingKey" = "Pick 1 product for 'Grade a product' interrogation or more for 'Choose a product' interrogation"
+"GoodKey" = "Good";
+"BadKey" = "Bad";
+"ItemKey" = "Item";
+"DescriptionCreatingKey" = "Pick 1 product for 'Grade a product' interrogation or more for 'Choose a product' interrogation";
 
 // Новости
 "DownloadingInformationKey" = "Downloading information...";
