@@ -276,7 +276,7 @@
             UILabel *currentLabel = [arrayOfNames objectAtIndex:i];
             [currentLabel setText:[[self.arrayOfProducts objectAtIndex:i] valueForKey:@"title"]];
             [[arrayOfViews objectAtIndex:i] addTarget:self action:@selector(chooseAProduct:)forControlEvents:UIControlEventTouchUpInside];
-            [[arrayOfViews objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
+            [[arrayOfViews objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"placeholder_415*415.png"] forState:UIControlStateNormal];
             [[arrayOfViews objectAtIndex:i]setBackgroundImageWithURL:imageUrl forState:UIControlStateNormal];
         }
         for (int i = self.arrayOfProducts.count;i<arrayOfViews.count;i++)
