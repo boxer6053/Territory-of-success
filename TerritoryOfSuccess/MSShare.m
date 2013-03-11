@@ -38,7 +38,7 @@
     }
     else
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString("ErrorKey", nil) message:NSLocalizedString(@"YouNeedToLoginInSettingsKey", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ErrorKey", nil) message:NSLocalizedString(@"YouNeedToLoginInSettingsKey", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     }
 }
@@ -60,7 +60,7 @@
     }
     else
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString("ErrorKey", nil) message:NSLocalizedString(@"YouNeedToLoginInSettingsKey", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ErrorKey", nil) message:NSLocalizedString(@"YouNeedToLoginInSettingsKey", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     }
 }
