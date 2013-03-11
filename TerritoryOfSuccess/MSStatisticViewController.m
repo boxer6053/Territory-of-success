@@ -37,7 +37,7 @@
 {
    
     [super viewDidLoad];
-    [self.tableView setContentOffset:CGPointMake(5, 100)animated:YES];
+//    [self.tableView setContentOffset:CGPointMake(5, 100)animated:YES];
     [self.nameLabel setText:NSLocalizedString(@"AnswersKey", nil)];
     NSLog(@"TOTAL %f", self.totalVotes);
  
@@ -49,9 +49,9 @@
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
-    self.tableView.layer.cornerRadius = 10.0f;
-    self.tableView.layer.borderWidth = 1.0f;
-    [self.tableView.layer setBorderColor:[[UIColor blackColor] CGColor]];
+//    self.tableView.layer.cornerRadius = 10.0f;
+//    self.tableView.layer.borderWidth = 1.0f;
+//    [self.tableView.layer setBorderColor:[[UIColor blackColor] CGColor]];
  [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadingInquirerStatKey",nil)];
    
     NSLog(@"id question %d", self.questionID);
@@ -92,7 +92,7 @@
     if(self.interfaceIndex ==1){
         NSLog(@"TTOTAL %f",self.totalVotes);
         NSLog(@"count %d",self.receivedArray.count);
-        [self.tableView setFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, self.receivedArray.count*50)];
+//        [self.tableView setFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, self.receivedArray.count*50)];
         
         NSString *value = [[self.receivedArray objectAtIndex:indexPath.row] valueForKey:@"cnt"];
         NSLog(@"value %f = ", [value floatValue]);
@@ -116,8 +116,8 @@
     }
     else{
         
-        CGFloat height = self.receivedArray.count;
-        [self.tableView setFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, height*50)];
+      //  CGFloat height = self.receivedArray.count;
+//        [self.tableView setFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, height*50)];
         NSLog(@"count %d",self.receivedArray.count);
         NSLog(@"current row %d", indexPath.row);
         NSLog(@"title %@", [[self.receivedArray objectAtIndex:indexPath.row] valueForKey:@"title"]);
