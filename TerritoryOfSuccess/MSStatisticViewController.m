@@ -98,7 +98,7 @@
         NSInteger heigh = (indexPath.row+1)*45+10;
         NSLog(@"height = %d", heigh);
         NSInteger percents = index*100;
-      [cell.rateView setFrame:CGRectMake(65, 15, 1+index*110, 20)];
+      [cell.rateView setFrame:CGRectMake(65, 15, 0+index*110, 20)];
         NSString *answer = [NSString stringWithFormat:@"%d",percents];
         cell.answerLabel.text = [answer stringByAppendingString:@"%"];
         cell.rateView.image = [UIImage imageNamed:@"terrRate.png"];
@@ -133,7 +133,7 @@
         }
         else{
             percents = index*100;
-           [cell.rateView setFrame:CGRectMake(65, 15,1+index*110, 20)];
+           [cell.rateView setFrame:CGRectMake(65, 15,0+index*110, 20)];
         }
         cell.rateView.image = [UIImage imageNamed:@"terrRate.png"];
         NSString *answer = [NSString stringWithFormat:@"%d",percents];

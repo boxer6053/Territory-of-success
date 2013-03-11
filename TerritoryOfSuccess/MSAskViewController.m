@@ -11,6 +11,7 @@
 #import "MSQuestionCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <QuartzCore/QuartzCore.h>
+#import "PrettyKit.h"
 
 
 
@@ -43,7 +44,7 @@
 @synthesize delegate = _delegate;
 @synthesize backButton = _backButton;
 @synthesize backIds = _backIds;
-@synthesize navigBar = _navigBar;
+
 
 @synthesize navigationBar = _navigationBar;
 
@@ -126,7 +127,10 @@
     {
         [cell.productImage setImageWithURL:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"]];
     }
-    cell.nameLabel.numberOfLines = 2;
+  //  cell.nameLabel.numberOfLines = 2;
+    
+    cell.nameLabel.minimumScaleFactor = 0.8;
+    cell.nameLabel.adjustsFontSizeToFitWidth = YES;
     cell.nameLabel.text = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
         if([[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"] isEqualToString:@""])
         {
