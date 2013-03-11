@@ -79,6 +79,12 @@
     [self makeWrightSegmentColor];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[self categoryAndBrandsControl] setUserInteractionEnabled:YES];
+}
+
 #pragma marl ScrollView Delegate Methods
 - (void)scrollViewWillBeginDragging:(UITableView *)tableView
 {
@@ -200,10 +206,22 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{   if([[[[self arrayOfCategories] objectAtIndex:indexPath.row] valueForKey:@"count"]integerValue] > 0 || [[[[self arrayOfBrands] objectAtIndex:indexPath.row] valueForKey:@"count"]integerValue] > 0)
+{
+    if (self.categoryAndBrandsControl.selectedSegmentIndex == 0)
     {
-        [self performSegueWithIdentifier:@"toSubCatalogue" sender:[[self tableView] cellForRowAtIndexPath:indexPath]];
-        [[self tableView] deselectRowAtIndexPath:indexPath animated:YES];
+        if([[[[self arrayOfCategories] objectAtIndex:indexPath.row] valueForKey:@"count"]integerValue] > 0)
+        {
+            [self performSegueWithIdentifier:@"toSubCatalogue" sender:[[self tableView] cellForRowAtIndexPath:indexPath]];
+            [[self tableView] deselectRowAtIndexPath:indexPath animated:YES];
+        }
+    }
+    else
+    {
+        if([[[[self arrayOfBrands] objectAtIndex:indexPath.row] valueForKey:@"count"]integerValue] > 0)
+        {
+            [self performSegueWithIdentifier:@"toSubCatalogue" sender:[[self tableView] cellForRowAtIndexPath:indexPath]];
+            [[self tableView] deselectRowAtIndexPath:indexPath animated:YES];
+        }
     }
 }
 
