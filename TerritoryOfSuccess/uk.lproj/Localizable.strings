@@ -51,6 +51,7 @@
 "ConfirmKey" = "Підтвердити";
 "AllProductsDownloadedKey" = "Всі продукти завантаженні";
 "PriceKey" = "Ціна:";
+"YouNeedToLoginInSettingsKey" = "Вам необхідно авторизуватись. Відкрийте програму Settings і авторизуйтесь, будь ласка.";
 
 // Опросы
 "DownloadInquirersKey" = "Завантаження питань";

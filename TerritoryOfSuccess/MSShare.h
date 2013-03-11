@@ -3,7 +3,7 @@
 #import "MSAnimationView.h"
 #import "Vkontakte.h"
 
-@interface MSShare :MSAnimationView <VkontakteDelegate>
+@interface MSShare :MSAnimationView <VkontakteDelegate, UIAlertViewDelegate>
 @property (nonatomic) UIViewController *mainView;
 @property (nonatomic) UIView *vkView;
 @property (nonatomic) UIView *vkBackgroundView;

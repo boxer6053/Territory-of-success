@@ -51,6 +51,8 @@
 "ConfirmKey" = "Подтвердить";
 "AllProductsDownloadedKey" = "Все продукты загруженны";
 "PriceKey" = "Цена:";
+"YouNeedToLoginInSettingsKey" = "Вам необходимо авторизироваться! Откройте программу Settings и авторизируйтесь, пожалуйста";
+
 
 // Опросы
 "DownloadInquirersKey" = "Загрузка опросов";
