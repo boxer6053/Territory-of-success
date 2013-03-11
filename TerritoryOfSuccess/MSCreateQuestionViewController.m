@@ -44,6 +44,7 @@
 
 - (void)viewDidLoad
 {
+    [self.askButton setEnabled:NO];
     self.requestStringArray = [[NSMutableArray alloc] init];
     NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
     [self.nameLabel setText:NSLocalizedString(@"PickAProductKey", nil)];
@@ -181,23 +182,38 @@
 -(void)addProduct:(NSString *)string withURL:(NSString *)ulr
 {
     int access;
-    NSLog(@"SSTRing %d",self.savedIndex);
+    for (id obj in self.requestStringArray)
+        NSLog(@"obj: %@", obj);
+
+    NSLog(@"SSTRing %@",string);
     for(int i=0;i<self.requestStringArray.count;i++)
     {
-        if([string isEqualToString:[self.requestStringArray objectAtIndex:i]])
+        NSString *currentID = [self.requestStringArray objectAtIndex:i];
+        NSLog(@"current %@",currentID)  ;
+        NSLog(@"comparing %@", string);
+        if([string isEqualToString:currentID]){
+            NSLog(@"its in");
             access = 1;
-        else
+            break;
+        }
+        else{
+            NSLog(@"Its free");
             access = 0;
+        }
     }
-    if(access ==1){
+    
+    if(access == 1)
+    {
         UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ErrorKey",nil)message:NSLocalizedString(@"AlreadySelectedProductKey",nil) delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
         [failmessage show];
     }
     else{
    [self.requestStringArray setObject:string atIndexedSubscript:self.savedIndex];
     NSLog(@"At Index! %@",[self.requestStringArray objectAtIndex:self.savedIndex]);
+        
     for (id obj in self.requestStringArray)
         NSLog(@"obj: %@", obj);
+        
      [self.gettedImages addObject:ulr];
     //[self.requestStringArray addObject:string];
     NSLog(@"request String %@", self.requestString);
@@ -218,6 +234,7 @@
    // [[self.arrayOfViews objectAtIndex:self.savedIndex] setUserInteractionEnabled:NO];
 
     [self.cleanButton setEnabled:YES];
+        [self.askButton setEnabled:YES];
     }
     
 }
@@ -300,8 +317,12 @@
         //[current setAlpha:0.7];
         current.clipsToBounds= YES;
     }
-    
+    [self.requestStringArray removeAllObjects];
+//    for (id obj in self.requestStringArray)
+//        NSLog(@"obj: %@", obj);
+
     [self.cleanButton setEnabled:NO];
+    [self.askButton setEnabled:NO];
     
 }
 @end

@@ -9,7 +9,8 @@
 #import "MSAskViewController.h"
 #import "SVProgressHUD.h"
 #import "MSQuestionCell.h"
-
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <QuartzCore/QuartzCore.h>
 
 
 
@@ -42,6 +43,7 @@
 @synthesize delegate = _delegate;
 @synthesize backButton = _backButton;
 @synthesize backIds = _backIds;
+@synthesize navigBar = _navigBar;
 
 
 - (MSAPI *) api{
@@ -57,6 +59,7 @@
     [self.backButton setEnabled:NO];
     self.backIds = [[NSMutableArray alloc] init];
     NSLog(@"ASK VIEW CONTROLLER");
+    //[self.navigBar setTitle:NSLocalizedString(@"PickAProductKey",nil)];
     [_tableOfCategories setShowsVerticalScrollIndicator:NO];
     [self.navigationItem.rightBarButtonItem setEnabled:NO];
     NSLog(@"upper %d", self.upperID);
@@ -108,6 +111,16 @@
     cell = [_tableOfCategories dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
         cell = [[MSQuestionCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+    }
+    cell.productImage.layer.cornerRadius = 5.0f;
+    cell.productImage.clipsToBounds = YES;
+    if([[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"] isEqualToString:@""])
+    {
+        cell.productImage.image = [UIImage imageNamed:@"bag.png"];
+    }
+    else
+    {
+        [cell.productImage setImageWithURL:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"]];
     }
     cell.nameLabel.numberOfLines = 2;
     cell.nameLabel.text = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];

@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
 @property (nonatomic) int defaultID;
 @property (weak, nonatomic) NSURL *translatingUrl;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigBar;
 @property (weak, nonatomic) NSString *sendingTitle;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *upButton;
 @property (strong, nonatomic) id <AddingRequestStringDelegate> delegate;
