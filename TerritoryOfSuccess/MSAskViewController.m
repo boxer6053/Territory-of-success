@@ -128,7 +128,7 @@
     else
     {
         [cell.productImage setImage:[UIImage imageNamed:@"bag.png"]];
-        [cell.productImage setImageWithURL:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"]];
+        [cell.productImage setImageWithURL:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"] placeholderImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
     }
   //  cell.nameLabel.numberOfLines = 2;
     
