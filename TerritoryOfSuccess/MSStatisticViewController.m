@@ -171,7 +171,7 @@
         
     }
 
-     [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
+    // [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
     NSLog(@"COUNT %d", self.receivedArray.count);
     self.tableView.delegate = self;
     self.tableView.dataSource = self;

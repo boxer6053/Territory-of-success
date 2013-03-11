@@ -118,7 +118,7 @@
             self.navigationItem.rightBarButtonItem.enabled = NO ;
 
         }
-        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
+       // [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
     }
 }
 -(void)buildView

@@ -220,7 +220,7 @@
         [_tableOfCategories reloadData];
         //  _questionsCount = 0;
     }
-     [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
+   //  [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
     if(typefinished == kLastQuest)
     {
         

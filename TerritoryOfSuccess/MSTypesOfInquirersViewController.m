@@ -288,7 +288,7 @@
         }
 
     }
-    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
+    //[SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
     [[self tableOfInquirers] reloadData];
 }
 
