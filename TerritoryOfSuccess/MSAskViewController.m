@@ -117,6 +117,7 @@
     if (cell == nil) {
         cell = [[MSQuestionCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     cell.productImage.layer.cornerRadius = 5.0f;
     cell.productImage.clipsToBounds = YES;
     if([[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"] isEqualToString:@""])

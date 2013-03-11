@@ -172,6 +172,7 @@
         cell = [[MSInquirerCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
         
     }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     cell.titleLabel.numberOfLines = 2;
     if(allInquirerMode) {
         cell.titleLabel.text = [[self.allQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];

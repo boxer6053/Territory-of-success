@@ -86,6 +86,9 @@
         cell = [[MSStatisticCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
         
     }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    cell.rateView.layer.cornerRadius = 5.0f;
+    cell.rateView.clipsToBounds = YES;
     if(self.interfaceIndex ==1){
         NSLog(@"TTOTAL %f",self.totalVotes);
         NSLog(@"count %d",self.receivedArray.count);
@@ -98,7 +101,7 @@
         NSInteger heigh = (indexPath.row+1)*45+10;
         NSLog(@"height = %d", heigh);
         NSInteger percents = index*100;
-      [cell.rateView setFrame:CGRectMake(65, 15, 0+index*110, 20)];
+      [cell.rateView setFrame:CGRectMake(65, 15, 0+index*155, 20)];
         NSString *answer = [NSString stringWithFormat:@"%d",percents];
         cell.answerLabel.text = [answer stringByAppendingString:@"%"];
         cell.rateView.image = [UIImage imageNamed:@"terrRate.png"];
@@ -129,11 +132,11 @@
         NSInteger percents;
         if(self.totalVotes==0){
             percents = 0;
-        [cell.rateView setFrame:CGRectMake(65, 15,1, 20)];
+        [cell.rateView setFrame:CGRectMake(65, 15,0, 20)];
         }
         else{
             percents = index*100;
-           [cell.rateView setFrame:CGRectMake(65, 15,0+index*110, 20)];
+           [cell.rateView setFrame:CGRectMake(65, 15,0+index*155, 20)];
         }
         cell.rateView.image = [UIImage imageNamed:@"terrRate.png"];
         NSString *answer = [NSString stringWithFormat:@"%d",percents];
