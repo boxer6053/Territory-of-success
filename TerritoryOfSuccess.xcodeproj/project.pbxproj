@@ -56,6 +56,7 @@
 		F5BD298916D7970C00B190B7 /* placeholder_622*415.png in Resources */ = {isa = PBXBuildFile; fileRef = F5BD298816D7970C00B190B7 /* placeholder_622*415.png */; };
 		F5BD298B16D7989400B190B7 /* photoPlaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = F5BD298A16D7989400B190B7 /* photoPlaceholder.png */; };
 		F5BDD2CC16DE765A00B2E518 /* addButton1.png in Resources */ = {isa = PBXBuildFile; fileRef = F5BDD2CB16DE765A00B2E518 /* addButton1.png */; };
+		F5CB747C16EE2F5D004B7080 /* likeForProduct1.png in Resources */ = {isa = PBXBuildFile; fileRef = F5CB747B16EE2F5D004B7080 /* likeForProduct1.png */; };
 		F5CFE32816C95E6900B67C0F /* MSComplaintView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5CFE32716C95E6900B67C0F /* MSComplaintView.m */; };
 		F5D8C64916DD07660035EF30 /* button_185_45.png in Resources */ = {isa = PBXBuildFile; fileRef = F5D8C64816DD07650035EF30 /* button_185_45.png */; };
 		F5D8C64B16DD08C70035EF30 /* button_140*35.png in Resources */ = {isa = PBXBuildFile; fileRef = F5D8C64A16DD08C70035EF30 /* button_140*35.png */; };
@@ -225,6 +226,7 @@
 		F5BD298816D7970C00B190B7 /* placeholder_622*415.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder_622*415.png"; sourceTree = "<group>"; };
 		F5BD298A16D7989400B190B7 /* photoPlaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photoPlaceholder.png; sourceTree = "<group>"; };
 		F5BDD2CB16DE765A00B2E518 /* addButton1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addButton1.png; sourceTree = "<group>"; };
+		F5CB747B16EE2F5D004B7080 /* likeForProduct1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeForProduct1.png; sourceTree = "<group>"; };
 		F5CFE32616C95E6900B67C0F /* MSComplaintView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSComplaintView.h; sourceTree = "<group>"; };
 		F5CFE32716C95E6900B67C0F /* MSComplaintView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSComplaintView.m; sourceTree = "<group>"; };
 		F5D8C64816DD07650035EF30 /* button_185_45.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_185_45.png; sourceTree = "<group>"; };
@@ -668,6 +670,7 @@
 				FA2CEC1016DBBD42007015BC /* commentButton.png */,
 				F569162016E661A7003CAE0E /* chooseButton copy.png */,
 				F569162116E661A7003CAE0E /* chooseButton.png */,
+				F5CB747B16EE2F5D004B7080 /* likeForProduct1.png */,
 				FA2CEC1116DBBD42007015BC /* likeButton.png */,
 				FA2CEC1216DBBD42007015BC /* starButton.png */,
 				F569161216E1140F003CAE0E /* likeIcon1.png */,
@@ -1172,6 +1175,7 @@
 				F569162316E661A7003CAE0E /* chooseButton.png in Resources */,
 				FAE8451916E6774800BA513B /* promo_orange.png in Resources */,
 				F5AC514A16E7921B00330A2F /* closeIcon.png in Resources */,
+				F5CB747C16EE2F5D004B7080 /* likeForProduct1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -61,6 +61,7 @@
 {
     [self customizeNavBar];
     
+    //self.title = @"Pick a product";
     [self.backButton setEnabled:NO];
     self.backIds = [[NSMutableArray alloc] init];
     NSLog(@"ASK VIEW CONTROLLER");
@@ -126,6 +127,7 @@
     }
     else
     {
+        [cell.productImage setImage:[UIImage imageNamed:@"bag.png"]];
         [cell.productImage setImageWithURL:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"]];
     }
   //  cell.nameLabel.numberOfLines = 2;
@@ -262,6 +264,7 @@
     navBar.gradientEndColor = [UIColor colorWithHex:0x1a1a1a];
     navBar.bottomLineColor = [UIColor colorWithHex:0x000000];
     navBar.tintColor = navBar.gradientEndColor;
+    
     
 }
 

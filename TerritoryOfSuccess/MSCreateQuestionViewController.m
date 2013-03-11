@@ -55,7 +55,7 @@
     [self.descriptionLabel setTextAlignment:NSTextAlignmentCenter   ];
     [self.view addSubview:self.descriptionLabel];
     UIView *viewForButtons = [[UIView alloc] init];
-    viewForButtons.layer.cornerRadius = 10.0f;
+    viewForButtons.layer.cornerRadius = 8.0f;
     viewForButtons.clipsToBounds = YES;
 //    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 //    [button addTarget:self
@@ -64,7 +64,7 @@
 //    [button setTitle:@"Show View" forState:UIControlStateNormal];
 //    button.frame = CGRectMake(80.0, 210.0, 160.0, 40.0);
 //    [self.viewForButtons addSubview:button];
-   viewForButtons = [[UIView alloc] init];
+
  //  [viewForButtons setBackgroundColor:[UIColor redColor]] ;
     self.askButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.askButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -268,6 +268,7 @@
 //    }
     
     NSURL *urll = [NSURL URLWithString:[ulr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        [[self.arrayOfViews objectAtIndex:self.savedIndex] setBackgroundImage:[UIImage imageNamed:@"placeholder_415*415.png"] forState:UIControlStateNormal];
     [[self.arrayOfViews objectAtIndex:self.savedIndex] setBackgroundImageWithURL:urll forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
     if(self.savedIndex <5){
     [[self.arrayOfViews objectAtIndex:(self.savedIndex +1)]setHidden:NO];
