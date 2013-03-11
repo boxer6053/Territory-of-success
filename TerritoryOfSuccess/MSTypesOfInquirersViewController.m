@@ -172,11 +172,12 @@
         cell = [[MSInquirerCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
         
     }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     cell.titleLabel.numberOfLines = 2;
     if(allInquirerMode) {
         cell.titleLabel.text = [[self.allQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
         if([[[self.allQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"] integerValue]== 1){
-         cell.typeImage.image = [UIImage imageNamed:@"likeIcon1.png"];
+         cell.typeImage.image = [UIImage imageNamed:@"likeForProduct1.png"];
         }
         else{
             cell.typeImage.image = [UIImage imageNamed:@"questionMark.png"];
@@ -187,7 +188,7 @@
         
         
         if([[[self.myQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"] integerValue]== 1){
-            cell.typeImage.image = [UIImage imageNamed:@"likeIcon1.png"];
+            cell.typeImage.image = [UIImage imageNamed:@"likeForProduct1.png"];
         }
         else{
             cell.typeImage.image = [UIImage imageNamed:@"questionMark.png"];

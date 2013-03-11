@@ -9,7 +9,9 @@
 #import "MSAskViewController.h"
 #import "SVProgressHUD.h"
 #import "MSQuestionCell.h"
-
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <QuartzCore/QuartzCore.h>
+#import "PrettyKit.h"
 
 
 
@@ -44,6 +46,9 @@
 @synthesize backIds = _backIds;
 
 
+@synthesize navigationBar = _navigationBar;
+
+
 - (MSAPI *) api{
     if(!_api){
         _api = [[MSAPI alloc]init];
@@ -54,9 +59,13 @@
 
 - (void)viewDidLoad
 {
+    [self customizeNavBar];
+    
+    //self.title = @"Pick a product";
     [self.backButton setEnabled:NO];
     self.backIds = [[NSMutableArray alloc] init];
     NSLog(@"ASK VIEW CONTROLLER");
+    //[self.navigBar setTitle:NSLocalizedString(@"PickAProductKey",nil)];
     [_tableOfCategories setShowsVerticalScrollIndicator:NO];
     [self.navigationItem.rightBarButtonItem setEnabled:NO];
     NSLog(@"upper %d", self.upperID);
@@ -109,15 +118,32 @@
     if (cell == nil) {
         cell = [[MSQuestionCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-    cell.nameLabel.numberOfLines = 2;
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    cell.productImage.layer.cornerRadius = 5.0f;
+    cell.productImage.clipsToBounds = YES;
+    if([[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"] isEqualToString:@""])
+    {
+        cell.productImage.image = [UIImage imageNamed:@"bag.png"];
+    }
+    else
+    {
+        [cell.productImage setImage:[UIImage imageNamed:@"bag.png"]];
+        [cell.productImage setImageWithURL:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"]];
+    }
+  //  cell.nameLabel.numberOfLines = 2;
+    
+    cell.nameLabel.minimumScaleFactor = 0.8;
+    cell.nameLabel.adjustsFontSizeToFitWidth = YES;
     cell.nameLabel.text = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
+    
         if([[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"] isEqualToString:@""])
+            
         {
     NSString *countValue = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"];
     cell.countLabel.text = [@"available :" stringByAppendingString:countValue];
     }
         else{
-            [cell.countLabel setHidden:YES];
+            [cell.countLabel setText:@"available!"];
         }
  
     return cell;
@@ -222,12 +248,25 @@
     
     
     [self.api getQuestionsWithParentID:lastId];
-        [self.tableOfCategories reloadData];}
+        //[self.tableOfCategories reloadData];
+    }
     else{
         [self.api getQuestionsWithParentID:0];
         [self.backButton setEnabled:NO];
     }
-    for (id obj in self.backIds)
-    NSLog(@"obj: %@", obj);
 }
+
+- (void)customizeNavBar {
+    
+    PrettyNavigationBar *navBar = (PrettyNavigationBar *)self.navigationBar;
+    
+    navBar.topLineColor = [UIColor colorWithHex:0x414141];
+    navBar.gradientStartColor = [UIColor colorWithHex:0x373737];
+    navBar.gradientEndColor = [UIColor colorWithHex:0x1a1a1a];
+    navBar.bottomLineColor = [UIColor colorWithHex:0x000000];
+    navBar.tintColor = navBar.gradientEndColor;
+    
+    
+}
+
 @end

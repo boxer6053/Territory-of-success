@@ -148,8 +148,9 @@
 //        imageForInquirer1.clipsToBounds = YES;
 //        [imageForInquirer1.layer setBorderColor:[[UIColor grayColor] CGColor]];
 //        [imageForInquirer1.layer setBorderWidth:1];
-        //[imageForInquirer1 setImage:[UIImage imageNamed:@"testPic.png"]];
-        [imageForInquirer1 setImageWithURL:[[self.arrayOfProducts objectAtIndex:0] valueForKey:@"image"]];
+        //[imageForInquirer1 setImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
+        
+        [imageForInquirer1 setImageWithURL:[[self.arrayOfProducts objectAtIndex:0] valueForKey:@"image"] placeholderImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
       //  [self.view addSubview:imageForInquirer1];
         UIButton *likeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 
@@ -275,7 +276,8 @@
             UILabel *currentLabel = [arrayOfNames objectAtIndex:i];
             [currentLabel setText:[[self.arrayOfProducts objectAtIndex:i] valueForKey:@"title"]];
             [[arrayOfViews objectAtIndex:i] addTarget:self action:@selector(chooseAProduct:)forControlEvents:UIControlEventTouchUpInside];
-            [[arrayOfViews objectAtIndex:i]setBackgroundImageWithURL:imageUrl forState:UIControlStateNormal];
+           // [[arrayOfViews objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"placeholder_415*415.png"] forState:UIControlStateNormal];
+            [[arrayOfViews objectAtIndex:i]setBackgroundImageWithURL:imageUrl  forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
         }
         for (int i = self.arrayOfProducts.count;i<arrayOfViews.count;i++)
         {
