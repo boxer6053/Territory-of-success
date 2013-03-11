@@ -53,6 +53,7 @@
 "ProductWasVerificatedKey" = "I verified";
 "WithAppKey" = "in \"Territory of Success\" Application";
 "PriceKey" = "Price:";
+"YouNeedToLoginInSettingsKey" = "You need to authorize! Please, go to the Settings and login there";
 
 // Опросы
 "DownloadInquirersKey" = "Loading interogation";

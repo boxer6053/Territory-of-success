@@ -418,7 +418,7 @@
     {
         if ([[self.starsArray objectAtIndex:i] tag] <= sender.tag)
             [[self.starsArray objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"starButton.png"] forState:UIControlStateNormal];
-        else [[self.starsArray objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"whitestarButton.png"] forState:UIControlStateNormal];
+        else [[self.starsArray objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"whiteStarButton.png"] forState:UIControlStateNormal];
     }
     self.rateNumber = sender.tag;
 }
