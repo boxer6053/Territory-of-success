@@ -113,7 +113,8 @@
     if(type == kQuestStat){
         NSString *message = [dictionary valueForKey:@"message"];
         if([message isEqualToString:@"An error occurred"]){
-            //self.toStatButton.title = @"";
+            NSLog(@"not my");
+            [self.toStatButton setEnabled:NO];
             self.navigationItem.rightBarButtonItem.enabled = NO ;
 
         }
