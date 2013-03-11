@@ -75,6 +75,11 @@
 "LikeKey" = "Подобається";
 "DislikeKey" = "Не подобається";
 
+"GoodKey" = "За"
+"BadKey" = "Проти"
+"ItemKey" = "Товар"
+"DescriptionCreatingKey" = "Оберіть 1 товар для створення питання 'Оцініть товар' чи більше для 'Якийй товар краще'"
+
 // Новости
 "DownloadingInformationKey" = "Завантаження інформації...";
 "AllNewsDownloadedKey" = "Всі новини завантажені.";
