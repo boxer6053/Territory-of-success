@@ -77,7 +77,7 @@
 {
     _isFromBonusCatalog = YES;
     self.tempBonusCategoryId = categoryId;
-    [self.api getBonusSubCategories:categoryId];
+    [self.api getBonusSubCategories:categoryId withOffset:0];
 }
 
 #pragma mark - Table view data source
@@ -102,17 +102,16 @@
     
     cell.productName.text = [[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"title"];
     
+    [cell.productSmallImage setImageWithURL:[[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"image"] valueForKey:@"small"] placeholderImage:[UIImage imageNamed:@"placeholder_622*415.png"]];
+    
     if(_isFromBonusCatalog)
     {
-        [cell.productSmallImage setImageWithURL:[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"image"] placeholderImage:[UIImage imageNamed:@"placeholder_622*415.png"]];
+        cell.prodactBrandLabel.text = NSLocalizedString(@"PriceKey", nil);
+        NSString *price = [[NSString alloc]initWithString:[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"price"]];
+        cell.productBrandName.text = price;
+        cell.productPrice = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"price"] integerValue];
     }
     else
-    {
-        [cell.productSmallImage setImageWithURL:[[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"image"] valueForKey:@"small"] placeholderImage:[UIImage imageNamed:@"placeholder_622*415.png"]];
-    }
-    cell.productRatingImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%dstar.png",[[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"rating"]integerValue]]];
-    NSString *price = [[NSString alloc]initWithString:[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"price"]];
-    if (price.length == 0)
     {
         if([[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"brand"])
         {
@@ -123,23 +122,13 @@
             cell.productBrandName.text = [self.brandDictionaryIfWeComeFromBrandsSegment valueForKey:@"title"];
         }
     }
-    else
-    {
-        cell.prodactBrandLabel.text = @"Price:";
-        cell.productBrandName.text = price;
-    }
+    cell.productRatingImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%dstar.png",[[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"rating"]integerValue]]];
     
     //на экспорт в MSDetailViewController
     cell.productAdviceNumber = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"advises"] integerValue];
     cell.productCommentsNumber = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"comments"] integerValue];
     cell.productRatingNumber = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"rating"] integerValue];
-    if (!_isFromBonusCatalog)
-        cell.productBigImageURL = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"image"] valueForKey:@"big"];
-    else
-    {
-        cell.productBigImageURL = [[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"image"];
-        cell.productPrice = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"price"] integerValue];
-    }
+    cell.productBigImageURL = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"image"] valueForKey:@"big"];
     cell.productDesctiptionText = [[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"content"];
     cell.productId = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"id"]integerValue];
     cell.productNumberInList = indexPath.row;
@@ -154,7 +143,10 @@
     if (self.arrayOfProducts.count < self.productsCounter)
     {
         [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadProductsKey",nil)];
-        [self.api getProductsWithOffset:self.arrayOfProducts.count withBrandId:self.tempBrandId withCategoryId:self.tempCategoryId];
+        if (_isFromBonusCatalog)
+            [self.api getBonusSubCategories:self.tempBonusCategoryId withOffset:self.arrayOfProducts.count];
+        else
+            [self.api getProductsWithOffset:self.arrayOfProducts.count withBrandId:self.tempBrandId withCategoryId:self.tempCategoryId];
     }
     else
     {
@@ -189,7 +181,9 @@
         int offset;
         if (self.arrayOfProducts.count <= 5) offset = 0;
         else offset = (self.arrayOfProducts.count - self.lastloadedProductsArray.count);
-        [segue.destinationViewController sentProductName:currentCell.productName.text
+        if (!_isFromBonusCatalog)
+        {
+            [segue.destinationViewController sentProductName:currentCell.productName.text
                                                    andId:currentCell.productId
                                                andRating:currentCell.productRatingNumber
                                        andCommentsNumber:currentCell.productCommentsNumber
@@ -200,6 +194,22 @@
                                               andBrandId:self.tempBrandId
                                            andCategoryId:self.tempCategoryId
                                             andOffset:offset];
+        }
+        else
+        {
+            [segue.destinationViewController sentProductName:currentCell.productName.text
+                                                       andId:currentCell.productId
+                                                   andRating:currentCell.productRatingNumber
+                                           andCommentsNumber:currentCell.productCommentsNumber
+                                            andAdvisesNumber:currentCell.productAdviceNumber
+                                                 andImageURL:currentCell.productBigImageURL
+                                          andDescriptionText:currentCell.productDesctiptionText
+                                             andNumberInList:currentCell.productNumberInList
+                                               andCategoryId:self.tempBonusCategoryId
+                                                   andOffset:offset
+                                                    andPrice:currentCell.productPrice];
+        }
+            
         
     }
 }

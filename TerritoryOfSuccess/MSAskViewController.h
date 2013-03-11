@@ -30,6 +30,7 @@
 @property (strong, nonatomic) NSMutableString *requestItemsString;
 @property (nonatomic) BOOL isAuthorized;
 @property (strong, nonatomic) NSMutableArray *backIds;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 
 - (IBAction)cancel:(id)sender;
 

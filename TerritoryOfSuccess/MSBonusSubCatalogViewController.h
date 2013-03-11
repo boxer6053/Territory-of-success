@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MSAPI.h"
 
-@interface MSBonusSubCatalogViewController : UITableViewController
+@interface MSBonusSubCatalogViewController : UITableViewController <WsCompleteDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *subCatalogTableView;
 
-- (void)setSubCategoriesList:(NSArray *)subCategoriesList;
+- (void)setSubCategories:(NSArray *)subCategoriesList andCategoryId:(int)categoryId;
 
 @end

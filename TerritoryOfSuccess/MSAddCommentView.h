@@ -13,6 +13,6 @@
 @property (strong, nonatomic) id <AddingCommentDelegate> delegate;
 
 - (id)initCommentAdder;
-- (void) setProductId:(int)productId;
+- (void)setProductId:(int)productId isFromBonus:(BOOL)bonus;
 
 @end

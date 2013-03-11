@@ -52,6 +52,7 @@
 "AllProductsDownloadedKey" = "All products are downloaded";
 "ProductWasVerificatedKey" = "I verified";
 "WithAppKey" = "in \"Territory of Success\" Application";
+"PriceKey" = "Price:";
 
 // Опросы
 "DownloadInquirersKey" = "Loading interogation";
@@ -72,6 +73,9 @@
 "QuestionCreatedKey" = "Interrogation created!";
 "SuccessKey" = "Success";
 "ErrorKey" = "Error";
+"whatProductIsBetterKey" = "What product is better";
+"LikeKey" = "Like";
+"DislikeKey" = "Dislike";
 
 // Новости
 "DownloadingInformationKey" = "Downloading information...";

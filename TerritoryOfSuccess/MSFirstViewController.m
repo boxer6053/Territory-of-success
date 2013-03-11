@@ -553,7 +553,7 @@ static inline double radians (double degrees)
     
     [self.api setDelegate:self];
     
-//    self.codeStr = @"95A4-348F-82A1-D88E";
+//    self.codeStr = @"0353-264A-37AF-4E66";
 //    self.codeStr = @"CED0-152F-80CC-893E";
     self.codeStr = [self.codeTextField text];
     
@@ -762,7 +762,7 @@ static inline double radians (double degrees)
             [self.dialogView.captionLabel setText:[[dictionary valueForKey:@"message"] objectAtIndex:0]];
             [self.dialogView.productLabel setText:NSLocalizedString(@"Товар:",nil)];
             NSURL *imageUrl = [NSURL URLWithString:[[dictionary valueForKey:@"product"] valueForKey:@"image"]];
-            [self.dialogView.productImageView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
+            [self.dialogView.productImageView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
             
             self.productString = [NSMutableString stringWithString:[[dictionary valueForKey:@"brand"] valueForKey:@"title"]];
             [self.productString appendFormat:@" / %@", [[dictionary valueForKey:@"product"] valueForKey:@"title"]];
@@ -816,7 +816,7 @@ static inline double radians (double degrees)
                 [self.dialogView.captionLabel setText:[[dictionary valueForKey:@"message"] objectAtIndex:0]];
                 [self.dialogView.productLabel setText:NSLocalizedString(@"Товар:",nil)];
                 NSURL *imageUrl = [NSURL URLWithString:[[dictionary valueForKey:@"product"] valueForKey:@"image"]];
-                [self.dialogView.productImageView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
+                [self.dialogView.productImageView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
                 
                 self.productString = [NSMutableString stringWithString:[[dictionary valueForKey:@"brand"] valueForKey:@"title"]];
                 [self.productString appendFormat:@" / %@", [[dictionary valueForKey:@"product"] valueForKey:@"title"]];
@@ -1073,6 +1073,8 @@ static inline double radians (double degrees)
 {
     self.endCount++;
     
+    self.activeField = nil;
+    
     if (textField.tag == 1 || textField.tag == 2 || textField.tag == 3)
     {
         if (self.beginCount == self.endCount)
@@ -1158,7 +1160,7 @@ static inline double radians (double degrees)
 {
     self.textViewBeginEditing = YES;
     
-    if([textView.text isEqualToString:@"Напышыте коментарий к жалобе!"])
+    if([textView.text isEqualToString:@"Напишите коментарий к жалобе!"])
         textView.text = @"";
     textView.textColor = [UIColor blackColor];
     if ([[UIScreen mainScreen] bounds].size.height == 568)
@@ -1182,7 +1184,7 @@ static inline double radians (double degrees)
     self.textViewBeginEditing = NO;
     
     if ([textView.text isEqualToString:@""]){
-        textView.text = @"Напышыте коментарий к жалобе!";
+        textView.text = @"Напишите коментарий к жалобе!";
         textView.textColor = [UIColor lightGrayColor];
     }
     
@@ -1247,7 +1249,7 @@ static inline double radians (double degrees)
 - (void)customizeNavBar {
     PrettyNavigationBar *navBar = (PrettyNavigationBar *)self.navigationController.navigationBar;
     
-    navBar.topLineColor = [UIColor colorWithHex:0x676767];
+    navBar.topLineColor = [UIColor colorWithHex:0x414141];
     navBar.gradientStartColor = [UIColor colorWithHex:0x373737];
     navBar.gradientEndColor = [UIColor colorWithHex:0x1a1a1a];
     navBar.bottomLineColor = [UIColor colorWithHex:0x000000];

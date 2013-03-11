@@ -8,6 +8,6 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *addCommentButton;
 
 - (IBAction)addComment:(id)sender;
-- (void)sentProductId:(int)sentProductId;
+- (void)sentProductId:(int)sentProductId isFromBonus:(BOOL)bonus;
 - (void)closeAddingCommentSubviewWithAdditionalActions;
 @end
