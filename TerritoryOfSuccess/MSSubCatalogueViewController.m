@@ -20,6 +20,7 @@
 @property (strong, nonatomic)  UIButton *footerButton;
 @property BOOL isFirstTime;
 @property BOOL insertedOperationFinishedTheyWork;
+@property (strong, nonatomic) UIActivityIndicatorView *indicator;
 
 @end
 
@@ -33,6 +34,7 @@
 @synthesize footerButton = _footerButton;
 @synthesize lastloadedProductsArray = _lastloadedProductsArray;
 @synthesize insertedOperationFinishedTheyWork = _insertedOperationFinishedTheyWork;
+@synthesize indicator = _indicator;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -51,8 +53,8 @@
     [self.productsTableView setBackgroundView:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"bg.png"]]];
     
     self.footerButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.productsTableView.frame.size.width, 35)];
-    [self.footerButton setTitle:NSLocalizedString(@"DownloadMoreKey", nil) forState:UIControlStateNormal];
-    [self.footerButton addTarget:self action:@selector(moreProducts) forControlEvents:UIControlEventTouchDown];
+    [self.footerButton setHidden:YES];
+    [self.footerButton setUserInteractionEnabled:NO];
     self.footerButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
     [self.footerButton setTitleColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4] forState:UIControlStateNormal];
     
@@ -142,7 +144,11 @@
 {
     if (self.arrayOfProducts.count < self.productsCounter)
     {
-        [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadProductsKey",nil)];
+        self.indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        self.indicator.hidesWhenStopped = YES;
+        self.productsTableView.tableFooterView = self.indicator;
+        [self.indicator startAnimating];
+
         if (_isFromBonusCatalog)
             [self.api getBonusSubCategories:self.tempBonusCategoryId withOffset:self.arrayOfProducts.count];
         else
@@ -150,7 +156,9 @@
     }
     else
     {
+        self.productsTableView.tableFooterView = self.footerButton;
         [self.footerButton setTitle:NSLocalizedString(@"AllProductsDownloadedKey",nil) forState:UIControlStateNormal];
+        [self.footerButton setHidden:NO];
     }
 }
 
@@ -234,12 +242,6 @@
             self.arrayOfProducts = [[dictionary valueForKey:@"list"] mutableCopy];
             self.tempProductsCounter = [[self arrayOfProducts] count];
             self.productsCounter = [[dictionary valueForKey:@"count"] integerValue];
-            if (self.productsCounter <= 20)
-            {
-                [[self productsTableView].tableFooterView setHidden:YES];
-                [[self productsTableView].tableFooterView setUserInteractionEnabled:NO];
-            }
-            
             [[self productsTableView] reloadData];
             self.brandDictionaryIfWeComeFromBrandsSegment = [dictionary valueForKey:@"brand"];
             
@@ -247,6 +249,7 @@
         }
         else
         {
+            [self.indicator stopAnimating];
             [self.arrayOfProducts addObjectsFromArray:[dictionary valueForKey:@"list"]];
             self.lastloadedProductsArray = [dictionary valueForKey:@"list"];
             for (int i  = 0; i < self.lastloadedProductsArray.count; i++)

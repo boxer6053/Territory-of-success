@@ -131,10 +131,10 @@
         [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadBrandsKey",nil)];
         
         self.footerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 35)];
-        [self.footerButton setTitle:NSLocalizedString(@"DownloadMoreKey",nil) forState:UIControlStateNormal];
+        [self.footerButton setHidden:YES];
+        [self.footerButton setUserInteractionEnabled:NO];
         self.footerButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
         [self.footerButton setTitleColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4] forState:UIControlStateNormal];
-        [self.footerButton addTarget:self action:@selector(moreBrands) forControlEvents:UIControlEventTouchDown];
         self.tableView.tableFooterView = self.footerButton;
         [[self api] getFiveBrandsWithOffset:0];
     }
@@ -152,6 +152,7 @@
     else
     {
         [self.footerButton setTitle:NSLocalizedString(@"AllBrandsDownloadedKey",nil) forState:UIControlStateNormal];
+        [self.footerButton setHidden:NO];
     }
 }
 

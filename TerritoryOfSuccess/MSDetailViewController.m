@@ -5,7 +5,7 @@
 #import "MSCommentsViewController.h"
 #import <Social/Social.h>
 
-@interface MSDetailViewController ()
+@interface MSDetailViewController () 
 {
     BOOL _isFromBrandCatalog;
 }
@@ -44,6 +44,9 @@
 @property int brandId;
 @property int categoryId;
 @property int detailProductOffset;
+
+//login popUP
+@property (nonatomic, strong) MSLogInView *loginView;
 @end
 
 @implementation MSDetailViewController
@@ -70,6 +73,7 @@
 @synthesize priceImage = _priceImage;
 @synthesize priceLabel = _priceLabel;
 @synthesize productPrice = _productPrice;
+@synthesize loginView = _loginView;
 
 - (void)viewDidLoad
 {
@@ -490,6 +494,23 @@
     [self.share attachPopUpAnimationForView:self.share.vkView];
 }
 
+#pragma mark - Login popUp
+- (void)viewDidDisappear:(BOOL)animated  {
+    if(self.loginView)
+    {
+        [self.loginView removeFromSuperview];
+    }
+}
+
+- (void)dismissPopView:(BOOL)result
+{
+    if(result)
+    {
+        [self viewDidAppear:YES];
+    }
+    self.loginView = nil;
+}
+
 #pragma mark - Web Methods
 - (MSAPI *) api
 {
@@ -501,6 +522,8 @@
     return _api;
 }
 
+
+
 - (void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
 {
     if ((type == kRate) || (type == kRecommend) || (type == kBonusRate) || (type == kBonusRecommend))
@@ -511,13 +534,13 @@
             {
                 NSString *messageTitle = [NSString stringWithFormat:@"%@",[[dictionary objectForKey:@"message"] objectForKey:@"title" ]];
                 NSString *messageText = [NSString stringWithFormat:@"%@",[[dictionary objectForKey:@"message"] objectForKey:@"text" ]];
-                UIAlertView *alert = [[UIAlertView  alloc] initWithTitle:messageTitle message:messageText delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                UIAlertView *alert = [[UIAlertView  alloc] initWithTitle:messageTitle message:messageText delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [alert show];
             }
             else
             {
                 NSString *message = [NSString stringWithFormat:@"%@",[dictionary objectForKey:@"message"]];
-                UIAlertView *alert = [[UIAlertView  alloc] initWithTitle:message message:NSLocalizedString(@"NeedToLoginKey", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                UIAlertView *alert = [[UIAlertView  alloc] initWithTitle:message message:NSLocalizedString(@"NeedToLoginKey", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Отмена", nil) otherButtonTitles:@"OK", nil];
                 [alert show];
             }
         }
@@ -541,4 +564,15 @@
     }
 }
 
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        self.loginView = [[MSLogInView alloc]initWithOrigin:CGPointMake(25, self.view.frame.size.height/2 - 120)];
+        [self.view addSubview:self.loginView];
+        [self.loginView blackOutOfBackground];
+        [self.loginView attachPopUpAnimationForView:self.loginView.loginView];
+        self.loginView.delegate = self;
+    }
+}
 @end

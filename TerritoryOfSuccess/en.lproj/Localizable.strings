@@ -40,7 +40,6 @@
 "SendKey" = "Send";
 "writeWhatYouThinkKey" = "Please, write what do you think about this product...";
 "YouShouldEnterCommentKey" = "You should enter a comment";
-"NeedToAuthorizedKey" = "You need to login";
 "AllCommentsDownloadedKey" = "All comments are downloaded";
 "DownloadCommentsKey" = "Loading comments...";
 "AllBrandsDownloadedKey" = "All brands are downloaded";
