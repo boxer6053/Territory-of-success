@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *articleShareVkButton;
 @property (weak, nonatomic) IBOutlet UIButton *articleShareTwButton;
 @property (weak, nonatomic) IBOutlet UIButton *articleShareFbButton;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *articleActivityIndicator;
 
 - (IBAction)vkButtonPressed:(id)sender;
 - (IBAction)twbButtonPressed:(id)sender;
