@@ -10,6 +10,7 @@
 #import "MSAPI.h"
 @protocol AddingRequestStringDelegate <NSObject>
 -(void)addProduct:(NSString *)string withURL:(NSString *)ulr;
+-(void)saveTitleView:(NSString *)string;
 -(void)addImageURL:(NSString *)string;
 -(void)setUpperId:(int)upperId;
 @end
@@ -24,12 +25,14 @@
 @property (weak, nonatomic) NSString *sendingTitle;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *upButton;
 @property (strong, nonatomic) id <AddingRequestStringDelegate> delegate;
+@property (strong, nonatomic) NSString *upperTitle;
 @property (nonatomic) NSInteger upperID;
 @property (nonatomic) int finalID;
 @property (strong, nonatomic) NSMutableString *requestItemsString;
 @property (nonatomic) BOOL isAuthorized;
 @property (strong, nonatomic) NSMutableArray *backIds;
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
+@property (strong, nonatomic) NSString *viewTitle;
 
 - (IBAction)cancel:(id)sender;
 
