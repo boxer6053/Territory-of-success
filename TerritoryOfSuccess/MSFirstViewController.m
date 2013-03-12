@@ -542,7 +542,8 @@ static inline double radians (double degrees)
 }
 
 //перевірка коду
-- (IBAction)sendCode:(UIButton *)sender {
+- (IBAction)sendCode:(UIButton *)sender
+{
     
     float a = 3.125f;
     float b = (int)a;
@@ -820,7 +821,7 @@ static inline double radians (double degrees)
                 [self.dialogView.captionLabel setText:[[dictionary valueForKey:@"message"] objectAtIndex:0]];
                 [self.dialogView.productLabel setText:NSLocalizedString(@"Товар:",nil)];
                 NSURL *imageUrl = [NSURL URLWithString:[[dictionary valueForKey:@"product"] valueForKey:@"image"]];
-                [self.dialogView.productImageView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
+                [self.dialogView.productImageView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
                 
                 self.productString = [NSMutableString stringWithString:[[dictionary valueForKey:@"brand"] valueForKey:@"title"]];
                 [self.productString appendFormat:@" / %@", [[dictionary valueForKey:@"product"] valueForKey:@"title"]];
@@ -1079,6 +1080,8 @@ static inline double radians (double degrees)
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     self.endCount++;
+    
+    self.activeField = nil;
     
     if (textField.tag == 1 || textField.tag == 2 || textField.tag == 3)
     {

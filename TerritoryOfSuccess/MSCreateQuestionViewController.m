@@ -16,6 +16,7 @@
 @interface MSCreateQuestionViewController ()
 @property (strong, nonatomic) NSMutableData *receivedData;
 @property (strong, nonatomic) MSAPI *api;
+@property (strong, nonatomic) UILabel *descriptionLabel;
 
 
 @end
@@ -34,6 +35,7 @@
 @synthesize cleanButton = _cleanButton;
 @synthesize nameLabel = _nameLabel;
 @synthesize requestStringArray = _requestStringArray;
+@synthesize descriptionLabel = _descriptionLabel;
 - (MSAPI *) api{
     if(!_api){
         _api = [[MSAPI alloc]init];
@@ -44,6 +46,44 @@
 
 - (void)viewDidLoad
 {
+    self.descriptionLabel = [[UILabel alloc] init];
+    self.descriptionLabel.frame = CGRectMake(5, 150, 310, 150);
+    self.descriptionLabel.alpha = 0.7;
+    self.descriptionLabel.numberOfLines = 5;
+    self.descriptionLabel.text = @"Pick 1 product for 'Grade a product' interogation or more for 'Choose a product' interogation";
+    [self.descriptionLabel setBackgroundColor:[UIColor clearColor]];
+    [self.descriptionLabel setTextAlignment:NSTextAlignmentCenter   ];
+    [self.view addSubview:self.descriptionLabel];
+    UIView *viewForButtons = [[UIView alloc] init];
+    viewForButtons.layer.cornerRadius = 8.0f;
+    viewForButtons.clipsToBounds = YES;
+//    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    [button addTarget:self
+//               action:@selector(aMethod:)
+//     forControlEvents:UIControlEventTouchDown];
+//    [button setTitle:@"Show View" forState:UIControlStateNormal];
+//    button.frame = CGRectMake(80.0, 210.0, 160.0, 40.0);
+//    [self.viewForButtons addSubview:button];
+
+ //  [viewForButtons setBackgroundColor:[UIColor redColor]] ;
+    self.askButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.askButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+     self.cleanButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.cleanButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.askButton setTitleColor:[UIColor whiteColor] forState:UIControlStateDisabled];
+    [self.cleanButton setTitleColor:[UIColor whiteColor] forState:UIControlStateDisabled];
+    [self.askButton addTarget:self action:@selector(startButton:) forControlEvents:UIControlEventTouchDown];
+     [self.cleanButton addTarget:self action:@selector(cleanButton:) forControlEvents:UIControlEventTouchDown];
+    [self.askButton setTitle:NSLocalizedString(@"AskKey",nil) forState:UIControlStateNormal];
+    [self.cleanButton setTitle:NSLocalizedString(@"CleanKey",nil) forState:UIControlStateNormal];
+    [self.askButton setBackgroundImage:[UIImage imageNamed:@"chooseButton.png"] forState:UIControlStateNormal];
+    [self.cleanButton setBackgroundImage:[UIImage imageNamed:@"chooseButton copy.png"] forState:UIControlStateNormal];
+    self.askButton.frame = CGRectMake(0, 0, 155, 40);
+    self.cleanButton.frame = CGRectMake(155, 0, 155, 40);
+  
+    
+
+    [self.askButton setEnabled:NO];
     self.requestStringArray = [[NSMutableArray alloc] init];
     NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
     [self.nameLabel setText:NSLocalizedString(@"PickAProductKey", nil)];
@@ -67,7 +107,7 @@
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
-
+    
    // [self performSegueWithIdentifier:@"pickAProduct" sender:self];
     [self.cleanButton setEnabled:NO];
     self.requestString = [[NSMutableString alloc] initWithString:@""];
@@ -88,11 +128,13 @@
         [image4 setFrame:CGRectMake(190, 168, 80,80)];
         [image5 setFrame:CGRectMake(50, 278, 80,80)];
         [image6 setFrame:CGRectMake(190, 278, 80,80)];
+        [viewForButtons setFrame:CGRectMake(5, 400, 310, 40)];
+
         
     }
     else
     {
-        
+        [viewForButtons setFrame:CGRectMake(5, 315, 310, 40)];
         [image1 setFrame:CGRectMake(50, 36, 80,80)];
         [image2 setFrame:CGRectMake(190, 36, 80,80)];
         [image3 setFrame:CGRectMake(50, 126, 80,80)];
@@ -136,13 +178,14 @@
 //        [[self.arrayOfProducts objectAtIndex:i] setImage:[UIImage imageNamed:@"bag.png"]];
 //    }
 //    
-    if ([[UIScreen mainScreen] bounds].size.height == 568)
-    {
-        self.askButton.frame = CGRectMake(20, 400, 120, 35);
-        self.cleanButton.frame = CGRectMake(180, 400, 120, 35);
-    }
-
-    
+//    if ([[UIScreen mainScreen] bounds].size.height == 568)
+//    {
+//        self.askButton.frame = CGRectMake(20, 400, 120, 35);
+//        self.cleanButton.frame = CGRectMake(180, 400, 120, 35);
+//    }
+    [viewForButtons addSubview:self.askButton];
+    [viewForButtons addSubview:self.cleanButton];
+     [self.view addSubview:viewForButtons];
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
@@ -181,23 +224,38 @@
 -(void)addProduct:(NSString *)string withURL:(NSString *)ulr
 {
     int access;
-    NSLog(@"SSTRing %d",self.savedIndex);
+    for (id obj in self.requestStringArray)
+        NSLog(@"obj: %@", obj);
+
+    NSLog(@"SSTRing %@",string);
     for(int i=0;i<self.requestStringArray.count;i++)
     {
-        if([string isEqualToString:[self.requestStringArray objectAtIndex:i]])
+        NSString *currentID = [self.requestStringArray objectAtIndex:i];
+        NSLog(@"current %@",currentID)  ;
+        NSLog(@"comparing %@", string);
+        if([string isEqualToString:currentID]){
+            NSLog(@"its in");
             access = 1;
-        else
+            break;
+        }
+        else{
+            NSLog(@"Its free");
             access = 0;
+        }
     }
-    if(access ==1){
+    
+    if(access == 1)
+    {
         UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ErrorKey",nil)message:NSLocalizedString(@"AlreadySelectedProductKey",nil) delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
         [failmessage show];
     }
     else{
    [self.requestStringArray setObject:string atIndexedSubscript:self.savedIndex];
     NSLog(@"At Index! %@",[self.requestStringArray objectAtIndex:self.savedIndex]);
+        
     for (id obj in self.requestStringArray)
         NSLog(@"obj: %@", obj);
+        
      [self.gettedImages addObject:ulr];
     //[self.requestStringArray addObject:string];
     NSLog(@"request String %@", self.requestString);
@@ -210,14 +268,18 @@
 //    }
     
     NSURL *urll = [NSURL URLWithString:[ulr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        [[self.arrayOfViews objectAtIndex:self.savedIndex] setBackgroundImage:[UIImage imageNamed:@"placeholder_415*415.png"] forState:UIControlStateNormal];
     [[self.arrayOfViews objectAtIndex:self.savedIndex] setBackgroundImageWithURL:urll forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
     if(self.savedIndex <5){
     [[self.arrayOfViews objectAtIndex:(self.savedIndex +1)]setHidden:NO];
     }
-    
+        if(self.requestStringArray.count>1){
+            [self.descriptionLabel setHidden:YES];
+        }
    // [[self.arrayOfViews objectAtIndex:self.savedIndex] setUserInteractionEnabled:NO];
 
     [self.cleanButton setEnabled:YES];
+        [self.askButton setEnabled:YES];
     }
     
 }
@@ -231,7 +293,7 @@
     NSLog(@"firstObject %@", [self.gettedImages objectAtIndex:0]);
 }
 
-- (IBAction)startButton:(id)sender {
+- (void)startButton:(id)sender {
     for(int i=0;i<self.requestStringArray.count;i++){
     [self.requestString appendString:@"&items[]="];
     [self.requestString appendString:[self.requestStringArray objectAtIndex:i]];
@@ -262,7 +324,8 @@
 
         }
         else{
-        NSString *response = [[dictionary valueForKey:@"message"] valueForKey:@"text"];
+//        NSString *response = [[dictionary valueForKey:@"message"] valueForKey:@"text"];
+            NSString *response = [dictionary valueForKey:@"message"];
         if([response isEqualToString:@"To get access to this page please log in to the system."]){
             UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Пожалуйста перезайдите в систему!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
             [failmessage show];}
@@ -272,7 +335,7 @@
 //            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Произошла ошибка!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
 //            [failmessage show];
 //        }
-        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
+       // [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
 
         [self.navigationController popViewControllerAnimated:YES];
     }
@@ -280,7 +343,7 @@
     
 
 }
-- (IBAction)cleanButton:(id)sender {
+- (void)cleanButton:(id)sender {
     [self.requestString setString:@""];
       self.upperID = 0;
     for(int i=1;i<self.arrayOfViews.count;i++){
@@ -300,8 +363,12 @@
         //[current setAlpha:0.7];
         current.clipsToBounds= YES;
     }
-    
+    [self.requestStringArray removeAllObjects];
+//    for (id obj in self.requestStringArray)
+//        NSLog(@"obj: %@", obj);
+    [self.descriptionLabel setHidden:NO];
     [self.cleanButton setEnabled:NO];
+    [self.askButton setEnabled:NO];
     
 }
 @end

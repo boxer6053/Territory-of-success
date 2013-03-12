@@ -10,10 +10,11 @@
 @property (nonatomic) int upperID;
 @property (nonatomic) int savedIndex;
 - (IBAction)startButton:(id)sender;
-@property (weak, nonatomic) IBOutlet UIButton *askButton;
-@property (weak, nonatomic) IBOutlet UIButton *cleanButton;
+@property (strong, nonatomic) UIButton *askButton;
+@property (strong, nonatomic)  UIButton *cleanButton;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) NSArray *arrayOfProducts;
 @property (strong, nonatomic) NSMutableArray *requestStringArray;
+
 - (IBAction)cleanButton:(id)sender;
 @end

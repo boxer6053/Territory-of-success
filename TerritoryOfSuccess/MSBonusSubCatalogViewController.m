@@ -145,6 +145,7 @@
     [self.activityIndicator stopAnimating];
     self.subCatalogTableView.tableFooterView = self.footerButton;
     [self.subCategoriesList addObjectsFromArray: [dictionary valueForKey:@"list"]];
+    
     NSArray *lastDownloadedNews = [[NSArray alloc]initWithArray:[dictionary valueForKey:@"list"]];
     for (int i  = 0; i<lastDownloadedNews.count; i++)
     {

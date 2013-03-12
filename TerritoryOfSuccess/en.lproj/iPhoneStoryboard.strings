@@ -2,17 +2,14 @@
 /* Class = "IBUITextView"; text = "Комментарий с ресайзом"; ObjectID = "0Cq-NO-I6P"; */
 "0Cq-NO-I6P.text" = "Комментарий с ресайзом";
 
-/* Class = "IBUILabel"; text = "Title"; ObjectID = "5An-IC-oHd"; */
-"5An-IC-oHd.text" = "Title";
+/* Class = "IBUINavigationItem"; title = "Title"; ObjectID = "0kr-2q-qV8"; */
+"0kr-2q-qV8.title" = "Title";
+
+/* Class = "IBUIBarButtonItem"; title = "Ответы"; ObjectID = "41V-W7-HqD"; */
+"41V-W7-HqD.title" = "Answers";
 
 /* Class = "IBUILabel"; text = "Label"; ObjectID = "5D5-f9-ybf"; */
 "5D5-f9-ybf.text" = "Label";
-
-/* Class = "IBUILabel"; text = "Оцените товар"; ObjectID = "6o2-Gz-gLY"; */
-"6o2-Gz-gLY.text" = "Rate this product";
-
-/* Class = "IBUILabel"; text = "Label"; ObjectID = "7DV-Uz-qHk"; */
-"7DV-Uz-qHk.text" = "Label";
 
 /* Class = "IBUILabel"; text = "Мужчина"; ObjectID = "8cC-w6-YWq"; */
 "8cC-w6-YWq.text" = "Male";
@@ -23,41 +20,47 @@
 /* Class = "IBUIBarButtonItem"; title = "Назад"; ObjectID = "8lr-VC-hEB"; */
 "8lr-VC-hEB.title" = "Back";
 
-/* Class = "IBUIButton"; normalTitle = "Опросники"; ObjectID = "9Ii-AZ-dCD"; */
-"9Ii-AZ-dCD.normalTitle" = "Interrogations";
-
 /* Class = "IBUILabel"; text = "Заголовок"; ObjectID = "9eW-Dd-K2c"; */
-"9eW-Dd-K2c.text" = "Title";
+"9eW-Dd-K2c.text" = "Заголовок";
+
+/* Class = "IBUILabel"; text = "Inquirer name"; ObjectID = "AFT-Jf-8iC"; */
+"AFT-Jf-8iC.text" = "Inquirer name";
+
+/* Class = "IBUILabel"; text = "Доступно:"; ObjectID = "Adh-Bf-F2h"; */
+"Adh-Bf-F2h.text" = "available:";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "AwO-Sz-rbK"; */
+"AwO-Sz-rbK.text" = "Label";
 
 /* Class = "IBUINavigationItem"; title = "Каталог"; ObjectID = "BAi-Sz-OmZ"; */
 "BAi-Sz-OmZ.title" = "Catalogue";
 
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "CSH-Yp-Mkl"; */
+"CSH-Yp-Mkl.text" = "Label";
+
 /* Class = "IBUILabel"; text = "Уведомления об успешном платеже"; ObjectID = "D36-14-ryf"; */
-"D36-14-ryf.text" = "Notification of successful payment";
+"D36-14-ryf.text" = "Уведомления об успешном платеже";
+
+/* Class = "IBUIButton"; normalTitle = "Сохранить"; ObjectID = "D8I-pm-UuG"; */
+"D8I-pm-UuG.normalTitle" = "Save";
 
 /* Class = "IBUITabBarItem"; title = "Каталог"; ObjectID = "D8e-iH-KKD"; */
 "D8e-iH-KKD.title" = "Catalogue";
 
 /* Class = "IBUILabel"; text = "Название продукта"; ObjectID = "DeZ-HA-pbV"; */
-"DeZ-HA-pbV.text" = "Product name";
+"DeZ-HA-pbV.text" = "Название продукта";
 
-/* Class = "IBUIButton"; normalTitle = "Задать вопрос"; ObjectID = "ECh-Xg-TyF"; */
-"ECh-Xg-TyF.normalTitle" = "Ask a question";
+/* Class = "IBUILabel"; text = "дата"; ObjectID = "EeC-DB-iJ6"; */
+"EeC-DB-iJ6.text" = "дата";
 
 /* Class = "IBUILabel"; text = "Имя комментатора"; ObjectID = "F6U-RC-trU"; */
 "F6U-RC-trU.text" = "Имя комментатора";
 
-/* Class = "IBUILabel"; text = "Subtitle"; ObjectID = "FcA-PJ-h6c"; */
-"FcA-PJ-h6c.text" = "Subtitle";
+/* Class = "IBUILabel"; text = "Имя категории"; ObjectID = "HZ6-v7-Wdn"; */
+"HZ6-v7-Wdn.text" = "Имя категории";
 
-/* Class = "IBUIButton"; normalTitle = "Комментарии"; ObjectID = "Gce-Jt-I9L"; */
-"Gce-Jt-I9L.normalTitle" = "Comments";
-
-/* Class = "IBUINavigationItem"; title = "Title"; ObjectID = "GmM-9s-ilq"; */
-"GmM-9s-ilq.title" = "Title";
-
-/* Class = "IBUINavigationItem"; title = "Опросы"; ObjectID = "Hdt-dX-Gwp"; */
-"Hdt-dX-Gwp.title" = "Опросы";
+/* Class = "IBUILabel"; text = "0"; ObjectID = "IUI-se-H5e"; */
+"IUI-se-H5e.text" = "0";
 
 /* Class = "IBUILabel"; text = "Женщина"; ObjectID = "IqJ-sg-u8g"; */
 "IqJ-sg-u8g.text" = "Female";
@@ -68,8 +71,14 @@
 /* Class = "IBUISegmentedControl"; JVi-72-uhQ.segmentTitles[1] = "Бренды"; ObjectID = "JVi-72-uhQ"; */
 "JVi-72-uhQ.segmentTitles[1]" = "Brands";
 
+/* Class = "IBUILabel"; text = "Доступно:"; ObjectID = "Jed-Al-8lV"; */
+"Jed-Al-8lV.text" = "Available:";
+
 /* Class = "IBUITextField"; placeholder = "Введите информацию"; ObjectID = "KlH-NJ-SHx"; */
 "KlH-NJ-SHx.placeholder" = "Enter information";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "L8S-Z6-iCI"; */
+"L8S-Z6-iCI.text" = "Label";
 
 /* Class = "IBUIBarButtonItem"; title = "Share"; ObjectID = "LOb-YF-Ip1"; */
 "LOb-YF-Ip1.title" = "Share";
@@ -80,26 +89,20 @@
 /* Class = "IBUILabel"; text = "Detail"; ObjectID = "Mn2-YX-rkG"; */
 "Mn2-YX-rkG.text" = "Detail";
 
-/* Class = "IBUILabel"; text = "Label"; ObjectID = "O72-VX-RvM"; */
-"O72-VX-RvM.text" = "Label";
-
-/* Class = "IBUITextView"; text = "Описание товара"; ObjectID = "Oyn-7Q-ohz"; */
-"Oyn-7Q-ohz.text" = "Product description";
-
-/* Class = "IBUIButton"; normalTitle = "Вопросы"; ObjectID = "QKf-wA-BOS"; */
-"QKf-wA-BOS.normalTitle" = "Questions";
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "Pss-Xv-u9m"; */
+"Pss-Xv-u9m.text" = "Label";
 
 /* Class = "IBUINavigationItem"; title = "Комментарии"; ObjectID = "RbH-Fm-UVP"; */
 "RbH-Fm-UVP.title" = "Comments";
 
-/* Class = "IBUILabel"; text = "Задать свой вопрос"; ObjectID = "T22-se-TPD"; */
-"T22-se-TPD.text" = "Ask own question";
-
-/* Class = "IBUITextView"; text = "Напишите, что Вы думаете об этом товаре..."; ObjectID = "VxB-Kl-Csp"; */
-"VxB-Kl-Csp.text" = "Write, what do You think about this product...";
+/* Class = "IBUIButton"; normalTitle = "Отмена"; ObjectID = "TPA-lV-Cj4"; */
+"TPA-lV-Cj4.normalTitle" = "Cancel";
 
 /* Class = "IBUITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "WiQ-qI-oGj"; */
 "WiQ-qI-oGj.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "IBUILabel"; text = "0"; ObjectID = "YGd-X7-c8T"; */
+"YGd-X7-c8T.text" = "0";
 
 /* Class = "IBUILabel"; text = "Получать:"; ObjectID = "YJZ-17-LGK"; */
 "YJZ-17-LGK.text" = "Receive:";
@@ -107,17 +110,11 @@
 /* Class = "IBUILabel"; text = "доступно:"; ObjectID = "Z7t-D9-JOX"; */
 "Z7t-D9-JOX.text" = "available:";
 
-/* Class = "IBUIButton"; normalTitle = "Вопросы о товарах"; ObjectID = "ZHN-GQ-oad"; */
-"ZHN-GQ-oad.normalTitle" = "Questions about products";
-
 /* Class = "IBUILabel"; text = "Title"; ObjectID = "ZTf-r8-gtX"; */
 "ZTf-r8-gtX.text" = "Title";
 
 /* Class = "IBUIBarButtonItem"; title = "Наверх"; ObjectID = "aJJ-ZY-1Ox"; */
 "aJJ-ZY-1Ox.title" = "Up";
-
-/* Class = "IBUILabel"; text = "Label"; ObjectID = "aKs-rz-OzK"; */
-"aKs-rz-OzK.text" = "Label";
 
 /* Class = "IBUINavigationItem"; title = "Новости"; ObjectID = "bGf-Y1-16V"; */
 "bGf-Y1-16V.title" = "News";
@@ -131,38 +128,56 @@
 /* Class = "IBUINavigationItem"; title = "Продукты"; ObjectID = "dOo-er-6gG"; */
 "dOo-er-6gG.title" = "Products";
 
+/* Class = "IBUILabel"; text = "0"; ObjectID = "dfH-3t-ahY"; */
+"dfH-3t-ahY.text" = "0";
+
 /* Class = "IBUIBarButtonItem"; title = "Share"; ObjectID = "eI2-p2-fbD"; */
 "eI2-p2-fbD.title" = "Share";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "fI6-Ne-OqW"; */
+"fI6-Ne-OqW.text" = "Label";
 
 /* Class = "IBUIButton"; normalTitle = "Бонусы"; ObjectID = "fg8-MC-mnf"; */
 "fg8-MC-mnf.normalTitle" = "Bonuses";
 
 /* Class = "IBUITextView"; text = "Краткие ведомости"; ObjectID = "gLo-hx-YhH"; */
-"gLo-hx-YhH.text" = "Summary statement";
+"gLo-hx-YhH.text" = "Краткие ведомости";
+
+/* Class = "IBUILabel"; text = "Выберите продукты"; ObjectID = "gh6-OG-W9P"; */
+"gh6-OG-W9P.text" = "Choose products";
 
 /* Class = "IBUILabel"; text = "Имя бренда"; ObjectID = "gld-gI-lwW"; */
-"gld-gI-lwW.text" = "Brand's name";
+"gld-gI-lwW.text" = "Имя бренда";
 
 /* Class = "IBUIButton"; normalTitle = "Отправить"; ObjectID = "h7L-XQ-A7e"; */
 "h7L-XQ-A7e.normalTitle" = "Send";
 
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "jsi-sa-Yw9"; */
+"jsi-sa-Yw9.text" = "Label";
+
 /* Class = "IBUILabel"; text = "Название продукта"; ObjectID = "jyC-nb-exs"; */
-"jyC-nb-exs.text" = "Product's name";
+"jyC-nb-exs.text" = "Название продукта";
 
-/* Class = "IBUILabel"; text = "Оцените, пожалуйста, продукт:"; ObjectID = "knp-U3-zNU"; */
-"knp-U3-zNU.text" = "Please, rate this product:";
+/* Class = "IBUIButton"; normalTitle = "Очистить"; ObjectID = "lBi-f4-h2n"; */
+"lBi-f4-h2n.normalTitle" = "Clean";
 
-/* Class = "IBUIButton"; normalTitle = "Сохранить"; ObjectID = "lpN-V0-zQI"; */
-"lpN-V0-zQI.normalTitle" = "Save";
+/* Class = "IBUISegmentedControl"; ley-oP-WcZ.segmentTitles[0] = "Все опросы"; ObjectID = "ley-oP-WcZ"; */
+"ley-oP-WcZ.segmentTitles[0]" = "All interrogations";
 
-/* Class = "IBUILabel"; text = "Описание опроса"; ObjectID = "mzH-kP-5TX"; */
-"mzH-kP-5TX.text" = "Interview description";
+/* Class = "IBUISegmentedControl"; ley-oP-WcZ.segmentTitles[1] = "Мои опросы"; ObjectID = "ley-oP-WcZ"; */
+"ley-oP-WcZ.segmentTitles[1]" = "My interrogations";
+
+/* Class = "IBUIButton"; normalTitle = "Редактировать"; ObjectID = "lpN-V0-zQI"; */
+"lpN-V0-zQI.normalTitle" = "Edit";
+
+/* Class = "IBUIBarButtonItem"; title = "Back"; ObjectID = "mHL-gX-JVF"; */
+"mHL-gX-JVF.title" = "Back";
 
 /* Class = "IBUILabel"; text = "Количество баллов"; ObjectID = "pLv-Lo-miT"; */
-"pLv-Lo-miT.text" = "Number of points";
+"pLv-Lo-miT.text" = "Bonus nember";
 
-/* Class = "IBUILabel"; text = "Label"; ObjectID = "pwG-Z8-5OB"; */
-"pwG-Z8-5OB.text" = "Label";
+/* Class = "IBUIButton"; normalTitle = "Спросить"; ObjectID = "pNu-G9-IJC"; */
+"pNu-G9-IJC.normalTitle" = "Ask";
 
 /* Class = "IBUILabel"; text = "Имя бренда/категории"; ObjectID = "r9V-mx-GJf"; */
 "r9V-mx-GJf.text" = "Имя бренда/категории";
@@ -170,17 +185,14 @@
 /* Class = "IBUINavigationItem"; title = "Опросы"; ObjectID = "sQE-dx-gsA"; */
 "sQE-dx-gsA.title" = "Interrogations";
 
-/* Class = "IBUISegmentedControl"; uU7-wQ-Ng3.segmentTitles[0] = "Все опросы"; ObjectID = "uU7-wQ-Ng3"; */
-"uU7-wQ-Ng3.segmentTitles[0]" = "All interrogations";
+/* Class = "IBUILabel"; text = "Ответы"; ObjectID = "thG-p1-N6o"; */
+"thG-p1-N6o.text" = "Answers";
 
-/* Class = "IBUISegmentedControl"; uU7-wQ-Ng3.segmentTitles[1] = "Мои опросы"; ObjectID = "uU7-wQ-Ng3"; */
-"uU7-wQ-Ng3.segmentTitles[1]" = "My interrogations";
+/* Class = "IBUILabel"; text = "Имя подкатегории"; ObjectID = "v4b-2D-4bz"; */
+"v4b-2D-4bz.text" = "Имя подкатегории";
 
 /* Class = "IBUITabBarItem"; title = "Главная"; ObjectID = "vHN-4a-EzM"; */
 "vHN-4a-EzM.title" = "Main";
-
-/* Class = "IBUITextField"; placeholder = "Введите свой вопрос про этот товар"; ObjectID = "vfq-33-Wr8"; */
-"vfq-33-Wr8.placeholder" = "Enter Your question about this product";
 
 /* Class = "IBUILabel"; text = "Бренд:"; ObjectID = "wZI-Qp-x1P"; */
 "wZI-Qp-x1P.text" = "Brand:";
@@ -201,4 +213,4 @@
 "yFI-9D-ys6.normalTitle" = "LikeButton";
 
 /* Class = "IBUIBarButtonItem"; title = "Выйти"; ObjectID = "yxf-3h-xzN"; */
-"yxf-3h-xzN.title" = "LogOut";
+"yxf-3h-xzN.title" = "Logout";

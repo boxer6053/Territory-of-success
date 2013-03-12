@@ -37,7 +37,7 @@
 {
    
     [super viewDidLoad];
-    [self.tableView setContentOffset:CGPointMake(5, 100)animated:YES];
+//    [self.tableView setContentOffset:CGPointMake(5, 100)animated:YES];
     [self.nameLabel setText:NSLocalizedString(@"AnswersKey", nil)];
     NSLog(@"TOTAL %f", self.totalVotes);
  
@@ -49,9 +49,9 @@
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     }
-    self.tableView.layer.cornerRadius = 10.0f;
-    self.tableView.layer.borderWidth = 1.0f;
-    [self.tableView.layer setBorderColor:[[UIColor blackColor] CGColor]];
+//    self.tableView.layer.cornerRadius = 10.0f;
+//    self.tableView.layer.borderWidth = 1.0f;
+//    [self.tableView.layer setBorderColor:[[UIColor blackColor] CGColor]];
  [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadingInquirerStatKey",nil)];
    
     NSLog(@"id question %d", self.questionID);
@@ -86,10 +86,13 @@
         cell = [[MSStatisticCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
         
     }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    cell.rateView.layer.cornerRadius = 5.0f;
+    cell.rateView.clipsToBounds = YES;
     if(self.interfaceIndex ==1){
         NSLog(@"TTOTAL %f",self.totalVotes);
         NSLog(@"count %d",self.receivedArray.count);
-        [self.tableView setFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, self.receivedArray.count*50)];
+//        [self.tableView setFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, self.receivedArray.count*50)];
         
         NSString *value = [[self.receivedArray objectAtIndex:indexPath.row] valueForKey:@"cnt"];
         NSLog(@"value %f = ", [value floatValue]);
@@ -98,28 +101,28 @@
         NSInteger heigh = (indexPath.row+1)*45+10;
         NSLog(@"height = %d", heigh);
         NSInteger percents = index*100;
-      [cell.rateView setFrame:CGRectMake(65, 15, 1+index*110, 20)];
+      [cell.rateView setFrame:CGRectMake(61, 13, 0+index*190, 20)];
         NSString *answer = [NSString stringWithFormat:@"%d",percents];
         cell.answerLabel.text = [answer stringByAppendingString:@"%"];
         cell.rateView.image = [UIImage imageNamed:@"terrRate.png"];
  
         if([[[self.receivedArray objectAtIndex:indexPath.row] valueForKey:@"title"] isEqualToString:@"!-- like --!"]){
-            cell.titleLabel.text = @"За";
+            cell.titleLabel.text = NSLocalizedString(@"GoodKey",nil);
                    }
         else{
-            cell.titleLabel.text = @"Против";
+            cell.titleLabel.text = NSLocalizedString(@"BadKey",nil);
                     }
        
     }
     else{
         
-        CGFloat height = self.receivedArray.count;
-        [self.tableView setFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, height*50)];
+      //  CGFloat height = self.receivedArray.count;
+//        [self.tableView setFrame:CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, height*50)];
         NSLog(@"count %d",self.receivedArray.count);
         NSLog(@"current row %d", indexPath.row);
         NSLog(@"title %@", [[self.receivedArray objectAtIndex:indexPath.row] valueForKey:@"title"]);
-        NSString *number = [NSString stringWithFormat:@"%d",indexPath.row+1];
-        cell.titleLabel.text = [@"Товар " stringByAppendingString:number];
+        NSString *number = [NSString stringWithFormat:@" %d",indexPath.row+1];
+        cell.titleLabel.text = [NSLocalizedString(@"ItemKey",nil) stringByAppendingString:number];
         NSString *value = [[self.receivedArray objectAtIndex:indexPath.row] valueForKey:@"cnt"];
        // NSLog(@"value %f = ", [value floatValue]);
         CGFloat index = [value floatValue]/self.totalVotes;
@@ -129,11 +132,11 @@
         NSInteger percents;
         if(self.totalVotes==0){
             percents = 0;
-        [cell.rateView setFrame:CGRectMake(65, 15,1, 20)];
+        [cell.rateView setFrame:CGRectMake(61, 15,0, 20)];
         }
         else{
             percents = index*100;
-           [cell.rateView setFrame:CGRectMake(65, 15,1+index*110, 20)];
+           [cell.rateView setFrame:CGRectMake(61, 13,0+index*190, 20)];
         }
         cell.rateView.image = [UIImage imageNamed:@"terrRate.png"];
         NSString *answer = [NSString stringWithFormat:@"%d",percents];
@@ -168,7 +171,7 @@
         
     }
 
-     [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
+    // [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
     NSLog(@"COUNT %d", self.receivedArray.count);
     self.tableView.delegate = self;
     self.tableView.dataSource = self;

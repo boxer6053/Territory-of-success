@@ -42,6 +42,7 @@
 
 - (void)viewDidLoad
 {
+    [self.navigationItem.rightBarButtonItem setTitle:NSLocalizedString(@"AnswersKey",nil)];
     NSLog(@"itemID %ld", (long)self.itemID);
     NSLog(@"getted %@",self.productName);
     NSLog(@"adfdsfsdf%d", _inquirerType);
@@ -113,11 +114,12 @@
     if(type == kQuestStat){
         NSString *message = [dictionary valueForKey:@"message"];
         if([message isEqualToString:@"An error occurred"]){
-            //self.toStatButton.title = @"";
+            NSLog(@"not my");
+            [self.toStatButton setEnabled:NO];
             self.navigationItem.rightBarButtonItem.enabled = NO ;
 
         }
-        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
+       // [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
     }
 }
 -(void)buildView
@@ -148,8 +150,9 @@
 //        imageForInquirer1.clipsToBounds = YES;
 //        [imageForInquirer1.layer setBorderColor:[[UIColor grayColor] CGColor]];
 //        [imageForInquirer1.layer setBorderWidth:1];
-        //[imageForInquirer1 setImage:[UIImage imageNamed:@"testPic.png"]];
-        [imageForInquirer1 setImageWithURL:[[self.arrayOfProducts objectAtIndex:0] valueForKey:@"image"]];
+        //[imageForInquirer1 setImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
+        
+        [imageForInquirer1 setImageWithURL:[[self.arrayOfProducts objectAtIndex:0] valueForKey:@"image"] placeholderImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
       //  [self.view addSubview:imageForInquirer1];
         UIButton *likeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 
@@ -157,7 +160,7 @@
            
 //        [likeButton setBackgroundImage:[UIImage imageNamed:@"likeWithOpacity copy.png"] forState:UIControlStateNormal];
         [likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [likeButton setTitle:@"Like it!" forState:UIControlStateNormal];
+        [likeButton setTitle:NSLocalizedString(@"LikeKey", nil) forState:UIControlStateNormal];
         [likeButton addTarget:self action:@selector(likeAction)  forControlEvents:UIControlEventTouchUpInside];
         //[self.view addSubview:likeButton];
         UIButton *dislikeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -165,7 +168,7 @@
          [dislikeButton setBackgroundImage:[UIImage imageNamed:@"chooseButton copy.png"] forState:UIControlStateNormal];
         //[dislikeButton setBackgroundColor:[UIColor blackColor]];
        [dislikeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-       [dislikeButton setTitle:@"Hate it!" forState:UIControlStateNormal];
+       [dislikeButton setTitle:NSLocalizedString(@"DislikeKey", nil) forState:UIControlStateNormal];
         [dislikeButton addTarget:self action:@selector(dislikeAction) forControlEvents:UIControlEventTouchUpInside];
        // [self.view addSubview:dislikeButton];
         [productView addSubview:imageForInquirer1];
@@ -197,7 +200,7 @@
     else{
         //ВИД ОПРОСА КАКОЙ ТОВАР ЛУЧШЕ
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 5, 200, 20)];
-        [titleLabel setText:@"Какой товар лучше"];
+        [titleLabel setText:NSLocalizedString(@"whatProductIsBetterKey", nil)];
         titleLabel.textAlignment = NSTextAlignmentCenter;
         [titleLabel setBackgroundColor:[UIColor clearColor]];
         [self.view addSubview:titleLabel];
@@ -275,7 +278,8 @@
             UILabel *currentLabel = [arrayOfNames objectAtIndex:i];
             [currentLabel setText:[[self.arrayOfProducts objectAtIndex:i] valueForKey:@"title"]];
             [[arrayOfViews objectAtIndex:i] addTarget:self action:@selector(chooseAProduct:)forControlEvents:UIControlEventTouchUpInside];
-            [[arrayOfViews objectAtIndex:i]setBackgroundImageWithURL:imageUrl forState:UIControlStateNormal];
+           // [[arrayOfViews objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"placeholder_415*415.png"] forState:UIControlStateNormal];
+            [[arrayOfViews objectAtIndex:i]setBackgroundImageWithURL:imageUrl  forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
         }
         for (int i = self.arrayOfProducts.count;i<arrayOfViews.count;i++)
         {

@@ -106,7 +106,7 @@
     
     if(_isFromBonusCatalog)
     {
-        cell.prodactBrandLabel.text = @"Price:";
+        cell.prodactBrandLabel.text = NSLocalizedString(@"PriceKey", nil);
         NSString *price = [[NSString alloc]initWithString:[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"price"]];
         cell.productBrandName.text = price;
         cell.productPrice = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"price"] integerValue];

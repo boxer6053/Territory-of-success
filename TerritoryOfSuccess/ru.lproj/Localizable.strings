@@ -50,6 +50,9 @@
 "RateKey" = "Оценить";
 "ConfirmKey" = "Подтвердить";
 "AllProductsDownloadedKey" = "Все продукты загруженны";
+"PriceKey" = "Цена:";
+"YouNeedToLoginInSettingsKey" = "Вам необходимо авторизироваться! Откройте программу Settings и авторизируйтесь, пожалуйста";
+
 
 // Опросы
 "DownloadInquirersKey" = "Загрузка опросов";
@@ -69,7 +72,14 @@
 "QuestionCreatedKey" = "Опрос создан!";
 "SuccessKey" = "Успех";
 "ErrorKey" = "Ошибка";
+"whatProductIsBetterKey" = "Какой товар лучше";
+"LikeKey" = "Нравится";
+"DislikeKey" = "Не нравится";
 
+"GoodKey" = "За";
+"BadKey" = "Против";
+"ItemKey" = "Товар";
+"DescriptionCreatingKey" = "Выберите 1 товар для создания опроса 'Оцените товар' или более для 'Какой товар лучше'";
 
 // Новости
 "DownloadingInformationKey" = "Загрузка информации...";

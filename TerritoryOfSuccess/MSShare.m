@@ -36,6 +36,11 @@
         [viewController presentViewController:self.slComposeSheet animated:YES completion:nil];
         [self slComposeSheetHandlerMethod];
     }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ErrorKey", nil) message:NSLocalizedString(@"YouNeedToLoginInSettingsKey", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 - (void)shareOnTwitterWithText:(NSString *)shareText
@@ -52,6 +57,11 @@
         [viewController presentViewController:self.slComposeSheet animated:YES completion:nil];
         [self slComposeSheetHandlerMethod];
         
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ErrorKey", nil) message:NSLocalizedString(@"YouNeedToLoginInSettingsKey", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
     }
 }
 
