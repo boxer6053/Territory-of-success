@@ -63,7 +63,7 @@
 {
     [self customizeNavBar];
     if(!self.upperTitle){
-    self.upperTitle = NSLocalizedString(@"PickAProductKey", nil);
+    self.upperTitle = @"";
     }
     [self.navigationBar.topItem setTitle:self.upperTitle];
     //self.title = @"Pick a product";
@@ -257,7 +257,7 @@
         
     }
     else{
-        [self.navigationBar.topItem setTitle:NSLocalizedString(@"PickAProductKey", nil)];
+        [self.navigationBar.topItem setTitle:@""];
     }
     if(self.backIds.count != 0){
 
