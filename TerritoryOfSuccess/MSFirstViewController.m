@@ -405,9 +405,10 @@
     @catch (NSException *exception) {
         [imagePickerController dismissViewControllerAnimated:YES completion:NULL];
         
-        UIAlertView *recognizingCodeError = [[UIAlertView alloc] initWithTitle:@"Ошибка распознания"
-                                                                       message:@"Не удалось распознать код"
-                                                                      delegate:nil cancelButtonTitle:@"OK"
+        UIAlertView *recognizingCodeError = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"RecognitionErrorKey", nil)
+                                                                       message:NSLocalizedString(@"RecognitionCodeErrorKey", nil)
+                                                                      delegate:nil
+                                                             cancelButtonTitle:@"OK"
                                                              otherButtonTitles:nil, nil];
         [recognizingCodeError show];
     }
@@ -706,8 +707,8 @@ static inline double radians (double degrees)
     }
     else
     {
-        UIAlertView *complaintError = [[UIAlertView alloc] initWithTitle:@"Ошибка жалобы"
-                                                                 message:@"Заполныте все поля!"
+        UIAlertView *complaintError = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ComplaintErrorKey", nil)
+                                                                 message:NSLocalizedString(@"FillAllFieldsKey", nil)
                                                                 delegate:nil cancelButtonTitle:@"OK"
                                                        otherButtonTitles:nil, nil];
         [complaintError show];
@@ -1162,7 +1163,7 @@ static inline double radians (double degrees)
 {
     self.textViewBeginEditing = YES;
     
-    if([textView.text isEqualToString:@"Напишите коментарий к жалобе!"])
+    if([textView.text isEqualToString:NSLocalizedString(@"WriteACommentForComplaintKey", nil)])
         textView.text = @"";
     textView.textColor = [UIColor blackColor];
     if ([[UIScreen mainScreen] bounds].size.height == 568)
@@ -1186,7 +1187,7 @@ static inline double radians (double degrees)
     self.textViewBeginEditing = NO;
     
     if ([textView.text isEqualToString:@""]){
-        textView.text = @"Напишите коментарий к жалобе!";
+        textView.text = NSLocalizedString(@"WriteACommentForComplaintKey", nil);
         textView.textColor = [UIColor lightGrayColor];
     }
     
