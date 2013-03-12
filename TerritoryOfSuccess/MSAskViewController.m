@@ -46,6 +46,7 @@
 @synthesize backButton = _backButton;
 @synthesize backIds = _backIds;
 @synthesize upperTitle = _upperTitle;
+@synthesize backTitles = _backTitles;
 
 @synthesize navigationBar = _navigationBar;
 
@@ -64,9 +65,11 @@
     if(!self.upperTitle){
     self.upperTitle = NSLocalizedString(@"PickAProductKey", nil);
     }
+    [self.navigationBar.topItem setTitle:self.upperTitle];
     //self.title = @"Pick a product";
     [self.backButton setEnabled:NO];
     self.backIds = [[NSMutableArray alloc] init];
+    self.backTitles = [[NSMutableArray alloc] init];
     NSLog(@"ASK VIEW CONTROLLER");
     //[self.navigBar setTitle:NSLocalizedString(@"PickAProductKey",nil)];
     [_tableOfCategories setShowsVerticalScrollIndicator:NO];
@@ -164,6 +167,7 @@
        // NSInteger currentSubCategory = [[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
         
         self.upperTitle = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
+        [self.backTitles addObject:self.upperTitle];
         [self.backIds addObject:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"]];
         _questionsCount = 0;
         [_tableOfCategories reloadData];
@@ -197,8 +201,8 @@
         }
         
     }
-   
-    
+    [self.navigationBar.topItem setTitle:self.upperTitle];
+
 }
 
 
@@ -222,7 +226,7 @@
 //            [_tableOfCategories insertRowsAtIndexPaths: insertIndexPath withRowAnimation:NO];
 //        }
         [_tableOfCategories reloadData];
-        [self.navigationBar.topItem setTitle:self.upperTitle];
+        
         //  _questionsCount = 0;
     }
    //  [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
@@ -246,6 +250,15 @@
 //}
 - (IBAction)backButtonPressed:(id)sender {
     [self.backIds removeLastObject];
+    [self.backTitles removeLastObject];
+    NSLog(@"Last object %@", [self.backTitles lastObject]);
+    if(self.backTitles.count !=0){
+        [self.navigationBar.topItem setTitle:[self.backTitles lastObject]];
+        
+    }
+    else{
+        [self.navigationBar.topItem setTitle:NSLocalizedString(@"PickAProductKey", nil)];
+    }
     if(self.backIds.count != 0){
 
     NSInteger lastId = [[self.backIds objectAtIndex:(self.backIds.count-1)] integerValue];

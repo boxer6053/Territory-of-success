@@ -31,6 +31,7 @@
 @property (strong, nonatomic) NSMutableString *requestItemsString;
 @property (nonatomic) BOOL isAuthorized;
 @property (strong, nonatomic) NSMutableArray *backIds;
+@property (strong, nonatomic) NSMutableArray *backTitles;
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (strong, nonatomic) NSString *viewTitle;
 
