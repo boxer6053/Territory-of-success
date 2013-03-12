@@ -26,10 +26,6 @@ namespace tesseract {
 
 @implementation Tesseract
 
-+ (NSString *)version {
-    return [NSString stringWithFormat:@"%s", tesseract::TessBaseAPI::Version()];
-}
-
 - (id)initWithDataPath:(NSString *)dataPath language:(NSString *)language {
     self = [super init];
     if (self) {
@@ -63,10 +59,9 @@ namespace tesseract {
     
     // Copy data in Doc Directory
     if (![fileManager fileExistsAtPath:dataPath]) {
-        NSString *bundlePath = [[NSBundle bundleForClass:[self class]] bundlePath];
+        NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
         NSString *tessdataPath = [bundlePath stringByAppendingPathComponent:_dataPath];
         if (tessdataPath) {
-            [fileManager createDirectoryAtPath:documentPath withIntermediateDirectories:YES attributes:nil error:NULL];
             [fileManager copyItemAtPath:tessdataPath toPath:dataPath error:nil];
         }
     }

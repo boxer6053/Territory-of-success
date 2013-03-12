@@ -11,8 +11,11 @@
 #import <QuartzCore/QuartzCore.h>
 #import "MSShare.h"
 #import "SVProgressHUD.h"
-
+#import <dispatch/dispatch.h>
 @interface MSNewsDetailsViewController ()
+{
+    dispatch_queue_t backgroundQueue;
+}
 
 @property (nonatomic) MSAPI *dbApi;
 @property (nonatomic) BOOL shareButtonsShowed;
@@ -39,6 +42,7 @@
 @synthesize shareImageData = _shareImageData;
 @synthesize shareImage = _shareImage;
 @synthesize imageUrl = _imageUrl;
+@synthesize articleActivityIndicator = _articleActivityIndicator;
 
 - (MSAPI *)dbApi
 {
@@ -69,6 +73,7 @@
     else
     {
         [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
+        self.articleActivityIndicator.frame = CGRectMake(self.articleActivityIndicator.frame.origin.x, self.articleActivityIndicator.frame.origin.y-50, self.articleActivityIndicator.frame.size.width, self.articleActivityIndicator.frame.size.height);
     }
     
     self.shareButtonsShowed = NO;
@@ -76,6 +81,7 @@
     self.articleTextWebView.backgroundColor = [UIColor clearColor];
     self.articleTextWebView.opaque = NO;
     self.articleTextWebView.hidden = YES;
+    self.articleActivityIndicator.hidesWhenStopped = YES;
    // self.articleScrollView.layer.cornerRadius = 10.0;
     
 	// Do any additional setup after loading the view.
@@ -157,6 +163,8 @@
 {
     if (type == kNewsWithId)
     {
+        
+        [self.articleActivityIndicator startAnimating];
         self.imageUrl = [NSURL URLWithString: [[dictionary valueForKey:@"post"] valueForKey:@"image"]];
         [self.articleImageView setImageWithURL:self.imageUrl placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
         [self.articleImageView.layer setCornerRadius:5.0];
@@ -167,8 +175,7 @@
         NSString *articleText = [[dictionary valueForKey:@"post"] valueForKey:@"content"];
         articleText  = [articleText stringByReplacingOccurrencesOfString:@"width=\"327\" height=\"245\"></iframe>" withString:@"width=\"300\" height=\"224\"></iframe>"];
         
-        [self.articleTextWebView loadHTMLString:[NSString stringWithFormat:@"<div background-color:transparent>%@<div>",articleText] baseURL:nil];
-        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH,0), ^{[self.articleTextWebView loadHTMLString:[NSString stringWithFormat:@"<div background-color:transparent>%@<div>",articleText] baseURL:nil];});
         
         self.articleBriefTextView.text = [[dictionary valueForKey:@"post"] valueForKey:@"brief"];
         self.articleDateLabel.text = [[dictionary valueForKey:@"post"] valueForKey:@"date"];
@@ -179,10 +186,11 @@
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView
 {
+    [self.articleActivityIndicator stopAnimating];
     [self.articleTextWebView sizeToFit];
     self.articleTextWebView.frame = CGRectMake(self.articleTextWebView.frame.origin.x, self.articleBriefTextView.frame.origin.y + self.articleBriefTextView.frame.size.height, 320, self.articleTextWebView.frame.size.height);
     self.articleScrollView.contentSize= CGSizeMake(self.articleScrollView.contentSize.width, self.articleTextWebView.frame.origin.y + self.articleTextWebView.frame.size.height + 5);
     self.articleTextWebView.hidden = NO;
-    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
+    //[SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
 }
 @end

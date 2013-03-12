@@ -42,6 +42,7 @@
 
 - (void)viewDidLoad
 {
+    [self.navigationItem.rightBarButtonItem setTitle:NSLocalizedString(@"AnswersKey",nil)];
     NSLog(@"itemID %ld", (long)self.itemID);
     NSLog(@"getted %@",self.productName);
     NSLog(@"adfdsfsdf%d", _inquirerType);
