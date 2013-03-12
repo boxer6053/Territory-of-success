@@ -1,6 +1,7 @@
 #import <UIKit/UIKit.h>
+#import "MSLogInView.h"
 #import "MSAPI.h"
-@interface MSDetailViewController : UIViewController <UIAlertViewDelegate, WsCompleteDelegate>
+@interface MSDetailViewController : UIViewController <UIAlertViewDelegate, WsCompleteDelegate, dismissView>
 
 @property (strong, nonatomic) IBOutlet UIView *likeView;
 @property (strong, nonatomic) IBOutlet UIView *starView;
@@ -44,6 +45,7 @@
              andBrandId:(int)brandId
           andCategoryId:(int)categoryId
               andOffset:(int)offset;
+
 - (void)sentProductName:(NSString *)name
                   andId:(int)prodId
               andRating:(int)rating

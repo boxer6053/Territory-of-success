@@ -12,7 +12,7 @@
 #import "MSLogInView.h"
 #import "MSComplaintView.h"
 
-@interface MSFirstViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, UITextFieldDelegate, UITextViewDelegate, WsCompleteDelegate, dismissView, MSComplaintViewDelegate>
+@interface MSFirstViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, UITextFieldDelegate, UITextViewDelegate, WsCompleteDelegate, dismissView, MSComplaintViewDelegate, UIAlertViewDelegate>
 {
     UIImagePickerController *imagePickerController;
 }
@@ -37,6 +37,7 @@
 
 @property (nonatomic, strong) UIImageView *logoBarImageView;
 @property (nonatomic, strong) UIImageView *logoBarTextImageView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *newsActivityIdicator;
 
 - (IBAction)changeNewsPage:(id)sender;
 - (IBAction)takePhoto:(UIButton *)sender;

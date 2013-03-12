@@ -24,7 +24,15 @@
 "Товар:" = "Товар:";
 "Категория:" = "Категорія:";
 "Бонус за продукт:" = "Бонус за продукт:";
-
+"ComplaintErrorKey" = "Помилка скарги";
+"FillAllFieldsKey" = "Будь ласка, заповніть всі поля";
+"WriteACommentForComplaintKey" = "Напишіть свій коментар до скарги!";
+"RecognitionErrorKey" = "Помилка розпізнання";
+"RecognitionCodeErrorKey" = "Не вдалось розпізнати код";
+"ComplaintSendingKey" = "Надсилання скарги";
+"ProductNameKey" = "Назва продукта";
+"CodeOnThePackageKey" = "Код на упаковці";
+"PurhasePlaceKey" = "Місце покупки";
 
 // Каталог + Share
 "CategoriesKey" = "Категорії";
@@ -40,7 +48,6 @@
 "SendKey" = "Надіслати";
 "writeWhatYouThinkKey" = "Напишіть що Ви думаєте про цей товар...";
 "YouShouldEnterCommentKey" = "Введіть, будь ласка, свій коментар";
-"NeedToAuthorizedKey" = "Вам необхідно авторизуватись";
 "AllCommentsDownloadedKey" = "Завантаженні всі коментарі";
 "DownloadCommentsKey" = "Завантажуються коментарі...";
 "AllBrandsDownloadedKey" = "Всі бренди завантаженні";
