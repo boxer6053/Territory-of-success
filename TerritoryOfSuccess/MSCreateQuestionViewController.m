@@ -17,6 +17,8 @@
 @property (strong, nonatomic) NSMutableData *receivedData;
 @property (strong, nonatomic) MSAPI *api;
 @property (strong, nonatomic) UILabel *descriptionLabel;
+@property (strong, nonatomic) NSString *upTitle;
+
 
 
 @end
@@ -36,6 +38,8 @@
 @synthesize nameLabel = _nameLabel;
 @synthesize requestStringArray = _requestStringArray;
 @synthesize descriptionLabel = _descriptionLabel;
+@synthesize upTitle = _upTitle;
+
 - (MSAPI *) api{
     if(!_api){
         _api = [[MSAPI alloc]init];
@@ -50,7 +54,7 @@
     self.descriptionLabel.frame = CGRectMake(5, 150, 310, 150);
     self.descriptionLabel.alpha = 0.7;
     self.descriptionLabel.numberOfLines = 5;
-    self.descriptionLabel.text = @"Pick 1 product for 'Grade a product' interogation or more for 'Choose a product' interogation";
+    self.descriptionLabel.text = NSLocalizedString(@"DescriptionCreatingKey",nil);
     [self.descriptionLabel setBackgroundColor:[UIColor clearColor]];
     [self.descriptionLabel setTextAlignment:NSTextAlignmentCenter   ];
     [self.view addSubview:self.descriptionLabel];
@@ -189,7 +193,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
-
+-(void)saveTitleView:(NSString *)string
+{
+    self.upTitle = string;
+    NSLog(@"UP TITLE %@", string);
+}
 -(void)assignAPicture:(id)sender
 {
    
@@ -215,6 +223,8 @@
     if([segue.identifier isEqualToString:@"pickAProduct"]){
         MSAskViewController *controller = (MSAskViewController *)segue.destinationViewController;
         controller.defaultID = self.upperID;
+        controller.upperTitle = self.upTitle;
+        
         NSLog(@"gonna be id %d", self.upperID   );
     }
 }
@@ -340,9 +350,10 @@
         [self.navigationController popViewControllerAnimated:YES];
     }
         
-    
+
 
 }
+
 - (void)cleanButton:(id)sender {
     [self.requestString setString:@""];
       self.upperID = 0;

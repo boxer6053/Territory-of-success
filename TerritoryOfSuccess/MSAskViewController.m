@@ -18,7 +18,7 @@
 
 @interface MSAskViewController ()
 @property (strong, nonatomic) NSArray *questionsArray;
-@property (strong, nonatomic) NSString *upperTitle;
+
 @property int questionsCount;
 @property (strong, nonatomic) NSMutableData *receivedData;
 @property (strong, nonatomic) MSAPI *api;
@@ -61,7 +61,9 @@
 - (void)viewDidLoad
 {
     [self customizeNavBar];
-    self.upperTitle = @"Pick a product";
+    if(!self.upperTitle){
+    self.upperTitle = NSLocalizedString(@"PickAProductKey", nil);
+    }
     //self.title = @"Pick a product";
     [self.backButton setEnabled:NO];
     self.backIds = [[NSMutableArray alloc] init];
@@ -156,12 +158,12 @@
     [self.navigationItem.rightBarButtonItem setEnabled:YES];
     self.translatingValue = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"];
     
-    self.upperTitle = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
+    
     if([[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"] integerValue] != 0)
     {
        // NSInteger currentSubCategory = [[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
         
-        
+        self.upperTitle = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
         [self.backIds addObject:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"]];
         _questionsCount = 0;
         [_tableOfCategories reloadData];
@@ -187,9 +189,10 @@
             self.finalID = self.defaultID;
                         [self.delegate setUpperId:self.upperID];
             if([[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"]){
-                
+                [self.delegate saveTitleView:self.upperTitle];
                 [self.delegate addProduct:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] withURL:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"]];}
                       [self dismissViewControllerAnimated:YES completion:nil];
+           
         
         }
         
