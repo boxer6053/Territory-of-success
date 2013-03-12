@@ -8,9 +8,7 @@
 
 #import "MSProfileViewController.h"
 #import "MSBonusCell.h"
-#import "MSSexProfileCell.h"
 #import "MSStandardProfileCell.h"
-#import "MSReceiveProfileCell.h"
 #import "MSProfileSaveCell.h"
 #import "MSCheckBoxCell.h"
 #import "MSPickerView.h"
