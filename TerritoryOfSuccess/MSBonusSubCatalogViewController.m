@@ -11,6 +11,9 @@
 #import "MSSubCatalogueViewController.h"
 
 @interface MSBonusSubCatalogViewController ()
+{
+    BOOL _isDownloading;
+}
 
 @property (strong, nonatomic) NSMutableArray *subCategoriesList;
 @property int selectedItemId;
@@ -67,6 +70,7 @@
     self.footerButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
     [self.footerButton setTitleColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4] forState:UIControlStateNormal];
     [self.footerButton addTarget:self action:@selector(moreCategories) forControlEvents:UIControlEventTouchDown];
+    self.footerButton.userInteractionEnabled = NO;
     self.subCatalogTableView.tableFooterView = self.footerButton;
 }
 
@@ -79,6 +83,7 @@
 {
     if (self.subCategoriesList.count < self.totalCategoriesCount)
     {
+        _isDownloading = YES;
         self.subCatalogTableView.tableFooterView = self.activityIndicator;
         [self.activityIndicator startAnimating];
         [self.dbApi getBonusSubCategories:self.categoryId withOffset:self.subCategoriesList.count - 1];
@@ -120,6 +125,17 @@
     return cell;
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if(!_isDownloading)
+    {
+        if(self.subCatalogTableView.contentOffset.y + 455 > self.subCatalogTableView.contentSize.height)
+        {
+            [self moreCategories];
+        }
+    }
+}
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -143,6 +159,7 @@
 -(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)typefinished
 {
     [self.activityIndicator stopAnimating];
+    _isDownloading = NO;
     self.subCatalogTableView.tableFooterView = self.footerButton;
     [self.subCategoriesList addObjectsFromArray: [dictionary valueForKey:@"list"]];
     
@@ -152,6 +169,11 @@
         NSArray *insertIndexPath = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.subCategoriesCount inSection:0]];
         self.subCategoriesCount++;
         [self.subCatalogTableView insertRowsAtIndexPaths: insertIndexPath withRowAnimation:NO];
+    }
+    
+    if (self.subCategoriesList.count < self.totalCategoriesCount)
+    {
+        [self.footerButton setTitle:NSLocalizedString(@"AllNewsDownloadedKey",nil) forState:UIControlStateNormal];
     }
 }
 

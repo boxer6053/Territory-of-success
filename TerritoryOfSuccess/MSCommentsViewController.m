@@ -19,7 +19,8 @@
 @property (nonatomic, strong) UIButton *footerButton;
 @property (nonatomic) BOOL isFirstTime;
 @property (nonatomic) BOOL insertedOperationFinishedTheyWork;
-@property dispatch_queue_t queue;
+@property (strong, nonatomic) MSLogInView *loginView;
+@property (strong, nonatomic) UIActivityIndicatorView *indicator;
 @end
 
 @implementation MSCommentsViewController
@@ -33,6 +34,8 @@
 @synthesize isFirstTime = _isFirstTime;
 @synthesize tempCommentsCounter = _tempCommentsCounter;
 @synthesize insertedOperationFinishedTheyWork = _insertedOperationFinishedTheyWork;
+@synthesize loginView = _loginView;
+@synthesize indicator = _indicator;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -48,13 +51,12 @@
     [[self commentTableView] setBackgroundView:[[UIImageView alloc]
                                                 initWithImage:[UIImage imageNamed:@"bg.png"]]];
 
-        self.footerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.commentTableView.frame.size.width, 35)];
-        [self.footerButton setTitle:NSLocalizedString(@"DownloadMoreKey",nil) forState:UIControlStateNormal];
-        self.footerButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
-        [self.footerButton setTitleColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4] forState:UIControlStateNormal];
-        [self.footerButton addTarget:self action:@selector(moreComments) forControlEvents:UIControlEventTouchDown];
-    
-        [self commentTableView].tableFooterView = self.footerButton;
+    self.footerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.commentTableView.frame.size.width, 35)];
+    [[self commentTableView].tableFooterView setHidden:YES];
+    [[self commentTableView].tableFooterView setUserInteractionEnabled:NO];
+    self.footerButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
+    [self.footerButton setTitleColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4] forState:UIControlStateNormal];
+    [self commentTableView].tableFooterView = self.footerButton;
     [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadCommentsKey",nil)];
     
 }
@@ -68,7 +70,11 @@
 {
     if (self.commentsArray.count < self.commentsCounter)
     {
-        [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadCommentsKey",nil)];
+        self.indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        self.indicator.hidesWhenStopped = YES;
+        self.commentTableView.tableFooterView = self.indicator;
+        [self.indicator startAnimating];
+        
         if (isFromBonus == YES)
             [self.api getBonusCommentsWithProductId:self.prodId andOffset:self.commentsArray.count];
         else
@@ -76,7 +82,10 @@
     }
     else
     {
+        [self commentTableView].tableFooterView = self.footerButton;
         [self.footerButton setTitle:NSLocalizedString(@"AllCommentsDownloadedKey",nil) forState:UIControlStateNormal];
+        [[self commentTableView].tableFooterView setHidden:NO];
+
     }
 }
 
@@ -149,7 +158,7 @@
 {
     if(![[NSUserDefaults standardUserDefaults] valueForKey:@"authorization_Token"])
     {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Ошибка", nil) message:NSLocalizedString(@"NeedToAuthorizedKey", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Ошибка", nil) message:NSLocalizedString(@"NeedToLoginKey", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Отмена", nil) otherButtonTitles:@"OK", nil];
         [alertView show];
     } else if(!self.addCommentView)
     {
@@ -172,6 +181,35 @@
     [self.commentTableView reloadData];
 }
 
+#pragma mark - Login popUp
+- (void)viewDidDisappear:(BOOL)animated  {
+    if(self.loginView)
+    {
+        [self.loginView removeFromSuperview];
+    }
+}
+
+- (void)dismissPopView:(BOOL)result
+{
+    if(result)
+    {
+        [self viewDidAppear:YES];
+    }
+    self.loginView = nil;
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        self.loginView = [[MSLogInView alloc]initWithOrigin:CGPointMake(25, self.view.frame.size.height/2 - 70)];
+        [self.view.window addSubview:self.loginView];
+        [self.loginView blackOutOfBackground];
+        [self.loginView attachPopUpAnimationForView:self.loginView.loginView];
+        self.loginView.delegate = self;
+    }
+}
+
 #pragma mark Web Methods
 - (MSAPI *) api
 {
@@ -192,16 +230,12 @@
             self.commentsArray = [[dictionary valueForKey:@"list"] mutableCopy];
             self.tempCommentsCounter = self.commentsArray.count;
             self.commentsCounter = [[dictionary valueForKey:@"count"]integerValue];
-            if ([self commentsCounter] <= 20)
-            {
-                [[self commentTableView].tableFooterView setHidden:YES];
-                [[self commentTableView].tableFooterView setUserInteractionEnabled:NO];
-            }
             [[self commentTableView] reloadData];
             self.isFirstTime = NO;
         }
         else
         {
+            [self.indicator stopAnimating];
             [self.commentsArray addObjectsFromArray:[dictionary valueForKey:@"list"]];
             self.lastloadedCommentsArray = [dictionary valueForKey:@"list"];
             for (int i  = 0; i < self.lastloadedCommentsArray.count; i++)

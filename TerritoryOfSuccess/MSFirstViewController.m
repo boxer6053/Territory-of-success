@@ -54,6 +54,7 @@
 @property (strong, nonatomic) NSString *codeStr;
 
 @property (strong, nonatomic) NSMutableString *productString;
+@property (strong, nonatomic) UIImageView *defaultImage;
 
 @end
 
@@ -105,6 +106,8 @@
 
 @synthesize codeStr = _codeStr;
 @synthesize productString = _productString;
+
+@synthesize defaultImage = _defaultImage;
 
 - (MSAPI *)api
 {
@@ -164,6 +167,7 @@
     self.newsView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
     self.codeInputView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
     self.newsPageControl.pageIndicatorTintColor = [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0];
+    self.newsPageControl.numberOfPages = 1;
     self.newsPageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:170/255.0 green:170/255.0 blue:170/255.0 alpha:1.0];
     [self.newsView.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:0.7].CGColor];
     [self.newsView.layer setBorderWidth:1.0f];
@@ -596,9 +600,6 @@ static inline double radians (double degrees)
             [self.loginView blackOutOfBackground];
             [self.loginView attachPopUpAnimationForView:self.loginView.loginView];
             self.loginView.delegate = self;
-            self.loginView.emailTextField.delegate = self;
-            self.loginView.passwordConfirmTextField.delegate = self;
-            self.loginView.passwordTextField.delegate = self;
         }
     }
 }
@@ -758,7 +759,7 @@ static inline double radians (double degrees)
             [self.dialogView.captionLabel setText:[[dictionary valueForKey:@"message"] objectAtIndex:0]];
             [self.dialogView.productLabel setText:NSLocalizedString(@"Товар:",nil)];
             NSURL *imageUrl = [NSURL URLWithString:[[dictionary valueForKey:@"product"] valueForKey:@"image"]];
-            [self.dialogView.productImageView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
+            [self.dialogView.productImageView setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"placeholder622*415.png"]];
             
             self.productString = [NSMutableString stringWithString:[[dictionary valueForKey:@"brand"] valueForKey:@"title"]];
             [self.productString appendFormat:@" / %@", [[dictionary valueForKey:@"product"] valueForKey:@"title"]];
@@ -911,7 +912,7 @@ static inline double radians (double degrees)
                     forControlEvents:UIControlEventTouchUpInside];
         
             NSURL *imageUrl = [NSURL URLWithString:[[arrayOfNews objectAtIndex:i] valueForKey:@"image" ]];
-            [subViewButton setBackgroundImageWithURL:imageUrl forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
+            [subViewButton setBackgroundImageWithURL:imageUrl forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"placeholder622*415.png"]];
             subViewButton.tag = [[[arrayOfNews objectAtIndex:i]valueForKey:@"id"] integerValue];
             [subView addSubview:subViewButton];
         }

@@ -292,7 +292,7 @@
     
     self.request  = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
     [self.request setHTTPMethod:@"POST"];
-    self.params = [NSString stringWithFormat:@"&lang=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
+    self.params = [NSString stringWithFormat:@"lang=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
     [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
     
     [self connectionVerification];
@@ -305,7 +305,7 @@
     
     self.request  = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
     [self.request setHTTPMethod:@"POST"];
-    self.params = [NSMutableString stringWithFormat:@"&lang=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
+    self.params = [NSMutableString stringWithFormat:@"lang=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
     [self.params appendFormat:@"&category_id=%d",categoryId];
     [self.params appendFormat:@"&offset=%d",offset];
     [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
@@ -320,7 +320,7 @@
     
     self.request  = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
     [self.request setHTTPMethod:@"POST"];
-    self.params = [NSMutableString stringWithFormat:@"&lang=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
+    self.params = [NSMutableString stringWithFormat:@"lang=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
     [self.params appendFormat:@"&product_id=%d",productId];
     [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
     
