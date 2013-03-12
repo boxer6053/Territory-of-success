@@ -974,8 +974,8 @@ static inline double radians (double degrees)
             [self.scrollView setScrollEnabled:NO];
             [self.scrollView setContentSize:CGSizeMake(320.0, 568.0 + 40.0)];
             
-            CGFloat tempy = 568.0 + 40.0;//self.scrollView.contentSize.height;
-            CGFloat tempx = 320.0;//self.scrollView.contentSize.width;;
+            CGFloat tempy = 568.0 + 40.0;
+            CGFloat tempx = 320.0;
             CGRect zoomRect = CGRectMake((tempx/2), (tempy/2), tempy, tempx);
             
             [UIView beginAnimations:nil context:nil];
@@ -989,8 +989,8 @@ static inline double radians (double degrees)
             [self.scrollView setScrollEnabled:NO];
             [self.scrollView setContentSize:CGSizeMake(320.0, 480.0 + 55.0)];
             
-            CGFloat tempy = 480.0 + 55.0;//self.scrollView.contentSize.height;
-            CGFloat tempx = 320.0;//self.scrollView.contentSize.width;;
+            CGFloat tempy = 480.0 + 55.0;
+            CGFloat tempx = 320.0;
             CGRect zoomRect = CGRectMake((tempx/2), (tempy/2), tempy, tempx);
             
             [UIView beginAnimations:nil context:nil];
