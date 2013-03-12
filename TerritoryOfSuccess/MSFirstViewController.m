@@ -109,6 +109,8 @@
 
 @synthesize defaultImage = _defaultImage;
 
+@synthesize newsActivityIdicator = _newsActivityIdicator;
+
 - (MSAPI *)api
 {
     if(!_api)
@@ -120,10 +122,13 @@
 }
 
 - (void)viewDidLoad
-{
-    [self customizeNavBar];
-    
+{    
     [super viewDidLoad];
+    
+    self.newsActivityIdicator.hidesWhenStopped = YES;
+    [self.newsActivityIdicator startAnimating];
+    
+    [self customizeNavBar];
     
     self.beginCount = 0;
     self.endCount = 0;
@@ -138,15 +143,10 @@
     [self.navigationController.navigationBar addSubview:self.logoBarImageView];
     //------------------------------------------------------
     
-//    [self.navigationController.navigationBar addSubview:self.logoBarTextImageView];
-    
-    
     if (self == [self.navigationController.viewControllers objectAtIndex:0]) {
         NSLog(@"Root view controller");
     }
-    
-//    self.navigationController.navigationItem;
-    
+        
     [self.api getFiveNewsWithOffset:0];
     
     [self.codeTextField setDelegate:self];
@@ -405,9 +405,10 @@
     @catch (NSException *exception) {
         [imagePickerController dismissViewControllerAnimated:YES completion:NULL];
         
-        UIAlertView *recognizingCodeError = [[UIAlertView alloc] initWithTitle:@"Ошибка распознания"
-                                                                       message:@"Не удалось распознать код"
-                                                                      delegate:nil cancelButtonTitle:@"OK"
+        UIAlertView *recognizingCodeError = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"RecognitionErrorKey", nil)
+                                                                       message:NSLocalizedString(@"RecognitionCodeErrorKey", nil)
+                                                                      delegate:nil
+                                                             cancelButtonTitle:@"OK"
                                                              otherButtonTitles:nil, nil];
         [recognizingCodeError show];
     }
@@ -706,8 +707,8 @@ static inline double radians (double degrees)
     }
     else
     {
-        UIAlertView *complaintError = [[UIAlertView alloc] initWithTitle:@"Ошибка жалобы"
-                                                                 message:@"Заполныте все поля!"
+        UIAlertView *complaintError = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ComplaintErrorKey", nil)
+                                                                 message:NSLocalizedString(@"FillAllFieldsKey", nil)
                                                                 delegate:nil cancelButtonTitle:@"OK"
                                                        otherButtonTitles:nil, nil];
         [complaintError show];
@@ -900,6 +901,8 @@ static inline double radians (double degrees)
     }
     if (type == kNews)
     {
+        [self.newsActivityIdicator stopAnimating];
+        
         NSArray *arrayOfNews = [dictionary valueForKey:@"list"];
         for (int i = 0; i < arrayOfNews.count; i++)
         {
@@ -937,8 +940,9 @@ static inline double radians (double degrees)
         {
             UIAlertView *authorisationError = [[UIAlertView alloc] initWithTitle:[[dictionary valueForKey:@"message"] valueForKey:@"title"]
                                                                          message:[[dictionary valueForKey:@"message"] valueForKey:@"text"]
-                                                                        delegate:nil cancelButtonTitle:@"OK"
-                                                               otherButtonTitles:nil, nil];
+                                                                        delegate:self
+                                                               cancelButtonTitle:NSLocalizedString(@"Отмена", nil)
+                                                               otherButtonTitles:@"OK", nil];
             [authorisationError show];
         }
     }
@@ -970,8 +974,8 @@ static inline double radians (double degrees)
             [self.scrollView setScrollEnabled:NO];
             [self.scrollView setContentSize:CGSizeMake(320.0, 568.0 + 40.0)];
             
-            CGFloat tempy = 568.0 + 40.0;//self.scrollView.contentSize.height;
-            CGFloat tempx = 320.0;//self.scrollView.contentSize.width;;
+            CGFloat tempy = 568.0 + 40.0;
+            CGFloat tempx = 320.0;
             CGRect zoomRect = CGRectMake((tempx/2), (tempy/2), tempy, tempx);
             
             [UIView beginAnimations:nil context:nil];
@@ -985,8 +989,8 @@ static inline double radians (double degrees)
             [self.scrollView setScrollEnabled:NO];
             [self.scrollView setContentSize:CGSizeMake(320.0, 480.0 + 55.0)];
             
-            CGFloat tempy = 480.0 + 55.0;//self.scrollView.contentSize.height;
-            CGFloat tempx = 320.0;//self.scrollView.contentSize.width;;
+            CGFloat tempy = 480.0 + 55.0;
+            CGFloat tempx = 320.0;
             CGRect zoomRect = CGRectMake((tempx/2), (tempy/2), tempy, tempx);
             
             [UIView beginAnimations:nil context:nil];
@@ -1162,7 +1166,7 @@ static inline double radians (double degrees)
 {
     self.textViewBeginEditing = YES;
     
-    if([textView.text isEqualToString:@"Напишите коментарий к жалобе!"])
+    if([textView.text isEqualToString:NSLocalizedString(@"WriteACommentForComplaintKey", nil)])
         textView.text = @"";
     textView.textColor = [UIColor blackColor];
     if ([[UIScreen mainScreen] bounds].size.height == 568)
@@ -1186,7 +1190,7 @@ static inline double radians (double degrees)
     self.textViewBeginEditing = NO;
     
     if ([textView.text isEqualToString:@""]){
-        textView.text = @"Напишите коментарий к жалобе!";
+        textView.text = NSLocalizedString(@"WriteACommentForComplaintKey", nil);
         textView.textColor = [UIColor lightGrayColor];
     }
     
@@ -1257,6 +1261,18 @@ static inline double radians (double degrees)
     navBar.bottomLineColor = [UIColor colorWithHex:0x000000];
     navBar.tintColor = navBar.gradientEndColor;
     
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        self.loginView = [[MSLogInView alloc]initWithOrigin:CGPointMake(25, self.view.frame.size.height/2 - 120)];
+        [self.view addSubview:self.loginView];
+        [self.loginView blackOutOfBackground];
+        [self.loginView attachPopUpAnimationForView:self.loginView.loginView];
+        self.loginView.delegate = self;
+    }
 }
 
 @end

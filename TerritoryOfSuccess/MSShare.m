@@ -102,7 +102,14 @@
     UITapGestureRecognizer *singleCloseTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeVKView)];
     [self.vkBackgroundView addGestureRecognizer:singleCloseTap];
     
-    self.vkView = [[UIView alloc] initWithFrame:CGRectMake(70, 150, 180, 195)];
+    if ([[UIScreen mainScreen] bounds].size.height == 568)
+    {
+        self.vkView = [[UIView alloc] initWithFrame:CGRectMake(70, 110, 180, 195)];
+    }
+    else
+    {
+        self.vkView = [[UIView alloc] initWithFrame:CGRectMake(70, 70, 180, 195)];
+    }
     [[self vkView] setBackgroundColor:[UIColor whiteColor]];
     [[self vkView] setAlpha:0];
     [self.vkView.layer setBorderColor:[UIColor colorWithRed:75/255.0 green:110/255.0 blue:148/255.0 alpha:0].CGColor];

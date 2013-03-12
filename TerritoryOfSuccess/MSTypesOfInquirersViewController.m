@@ -255,17 +255,14 @@
     if (type == kLastQuest)
     {
         self.allQuestionsArray = [dictionary valueForKey:@"list"];
-       NSString *response = [[dictionary valueForKey:@"message"] valueForKey:@"text"];       if([response isEqualToString:@"To get access to this page please log in to the system."])
-       {
+        if([[dictionary valueForKey:@"status"] isEqualToString:@"failed"])
+        {
            self.loginView = [[MSLogInView alloc]initWithOrigin:CGPointMake(25, self.view.frame.size.height/2 - 120)];
            [self.view addSubview:self.loginView];
            [self.loginView blackOutOfBackground];
            [self.loginView attachPopUpAnimationForView:self.loginView.loginView];
            self.loginView.delegate = self;
-           self.loginView.emailTextField.delegate = self;
-           self.loginView.passwordConfirmTextField.delegate = self;
-           self.loginView.passwordTextField.delegate = self;
-                    }
+        }
         // self.numberOfRows = [[self arrayOfCategories] count];
     }
     
@@ -275,16 +272,13 @@
      
         //self.numberOfRows = [[self arrayOfBrands] count];
         self.allQuestionsArray = [dictionary valueForKey:@"list"];
-        NSString *response = [[dictionary valueForKey:@"message"] valueForKey:@"text"];
-        if([response isEqualToString:@"To get access to this page please log in to the system."]){
+        if([[dictionary valueForKey:@"status"] isEqualToString:@"failed"])
+        {
             self.loginView = [[MSLogInView alloc]initWithOrigin:CGPointMake(25, self.view.frame.size.height/2 - 120)];
             [self.view addSubview:self.loginView];
             [self.loginView blackOutOfBackground];
             [self.loginView attachPopUpAnimationForView:self.loginView.loginView];
             self.loginView.delegate = self;
-            self.loginView.emailTextField.delegate = self;
-            self.loginView.passwordConfirmTextField.delegate = self;
-            self.loginView.passwordTextField.delegate = self;
         }
 
     }

@@ -90,7 +90,7 @@
     }
     else
     {
-        [self.footerButton setTitle:NSLocalizedString(@"AllNewsDownloadedKey",nil) forState:UIControlStateNormal];
+        [self.footerButton setTitle:NSLocalizedString(@"AllCategoriesDownloadedKey",nil) forState:UIControlStateNormal];
     }
 }
 
