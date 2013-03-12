@@ -16,7 +16,7 @@
 
 @end
 
-@interface MSLogInView : MSAnimationView <WsCompleteDelegate>
+@interface MSLogInView : MSAnimationView <WsCompleteDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) id <dismissView> delegate;
 @property (nonatomic) BOOL registrationMode;
@@ -35,6 +35,7 @@
 @property (strong, nonatomic) UIView *loginView;
 
 @property (strong, nonatomic) UITapGestureRecognizer *tapRecognizer;
+@property (strong, nonatomic) NSNotificationCenter *nc;
 
 -(id)initWithOrigin:(CGPoint)origin;
 -(void)blackOutOfBackground;

@@ -25,6 +25,8 @@
 @synthesize backToLoginButton = _backToLoginButton;
 @synthesize loginView = _loginView;
 @synthesize api =_api;
+@synthesize tapRecognizer = _tapRecognizer;
+@synthesize nc = _nc;
 
 - (MSAPI *)api
 {
@@ -74,6 +76,7 @@
         self.emailTextField = [[UITextField alloc]initWithFrame:CGRectMake(85, 15, 175, 30)];
         self.emailTextField.borderStyle = UITextBorderStyleRoundedRect;
         self.emailTextField.clearButtonMode = YES;
+        self.emailTextField.delegate = self;
         [self.loginView addSubview:self.emailTextField];
         
         //password input
@@ -87,6 +90,7 @@
         self.passwordTextField = [[UITextField alloc]initWithFrame:CGRectMake(85, 51, 175, 30)];
         self.passwordTextField.borderStyle = UITextBorderStyleRoundedRect;
         self.passwordTextField.secureTextEntry = YES;
+        self.passwordTextField.delegate = self;
         [self.loginView addSubview:self.passwordTextField];
         
         //confrim password input for registration
@@ -100,6 +104,7 @@
         self.passwordConfirmTextField = [[UITextField alloc]initWithFrame:CGRectMake(355, 87, 125, 30)];
         self.passwordConfirmTextField.borderStyle = UITextBorderStyleRoundedRect;
         self.passwordConfirmTextField.secureTextEntry = YES;
+        self.passwordConfirmTextField.delegate = self;
         [self.loginView addSubview:self.passwordConfirmTextField];
         
         self.backToLoginButton = [[UIButton alloc]initWithFrame:CGRectMake(485, 87, 45, 30)];
@@ -134,7 +139,16 @@
         [self.registrationButton setTitle:NSLocalizedString(@"Зарегестрироваться", nil) forState:UIControlStateNormal];
         [self.registrationButton addTarget:self action:@selector(registrationPressed) forControlEvents:UIControlEventTouchUpInside];
         [self.loginView addSubview:self.registrationButton];
+        self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapAnywhere:)];
         
+        self.nc = [NSNotificationCenter defaultCenter];
+        
+        [self.nc addObserver:self selector:@selector(keyboardWillShow:) name:
+         UIKeyboardWillShowNotification object:nil];
+        
+        [self.nc addObserver:self selector:@selector(keyboardWillHide:) name:
+         UIKeyboardWillHideNotification object:nil];
+
         [self loadLatestEmail];
     }
     return self;
@@ -148,8 +162,17 @@
     }];
 }
 
+- (void)didTapAnywhere:(UITapGestureRecognizer*)recognizer
+{
+    [self.emailTextField resignFirstResponder];
+    [self.passwordConfirmTextField resignFirstResponder];
+    [self.passwordTextField resignFirstResponder];
+}
+
 -(void)cancelPressed
 {
+    [self.nc removeObserver:self];
+    self.nc = nil;
     [self dismissLoginViewWithResult:NO];
 }
 
@@ -174,6 +197,30 @@
         [SVProgressHUD showWithStatus:NSLocalizedString(@"Авторизация",nil)];
         [self.api logInWithMail:self.emailTextField.text Password:self.passwordTextField.text];
     }
+}
+
+- (void)keyboardWillShow:(NSNotification *)note
+{
+    if (!([[UIScreen mainScreen] bounds].size.height == 568))
+    {
+        [UIView animateWithDuration:0.2 animations:
+         ^{
+             self.loginView.frame = CGRectMake(self.loginView.frame.origin.x, self.loginView.frame.origin.y - 50, self.loginView.frame.size.width, self.loginView.frame.size.height);
+        }];
+    }
+    [self.window addGestureRecognizer:self.tapRecognizer];
+}
+
+- (void)keyboardWillHide:(NSNotification *)note
+{
+    if (!([[UIScreen mainScreen] bounds].size.height == 568))
+    {
+        [UIView animateWithDuration:0.2 animations:
+         ^{
+             self.loginView.frame = CGRectMake(self.loginView.frame.origin.x, self.loginView.frame.origin.y + 50, self.loginView.frame.size.width, self.loginView.frame.size.height);
+         }];
+    }
+    [self.window removeGestureRecognizer:self.tapRecognizer];
 }
 
 -(void)registrationPressed
@@ -270,6 +317,12 @@
     NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"latestEmail"]);
     if(latestEmail.length != 0)
         self.emailTextField.text = latestEmail;
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end

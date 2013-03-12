@@ -605,9 +605,6 @@ static inline double radians (double degrees)
             [self.loginView blackOutOfBackground];
             [self.loginView attachPopUpAnimationForView:self.loginView.loginView];
             self.loginView.delegate = self;
-            self.loginView.emailTextField.delegate = self;
-            self.loginView.passwordConfirmTextField.delegate = self;
-            self.loginView.passwordTextField.delegate = self;
         }
     }
 }
@@ -961,9 +958,6 @@ static inline double radians (double degrees)
     [self.complaintView.codeTextField resignFirstResponder];
     [self.complaintView.locationTextField resignFirstResponder];
     [self.complaintView.commentTextView resignFirstResponder];
-    [self.loginView.emailTextField resignFirstResponder];
-    [self.loginView.passwordConfirmTextField resignFirstResponder];
-    [self.loginView.passwordTextField resignFirstResponder];
 }
 
 - (void)keyboardWillShow:(NSNotification *)note
