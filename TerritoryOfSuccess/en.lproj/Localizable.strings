@@ -33,6 +33,7 @@
 "ProductNameKey" = "Product name";
 "CodeOnThePackageKey" = "Code on the package";
 "PurhasePlaceKey" = "Place of purchase";
+"AllCategoriesDownloadedKey" = "All categories are downloaded";
 
 // Каталог + Share
 "CategoriesKey" = "Categories";
