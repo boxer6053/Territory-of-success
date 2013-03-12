@@ -109,6 +109,8 @@
 
 @synthesize defaultImage = _defaultImage;
 
+@synthesize newsActivityIdicator = _newsActivityIdicator;
+
 - (MSAPI *)api
 {
     if(!_api)
@@ -120,10 +122,13 @@
 }
 
 - (void)viewDidLoad
-{
-    [self customizeNavBar];
-    
+{    
     [super viewDidLoad];
+    
+    self.newsActivityIdicator.hidesWhenStopped = YES;
+    [self.newsActivityIdicator startAnimating];
+    
+    [self customizeNavBar];
     
     self.beginCount = 0;
     self.endCount = 0;
@@ -896,6 +901,8 @@ static inline double radians (double degrees)
     }
     if (type == kNews)
     {
+        [self.newsActivityIdicator stopAnimating];
+        
         NSArray *arrayOfNews = [dictionary valueForKey:@"list"];
         for (int i = 0; i < arrayOfNews.count; i++)
         {
