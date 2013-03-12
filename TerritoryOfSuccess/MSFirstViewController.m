@@ -135,15 +135,10 @@
     [self.navigationController.navigationBar addSubview:self.logoBarImageView];
     //------------------------------------------------------
     
-//    [self.navigationController.navigationBar addSubview:self.logoBarTextImageView];
-    
-    
     if (self == [self.navigationController.viewControllers objectAtIndex:0]) {
         NSLog(@"Root view controller");
     }
-    
-//    self.navigationController.navigationItem;
-    
+        
     [self.api getFiveNewsWithOffset:0];
     
     [self.codeTextField setDelegate:self];
