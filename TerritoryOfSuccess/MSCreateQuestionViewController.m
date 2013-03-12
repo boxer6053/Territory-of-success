@@ -74,8 +74,8 @@
     [self.cleanButton setTitleColor:[UIColor whiteColor] forState:UIControlStateDisabled];
     [self.askButton addTarget:self action:@selector(startButton:) forControlEvents:UIControlEventTouchDown];
      [self.cleanButton addTarget:self action:@selector(cleanButton:) forControlEvents:UIControlEventTouchDown];
-    [self.askButton setTitle:@"Ask" forState:UIControlStateNormal];
-    [self.cleanButton setTitle:@"Clean" forState:UIControlStateNormal];
+    [self.askButton setTitle:NSLocalizedString(@"AskKey",nil) forState:UIControlStateNormal];
+    [self.cleanButton setTitle:NSLocalizedString(@"CleanKey",nil) forState:UIControlStateNormal];
     [self.askButton setBackgroundImage:[UIImage imageNamed:@"chooseButton.png"] forState:UIControlStateNormal];
     [self.cleanButton setBackgroundImage:[UIImage imageNamed:@"chooseButton copy.png"] forState:UIControlStateNormal];
     self.askButton.frame = CGRectMake(0, 0, 155, 40);

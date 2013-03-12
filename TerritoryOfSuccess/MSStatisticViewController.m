@@ -107,10 +107,10 @@
         cell.rateView.image = [UIImage imageNamed:@"terrRate.png"];
  
         if([[[self.receivedArray objectAtIndex:indexPath.row] valueForKey:@"title"] isEqualToString:@"!-- like --!"]){
-            cell.titleLabel.text = @"За";
+            cell.titleLabel.text = NSLocalizedString(@"GoodKey",nil);
                    }
         else{
-            cell.titleLabel.text = @"Против";
+            cell.titleLabel.text = NSLocalizedString(@"BadKey",nil);
                     }
        
     }
@@ -121,8 +121,8 @@
         NSLog(@"count %d",self.receivedArray.count);
         NSLog(@"current row %d", indexPath.row);
         NSLog(@"title %@", [[self.receivedArray objectAtIndex:indexPath.row] valueForKey:@"title"]);
-        NSString *number = [NSString stringWithFormat:@"%d",indexPath.row+1];
-        cell.titleLabel.text = [@"Товар " stringByAppendingString:number];
+        NSString *number = [NSString stringWithFormat:@" %d",indexPath.row+1];
+        cell.titleLabel.text = [NSLocalizedString(@"ItemKey",nil) stringByAppendingString:number];
         NSString *value = [[self.receivedArray objectAtIndex:indexPath.row] valueForKey:@"cnt"];
        // NSLog(@"value %f = ", [value floatValue]);
         CGFloat index = [value floatValue]/self.totalVotes;

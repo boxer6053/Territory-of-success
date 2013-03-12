@@ -18,6 +18,7 @@
 
 @interface MSAskViewController ()
 @property (strong, nonatomic) NSArray *questionsArray;
+@property (strong, nonatomic) NSString *upperTitle;
 @property int questionsCount;
 @property (strong, nonatomic) NSMutableData *receivedData;
 @property (strong, nonatomic) MSAPI *api;
@@ -44,7 +45,7 @@
 @synthesize delegate = _delegate;
 @synthesize backButton = _backButton;
 @synthesize backIds = _backIds;
-
+@synthesize upperTitle = _upperTitle;
 
 @synthesize navigationBar = _navigationBar;
 
@@ -60,7 +61,7 @@
 - (void)viewDidLoad
 {
     [self customizeNavBar];
-    
+    self.upperTitle = @"Pick a product";
     //self.title = @"Pick a product";
     [self.backButton setEnabled:NO];
     self.backIds = [[NSMutableArray alloc] init];
@@ -155,7 +156,7 @@
     [self.navigationItem.rightBarButtonItem setEnabled:YES];
     self.translatingValue = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"];
     
-    
+    self.upperTitle = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
     if([[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"] integerValue] != 0)
     {
        // NSInteger currentSubCategory = [[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
@@ -218,6 +219,7 @@
 //            [_tableOfCategories insertRowsAtIndexPaths: insertIndexPath withRowAnimation:NO];
 //        }
         [_tableOfCategories reloadData];
+        [self.navigationBar.topItem setTitle:self.upperTitle];
         //  _questionsCount = 0;
     }
    //  [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
