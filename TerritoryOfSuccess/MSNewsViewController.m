@@ -17,6 +17,7 @@
 @interface MSNewsViewController ()
 {
     BOOL _isFirstDownload;
+    BOOL _isDownloading;
 }
 
 @property (nonatomic)  MSAPI *dbApi;
@@ -101,6 +102,7 @@
     _isFirstDownload = NO;
     if (self.arrayOfNews.count < self.totalNewsCount)
     {
+        _isDownloading = YES;
         self.newsTableView.tableFooterView = self.activityIndicator;
         [self.activityIndicator startAnimating];
         [self.dbApi getFiveNewsWithOffset:self.arrayOfNews.count - 1];
@@ -114,6 +116,7 @@
 -(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)typefinished
 {
     [self.activityIndicator stopAnimating];
+    _isDownloading = NO;
     self.newsTableView.tableFooterView = self.footerButton;
     [self.arrayOfNews addObjectsFromArray: [dictionary valueForKey:@"list"]];
     self.lastDownloadedNews = [dictionary valueForKey:@"list"];
@@ -130,6 +133,11 @@
     {
         self.newsCount += self.arrayOfNews.count;
         [self.newsTableView reloadData];
+    }
+    
+    if (!(self.arrayOfNews.count < self.totalNewsCount))
+    {
+        [self.footerButton setTitle:NSLocalizedString(@"AllNewsDownloadedKey",nil) forState:UIControlStateNormal];
     }
 }
 
@@ -160,6 +168,17 @@
 {
     UITableViewCell * currentCell = [self.newsTableView cellForRowAtIndexPath:indexPath];
     [self performSegueWithIdentifier:@"newsDetails" sender:currentCell];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if(!_isDownloading)
+    {
+        if (self.newsTableView.contentOffset.y +455 > self.newsTableView.contentSize.height)
+        {
+            [self moreNews];
+        }
+    }
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
