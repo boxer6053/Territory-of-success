@@ -703,7 +703,8 @@ static inline double radians (double degrees)
     {
         UIAlertView *complaintError = [[UIAlertView alloc] initWithTitle:@"Ошибка жалобы"
                                                                  message:@"Заполныте все поля!"
-                                                                delegate:nil cancelButtonTitle:@"OK"
+                                                                delegate:nil
+                                                       cancelButtonTitle:@"OK"
                                                        otherButtonTitles:nil, nil];
         [complaintError show];
     }
@@ -932,8 +933,9 @@ static inline double radians (double degrees)
         {
             UIAlertView *authorisationError = [[UIAlertView alloc] initWithTitle:[[dictionary valueForKey:@"message"] valueForKey:@"title"]
                                                                          message:[[dictionary valueForKey:@"message"] valueForKey:@"text"]
-                                                                        delegate:nil cancelButtonTitle:@"OK"
-                                                               otherButtonTitles:nil, nil];
+                                                                        delegate:self
+                                                               cancelButtonTitle:NSLocalizedString(@"Отмена", nil)
+                                                               otherButtonTitles:@"OK", nil];
             [authorisationError show];
         }
     }
@@ -1252,6 +1254,18 @@ static inline double radians (double degrees)
     navBar.bottomLineColor = [UIColor colorWithHex:0x000000];
     navBar.tintColor = navBar.gradientEndColor;
     
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        self.loginView = [[MSLogInView alloc]initWithOrigin:CGPointMake(25, self.view.frame.size.height/2 - 120)];
+        [self.view addSubview:self.loginView];
+        [self.loginView blackOutOfBackground];
+        [self.loginView attachPopUpAnimationForView:self.loginView.loginView];
+        self.loginView.delegate = self;
+    }
 }
 
 @end
