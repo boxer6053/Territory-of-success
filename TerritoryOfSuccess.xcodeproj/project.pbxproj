@@ -105,7 +105,6 @@
 		FA55C14916A071AA00671CAB /* MSCatalogueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA55C14816A071AA00671CAB /* MSCatalogueViewController.m */; };
 		FA5A26BD16C257B00020DDB5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA5A26BF16C257B00020DDB5 /* Localizable.strings */; };
 		FA6DE84416BACCFB00B48434 /* MSBonusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6DE84316BACCFB00B48434 /* MSBonusCell.m */; };
-		FA6DE84716BACD1600B48434 /* MSSexProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6DE84616BACD1600B48434 /* MSSexProfileCell.m */; };
 		FA6DE84A16BACD5400B48434 /* MSStandardProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6DE84916BACD5400B48434 /* MSStandardProfileCell.m */; };
 		FA6DE84D16BAD16F00B48434 /* checkbox_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6DE84B16BAD16E00B48434 /* checkbox_empty.png */; };
 		FA6DE84E16BAD16F00B48434 /* checkbox_full.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6DE84C16BAD16E00B48434 /* checkbox_full.png */; };
@@ -146,7 +145,6 @@
 		FAFC778316BAE3BB0025275D /* VkontakteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA0FCC016BAD20A005AF32E /* VkontakteViewController.m */; };
 		FAFC778716BAEF5A0025275D /* vkHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFC778616BAEF5A0025275D /* vkHeader.png */; };
 		FAFCF0E516C2873A00ABD178 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAFCF0E716C2873A00ABD178 /* InfoPlist.strings */; };
-		FAFF40F416BAF4F100D020FE /* MSReceiveProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFF40F316BAF4F100D020FE /* MSReceiveProfileCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -439,8 +437,6 @@
 		FA5A26C116C257B30020DDB5 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FA6DE84216BACCFB00B48434 /* MSBonusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSBonusCell.h; sourceTree = "<group>"; };
 		FA6DE84316BACCFB00B48434 /* MSBonusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSBonusCell.m; sourceTree = "<group>"; };
-		FA6DE84516BACD1600B48434 /* MSSexProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSexProfileCell.h; sourceTree = "<group>"; };
-		FA6DE84616BACD1600B48434 /* MSSexProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSexProfileCell.m; sourceTree = "<group>"; };
 		FA6DE84816BACD5400B48434 /* MSStandardProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSStandardProfileCell.h; sourceTree = "<group>"; };
 		FA6DE84916BACD5400B48434 /* MSStandardProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSStandardProfileCell.m; sourceTree = "<group>"; };
 		FA6DE84B16BAD16E00B48434 /* checkbox_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_empty.png; sourceTree = "<group>"; };
@@ -511,8 +507,6 @@
 		FAFCF0E616C2873A00ABD178 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FAFCF0E816C2873D00ABD178 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FAFCF0E916C2873D00ABD178 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		FAFF40F216BAF4F100D020FE /* MSReceiveProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSReceiveProfileCell.h; sourceTree = "<group>"; };
-		FAFF40F316BAF4F100D020FE /* MSReceiveProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSReceiveProfileCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1002,16 +996,12 @@
 				FA9CFF0116D3EBA600CDA519 /* MSCheckBoxCell.m */,
 				FA6DE84816BACD5400B48434 /* MSStandardProfileCell.h */,
 				FA6DE84916BACD5400B48434 /* MSStandardProfileCell.m */,
-				FA6DE84516BACD1600B48434 /* MSSexProfileCell.h */,
-				FA6DE84616BACD1600B48434 /* MSSexProfileCell.m */,
 				FA6DE84216BACCFB00B48434 /* MSBonusCell.h */,
 				FA6DE84316BACCFB00B48434 /* MSBonusCell.m */,
 				FA1AB2E716B27E43001827A6 /* MSNewsCell.h */,
 				FA1AB2E816B27E43001827A6 /* MSNewsCell.m */,
 				FA6DE87316BADCEA00B48434 /* MSProfileSaveCell.h */,
 				FA6DE87416BADCEA00B48434 /* MSProfileSaveCell.m */,
-				FAFF40F216BAF4F100D020FE /* MSReceiveProfileCell.h */,
-				FAFF40F316BAF4F100D020FE /* MSReceiveProfileCell.m */,
 				F5FF667A16D7798F00E64AD9 /* MSInquirerCell.h */,
 				F5FF667B16D7798F00E64AD9 /* MSInquirerCell.m */,
 				F59884E016C16DCA009FBF48 /* MSQuestionCell.h */,
@@ -1215,12 +1205,10 @@
 				FABA8A6916BA82530040EF16 /* MSNewsDetailsViewController.m in Sources */,
 				FABA8A6C16BA85720040EF16 /* MSNewsViewController.m in Sources */,
 				FA6DE84416BACCFB00B48434 /* MSBonusCell.m in Sources */,
-				FA6DE84716BACD1600B48434 /* MSSexProfileCell.m in Sources */,
 				FA6DE84A16BACD5400B48434 /* MSStandardProfileCell.m in Sources */,
 				FA6DE87516BADCEA00B48434 /* MSProfileSaveCell.m in Sources */,
 				FAA0FCB816BAB190005AF32E /* MSShare.m in Sources */,
 				F59884AA16BACE7C009FBF48 /* MSCreateQuestionViewController.m in Sources */,
-				FAFF40F416BAF4F100D020FE /* MSReceiveProfileCell.m in Sources */,
 				FA90193716BFEB5E00D028AD /* MSLogInView.m in Sources */,
 				F59884E216C16DCA009FBF48 /* MSQuestionCell.m in Sources */,
 				FAFB5E0B16C2650F001B692B /* MSAnimationView.m in Sources */,
