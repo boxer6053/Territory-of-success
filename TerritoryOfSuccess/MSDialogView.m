@@ -188,7 +188,7 @@
         self.complaint = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [self.complaint setFrame:CGRectMake(160, self.messageView.frame.origin.y + self.messageView.frame.size.height + 5, 140, 35)];
         [self.complaint setBackgroundImage:[UIImage imageNamed:@"button_140*35.png"] forState:UIControlStateNormal];
-        [self.complaint setTitle:@"Отправить жалобу" forState:UIControlStateNormal];
+        [self.complaint setTitle:NSLocalizedString(@"Отправить жалобу", nil) forState:UIControlStateNormal];
         [self.complaint setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         self.complaint.titleLabel.font
         = [UIFont fontWithName:@"Helvetica-Bold" size:12.0];

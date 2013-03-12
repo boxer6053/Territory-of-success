@@ -64,7 +64,7 @@
         [self.mainFishkaLabel setTextColor:[UIColor whiteColor]];
         [self.mainFishkaLabel setBackgroundColor:[UIColor clearColor]];
         [self.mainFishkaLabel setTextAlignment:NSTextAlignmentCenter];
-        [self.mainFishkaLabel setText:@"ОТПРАВКА ЖАЛОБЫ"];
+        [self.mainFishkaLabel setText:NSLocalizedString(@"ComplaintSendingKey",nil)];
         [self.mainFishkaImageView addSubview:self.mainFishkaLabel];
         
         //кнопка Close
@@ -90,7 +90,7 @@
         [self.productTextField setBorderStyle:UITextBorderStyleRoundedRect];
         self.productTextField.font = [UIFont fontWithName:@"Helvetica" size:12.0];
         [self.productTextField setContentVerticalAlignment:UIControlContentHorizontalAlignmentCenter];
-        [self.productTextField setPlaceholder:@"Название продукта"];
+        [self.productTextField setPlaceholder:NSLocalizedString(@"ProductNameKey",nil)];
         [self.productTextField setTag:1];
         [self.contentView addSubview:self.productTextField];
                 
@@ -99,7 +99,7 @@
         [self.codeTextField setBorderStyle:UITextBorderStyleRoundedRect];
         self.codeTextField.font = [UIFont fontWithName:@"Helvetica" size:12.0];
         [self.codeTextField setContentVerticalAlignment:UIControlContentHorizontalAlignmentCenter];
-        [self.codeTextField setPlaceholder:@"Код на упаковке"];
+        [self.codeTextField setPlaceholder:NSLocalizedString(@"CodeOnThePackageKey",nil)];
         [self.codeTextField setTag:2];
         [self.contentView addSubview:self.codeTextField];
                 
@@ -108,7 +108,7 @@
         [self.locationTextField setBorderStyle:UITextBorderStyleRoundedRect];
         self.locationTextField.font = [UIFont fontWithName:@"Helvetica" size:12.0];
         [self.locationTextField setContentVerticalAlignment:UIControlContentHorizontalAlignmentCenter];
-        [self.locationTextField setPlaceholder:@"Место покупки"];
+        [self.locationTextField setPlaceholder:NSLocalizedString(@"PurhasePlaceKey",nil)];
         [self.locationTextField setTag:3];
         [self.contentView addSubview:self.locationTextField];
         
@@ -117,7 +117,7 @@
         [self.commentTextView.layer setCornerRadius:10.0];
         [self.commentTextView.layer setBorderWidth:1.0];
         [self.commentTextView.layer setBorderColor:[[UIColor colorWithWhite:0.5 alpha:1.0] CGColor]];
-        [self.commentTextView setText:@"Напишите коментарий к жалобе!"];
+        [self.commentTextView setText:NSLocalizedString(@"WriteACommentForComplaintKey",nil)];
         [self.commentTextView setTextColor:[UIColor lightGrayColor]];
 //        [self.commentTextView setDelegate:self];
         self.commentTextView.returnKeyType = UIReturnKeyDone;
@@ -127,7 +127,7 @@
         self.sendComplaintButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [self.sendComplaintButton setFrame:CGRectMake(10, self.commentTextView.frame.origin.y + self.commentTextView.frame.size.height + 10, 140, 35)];
         [self.sendComplaintButton setBackgroundImage:[UIImage imageNamed:@"button_140*35.png"] forState:UIControlStateNormal];
-        [self.sendComplaintButton setTitle:@"Отправить" forState:UIControlStateNormal];
+        [self.sendComplaintButton setTitle:NSLocalizedString(@"SendKey", nil) forState:UIControlStateNormal];
         [self.sendComplaintButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         self.sendComplaintButton.titleLabel.font
         = [UIFont fontWithName:@"Helvetica-Bold" size:12.0];
@@ -137,7 +137,7 @@
         self.cancelButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [self.cancelButton setFrame:CGRectMake(160, self.commentTextView.frame.origin.y + self.commentTextView.frame.size.height + 10, 140, 35)];
         [self.cancelButton setBackgroundImage:[UIImage imageNamed:@"button_140*35.png"] forState:UIControlStateNormal];
-        [self.cancelButton setTitle:@"Отмена" forState:UIControlStateNormal];
+        [self.cancelButton setTitle:NSLocalizedString(@"Отмена", nil) forState:UIControlStateNormal];
         [self.cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         self.cancelButton.titleLabel.font
         = [UIFont fontWithName:@"Helvetica-Bold" size:12.0];

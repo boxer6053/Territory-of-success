@@ -24,7 +24,15 @@
 "Товар:" = "Товар:";
 "Категория:" = "Категория:";
 "Бонус за продукт:" = "Бонус за продукт:";
-
+"ComplaintErrorKey" = "Ошибка жалобы";
+"FillAllFieldsKey" = "Пожалуйста, заполните все поля";
+"WriteACommentForComplaintKey" = "Напишите комментарий к жалобе!";
+"RecognitionErrorKey" = "Ошибка распознавания";
+"RecognitionCodeErrorKey" = "Не удалось распознать код";
+"ComplaintSendingKey" = "Отправка жалобы";
+"ProductNameKey" = "Название продукта";
+"CodeOnThePackageKey" = "Код на упаковке";
+"PurhasePlaceKey" = "Место покупки";
 
 // Каталог + Share
 "CategoriesKey" = "Категории";

@@ -24,7 +24,15 @@
 "Товар:" = "Product:";
 "Категория:" = "Category:";
 "Бонус за продукт:" = "Product bonus";
-
+"ComplaintErrorKey" = "Complaint error";
+"FillAllFieldsKey" = "Please, fill all fields";
+"WriteACommentForComplaintKey" = "Write a comment to the complaint!";
+"RecognitionErrorKey" = "Recognition error";
+"RecognitionCodeErrorKey" = "The code did't recognize";
+"ComplaintSendingKey" = "Sending complaint";
+"ProductNameKey" = "Product name";
+"CodeOnThePackageKey" = "Code on the package";
+"PurhasePlaceKey" = "Place of purchase";
 
 // Каталог + Share
 "CategoriesKey" = "Categories";
