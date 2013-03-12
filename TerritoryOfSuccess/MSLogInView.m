@@ -54,7 +54,7 @@
         self.registrationMode = NO;
         
         [self setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.0]];
-        
+
         self.loginView = [[UIView alloc]initWithFrame:CGRectMake(origin.x, origin.y, 270, 180)];
         [self.loginView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"dialogViewGradient.png"]]];
         [self.loginView.layer setCornerRadius:10.0];
@@ -113,7 +113,7 @@
         self.cancelButton = [[UIButton alloc]initWithFrame:CGRectMake(10, 131, 120, 35)];
         [self.cancelButton setBackgroundImage:[UIImage imageNamed:@"button_120*35_new.png"] forState:UIControlStateNormal];
         self.cancelButton.titleLabel.textColor = [UIColor whiteColor];
-        self.cancelButton.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
+        self.cancelButton.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:13];
         [self.cancelButton setTitle:NSLocalizedString(@"Отмена", nil) forState:UIControlStateNormal];
         [self.cancelButton addTarget:self action:@selector(cancelPressed) forControlEvents:UIControlEventTouchUpInside];
         [self.loginView addSubview:self.cancelButton];
@@ -121,7 +121,7 @@
         self.loginButton = [[UIButton alloc]initWithFrame:CGRectMake(140, 131, 120, 35)];
         [self.loginButton setBackgroundImage:[UIImage imageNamed:@"button_120*35_new.png"] forState:UIControlStateNormal];
         self.loginButton.titleLabel.textColor = [UIColor whiteColor];
-        self.loginButton.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
+        self.loginButton.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:13];
         [self.loginButton setTitle:NSLocalizedString(@"Войти", nil) forState:UIControlStateNormal];
         [self.loginButton addTarget:self action:@selector(loginPressed) forControlEvents:UIControlEventTouchUpInside];
         [self.loginView addSubview:self.loginButton];

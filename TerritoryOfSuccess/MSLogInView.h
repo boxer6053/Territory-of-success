@@ -34,6 +34,8 @@
 @property (strong, nonatomic) UIButton *backToLoginButton;
 @property (strong, nonatomic) UIView *loginView;
 
+@property (strong, nonatomic) UITapGestureRecognizer *tapRecognizer;
+
 -(id)initWithOrigin:(CGPoint)origin;
 -(void)blackOutOfBackground;
 
