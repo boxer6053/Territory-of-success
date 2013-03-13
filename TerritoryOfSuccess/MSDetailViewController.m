@@ -81,6 +81,7 @@
     self.shareIsPressed = NO;
     self.isImageDisplay = YES;
     self.rateButtonPressed = NO;
+        
     self.rateNumber = 1;
     self.transitionView = [[UIView alloc] initWithFrame:CGRectMake(self.imageView.frame.origin.x, self.imageView.frame.origin.y, self.imageView.frame.size.width, self.imageView.frame.size.height)];
     [[self transitionView] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"dialogViewGradient.png"]]];
@@ -128,7 +129,6 @@
     [self.commentButtonLabel setBackgroundColor:[UIColor clearColor]];
     [self.commentButtonLabel setTextAlignment:NSTextAlignmentCenter];
     [self.transitionView addSubview:self.commentButtonLabel];
-    
     
     self.rateButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.rateButton setFrame:CGRectMake(115, 30, 80, 80)];
@@ -195,7 +195,7 @@
     
     [self.mainView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0]];
     
-    [self.productDescriptionTextView setBackgroundColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:0.0]];
+    [self.productDescriptionWebView setBackgroundColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:0.0]];
     
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     
@@ -227,21 +227,16 @@
     self.productName.text = self.productSentName;
     self.ratingImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%dstar",self.ratingDetail]];
     [self.detailImage setImageWithURL:[NSURL URLWithString:self.productImageURL]];
-    self.productDescriptionTextView.text = self.productSentDescription;
-    
-    CGRect frame = self.productDescriptionTextView.frame;
-    frame.size.height = self.productDescriptionTextView.contentSize.height;
-    self.productDescriptionTextView.frame = frame;
-    
-    
-    if ([[UIScreen mainScreen] bounds].size.height == 568)
-    {
-        [self.detailScrollView setContentSize:CGSizeMake(self.detailScrollView.frame.size.width, self.imageView.frame.size.height + self.productDescriptionTextView.frame.size.height + 50)];
-    }
-    else
-    {
-        [self.detailScrollView setContentSize:CGSizeMake(self.detailScrollView.frame.size.width, self.imageView.frame.size.height + self.productDescriptionTextView.contentSize.height + 50)];
-    }
+    [self.productDescriptionWebView setOpaque:NO];
+    [self.productDescriptionWebView setUserInteractionEnabled:NO];
+    [self.productDescriptionWebView loadHTMLString:self.productSentDescription baseURL:nil];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [self.productDescriptionWebView sizeToFit];
+    self.detailScrollView.contentSize = CGSizeMake(self.detailScrollView.contentSize.width, self.imageView.frame.size.height + self.productDescriptionWebView.frame.size.height + 50);
+    [self.productDescriptionWebView setBackgroundColor:[UIColor clearColor]];
 }
 
 //необходим рефакторинг
