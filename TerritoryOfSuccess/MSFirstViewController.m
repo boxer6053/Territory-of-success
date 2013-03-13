@@ -405,9 +405,10 @@
     @catch (NSException *exception) {
         [imagePickerController dismissViewControllerAnimated:YES completion:NULL];
         
-        UIAlertView *recognizingCodeError = [[UIAlertView alloc] initWithTitle:@"Ошибка распознания"
-                                                                       message:@"Не удалось распознать код"
-                                                                      delegate:nil cancelButtonTitle:@"OK"
+        UIAlertView *recognizingCodeError = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"RecognitionErrorKey", nil)
+                                                                       message:NSLocalizedString(@"RecognitionCodeErrorKey", nil)
+                                                                      delegate:nil
+                                                             cancelButtonTitle:@"OK"
                                                              otherButtonTitles:nil, nil];
         [recognizingCodeError show];
     }
@@ -706,10 +707,9 @@ static inline double radians (double degrees)
     }
     else
     {
-        UIAlertView *complaintError = [[UIAlertView alloc] initWithTitle:@"Ошибка жалобы"
-                                                                 message:@"Заполныте все поля!"
-                                                                delegate:nil
-                                                       cancelButtonTitle:@"OK"
+        UIAlertView *complaintError = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ComplaintErrorKey", nil)
+                                                                 message:NSLocalizedString(@"FillAllFieldsKey", nil)
+                                                                delegate:nil cancelButtonTitle:@"OK"
                                                        otherButtonTitles:nil, nil];
         [complaintError show];
     }
@@ -974,8 +974,8 @@ static inline double radians (double degrees)
             [self.scrollView setScrollEnabled:NO];
             [self.scrollView setContentSize:CGSizeMake(320.0, 568.0 + 40.0)];
             
-            CGFloat tempy = 568.0 + 40.0;//self.scrollView.contentSize.height;
-            CGFloat tempx = 320.0;//self.scrollView.contentSize.width;;
+            CGFloat tempy = 568.0 + 40.0;
+            CGFloat tempx = 320.0;
             CGRect zoomRect = CGRectMake((tempx/2), (tempy/2), tempy, tempx);
             
             [UIView beginAnimations:nil context:nil];
@@ -989,8 +989,8 @@ static inline double radians (double degrees)
             [self.scrollView setScrollEnabled:NO];
             [self.scrollView setContentSize:CGSizeMake(320.0, 480.0 + 55.0)];
             
-            CGFloat tempy = 480.0 + 55.0;//self.scrollView.contentSize.height;
-            CGFloat tempx = 320.0;//self.scrollView.contentSize.width;;
+            CGFloat tempy = 480.0 + 55.0;
+            CGFloat tempx = 320.0;
             CGRect zoomRect = CGRectMake((tempx/2), (tempy/2), tempy, tempx);
             
             [UIView beginAnimations:nil context:nil];
@@ -1166,7 +1166,7 @@ static inline double radians (double degrees)
 {
     self.textViewBeginEditing = YES;
     
-    if([textView.text isEqualToString:@"Напишите коментарий к жалобе!"])
+    if([textView.text isEqualToString:NSLocalizedString(@"WriteACommentForComplaintKey", nil)])
         textView.text = @"";
     textView.textColor = [UIColor blackColor];
     if ([[UIScreen mainScreen] bounds].size.height == 568)
@@ -1190,7 +1190,7 @@ static inline double radians (double degrees)
     self.textViewBeginEditing = NO;
     
     if ([textView.text isEqualToString:@""]){
-        textView.text = @"Напишите коментарий к жалобе!";
+        textView.text = NSLocalizedString(@"WriteACommentForComplaintKey", nil);
         textView.textColor = [UIColor lightGrayColor];
     }
     

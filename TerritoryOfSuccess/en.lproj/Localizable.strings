@@ -15,7 +15,7 @@
 "Такой email уже используется" = "This email is already used";
 "ПРОВЕРКА КОДА" = "CODE VERIFICATION";
 "баллов" = "points";
-"Отправить жалобу" = "Report abuse";
+"Отправить жалобу" = "Report complaint";
 "Ошибка камеры" = "Camera error";
 "Камера не доступна" = "Camera is not available";
 "Отправка кода..." = "Code sending...";
@@ -24,7 +24,16 @@
 "Товар:" = "Product:";
 "Категория:" = "Category:";
 "Бонус за продукт:" = "Product bonus";
-
+"ComplaintErrorKey" = "Complaint error";
+"FillAllFieldsKey" = "Please, fill all fields";
+"WriteACommentForComplaintKey" = "Write a comment to the complaint!";
+"RecognitionErrorKey" = "Recognition error";
+"RecognitionCodeErrorKey" = "The code did't recognize";
+"ComplaintSendingKey" = "Sending complaint";
+"ProductNameKey" = "Product name";
+"CodeOnThePackageKey" = "Code on the package";
+"PurhasePlaceKey" = "Place of purchase";
+"AllCategoriesDownloadedKey" = "All categories are downloaded";
 
 // Каталог + Share
 "CategoriesKey" = "Categories";
@@ -80,7 +89,7 @@
 "GoodKey" = "Good";
 "BadKey" = "Bad";
 "ItemKey" = "Item";
-"DescriptionCreatingKey" = "Pick 1 product for 'Grade a product' interrogation or more for 'Choose a product' interrogation";
+"DescriptionCreatingKey" = "Pick 1 product for \"Grade a product\" interrogation or more for \"Choose a product\" interrogation";
 
 // Новости
 "DownloadingInformationKey" = "Downloading information...";
