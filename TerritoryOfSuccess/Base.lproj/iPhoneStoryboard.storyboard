@@ -1572,7 +1572,7 @@
                 <relationship kind="outlet" name="mainView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="priceImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="priceLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="productDescriptionTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="productDescriptionWebView" candidateClass="UIWebView"/>
                 <relationship kind="outlet" name="productName" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="ratingImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="shareButton" candidateClass="UIBarButtonItem"/>
@@ -1605,6 +1605,7 @@
                 <relationship kind="action" name="takePhoto:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="codeInputView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="codeTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="newsActivityIdicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="newsPageControl" candidateClass="UIPageControl"/>
                 <relationship kind="outlet" name="newsScrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="newsView" candidateClass="UIView"/>

@@ -786,6 +786,8 @@ static inline double radians (double degrees)
             [self.dialogView.messageView setFrame:CGRectMake(self.dialogView.messageView.frame.origin.x, self.dialogView.messageView.frame.origin.y, self.dialogView.messageView.frame.size.width, self.dialogView.messageLabel.frame.size.height)];
             
             [self showDialogView];
+            
+            [self.codeTextField setText:@""];
         }
         else
         {
@@ -841,6 +843,8 @@ static inline double radians (double degrees)
                 [self.dialogView.messageView setFrame:CGRectMake(self.dialogView.messageView.frame.origin.x, self.dialogView.messageView.frame.origin.y, self.dialogView.messageView.frame.size.width, self.dialogView.messageLabel.frame.size.height)];
                 
                 [self showDialogView];
+                
+                [self.codeTextField setText:@""];
             }
             else
             {
