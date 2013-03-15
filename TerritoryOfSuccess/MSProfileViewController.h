@@ -13,6 +13,8 @@
 
 @interface MSProfileViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, WsCompleteDelegate, MSPickerViewDelegate, MSDatePickerViewDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *profileTableView;
+@property (weak, nonatomic) IBOutlet UILabel *bonusPointsLabel;
+@property (weak, nonatomic) IBOutlet UIView *bonusView;
 - (IBAction)logoutButtonPressed:(id)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *logoutButton;
 @end
