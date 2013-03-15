@@ -10,6 +10,12 @@
 #import <QuartzCore/QuartzCore.h>
 #import "SVProgressHUD.h"
 #import "MSStatisticCell.h"
+
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 @interface MSStatisticViewController ()
 @property (strong, nonatomic) NSMutableData *receivedData;
 @property (strong, nonatomic) MSAPI *api;
@@ -108,8 +114,13 @@
         NSString *answer = [NSString stringWithFormat:@"%d",percents];
         cell.answerLabel.text = [answer stringByAppendingString:@"%"];
         cell.rateView.image = [UIImage imageNamed:@"terrRate.png"];
-        cell.titleLabel.minimumScaleFactor = 0.3f;
-        cell.titleLabel.adjustsFontSizeToFitWidth = YES;
+        if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
+            cell.titleLabel.minimumFontSize = 10.0f;
+            cell.titleLabel.adjustsFontSizeToFitWidth = YES;
+        }else{
+            cell.titleLabel.minimumScaleFactor = 0.3f;
+            cell.titleLabel.adjustsFontSizeToFitWidth = YES;
+        }
         if([[[self.receivedArray objectAtIndex:indexPath.row] valueForKey:@"title"] isEqualToString:@"!-- like --!"]){
             cell.titleLabel.text = NSLocalizedString(@"LikeKey",nil);
                    }

@@ -5,6 +5,7 @@
 #import "MSCommentsViewController.h"
 #import <Social/Social.h>
 #import "MSiOSVersionControlHeader.h"
+#import "SVProgressHUD.h"
 
 @interface MSDetailViewController () 
 {
@@ -48,6 +49,7 @@
 
 //login popUP
 @property (nonatomic, strong) MSLogInView *loginView;
+
 @end
 
 @implementation MSDetailViewController
@@ -82,7 +84,7 @@
     self.shareIsPressed = NO;
     self.isImageDisplay = YES;
     self.rateButtonPressed = NO;
-        
+    
     self.rateNumber = 1;
     self.transitionView = [[UIView alloc] initWithFrame:CGRectMake(self.imageView.frame.origin.x, self.imageView.frame.origin.y, self.imageView.frame.size.width, self.imageView.frame.size.height)];
     [[self transitionView] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"dialogViewGradient.png"]]];
@@ -256,8 +258,15 @@
     [self.productDescriptionWebView loadHTMLString:self.productSentDescription baseURL:nil];
 }
 
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    [self.activityIndicatorView startAnimating];
+    [self.activityIndicatorView setHidesWhenStopped:YES];
+}
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
+    [self.activityIndicatorView stopAnimating];
     [self.productDescriptionWebView sizeToFit];
     self.detailScrollView.contentSize = CGSizeMake(self.detailScrollView.contentSize.width, self.imageView.frame.size.height + self.productDescriptionWebView.frame.size.height + 50);
     [self.productDescriptionWebView setBackgroundColor:[UIColor clearColor]];
@@ -466,10 +475,6 @@
 
 - (IBAction)shareButtonPressed:(id)sender
 {
-    self.shareImageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.productImageURL]];
-    self.shareImage = [UIImage imageWithData:self.shareImageData];
-    self.shareString = [NSString stringWithFormat:@"%@ \"%@\" %@ ",NSLocalizedString(@"ProductWasVerificatedKey", nil), self.productName.text, NSLocalizedString(@"WithAppKey", nil)];
-    
     if (self.shareIsPressed == NO)
     {
         [UIView animateWithDuration:0.5 animations:^{
@@ -492,8 +497,16 @@
     }
 }
 
+- (void)convertingSharingInfoInDataFormat
+{
+    self.shareImageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.productImageURL]];
+    self.shareImage = [UIImage imageWithData:self.shareImageData];
+    self.shareString = [NSString stringWithFormat:@"%@ \"%@\" %@ ",NSLocalizedString(@"ProductWasVerificatedKey", nil), self.productName.text, NSLocalizedString(@"WithAppKey", nil)];
+}
+
 - (IBAction)fbButtonPressed:(id)sender
 {
+    [self convertingSharingInfoInDataFormat];
     [[self share] shareOnFacebookWithText:self.shareString
                                 withImage:self.shareImage
                     currentViewController:self];
@@ -501,6 +514,7 @@
 
 - (IBAction)twButtonPressed:(id)sender
 {
+    [self convertingSharingInfoInDataFormat];
     [[self share] shareOnTwitterWithText:self.shareString 
                                withImage:self.shareImage
                    currentViewController:self];
@@ -508,6 +522,7 @@
 
 - (IBAction)vkButtonPressed:(id)sender
 {
+    [self convertingSharingInfoInDataFormat];
     self.share.mainView = self;
     [[self share] shareOnVKWithText:self.shareString withImage:self.shareImage];
     [self.share attachPopUpAnimationForView:self.share.vkView];
@@ -593,5 +608,9 @@
         [self.loginView attachPopUpAnimationForView:self.loginView.loginView];
         self.loginView.delegate = self;
     }
+}
+- (void)viewDidUnload {
+    [self setActivityIndicatorView:nil];
+    [super viewDidUnload];
 }
 @end

@@ -19,6 +19,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *ratingImage;
 @property (strong, nonatomic) IBOutlet UIImageView *detailImage;
 @property (nonatomic) int productSentId;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 
 @property (strong, nonatomic) IBOutlet UIButton *fbButton;
 - (IBAction)fbButtonPressed:(id)sender;

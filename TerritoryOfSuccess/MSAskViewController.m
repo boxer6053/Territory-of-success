@@ -12,7 +12,11 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <QuartzCore/QuartzCore.h>
 #import "PrettyKit.h"
-
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
 
 
@@ -139,8 +143,14 @@
     }
   //  cell.nameLabel.numberOfLines = 2;
     
-    cell.nameLabel.minimumScaleFactor = 0.8;
-    cell.nameLabel.adjustsFontSizeToFitWidth = YES;
+    if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
+        cell.nameLabel.minimumFontSize = 10.0f;
+        cell.nameLabel.adjustsFontSizeToFitWidth = YES;
+    }else{
+        cell.nameLabel.minimumScaleFactor = 0.8;
+        cell.nameLabel.adjustsFontSizeToFitWidth = YES;
+    }
+
     cell.nameLabel.text = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
     
         if([[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"] isEqualToString:@""])

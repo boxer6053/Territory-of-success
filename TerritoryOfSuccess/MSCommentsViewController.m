@@ -48,6 +48,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.commentsNavigationItem setTitle:NSLocalizedString(@"CommentsNavItemKey", nil)];
     [[self commentTableView] setBackgroundView:[[UIImageView alloc]
                                                 initWithImage:[UIImage imageNamed:@"bg.png"]]];
 
@@ -249,5 +250,9 @@
         }
         self.insertedOperationFinishedTheyWork = YES;
     }
+}
+- (void)viewDidUnload {
+    [self setCommentsNavigationItem:nil];
+    [super viewDidUnload];
 }
 @end

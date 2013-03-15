@@ -5,6 +5,7 @@
 
 @property (strong, nonatomic) IBOutlet UISegmentedControl *categoryAndBrandsControl;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UINavigationItem *catalogueNavigationItem;
 
 - (IBAction)segmentPressed:(id)sender;
 @end

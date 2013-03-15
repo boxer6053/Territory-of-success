@@ -63,6 +63,10 @@
 "SorryKey" = "Вибачте";
 "DontAvailableOnThisVersionKey" = "Дана функція не доступна на вашій версії iOS";
 "AvailableKey:" = "доступно:";
+"BrandKey" = "Бренд:";
+"CatalogueNavTitleKey" = "Каталог";
+"ProductsNavItemKey" = "Продукти";
+"CommentsNavItemKey" = "Коментарі";
 
 // Опросы
 "DownloadInquirersKey" = "Завантаження питань";
