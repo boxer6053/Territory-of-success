@@ -1709,6 +1709,8 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSProfileViewController.h"/>
             <relationships>
                 <relationship kind="action" name="logoutButtonPressed:"/>
+                <relationship kind="outlet" name="bonusPointsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="bonusView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="logoutButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="profileTableView" candidateClass="UITableView"/>
             </relationships>
