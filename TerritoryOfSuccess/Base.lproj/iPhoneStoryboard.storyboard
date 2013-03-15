@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8kx-JT-nNm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8kx-JT-nNm">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
     <scenes>
         <!--Catalogue View Controller - Каталог-->
@@ -469,45 +469,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="bonusProfileCell" id="OU6-Nf-fbe" customClass="MSBonusCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="standardProfileCell" id="3dk-mo-psy" customClass="MSStandardProfileCell">
                                         <rect key="frame" x="0.0" y="46" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fg8-MC-mnf">
-                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                    <state key="normal" title="Бонусы" backgroundImage="button_80_44-2.png">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <state key="highlighted">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                </button>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Количество баллов" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pLv-Lo-miT">
-                                                    <rect key="frame" x="102" y="10" width="188" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <connections>
-                                            <outlet property="bonusButton" destination="fg8-MC-mnf" id="tdm-KF-Yk3"/>
-                                            <outlet property="bonusCountLabel" destination="pLv-Lo-miT" id="o5Y-XI-GpA"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="standardProfileCell" id="3dk-mo-psy" customClass="MSStandardProfileCell">
-                                        <rect key="frame" x="0.0" y="91" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" id="y7a-MP-Gag">
@@ -532,7 +498,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="checkboxCell" id="atl-Vn-bdJ" customClass="MSCheckBoxCell">
-                                        <rect key="frame" x="0.0" y="135" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="91" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -566,6 +532,40 @@
                                         <connections>
                                             <outlet property="checkboxButton" destination="VDV-7u-hfF" id="euh-r1-soL"/>
                                             <outlet property="checkboxLabel" destination="Pss-Xv-u9m" id="ObV-Ds-tdJ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="bonusProfileCell" id="OU6-Nf-fbe" customClass="MSBonusCell">
+                                        <rect key="frame" x="0.0" y="135" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fg8-MC-mnf">
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" title="Бонусы" backgroundImage="button_80_44-2.png">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Количество баллов" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pLv-Lo-miT">
+                                                    <rect key="frame" x="102" y="10" width="188" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="bonusButton" destination="fg8-MC-mnf" id="tdm-KF-Yk3"/>
+                                            <outlet property="bonusCountLabel" destination="pLv-Lo-miT" id="o5Y-XI-GpA"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="saveProfileCell" id="x3R-bC-BFt" customClass="MSProfileSaveCell">
@@ -639,6 +639,27 @@
                                     <outlet property="delegate" destination="fxs-RG-A77" id="sVc-pO-HSN"/>
                                 </connections>
                             </tableView>
+                            <view alpha="0.94999999999999996" contentMode="scaleToFill" id="RgI-AW-qgh">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Количество баллов:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mJE-xH-EoS">
+                                        <rect key="frame" x="20" y="9" width="280" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Нажмите для перехода к каталогу бонусов" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BYf-SX-PR4">
+                                        <rect key="frame" x="20" y="28" width="280" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -650,6 +671,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bonusPointsLabel" destination="mJE-xH-EoS" id="SwS-i7-wMc"/>
+                        <outlet property="bonusView" destination="RgI-AW-qgh" id="BHB-mB-wec"/>
                         <outlet property="logoutButton" destination="yxf-3h-xzN" id="QH0-z6-HkM"/>
                         <outlet property="profileTableView" destination="1ei-NH-ioB" id="LSn-9I-6cM"/>
                         <segue destination="mMJ-qr-3TT" kind="push" identifier="toBonusCatalog" id="snO-VA-Y0c"/>
@@ -1606,6 +1629,7 @@
                 <relationship kind="action" name="takePhoto:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="codeInputView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="codeTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="newsActivityIdicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="newsPageControl" candidateClass="UIPageControl"/>
                 <relationship kind="outlet" name="newsScrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="newsView" candidateClass="UIView"/>
@@ -1674,6 +1698,8 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSProfileViewController.h"/>
             <relationships>
                 <relationship kind="action" name="logoutButtonPressed:"/>
+                <relationship kind="outlet" name="bonusPointsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="bonusView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="logoutButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="profileTableView" candidateClass="UITableView"/>
             </relationships>
@@ -1684,28 +1710,6 @@
                 <relationship kind="outlet" name="countLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="productImage" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="MSReceiveProfileCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSReceiveProfileCell.h"/>
-            <relationships>
-                <relationship kind="action" name="recieveNewsButtonPressed:"/>
-                <relationship kind="action" name="recieveNoticeButtonPressed:"/>
-                <relationship kind="outlet" name="receiveNewsButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="receiveNewsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="receiveNoticeButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="receiveNoticeLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MSSexProfileCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSSexProfileCell.h"/>
-            <relationships>
-                <relationship kind="action" name="sexFemaleSelected:"/>
-                <relationship kind="action" name="sexMaleSelected:"/>
-                <relationship kind="outlet" name="sexFemaleButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="sexFemaleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="sexMaleButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="sexMaleLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="MSStandardProfileCell" superclassName="UITableViewCell">

@@ -61,6 +61,9 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
     [self.api getProfileData];
     _downloadIsComplete = NO;
+    [self.profileTableView setContentInset:UIEdgeInsetsMake(50,0,0,0)];
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(bonusViewTaped)];
+    [self.bonusView addGestureRecognizer:tapRecognizer];
 }
 
 - (void)didReceiveMemoryWarning
@@ -84,17 +87,6 @@
 {
     if (section == 0)
     {
-        if (_downloadIsComplete)
-        {
-            return 1;
-        }
-        else
-        {
-            return 0;
-        }
-    }
-    else if (section == 1)
-    {
         if (_isEditMode)
         {
             return self.profileStandartFields.count;
@@ -104,7 +96,7 @@
             return self.profileArray.count;
         }
     }
-    else if (section == 2)
+    else if (section == 1)
     {
         if (_isEditMode)
         {
@@ -115,7 +107,7 @@
             return 0;
         }
     }
-    else if (section == 3)
+    else if (section == 2)
     {
         if (_downloadIsComplete)
         {
@@ -137,17 +129,7 @@
 
     if(_downloadIsComplete == YES)
     {
-        if (indexPath.section == 0)
-        {
-            NSString *CellIdentifier = @"bonusProfileCell";
-            MSBonusCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-            
-            [cell.bonusButton addTarget:self action:@selector(bonusButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-            cell.bonusCountLabel.text = [self.profileDictionary valueForKey:@"balance"];
-            
-            return cell;
-        }
-        if (indexPath.section == 2)
+        if (indexPath.section == 1)
         {
             NSString *CellIdentifier = @"checkboxCell";
             MSCheckBoxCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
@@ -160,7 +142,7 @@
             return cell;
         }
         
-        if (indexPath.section == 3)
+        if (indexPath.section == 2)
         {
             if(!_isEditMode)
             {
@@ -186,7 +168,21 @@
             if (_isEditMode)
             {
                 cell.standartTitleLabel.text = [[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"title"];
-                NSString *value = [[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"value"];
+                NSString *value;
+                if([[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"type"] isEqualToString:@"select"])
+                {
+                    for (int i = 0;  i < [[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"values"] count]; i++)
+                    {
+                        if ([[[[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"values"] objectAtIndex:i] valueForKey:@"key"] isEqualToString:[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"value"]])
+                        {
+                            value = [[[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"values"] objectAtIndex:i] valueForKey:@"value"];
+                        }
+                    }
+                }
+                else
+                {
+                    value = [[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"value"];
+                }
                 if((NSNull *)value != [NSNull null])
                 {
                     value = [self checkIfNull:value];
@@ -263,6 +259,11 @@
     return value;
 }
 #pragma mark - selectors
+- (void)bonusViewTaped
+{
+    [self.api getBonusCategories];
+}
+
 -(void)SaveButtonPressed
 {
     if (!_isEditMode)
@@ -408,6 +409,10 @@
         {
             _downloadIsComplete = YES;
             self.profileArray = [[dictionary valueForKey:@"fields"] mutableCopy];
+            
+
+            self.bonusPointsLabel.text = [self.bonusPointsLabel.text stringByAppendingFormat:@" %@",[self.profileDictionary valueForKey:@"balance"]];
+            
             for(int i = 0; i < self.profileArray.count; i++)
             {
                 if ([[[self.profileArray objectAtIndex:i] valueForKey:@"key"] isEqualToString:@"balance"])
@@ -417,6 +422,7 @@
             }
             [self.profileTableView reloadData];
         }
+        
     }
     if (type == kProfileEdit)
     {
