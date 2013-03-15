@@ -5,6 +5,7 @@
 #import "MSCommentsViewController.h"
 #import <Social/Social.h>
 #import "MSiOSVersionControlHeader.h"
+#import "SVProgressHUD.h"
 
 @interface MSDetailViewController () 
 {
@@ -48,6 +49,7 @@
 
 //login popUP
 @property (nonatomic, strong) MSLogInView *loginView;
+
 @end
 
 @implementation MSDetailViewController
@@ -82,7 +84,10 @@
     self.shareIsPressed = NO;
     self.isImageDisplay = YES;
     self.rateButtonPressed = NO;
-        
+    
+    self.activityIndicatorView = [[UIActivityIndicatorView alloc] init];
+    [self.activityIndicatorView hidesWhenStopped];
+    
     self.rateNumber = 1;
     self.transitionView = [[UIView alloc] initWithFrame:CGRectMake(self.imageView.frame.origin.x, self.imageView.frame.origin.y, self.imageView.frame.size.width, self.imageView.frame.size.height)];
     [[self transitionView] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"dialogViewGradient.png"]]];
@@ -256,8 +261,13 @@
     [self.productDescriptionWebView loadHTMLString:self.productSentDescription baseURL:nil];
 }
 
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+}
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
+    [self.activityIndicatorView stopAnimating];
     [self.productDescriptionWebView sizeToFit];
     self.detailScrollView.contentSize = CGSizeMake(self.detailScrollView.contentSize.width, self.imageView.frame.size.height + self.productDescriptionWebView.frame.size.height + 50);
     [self.productDescriptionWebView setBackgroundColor:[UIColor clearColor]];
@@ -545,6 +555,8 @@
 
 - (void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
 {
+    [self.activityIndicatorView startAnimating];
+    
     if ((type == kRate) || (type == kRecommend) || (type == kBonusRate) || (type == kBonusRecommend))
     {
         if ([[dictionary objectForKey:@"status"] isEqualToString:@"failed"])
@@ -593,5 +605,9 @@
         [self.loginView attachPopUpAnimationForView:self.loginView.loginView];
         self.loginView.delegate = self;
     }
+}
+- (void)viewDidUnload {
+    [self setActivityIndicatorView:nil];
+    [super viewDidUnload];
 }
 @end

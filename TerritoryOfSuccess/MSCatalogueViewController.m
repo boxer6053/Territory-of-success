@@ -58,6 +58,7 @@
     [self.categoryAndBrandsControl setTitle:NSLocalizedString(@"CategoriesKey", nil) forSegmentAtIndex:0];
     [self.categoryAndBrandsControl setTitle:NSLocalizedString(@"BrandsKey", nil) forSegmentAtIndex:1];
     [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadCategoriesKey",nil)];
+    [self.catalogueNavigationItem setTitle:NSLocalizedString(@"CatalogueNavTitleKey", nil)];
     [self.api getCategories];
     
     if ([[UIScreen mainScreen] bounds].size.height == 568)
@@ -302,6 +303,7 @@
 }
 
 - (void)viewDidUnload {
+    [self setCatalogueNavigationItem:nil];
     [super viewDidUnload];
 }
 @end

@@ -26,7 +26,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.mainTabBarItem setTitle:NSLocalizedString(@"MainTabBarItemKey", nil)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,7 +36,6 @@
 
 - (void)viewDidUnload
 {
-    [self setMainTabBarItem:nil];
     [super viewDidUnload];
 }
 @end

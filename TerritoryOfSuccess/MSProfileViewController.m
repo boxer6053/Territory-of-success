@@ -150,7 +150,7 @@
         if (indexPath.section == 2)
         {
             NSString *CellIdentifier = @"checkboxCell";
-            MSCheckBoxCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+            MSCheckBoxCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
             cell.checkboxLabel.text = [[self.profileCheckboxFields objectAtIndex:indexPath.row] valueForKey:@"title"];
             cell.isChecked = [[[self.profileCheckboxFields objectAtIndex:indexPath.row] valueForKey:@"value"] boolValue];

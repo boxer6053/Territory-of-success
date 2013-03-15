@@ -50,6 +50,7 @@
     self.isFirstTime = YES;
     self.productsTableView.delegate = self;
     self.productsTableView.dataSource = self;
+    [self.productsNavigationItem setTitle:NSLocalizedString(@"ProductsNavItemKey", nil)];
     [self.productsTableView setBackgroundView:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"bg.png"]]];
     
     self.footerButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.productsTableView.frame.size.width, 35)];
@@ -125,6 +126,7 @@
         }
     }
     cell.productRatingImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%dstar.png",[[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"rating"]integerValue]]];
+    cell.prodactBrandLabel.text = NSLocalizedString(@"BrandKey", nil);
     
     //на экспорт в MSDetailViewController
     cell.productAdviceNumber = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"advises"] integerValue];
@@ -264,5 +266,9 @@
         
         self.insertedOperationFinishedTheyWork = YES;
     }
+}
+- (void)viewDidUnload {
+    [self setProductsNavigationItem:nil];
+    [super viewDidUnload];
 }
 @end

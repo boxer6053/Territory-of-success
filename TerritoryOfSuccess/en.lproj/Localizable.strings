@@ -65,6 +65,10 @@
 "SorryKey" = "Sorry";
 "DontAvailableOnThisVersionKey" = "Sharing don't available on your iOS version";
 "AvailableKey:" = "available:";
+"BrandKey" = "Brand:";
+"CatalogueNavTitleKey" = "Catalogue";
+"ProductsNavItemKey" = "Products";
+"CommentsNavItemKey" = "Comments";
 
 // Опросы
 "DownloadInquirersKey" = "Loading interogation";
