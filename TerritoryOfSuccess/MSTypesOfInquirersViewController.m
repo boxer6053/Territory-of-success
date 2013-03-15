@@ -110,8 +110,9 @@
     self.loginView = nil;
 }
 -(void)viewDidDisappear:(BOOL)animated  {
-    if(_loginView){
-    [self.loginView removeFromSuperview];
+    if(_loginView)
+    {
+        [self.loginView removeFromSuperview];
     }
 }
 

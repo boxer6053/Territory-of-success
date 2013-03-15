@@ -139,7 +139,7 @@
         [self.registrationButton setTitle:NSLocalizedString(@"Зарегестрироваться", nil) forState:UIControlStateNormal];
         [self.registrationButton addTarget:self action:@selector(registrationPressed) forControlEvents:UIControlEventTouchUpInside];
         [self.loginView addSubview:self.registrationButton];
-        self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapAnywhere:)];
+//        self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapAnywhere:)];
         
         self.nc = [NSNotificationCenter defaultCenter];
         
@@ -208,7 +208,7 @@
              self.loginView.frame = CGRectMake(self.loginView.frame.origin.x, self.loginView.frame.origin.y - 50, self.loginView.frame.size.width, self.loginView.frame.size.height);
         }];
     }
-    [self.window addGestureRecognizer:self.tapRecognizer];
+//    [self addGestureRecognizer:self.tapRecognizer];
 }
 
 - (void)keyboardWillHide:(NSNotification *)note
@@ -220,7 +220,7 @@
              self.loginView.frame = CGRectMake(self.loginView.frame.origin.x, self.loginView.frame.origin.y + 50, self.loginView.frame.size.width, self.loginView.frame.size.height);
          }];
     }
-    [self.window removeGestureRecognizer:self.tapRecognizer];
+//    [self removeGestureRecognizer:self.tapRecognizer];
 }
 
 -(void)registrationPressed
