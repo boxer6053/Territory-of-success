@@ -102,8 +102,15 @@
     }
     return _share;
 }
+
+- (void)convertingSharingInfoInDataFormat
+{
+    self.shareImageData = [NSData dataWithContentsOfURL:self.imageUrl];
+    self.shareImage = [UIImage imageWithData:self.shareImageData];
+}
 - (IBAction)vkButtonPressed:(id)sender
 {
+    [self convertingSharingInfoInDataFormat];
     self.share.mainView = self;
     [[self share] shareOnVKWithText:self.articleBriefTextView.text withImage:self.shareImage];
         [self.share attachPopUpAnimationForView:self.share.vkView];
@@ -111,6 +118,7 @@
 
 - (IBAction)twbButtonPressed:(id)sender
 {
+    [self convertingSharingInfoInDataFormat];
     [[self share] shareOnTwitterWithText:self.articleBriefTextView.text
                                withImage:self.shareImage
                    currentViewController:self];
@@ -119,6 +127,7 @@
 
 - (IBAction)fbButtonPressed:(id)sender
 {
+    [self convertingSharingInfoInDataFormat];
     [[self share] shareOnFacebookWithText:self.articleBriefTextView.text
                                 withImage:self.shareImage
                     currentViewController:self];
@@ -126,9 +135,6 @@
 
 - (IBAction)shareButtonPressed:(id)sender
 {
-    self.shareImageData = [NSData dataWithContentsOfURL:self.imageUrl];
-    self.shareImage = [UIImage imageWithData:self.shareImageData];
-    
     if (!self.shareButtonsShowed)
     {
         self.shareButtonsShowed = YES;

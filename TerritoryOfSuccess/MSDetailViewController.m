@@ -475,10 +475,6 @@
 
 - (IBAction)shareButtonPressed:(id)sender
 {
-    self.shareImageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.productImageURL]];
-    self.shareImage = [UIImage imageWithData:self.shareImageData];
-    self.shareString = [NSString stringWithFormat:@"%@ \"%@\" %@ ",NSLocalizedString(@"ProductWasVerificatedKey", nil), self.productName.text, NSLocalizedString(@"WithAppKey", nil)];
-    
     if (self.shareIsPressed == NO)
     {
         [UIView animateWithDuration:0.5 animations:^{
@@ -501,8 +497,16 @@
     }
 }
 
+- (void)convertingSharingInfoInDataFormat
+{
+    self.shareImageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.productImageURL]];
+    self.shareImage = [UIImage imageWithData:self.shareImageData];
+    self.shareString = [NSString stringWithFormat:@"%@ \"%@\" %@ ",NSLocalizedString(@"ProductWasVerificatedKey", nil), self.productName.text, NSLocalizedString(@"WithAppKey", nil)];
+}
+
 - (IBAction)fbButtonPressed:(id)sender
 {
+    [self convertingSharingInfoInDataFormat];
     [[self share] shareOnFacebookWithText:self.shareString
                                 withImage:self.shareImage
                     currentViewController:self];
@@ -510,6 +514,7 @@
 
 - (IBAction)twButtonPressed:(id)sender
 {
+    [self convertingSharingInfoInDataFormat];
     [[self share] shareOnTwitterWithText:self.shareString 
                                withImage:self.shareImage
                    currentViewController:self];
@@ -517,6 +522,7 @@
 
 - (IBAction)vkButtonPressed:(id)sender
 {
+    [self convertingSharingInfoInDataFormat];
     self.share.mainView = self;
     [[self share] shareOnVKWithText:self.shareString withImage:self.shareImage];
     [self.share attachPopUpAnimationForView:self.share.vkView];
