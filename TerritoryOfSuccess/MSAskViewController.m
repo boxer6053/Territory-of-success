@@ -47,6 +47,7 @@
 @synthesize backIds = _backIds;
 @synthesize upperTitle = _upperTitle;
 @synthesize backTitles = _backTitles;
+@synthesize gottedFromPrevious = _gottedFromPrevious;
 
 @synthesize navigationBar = _navigationBar;
 
@@ -230,16 +231,15 @@
         //  _questionsCount = 0;
     }
    //  [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
-    if(typefinished == kLastQuest)
-    {
-        
-    }
-    
 }
 
 - (IBAction)cancel:(id)sender {
+    if(!self.gottedFromPrevious){
+        
+        [self.delegate setUpperId:0];
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
-    [self.delegate setUpperId:0];
+    
 }
 
 //- (IBAction)upAction:(id)sender {

@@ -28,6 +28,7 @@
 @property (strong, nonatomic) NSString *upperTitle;
 @property (nonatomic) NSInteger upperID;
 @property (nonatomic) int finalID;
+@property (nonatomic) BOOL gottedFromPrevious;
 @property (strong, nonatomic) NSMutableString *requestItemsString;
 @property (nonatomic) BOOL isAuthorized;
 @property (strong, nonatomic) NSMutableArray *backIds;

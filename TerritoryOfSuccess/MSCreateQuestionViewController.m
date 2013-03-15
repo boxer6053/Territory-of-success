@@ -224,7 +224,7 @@
         MSAskViewController *controller = (MSAskViewController *)segue.destinationViewController;
         controller.defaultID = self.upperID;
         controller.upperTitle = self.upTitle;
-        
+        controller.gottedFromPrevious = YES;
         NSLog(@"gonna be id %d", self.upperID   );
     }
 }
