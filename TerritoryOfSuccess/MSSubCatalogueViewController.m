@@ -96,7 +96,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"subCatalogueCellIdentifier";
-    MSSubCatalogueCell *cell = [[self productsTableView] dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    MSSubCatalogueCell *cell = [[self productsTableView] dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
         cell = [[MSSubCatalogueCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
@@ -166,10 +166,13 @@
 {
     if (self.insertedOperationFinishedTheyWork)
     {
-        if (self.productsTableView.contentOffset.y + 455 > self.productsTableView.contentSize.height)
+        if (self.productsCounter > 20)
         {
-            [self moreProducts];
-            self.insertedOperationFinishedTheyWork = NO;
+            if (self.productsTableView.contentOffset.y + 455 > self.productsTableView.contentSize.height)
+            {
+                [self moreProducts];
+                self.insertedOperationFinishedTheyWork = NO;
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 #import "MSShare.h"
 #import "Vkontakte.h"
 #import <QuartzCore/QuartzCore.h>
+#import "MSiOSVersionControlHeader.h"
 
 @interface MSShare()
 @property (nonatomic, strong) SLComposeViewController *slComposeSheet;
@@ -26,19 +27,27 @@
                       withImage:(UIImage *)shareImage
           currentViewController:(UIViewController *)viewController;
 {
-    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0"))
     {
-        self.slComposeSheet = [[SLComposeViewController alloc]init];
-        self.slComposeSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-        [self.slComposeSheet setInitialText:shareText];
-        [self.slComposeSheet addImage:shareImage];
-        [self.slComposeSheet addURL:[NSURL URLWithString:@"http://id-bonus.com"]];
-        [viewController presentViewController:self.slComposeSheet animated:YES completion:nil];
-        [self slComposeSheetHandlerMethod];
+        if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
+        {
+            self.slComposeSheet = [[SLComposeViewController alloc]init];
+            self.slComposeSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+            [self.slComposeSheet setInitialText:shareText];
+            [self.slComposeSheet addImage:shareImage];
+            [self.slComposeSheet addURL:[NSURL URLWithString:@"http://id-bonus.com"]];
+            [viewController presentViewController:self.slComposeSheet animated:YES completion:nil];
+            [self slComposeSheetHandlerMethod];
+        }
+        else
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ErrorKey", nil) message:NSLocalizedString(@"YouNeedToLoginInSettingsKey", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+        }
     }
     else
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ErrorKey", nil) message:NSLocalizedString(@"YouNeedToLoginInSettingsKey", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SorryKey", nil) message:NSLocalizedString(@"DontAvailableOnThisVersionKey", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
     }
 }
@@ -47,20 +56,28 @@
                      withImage:(UIImage *)shareImage
          currentViewController:(UIViewController *)viewController;
 {
-    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0"))
     {
-        self.slComposeSheet = [[SLComposeViewController alloc]init];
-        self.slComposeSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-        [self.slComposeSheet setInitialText:shareText];
-        [self.slComposeSheet addImage:shareImage];
-        [self.slComposeSheet addURL:[NSURL URLWithString:@"http://id-bonus.com"]];
-        [viewController presentViewController:self.slComposeSheet animated:YES completion:nil];
-        [self slComposeSheetHandlerMethod];
-        
+        if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
+        {
+            self.slComposeSheet = [[SLComposeViewController alloc]init];
+            self.slComposeSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+            [self.slComposeSheet setInitialText:shareText];
+            [self.slComposeSheet addImage:shareImage];
+            [self.slComposeSheet addURL:[NSURL URLWithString:@"http://id-bonus.com"]];
+            [viewController presentViewController:self.slComposeSheet animated:YES completion:nil];
+            [self slComposeSheetHandlerMethod];
+            
+        }
+        else
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ErrorKey", nil) message:NSLocalizedString(@"YouNeedToLoginInSettingsKey", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+        }
     }
     else
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ErrorKey", nil) message:NSLocalizedString(@"YouNeedToLoginInSettingsKey", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SorryKey", nil) message:NSLocalizedString(@"DontAvailableOnThisVersionKey", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
     }
 }

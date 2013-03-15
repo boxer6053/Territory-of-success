@@ -93,10 +93,13 @@
 {
     if (self.insertedOperationFinishedTheyWork)
     {
-        if (self.commentTableView.contentOffset.y + 455 > self.commentTableView.contentSize.height)
+        if (self.commentsCounter > 20)
         {
-            [self moreComments];
-            self.insertedOperationFinishedTheyWork = NO;
+            if (self.commentTableView.contentOffset.y + 455 > self.commentTableView.contentSize.height)
+            {
+                [self moreComments];
+                self.insertedOperationFinishedTheyWork = NO;
+            }
         }
     }
 }
@@ -121,7 +124,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"commentsIdentifier";
-    MSCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    MSCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
         cell = [[MSCommentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];

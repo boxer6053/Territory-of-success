@@ -62,10 +62,12 @@
 "WithAppKey" = "in \"Territory of Success\" Application";
 "PriceKey" = "Price:";
 "YouNeedToLoginInSettingsKey" = "You need to authorize! Please, go to the Settings and login there";
+"SorryKey" = "Sorry";
+"DontAvailableOnThisVersionKey" = "Sharing don't available on your iOS version";
+"AvailableKey:" = "available:";
 
 // Опросы
 "DownloadInquirersKey" = "Loading interogation";
-
 "DownloadInquirerDetailKey" = "Loading detail";
 "DownloadingInquirerStatKey" = "Loading answers";
 "SendingInquirerKey" = "Creating interogation";
@@ -85,7 +87,6 @@
 "whatProductIsBetterKey" = "What product is better";
 "LikeKey" = "Like";
 "DislikeKey" = "Dislike";
-
 "GoodKey" = "Good";
 "BadKey" = "Bad";
 "ItemKey" = "Item";
@@ -95,3 +96,9 @@
 "DownloadingInformationKey" = "Downloading information...";
 "AllNewsDownloadedKey" = "All news are downloaded";
 "DownloadMoreKey" = "Load more";
+
+//Storyboard
+"NewsTabBarItemKey" = "News";
+"CatalogueTabBarItemKey" = "Catalogue";
+"MainTabBarItemKey" = "Main";
+"InquirerTabBarItemKey" = "Inquiries";

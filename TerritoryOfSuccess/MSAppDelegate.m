@@ -1,12 +1,5 @@
-//
-//  MSAppDelegate.m
-//  TerritoryOfSuccess
-//
-//  Created by Matrix Soft on 1/8/13.
-//  Copyright (c) 2013 Matrix Soft. All rights reserved.
-//
-
 #import "MSAppDelegate.h"
+#import "MSiOSVersionControlHeader.h"
 
 @implementation MSAppDelegate
 
@@ -16,20 +9,19 @@
 
 - (void)customizeInterface
 {
-    [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
-    [[UIBarButtonItem appearance] setTintColor:[UIColor orangeColor]];
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0"))
+    {
+        [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
+        [[UIBarButtonItem appearance] setTintColor:[UIColor orangeColor]];
     
-    [[UITabBar appearance] setBackgroundColor:[UIColor blackColor]];
-    [[UITabBar appearance] setSelectedImageTintColor:[UIColor orangeColor]];
-    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                       [UIColor whiteColor], UITextAttributeTextColor,
-                                                       nil] forState:UIControlStateHighlighted];
-    
+        [[UITabBar appearance] setBackgroundColor:[UIColor blackColor]];
+        [[UITabBar appearance] setSelectedImageTintColor:[UIColor orangeColor]];
+        [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, nil] forState:UIControlStateHighlighted];
+    }
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
     [self customizeInterface];
     
     NSString *currentLanguage = [[NSLocale preferredLanguages] objectAtIndex:0];

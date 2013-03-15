@@ -25,13 +25,8 @@
 
 - (void)viewDidLoad
 {
-    
-    [super viewDidLoad];    
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-
+    [super viewDidLoad];
+    [self.mainTabBarItem setTitle:NSLocalizedString(@"MainTabBarItemKey", nil)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,4 +35,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidUnload
+{
+    [self setMainTabBarItem:nil];
+    [super viewDidUnload];
+}
 @end

@@ -60,7 +60,9 @@
 "AllProductsDownloadedKey" = "Все продукты загруженны";
 "PriceKey" = "Цена:";
 "YouNeedToLoginInSettingsKey" = "Вам необходимо авторизироваться! Откройте программу Settings и авторизируйтесь, пожалуйста";
-
+"SorryKey" = "Извините";
+"DontAvailableOnThisVersionKey" = "Данная функция не доступна на вашей версии iOS";
+"AvailableKey:" = "доступно:";
 
 // Опросы
 "DownloadInquirersKey" = "Загрузка опросов";
@@ -83,7 +85,6 @@
 "whatProductIsBetterKey" = "Какой товар лучше";
 "LikeKey" = "Нравится";
 "DislikeKey" = "Не нравится";
-
 "GoodKey" = "За";
 "BadKey" = "Против";
 "ItemKey" = "Товар";

@@ -116,7 +116,6 @@
 		FA87C6FC16AACDE400784A0D /* MSCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA87C6FB16AACDE400784A0D /* MSCommentCell.m */; };
 		FA884BBE16B7FB35002A7FDC /* shareButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA884BBD16B7FB35002A7FDC /* shareButton.png */; };
 		FA884BC816B82B74002A7FDC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FA884BC716B82B74002A7FDC /* Settings.bundle */; };
-		FA8AB81416C2594C00B98EA3 /* iPhoneStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8AB81616C2594C00B98EA3 /* iPhoneStoryboard.storyboard */; };
 		FA90193716BFEB5E00D028AD /* MSLogInView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA90193616BFEB5E00D028AD /* MSLogInView.m */; };
 		FA9094D716CA7B8D007F9441 /* MSAddCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9094D616CA7B8D007F9441 /* MSAddCommentView.m */; };
 		FA99139A16D64EF900BEBAB0 /* MSEditButtonsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA99139916D64EF900BEBAB0 /* MSEditButtonsCell.m */; };
@@ -139,6 +138,7 @@
 		FADC925D16C50995006BD95C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FADC925F16C50995006BD95C /* Default-568h@2x.png */; };
 		FADC926816C50C70006BD95C /* logo_color_invert_40*147.png in Resources */ = {isa = PBXBuildFile; fileRef = FADC926A16C50C70006BD95C /* logo_color_invert_40*147.png */; };
 		FAE8451916E6774800BA513B /* promo_orange.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE8451816E6774800BA513B /* promo_orange.png */; };
+		FAEF9F3516F33D6B004916A9 /* iPhoneStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAEF9F3416F33D6B004916A9 /* iPhoneStoryboard.storyboard */; };
 		FAFB5E0B16C2650F001B692B /* MSAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFB5E0A16C2650F001B692B /* MSAnimationView.m */; };
 		FAFB834216E61340006F0F4F /* bag.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFB834116E61340006F0F4F /* bag.png */; };
 		FAFC778216BAE3B00025275D /* Vkontakte.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA0FCBE16BAD1D8005AF32E /* Vkontakte.m */; };
@@ -452,7 +452,6 @@
 		FA87C6FB16AACDE400784A0D /* MSCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCommentCell.m; sourceTree = "<group>"; };
 		FA884BBD16B7FB35002A7FDC /* shareButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareButton.png; sourceTree = "<group>"; };
 		FA884BC716B82B74002A7FDC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		FA8AB81816C2596B00B98EA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/iPhoneStoryboard.storyboard; sourceTree = "<group>"; };
 		FA90193516BFEB5E00D028AD /* MSLogInView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSLogInView.h; sourceTree = "<group>"; };
 		FA90193616BFEB5E00D028AD /* MSLogInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSLogInView.m; sourceTree = "<group>"; };
 		FA9094D516CA7B8D007F9441 /* MSAddCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAddCommentView.h; sourceTree = "<group>"; };
@@ -496,9 +495,8 @@
 		FADC926C16C50C7D006BD95C /* uk */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uk; path = "uk.lproj/logo_color_invert_40*147.png"; sourceTree = "<group>"; };
 		FADC926D16C50E83006BD95C /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/logo_color_invert_40*147.png"; sourceTree = "<group>"; };
 		FAE8451816E6774800BA513B /* promo_orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = promo_orange.png; sourceTree = "<group>"; };
-		FAF4FAE216E7AA0F00C25AC5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/iPhoneStoryboard.strings; sourceTree = "<group>"; };
-		FAF4FAE416E7AA1200C25AC5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/iPhoneStoryboard.strings; sourceTree = "<group>"; };
-		FAF4FAE616E7AA1B00C25AC5 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/iPhoneStoryboard.strings; sourceTree = "<group>"; };
+		FAEF9F2916F31B78004916A9 /* MSiOSVersionControlHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSiOSVersionControlHeader.h; sourceTree = "<group>"; };
+		FAEF9F3416F33D6B004916A9 /* iPhoneStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhoneStoryboard.storyboard; sourceTree = "<group>"; };
 		FAFB5E0916C2650F001B692B /* MSAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAnimationView.h; sourceTree = "<group>"; };
 		FAFB5E0A16C2650F001B692B /* MSAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSAnimationView.m; sourceTree = "<group>"; };
 		FAFB834116E61340006F0F4F /* bag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bag.png; sourceTree = "<group>"; };
@@ -644,6 +642,7 @@
 				FA1853BF16D401BB00BAF298 /* MSPickerView.m */,
 				FA1E940316D522F3007D7BE3 /* MSDatePickerView.h */,
 				FA1E940416D522F3007D7BE3 /* MSDatePickerView.m */,
+				FAEF9F2916F31B78004916A9 /* MSiOSVersionControlHeader.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -762,7 +761,7 @@
 				F5F6ADD3169C4F21000247D9 /* MSAppDelegate.h */,
 				F5F6ADD4169C4F21000247D9 /* MSAppDelegate.m */,
 				F5F6ADDC169C4F22000247D9 /* TerritoryOfSuccess.xcdatamodeld */,
-				FA8AB81616C2594C00B98EA3 /* iPhoneStoryboard.storyboard */,
+				FAEF9F3416F33D6B004916A9 /* iPhoneStoryboard.storyboard */,
 				F5FF669116D7BEE000E64AD9 /* MSStatisticCell.h */,
 				F5FF669216D7BEE000E64AD9 /* MSStatisticCell.m */,
 				FA1BEA8E16A813BF00F2C219 /* Pauli */,
@@ -1130,7 +1129,6 @@
 				FAFC778716BAEF5A0025275D /* vkHeader.png in Resources */,
 				FA44435F16BB9B2F0009FC03 /* vkActionButton.png in Resources */,
 				FA44436816BBAD270009FC03 /* cancelVKButton.png in Resources */,
-				FA8AB81416C2594C00B98EA3 /* iPhoneStoryboard.storyboard in Resources */,
 				FA5A26BD16C257B00020DDB5 /* Localizable.strings in Resources */,
 				FAFCF0E516C2873A00ABD178 /* InfoPlist.strings in Resources */,
 				F5B2D23716C4180900EC7F00 /* logo_color_invert_40*147_ukr.png in Resources */,
@@ -1166,6 +1164,7 @@
 				F5AC514A16E7921B00330A2F /* closeIcon.png in Resources */,
 				F5CB747C16EE2F5D004B7080 /* likeForProduct1.png in Resources */,
 				F59C826816EF2B120015251B /* TOS cap.png in Resources */,
+				FAEF9F3516F33D6B004916A9 /* iPhoneStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1247,17 +1246,6 @@
 				FA5A26C116C257B30020DDB5 /* uk */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		FA8AB81616C2594C00B98EA3 /* iPhoneStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FA8AB81816C2596B00B98EA3 /* Base */,
-				FAF4FAE216E7AA0F00C25AC5 /* en */,
-				FAF4FAE416E7AA1200C25AC5 /* ru */,
-				FAF4FAE616E7AA1B00C25AC5 /* uk */,
-			);
-			name = iPhoneStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 		FADC925516C50799006BD95C /* Default@2x.png */ = {
@@ -1377,7 +1365,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TerritoryOfSuccess/TerritoryOfSuccess-Prefix.pch";
 				INFOPLIST_FILE = "TerritoryOfSuccess/TerritoryOfSuccess-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/TerritoryOfSuccess/tesseract-ios-lib/lib\"",
@@ -1402,7 +1390,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TerritoryOfSuccess/TerritoryOfSuccess-Prefix.pch";
 				INFOPLIST_FILE = "TerritoryOfSuccess/TerritoryOfSuccess-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/TerritoryOfSuccess/tesseract-ios-lib/lib\"",

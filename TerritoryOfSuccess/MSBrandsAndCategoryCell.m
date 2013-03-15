@@ -9,19 +9,14 @@
 #import "MSBrandsAndCategoryCell.h"
 
 @implementation MSBrandsAndCategoryCell
-
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-    }
-    return self;
-}
+@synthesize categoryOrBrandAvailable = _categoryOrBrandAvailable;
+@synthesize categoryOrBrandImage = _categoryOrBrandImage;
+@synthesize categoryOrBrandName = _categoryOrBrandName;
+@synthesize categoryOrBrandNumber = _categoryOrBrandNumber;
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
 
 }
-
 @end

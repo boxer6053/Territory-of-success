@@ -4,6 +4,7 @@
 #import "MSShare.h"
 #import "MSCommentsViewController.h"
 #import <Social/Social.h>
+#import "MSiOSVersionControlHeader.h"
 
 @interface MSDetailViewController () 
 {
@@ -87,8 +88,10 @@
     [[self transitionView] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"dialogViewGradient.png"]]];
     [[self transitionView].layer setBorderWidth:2.0f];
     [[self transitionView].layer setBorderColor:[UIColor colorWithWhite:0.5 alpha:1].CGColor];
-    [[self transitionView].layer setCornerRadius:10];
-    
+    if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0"))
+    {
+        [[self transitionView].layer setCornerRadius:10];
+    }
     self.likeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.likeButton setFrame:CGRectMake(10, 30, 80, 80)];
     [self.likeButton setBackgroundImage:[UIImage imageNamed:@"likeButton.png"] forState:UIControlStateNormal];
@@ -104,7 +107,14 @@
     [self.likeButtonLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:11 ]];
     [self.likeButtonLabel setTextColor:[UIColor whiteColor]];
     [self.likeButtonLabel setBackgroundColor:[UIColor clearColor]];
-    [self.likeButtonLabel setMinimumScaleFactor:0.5];
+    if (SYSTEM_VERSION_EQUAL_TO(@"6.0"))
+    {
+        [self.likeButtonLabel setMinimumScaleFactor:0.5];
+    }
+    else
+    {
+        [self.likeButtonLabel setMinimumFontSize:8.0];
+    }
     self.likeButtonLabel.adjustsFontSizeToFitWidth = YES;
     [self.likeButtonLabel setTextAlignment:NSTextAlignmentCenter];
     [self.transitionView addSubview:self.likeButtonLabel];
@@ -124,7 +134,14 @@
     [self.commentButtonLabel setText:NSLocalizedString(@"CommentKey", nil)];
     [self.commentButtonLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:11]];
     [self.commentButtonLabel setTextColor:[UIColor whiteColor]];
-    [self.commentButtonLabel setMinimumScaleFactor:0.5];
+    if (SYSTEM_VERSION_EQUAL_TO(@"6.0"))
+    {
+        [self.commentButtonLabel setMinimumScaleFactor:0.5];
+    }
+    else
+    {
+        [self.commentButtonLabel setMinimumFontSize:8.0];
+    }
     self.commentButtonLabel.adjustsFontSizeToFitWidth = YES;
     [self.commentButtonLabel setBackgroundColor:[UIColor clearColor]];
     [self.commentButtonLabel setTextAlignment:NSTextAlignmentCenter];
@@ -145,7 +162,14 @@
     [self.rateButtonLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:11]];
     [self.rateButtonLabel setTextColor:[UIColor whiteColor]];
     [self.rateButtonLabel setBackgroundColor:[UIColor clearColor]];
-    [self.rateButtonLabel setMinimumScaleFactor:0.5];
+    if (SYSTEM_VERSION_EQUAL_TO(@"6.0"))
+    {
+        [self.rateButtonLabel setMinimumScaleFactor:0.5];
+    }
+    else
+    {
+        [self.rateButtonLabel setMinimumFontSize:8.0];
+    }
     self.rateButtonLabel.adjustsFontSizeToFitWidth = YES;
     [self.rateButtonLabel setTextAlignment:NSTextAlignmentCenter];
     [self.transitionView addSubview:self.rateButtonLabel];
