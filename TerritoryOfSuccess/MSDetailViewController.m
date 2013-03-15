@@ -85,9 +85,6 @@
     self.isImageDisplay = YES;
     self.rateButtonPressed = NO;
     
-    self.activityIndicatorView = [[UIActivityIndicatorView alloc] init];
-    [self.activityIndicatorView hidesWhenStopped];
-    
     self.rateNumber = 1;
     self.transitionView = [[UIView alloc] initWithFrame:CGRectMake(self.imageView.frame.origin.x, self.imageView.frame.origin.y, self.imageView.frame.size.width, self.imageView.frame.size.height)];
     [[self transitionView] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"dialogViewGradient.png"]]];
@@ -263,6 +260,8 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
+    [self.activityIndicatorView startAnimating];
+    [self.activityIndicatorView setHidesWhenStopped:YES];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
@@ -555,8 +554,6 @@
 
 - (void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
 {
-    [self.activityIndicatorView startAnimating];
-    
     if ((type == kRate) || (type == kRecommend) || (type == kBonusRate) || (type == kBonusRecommend))
     {
         if ([[dictionary objectForKey:@"status"] isEqualToString:@"failed"])
