@@ -11,4 +11,5 @@
 @interface MSFirstNavigationController : UINavigationController
 @property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (strong, nonatomic) IBOutlet UINavigationBar *mainNavigationBar;
+@property (strong, nonatomic) IBOutlet UITabBarItem *mainTabBarItem;
 @end

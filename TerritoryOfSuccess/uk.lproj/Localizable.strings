@@ -33,6 +33,7 @@
 "ProductNameKey" = "Назва продукта";
 "CodeOnThePackageKey" = "Код на упаковці";
 "PurhasePlaceKey" = "Місце покупки";
+"AllCategoriesDownloadedKey" = "Всі категорії завантажені";
 
 // Каталог + Share
 "CategoriesKey" = "Категорії";
@@ -59,6 +60,9 @@
 "AllProductsDownloadedKey" = "Всі продукти завантаженні";
 "PriceKey" = "Ціна:";
 "YouNeedToLoginInSettingsKey" = "Вам необхідно авторизуватись. Відкрийте програму Settings і авторизуйтесь, будь ласка.";
+"SorryKey" = "Вибачте";
+"DontAvailableOnThisVersionKey" = "Дана функція не доступна на вашій версії iOS";
+"AvailableKey:" = "доступно:";
 
 // Опросы
 "DownloadInquirersKey" = "Завантаження питань";
@@ -81,11 +85,10 @@
 "whatProductIsBetterKey" = "Який товар краще";
 "LikeKey" = "Подобається";
 "DislikeKey" = "Не подобається";
-
 "GoodKey" = "За";
 "BadKey" = "Проти";
 "ItemKey" = "Товар";
-"DescriptionCreatingKey" = "Оберіть 1 товар для створення питання 'Оцініть товар' чи більше для 'Якийй товар краще'";
+"DescriptionCreatingKey" = "Оберіть 1 товар для створення питання \"Оцініть товар\" чи більше для \"Який товар краще\"";
 
 // Новости
 "DownloadingInformationKey" = "Завантаження інформації...";

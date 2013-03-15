@@ -33,6 +33,7 @@
 "ProductNameKey" = "Product name";
 "CodeOnThePackageKey" = "Code on the package";
 "PurhasePlaceKey" = "Place of purchase";
+"AllCategoriesDownloadedKey" = "All categories are downloaded";
 
 // Каталог + Share
 "CategoriesKey" = "Categories";
@@ -61,10 +62,12 @@
 "WithAppKey" = "in \"Territory of Success\" Application";
 "PriceKey" = "Price:";
 "YouNeedToLoginInSettingsKey" = "You need to authorize! Please, go to the Settings and login there";
+"SorryKey" = "Sorry";
+"DontAvailableOnThisVersionKey" = "Sharing don't available on your iOS version";
+"AvailableKey:" = "available:";
 
 // Опросы
 "DownloadInquirersKey" = "Loading interogation";
-
 "DownloadInquirerDetailKey" = "Loading detail";
 "DownloadingInquirerStatKey" = "Loading answers";
 "SendingInquirerKey" = "Creating interogation";
@@ -84,13 +87,18 @@
 "whatProductIsBetterKey" = "What product is better";
 "LikeKey" = "Like";
 "DislikeKey" = "Dislike";
-
 "GoodKey" = "Good";
 "BadKey" = "Bad";
 "ItemKey" = "Item";
-"DescriptionCreatingKey" = "Pick 1 product for 'Grade a product' interrogation or more for 'Choose a product' interrogation";
+"DescriptionCreatingKey" = "Pick 1 product for \"Grade a product\" interrogation or more for \"Choose a product\" interrogation";
 
 // Новости
 "DownloadingInformationKey" = "Downloading information...";
 "AllNewsDownloadedKey" = "All news are downloaded";
 "DownloadMoreKey" = "Load more";
+
+//Storyboard
+"NewsTabBarItemKey" = "News";
+"CatalogueTabBarItemKey" = "Catalogue";
+"MainTabBarItemKey" = "Main";
+"InquirerTabBarItemKey" = "Inquiries";

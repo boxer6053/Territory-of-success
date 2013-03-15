@@ -1,11 +1,11 @@
 #import <UIKit/UIKit.h>
 #import "MSLogInView.h"
 #import "MSAPI.h"
-@interface MSDetailViewController : UIViewController <UIAlertViewDelegate, WsCompleteDelegate, dismissView>
+@interface MSDetailViewController : UIViewController <UIAlertViewDelegate, WsCompleteDelegate, UIWebViewDelegate, dismissView>
 
 @property (strong, nonatomic) IBOutlet UIView *likeView;
 @property (strong, nonatomic) IBOutlet UIView *starView;
-@property (strong, nonatomic) IBOutlet UITextView *productDescriptionTextView;
+@property (strong, nonatomic) IBOutlet UIWebView *productDescriptionWebView;
 @property (strong, nonatomic) IBOutlet UIView *mainView;
 @property (strong, nonatomic) IBOutlet UIView *imageView;
 @property (strong, nonatomic) IBOutlet UIView *transitionContainerView;

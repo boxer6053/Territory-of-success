@@ -47,6 +47,7 @@
 @synthesize backIds = _backIds;
 @synthesize upperTitle = _upperTitle;
 @synthesize backTitles = _backTitles;
+@synthesize gottedFromPrevious = _gottedFromPrevious;
 
 @synthesize navigationBar = _navigationBar;
 
@@ -63,7 +64,7 @@
 {
     [self customizeNavBar];
     if(!self.upperTitle){
-    self.upperTitle = NSLocalizedString(@"PickAProductKey", nil);
+    self.upperTitle = @"";
     }
     [self.navigationBar.topItem setTitle:self.upperTitle];
     //self.title = @"Pick a product";
@@ -230,16 +231,15 @@
         //  _questionsCount = 0;
     }
    //  [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
-    if(typefinished == kLastQuest)
-    {
-        
-    }
-    
 }
 
 - (IBAction)cancel:(id)sender {
+    if(!self.gottedFromPrevious){
+        
+        [self.delegate setUpperId:0];
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
-    [self.delegate setUpperId:0];
+    
 }
 
 //- (IBAction)upAction:(id)sender {
@@ -257,7 +257,7 @@
         
     }
     else{
-        [self.navigationBar.topItem setTitle:NSLocalizedString(@"PickAProductKey", nil)];
+        [self.navigationBar.topItem setTitle:@""];
     }
     if(self.backIds.count != 0){
 

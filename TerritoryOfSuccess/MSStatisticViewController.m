@@ -76,7 +76,9 @@
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView  {
     return 1;
 }
-
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 60;
+}
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MSStatisticCell *cell;
     static NSString* cellIdentifier = @"statisticCellId";
@@ -87,6 +89,7 @@
         
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+
     cell.rateView.layer.cornerRadius = 5.0f;
     cell.rateView.clipsToBounds = YES;
     if(self.interfaceIndex ==1){
@@ -101,16 +104,17 @@
         NSInteger heigh = (indexPath.row+1)*45+10;
         NSLog(@"height = %d", heigh);
         NSInteger percents = index*100;
-      [cell.rateView setFrame:CGRectMake(61, 13, 0+index*190, 20)];
+      [cell.rateView setFrame:CGRectMake(20, 10, 0+index*260, 20)];
         NSString *answer = [NSString stringWithFormat:@"%d",percents];
         cell.answerLabel.text = [answer stringByAppendingString:@"%"];
         cell.rateView.image = [UIImage imageNamed:@"terrRate.png"];
- 
+        cell.titleLabel.minimumScaleFactor = 0.3f;
+        cell.titleLabel.adjustsFontSizeToFitWidth = YES;
         if([[[self.receivedArray objectAtIndex:indexPath.row] valueForKey:@"title"] isEqualToString:@"!-- like --!"]){
-            cell.titleLabel.text = NSLocalizedString(@"GoodKey",nil);
+            cell.titleLabel.text = NSLocalizedString(@"LikeKey",nil);
                    }
         else{
-            cell.titleLabel.text = NSLocalizedString(@"BadKey",nil);
+            cell.titleLabel.text = NSLocalizedString(@"DislikeKey",nil);
                     }
        
     }
@@ -132,11 +136,11 @@
         NSInteger percents;
         if(self.totalVotes==0){
             percents = 0;
-        [cell.rateView setFrame:CGRectMake(61, 15,0, 20)];
+        [cell.rateView setFrame:CGRectMake(20,10,0, 20)];
         }
         else{
             percents = index*100;
-           [cell.rateView setFrame:CGRectMake(61, 13,0+index*190, 20)];
+           [cell.rateView setFrame:CGRectMake(20, 10,0+index*260, 20)];
         }
         cell.rateView.image = [UIImage imageNamed:@"terrRate.png"];
         NSString *answer = [NSString stringWithFormat:@"%d",percents];

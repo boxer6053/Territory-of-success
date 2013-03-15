@@ -90,7 +90,7 @@
     }
     else
     {
-        [self.footerButton setTitle:NSLocalizedString(@"AllNewsDownloadedKey",nil) forState:UIControlStateNormal];
+        [self.footerButton setTitle:NSLocalizedString(@"AllCategoriesDownloadedKey",nil) forState:UIControlStateNormal];
     }
 }
 
@@ -116,7 +116,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *CellIdentifier = @"bonusSubCategoryCell";
-    MSBrandsAndCategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    MSBrandsAndCategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     cell.categoryOrBrandName.text = [[self.subCategoriesList objectAtIndex:indexPath.row] valueForKey:@"title"];
     cell.categoryOrBrandNumber.text = [[self.subCategoriesList objectAtIndex:indexPath.row] valueForKey:@"cnt"];

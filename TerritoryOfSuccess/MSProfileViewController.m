@@ -147,14 +147,14 @@
             if(!_isEditMode)
             {
                 NSString *CellIdentifier = @"saveProfileCell";
-                MSProfileSaveCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+                MSProfileSaveCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 [cell.SaveButton addTarget:self action:@selector(SaveButtonPressed) forControlEvents:UIControlEventTouchUpInside];
                 return cell;
             }
             else
             {
                 NSString *CellIdentifier = @"editButtonsCell";
-                MSEditButtonsCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+                MSEditButtonsCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 [cell.cancelButton addTarget:self action:@selector(dismissChanges) forControlEvents:UIControlEventTouchUpInside];
                 [cell.saveButton addTarget:self action:@selector(saveChanges) forControlEvents:UIControlEventTouchUpInside];
                 return cell;
@@ -163,7 +163,7 @@
         else
         {
             NSString *CellIdentifier = @"standardProfileCell";
-            MSStandardProfileCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+            MSStandardProfileCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
             if (_isEditMode)
             {
