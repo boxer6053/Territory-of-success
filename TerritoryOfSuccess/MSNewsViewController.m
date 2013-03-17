@@ -27,6 +27,7 @@
 @property NSInteger totalNewsCount;
 @property UIButton *footerButton;
 @property UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UINavigationItem *newsNavigationItem;
 
 @end
 
@@ -63,7 +64,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [self.newsNavigationItem setTitle:NSLocalizedString(@"NewsNavItemTitleKey", nil)];
     self.arrayOfNews = [[NSMutableArray alloc]init];
     _isFirstDownload = YES;
     [self.dbApi getFiveNewsWithOffset:0];
@@ -199,5 +200,9 @@
     navBar.bottomLineColor = [UIColor colorWithHex:0x000000];
     navBar.tintColor = navBar.gradientEndColor;
     
+}
+- (void)viewDidUnload {
+    [self setNewsNavigationItem:nil];
+    [super viewDidUnload];
 }
 @end

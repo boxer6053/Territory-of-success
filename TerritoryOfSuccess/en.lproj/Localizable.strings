@@ -69,6 +69,10 @@
 "CatalogueNavTitleKey" = "Catalogue";
 "ProductsNavItemKey" = "Products";
 "CommentsNavItemKey" = "Comments";
+"MakeOrderKey" = "Make an order";
+"EnterYoutPhoneNumberKey" = "Enter your phone number:";
+"MakingOrderKey" = "Making order";
+"EnterYourPhoneNumberKey" = "Please, enter your phone number";
 
 // Опросы
 "DownloadInquirersKey" = "Loading interogation";
@@ -100,6 +104,7 @@
 "DownloadingInformationKey" = "Downloading information...";
 "AllNewsDownloadedKey" = "All news are downloaded";
 "DownloadMoreKey" = "Load more";
+"NewsNavItemTitleKey" = "News";
 
 //Storyboard
 "NewsTabBarItemKey" = "News";

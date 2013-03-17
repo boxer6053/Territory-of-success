@@ -1,5 +1,6 @@
 #import "MSAddCommentView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "MSiOSVersionControlHeader.h"
 
 @interface MSAddCommentView()
 {
@@ -29,16 +30,6 @@
 @synthesize delegate = _delegate;
 @synthesize messageDictionary = _messageDictionary;
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self)
-    {
-        self = [self init];
-    }
-    return self;
-}
-
 - (id)initCommentAdder
 {
     self = [super initWithFrame:[UIScreen mainScreen].bounds];
@@ -60,11 +51,14 @@
         [[self commentView] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"dialogViewGradient.png"]]];
         [[self commentView].layer setBorderWidth:2.0f];
         [[self commentView].layer setBorderColor:[UIColor colorWithWhite:0.5 alpha:1].CGColor];
-        [[self commentView].layer setCornerRadius:10];
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0"))
+        {
+            [[self commentView].layer setCornerRadius:10];
+        }
         [[self containerView] addSubview:[self commentView]];
-        
+
         UIImage *headerImage = [UIImage imageNamed:@"TOS cap.png"];
-        self.headerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.containerView.frame.size.width/2 - headerImage.size.width/2, 6, 198, 33)];
+        self.headerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(51, 6, 198, 33)];
         [self.headerImageView setImage:headerImage];
         [[self containerView] addSubview:[self headerImageView]];
         
@@ -119,7 +113,7 @@
     }];
 }
 
-- (void) setProductId:(int)productId isFromBonus:(BOOL)bonus
+- (void)setProductId:(int)productId isFromBonus:(BOOL)bonus
 {
     _productId = productId;
     isFromBonus = bonus;

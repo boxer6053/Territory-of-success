@@ -67,6 +67,10 @@
 "CatalogueNavTitleKey" = "Каталог";
 "ProductsNavItemKey" = "Продукты";
 "CommentsNavItemKey" = "Комментарии";
+"MakeOrderKey" = "Cделать заказ";
+"EnterYoutPhoneNumberKey" = "Введите свой номер телефона:";
+"MakingOrderKey" = "Сделать заказ";
+"EnterYourPhoneNumberKey" = "Пожалуйста, введите свой номер телефона";
 
 // Опросы
 "DownloadInquirersKey" = "Загрузка опросов";
@@ -98,3 +102,10 @@
 "DownloadingInformationKey" = "Загрузка информации...";
 "AllNewsDownloadedKey" = "Все новости загружены.";
 "DownloadMoreKey" = "Загрузить еще";
+"NewsNavItemTitleKey" = "Новости";
+
+//Storyboard
+"NewsTabBarItemKey" = "Новости";
+"CatalogueTabBarItemKey" = "Каталог";
+"MainTabBarItemKey" = "Главная";
+"InquirerTabBarItemKey" = "Опросы";

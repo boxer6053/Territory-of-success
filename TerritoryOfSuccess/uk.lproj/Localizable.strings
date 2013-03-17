@@ -67,6 +67,10 @@
 "CatalogueNavTitleKey" = "Каталог";
 "ProductsNavItemKey" = "Продукти";
 "CommentsNavItemKey" = "Коментарі";
+"MakeOrderKey" = "Зробити замовлення";
+"EnterYoutPhoneNumberKey" = "Введіть свій номер телефону:";
+"MakingOrderKey" = "Зробити замовлення";
+"EnterYourPhoneNumberKey" = "Введіть, будь ласка, свій номер телеофну";
 
 // Опросы
 "DownloadInquirersKey" = "Завантаження питань";
@@ -98,3 +102,10 @@
 "DownloadingInformationKey" = "Завантаження інформації...";
 "AllNewsDownloadedKey" = "Всі новини завантажені.";
 "DownloadMoreKey" = "Завантажити ще";
+"NewsNavItemTitleKey" = "Новини";
+
+//Storyboard
+"NewsTabBarItemKey" = "Новини";
+"CatalogueTabBarItemKey" = "Каталог";
+"MainTabBarItemKey" = "Головна";
+"InquirerTabBarItemKey" = "Опитування";
