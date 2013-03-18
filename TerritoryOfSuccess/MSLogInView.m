@@ -182,7 +182,7 @@
     {
         if ([self.passwordConfirmTextField.text isEqualToString:self.passwordTextField.text])
         {
-            [SVProgressHUD showWithStatus:NSLocalizedString(@"Регистрация...", nil)];
+            //[SVProgressHUD showWithStatus:NSLocalizedString(@"Регистрация...", nil)];
             [self.api registrationWithEmail:self.emailTextField.text Password:self.passwordTextField.text ConfirmPassword:self.passwordConfirmTextField.text];
         }
         else
@@ -194,7 +194,7 @@
     }
     else
     {
-        [SVProgressHUD showWithStatus:NSLocalizedString(@"Авторизация",nil)];
+        //[SVProgressHUD showWithStatus:NSLocalizedString(@"Авторизация",nil)];
         [self.api logInWithMail:self.emailTextField.text Password:self.passwordTextField.text];
     }
 }
@@ -256,7 +256,9 @@
         {
             if ([dictionary valueForKey:@"token"] == nil)
             {
-                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Ошибка на сервере",nil)];
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Ошибка",nil) message:NSLocalizedString(@"Ошибка на сервере",nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                [alert show];
+                //[SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Ошибка на сервере",nil)];
             }
             else
             {
@@ -270,22 +272,25 @@
         }
         else
         {
-            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Неправильный пароль или email",nil)];
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Ошибка",nil) message:NSLocalizedString(@"Неправильный пароль или email",nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
         }
     }
     if (type == kRegist)
     {
         if ([[dictionary valueForKey:@"status"] isEqualToString:@"ok"])
         {
-            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Регистрация прошла успешно.",nil)];
+            //[SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Регистрация прошла успешно.",nil)];
             UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Регистрация",nil) message:[dictionary valueForKey:@"message"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alertView show];
             [self dismissLoginViewWithResult:YES];
         }
         else //if([[dictionary valueForKey:@"message"] isEqualToString:@"!-- is_unique --!"])
         {
-            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Ошибка",nil)];
-            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Такой email уже используется",nil)];
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Ошибка",nil) message:NSLocalizedString(@"Такой email уже используется",nil)delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
+            //[SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Ошибка",nil)];
+            //[SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Такой email уже используется",nil)];
         }
     }
 }
