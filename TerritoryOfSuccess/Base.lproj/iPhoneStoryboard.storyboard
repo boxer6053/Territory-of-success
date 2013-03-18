@@ -1686,28 +1686,6 @@
                 <relationship kind="outlet" name="productImage" candidateClass="UIImageView"/>
             </relationships>
         </class>
-        <class className="MSReceiveProfileCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSReceiveProfileCell.h"/>
-            <relationships>
-                <relationship kind="action" name="recieveNewsButtonPressed:"/>
-                <relationship kind="action" name="recieveNoticeButtonPressed:"/>
-                <relationship kind="outlet" name="receiveNewsButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="receiveNewsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="receiveNoticeButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="receiveNoticeLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MSSexProfileCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSSexProfileCell.h"/>
-            <relationships>
-                <relationship kind="action" name="sexFemaleSelected:"/>
-                <relationship kind="action" name="sexMaleSelected:"/>
-                <relationship kind="outlet" name="sexFemaleButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="sexFemaleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="sexMaleButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="sexMaleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
         <class className="MSStandardProfileCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSStandardProfileCell.h"/>
             <relationships>
