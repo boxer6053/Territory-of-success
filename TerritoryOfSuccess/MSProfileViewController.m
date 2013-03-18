@@ -173,6 +173,7 @@
             if (_isEditMode)
             {
                 cell.standartTitleLabel.text = [[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"title"];
+                [cell.standartTextField setPlaceholder:NSLocalizedString(@"EnterInfoKey", nil)];
                 NSString *value;
                 if([[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"type"] isEqualToString:@"select"])
                 {
@@ -217,6 +218,10 @@
                     picker.delegate = self;
                     picker.target = cell.standartTextField;
                     cell.standartTextField.inputView = picker;
+                }
+                if([[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"key"] isEqualToString:@"phone"])
+                {
+                    cell.standartTextField.keyboardType = UIKeyboardTypeNumberPad;
                 }
                 cell.standartTextField.enabled = YES;
             }
@@ -415,7 +420,7 @@
             _downloadIsComplete = YES;
             self.profileArray = [[dictionary valueForKey:@"fields"] mutableCopy];
             
-
+            [self.bonusPointsLabel setText:NSLocalizedString(@"Scores", nil)];
             self.bonusPointsLabel.text = [self.bonusPointsLabel.text stringByAppendingFormat:@" %@",[self.profileDictionary valueForKey:@"balance"]];
             
             for(int i = 0; i < self.profileArray.count; i++)

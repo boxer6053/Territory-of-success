@@ -26,11 +26,14 @@
 @property int questionsCount;
 @property (strong, nonatomic) NSMutableData *receivedData;
 @property (strong, nonatomic) MSAPI *api;
+@property BOOL thisIsProducts;
+@property UIButton *headerButton;
 
 
 @end
 
 @implementation MSAskViewController
+@synthesize headerButton = _headerButton;
 @synthesize tableOfCategories = _tableOfCategories;
 @synthesize questionsArray = _questionsArray;
 @synthesize questionsCount = _questionsCount;
@@ -52,7 +55,7 @@
 @synthesize upperTitle = _upperTitle;
 @synthesize backTitles = _backTitles;
 @synthesize gottedFromPrevious = _gottedFromPrevious;
-
+@synthesize thisIsProducts = _thisIsProducts;
 @synthesize navigationBar = _navigationBar;
 
 
@@ -66,6 +69,13 @@
 
 - (void)viewDidLoad
 {
+    self.tableOfCategories.tableHeaderView = nil;
+    self.headerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.tableOfCategories.frame.size.width, 30)];
+    [self.headerButton setTitle:NSLocalizedString(@"DownloadMoreKey",nil) forState:UIControlStateNormal];
+    self.headerButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
+    [self.headerButton setTitleColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4] forState:UIControlStateNormal];
+    [self.headerButton addTarget:self action:@selector(pictureMyProduct) forControlEvents:UIControlEventTouchDown];
+    self.thisIsProducts = NO;
     [self customizeNavBar];
     if(!self.upperTitle){
     self.upperTitle = @"";
@@ -141,8 +151,6 @@
         [cell.productImage setImage:[UIImage imageNamed:@"bag.png"]];
         [cell.productImage setImageWithURL:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"] placeholderImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
     }
-  //  cell.nameLabel.numberOfLines = 2;
-    
     if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
         cell.nameLabel.minimumFontSize = 10.0f;
         cell.nameLabel.adjustsFontSizeToFitWidth = YES;
@@ -162,7 +170,6 @@
         else{
             [cell.countLabel setText:@"available!"];
         }
- 
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -228,14 +235,21 @@
     if(typefinished == kQuestCateg)
     {
         NSLog(@"zzzzzzz %u", _questionsCount);
+        NSMutableArray *products = [[NSMutableArray alloc] init];
         _questionsArray = [dictionary valueForKey:@"list"];
-//        
-//        for (int i  = 0; i<_questionsArray.count; i++)
-//        {
-//            NSArray *insertIndexPath = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:_questionsCount inSection:0]];
-//            _questionsCount++;
-//            [_tableOfCategories insertRowsAtIndexPaths: insertIndexPath withRowAnimation:NO];
-//        }
+        for(int i =1;i<_questionsArray.count;i++){
+            if([[[_questionsArray objectAtIndex:i] valueForKey:@"cnt"] integerValue] == 0){
+                if(![[[_questionsArray objectAtIndex:i] valueForKey:@"image"] isEqualToString:@""]){
+                    [products addObject:[_questionsArray objectAtIndex:i]];
+                }
+            }
+        
+        }
+    if(products.count != 0){
+        NSLog(@"THis is products");
+        self.thisIsProducts  = YES;
+        self.tableOfCategories.tableHeaderView = self.headerButton;
+    }
         [_tableOfCategories reloadData];
         
         //  _questionsCount = 0;
@@ -282,6 +296,115 @@
         [self.api getQuestionsWithParentID:0];
         [self.backButton setEnabled:NO];
     }
+}
+-(void)pictureMyProduct
+{
+    NSLog(@"Gonna pic");
+    
+    //перевірка наявності камири в девайсі
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        //якщо є
+        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+        [imagePickerController setDelegate:self];
+        [imagePickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
+        [imagePickerController setAllowsEditing:YES];
+        
+        [self presentModalViewController:imagePickerController animated:YES];
+    }
+    else
+    {
+        //якщо нема
+        UIAlertView *cameraNotAvailableMessage = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Ошибка камеры",nil) message:NSLocalizedString(@"Камера не доступна",nil) delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        
+        [cameraNotAvailableMessage show];
+    }
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *editedProductImage = [info objectForKey:UIImagePickerControllerEditedImage];
+    
+    NSLog(@"Picture width: %f", editedProductImage.size.width);
+    NSLog(@"Picture hight: %f", editedProductImage.size.height);
+    
+    CGSize sizeToScale;
+    sizeToScale.width = 320.0;
+    sizeToScale.height = 320.0;
+    
+    //зміна розміру фото
+    editedProductImage = [self scalingImage:editedProductImage toSize:sizeToScale];
+    
+    NSLog(@"Picture width: %f", editedProductImage.size.width);
+    NSLog(@"Picture hight: %f", editedProductImage.size.height);
+    
+    //стискання фото
+    NSData *data = UIImageJPEGRepresentation(editedProductImage, 0.5);
+    UIImage *compressedImage = [UIImage imageWithData:data];
+    
+    [picker dismissModalViewControllerAnimated:YES];
+
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissModalViewControllerAnimated:YES];
+}
+
+static inline double radians (double degrees) {return degrees * M_PI/180;}
+
+//зміна розміру фото
+- (UIImage *)scalingImage:(UIImage *)image toSize:(CGSize)targetSize
+{
+    CGFloat targetWidth = targetSize.width;
+	CGFloat targetHeight = targetSize.height;
+    
+    CGImageRef imageRef = [image CGImage];
+    CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(imageRef);
+    CGColorSpaceRef colorSpaceInfo = CGImageGetColorSpace(imageRef);
+    
+    if (bitmapInfo == kCGImageAlphaNone)
+    {
+        bitmapInfo = kCGImageAlphaNoneSkipLast;
+    }
+    
+    CGContextRef bitmap;
+    
+    if (image.imageOrientation == UIImageOrientationUp || image.imageOrientation == UIImageOrientationDown)
+    {
+		bitmap = CGBitmapContextCreate(NULL, targetWidth, targetHeight, CGImageGetBitsPerComponent(imageRef), CGImageGetBytesPerRow(imageRef), colorSpaceInfo, bitmapInfo);
+        
+	}
+    else
+    {
+		bitmap = CGBitmapContextCreate(NULL, targetHeight, targetWidth, CGImageGetBitsPerComponent(imageRef), CGImageGetBytesPerRow(imageRef), colorSpaceInfo, bitmapInfo);
+        
+	}
+    
+    if (image.imageOrientation == UIImageOrientationLeft) {
+		CGContextRotateCTM (bitmap, radians(90));
+		CGContextTranslateCTM (bitmap, 0, -targetHeight);
+        
+	} else if (image.imageOrientation == UIImageOrientationRight) {
+		CGContextRotateCTM (bitmap, radians(-90));
+		CGContextTranslateCTM (bitmap, -targetWidth, 0);
+        
+	} else if (image.imageOrientation == UIImageOrientationUp) {
+		// NOTHING
+	} else if (image.imageOrientation == UIImageOrientationDown) {
+		CGContextTranslateCTM (bitmap, targetWidth, targetHeight);
+		CGContextRotateCTM (bitmap, radians(-180.));
+	}
+    
+    CGContextDrawImage(bitmap, CGRectMake(0, 0, targetWidth, targetHeight), imageRef);
+	CGImageRef ref = CGBitmapContextCreateImage(bitmap);
+	UIImage *newImage = [UIImage imageWithCGImage:ref];
+    
+	CGContextRelease(bitmap);
+	CGImageRelease(ref);
+    
+	return newImage;
+    
 }
 
 - (void)customizeNavBar {

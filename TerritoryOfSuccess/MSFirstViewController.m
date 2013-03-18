@@ -125,6 +125,7 @@
 - (void)viewDidLoad
 {    
     [super viewDidLoad];
+    
     //translation
     [self.sendCodeButton setTitle:NSLocalizedString(@"SendButtonKey", nil) forState:UIControlStateNormal];
     [self.codeTextField setPlaceholder:NSLocalizedString(@"CodeTextFieldTextKey", nil)];
@@ -155,7 +156,11 @@
     [self.api getFiveNewsWithOffset:0];
     
     [self.codeTextField setDelegate:self];
-    [self.codeTextField setClearButtonMode:UITextFieldViewModeWhileEditing];
+    
+    if (!SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0"))
+    {
+        [self.codeTextField setClearButtonMode:UITextFieldViewModeNever];
+    }
     [self.codeTextField setAutocapitalizationType:UITextAutocapitalizationTypeAllCharacters];
         
     [self.scrollView setScrollEnabled:NO];
@@ -311,7 +316,7 @@
     [self.slideShowTimer invalidate];
     self.slideShowTimer = nil;
     [self.userTouchTimer invalidate];
-    self.userTouchTimer =nil;
+    self.userTouchTimer = nil;
 }
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
@@ -330,10 +335,15 @@
         imagePickerController = [[UIImagePickerController alloc] init];
         imagePickerController.delegate = self;
         imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-        
+        [imagePickerController setAllowsEditing:YES];
+                        
         UIImageView *overlayImageView = [[UIImageView alloc] init];
         [overlayImageView setImage:[UIImage imageNamed:@"rect_220*30.png"]];
-                
+        
+        UIView *rootOverlayAlphaTopView = [[UIView alloc] init];
+        [rootOverlayAlphaTopView setBackgroundColor:[UIColor blackColor]];
+        [rootOverlayAlphaTopView setAlpha:0.7];
+        
         UIView *overlayAlphaTopView = [[UIView alloc] init];
         [overlayAlphaTopView setBackgroundColor:[UIColor blackColor]];
         [overlayAlphaTopView setAlpha:0.7];
@@ -359,6 +369,8 @@
         [self presentViewController:imagePickerController animated:YES completion:^(void){
             NSLog(@"Block");
             
+            [rootOverlayAlphaTopView setFrame:CGRectMake(0, 0, 0, 0)];
+            
             //додавання рамки і напівпрозорого фону
             [overlayImageView setFrame:CGRectMake((self.screenWidth - self.frameMarkWidth)/2, (self.screenHeight - 54 - self.frameMarkHeight)/2, self.frameMarkWidth, self.frameMarkHeight)];
             
@@ -370,13 +382,15 @@
             
             [overlayAlphaRightView setFrame:CGRectMake(self.frameMarkWidth + (self.screenWidth - self.frameMarkWidth)/2, (self.screenHeight - 54 - self.frameMarkHeight)/2, 320 - self.frameMarkWidth + (self.screenWidth - self.frameMarkWidth)/2, self.frameMarkHeight)];
             
+            [rootOverlayAlphaTopView addSubview:overlayAlphaTopView];
+            
             [overlayAlphaTopView addSubview:overlayImageView];
             [overlayAlphaTopView addSubview:overlayAlphaBottomView];
             [overlayAlphaTopView addSubview:overlayAlphaLeftView];
             [overlayAlphaTopView addSubview:overlayAlphaRightView];
             
             //добавлення маркерної рамки на камеру
-            imagePickerController.cameraOverlayView = overlayAlphaTopView;
+            imagePickerController.cameraOverlayView = rootOverlayAlphaTopView;
 
         }];
     }
@@ -396,7 +410,7 @@
     NSLog(@"Picture width: %f", img.size.width);
     NSLog(@"Picture hight: %f", img.size.height);
     
-    UIImage *tempImage = [self cropImage:[info objectForKey:UIImagePickerControllerOriginalImage] withX:(self.screenWidth - self.frameMarkWidth)/2 withY:(self.screenHeight - 54 - self.frameMarkHeight)/2 withWidth:self.frameMarkWidth withHeight:self.frameMarkHeight];
+    UIImage *tempImage = [self cropImage:[info objectForKey:UIImagePickerControllerEditedImage] withX:(self.screenWidth - self.frameMarkWidth)/2 withY:(self.screenHeight - 54 - self.frameMarkHeight)/2 withWidth:self.frameMarkWidth withHeight:self.frameMarkHeight];
     
     //------------------------------
     NSString *recognizedText;
@@ -437,7 +451,7 @@ static inline double radians (double degrees)
 
 //обрізка фото
 - (UIImage *)cropImage:(UIImage *)image withX:(CGFloat)x withY:(CGFloat)y withWidth:(CGFloat)cropWidth withHeight:(CGFloat)cropHeight
-{
+{    
     CGImageRef imageRef = [image CGImage];
 	CGImageAlphaInfo alphaInfo = CGImageGetAlphaInfo(imageRef);
 	CGColorSpaceRef colorSpaceInfo = CGColorSpaceCreateDeviceRGB();
@@ -485,16 +499,22 @@ static inline double radians (double degrees)
 	
 	CGContextDrawImage(bitmap, CGRectMake(0, 0, width, height), imageRef);
     
-    CGFloat koefForWidth, koefForHeight;
+//    CGFloat koefForWidth, koefForHeight;
     
-    koefForWidth = 8.1;
-    koefForHeight = 4.5;
+//    koefForWidth = 8.1;
+//    koefForHeight = 4.5;
+        
+//    CGRect rect;
+//    rect.origin.x = x * koefForWidth;
+//    rect.origin.y = y * koefForHeight;
+//    rect.size.width = cropWidth * koefForWidth;
+//    rect.size.height = cropHeight * koefForHeight;
     
     CGRect rect;
-    rect.origin.x = x * koefForWidth;
-    rect.origin.y = y * koefForHeight;
-    rect.size.width = cropWidth * koefForWidth;
-    rect.size.height = cropHeight * koefForHeight;
+    rect.origin.x = 100;
+    rect.origin.y = 290;
+    rect.size.width = cropWidth * 2;
+    rect.size.height = cropHeight * 2;
     
 	CGImageRef ref = CGBitmapContextCreateImage(bitmap);
     
@@ -502,7 +522,7 @@ static inline double radians (double degrees)
     
     CGImageRef resultRef = CGImageCreateWithImageInRect([result CGImage], rect);
     UIImage *cropedImage = [UIImage imageWithCGImage:resultRef];
-	
+	   
 	CGContextRelease(bitmap);
 	CGImageRelease(ref);
     
@@ -796,6 +816,8 @@ static inline double radians (double degrees)
             [self.dialogView.messageView setFrame:CGRectMake(self.dialogView.messageView.frame.origin.x, self.dialogView.messageView.frame.origin.y, self.dialogView.messageView.frame.size.width, self.dialogView.messageLabel.frame.size.height)];
             
             [self showDialogView];
+            
+            [self.codeTextField setText:@""];
         }
         else
         {
@@ -851,6 +873,8 @@ static inline double radians (double degrees)
                 [self.dialogView.messageView setFrame:CGRectMake(self.dialogView.messageView.frame.origin.x, self.dialogView.messageView.frame.origin.y, self.dialogView.messageView.frame.size.width, self.dialogView.messageLabel.frame.size.height)];
                 
                 [self showDialogView];
+                
+                [self.codeTextField setText:@""];
             }
             else
             {
@@ -1008,9 +1032,9 @@ static inline double radians (double degrees)
             [self.scrollView scrollRectToVisible:zoomRect animated:NO];
             [UIView commitAnimations];
         }
+        [self.view addGestureRecognizer:self.tapRecognizer];
+        [self.view.window addGestureRecognizer:self.tapRecognizer];
     }
-    [self.view addGestureRecognizer:self.tapRecognizer];
-    [self.view.window addGestureRecognizer:self.tapRecognizer];
 }
 
 - (void)keyboardWillHide:(NSNotification *)note
@@ -1037,14 +1061,13 @@ static inline double radians (double degrees)
         }
         
         [self.scrollView setScrollEnabled:NO];
+        [self.view removeGestureRecognizer:self.tapRecognizer];
+        [self.view.window removeGestureRecognizer:self.tapRecognizer];
     }
     
     [UIView animateWithDuration:0.25 animations:^{
         [self.complaintView setFrame:CGRectMake(self.complaintView.frame.origin.x, self.complaintViewFrame.origin.y, self.complaintView.frame.size.width, self.complaintView.frame.size.height)];
     }];
-    
-    [self.view removeGestureRecognizer:self.tapRecognizer];
-    [self.view.window removeGestureRecognizer:self.tapRecognizer];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -1123,47 +1146,56 @@ static inline double radians (double degrees)
     //бидло код трололо
     if (textField == self.codeTextField || textField == self.complaintView.codeTextField)
     {
-        if ((range.location == 4 || range.location == 9 || range.location == 14) && range.location != 0 && ![string isEqualToString:@""]) {
-            
-            NSRange myRange;
-            myRange.location = range.location + 1;
-            myRange.length = 1;
-            
-            NSMutableString *tempMutStr = [NSMutableString stringWithString:textField.text];
-            
-            if ([string isEqualToString:@"-"]) {
-                return YES;
-            }
-            else
+        if (![string isEqualToString:@" "])
+        {
+            if ((range.location == 4 || range.location == 9 || range.location == 14) && range.location != 0 && ![string isEqualToString:@""])
             {
-                if (range.location < [textField.text length]) {
-                    return  NO;
+                NSRange myRange;
+                myRange.location = range.location + 1;
+                myRange.length = 1;
+                
+                NSMutableString *tempMutStr = [NSMutableString stringWithString:textField.text];
+                
+                if ([string isEqualToString:@"-"])
+                {
+                    return YES;
                 }
                 else
                 {
-                    [tempMutStr insertString:@"-" atIndex:range.location];
-                    textField.text = [NSString stringWithString:tempMutStr];
+                    if (range.location < [textField.text length]) {
+                        return  NO;
+                    }
+                    else
+                    {
+                        [tempMutStr insertString:@"-" atIndex:range.location];
+                        textField.text = [NSString stringWithString:tempMutStr];
+                    }
                 }
             }
-        }
-        
-        NSUInteger newLength = [textField.text length] + [string length] - range.length;
-        
-        if ([string isEqualToString:@""]) {
-            return YES;
-        }
-        else
-        {
             
-            if (newLength > 19) {
-                return NO;
-            }
-            else
+            NSUInteger newLength = [textField.text length] + [string length] - range.length;
+            
+            if ([string isEqualToString:@""])
             {
                 return YES;
             }
-            
-            //        return (newLength > 19) ? NO : YES;
+            else
+            {
+                if (newLength > 19)
+                {
+                    return NO;
+                }
+                else
+                {
+                    return YES;
+                }
+                
+                //        return (newLength > 19) ? NO : YES;
+            }
+        }
+        else
+        {
+            return NO;
         }
     }
     else
@@ -1285,4 +1317,7 @@ static inline double radians (double degrees)
     }
 }
 
+- (void)viewDidUnload {
+    [super viewDidUnload];
+}
 @end
