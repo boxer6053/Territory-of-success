@@ -185,7 +185,14 @@
         [productView addSubview:likeButton];
         [productView addSubview:dislikeButton];
         [self.view addSubview:productView];
-
+        if(self.ownerIndex ==1){
+            likeButton.enabled = NO;
+            dislikeButton.enabled = NO;
+        }
+        else{
+            likeButton.enabled = YES;
+            dislikeButton.enabled = YES;
+        }
 
        // _inquirerTitle.text = @"Оцените товар";
         //фреймы для разных экранов (4 и 5 айфон)
