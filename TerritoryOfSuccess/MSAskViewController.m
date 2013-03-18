@@ -26,11 +26,14 @@
 @property int questionsCount;
 @property (strong, nonatomic) NSMutableData *receivedData;
 @property (strong, nonatomic) MSAPI *api;
+@property BOOL thisIsProducts;
+@property UIButton *headerButton;
 
 
 @end
 
 @implementation MSAskViewController
+@synthesize headerButton = _headerButton;
 @synthesize tableOfCategories = _tableOfCategories;
 @synthesize questionsArray = _questionsArray;
 @synthesize questionsCount = _questionsCount;
@@ -52,7 +55,7 @@
 @synthesize upperTitle = _upperTitle;
 @synthesize backTitles = _backTitles;
 @synthesize gottedFromPrevious = _gottedFromPrevious;
-
+@synthesize thisIsProducts = _thisIsProducts;
 @synthesize navigationBar = _navigationBar;
 
 
@@ -66,6 +69,13 @@
 
 - (void)viewDidLoad
 {
+    self.tableOfCategories.tableHeaderView = nil;
+    self.headerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.tableOfCategories.frame.size.width, 30)];
+    [self.headerButton setTitle:NSLocalizedString(@"DownloadMoreKey",nil) forState:UIControlStateNormal];
+    self.headerButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
+    [self.headerButton setTitleColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4] forState:UIControlStateNormal];
+    [self.headerButton addTarget:self action:@selector(pictureMyProduct) forControlEvents:UIControlEventTouchDown];
+    self.thisIsProducts = NO;
     [self customizeNavBar];
     if(!self.upperTitle){
     self.upperTitle = @"";
@@ -141,8 +151,6 @@
         [cell.productImage setImage:[UIImage imageNamed:@"bag.png"]];
         [cell.productImage setImageWithURL:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"] placeholderImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
     }
-  //  cell.nameLabel.numberOfLines = 2;
-    
     if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
         cell.nameLabel.minimumFontSize = 10.0f;
         cell.nameLabel.adjustsFontSizeToFitWidth = YES;
@@ -162,7 +170,6 @@
         else{
             [cell.countLabel setText:@"available!"];
         }
- 
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -228,14 +235,21 @@
     if(typefinished == kQuestCateg)
     {
         NSLog(@"zzzzzzz %u", _questionsCount);
+        NSMutableArray *products = [[NSMutableArray alloc] init];
         _questionsArray = [dictionary valueForKey:@"list"];
-//        
-//        for (int i  = 0; i<_questionsArray.count; i++)
-//        {
-//            NSArray *insertIndexPath = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:_questionsCount inSection:0]];
-//            _questionsCount++;
-//            [_tableOfCategories insertRowsAtIndexPaths: insertIndexPath withRowAnimation:NO];
-//        }
+        for(int i =1;i<_questionsArray.count;i++){
+            if([[[_questionsArray objectAtIndex:i] valueForKey:@"cnt"] integerValue] == 0){
+                if(![[[_questionsArray objectAtIndex:i] valueForKey:@"image"] isEqualToString:@""]){
+                    [products addObject:[_questionsArray objectAtIndex:i]];
+                }
+            }
+        
+        }
+    if(products.count != 0){
+        NSLog(@"THis is products");
+        self.thisIsProducts  = YES;
+        self.tableOfCategories.tableHeaderView = self.headerButton;
+    }
         [_tableOfCategories reloadData];
         
         //  _questionsCount = 0;
@@ -283,7 +297,9 @@
         [self.backButton setEnabled:NO];
     }
 }
-
+-(void)pictureMyProduct{
+    NSLog(@"Gonna pic");
+}
 - (void)customizeNavBar {
     
     PrettyNavigationBar *navBar = (PrettyNavigationBar *)self.navigationBar;
