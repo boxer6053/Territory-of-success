@@ -297,9 +297,114 @@
         [self.backButton setEnabled:NO];
     }
 }
--(void)pictureMyProduct{
+-(void)pictureMyProduct
+{
     NSLog(@"Gonna pic");
+    
+    //перевірка наявності камири в девайсі
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        //якщо є
+        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+        [imagePickerController setDelegate:self];
+        [imagePickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
+        [imagePickerController setAllowsEditing:YES];
+        
+        [self presentModalViewController:imagePickerController animated:YES];
+    }
+    else
+    {
+        //якщо нема
+        UIAlertView *cameraNotAvailableMessage = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Ошибка камеры",nil) message:NSLocalizedString(@"Камера не доступна",nil) delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        
+        [cameraNotAvailableMessage show];
+    }
 }
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *editedProductImage = [info objectForKey:UIImagePickerControllerEditedImage];
+    
+    NSLog(@"Picture width: %f", editedProductImage.size.width);
+    NSLog(@"Picture hight: %f", editedProductImage.size.height);
+    
+    CGSize sizeToScale;
+    sizeToScale.width = 320.0;
+    sizeToScale.height = 320.0;
+    
+    //зміна розміру фото
+    editedProductImage = [self scalingImage:editedProductImage toSize:sizeToScale];
+    
+    NSLog(@"Picture width: %f", editedProductImage.size.width);
+    NSLog(@"Picture hight: %f", editedProductImage.size.height);
+    
+    //стискання фото
+    NSData *data = UIImageJPEGRepresentation(editedProductImage, 0.5);
+    UIImage *compressedImage = [UIImage imageWithData:data];
+
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissModalViewControllerAnimated:YES];
+}
+
+static inline double radians (double degrees) {return degrees * M_PI/180;}
+
+//зміна розміру фото
+- (UIImage *)scalingImage:(UIImage *)image toSize:(CGSize)targetSize
+{
+    CGFloat targetWidth = targetSize.width;
+	CGFloat targetHeight = targetSize.height;
+    
+    CGImageRef imageRef = [image CGImage];
+    CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(imageRef);
+    CGColorSpaceRef colorSpaceInfo = CGImageGetColorSpace(imageRef);
+    
+    if (bitmapInfo == kCGImageAlphaNone)
+    {
+        bitmapInfo = kCGImageAlphaNoneSkipLast;
+    }
+    
+    CGContextRef bitmap;
+    
+    if (image.imageOrientation == UIImageOrientationUp || image.imageOrientation == UIImageOrientationDown)
+    {
+		bitmap = CGBitmapContextCreate(NULL, targetWidth, targetHeight, CGImageGetBitsPerComponent(imageRef), CGImageGetBytesPerRow(imageRef), colorSpaceInfo, bitmapInfo);
+        
+	}
+    else
+    {
+		bitmap = CGBitmapContextCreate(NULL, targetHeight, targetWidth, CGImageGetBitsPerComponent(imageRef), CGImageGetBytesPerRow(imageRef), colorSpaceInfo, bitmapInfo);
+        
+	}
+    
+    if (image.imageOrientation == UIImageOrientationLeft) {
+		CGContextRotateCTM (bitmap, radians(90));
+		CGContextTranslateCTM (bitmap, 0, -targetHeight);
+        
+	} else if (image.imageOrientation == UIImageOrientationRight) {
+		CGContextRotateCTM (bitmap, radians(-90));
+		CGContextTranslateCTM (bitmap, -targetWidth, 0);
+        
+	} else if (image.imageOrientation == UIImageOrientationUp) {
+		// NOTHING
+	} else if (image.imageOrientation == UIImageOrientationDown) {
+		CGContextTranslateCTM (bitmap, targetWidth, targetHeight);
+		CGContextRotateCTM (bitmap, radians(-180.));
+	}
+    
+    CGContextDrawImage(bitmap, CGRectMake(0, 0, targetWidth, targetHeight), imageRef);
+	CGImageRef ref = CGBitmapContextCreateImage(bitmap);
+	UIImage *newImage = [UIImage imageWithCGImage:ref];
+    
+	CGContextRelease(bitmap);
+	CGImageRelease(ref);
+    
+	return newImage;
+    
+}
+
 - (void)customizeNavBar {
     
     PrettyNavigationBar *navBar = (PrettyNavigationBar *)self.navigationBar;

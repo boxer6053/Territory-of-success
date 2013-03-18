@@ -15,7 +15,7 @@
 -(void)setUpperId:(int)upperId;
 @end
 
-@interface MSAskViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, WsCompleteDelegate>
+@interface MSAskViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, WsCompleteDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableOfCategories;
 - (IBAction)backButtonPressed:(id)sender;
 @property (nonatomic) id translatingValue;
