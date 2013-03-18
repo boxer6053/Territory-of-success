@@ -113,7 +113,7 @@
     [self.likeButtonLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:11 ]];
     [self.likeButtonLabel setTextColor:[UIColor whiteColor]];
     [self.likeButtonLabel setBackgroundColor:[UIColor clearColor]];
-    if (SYSTEM_VERSION_EQUAL_TO(@"6.0"))
+    if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0"))
     {
         [self.likeButtonLabel setMinimumScaleFactor:0.5];
     }
@@ -140,7 +140,7 @@
     [self.commentButtonLabel setText:NSLocalizedString(@"CommentKey", nil)];
     [self.commentButtonLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:11]];
     [self.commentButtonLabel setTextColor:[UIColor whiteColor]];
-    if (SYSTEM_VERSION_EQUAL_TO(@"6.0"))
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0"))
     {
         [self.commentButtonLabel setMinimumScaleFactor:0.5];
     }
@@ -168,7 +168,7 @@
     [self.rateButtonLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:11]];
     [self.rateButtonLabel setTextColor:[UIColor whiteColor]];
     [self.rateButtonLabel setBackgroundColor:[UIColor clearColor]];
-    if (SYSTEM_VERSION_EQUAL_TO(@"6.0"))
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0"))
     {
         [self.rateButtonLabel setMinimumScaleFactor:0.5];
     }

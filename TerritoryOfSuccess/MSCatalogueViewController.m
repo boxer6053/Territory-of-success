@@ -5,6 +5,7 @@
 #import "SVProgressHUD.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "PrettyKit.h"
+#import "MSiOSVersionControlHeader.h"
 
 @interface MSCatalogueViewController ()
 
@@ -189,6 +190,11 @@
         cell = [[MSBrandsAndCategoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:myIdentifier];
     }
     [cell.categoryOrBrandAvailable setText:NSLocalizedString(@"AvailableKey:", nil)];
+    
+    if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0"))
+        [cell.categoryOrBrandName setMinimumScaleFactor:0.5];
+    else
+        [cell.categoryOrBrandName setMinimumFontSize:8.0];
     //Проверка на СегментКонтрол и подгрузка соответствующего контента в ячейки
     //категории
     if (self.categoryAndBrandsControl.selectedSegmentIndex == 0)
@@ -206,7 +212,7 @@
         cell.categoryOrBrandNumber.text = [NSString stringWithFormat:@"%d",[[[[self arrayOfBrands] objectAtIndex:indexPath.row] valueForKey:@"count"]integerValue]];
         cell.tag = [[[[self arrayOfBrands] objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
     }
-    
+    cell.categoryOrBrandName.adjustsFontSizeToFitWidth = YES;
     return cell;
 }
 
