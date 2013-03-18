@@ -219,6 +219,10 @@
                     picker.target = cell.standartTextField;
                     cell.standartTextField.inputView = picker;
                 }
+                if([[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"key"] isEqualToString:@"phone"])
+                {
+                    cell.standartTextField.keyboardType = UIKeyboardTypeNumberPad;
+                }
                 cell.standartTextField.enabled = YES;
             }
             else
