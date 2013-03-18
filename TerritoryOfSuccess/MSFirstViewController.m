@@ -1032,9 +1032,9 @@ static inline double radians (double degrees)
             [self.scrollView scrollRectToVisible:zoomRect animated:NO];
             [UIView commitAnimations];
         }
+        [self.view addGestureRecognizer:self.tapRecognizer];
+        [self.view.window addGestureRecognizer:self.tapRecognizer];
     }
-    [self.view addGestureRecognizer:self.tapRecognizer];
-    [self.view.window addGestureRecognizer:self.tapRecognizer];
 }
 
 - (void)keyboardWillHide:(NSNotification *)note
@@ -1061,14 +1061,13 @@ static inline double radians (double degrees)
         }
         
         [self.scrollView setScrollEnabled:NO];
+        [self.view removeGestureRecognizer:self.tapRecognizer];
+        [self.view.window removeGestureRecognizer:self.tapRecognizer];
     }
     
     [UIView animateWithDuration:0.25 animations:^{
         [self.complaintView setFrame:CGRectMake(self.complaintView.frame.origin.x, self.complaintViewFrame.origin.y, self.complaintView.frame.size.width, self.complaintView.frame.size.height)];
     }];
-    
-    [self.view removeGestureRecognizer:self.tapRecognizer];
-    [self.view.window removeGestureRecognizer:self.tapRecognizer];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

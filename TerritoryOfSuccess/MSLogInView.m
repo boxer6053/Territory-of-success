@@ -77,6 +77,7 @@
         self.emailTextField.borderStyle = UITextBorderStyleRoundedRect;
         self.emailTextField.clearButtonMode = YES;
         self.emailTextField.delegate = self;
+        self.emailTextField.keyboardType = UIKeyboardTypeEmailAddress;
         [self.loginView addSubview:self.emailTextField];
         
         //password input
