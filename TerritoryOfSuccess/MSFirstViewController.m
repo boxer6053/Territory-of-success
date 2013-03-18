@@ -125,6 +125,7 @@
 - (void)viewDidLoad
 {    
     [super viewDidLoad];
+    
     //translation
     [self.sendCodeButton setTitle:NSLocalizedString(@"SendButtonKey", nil) forState:UIControlStateNormal];
     [self.codeTextField setPlaceholder:NSLocalizedString(@"CodeTextFieldTextKey", nil)];
@@ -155,7 +156,11 @@
     [self.api getFiveNewsWithOffset:0];
     
     [self.codeTextField setDelegate:self];
-    [self.codeTextField setClearButtonMode:UITextFieldViewModeWhileEditing];
+    
+    if (!SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0"))
+    {
+        [self.codeTextField setClearButtonMode:UITextFieldViewModeNever];
+    }
     [self.codeTextField setAutocapitalizationType:UITextAutocapitalizationTypeAllCharacters];
         
     [self.scrollView setScrollEnabled:NO];
@@ -1142,47 +1147,56 @@ static inline double radians (double degrees)
     //бидло код трололо
     if (textField == self.codeTextField || textField == self.complaintView.codeTextField)
     {
-        if ((range.location == 4 || range.location == 9 || range.location == 14) && range.location != 0 && ![string isEqualToString:@""]) {
-            
-            NSRange myRange;
-            myRange.location = range.location + 1;
-            myRange.length = 1;
-            
-            NSMutableString *tempMutStr = [NSMutableString stringWithString:textField.text];
-            
-            if ([string isEqualToString:@"-"]) {
-                return YES;
-            }
-            else
+        if (![string isEqualToString:@" "])
+        {
+            if ((range.location == 4 || range.location == 9 || range.location == 14) && range.location != 0 && ![string isEqualToString:@""])
             {
-                if (range.location < [textField.text length]) {
-                    return  NO;
+                NSRange myRange;
+                myRange.location = range.location + 1;
+                myRange.length = 1;
+                
+                NSMutableString *tempMutStr = [NSMutableString stringWithString:textField.text];
+                
+                if ([string isEqualToString:@"-"])
+                {
+                    return YES;
                 }
                 else
                 {
-                    [tempMutStr insertString:@"-" atIndex:range.location];
-                    textField.text = [NSString stringWithString:tempMutStr];
+                    if (range.location < [textField.text length]) {
+                        return  NO;
+                    }
+                    else
+                    {
+                        [tempMutStr insertString:@"-" atIndex:range.location];
+                        textField.text = [NSString stringWithString:tempMutStr];
+                    }
                 }
             }
-        }
-        
-        NSUInteger newLength = [textField.text length] + [string length] - range.length;
-        
-        if ([string isEqualToString:@""]) {
-            return YES;
-        }
-        else
-        {
             
-            if (newLength > 19) {
-                return NO;
-            }
-            else
+            NSUInteger newLength = [textField.text length] + [string length] - range.length;
+            
+            if ([string isEqualToString:@""])
             {
                 return YES;
             }
-            
-            //        return (newLength > 19) ? NO : YES;
+            else
+            {
+                if (newLength > 19)
+                {
+                    return NO;
+                }
+                else
+                {
+                    return YES;
+                }
+                
+                //        return (newLength > 19) ? NO : YES;
+            }
+        }
+        else
+        {
+            return NO;
         }
     }
     else
@@ -1304,4 +1318,7 @@ static inline double radians (double degrees)
     }
 }
 
+- (void)viewDidUnload {
+    [super viewDidUnload];
+}
 @end
