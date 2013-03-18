@@ -341,6 +341,8 @@
     //стискання фото
     NSData *data = UIImageJPEGRepresentation(editedProductImage, 0.5);
     UIImage *compressedImage = [UIImage imageWithData:data];
+    
+    [picker dismissModalViewControllerAnimated:YES];
 
 }
 
