@@ -25,15 +25,22 @@
 @property (strong, nonatomic) MSAPI *api;
 @property (nonatomic, strong) MSLogInView *loginView;
 @property (weak, nonatomic) NSString *sendingName;
+@property ( nonatomic) NSInteger questionCount;
+@property (strong, nonatomic) NSArray *lastDownloaded;
+@property   BOOL isFirstDownload;
+@property UIButton *footerButton;
+
 @end
 
 
 @implementation MSTypesOfInquirersViewController
+@synthesize footerButton = _footerButton;
 @synthesize sendingName = _sendingName;
 @synthesize tableOfInquirers = _tableOfInquirers;
 @synthesize testInquirers = _testInquirers;
 @synthesize selectedValue = _selectedValue;
 @synthesize allInquirerMode;
+@synthesize questionCount = _questionCount;
 @synthesize myInquirerMode;
 @synthesize inquirerTypeSegment = _inquirerTypeSegment;
 @synthesize isAuthorized = _isAuthorized;
@@ -42,7 +49,8 @@
 @synthesize allQuestionsArray = _allQuestionsArray;
 @synthesize sendingID = _sendingID;
 @synthesize loginView = _loginView;
-
+@synthesize lastDownloaded = _lastDownloaded    ;
+@synthesize isFirstDownload = _isFirstDownload;
 - (MSAPI *) api{
     if(!_api){
         _api = [[MSAPI alloc]init];
@@ -61,6 +69,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _isFirstDownload = YES;
+    self.myQuestionsArray = [[NSMutableArray alloc] init];
+       self.tableOfInquirers.tableFooterView = nil;
+    self.footerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.tableOfInquirers.frame.size.width, 30)];
+    [self.footerButton setTitle:NSLocalizedString(@"DownloadMoreKey",nil) forState:UIControlStateNormal];
+    self.footerButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
+    [self.footerButton setTitleColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4] forState:UIControlStateNormal];
+    [self.footerButton addTarget:self action:@selector(downloadMoreQuestions) forControlEvents:UIControlEventTouchDown];
+    
+
     self.allInquirerMode=YES;
     self.myInquirerMode = NO;
     [self.inquirersNavigationItem setTitle:NSLocalizedString(@"InquirerKey", nil)];
@@ -161,7 +179,7 @@
         return self.allQuestionsArray.count;
     }
     else{
-        return self.myQuestionsArray.count;
+        return self.questionCount;
     }
 }
 
@@ -230,6 +248,7 @@
         controller.inquirerType = [_selectedValue integerValue];
         controller.itemID = self.sendingID;
         controller.productName = self.sendingName;
+        controller.ownerIndex = self.inquirerTypeSegment.selectedSegmentIndex;
         NSLog(@"ss %@", _selectedValue);
     }
 }
@@ -248,12 +267,19 @@
         self.allInquirerMode = YES;
         self.myInquirerMode = NO;
         [self.api getLastQuestions];
+        [self.tableOfInquirers reloadData];
+        self.tableOfInquirers.tableFooterView = nil;
     }
     else
     {
+        
         self.allInquirerMode = NO;
         self.myInquirerMode = YES;
+        if(_isFirstDownload){
         [self.api getMyQuestionsWithOffset:0];
+        }
+        [self.tableOfInquirers reloadData];
+        self.tableOfInquirers.tableFooterView = self.footerButton;
     }
     [self setSegmentControlColor];
     // [_tableOfInquirers reloadData];
@@ -262,6 +288,7 @@
 -(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type{
     if (type == kLastQuest)
     {
+        
         self.allQuestionsArray = [dictionary valueForKey:@"list"];
         if([[dictionary valueForKey:@"status"] isEqualToString:@"failed"])
         {
@@ -276,24 +303,31 @@
     
     if (type == kMyQuestions)
     {
-        self.myQuestionsArray = [dictionary valueForKey:@"list"];
-     
-        //self.numberOfRows = [[self arrayOfBrands] count];
-        self.allQuestionsArray = [dictionary valueForKey:@"list"];
-        if([[dictionary valueForKey:@"status"] isEqualToString:@"failed"])
-        {
-            self.loginView = [[MSLogInView alloc]initWithOrigin:CGPointMake(25, self.view.frame.size.height/2 - 120)];
-            [self.view addSubview:self.loginView];
-            [self.loginView blackOutOfBackground];
-            [self.loginView attachPopUpAnimationForView:self.loginView.loginView];
-            self.loginView.delegate = self;
+        self.lastDownloaded = [dictionary valueForKey:@"list"];
+        [self.myQuestionsArray addObjectsFromArray:[dictionary valueForKey:@"list"]];
+        if(_isFirstDownload){
+            self.questionCount   += self.myQuestionsArray.count;
+            [self.tableOfInquirers reloadData];
         }
-
+        else
+        {
+        for (int i  = 0; i<self.lastDownloaded.count; i++)
+            {
+            
+            NSArray *insertIndexPath = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.questionCount inSection:0]];
+            self.questionCount++;
+           [self.tableOfInquirers insertRowsAtIndexPaths: insertIndexPath withRowAnimation:NO];
+            }
+        }
+_isFirstDownload = NO;
     }
-    //[SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
-    [[self tableOfInquirers] reloadData];
+       [[self tableOfInquirers] reloadData];
 }
-
+-(void)downloadMoreQuestions{
+    _isFirstDownload = NO;
+    [self.api getMyQuestionsWithOffset:self.myQuestionsArray.count -1];
+    NSLog(@"load more");
+}
 - (void)alertView:(UIAlertView *)alertView
 clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 0){
