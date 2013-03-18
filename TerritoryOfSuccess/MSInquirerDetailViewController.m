@@ -35,6 +35,7 @@
 @synthesize toStatButton = _toStatButton;
 @synthesize count = _count;
 @synthesize optionForAnswer = _optionForAnswer;
+@synthesize ownerIndex = _ownerIndex;
 
 - (MSAPI *) api{
     if(!_api){

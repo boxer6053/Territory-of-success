@@ -19,6 +19,7 @@
 @property (nonatomic) NSInteger optionForAnswer;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *toStatButton;
 
+@property (nonatomic) NSInteger ownerIndex;
 
 @end
 

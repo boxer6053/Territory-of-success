@@ -14,7 +14,7 @@
 @interface MSTypesOfInquirersViewController : UIViewController <UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, WsCompleteDelegate, UIAlertViewDelegate, UITextViewDelegate, dismissView>
 @property (weak, nonatomic) IBOutlet UITableView *tableOfInquirers;
 @property (strong, nonatomic) NSArray *testInquirers;
-@property (strong, nonatomic) NSArray *myQuestionsArray;
+@property (strong, nonatomic) NSMutableArray *myQuestionsArray;
 @property (strong, nonatomic) NSArray *allQuestionsArray;
 @property (weak, nonatomic) NSString *selectedValue;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *inquirerTypeSegment;

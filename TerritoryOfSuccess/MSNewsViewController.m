@@ -119,6 +119,7 @@
     [self.activityIndicator stopAnimating];
     _isDownloading = NO;
     self.newsTableView.tableFooterView = self.footerButton;
+    
     [self.arrayOfNews addObjectsFromArray: [dictionary valueForKey:@"list"]];
     self.lastDownloadedNews = [dictionary valueForKey:@"list"];
     if (!_isFirstDownload)
