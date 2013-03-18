@@ -63,6 +63,7 @@
     [super viewDidLoad];
     self.allInquirerMode=YES;
     self.myInquirerMode = NO;
+    [self.inquirersNavigationItem setTitle:NSLocalizedString(@"InquirerKey", nil)];
     [self.inquirerTypeSegment setTitle:NSLocalizedString(@"AllKey", nil) forSegmentAtIndex:0];
       [self.inquirerTypeSegment setTitle:NSLocalizedString(@"MyKey", nil) forSegmentAtIndex:1];
     
@@ -313,4 +314,8 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     
 }
 
+- (void)viewDidUnload {
+    [self setInquirersNavigationItem:nil];
+    [super viewDidUnload];
+}
 @end

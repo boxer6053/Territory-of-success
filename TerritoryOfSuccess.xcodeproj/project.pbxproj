@@ -102,6 +102,7 @@
 		FA44436816BBAD270009FC03 /* cancelVKButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA44436716BBAD270009FC03 /* cancelVKButton.png */; };
 		FA55C14916A071AA00671CAB /* MSCatalogueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA55C14816A071AA00671CAB /* MSCatalogueViewController.m */; };
 		FA5A26BD16C257B00020DDB5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA5A26BF16C257B00020DDB5 /* Localizable.strings */; };
+		FA5B95FF16F47456000D121C /* MSOrderBonusView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5B95FE16F47455000D121C /* MSOrderBonusView.m */; };
 		FA6DE84416BACCFB00B48434 /* MSBonusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6DE84316BACCFB00B48434 /* MSBonusCell.m */; };
 		FA6DE84A16BACD5400B48434 /* MSStandardProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6DE84916BACD5400B48434 /* MSStandardProfileCell.m */; };
 		FA6DE84D16BAD16F00B48434 /* checkbox_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6DE84B16BAD16E00B48434 /* checkbox_empty.png */; };
@@ -137,6 +138,7 @@
 		FADC926816C50C70006BD95C /* logo_color_invert_40*147.png in Resources */ = {isa = PBXBuildFile; fileRef = FADC926A16C50C70006BD95C /* logo_color_invert_40*147.png */; };
 		FAE8451916E6774800BA513B /* promo_orange.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE8451816E6774800BA513B /* promo_orange.png */; };
 		FAEF9F3516F33D6B004916A9 /* iPhoneStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAEF9F3416F33D6B004916A9 /* iPhoneStoryboard.storyboard */; };
+		FAF604D516F70F4F006B1950 /* order.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF604D416F70F4F006B1950 /* order.png */; };
 		FAFB5E0B16C2650F001B692B /* MSAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFB5E0A16C2650F001B692B /* MSAnimationView.m */; };
 		FAFB834216E61340006F0F4F /* bag.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFB834116E61340006F0F4F /* bag.png */; };
 		FAFC778216BAE3B00025275D /* Vkontakte.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA0FCBE16BAD1D8005AF32E /* Vkontakte.m */; };
@@ -431,6 +433,8 @@
 		FA5A26BE16C257B00020DDB5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FA5A26C016C257B20020DDB5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FA5A26C116C257B30020DDB5 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FA5B95FD16F47454000D121C /* MSOrderBonusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSOrderBonusView.h; sourceTree = "<group>"; };
+		FA5B95FE16F47455000D121C /* MSOrderBonusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSOrderBonusView.m; sourceTree = "<group>"; };
 		FA6DE84216BACCFB00B48434 /* MSBonusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSBonusCell.h; sourceTree = "<group>"; };
 		FA6DE84316BACCFB00B48434 /* MSBonusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSBonusCell.m; sourceTree = "<group>"; };
 		FA6DE84816BACD5400B48434 /* MSStandardProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSStandardProfileCell.h; sourceTree = "<group>"; };
@@ -493,6 +497,7 @@
 		FAE8451816E6774800BA513B /* promo_orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = promo_orange.png; sourceTree = "<group>"; };
 		FAEF9F2916F31B78004916A9 /* MSiOSVersionControlHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSiOSVersionControlHeader.h; sourceTree = "<group>"; };
 		FAEF9F3416F33D6B004916A9 /* iPhoneStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhoneStoryboard.storyboard; sourceTree = "<group>"; };
+		FAF604D416F70F4F006B1950 /* order.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = order.png; sourceTree = "<group>"; };
 		FAFB5E0916C2650F001B692B /* MSAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAnimationView.h; sourceTree = "<group>"; };
 		FAFB5E0A16C2650F001B692B /* MSAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSAnimationView.m; sourceTree = "<group>"; };
 		FAFB834116E61340006F0F4F /* bag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bag.png; sourceTree = "<group>"; };
@@ -638,6 +643,8 @@
 				FA1E940316D522F3007D7BE3 /* MSDatePickerView.h */,
 				FA1E940416D522F3007D7BE3 /* MSDatePickerView.m */,
 				FAEF9F2916F31B78004916A9 /* MSiOSVersionControlHeader.h */,
+				FA5B95FD16F47454000D121C /* MSOrderBonusView.h */,
+				FA5B95FE16F47455000D121C /* MSOrderBonusView.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -645,6 +652,7 @@
 		F59AEB7E16AF1770004519B9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FAF604D416F70F4F006B1950 /* order.png */,
 				F59C826716EF2B120015251B /* TOS cap.png */,
 				F5AC514916E7921800330A2F /* closeIcon.png */,
 				FAE8451816E6774800BA513B /* promo_orange.png */,
@@ -1158,6 +1166,7 @@
 				F5CB747C16EE2F5D004B7080 /* likeForProduct1.png in Resources */,
 				F59C826816EF2B120015251B /* TOS cap.png in Resources */,
 				FAEF9F3516F33D6B004916A9 /* iPhoneStoryboard.storyboard in Resources */,
+				FAF604D516F70F4F006B1950 /* order.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1224,6 +1233,7 @@
 				F512B4FD16DF7D7F00FC22A5 /* PrettyToolbar.m in Sources */,
 				FA82F7EB16DE58ED00BFDF97 /* MSBonusCatalogViewController.m in Sources */,
 				FAA2B2C616DF638800A3F847 /* MSBonusSubCatalogViewController.m in Sources */,
+				FA5B95FF16F47456000D121C /* MSOrderBonusView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

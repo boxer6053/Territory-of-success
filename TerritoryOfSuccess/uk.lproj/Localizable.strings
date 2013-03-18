@@ -34,6 +34,14 @@
 "CodeOnThePackageKey" = "Код на упаковці";
 "PurhasePlaceKey" = "Місце покупки";
 "AllCategoriesDownloadedKey" = "Всі категорії завантажені";
+"SendButtonKey" = "Надіслати";
+"CodeTextFieldTextKey" = "Введіть код або зробіть фото";
+"SaveKey" = "Зберегти";
+"EditKey" = "Редагувати";
+"Scores" = "Кількість балів:";
+"PressToBonusKey" = "Натисніть щоб перейти у бонусний каталог";
+"EnterInfoKey" = "Введіть інформацію";
+"LogoutKey" = "Вийти";
 
 // Каталог + Share
 "CategoriesKey" = "Категорії";
@@ -67,6 +75,10 @@
 "CatalogueNavTitleKey" = "Каталог";
 "ProductsNavItemKey" = "Продукти";
 "CommentsNavItemKey" = "Коментарі";
+"MakeOrderKey" = "Зробити замовлення";
+"EnterYoutPhoneNumberKey" = "Введіть свій номер телефону:";
+"MakingOrderKey" = "Зробити замовлення";
+"EnterYourPhoneNumberKey" = "Введіть, будь ласка, свій номер телеофну";
 
 // Опросы
 "DownloadInquirersKey" = "Завантаження питань";
@@ -93,8 +105,16 @@
 "BadKey" = "Проти";
 "ItemKey" = "Товар";
 "DescriptionCreatingKey" = "Оберіть 1 товар для створення питання \"Оцініть товар\" чи більше для \"Який товар краще\"";
+"InquirerKey" = "Опитування";
 
 // Новости
 "DownloadingInformationKey" = "Завантаження інформації...";
 "AllNewsDownloadedKey" = "Всі новини завантажені.";
 "DownloadMoreKey" = "Завантажити ще";
+"NewsNavItemTitleKey" = "Новини";
+
+//Storyboard
+"NewsTabBarItemKey" = "Новини";
+"CatalogueTabBarItemKey" = "Каталог";
+"MainTabBarItemKey" = "Головна";
+"InquirerTabBarItemKey" = "Опитування";

@@ -59,6 +59,9 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
+    [self.logoutButton setTitle:NSLocalizedString(@"LogoutKey", nil)];
+    [self.bonusPointsLabel setText:NSLocalizedString(@"Scores", nil)];
+    [self.pressLabel setText:NSLocalizedString(@"PressToBonusKey", nil)];
     [self.api getProfileData];
     _downloadIsComplete = NO;
     [self.profileTableView setContentInset:UIEdgeInsetsMake(50,0,0,0)];
@@ -149,6 +152,7 @@
                 NSString *CellIdentifier = @"saveProfileCell";
                 MSProfileSaveCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 [cell.SaveButton addTarget:self action:@selector(SaveButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+                [cell.SaveButton setTitle:NSLocalizedString(@"EditKey", nil) forState:UIControlStateNormal];
                 return cell;
             }
             else
@@ -157,6 +161,8 @@
                 MSEditButtonsCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 [cell.cancelButton addTarget:self action:@selector(dismissChanges) forControlEvents:UIControlEventTouchUpInside];
                 [cell.saveButton addTarget:self action:@selector(saveChanges) forControlEvents:UIControlEventTouchUpInside];
+                [cell.cancelButton setTitle:NSLocalizedString(@"Отмена", nil) forState:UIControlStateNormal];
+                [cell.saveButton setTitle:NSLocalizedString(@"SaveKey", nil) forState:UIControlStateNormal];
                 return cell;
             }
         }
@@ -164,7 +170,6 @@
         {
             NSString *CellIdentifier = @"standardProfileCell";
             MSStandardProfileCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            
             if (_isEditMode)
             {
                 cell.standartTitleLabel.text = [[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"title"];
@@ -419,6 +424,13 @@
                 {
                     [self.profileArray removeObjectAtIndex:i];
                 }
+                else if ([[[self.profileArray objectAtIndex:i] valueForKey:@"key"] isEqualToString:@"phone"])
+                {
+                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                    NSString *phone = [[self.profileArray objectAtIndex:i] valueForKey:@"value"];
+                    [defaults setObject:phone forKey:@"phoneNumber"];
+                    [defaults synchronize];
+                }
             }
             [self.profileTableView reloadData];
         }
@@ -494,4 +506,8 @@
     [pickerView.target resignFirstResponder];
 }
 
+- (void)viewDidUnload {
+    [self setPressLabel:nil];
+    [super viewDidUnload];
+}
 @end

@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSArray *allQuestionsArray;
 @property (weak, nonatomic) NSString *selectedValue;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *inquirerTypeSegment;
+@property (weak, nonatomic) IBOutlet UINavigationItem *inquirersNavigationItem;
 - (IBAction)inquirerTypeSwitch:(id)sender;
 @property BOOL allInquirerMode;
 @property BOOL  myInquirerMode;

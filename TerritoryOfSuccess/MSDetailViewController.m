@@ -6,6 +6,7 @@
 #import <Social/Social.h>
 #import "MSiOSVersionControlHeader.h"
 #import "SVProgressHUD.h"
+#import "MSOrderBonusView.h"
 
 @interface MSDetailViewController () 
 {
@@ -50,6 +51,8 @@
 //login popUP
 @property (nonatomic, strong) MSLogInView *loginView;
 
+//order
+@property (nonatomic, strong) MSOrderBonusView *orderBonusView;
 @end
 
 @implementation MSDetailViewController
@@ -77,6 +80,7 @@
 @synthesize priceLabel = _priceLabel;
 @synthesize productPrice = _productPrice;
 @synthesize loginView = _loginView;
+@synthesize orderBonusView;
 
 - (void)viewDidLoad
 {
@@ -237,6 +241,7 @@
         self.priceLabel.textAlignment = NSTextAlignmentCenter;
         self.priceLabel.hidden = NO;
         self.priceImage.hidden = NO;
+        self.orderButton.hidden = NO;
     }
 }
 
@@ -528,6 +533,21 @@
     [self.share attachPopUpAnimationForView:self.share.vkView];
 }
 
+- (IBAction)orderButtonAction:(id)sender
+{
+    [self.orderButton setUserInteractionEnabled:NO];
+    self.orderBonusView = [[MSOrderBonusView alloc]initOrderMenuWithProductId:self.productSentId andPhoneNumber:[[NSUserDefaults standardUserDefaults]objectForKey:@"phoneNumber"]];
+    [self.view.window addSubview:self.orderBonusView];
+    [[self orderBonusView] attachPopUpAnimationForView:self.orderBonusView.orderContainerView];
+    self.orderBonusView.delegate = self;
+}
+
+- (void)closeOrderMenu
+{
+    self.orderBonusView = nil;
+    [self.orderButton setUserInteractionEnabled:YES];
+}
+
 #pragma mark - Login popUp
 - (void)viewDidDisappear:(BOOL)animated  {
     if(self.loginView)
@@ -555,8 +575,6 @@
     }
     return _api;
 }
-
-
 
 - (void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
 {
@@ -598,7 +616,7 @@
     }
 }
 
--(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1)
     {
@@ -611,6 +629,7 @@
 }
 - (void)viewDidUnload {
     [self setActivityIndicatorView:nil];
+    [self setOrderButton:nil];
     [super viewDidUnload];
 }
 @end

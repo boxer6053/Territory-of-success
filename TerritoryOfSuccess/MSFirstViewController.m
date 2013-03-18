@@ -125,6 +125,10 @@
 - (void)viewDidLoad
 {    
     [super viewDidLoad];
+    //translation
+    [self.sendCodeButton setTitle:NSLocalizedString(@"SendButtonKey", nil) forState:UIControlStateNormal];
+    [self.codeTextField setPlaceholder:NSLocalizedString(@"CodeTextFieldTextKey", nil)];
+    
     
     self.newsActivityIdicator.hidesWhenStopped = YES;
     [self.newsActivityIdicator startAnimating];
@@ -307,7 +311,7 @@
     [self.slideShowTimer invalidate];
     self.slideShowTimer = nil;
     [self.userTouchTimer invalidate];
-    self.userTouchTimer =nil;
+    self.userTouchTimer = nil;
 }
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
@@ -326,10 +330,15 @@
         imagePickerController = [[UIImagePickerController alloc] init];
         imagePickerController.delegate = self;
         imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-        
+        [imagePickerController setAllowsEditing:YES];
+                        
         UIImageView *overlayImageView = [[UIImageView alloc] init];
         [overlayImageView setImage:[UIImage imageNamed:@"rect_220*30.png"]];
-                
+        
+        UIView *rootOverlayAlphaTopView = [[UIView alloc] init];
+        [rootOverlayAlphaTopView setBackgroundColor:[UIColor blackColor]];
+        [rootOverlayAlphaTopView setAlpha:0.7];
+        
         UIView *overlayAlphaTopView = [[UIView alloc] init];
         [overlayAlphaTopView setBackgroundColor:[UIColor blackColor]];
         [overlayAlphaTopView setAlpha:0.7];
@@ -355,6 +364,8 @@
         [self presentViewController:imagePickerController animated:YES completion:^(void){
             NSLog(@"Block");
             
+            [rootOverlayAlphaTopView setFrame:CGRectMake(0, 0, 0, 0)];
+            
             //додавання рамки і напівпрозорого фону
             [overlayImageView setFrame:CGRectMake((self.screenWidth - self.frameMarkWidth)/2, (self.screenHeight - 54 - self.frameMarkHeight)/2, self.frameMarkWidth, self.frameMarkHeight)];
             
@@ -366,13 +377,15 @@
             
             [overlayAlphaRightView setFrame:CGRectMake(self.frameMarkWidth + (self.screenWidth - self.frameMarkWidth)/2, (self.screenHeight - 54 - self.frameMarkHeight)/2, 320 - self.frameMarkWidth + (self.screenWidth - self.frameMarkWidth)/2, self.frameMarkHeight)];
             
+            [rootOverlayAlphaTopView addSubview:overlayAlphaTopView];
+            
             [overlayAlphaTopView addSubview:overlayImageView];
             [overlayAlphaTopView addSubview:overlayAlphaBottomView];
             [overlayAlphaTopView addSubview:overlayAlphaLeftView];
             [overlayAlphaTopView addSubview:overlayAlphaRightView];
             
             //добавлення маркерної рамки на камеру
-            imagePickerController.cameraOverlayView = overlayAlphaTopView;
+            imagePickerController.cameraOverlayView = rootOverlayAlphaTopView;
 
         }];
     }
@@ -392,7 +405,7 @@
     NSLog(@"Picture width: %f", img.size.width);
     NSLog(@"Picture hight: %f", img.size.height);
     
-    UIImage *tempImage = [self cropImage:[info objectForKey:UIImagePickerControllerOriginalImage] withX:(self.screenWidth - self.frameMarkWidth)/2 withY:(self.screenHeight - 54 - self.frameMarkHeight)/2 withWidth:self.frameMarkWidth withHeight:self.frameMarkHeight];
+    UIImage *tempImage = [self cropImage:[info objectForKey:UIImagePickerControllerEditedImage] withX:(self.screenWidth - self.frameMarkWidth)/2 withY:(self.screenHeight - 54 - self.frameMarkHeight)/2 withWidth:self.frameMarkWidth withHeight:self.frameMarkHeight];
     
     //------------------------------
     NSString *recognizedText;
@@ -433,7 +446,7 @@ static inline double radians (double degrees)
 
 //обрізка фото
 - (UIImage *)cropImage:(UIImage *)image withX:(CGFloat)x withY:(CGFloat)y withWidth:(CGFloat)cropWidth withHeight:(CGFloat)cropHeight
-{
+{    
     CGImageRef imageRef = [image CGImage];
 	CGImageAlphaInfo alphaInfo = CGImageGetAlphaInfo(imageRef);
 	CGColorSpaceRef colorSpaceInfo = CGColorSpaceCreateDeviceRGB();
@@ -481,16 +494,22 @@ static inline double radians (double degrees)
 	
 	CGContextDrawImage(bitmap, CGRectMake(0, 0, width, height), imageRef);
     
-    CGFloat koefForWidth, koefForHeight;
+//    CGFloat koefForWidth, koefForHeight;
     
-    koefForWidth = 8.1;
-    koefForHeight = 4.5;
+//    koefForWidth = 8.1;
+//    koefForHeight = 4.5;
+        
+//    CGRect rect;
+//    rect.origin.x = x * koefForWidth;
+//    rect.origin.y = y * koefForHeight;
+//    rect.size.width = cropWidth * koefForWidth;
+//    rect.size.height = cropHeight * koefForHeight;
     
     CGRect rect;
-    rect.origin.x = x * koefForWidth;
-    rect.origin.y = y * koefForHeight;
-    rect.size.width = cropWidth * koefForWidth;
-    rect.size.height = cropHeight * koefForHeight;
+    rect.origin.x = 100;
+    rect.origin.y = 290;
+    rect.size.width = cropWidth * 2;
+    rect.size.height = cropHeight * 2;
     
 	CGImageRef ref = CGBitmapContextCreateImage(bitmap);
     
@@ -498,7 +517,7 @@ static inline double radians (double degrees)
     
     CGImageRef resultRef = CGImageCreateWithImageInRect([result CGImage], rect);
     UIImage *cropedImage = [UIImage imageWithCGImage:resultRef];
-	
+	   
 	CGContextRelease(bitmap);
 	CGImageRelease(ref);
     
@@ -792,6 +811,8 @@ static inline double radians (double degrees)
             [self.dialogView.messageView setFrame:CGRectMake(self.dialogView.messageView.frame.origin.x, self.dialogView.messageView.frame.origin.y, self.dialogView.messageView.frame.size.width, self.dialogView.messageLabel.frame.size.height)];
             
             [self showDialogView];
+            
+            [self.codeTextField setText:@""];
         }
         else
         {
@@ -847,6 +868,8 @@ static inline double radians (double degrees)
                 [self.dialogView.messageView setFrame:CGRectMake(self.dialogView.messageView.frame.origin.x, self.dialogView.messageView.frame.origin.y, self.dialogView.messageView.frame.size.width, self.dialogView.messageLabel.frame.size.height)];
                 
                 [self showDialogView];
+                
+                [self.codeTextField setText:@""];
             }
             else
             {

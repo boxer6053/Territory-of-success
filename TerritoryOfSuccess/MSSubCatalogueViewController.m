@@ -116,6 +116,7 @@
     }
     else
     {
+        cell.prodactBrandLabel.text = NSLocalizedString(@"BrandKey", nil);
         if([[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"brand"])
         {
             cell.productBrandName.text = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"brand"] valueForKey:@"title"];
@@ -126,7 +127,6 @@
         }
     }
     cell.productRatingImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%dstar.png",[[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"rating"]integerValue]]];
-    cell.prodactBrandLabel.text = NSLocalizedString(@"BrandKey", nil);
     
     //на экспорт в MSDetailViewController
     cell.productAdviceNumber = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"advises"] integerValue];
