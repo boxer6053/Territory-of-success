@@ -1,5 +1,4 @@
 #import "MSAppDelegate.h"
-#import "MSiOSVersionControlHeader.h"
 #import "checkConnection.h"
 
 @implementation MSAppDelegate
