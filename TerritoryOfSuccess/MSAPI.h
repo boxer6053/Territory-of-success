@@ -44,7 +44,6 @@ typedef enum {kAuth, kRegist, kNews, kNewsWithId, kCode, kBrands, kCategories, k
 - (void)logInWithMail:(NSString *)email Password:(NSString *)password;
 - (void)registrationWithEmail:(NSString *)email Password:(NSString *)password ConfirmPassword:(NSString *)confirmPassword;
 - (void)getLastQuestions;
-- (void)getQuestionListFrom10;
 - (void)sentCommentWithProductId:(int)productId andText:(NSString *)text;
 - (void)getMyQuestionsWithOffset:(int)offset;
 - (void)createQuestionWithItems:(NSMutableString *)string;

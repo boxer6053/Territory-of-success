@@ -1,7 +1,31 @@
 #import "MSAppDelegate.h"
 #import "MSiOSVersionControlHeader.h"
+#import "checkConnection.h"
 
 @implementation MSAppDelegate
+
+//check conection and send request
+- (void)connectionVerification
+{
+    if (checkConnection.hasConnectivity)
+    {
+        NSURL *url = [NSURL URLWithString:@"www.apple.com"];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
+        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+        
+        if(!connection)
+        {
+            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"URL Connection" message:@"Not seccess URL Connection" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [failmessage show];
+        }
+    }
+    else
+    {
+        UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Internet Connection" message:@"Not seccess Internet Connection" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [failmessage show];
+    }
+    
+}
 
 - (void)customizeInterface
 {
@@ -53,6 +77,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
+    [self connectionVerification];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
