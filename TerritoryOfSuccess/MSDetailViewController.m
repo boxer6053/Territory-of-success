@@ -52,7 +52,6 @@
 @property (nonatomic, strong) MSLogInView *loginView;
 
 //order
-@property (nonatomic) float balanceNumber;
 @property (nonatomic, strong) MSOrderBonusView *orderBonusView;
 @end
 
@@ -536,8 +535,11 @@
 
 - (IBAction)orderButtonAction:(id)sender
 {
-    [self.api getProfileData];
     [self.orderButton setUserInteractionEnabled:NO];
+    self.orderBonusView = [[MSOrderBonusView alloc]initOrderMenuWithProductId:self.productSentId andPhoneNumber:[[NSUserDefaults standardUserDefaults]objectForKey:@"phoneNumber"]];
+    [self.view.window addSubview:self.orderBonusView];
+    [[self orderBonusView] attachPopUpAnimationForView:self.orderBonusView.orderContainerView];
+    self.orderBonusView.delegate = self;
 }
 
 - (void)closeOrderMenu
@@ -612,35 +614,9 @@
         self.advisesLabel.text = [NSString stringWithFormat:@"%@",[[[dictionary objectForKey:@"list"] objectAtIndex:self.numberInList]valueForKey: @"advises"]];
         self.ratingImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@star",[[[dictionary objectForKey:@"list"] objectAtIndex:self.numberInList] valueForKey:@"rating"]]];
     }
-    
-    if(type == kProfileInfo)
-    {
-        
-        //self.balanceNumber = [[dictionary valueForKey:@"balance"]floatValue];
-        self.balanceNumber = 1000;
-        if ([self.productPrice floatValue] > self.balanceNumber)
-        {
-            UIAlertView *priceAlert = [[UIAlertView alloc] initWithTitle:@"SorryKey" message:@"YouDontHaveEnoughtPointsKey" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [priceAlert show];
-        }
-        else
-        {
-            NSString *phoneNumber;
-            for (int i = 0; i < ((NSArray *)[dictionary valueForKey:@"fields"]).count; ++i)
-            {
-                if([[[[dictionary valueForKey:@"fields"] objectAtIndex:i] valueForKey:@"key"] isEqualToString:@"phone"])
-                phoneNumber = [[NSString alloc] initWithString:[[[dictionary valueForKey:@"fields"] objectAtIndex:i] valueForKey:@"value"]];
-            }
-        
-            self.orderBonusView = [[MSOrderBonusView alloc]initOrderMenuWithProductId:self.productSentId andPhoneNumber:phoneNumber];
-            [self.view.window addSubview:self.orderBonusView];
-            [[self orderBonusView] attachPopUpAnimationForView:self.orderBonusView.orderContainerView];
-            self.orderBonusView.delegate = self;
-        }
-    }
 }
 
--(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1)
     {

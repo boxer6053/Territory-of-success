@@ -5,15 +5,12 @@
 
 - (void)customizeInterface
 {
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0"))
-    {
         [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
         [[UIBarButtonItem appearance] setTintColor:[UIColor orangeColor]];
     
         [[UITabBar appearance] setBackgroundColor:[UIColor blackColor]];
         [[UITabBar appearance] setSelectedImageTintColor:[UIColor orangeColor]];
         [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, nil] forState:UIControlStateHighlighted];
-    }
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions

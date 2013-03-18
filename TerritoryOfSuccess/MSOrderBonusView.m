@@ -25,6 +25,7 @@
 - (id)initOrderMenuWithProductId:(int)prodId andPhoneNumber:(NSString *)phone
 {
     self = [super initWithFrame:[UIScreen mainScreen].bounds];
+    self.productId = prodId;
     if (self)
     {
         self.orderBackgroundView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320 ,568)];
@@ -135,7 +136,9 @@
 {
     if (type == kOrderBonus)
     {
-        
+        NSDictionary *messageDictionary = [dictionary valueForKey:@"message"];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[messageDictionary valueForKey:@"title"] message:[messageDictionary valueForKey:@"text"] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
     }
 }
 @end

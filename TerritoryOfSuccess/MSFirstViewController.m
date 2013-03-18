@@ -125,6 +125,10 @@
 - (void)viewDidLoad
 {    
     [super viewDidLoad];
+    //translation
+    [self.sendCodeButton setTitle:NSLocalizedString(@"SendButtonKey", nil) forState:UIControlStateNormal];
+    [self.codeTextField setPlaceholder:NSLocalizedString(@"CodeTextFieldTextKey", nil)];
+    
     
     self.newsActivityIdicator.hidesWhenStopped = YES;
     [self.newsActivityIdicator startAnimating];
