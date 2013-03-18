@@ -4,6 +4,9 @@
 #import "MSShare.h"
 #import "MSCommentsViewController.h"
 #import <Social/Social.h>
+#import "MSiOSVersionControlHeader.h"
+#import "SVProgressHUD.h"
+#import "MSOrderBonusView.h"
 
 @interface MSDetailViewController () 
 {
@@ -47,6 +50,9 @@
 
 //login popUP
 @property (nonatomic, strong) MSLogInView *loginView;
+
+//order
+@property (nonatomic, strong) MSOrderBonusView *orderBonusView;
 @end
 
 @implementation MSDetailViewController
@@ -74,6 +80,7 @@
 @synthesize priceLabel = _priceLabel;
 @synthesize productPrice = _productPrice;
 @synthesize loginView = _loginView;
+@synthesize orderBonusView;
 
 - (void)viewDidLoad
 {
@@ -81,14 +88,16 @@
     self.shareIsPressed = NO;
     self.isImageDisplay = YES;
     self.rateButtonPressed = NO;
-        
+    
     self.rateNumber = 1;
     self.transitionView = [[UIView alloc] initWithFrame:CGRectMake(self.imageView.frame.origin.x, self.imageView.frame.origin.y, self.imageView.frame.size.width, self.imageView.frame.size.height)];
     [[self transitionView] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"dialogViewGradient.png"]]];
     [[self transitionView].layer setBorderWidth:2.0f];
     [[self transitionView].layer setBorderColor:[UIColor colorWithWhite:0.5 alpha:1].CGColor];
-    [[self transitionView].layer setCornerRadius:10];
-    
+    if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0"))
+    {
+        [[self transitionView].layer setCornerRadius:10];
+    }
     self.likeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.likeButton setFrame:CGRectMake(10, 30, 80, 80)];
     [self.likeButton setBackgroundImage:[UIImage imageNamed:@"likeButton.png"] forState:UIControlStateNormal];
@@ -104,7 +113,14 @@
     [self.likeButtonLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:11 ]];
     [self.likeButtonLabel setTextColor:[UIColor whiteColor]];
     [self.likeButtonLabel setBackgroundColor:[UIColor clearColor]];
-    [self.likeButtonLabel setMinimumScaleFactor:0.5];
+    if (SYSTEM_VERSION_EQUAL_TO(@"6.0"))
+    {
+        [self.likeButtonLabel setMinimumScaleFactor:0.5];
+    }
+    else
+    {
+        [self.likeButtonLabel setMinimumFontSize:8.0];
+    }
     self.likeButtonLabel.adjustsFontSizeToFitWidth = YES;
     [self.likeButtonLabel setTextAlignment:NSTextAlignmentCenter];
     [self.transitionView addSubview:self.likeButtonLabel];
@@ -124,7 +140,14 @@
     [self.commentButtonLabel setText:NSLocalizedString(@"CommentKey", nil)];
     [self.commentButtonLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:11]];
     [self.commentButtonLabel setTextColor:[UIColor whiteColor]];
-    [self.commentButtonLabel setMinimumScaleFactor:0.5];
+    if (SYSTEM_VERSION_EQUAL_TO(@"6.0"))
+    {
+        [self.commentButtonLabel setMinimumScaleFactor:0.5];
+    }
+    else
+    {
+        [self.commentButtonLabel setMinimumFontSize:8.0];
+    }
     self.commentButtonLabel.adjustsFontSizeToFitWidth = YES;
     [self.commentButtonLabel setBackgroundColor:[UIColor clearColor]];
     [self.commentButtonLabel setTextAlignment:NSTextAlignmentCenter];
@@ -145,7 +168,14 @@
     [self.rateButtonLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:11]];
     [self.rateButtonLabel setTextColor:[UIColor whiteColor]];
     [self.rateButtonLabel setBackgroundColor:[UIColor clearColor]];
-    [self.rateButtonLabel setMinimumScaleFactor:0.5];
+    if (SYSTEM_VERSION_EQUAL_TO(@"6.0"))
+    {
+        [self.rateButtonLabel setMinimumScaleFactor:0.5];
+    }
+    else
+    {
+        [self.rateButtonLabel setMinimumFontSize:8.0];
+    }
     self.rateButtonLabel.adjustsFontSizeToFitWidth = YES;
     [self.rateButtonLabel setTextAlignment:NSTextAlignmentCenter];
     [self.transitionView addSubview:self.rateButtonLabel];
@@ -211,6 +241,7 @@
         self.priceLabel.textAlignment = NSTextAlignmentCenter;
         self.priceLabel.hidden = NO;
         self.priceImage.hidden = NO;
+        self.orderButton.hidden = NO;
     }
 }
 
@@ -232,8 +263,15 @@
     [self.productDescriptionWebView loadHTMLString:self.productSentDescription baseURL:nil];
 }
 
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    [self.activityIndicatorView startAnimating];
+    [self.activityIndicatorView setHidesWhenStopped:YES];
+}
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
+    [self.activityIndicatorView stopAnimating];
     [self.productDescriptionWebView sizeToFit];
     self.detailScrollView.contentSize = CGSizeMake(self.detailScrollView.contentSize.width, self.imageView.frame.size.height + self.productDescriptionWebView.frame.size.height + 50);
     [self.productDescriptionWebView setBackgroundColor:[UIColor clearColor]];
@@ -442,10 +480,6 @@
 
 - (IBAction)shareButtonPressed:(id)sender
 {
-    self.shareImageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.productImageURL]];
-    self.shareImage = [UIImage imageWithData:self.shareImageData];
-    self.shareString = [NSString stringWithFormat:@"%@ \"%@\" %@ ",NSLocalizedString(@"ProductWasVerificatedKey", nil), self.productName.text, NSLocalizedString(@"WithAppKey", nil)];
-    
     if (self.shareIsPressed == NO)
     {
         [UIView animateWithDuration:0.5 animations:^{
@@ -468,8 +502,16 @@
     }
 }
 
+- (void)convertingSharingInfoInDataFormat
+{
+    self.shareImageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.productImageURL]];
+    self.shareImage = [UIImage imageWithData:self.shareImageData];
+    self.shareString = [NSString stringWithFormat:@"%@ \"%@\" %@ ",NSLocalizedString(@"ProductWasVerificatedKey", nil), self.productName.text, NSLocalizedString(@"WithAppKey", nil)];
+}
+
 - (IBAction)fbButtonPressed:(id)sender
 {
+    [self convertingSharingInfoInDataFormat];
     [[self share] shareOnFacebookWithText:self.shareString
                                 withImage:self.shareImage
                     currentViewController:self];
@@ -477,6 +519,7 @@
 
 - (IBAction)twButtonPressed:(id)sender
 {
+    [self convertingSharingInfoInDataFormat];
     [[self share] shareOnTwitterWithText:self.shareString 
                                withImage:self.shareImage
                    currentViewController:self];
@@ -484,9 +527,25 @@
 
 - (IBAction)vkButtonPressed:(id)sender
 {
+    [self convertingSharingInfoInDataFormat];
     self.share.mainView = self;
     [[self share] shareOnVKWithText:self.shareString withImage:self.shareImage];
     [self.share attachPopUpAnimationForView:self.share.vkView];
+}
+
+- (IBAction)orderButtonAction:(id)sender
+{
+    [self.orderButton setUserInteractionEnabled:NO];
+    self.orderBonusView = [[MSOrderBonusView alloc]initOrderMenuWithProductId:self.productSentId andPhoneNumber:[[NSUserDefaults standardUserDefaults]objectForKey:@"phoneNumber"]];
+    [self.view.window addSubview:self.orderBonusView];
+    [[self orderBonusView] attachPopUpAnimationForView:self.orderBonusView.orderContainerView];
+    self.orderBonusView.delegate = self;
+}
+
+- (void)closeOrderMenu
+{
+    self.orderBonusView = nil;
+    [self.orderButton setUserInteractionEnabled:YES];
 }
 
 #pragma mark - Login popUp
@@ -516,8 +575,6 @@
     }
     return _api;
 }
-
-
 
 - (void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
 {
@@ -559,7 +616,7 @@
     }
 }
 
--(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1)
     {
@@ -569,5 +626,10 @@
         [self.loginView attachPopUpAnimationForView:self.loginView.loginView];
         self.loginView.delegate = self;
     }
+}
+- (void)viewDidUnload {
+    [self setActivityIndicatorView:nil];
+    [self setOrderButton:nil];
+    [super viewDidUnload];
 }
 @end

@@ -14,6 +14,12 @@
 #import "MSLogInView.h"
 #import "PrettyKit.h"
 
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
+
 @interface MSTypesOfInquirersViewController ()
 @property (strong, nonatomic) NSMutableData *receivedData;
 @property (strong, nonatomic) MSAPI *api;
@@ -57,6 +63,7 @@
     [super viewDidLoad];
     self.allInquirerMode=YES;
     self.myInquirerMode = NO;
+    [self.inquirersNavigationItem setTitle:NSLocalizedString(@"InquirerKey", nil)];
     [self.inquirerTypeSegment setTitle:NSLocalizedString(@"AllKey", nil) forSegmentAtIndex:0];
       [self.inquirerTypeSegment setTitle:NSLocalizedString(@"MyKey", nil) forSegmentAtIndex:1];
     
@@ -110,8 +117,9 @@
     self.loginView = nil;
 }
 -(void)viewDidDisappear:(BOOL)animated  {
-    if(_loginView){
-    [self.loginView removeFromSuperview];
+    if(_loginView)
+    {
+        [self.loginView removeFromSuperview];
     }
 }
 
@@ -306,4 +314,8 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     
 }
 
+- (void)viewDidUnload {
+    [self setInquirersNavigationItem:nil];
+    [super viewDidUnload];
+}
 @end

@@ -59,8 +59,14 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
+    [self.logoutButton setTitle:NSLocalizedString(@"LogoutKey", nil)];
+    [self.bonusPointsLabel setText:NSLocalizedString(@"Scores", nil)];
+    [self.pressLabel setText:NSLocalizedString(@"PressToBonusKey", nil)];
     [self.api getProfileData];
     _downloadIsComplete = NO;
+    [self.profileTableView setContentInset:UIEdgeInsetsMake(50,0,0,0)];
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(bonusViewTaped)];
+    [self.bonusView addGestureRecognizer:tapRecognizer];
 }
 
 - (void)didReceiveMemoryWarning
@@ -84,17 +90,6 @@
 {
     if (section == 0)
     {
-        if (_downloadIsComplete)
-        {
-            return 1;
-        }
-        else
-        {
-            return 0;
-        }
-    }
-    else if (section == 1)
-    {
         if (_isEditMode)
         {
             return self.profileStandartFields.count;
@@ -104,7 +99,7 @@
             return self.profileArray.count;
         }
     }
-    else if (section == 2)
+    else if (section == 1)
     {
         if (_isEditMode)
         {
@@ -115,7 +110,7 @@
             return 0;
         }
     }
-    else if (section == 3)
+    else if (section == 2)
     {
         if (_downloadIsComplete)
         {
@@ -137,20 +132,10 @@
 
     if(_downloadIsComplete == YES)
     {
-        if (indexPath.section == 0)
-        {
-            NSString *CellIdentifier = @"bonusProfileCell";
-            MSBonusCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-            
-            [cell.bonusButton addTarget:self action:@selector(bonusButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-            cell.bonusCountLabel.text = [self.profileDictionary valueForKey:@"balance"];
-            
-            return cell;
-        }
-        if (indexPath.section == 2)
+        if (indexPath.section == 1)
         {
             NSString *CellIdentifier = @"checkboxCell";
-            MSCheckBoxCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+            MSCheckBoxCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
             cell.checkboxLabel.text = [[self.profileCheckboxFields objectAtIndex:indexPath.row] valueForKey:@"title"];
             cell.isChecked = [[[self.profileCheckboxFields objectAtIndex:indexPath.row] valueForKey:@"value"] boolValue];
@@ -160,33 +145,49 @@
             return cell;
         }
         
-        if (indexPath.section == 3)
+        if (indexPath.section == 2)
         {
             if(!_isEditMode)
             {
                 NSString *CellIdentifier = @"saveProfileCell";
-                MSProfileSaveCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+                MSProfileSaveCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 [cell.SaveButton addTarget:self action:@selector(SaveButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+                [cell.SaveButton setTitle:NSLocalizedString(@"EditKey", nil) forState:UIControlStateNormal];
                 return cell;
             }
             else
             {
                 NSString *CellIdentifier = @"editButtonsCell";
-                MSEditButtonsCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+                MSEditButtonsCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 [cell.cancelButton addTarget:self action:@selector(dismissChanges) forControlEvents:UIControlEventTouchUpInside];
                 [cell.saveButton addTarget:self action:@selector(saveChanges) forControlEvents:UIControlEventTouchUpInside];
+                [cell.cancelButton setTitle:NSLocalizedString(@"Отмена", nil) forState:UIControlStateNormal];
+                [cell.saveButton setTitle:NSLocalizedString(@"SaveKey", nil) forState:UIControlStateNormal];
                 return cell;
             }
         }
         else
         {
             NSString *CellIdentifier = @"standardProfileCell";
-            MSStandardProfileCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-            
+            MSStandardProfileCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             if (_isEditMode)
             {
                 cell.standartTitleLabel.text = [[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"title"];
-                NSString *value = [[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"value"];
+                NSString *value;
+                if([[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"type"] isEqualToString:@"select"])
+                {
+                    for (int i = 0;  i < [[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"values"] count]; i++)
+                    {
+                        if ([[[[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"values"] objectAtIndex:i] valueForKey:@"key"] isEqualToString:[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"value"]])
+                        {
+                            value = [[[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"values"] objectAtIndex:i] valueForKey:@"value"];
+                        }
+                    }
+                }
+                else
+                {
+                    value = [[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"value"];
+                }
                 if((NSNull *)value != [NSNull null])
                 {
                     value = [self checkIfNull:value];
@@ -263,6 +264,11 @@
     return value;
 }
 #pragma mark - selectors
+- (void)bonusViewTaped
+{
+    [self.api getBonusCategories];
+}
+
 -(void)SaveButtonPressed
 {
     if (!_isEditMode)
@@ -408,15 +414,27 @@
         {
             _downloadIsComplete = YES;
             self.profileArray = [[dictionary valueForKey:@"fields"] mutableCopy];
+            
+
+            self.bonusPointsLabel.text = [self.bonusPointsLabel.text stringByAppendingFormat:@" %@",[self.profileDictionary valueForKey:@"balance"]];
+            
             for(int i = 0; i < self.profileArray.count; i++)
             {
                 if ([[[self.profileArray objectAtIndex:i] valueForKey:@"key"] isEqualToString:@"balance"])
                 {
                     [self.profileArray removeObjectAtIndex:i];
                 }
+                else if ([[[self.profileArray objectAtIndex:i] valueForKey:@"key"] isEqualToString:@"phone"])
+                {
+                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                    NSString *phone = [[self.profileArray objectAtIndex:i] valueForKey:@"value"];
+                    [defaults setObject:phone forKey:@"phoneNumber"];
+                    [defaults synchronize];
+                }
             }
             [self.profileTableView reloadData];
         }
+        
     }
     if (type == kProfileEdit)
     {
@@ -488,4 +506,8 @@
     [pickerView.target resignFirstResponder];
 }
 
+- (void)viewDidUnload {
+    [self setPressLabel:nil];
+    [super viewDidUnload];
+}
 @end

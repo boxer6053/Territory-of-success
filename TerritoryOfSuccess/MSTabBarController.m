@@ -22,8 +22,8 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    if (self)
+    {
     }
     return self;
 }
@@ -31,6 +31,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[self.tabBar.items objectAtIndex:0] setTitle:NSLocalizedString(@"MainTabBarItemKey", nil)];
+    [[self.tabBar.items objectAtIndex:1] setTitle:NSLocalizedString(@"CatalogueTabBarItemKey", nil)];
+    [[self.tabBar.items objectAtIndex:2] setTitle:NSLocalizedString(@"InquirerTabBarItemKey", nil)];
+    [[self.tabBar.items objectAtIndex:3] setTitle:NSLocalizedString(@"NewsTabBarItemKey", nil)];
 }
 
 - (void)didReceiveMemoryWarning

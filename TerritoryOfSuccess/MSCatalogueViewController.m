@@ -58,6 +58,7 @@
     [self.categoryAndBrandsControl setTitle:NSLocalizedString(@"CategoriesKey", nil) forSegmentAtIndex:0];
     [self.categoryAndBrandsControl setTitle:NSLocalizedString(@"BrandsKey", nil) forSegmentAtIndex:1];
     [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadCategoriesKey",nil)];
+    [self.catalogueNavigationItem setTitle:NSLocalizedString(@"CatalogueNavTitleKey", nil)];
     [self.api getCategories];
     
     if ([[UIScreen mainScreen] bounds].size.height == 568)
@@ -160,10 +161,13 @@
 {
     if (self.insertedOperationFinishedTheyWork)
     {
-        if (self.tableView.contentOffset.y + 455 > self.tableView.contentSize.height)
+        if (self.brandsCounter > 20)
         {
-            [self moreBrands];
-            self.insertedOperationFinishedTheyWork = NO;
+            if (self.tableView.contentOffset.y + 455 > self.tableView.contentSize.height)
+            {
+                [self moreBrands];
+                self.insertedOperationFinishedTheyWork = NO;
+            }
         }
     }
 }
@@ -184,7 +188,7 @@
     if (cell == nil) {
         cell = [[MSBrandsAndCategoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:myIdentifier];
     }
-    
+    [cell.categoryOrBrandAvailable setText:NSLocalizedString(@"AvailableKey:", nil)];
     //Проверка на СегментКонтрол и подгрузка соответствующего контента в ячейки
     //категории
     if (self.categoryAndBrandsControl.selectedSegmentIndex == 0)
@@ -298,4 +302,8 @@
     
 }
 
+- (void)viewDidUnload {
+    [self setCatalogueNavigationItem:nil];
+    [super viewDidUnload];
+}
 @end

@@ -65,10 +65,8 @@
 		F5F6ADC3169C4F21000247D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC2169C4F21000247D9 /* UIKit.framework */; };
 		F5F6ADC5169C4F21000247D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC4169C4F21000247D9 /* Foundation.framework */; };
 		F5F6ADC7169C4F21000247D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC6169C4F21000247D9 /* CoreGraphics.framework */; };
-		F5F6ADC9169C4F21000247D9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6ADC8169C4F21000247D9 /* CoreData.framework */; };
 		F5F6ADD1169C4F21000247D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F6ADD0169C4F21000247D9 /* main.m */; };
 		F5F6ADD5169C4F21000247D9 /* MSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F6ADD4169C4F21000247D9 /* MSAppDelegate.m */; };
-		F5F6ADDE169C4F22000247D9 /* TerritoryOfSuccess.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5F6ADDC169C4F22000247D9 /* TerritoryOfSuccess.xcdatamodeld */; };
 		F5F6AE7C169C4F5A000247D9 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F5F6ADE5169C4F5A000247D9 /* .gitignore */; };
 		F5F6AE7D169C4F5A000247D9 /* liblept.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6AE79169C4F5A000247D9 /* liblept.a */; };
 		F5F6AE7E169C4F5A000247D9 /* libtesseract_all.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F6AE7A169C4F5A000247D9 /* libtesseract_all.a */; };
@@ -104,6 +102,7 @@
 		FA44436816BBAD270009FC03 /* cancelVKButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA44436716BBAD270009FC03 /* cancelVKButton.png */; };
 		FA55C14916A071AA00671CAB /* MSCatalogueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA55C14816A071AA00671CAB /* MSCatalogueViewController.m */; };
 		FA5A26BD16C257B00020DDB5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA5A26BF16C257B00020DDB5 /* Localizable.strings */; };
+		FA5B95FF16F47456000D121C /* MSOrderBonusView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5B95FE16F47455000D121C /* MSOrderBonusView.m */; };
 		FA6DE84416BACCFB00B48434 /* MSBonusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6DE84316BACCFB00B48434 /* MSBonusCell.m */; };
 		FA6DE84A16BACD5400B48434 /* MSStandardProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6DE84916BACD5400B48434 /* MSStandardProfileCell.m */; };
 		FA6DE84D16BAD16F00B48434 /* checkbox_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6DE84B16BAD16E00B48434 /* checkbox_empty.png */; };
@@ -116,7 +115,6 @@
 		FA87C6FC16AACDE400784A0D /* MSCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA87C6FB16AACDE400784A0D /* MSCommentCell.m */; };
 		FA884BBE16B7FB35002A7FDC /* shareButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA884BBD16B7FB35002A7FDC /* shareButton.png */; };
 		FA884BC816B82B74002A7FDC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FA884BC716B82B74002A7FDC /* Settings.bundle */; };
-		FA8AB81416C2594C00B98EA3 /* iPhoneStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8AB81616C2594C00B98EA3 /* iPhoneStoryboard.storyboard */; };
 		FA90193716BFEB5E00D028AD /* MSLogInView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA90193616BFEB5E00D028AD /* MSLogInView.m */; };
 		FA9094D716CA7B8D007F9441 /* MSAddCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9094D616CA7B8D007F9441 /* MSAddCommentView.m */; };
 		FA99139A16D64EF900BEBAB0 /* MSEditButtonsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA99139916D64EF900BEBAB0 /* MSEditButtonsCell.m */; };
@@ -139,6 +137,8 @@
 		FADC925D16C50995006BD95C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FADC925F16C50995006BD95C /* Default-568h@2x.png */; };
 		FADC926816C50C70006BD95C /* logo_color_invert_40*147.png in Resources */ = {isa = PBXBuildFile; fileRef = FADC926A16C50C70006BD95C /* logo_color_invert_40*147.png */; };
 		FAE8451916E6774800BA513B /* promo_orange.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE8451816E6774800BA513B /* promo_orange.png */; };
+		FAEF9F3516F33D6B004916A9 /* iPhoneStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAEF9F3416F33D6B004916A9 /* iPhoneStoryboard.storyboard */; };
+		FAF604D516F70F4F006B1950 /* order.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF604D416F70F4F006B1950 /* order.png */; };
 		FAFB5E0B16C2650F001B692B /* MSAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFB5E0A16C2650F001B692B /* MSAnimationView.m */; };
 		FAFB834216E61340006F0F4F /* bag.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFB834116E61340006F0F4F /* bag.png */; };
 		FAFC778216BAE3B00025275D /* Vkontakte.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA0FCBE16BAD1D8005AF32E /* Vkontakte.m */; };
@@ -235,12 +235,10 @@
 		F5F6ADC2169C4F21000247D9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F5F6ADC4169C4F21000247D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F5F6ADC6169C4F21000247D9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		F5F6ADC8169C4F21000247D9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		F5F6ADD0169C4F21000247D9 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F5F6ADD2169C4F21000247D9 /* TerritoryOfSuccess-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TerritoryOfSuccess-Prefix.pch"; sourceTree = "<group>"; };
 		F5F6ADD3169C4F21000247D9 /* MSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSAppDelegate.h; sourceTree = "<group>"; };
 		F5F6ADD4169C4F21000247D9 /* MSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSAppDelegate.m; sourceTree = "<group>"; };
-		F5F6ADDD169C4F22000247D9 /* TerritoryOfSuccess.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TerritoryOfSuccess.xcdatamodel; sourceTree = "<group>"; };
 		F5F6ADE5169C4F5A000247D9 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		F5F6ADE8169C4F5A000247D9 /* allheaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = allheaders.h; sourceTree = "<group>"; };
 		F5F6ADE9169C4F5A000247D9 /* alltypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alltypes.h; sourceTree = "<group>"; };
@@ -435,6 +433,8 @@
 		FA5A26BE16C257B00020DDB5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FA5A26C016C257B20020DDB5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FA5A26C116C257B30020DDB5 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FA5B95FD16F47454000D121C /* MSOrderBonusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSOrderBonusView.h; sourceTree = "<group>"; };
+		FA5B95FE16F47455000D121C /* MSOrderBonusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSOrderBonusView.m; sourceTree = "<group>"; };
 		FA6DE84216BACCFB00B48434 /* MSBonusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSBonusCell.h; sourceTree = "<group>"; };
 		FA6DE84316BACCFB00B48434 /* MSBonusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSBonusCell.m; sourceTree = "<group>"; };
 		FA6DE84816BACD5400B48434 /* MSStandardProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSStandardProfileCell.h; sourceTree = "<group>"; };
@@ -452,7 +452,6 @@
 		FA87C6FB16AACDE400784A0D /* MSCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCommentCell.m; sourceTree = "<group>"; };
 		FA884BBD16B7FB35002A7FDC /* shareButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareButton.png; sourceTree = "<group>"; };
 		FA884BC716B82B74002A7FDC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		FA8AB81816C2596B00B98EA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/iPhoneStoryboard.storyboard; sourceTree = "<group>"; };
 		FA90193516BFEB5E00D028AD /* MSLogInView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSLogInView.h; sourceTree = "<group>"; };
 		FA90193616BFEB5E00D028AD /* MSLogInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSLogInView.m; sourceTree = "<group>"; };
 		FA9094D516CA7B8D007F9441 /* MSAddCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAddCommentView.h; sourceTree = "<group>"; };
@@ -496,9 +495,9 @@
 		FADC926C16C50C7D006BD95C /* uk */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uk; path = "uk.lproj/logo_color_invert_40*147.png"; sourceTree = "<group>"; };
 		FADC926D16C50E83006BD95C /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/logo_color_invert_40*147.png"; sourceTree = "<group>"; };
 		FAE8451816E6774800BA513B /* promo_orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = promo_orange.png; sourceTree = "<group>"; };
-		FAF4FAE216E7AA0F00C25AC5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/iPhoneStoryboard.strings; sourceTree = "<group>"; };
-		FAF4FAE416E7AA1200C25AC5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/iPhoneStoryboard.strings; sourceTree = "<group>"; };
-		FAF4FAE616E7AA1B00C25AC5 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/iPhoneStoryboard.strings; sourceTree = "<group>"; };
+		FAEF9F2916F31B78004916A9 /* MSiOSVersionControlHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSiOSVersionControlHeader.h; sourceTree = "<group>"; };
+		FAEF9F3416F33D6B004916A9 /* iPhoneStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhoneStoryboard.storyboard; sourceTree = "<group>"; };
+		FAF604D416F70F4F006B1950 /* order.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = order.png; sourceTree = "<group>"; };
 		FAFB5E0916C2650F001B692B /* MSAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAnimationView.h; sourceTree = "<group>"; };
 		FAFB5E0A16C2650F001B692B /* MSAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSAnimationView.m; sourceTree = "<group>"; };
 		FAFB834116E61340006F0F4F /* bag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bag.png; sourceTree = "<group>"; };
@@ -521,7 +520,6 @@
 				F5F6ADC3169C4F21000247D9 /* UIKit.framework in Frameworks */,
 				F5F6ADC5169C4F21000247D9 /* Foundation.framework in Frameworks */,
 				F5F6ADC7169C4F21000247D9 /* CoreGraphics.framework in Frameworks */,
-				F5F6ADC9169C4F21000247D9 /* CoreData.framework in Frameworks */,
 				F5F6AE7D169C4F5A000247D9 /* liblept.a in Frameworks */,
 				F5F6AE7E169C4F5A000247D9 /* libtesseract_all.a in Frameworks */,
 				F552752616B06AEA0086AE53 /* SDWebImage.framework in Frameworks */,
@@ -644,6 +642,9 @@
 				FA1853BF16D401BB00BAF298 /* MSPickerView.m */,
 				FA1E940316D522F3007D7BE3 /* MSDatePickerView.h */,
 				FA1E940416D522F3007D7BE3 /* MSDatePickerView.m */,
+				FAEF9F2916F31B78004916A9 /* MSiOSVersionControlHeader.h */,
+				FA5B95FD16F47454000D121C /* MSOrderBonusView.h */,
+				FA5B95FE16F47455000D121C /* MSOrderBonusView.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -651,6 +652,7 @@
 		F59AEB7E16AF1770004519B9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FAF604D416F70F4F006B1950 /* order.png */,
 				F59C826716EF2B120015251B /* TOS cap.png */,
 				F5AC514916E7921800330A2F /* closeIcon.png */,
 				FAE8451816E6774800BA513B /* promo_orange.png */,
@@ -748,7 +750,6 @@
 				F5F6ADC2169C4F21000247D9 /* UIKit.framework */,
 				F5F6ADC4169C4F21000247D9 /* Foundation.framework */,
 				F5F6ADC6169C4F21000247D9 /* CoreGraphics.framework */,
-				F5F6ADC8169C4F21000247D9 /* CoreData.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -761,8 +762,7 @@
 				F59AEB7B16AF16A8004519B9 /* ViewControllers */,
 				F5F6ADD3169C4F21000247D9 /* MSAppDelegate.h */,
 				F5F6ADD4169C4F21000247D9 /* MSAppDelegate.m */,
-				F5F6ADDC169C4F22000247D9 /* TerritoryOfSuccess.xcdatamodeld */,
-				FA8AB81616C2594C00B98EA3 /* iPhoneStoryboard.storyboard */,
+				FAEF9F3416F33D6B004916A9 /* iPhoneStoryboard.storyboard */,
 				F5FF669116D7BEE000E64AD9 /* MSStatisticCell.h */,
 				F5FF669216D7BEE000E64AD9 /* MSStatisticCell.m */,
 				FA1BEA8E16A813BF00F2C219 /* Pauli */,
@@ -1130,7 +1130,6 @@
 				FAFC778716BAEF5A0025275D /* vkHeader.png in Resources */,
 				FA44435F16BB9B2F0009FC03 /* vkActionButton.png in Resources */,
 				FA44436816BBAD270009FC03 /* cancelVKButton.png in Resources */,
-				FA8AB81416C2594C00B98EA3 /* iPhoneStoryboard.storyboard in Resources */,
 				FA5A26BD16C257B00020DDB5 /* Localizable.strings in Resources */,
 				FAFCF0E516C2873A00ABD178 /* InfoPlist.strings in Resources */,
 				F5B2D23716C4180900EC7F00 /* logo_color_invert_40*147_ukr.png in Resources */,
@@ -1166,6 +1165,8 @@
 				F5AC514A16E7921B00330A2F /* closeIcon.png in Resources */,
 				F5CB747C16EE2F5D004B7080 /* likeForProduct1.png in Resources */,
 				F59C826816EF2B120015251B /* TOS cap.png in Resources */,
+				FAEF9F3516F33D6B004916A9 /* iPhoneStoryboard.storyboard in Resources */,
+				FAF604D516F70F4F006B1950 /* order.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1180,7 +1181,6 @@
 				FAFC778216BAE3B00025275D /* Vkontakte.m in Sources */,
 				F5F6ADD1169C4F21000247D9 /* main.m in Sources */,
 				F5F6ADD5169C4F21000247D9 /* MSAppDelegate.m in Sources */,
-				F5F6ADDE169C4F22000247D9 /* TerritoryOfSuccess.xcdatamodeld in Sources */,
 				F5F6AE86169C4F65000247D9 /* Tesseract.mm in Sources */,
 				F5F6AE8F169C5153000247D9 /* MSFirstViewController.m in Sources */,
 				F5603C44169C6E6400667203 /* MSFirstNavigationController.m in Sources */,
@@ -1233,6 +1233,7 @@
 				F512B4FD16DF7D7F00FC22A5 /* PrettyToolbar.m in Sources */,
 				FA82F7EB16DE58ED00BFDF97 /* MSBonusCatalogViewController.m in Sources */,
 				FAA2B2C616DF638800A3F847 /* MSBonusSubCatalogViewController.m in Sources */,
+				FA5B95FF16F47456000D121C /* MSOrderBonusView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1247,17 +1248,6 @@
 				FA5A26C116C257B30020DDB5 /* uk */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		FA8AB81616C2594C00B98EA3 /* iPhoneStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FA8AB81816C2596B00B98EA3 /* Base */,
-				FAF4FAE216E7AA0F00C25AC5 /* en */,
-				FAF4FAE416E7AA1200C25AC5 /* ru */,
-				FAF4FAE616E7AA1B00C25AC5 /* uk */,
-			);
-			name = iPhoneStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 		FADC925516C50799006BD95C /* Default@2x.png */ = {
@@ -1335,7 +1325,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1357,7 +1347,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1377,7 +1367,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TerritoryOfSuccess/TerritoryOfSuccess-Prefix.pch";
 				INFOPLIST_FILE = "TerritoryOfSuccess/TerritoryOfSuccess-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/TerritoryOfSuccess/tesseract-ios-lib/lib\"",
@@ -1402,7 +1392,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TerritoryOfSuccess/TerritoryOfSuccess-Prefix.pch";
 				INFOPLIST_FILE = "TerritoryOfSuccess/TerritoryOfSuccess-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/TerritoryOfSuccess/tesseract-ios-lib/lib\"",
@@ -1437,19 +1427,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		F5F6ADDC169C4F22000247D9 /* TerritoryOfSuccess.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				F5F6ADDD169C4F22000247D9 /* TerritoryOfSuccess.xcdatamodel */,
-			);
-			currentVersion = F5F6ADDD169C4F22000247D9 /* TerritoryOfSuccess.xcdatamodel */;
-			path = TerritoryOfSuccess.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = F5F6ADB5169C4F21000247D9 /* Project object */;
 }

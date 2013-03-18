@@ -12,7 +12,11 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <QuartzCore/QuartzCore.h>
 #import "PrettyKit.h"
-
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
 
 
@@ -47,6 +51,7 @@
 @synthesize backIds = _backIds;
 @synthesize upperTitle = _upperTitle;
 @synthesize backTitles = _backTitles;
+@synthesize gottedFromPrevious = _gottedFromPrevious;
 
 @synthesize navigationBar = _navigationBar;
 
@@ -138,8 +143,14 @@
     }
   //  cell.nameLabel.numberOfLines = 2;
     
-    cell.nameLabel.minimumScaleFactor = 0.8;
-    cell.nameLabel.adjustsFontSizeToFitWidth = YES;
+    if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
+        cell.nameLabel.minimumFontSize = 10.0f;
+        cell.nameLabel.adjustsFontSizeToFitWidth = YES;
+    }else{
+        cell.nameLabel.minimumScaleFactor = 0.8;
+        cell.nameLabel.adjustsFontSizeToFitWidth = YES;
+    }
+
     cell.nameLabel.text = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
     
         if([[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"] isEqualToString:@""])
@@ -230,16 +241,15 @@
         //  _questionsCount = 0;
     }
    //  [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
-    if(typefinished == kLastQuest)
-    {
-        
-    }
-    
 }
 
 - (IBAction)cancel:(id)sender {
+    if(!self.gottedFromPrevious){
+        
+        [self.delegate setUpperId:0];
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
-    [self.delegate setUpperId:0];
+    
 }
 
 //- (IBAction)upAction:(id)sender {

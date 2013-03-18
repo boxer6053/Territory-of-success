@@ -1,7 +1,8 @@
 #import <UIKit/UIKit.h>
 #import "MSLogInView.h"
 #import "MSAPI.h"
-@interface MSDetailViewController : UIViewController <UIAlertViewDelegate, WsCompleteDelegate, UIWebViewDelegate, dismissView>
+#import "MSOrderBonusView.h"
+@interface MSDetailViewController : UIViewController <UIAlertViewDelegate, WsCompleteDelegate, UIWebViewDelegate, dismissView, MSOrderDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *likeView;
 @property (strong, nonatomic) IBOutlet UIView *starView;
@@ -19,6 +20,9 @@
 @property (strong, nonatomic) IBOutlet UIImageView *ratingImage;
 @property (strong, nonatomic) IBOutlet UIImageView *detailImage;
 @property (nonatomic) int productSentId;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
+@property (weak, nonatomic) IBOutlet UIButton *orderButton;
+- (IBAction)orderButtonAction:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UIButton *fbButton;
 - (IBAction)fbButtonPressed:(id)sender;

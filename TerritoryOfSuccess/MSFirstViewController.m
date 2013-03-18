@@ -14,6 +14,7 @@
 #import <SDWebImage/UIButton+WebCache.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "PrettyKit.h"
+#import "MSiOSVersionControlHeader.h"
 
 #define I 8
 
@@ -124,6 +125,10 @@
 - (void)viewDidLoad
 {    
     [super viewDidLoad];
+    //translation
+    [self.sendCodeButton setTitle:NSLocalizedString(@"SendButtonKey", nil) forState:UIControlStateNormal];
+    [self.codeTextField setPlaceholder:NSLocalizedString(@"CodeTextFieldTextKey", nil)];
+    
     
     self.newsActivityIdicator.hidesWhenStopped = YES;
     [self.newsActivityIdicator startAnimating];
@@ -171,9 +176,14 @@
     
     self.newsView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
     self.codeInputView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
-    self.newsPageControl.pageIndicatorTintColor = [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0];
+    
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0"))
+    {
+        self.newsPageControl.pageIndicatorTintColor = [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0];
+        self.newsPageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:170/255.0 green:170/255.0 blue:170/255.0 alpha:1.0];
+    }
+    
     self.newsPageControl.numberOfPages = 1;
-    self.newsPageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:170/255.0 green:170/255.0 blue:170/255.0 alpha:1.0];
     [self.newsView.layer setBorderColor:[UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:0.7].CGColor];
     [self.newsView.layer setBorderWidth:1.0f];
     

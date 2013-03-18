@@ -48,6 +48,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.commentsNavigationItem setTitle:NSLocalizedString(@"CommentsNavItemKey", nil)];
     [[self commentTableView] setBackgroundView:[[UIImageView alloc]
                                                 initWithImage:[UIImage imageNamed:@"bg.png"]]];
 
@@ -93,10 +94,13 @@
 {
     if (self.insertedOperationFinishedTheyWork)
     {
-        if (self.commentTableView.contentOffset.y + 455 > self.commentTableView.contentSize.height)
+        if (self.commentsCounter > 20)
         {
-            [self moreComments];
-            self.insertedOperationFinishedTheyWork = NO;
+            if (self.commentTableView.contentOffset.y + 455 > self.commentTableView.contentSize.height)
+            {
+                [self moreComments];
+                self.insertedOperationFinishedTheyWork = NO;
+            }
         }
     }
 }
@@ -121,7 +125,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"commentsIdentifier";
-    MSCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    MSCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
         cell = [[MSCommentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
@@ -246,5 +250,9 @@
         }
         self.insertedOperationFinishedTheyWork = YES;
     }
+}
+- (void)viewDidUnload {
+    [self setCommentsNavigationItem:nil];
+    [super viewDidUnload];
 }
 @end

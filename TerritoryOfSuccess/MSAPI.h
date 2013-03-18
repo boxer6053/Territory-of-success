@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "JSONParserForDataEntenties.h"
 
-typedef enum {kAuth, kRegist, kNews, kNewsWithId, kCode, kBrands, kCategories, kCatalog, kQuestCateg, kComment, kComplaint, kQuestions, kCreateQuest, kMyQuestions, kQuestDetail, kQuestStat, kLastQuest,kSendAnswer, kComments, kProfileEdit, kProfileInfo, kProfileChange, kRate, kRecommend, kBonusCategories, kBonusSubCategories, kBonusComment, kBonusComments, kBonusRate, kBonusRecommend} requestTypes;
+typedef enum {kAuth, kRegist, kNews, kNewsWithId, kCode, kBrands, kCategories, kCatalog, kQuestCateg, kComment, kComplaint, kQuestions, kCreateQuest, kMyQuestions, kQuestDetail, kQuestStat, kLastQuest,kSendAnswer, kComments, kProfileEdit, kProfileInfo, kProfileChange, kRate, kRecommend, kBonusCategories, kBonusSubCategories, kBonusComment, kBonusComments, kBonusRate, kBonusRecommend, kOrderBonus} requestTypes;
 
 @protocol WsCompleteDelegate
 
@@ -71,4 +71,5 @@ typedef enum {kAuth, kRegist, kNews, kNewsWithId, kCode, kBrands, kCategories, k
 - (void)recommendBonusWithProductId:(int)productId;
 - (void)getBonusCommentsWithProductId:(int)productId andOffset:(int)offset;
 - (void)sentBonusCommentWithProductId:(int)productId andText:(NSString *)text;
+- (void)orderBonusProductWithProductId:(int)productId andPhoneNumber:(NSString *)phone;
 @end

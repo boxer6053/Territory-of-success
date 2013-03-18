@@ -12,7 +12,11 @@
 #import "MSStatisticViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SVProgressHUD.h"
-
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 @interface MSInquirerDetailViewController ()
 @property (strong, nonatomic) NSMutableData *receivedData;
 @property (strong, nonatomic) MSAPI *api;
@@ -140,8 +144,13 @@
         [productTitle setBackgroundColor:[UIColor clearColor]];
         [productTitle setText:[[self.arrayOfProducts objectAtIndex:0] valueForKey:@"title"]];
         //[productTitle setFont:[UIFont fontWithName:@"Helvetica" size:14]];
-        productTitle.minimumScaleFactor = 0.3f;
-        productTitle.adjustsFontSizeToFitWidth = YES;
+        if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
+            productTitle.minimumFontSize = 12.0f;
+        }
+        else{
+            productTitle.minimumScaleFactor = 0.3f;
+            productTitle.adjustsFontSizeToFitWidth = YES;
+        }
         productTitle.textAlignment = NSTextAlignmentCenter;
         [self.view addSubview:productTitle];
         UIImageView *imageForInquirer1 = [[UIImageView alloc] init];

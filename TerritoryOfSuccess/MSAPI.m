@@ -830,7 +830,6 @@
     self.params = [NSMutableString stringWithFormat:@"product_id=%d",productId];
     [self.params appendFormat:@"&offset=%d",offset];
     [[self params]appendFormat:@"&lang=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
-    //[[self params] appendFormat:@"&token=%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"authorization_Token"]];
     [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
     [self connectionVerification];
 }
@@ -844,6 +843,22 @@
     [self.request setHTTPMethod:@"POST"];
     self.params = [NSMutableString stringWithFormat:@"product_id=%d",productId];
     [self.params appendFormat:@"&text=%@",text];
+    [[self params]appendFormat:@"&lang=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
+    [[self params] appendFormat:@"&token=%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"authorization_Token"]];
+    [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
+    [self connectionVerification];
+
+}
+
+- (void)orderBonusProductWithProductId:(int)productId andPhoneNumber:(NSString *)phone
+{
+    self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/bonus/order"];
+    self.checkRequest = kOrderBonus;
+    
+    self.request  = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
+    [self.request setHTTPMethod:@"POST"];
+    self.params = [NSMutableString stringWithFormat:@"product_id=%d",productId];
+    [self.params appendFormat:@"&phone=%@",phone];
     [[self params]appendFormat:@"&lang=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
     [[self params] appendFormat:@"&token=%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"authorization_Token"]];
     [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];

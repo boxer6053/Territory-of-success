@@ -34,6 +34,14 @@
 "CodeOnThePackageKey" = "Код на упаковке";
 "PurhasePlaceKey" = "Место покупки";
 "AllCategoriesDownloadedKey" = "Все категории загружены";
+"SendButtonKey" = "Отправить";
+"CodeTextFieldTextKey" = "Введите код или сделайте фото";
+"SaveKey" = "Сохранить";
+"EditKey" = "Редактировать";
+"Scores" = "Количество баллов:";
+"PressToBonusKey" = "Нажмите для перехода в бонусный каталог";
+"EnterInfoKey" = "Введите информацию";
+"LogoutKey" = "Выйти";
 
 // Каталог + Share
 "CategoriesKey" = "Категории";
@@ -60,7 +68,17 @@
 "AllProductsDownloadedKey" = "Все продукты загруженны";
 "PriceKey" = "Цена:";
 "YouNeedToLoginInSettingsKey" = "Вам необходимо авторизироваться! Откройте программу Settings и авторизируйтесь, пожалуйста";
-
+"SorryKey" = "Извините";
+"DontAvailableOnThisVersionKey" = "Данная функция не доступна на вашей версии iOS";
+"AvailableKey:" = "доступно:";
+"BrandKey" = "Бренд:";
+"CatalogueNavTitleKey" = "Каталог";
+"ProductsNavItemKey" = "Продукты";
+"CommentsNavItemKey" = "Комментарии";
+"MakeOrderKey" = "Cделать заказ";
+"EnterYoutPhoneNumberKey" = "Введите свой номер телефона:";
+"MakingOrderKey" = "Сделать заказ";
+"EnterYourPhoneNumberKey" = "Пожалуйста, введите свой номер телефона";
 
 // Опросы
 "DownloadInquirersKey" = "Загрузка опросов";
@@ -83,13 +101,20 @@
 "whatProductIsBetterKey" = "Какой товар лучше";
 "LikeKey" = "Нравится";
 "DislikeKey" = "Не нравится";
-
 "GoodKey" = "За";
 "BadKey" = "Против";
 "ItemKey" = "Товар";
 "DescriptionCreatingKey" = "Выберите 1 товар для создания опроса \"Оцените товар\" или более для \"Какой товар лучше\"";
+"InquirerKey" = "Опросы";
 
 // Новости
 "DownloadingInformationKey" = "Загрузка информации...";
 "AllNewsDownloadedKey" = "Все новости загружены.";
 "DownloadMoreKey" = "Загрузить еще";
+"NewsNavItemTitleKey" = "Новости";
+
+//Storyboard
+"NewsTabBarItemKey" = "Новости";
+"CatalogueTabBarItemKey" = "Каталог";
+"MainTabBarItemKey" = "Главная";
+"InquirerTabBarItemKey" = "Опросы";

@@ -25,13 +25,7 @@
 
 - (void)viewDidLoad
 {
-    
-    [super viewDidLoad];    
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-
+    [super viewDidLoad];
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,4 +34,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+}
 @end

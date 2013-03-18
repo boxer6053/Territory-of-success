@@ -50,6 +50,7 @@
     self.isFirstTime = YES;
     self.productsTableView.delegate = self;
     self.productsTableView.dataSource = self;
+    [self.productsNavigationItem setTitle:NSLocalizedString(@"ProductsNavItemKey", nil)];
     [self.productsTableView setBackgroundView:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"bg.png"]]];
     
     self.footerButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.productsTableView.frame.size.width, 35)];
@@ -96,7 +97,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"subCatalogueCellIdentifier";
-    MSSubCatalogueCell *cell = [[self productsTableView] dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    MSSubCatalogueCell *cell = [[self productsTableView] dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
         cell = [[MSSubCatalogueCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
@@ -115,6 +116,7 @@
     }
     else
     {
+        cell.prodactBrandLabel.text = NSLocalizedString(@"BrandKey", nil);
         if([[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"brand"])
         {
             cell.productBrandName.text = [[[self.arrayOfProducts objectAtIndex:indexPath.row] valueForKey:@"brand"] valueForKey:@"title"];
@@ -166,10 +168,13 @@
 {
     if (self.insertedOperationFinishedTheyWork)
     {
-        if (self.productsTableView.contentOffset.y + 455 > self.productsTableView.contentSize.height)
+        if (self.productsCounter > 20)
         {
-            [self moreProducts];
-            self.insertedOperationFinishedTheyWork = NO;
+            if (self.productsTableView.contentOffset.y + 455 > self.productsTableView.contentSize.height)
+            {
+                [self moreProducts];
+                self.insertedOperationFinishedTheyWork = NO;
+            }
         }
     }
 }
@@ -261,5 +266,9 @@
         
         self.insertedOperationFinishedTheyWork = YES;
     }
+}
+- (void)viewDidUnload {
+    [self setProductsNavigationItem:nil];
+    [super viewDidUnload];
 }
 @end
