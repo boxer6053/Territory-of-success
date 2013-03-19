@@ -18,6 +18,7 @@
 @synthesize cancelButton = _cancelButton;
 @synthesize categoryID;
 @synthesize api = _api;
+@synthesize nc = _nc;
 
 @synthesize sendingImage = _sendingImage;
 @synthesize sendingText = _sendingText;
@@ -84,6 +85,13 @@
         
       
 
+        self.nc = [NSNotificationCenter defaultCenter];
+        
+        [self.nc addObserver:self selector:@selector(keyboardWillShow:) name:
+         UIKeyboardWillShowNotification object:nil];
+        
+        [self.nc addObserver:self selector:@selector(keyboardWillHide:) name:
+         UIKeyboardWillHideNotification object:nil];
 
         
     }
