@@ -82,6 +82,54 @@
     [self connectionVerification];
 }
 
+-(void)sendCustomProductWithImage:(UIImage *)image withName:(NSString *)name withImageName:(NSString *)imageName
+ withParentID:(NSInteger)parentID{
+    self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/question/add"];
+    
+    self.checkRequest = kCustomProduct;
+    
+    //створюемо запит
+    self.request = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
+    
+    NSString *boundary = @"MY_BOUNDARY_STRING";
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+    
+    NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
+    
+    
+    //NSData *parentData = [NSData dataWithBytes: &parentID length: sizeof(parentID)];
+    [self.request addValue:contentType forHTTPHeaderField:@"Content-Type"];
+    
+    NSMutableData *body = [NSMutableData data];
+    
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"foto\"; filename=\"%@.jpg\"\r\n", imageName] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[NSData dataWithData:imageData]];
+    
+     [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+     [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"parent_id\"\r\n\r\n%d", parentID] dataUsingEncoding:NSUTF8StringEncoding]];
+
+    
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"title\"\r\n\r\n%@", name] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"lang\"\r\n\r\n%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"token\"\r\n\r\n%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"authorization_Token"]] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    //вказуэм тіло запиту
+    [self.request setHTTPBody:body];
+    
+    //вказуэм протокол доступу
+    [self.request setHTTPMethod:@"POST"];
+    
+    [self connectionVerification];
+}
+
 - (void)checkCode:(NSString *)code
 {
     self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/code"];

@@ -12,6 +12,8 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <QuartzCore/QuartzCore.h>
 #import "PrettyKit.h"
+#import "MSAnimationView.h"
+
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
 #define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
@@ -22,6 +24,7 @@
 
 @interface MSAskViewController ()
 @property (strong, nonatomic) NSArray *questionsArray;
+@property CGRect addingViewFrame;
 
 @property int questionsCount;
 @property (strong, nonatomic) NSMutableData *receivedData;
@@ -33,6 +36,8 @@
 @end
 
 @implementation MSAskViewController
+@synthesize addingViewFrame = _addingViewFrame;
+@synthesize addingView = _addingView;
 @synthesize headerButton = _headerButton;
 @synthesize tableOfCategories = _tableOfCategories;
 @synthesize questionsArray = _questionsArray;
@@ -300,8 +305,7 @@
 -(void)pictureMyProduct
 {
     NSLog(@"Gonna pic");
-    
-    //перевірка наявності камири в девайсі
+            //перевірка наявності камири в девайсі
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
         //якщо є
@@ -319,6 +323,7 @@
         
         [cameraNotAvailableMessage show];
     }
+    
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -343,9 +348,20 @@
     UIImage *compressedImage = [UIImage imageWithData:data];
     
     [picker dismissModalViewControllerAnimated:YES];
+    self.addingView = [[MSAddingProductView alloc] initWithOrigin:CGPointMake(25, self.view.frame.size.height/2 - 120)];
+    [self.addingView.productImageView setImage:compressedImage];
+    self.addingView.categoryID = self.upperID;
+    
+
+    [self.view addSubview:self.addingView];
+    
+    [self.addingView attachPopUpAnimationForView:self.addingView.contentView];
+
 
 }
-
+-(void)dismissPopView:(BOOL)loginResult{
+    
+}
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [picker dismissModalViewControllerAnimated:YES];

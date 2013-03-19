@@ -75,6 +75,7 @@
 		F5F6AE87169C4F65000247D9 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F5F6AE84169C4F65000247D9 /* LICENSE */; };
 		F5F6AE8A169C4F72000247D9 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = F5F6AE89169C4F72000247D9 /* tessdata */; };
 		F5F6AE8F169C5153000247D9 /* MSFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F6AE8E169C5153000247D9 /* MSFirstViewController.m */; };
+		F5FB859816F7865B006BF11B /* MSAddingProductView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5FB859716F7865B006BF11B /* MSAddingProductView.m */; };
 		F5FF667C16D7798F00E64AD9 /* MSInquirerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5FF667B16D7798F00E64AD9 /* MSInquirerCell.m */; };
 		F5FF668616D7864C00E64AD9 /* likeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF668516D7864B00E64AD9 /* likeIcon.png */; };
 		F5FF668816D7910000E64AD9 /* questionMark.png in Resources */ = {isa = PBXBuildFile; fileRef = F5FF668716D7910000E64AD9 /* questionMark.png */; };
@@ -393,6 +394,8 @@
 		F5F6AE89169C4F72000247D9 /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tessdata; sourceTree = "<group>"; };
 		F5F6AE8D169C5153000247D9 /* MSFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSFirstViewController.h; sourceTree = "<group>"; };
 		F5F6AE8E169C5153000247D9 /* MSFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSFirstViewController.m; sourceTree = "<group>"; };
+		F5FB859616F7865B006BF11B /* MSAddingProductView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAddingProductView.h; sourceTree = "<group>"; };
+		F5FB859716F7865B006BF11B /* MSAddingProductView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSAddingProductView.m; sourceTree = "<group>"; };
 		F5FF667A16D7798F00E64AD9 /* MSInquirerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSInquirerCell.h; sourceTree = "<group>"; };
 		F5FF667B16D7798F00E64AD9 /* MSInquirerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSInquirerCell.m; sourceTree = "<group>"; };
 		F5FF668516D7864B00E64AD9 /* likeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeIcon.png; sourceTree = "<group>"; };
@@ -634,6 +637,8 @@
 				FAA0FCBE16BAD1D8005AF32E /* Vkontakte.m */,
 				FAA0FCBF16BAD20A005AF32E /* VkontakteViewController.h */,
 				FAA0FCC016BAD20A005AF32E /* VkontakteViewController.m */,
+				F5FB859616F7865B006BF11B /* MSAddingProductView.h */,
+				F5FB859716F7865B006BF11B /* MSAddingProductView.m */,
 				FAFB5E0916C2650F001B692B /* MSAnimationView.h */,
 				FAFB5E0A16C2650F001B692B /* MSAnimationView.m */,
 				FA9094D516CA7B8D007F9441 /* MSAddCommentView.h */,
@@ -1234,6 +1239,7 @@
 				FA82F7EB16DE58ED00BFDF97 /* MSBonusCatalogViewController.m in Sources */,
 				FAA2B2C616DF638800A3F847 /* MSBonusSubCatalogViewController.m in Sources */,
 				FA5B95FF16F47456000D121C /* MSOrderBonusView.m in Sources */,
+				F5FB859816F7865B006BF11B /* MSAddingProductView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
