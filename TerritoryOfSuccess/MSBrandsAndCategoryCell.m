@@ -7,7 +7,6 @@
 //
 
 #import "MSBrandsAndCategoryCell.h"
-
 @implementation MSBrandsAndCategoryCell
 @synthesize categoryOrBrandAvailable = _categoryOrBrandAvailable;
 @synthesize categoryOrBrandImage = _categoryOrBrandImage;
@@ -19,4 +18,5 @@
     [super setSelected:selected animated:animated];
 
 }
+
 @end

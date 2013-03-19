@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MSAPI.h"
+#import "MSAddingProductView.h"
 @protocol AddingRequestStringDelegate <NSObject>
 -(void)addProduct:(NSString *)string withURL:(NSString *)ulr;
 -(void)saveTitleView:(NSString *)string;
@@ -15,7 +16,7 @@
 -(void)setUpperId:(int)upperId;
 @end
 
-@interface MSAskViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, WsCompleteDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface MSAskViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, WsCompleteDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, dismissView>
 @property (weak, nonatomic) IBOutlet UITableView *tableOfCategories;
 - (IBAction)backButtonPressed:(id)sender;
 @property (nonatomic) id translatingValue;
@@ -24,6 +25,7 @@
 @property (weak, nonatomic) NSURL *translatingUrl;
 @property (weak, nonatomic) NSString *sendingTitle;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *upButton;
+@property (strong, nonatomic) MSAddingProductView *addingView;
 @property (strong, nonatomic) id <AddingRequestStringDelegate> delegate;
 @property (strong, nonatomic) NSString *upperTitle;
 @property (nonatomic) NSInteger upperID;
