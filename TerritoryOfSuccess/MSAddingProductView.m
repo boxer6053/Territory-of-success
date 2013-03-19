@@ -167,11 +167,18 @@
     
     self.sendingText =[firstPart stringByAppendingString:self.productTextField.text];
     //self.productTextField.text;
+    if(self.sendingText == nil){
+        UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ErrorKey", nil) message:NSLocalizedString(@"FillAllFieldsKey", nil) delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [failmessage show];
+    }
+    else{
+    NSLog(@"length %d", self.brandTextField.text.length);
     NSLog(@"category ID %d",self.categoryID);
     NSLog(@"name %@",self.sendingText);
     [self.api sendCustomProductWithImage:self.sendingImage withName:self.sendingText withImageName:@"productImage" withParentID:self.categoryID];
     [self.delegate updateTable];
     [self dismissSendingViewWithResult:YES];
+    }
     
 }
 - (void)keyboardWillShow:(NSNotification *)note
