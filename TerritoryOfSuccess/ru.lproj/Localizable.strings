@@ -108,6 +108,7 @@
 "InquirerKey" = "Опросы";
 "AddProductKey" = "Добавить продукт";
 "SendKey" = "Отправить";
+"BackKey" = "Назад";
 
 // Новости
 "DownloadingInformationKey" = "Загрузка информации...";

@@ -110,6 +110,8 @@
 "InquirerKey" = "Inquiries";
 "AddProductKey" = "Add product";
 "SendKey" = "Send";
+"BackKey" = "Back";
+
 
 // Новости
 "DownloadingInformationKey" = "Downloading information...";

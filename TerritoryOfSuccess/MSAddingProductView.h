@@ -23,7 +23,9 @@
 @property (strong, nonatomic) UIView *contentView;
 @property (strong, nonatomic) UIImageView *productImageView;
 @property (strong, nonatomic) UITextField *productTextField;
+@property (strong, nonatomic) UITextField *brandTextField;
 @property (strong, nonatomic) UILabel *categoryLabel;
+@property (strong, nonatomic) UILabel *brandLabel;
 @property (strong, nonatomic) UIButton *cancelButton;
 @property (strong, nonatomic) UIButton *sendProductButton;
 

@@ -86,6 +86,8 @@
     [self.cleanButton setTitle:NSLocalizedString(@"CleanKey",nil) forState:UIControlStateNormal];
     [self.askButton setBackgroundImage:[UIImage imageNamed:@"chooseButton.png"] forState:UIControlStateNormal];
     [self.cleanButton setBackgroundImage:[UIImage imageNamed:@"chooseButton copy.png"] forState:UIControlStateNormal];
+    [self.askButton setBackgroundImage:[UIImage imageNamed:@"chooseButton.png"] forState:UIControlStateDisabled];
+    [self.cleanButton setBackgroundImage:[UIImage imageNamed:@"chooseButton copy.png"] forState:UIControlStateDisabled];
     self.askButton.frame = CGRectMake(0, 0, 155, 40);
     self.cleanButton.frame = CGRectMake(155, 0, 155, 40);
   
