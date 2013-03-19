@@ -75,11 +75,16 @@
 - (void)viewDidLoad
 {
     self.tableOfCategories.tableHeaderView = nil;
-    self.headerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.tableOfCategories.frame.size.width, 30)];
-    [self.headerButton setTitle:NSLocalizedString(@"DownloadMoreKey",nil) forState:UIControlStateNormal];
-    self.headerButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
+    self.headerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.tableOfCategories.frame.size.width, 60)];
+    [self.headerButton setTitle:NSLocalizedString(@"AddProductKey",nil) forState:UIControlStateNormal];
+    [self.headerButton setImage:[UIImage imageNamed:@"header.png"] forState:UIControlStateNormal];
+        
     [self.headerButton setTitleColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4] forState:UIControlStateNormal];
     [self.headerButton addTarget:self action:@selector(pictureMyProduct) forControlEvents:UIControlEventTouchDown];
+    [self.headerButton.layer setBorderWidth:1];
+    [self.headerButton.layer setBorderColor:[[UIColor grayColor] CGColor]];
+    [self.headerButton setAlpha:0.7];
+    
     self.thisIsProducts = NO;
     [self customizeNavBar];
     if(!self.upperTitle){
@@ -278,8 +283,10 @@
 //    [_upButton setEnabled:NO];
 //}
 - (IBAction)backButtonPressed:(id)sender {
+
     [self.backIds removeLastObject];
     [self.backTitles removeLastObject];
+    self.tableOfCategories.tableHeaderView = nil;
     NSLog(@"Last object %@", [self.backTitles lastObject]);
     if(self.backTitles.count !=0){
         [self.navigationBar.topItem setTitle:[self.backTitles lastObject]];
@@ -351,6 +358,8 @@
     self.addingView = [[MSAddingProductView alloc] initWithOrigin:CGPointMake(25, self.view.frame.size.height/2 - 120)];
     [self.addingView.productImageView setImage:compressedImage];
     self.addingView.categoryID = self.upperID;
+    self.addingView.sendingImage = compressedImage;
+    self.addingView.delegate = self;
     
 
     [self.view addSubview:self.addingView];
@@ -359,14 +368,18 @@
 
 
 }
--(void)dismissPopView:(BOOL)loginResult{
-    
-}
+-(void)dismissPopViewAdd:(BOOL)sendResult{
+ }
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [picker dismissModalViewControllerAnimated:YES];
-}
+   
 
+}
+-(void)updateTable{
+    
+    [self.api getQuestionsWithParentID:self.upperID];
+}
 static inline double radians (double degrees) {return degrees * M_PI/180;}
 
 //зміна розміру фото

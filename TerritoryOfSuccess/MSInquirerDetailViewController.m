@@ -47,7 +47,8 @@
 
 - (void)viewDidLoad
 {
-    [self.navigationItem.rightBarButtonItem setTitle:NSLocalizedString(@"AnswersKey",nil)];
+   
+   // [self.navigationItem.rightBarButtonItem setTitle:NSLocalizedString(@"AnswersKey",nil)];
     NSLog(@"itemID %ld", (long)self.itemID);
     NSLog(@"getted %@",self.productName);
     NSLog(@"adfdsfsdf%d", _inquirerType);
@@ -117,11 +118,15 @@
 
      }
     if(type == kQuestStat){
-        NSString *message = [dictionary valueForKey:@"message"];
-        if([message isEqualToString:@"An error occurred"]){
+        NSString *message = [dictionary valueForKey:@"status"];
+        if(![message isEqualToString:@"failed"]){
             NSLog(@"not my");
-            [self.toStatButton setEnabled:NO];
-            self.navigationItem.rightBarButtonItem.enabled = NO ;
+            UIBarButtonItem *flipButton = [[UIBarButtonItem alloc]
+                                           initWithTitle:NSLocalizedString(@"AnswersKey",nil)
+                                           style:UIBarButtonItemStyleBordered
+                                           target:self
+                                           action:@selector(toStatAction)];
+            self.navigationItem.rightBarButtonItem = flipButton;
 
         }
        // [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
@@ -167,17 +172,22 @@
         UIButton *likeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 
             [likeButton setBackgroundImage:[UIImage imageNamed:@"chooseButton.png"] forState:UIControlStateNormal];
+        
            
 //        [likeButton setBackgroundImage:[UIImage imageNamed:@"likeWithOpacity copy.png"] forState:UIControlStateNormal];
         [likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateDisabled];
         [likeButton setTitle:NSLocalizedString(@"LikeKey", nil) forState:UIControlStateNormal];
+        
         [likeButton addTarget:self action:@selector(likeAction)  forControlEvents:UIControlEventTouchUpInside];
         //[self.view addSubview:likeButton];
         UIButton *dislikeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [dislikeButton setBackgroundImage:[UIImage imageNamed:@"dislikeWithOpacity copy.png"] forState:UIControlStateNormal];
+       // [dislikeButton setBackgroundImage:[UIImage imageNamed:@"dislikeWithOpacity copy.png"] forState:UIControlStateNormal];
          [dislikeButton setBackgroundImage:[UIImage imageNamed:@"chooseButton copy.png"] forState:UIControlStateNormal];
         //[dislikeButton setBackgroundColor:[UIColor blackColor]];
        [dislikeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [dislikeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateDisabled];
+
        [dislikeButton setTitle:NSLocalizedString(@"DislikeKey", nil) forState:UIControlStateNormal];
         [dislikeButton addTarget:self action:@selector(dislikeAction) forControlEvents:UIControlEventTouchUpInside];
        // [self.view addSubview:dislikeButton];
@@ -186,8 +196,8 @@
         [productView addSubview:dislikeButton];
         [self.view addSubview:productView];
         if(self.ownerIndex ==1){
-            likeButton.enabled = NO;
-            dislikeButton.enabled = NO;
+            likeButton = nil;
+            dislikeButton= nil;
         }
         else{
             likeButton.enabled = YES;
@@ -275,10 +285,14 @@
         for(int i=0;i<6;i++)
         {
             //UIButton *currentButton = [arrayOfViews objectAtIndex:i];
+            
             [[arrayOfViews objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"bag.png"] forState:UIControlStateNormal];
             UIButton *currentButton = [arrayOfViews objectAtIndex:i];
             currentButton.layer.cornerRadius = 10;
             currentButton.clipsToBounds= YES;
+            if(self.ownerIndex ==1){
+                currentButton.userInteractionEnabled = 0;
+            }
             UILabel *currentLabel = [arrayOfNames objectAtIndex:i];
             [currentLabel setText:@"name"];
             [currentLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12]];
@@ -313,7 +327,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)toStatAction
+{
+    [self performSegueWithIdentifier:@"toStat" sender:self] ;
+}
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if([segue.identifier isEqualToString: @"toStat"]){
