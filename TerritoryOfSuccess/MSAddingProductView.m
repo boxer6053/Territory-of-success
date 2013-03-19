@@ -112,7 +112,29 @@
     [self dismissSendingViewWithResult:YES];
     
 }
+- (void)keyboardWillShow:(NSNotification *)note
+{
+    if (!([[UIScreen mainScreen] bounds].size.height == 568))
+    {
+        [UIView animateWithDuration:0.2 animations:
+         ^{
+             self.contentView.frame = CGRectMake(self.contentView.frame.origin.x, self.contentView.frame.origin.y - 50, self.contentView.frame.size.width, self.contentView.frame.size.height);
+         }];
+    }
+    //    [self addGestureRecognizer:self.tapRecognizer];
+}
 
+- (void)keyboardWillHide:(NSNotification *)note
+{
+    if (!([[UIScreen mainScreen] bounds].size.height == 568))
+    {
+        [UIView animateWithDuration:0.2 animations:
+         ^{
+             self.contentView.frame = CGRectMake(self.contentView.frame.origin.x, self.contentView.frame.origin.y + 50, self.contentView.frame.size.width, self.contentView.frame.size.height);
+         }];
+    }
+    //    [self removeGestureRecognizer:self.tapRecognizer];
+}
 -(void)cancelPressed
 {
    // [self.delegate updateTable];
