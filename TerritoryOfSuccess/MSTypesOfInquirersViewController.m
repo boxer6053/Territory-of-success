@@ -69,7 +69,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _isFirstDownload = YES;
+        _isFirstDownload = YES;
     self.myQuestionsArray = [[NSMutableArray alloc] init];
        self.tableOfInquirers.tableFooterView = nil;
     self.footerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.tableOfInquirers.frame.size.width, 30)];
@@ -289,15 +289,23 @@
     if (type == kLastQuest)
     {
         
+        
         self.allQuestionsArray = [dictionary valueForKey:@"list"];
         if([[dictionary valueForKey:@"status"] isEqualToString:@"failed"])
         {
-           self.loginView = [[MSLogInView alloc]initWithOrigin:CGPointMake(25, self.view.frame.size.height/2 - 120)];
-           [self.view addSubview:self.loginView];
-           [self.loginView blackOutOfBackground];
-           [self.loginView attachPopUpAnimationForView:self.loginView.loginView];
-           self.loginView.delegate = self;
+            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Пожалуйста перезайдите в систему!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
+            [failmessage show];
+            [self.tabBarController setSelectedViewController:[self.tabBarController.viewControllers objectAtIndex:0]];
         }
+
+//        if([[dictionary valueForKey:@"status"] isEqualToString:@"failed"])
+//        {
+//           self.loginView = [[MSLogInView alloc]initWithOrigin:CGPointMake(25, self.view.frame.size.height/2 - 120)];
+//           [self.view addSubview:self.loginView];
+//           [self.loginView blackOutOfBackground];
+//           [self.loginView attachPopUpAnimationForView:self.loginView.loginView];
+//           self.loginView.delegate = self;
+//        }
         // self.numberOfRows = [[self arrayOfCategories] count];
     }
     
@@ -319,6 +327,13 @@
            [self.tableOfInquirers insertRowsAtIndexPaths: insertIndexPath withRowAnimation:NO];
             }
         }
+        if([[dictionary valueForKey:@"status"] isEqualToString:@"failed"])
+        {
+            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Пожалуйста перезайдите в систему!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
+            [failmessage show];
+            [self.tabBarController setSelectedViewController:[self.tabBarController.viewControllers objectAtIndex:0]];
+        }
+
 _isFirstDownload = NO;
     }
        [[self tableOfInquirers] reloadData];

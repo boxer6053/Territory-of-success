@@ -107,15 +107,15 @@
     self.sendingText = self.productTextField.text;
     NSLog(@"category ID %d",self.categoryID);
     NSLog(@"name %@",self.sendingText);
-    [self.api sendCustomProductWithImage:self.productImageView.image withName:self.sendingText withImageName:@"productImage" withParentID:self.categoryID];
-    [self.delegate updateTable];
+    [self.api sendCustomProductWithImage:self.sendingImage withName:self.sendingText withImageName:@"productImage" withParentID:self.categoryID];
+    //[self.delegate updateTable];
     [self dismissSendingViewWithResult:YES];
     
 }
 
 -(void)cancelPressed
 {
-    [self.delegate updateTable];
+   // [self.delegate updateTable];
     [self dismissSendingViewWithResult:YES];
 }
 -(void)blackOutOfBackground
