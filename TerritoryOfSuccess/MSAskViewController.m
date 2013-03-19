@@ -75,11 +75,16 @@
 - (void)viewDidLoad
 {
     self.tableOfCategories.tableHeaderView = nil;
-    self.headerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.tableOfCategories.frame.size.width, 30)];
+    self.headerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.tableOfCategories.frame.size.width, 60)];
     [self.headerButton setTitle:NSLocalizedString(@"AddProductKey",nil) forState:UIControlStateNormal];
-    self.headerButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
+    [self.headerButton setImage:[UIImage imageNamed:@"header.png"] forState:UIControlStateNormal];
+        
     [self.headerButton setTitleColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4] forState:UIControlStateNormal];
     [self.headerButton addTarget:self action:@selector(pictureMyProduct) forControlEvents:UIControlEventTouchDown];
+    [self.headerButton.layer setBorderWidth:1];
+    [self.headerButton.layer setBorderColor:[[UIColor grayColor] CGColor]];
+    [self.headerButton setAlpha:0.7];
+    
     self.thisIsProducts = NO;
     [self customizeNavBar];
     if(!self.upperTitle){
