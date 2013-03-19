@@ -172,6 +172,7 @@
         UIButton *likeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 
             [likeButton setBackgroundImage:[UIImage imageNamed:@"chooseButton.png"] forState:UIControlStateNormal];
+        
            
 //        [likeButton setBackgroundImage:[UIImage imageNamed:@"likeWithOpacity copy.png"] forState:UIControlStateNormal];
         [likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -195,8 +196,8 @@
         [productView addSubview:dislikeButton];
         [self.view addSubview:productView];
         if(self.ownerIndex ==1){
-            likeButton.enabled = NO;
-            dislikeButton.enabled = NO;
+            likeButton = nil;
+            dislikeButton= nil;
         }
         else{
             likeButton.enabled = YES;
@@ -284,10 +285,14 @@
         for(int i=0;i<6;i++)
         {
             //UIButton *currentButton = [arrayOfViews objectAtIndex:i];
+            
             [[arrayOfViews objectAtIndex:i] setBackgroundImage:[UIImage imageNamed:@"bag.png"] forState:UIControlStateNormal];
             UIButton *currentButton = [arrayOfViews objectAtIndex:i];
             currentButton.layer.cornerRadius = 10;
             currentButton.clipsToBounds= YES;
+            if(self.ownerIndex ==1){
+                currentButton.userInteractionEnabled = 0;
+            }
             UILabel *currentLabel = [arrayOfNames objectAtIndex:i];
             [currentLabel setText:@"name"];
             [currentLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12]];
