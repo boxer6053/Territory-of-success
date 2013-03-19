@@ -25,7 +25,6 @@
 @interface MSAskViewController ()
 @property (strong, nonatomic) NSArray *questionsArray;
 @property CGRect addingViewFrame;
-
 @property int questionsCount;
 @property (strong, nonatomic) NSMutableData *receivedData;
 @property (strong, nonatomic) MSAPI *api;
@@ -74,10 +73,15 @@
 
 - (void)viewDidLoad
 {
+    [self.backButton setTitle:NSLocalizedString(@"BackKey", nil)];
     self.tableOfCategories.tableHeaderView = nil;
-    self.headerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.tableOfCategories.frame.size.width, 60)];
+    self.headerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 44, self.tableOfCategories.frame.size.width, 60)];
+    UIImageView *headerView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 11, 50, 38)];
+    [headerView setImage:[UIImage imageNamed:@"header1.png"]];
+    [self.headerButton addSubview:headerView];
+    [self.headerButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica" size:15]];
     [self.headerButton setTitle:NSLocalizedString(@"AddProductKey",nil) forState:UIControlStateNormal];
-    [self.headerButton setImage:[UIImage imageNamed:@"header.png"] forState:UIControlStateNormal];
+  //  [self.headerButton setImage:[UIImage imageNamed:@"header.png"] forState:UIControlStateNormal];
         
     [self.headerButton setTitleColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4] forState:UIControlStateNormal];
     [self.headerButton addTarget:self action:@selector(pictureMyProduct) forControlEvents:UIControlEventTouchDown];
@@ -136,7 +140,16 @@
 {
     return 1;
 }
-
+//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+//    UIView *tempVeiw = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+//    [tempVeiw setBackgroundColor:[UIColor redColor]];
+//    if(self.thisIsProducts){
+//    return tempVeiw;
+//    }
+//    else{
+//        [tempVeiw isHidden];
+//    }    
+//}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.questionsArray.count;
@@ -158,7 +171,6 @@
     }
     else
     {
-        [cell.productImage setImage:[UIImage imageNamed:@"bag.png"]];
         [cell.productImage setImageWithURL:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"] placeholderImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
     }
     if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
@@ -168,20 +180,22 @@
         cell.nameLabel.minimumScaleFactor = 0.8;
         cell.nameLabel.adjustsFontSizeToFitWidth = YES;
     }
-
+  
     cell.nameLabel.text = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
     
-        if([[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"] isEqualToString:@""])
-            
-        {
-    NSString *countValue = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"];
-    cell.countLabel.text = [@"available :" stringByAppendingString:countValue];
-    }
-        else{
-            [cell.countLabel setText:@"available!"];
+    if(!self.thisIsProducts){
+    cell.countLabel.text = [@"got "stringByAppendingString:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"]];
+        if([cell.countLabel.text isEqualToString:@"got 0"]){
+            //cell.userInteractionEnabled = NO;
         }
+    }
+    else
+    {
+        cell.countLabel.text = @"";
+    }
     return cell;
 }
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.backButton setEnabled:YES];
@@ -258,13 +272,18 @@
     if(products.count != 0){
         NSLog(@"THis is products");
         self.thisIsProducts  = YES;
-        self.tableOfCategories.tableHeaderView = self.headerButton;
+        [self.tableOfCategories setFrame:CGRectMake(0, 104, 320, 376)];
+        //self.tableOfCategories.tableHeaderView = self.headerButton;
+        [self.view addSubview:self.headerButton];
+    }
+    else{
+          [self.tableOfCategories setFrame:CGRectMake(0, 44, 320, 480)];
     }
         [_tableOfCategories reloadData];
         
-        //  _questionsCount = 0;
+     
     }
-   //  [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
+   
 }
 
 - (IBAction)cancel:(id)sender {
@@ -283,7 +302,8 @@
 //    [_upButton setEnabled:NO];
 //}
 - (IBAction)backButtonPressed:(id)sender {
-
+    self.thisIsProducts = NO;
+    [self.headerButton removeFromSuperview];
     [self.backIds removeLastObject];
     [self.backTitles removeLastObject];
     self.tableOfCategories.tableHeaderView = nil;
@@ -302,7 +322,6 @@
     
     
     [self.api getQuestionsWithParentID:lastId];
-        //[self.tableOfCategories reloadData];
     }
     else{
         [self.api getQuestionsWithParentID:0];
@@ -355,7 +374,7 @@
     UIImage *compressedImage = [UIImage imageWithData:data];
     
     [picker dismissModalViewControllerAnimated:YES];
-    self.addingView = [[MSAddingProductView alloc] initWithOrigin:CGPointMake(25, self.view.frame.size.height/2 - 120)];
+    self.addingView = [[MSAddingProductView alloc] initWithOrigin:CGPointMake(0, self.view.frame.size.height/2 - 120)];
     [self.addingView.productImageView setImage:compressedImage];
     self.addingView.categoryID = self.upperID;
     self.addingView.sendingImage = compressedImage;
