@@ -8,15 +8,16 @@
 
 #import "MSAnimationView.h"
 #import "MSAPI.h"
-@protocol dismissView
+@protocol dismissViewAdd
 
 @required
--(void)dismissPopView:(BOOL)sendResult;
+-(void)dismissPopViewAdd:(BOOL)sendResult;
+-(void)updateTable;
 
 @end
 
 @interface MSAddingProductView : MSAnimationView<UITextFieldDelegate, WsCompleteDelegate>
-@property (strong, nonatomic) id <dismissView> delegate;
+@property (strong, nonatomic) id <dismissViewAdd> delegate;
 @property (nonatomic, strong) MSAPI *api;
 
 @property (strong, nonatomic) UIView *contentView;

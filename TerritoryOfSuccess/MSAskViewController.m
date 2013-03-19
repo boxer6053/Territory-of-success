@@ -278,8 +278,10 @@
 //    [_upButton setEnabled:NO];
 //}
 - (IBAction)backButtonPressed:(id)sender {
+
     [self.backIds removeLastObject];
     [self.backTitles removeLastObject];
+    self.tableOfCategories.tableHeaderView = nil;
     NSLog(@"Last object %@", [self.backTitles lastObject]);
     if(self.backTitles.count !=0){
         [self.navigationBar.topItem setTitle:[self.backTitles lastObject]];
@@ -352,6 +354,7 @@
     [self.addingView.productImageView setImage:compressedImage];
     self.addingView.categoryID = self.upperID;
     self.addingView.sendingImage = compressedImage;
+    self.addingView.delegate = self;
     
 
     [self.view addSubview:self.addingView];
@@ -360,14 +363,18 @@
 
 
 }
--(void)dismissPopView:(BOOL)loginResult{
-    
-}
+-(void)dismissPopViewAdd:(BOOL)sendResult{
+ }
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [picker dismissModalViewControllerAnimated:YES];
-}
+   
 
+}
+-(void)updateTable{
+    
+    [self.api getQuestionsWithParentID:self.upperID];
+}
 static inline double radians (double degrees) {return degrees * M_PI/180;}
 
 //зміна розміру фото

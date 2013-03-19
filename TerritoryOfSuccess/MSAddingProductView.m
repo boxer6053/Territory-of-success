@@ -98,7 +98,8 @@
                      completion:^(BOOL finished)
      {
          [self removeFromSuperview];
-         [self.delegate dismissPopView:result];
+
+         [self.delegate dismissPopViewAdd:result];
      }];
 }
 -(void)sendPressed{
@@ -106,15 +107,16 @@
     self.sendingText = self.productTextField.text;
     NSLog(@"category ID %d",self.categoryID);
     NSLog(@"name %@",self.sendingText);
-    [self.api sendCustomProductWithImage:self.sendingImage withName:self.sendingText withImageName:@"productImage" withParentID:self.categoryID];
+    [self.api sendCustomProductWithImage:self.productImageView.image withName:self.sendingText withImageName:@"productImage" withParentID:self.categoryID];
+    [self.delegate updateTable];
     [self dismissSendingViewWithResult:YES];
     
 }
 
 -(void)cancelPressed
 {
-    
-[self dismissSendingViewWithResult:YES];
+    [self.delegate updateTable];
+    [self dismissSendingViewWithResult:YES];
 }
 -(void)blackOutOfBackground
 {
