@@ -38,7 +38,7 @@
         self.sendingText = [[NSString alloc]init];
         self.sendingImage = [[UIImage alloc] init];
         [self setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.0]];
-        self.contentView = [[UIView alloc]initWithFrame:CGRectMake(origin.x, origin.y, 260, 250)];
+        self.contentView = [[UIView alloc]initWithFrame:CGRectMake(origin.x, origin.y, 270, 250)];
         [self.contentView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"dialogViewGradient.png"]]];
         [self.contentView.layer setCornerRadius:10.0];
         [self.contentView.layer setBorderColor:[UIColor colorWithWhite:0.5 alpha:1.0].CGColor];
@@ -46,24 +46,24 @@
         [self.contentView setClipsToBounds:YES];
         [self addSubview:self.contentView];
         
-        self.categoryLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 20, 70, 21)];
-         self.categoryLabel.text = @"e-mail:";
-         self.categoryLabel.font = [UIFont fontWithName:@"Helvetica" size:14];
-         self.categoryLabel.textColor = [UIColor whiteColor];
+        self.categoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(130, 30, 100, 60)];
+        self.categoryLabel.numberOfLines = 2;
+        self.categoryLabel.text = NSLocalizedString(@"ProductNameKey", nil);
          self.categoryLabel.backgroundColor = [UIColor clearColor];
+        self.categoryLabel.lineBreakMode = UILineBreakModeWordWrap;
+        [self.categoryLabel setTextColor:[UIColor whiteColor]];
         [self.contentView addSubview:self.categoryLabel];
         
         self.productImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 100, 100)];
         [self.productImageView setImage:[UIImage imageNamed:@"plaseholder_415*415.png"]];
         [self.contentView addSubview:self.productImageView];
-        self.productTextField = [[UITextField alloc]initWithFrame:CGRectMake(110, 51, 175, 30)];
-        [self.contentView addSubview:self.productTextField];
+     
         
         self.sendProductButton = [[UIButton alloc]initWithFrame:CGRectMake(10, 200, 120, 35)];
         [self.sendProductButton setBackgroundImage:[UIImage imageNamed:@"button_120*35_new.png"] forState:UIControlStateNormal];
         self.sendProductButton.titleLabel.textColor = [UIColor whiteColor];
         self.sendProductButton.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:13];
-        [self.sendProductButton setTitle:NSLocalizedString(@"Войти", nil) forState:UIControlStateNormal];
+        [self.sendProductButton setTitle:NSLocalizedString(@"SendKey", nil) forState:UIControlStateNormal];
         [self.sendProductButton addTarget:self action:@selector(sendPressed) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:self.sendProductButton];
         
@@ -75,17 +75,15 @@
         [self.cancelButton addTarget:self action:@selector(cancelPressed) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:self.cancelButton];
         
-        self.productTextField = [[UITextField alloc]initWithFrame:CGRectMake(10, 120, 240, 30)];
+        self.productTextField = [[UITextField alloc]initWithFrame:CGRectMake(10, 120, 250, 30)];
         self.productTextField.borderStyle = UITextBorderStyleRoundedRect;
         self.productTextField.clearButtonMode = YES;
         self.productTextField.delegate = self;
         self.productTextField.keyboardType = UIKeyboardTypeEmailAddress;
         [self.contentView addSubview:self.productTextField];
         
-        self.categoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(130, 30, 100, 30)];
-        self.categoryLabel.text = @"Input name";
-        [self.categoryLabel setBackgroundColor:[UIColor clearColor]];
-        [self.contentView addSubview:self.categoryLabel];
+      
+
 
         
     }

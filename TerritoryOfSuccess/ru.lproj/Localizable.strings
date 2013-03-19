@@ -106,6 +106,8 @@
 "ItemKey" = "Товар";
 "DescriptionCreatingKey" = "Выберите 1 товар для создания опроса \"Оцените товар\" или более для \"Какой товар лучше\"";
 "InquirerKey" = "Опросы";
+"AddProductKey" = "Добавить продукт";
+"SendKey" = "Отправить";
 
 // Новости
 "DownloadingInformationKey" = "Загрузка информации...";

@@ -108,6 +108,8 @@
 "ItemKey" = "Item";
 "DescriptionCreatingKey" = "Pick 1 product for \"Grade a product\" interrogation or more for \"Choose a product\" interrogation";
 "InquirerKey" = "Inquiries";
+"AddProductKey" = "Add product";
+"SendKey" = "Send";
 
 // Новости
 "DownloadingInformationKey" = "Downloading information...";

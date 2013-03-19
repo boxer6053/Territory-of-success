@@ -76,7 +76,7 @@
 {
     self.tableOfCategories.tableHeaderView = nil;
     self.headerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.tableOfCategories.frame.size.width, 30)];
-    [self.headerButton setTitle:NSLocalizedString(@"DownloadMoreKey",nil) forState:UIControlStateNormal];
+    [self.headerButton setTitle:NSLocalizedString(@"AddProductKey",nil) forState:UIControlStateNormal];
     self.headerButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
     [self.headerButton setTitleColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4] forState:UIControlStateNormal];
     [self.headerButton addTarget:self action:@selector(pictureMyProduct) forControlEvents:UIControlEventTouchDown];
@@ -351,6 +351,7 @@
     self.addingView = [[MSAddingProductView alloc] initWithOrigin:CGPointMake(25, self.view.frame.size.height/2 - 120)];
     [self.addingView.productImageView setImage:compressedImage];
     self.addingView.categoryID = self.upperID;
+    self.addingView.sendingImage = compressedImage;
     
 
     [self.view addSubview:self.addingView];
