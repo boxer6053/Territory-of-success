@@ -79,7 +79,7 @@
     self.tableOfCategories.tableHeaderView = nil;
     self.headerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 44, self.tableOfCategories.frame.size.width, 60)];
     UIImageView *headerView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 11, 50, 38)];
-    [headerView setImage:[UIImage imageNamed:@"header1.png"]];
+    [headerView setImage:[UIImage imageNamed:@"hheader.png"]];
     [self.headerButton addSubview:headerView];
     [self.headerButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica" size:15]];
     [self.headerButton setTitle:NSLocalizedString(@"AddProductKey",nil) forState:UIControlStateNormal];
