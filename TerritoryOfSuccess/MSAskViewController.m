@@ -29,12 +29,14 @@
 @property (strong, nonatomic) NSMutableData *receivedData;
 @property (strong, nonatomic) MSAPI *api;
 @property BOOL thisIsProducts;
+@property BOOL nothing;
 @property UIButton *headerButton;
 
 
 @end
 
 @implementation MSAskViewController
+@synthesize nothing = _nothing;
 @synthesize addingViewFrame = _addingViewFrame;
 @synthesize addingView = _addingView;
 @synthesize headerButton = _headerButton;
@@ -184,10 +186,8 @@
     cell.nameLabel.text = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
     
     if(!self.thisIsProducts){
-    cell.countLabel.text = [@"got "stringByAppendingString:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"]];
-        if([cell.countLabel.text isEqualToString:@"got 0"]){
-            //cell.userInteractionEnabled = NO;
-        }
+    cell.countLabel.text = [NSLocalizedString(@"AvailableKey:", nil) stringByAppendingString:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"]];
+     
     }
     else
     {
@@ -198,14 +198,16 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.backButton setEnabled:YES];
+    
     self.upButtonShows = YES;
     [self.navigationItem.rightBarButtonItem setEnabled:YES];
     self.translatingValue = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"];
     
     
+    
     if([[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"] integerValue] != 0)
     {
+        [self.backButton setEnabled:YES];
        // NSInteger currentSubCategory = [[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
         
         self.upperTitle = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
@@ -219,17 +221,18 @@
       
     }
     else
+        
     {
         if(self.defaultID)
         {self.upperID = self.defaultID;
         }
         if([[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"] isEqualToString:@""])
         {
-            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Sorry" message:@"No picture or not enough data =(" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-            [failmessage show];
+            self.nothing = YES;
         }
         else
         {
+            [self.backButton setEnabled:YES];
             _translatingUrl = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"];
             _sendingTitle = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
             self.finalID = self.defaultID;
@@ -243,8 +246,9 @@
         }
         
     }
+    if(!self.nothing){
     [self.navigationBar.topItem setTitle:self.upperTitle];
-
+    }
 }
 
 
@@ -272,12 +276,22 @@
     if(products.count != 0){
         NSLog(@"THis is products");
         self.thisIsProducts  = YES;
-        [self.tableOfCategories setFrame:CGRectMake(0, 104, 320, 376)];
+        if ([[UIScreen mainScreen] bounds].size.height == 568) {
+        [self.tableOfCategories setFrame:CGRectMake(0, 104, 320, 440)];
+        }
+        else{
+            [self.tableOfCategories setFrame:CGRectMake(0, 104, 320, 356)];
+        }
         //self.tableOfCategories.tableHeaderView = self.headerButton;
         [self.view addSubview:self.headerButton];
     }
     else{
-          [self.tableOfCategories setFrame:CGRectMake(0, 44, 320, 480)];
+        if ([[UIScreen mainScreen] bounds].size.height == 568) {
+            [self.tableOfCategories setFrame:CGRectMake(0, 44, 320, 504)];
+        }
+        else{
+          [self.tableOfCategories setFrame:CGRectMake(0, 44, 320, 416)];
+        }
     }
         [_tableOfCategories reloadData];
         

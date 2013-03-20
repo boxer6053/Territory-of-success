@@ -67,34 +67,34 @@
         
         
         
-        self.categoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(140, 5, 150, 20)];
-        
-        self.categoryLabel.numberOfLines = 1;
-        self.categoryLabel.text = NSLocalizedString(@"ProductNameKey", nil);
-        self.categoryLabel.backgroundColor = [UIColor clearColor];
-        [self.categoryLabel setTextColor:[UIColor whiteColor]];
-        [self.contentView addSubview:self.categoryLabel];
-        
-        self.brandLabel = [[UILabel alloc] initWithFrame:CGRectMake(140, 60, 100, 20)];
-        self.brandLabel.numberOfLines = 1;
-        self.brandLabel.text = NSLocalizedString(@"BrandKey", nil);
-        self.brandLabel.backgroundColor = [UIColor clearColor];
-        self.brandLabel.lineBreakMode = UILineBreakModeWordWrap;
-        [self.brandLabel setTextColor:[UIColor whiteColor]];
-        [self.contentView addSubview:self.brandLabel];
-        
-        if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
-            self.categoryLabel.minimumFontSize = 8.0f;
-            self.categoryLabel.adjustsFontSizeToFitWidth = YES;
-            self.brandLabel.minimumFontSize = 8.0f;
-            self.brandLabel.adjustsFontSizeToFitWidth = YES;
-        }else{
-            self.categoryLabel.minimumScaleFactor = 0.7;
-            self.categoryLabel.adjustsFontSizeToFitWidth = YES;
-            self.brandLabel.minimumScaleFactor = 0.7;
-            self.brandLabel.adjustsFontSizeToFitWidth = YES;
-        }
-        
+//        self.categoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(140, 5, 150, 20)];
+//        
+//        self.categoryLabel.numberOfLines = 1;
+//        self.categoryLabel.text = NSLocalizedString(@"ProductNameKey", nil);
+//        self.categoryLabel.backgroundColor = [UIColor clearColor];
+//        [self.categoryLabel setTextColor:[UIColor whiteColor]];
+//        [self.contentView addSubview:self.categoryLabel];
+//        
+//        self.brandLabel = [[UILabel alloc] initWithFrame:CGRectMake(140, 60, 100, 20)];
+//        self.brandLabel.numberOfLines = 1;
+//        self.brandLabel.text = NSLocalizedString(@"BrandKey", nil);
+//        self.brandLabel.backgroundColor = [UIColor clearColor];
+//        self.brandLabel.lineBreakMode = UILineBreakModeWordWrap;
+//        [self.brandLabel setTextColor:[UIColor whiteColor]];
+//        [self.contentView addSubview:self.brandLabel];
+//        
+//        if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
+//            self.categoryLabel.minimumFontSize = 8.0f;
+//            self.categoryLabel.adjustsFontSizeToFitWidth = YES;
+//            self.brandLabel.minimumFontSize = 8.0f;
+//            self.brandLabel.adjustsFontSizeToFitWidth = YES;
+//        }else{
+//            self.categoryLabel.minimumScaleFactor = 0.7;
+//            self.categoryLabel.adjustsFontSizeToFitWidth = YES;
+//            self.brandLabel.minimumScaleFactor = 0.7;
+//            self.brandLabel.adjustsFontSizeToFitWidth = YES;
+//        }
+//        
         self.productImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 100, 100)];
         [self.productImageView setImage:[UIImage imageNamed:@"plaseholder_415*415.png"]];
         self.productImageView.layer.cornerRadius = 5;
@@ -102,7 +102,7 @@
         [self.contentView addSubview:self.productImageView];
      
         
-        self.sendProductButton = [[UIButton alloc]initWithFrame:CGRectMake(30, 120, 120, 35)];
+        self.sendProductButton = [[UIButton alloc]initWithFrame:CGRectMake(10, 120, 145, 35)];
         [self.sendProductButton setBackgroundImage:[UIImage imageNamed:@"button_120*35_new.png"] forState:UIControlStateNormal];
         self.sendProductButton.titleLabel.textColor = [UIColor whiteColor];
         self.sendProductButton.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:13];
@@ -110,7 +110,7 @@
         [self.sendProductButton addTarget:self action:@selector(sendPressed) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:self.sendProductButton];
         
-        self.cancelButton = [[UIButton alloc]initWithFrame:CGRectMake(160, 120, 120, 35)];
+        self.cancelButton = [[UIButton alloc]initWithFrame:CGRectMake(165, 120, 145, 35)];
         [self.cancelButton setBackgroundImage:[UIImage imageNamed:@"button_120*35_new.png"] forState:UIControlStateNormal];
         self.cancelButton.titleLabel.textColor = [UIColor whiteColor];
         self.cancelButton.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:13];
@@ -123,6 +123,7 @@
         self.productTextField.clearButtonMode = YES;
         self.productTextField.delegate = self;
         self.productTextField.keyboardType = UIKeyboardTypeEmailAddress;
+        self.productTextField.placeholder = NSLocalizedString(@"ProductNameKey", nil);
         [self.contentView addSubview:self.productTextField];
         
         self.brandTextField = [[UITextField alloc]initWithFrame:CGRectMake(120, 80, 190, 30)];
@@ -130,6 +131,7 @@
         self.brandTextField.clearButtonMode = YES;
         self.brandTextField.delegate = self;
         self.brandTextField.keyboardType = UIKeyboardTypeEmailAddress;
+        self.brandTextField.placeholder = NSLocalizedString(@"MyBrandKey", nil);
         [self.contentView addSubview:self.brandTextField];
         
         

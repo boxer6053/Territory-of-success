@@ -109,6 +109,7 @@
 "AddProductKey" = "Додати продукт";
 "SendKey" = "Надіслати";
 "BackKey" = "Назад";
+"MyBrandKey" = "Бренд";
 
 // Новости
 "DownloadingInformationKey" = "Завантаження інформації...";
