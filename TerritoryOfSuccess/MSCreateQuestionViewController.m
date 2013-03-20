@@ -74,9 +74,9 @@
 //    [self.viewForButtons addSubview:button];
 
  //  [viewForButtons setBackgroundColor:[UIColor redColor]] ;
-    self.askButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.askButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.askButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-     self.cleanButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+     self.cleanButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.cleanButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.askButton setTitleColor:[UIColor whiteColor] forState:UIControlStateDisabled];
     [self.cleanButton setTitleColor:[UIColor whiteColor] forState:UIControlStateDisabled];
@@ -92,8 +92,10 @@
     self.cleanButton.frame = CGRectMake(155, 0, 155, 40);
   
     
+    
 
     [self.askButton setEnabled:NO];
+    [self.askButton setAlpha:0.7];
     self.requestStringArray = [[NSMutableArray alloc] init];
     NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
     [self.nameLabel setText:NSLocalizedString(@"PickAProductKey", nil)];
@@ -102,9 +104,6 @@
         UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Пожалуйста перезайдите в систему!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
         [failmessage show];
 
-    
-//        self.isAuthorized = YES;
-//        [self.addQuestionButton setEnabled:YES];
     }
    [self.cleanButton setTitle:NSLocalizedString(@"CleanKey",nil) forState:UIControlStateNormal];
     [self.askButton setTitle:NSLocalizedString(@"AskKey",nil) forState:UIControlStateNormal];
@@ -120,6 +119,7 @@
     
    // [self performSegueWithIdentifier:@"pickAProduct" sender:self];
     [self.cleanButton setEnabled:NO];
+    [self.cleanButton setAlpha:0.7];
     self.requestString = [[NSMutableString alloc] initWithString:@""];
     
     UIButton *image1 = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -296,6 +296,8 @@
 
     [self.cleanButton setEnabled:YES];
         [self.askButton setEnabled:YES];
+        [self.askButton setAlpha:1];
+        [self.cleanButton setAlpha:1];
     }
     
 }
@@ -385,7 +387,9 @@
 //        NSLog(@"obj: %@", obj);
     [self.descriptionLabel setHidden:NO];
     [self.cleanButton setEnabled:NO];
+    [self.cleanButton setAlpha:0.7];
     [self.askButton setEnabled:NO];
+    [self.askButton setAlpha:0.7];
     
 }
 @end
