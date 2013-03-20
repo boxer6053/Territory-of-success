@@ -124,11 +124,13 @@
     
     if(!self.defaultID){
         [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadingInquirerListKey",nil)];
+          [self.tableOfCategories setUserInteractionEnabled:NO];
     [self.api getQuestionsWithParentID:0];
     }
     else
     {
         [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadingInquirerListKey",nil)];
+          [self.tableOfCategories setUserInteractionEnabled:NO];
         [self.api getQuestionsWithParentID:self.defaultID];
     }
     NSLog(@"NEWWWW");
@@ -216,6 +218,7 @@
         _questionsCount = 0;
         [_tableOfCategories reloadData];
         [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadingInquirerListKey",nil)];
+          [self.tableOfCategories setUserInteractionEnabled:NO];
         [self.api getQuestionsWithParentID:[[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue]];
         _upperID = [[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
       
@@ -295,6 +298,7 @@
     }
         NSLog(@"RELOAD");
         [self.tableOfCategories reloadData];
+                [self.tableOfCategories setUserInteractionEnabled:YES];
         
      
     }
@@ -335,10 +339,11 @@
     NSInteger lastId = [[self.backIds objectAtIndex:(self.backIds.count-1)] integerValue];
 
     
-    
+      [self.tableOfCategories setUserInteractionEnabled:NO];
     [self.api getQuestionsWithParentID:lastId];
     }
     else{
+          [self.tableOfCategories setUserInteractionEnabled:NO];
         [self.api getQuestionsWithParentID:0];
         [self.backButton setEnabled:NO];
     }
@@ -411,7 +416,7 @@
 
 }
 -(void)updateTable{
-    
+      [self.tableOfCategories setUserInteractionEnabled:NO];
     [self.api getQuestionsWithParentID:self.upperID];
 }
 static inline double radians (double degrees) {return degrees * M_PI/180;}
