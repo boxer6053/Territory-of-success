@@ -293,7 +293,8 @@
           [self.tableOfCategories setFrame:CGRectMake(0, 44, 320, 416)];
         }
     }
-        [_tableOfCategories reloadData];
+        NSLog(@"RELOAD");
+        [self.tableOfCategories reloadData];
         
      
     }

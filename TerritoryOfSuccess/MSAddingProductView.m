@@ -178,8 +178,8 @@
     NSLog(@"category ID %d",self.categoryID);
     NSLog(@"name %@",self.sendingText);
     [self.api sendCustomProductWithImage:self.sendingImage withName:self.sendingText withImageName:@"productImage" withParentID:self.categoryID];
-    [self.delegate updateTable];
     [self dismissSendingViewWithResult:YES];
+       // [self.delegate updateTable];
     }
     
 }
@@ -208,7 +208,7 @@
 }
 -(void)cancelPressed
 {
-   // [self.delegate updateTable];
+    [self.delegate updateTable];
     [self dismissSendingViewWithResult:YES];
 }
 -(void)blackOutOfBackground
@@ -225,6 +225,12 @@
     return YES;
 }
 -(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type {
+    if(type == kCustomProduct){
+        if([[[dictionary valueForKey:@"message"] valueForKey:@"text"] isEqualToString:@"!-- quesion-item-created --!"]){
+            NSLog(@"PERFECT");
+            [self.delegate updateTable];
+        }
+    }
     
 }
 @end
