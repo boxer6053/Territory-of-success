@@ -337,9 +337,8 @@
     if(self.backIds.count != 0){
 
     NSInteger lastId = [[self.backIds objectAtIndex:(self.backIds.count-1)] integerValue];
-
-    
-      [self.tableOfCategories setUserInteractionEnabled:NO];
+        [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadingInquirerListKey",nil)];
+        [self.tableOfCategories setUserInteractionEnabled:NO];
     [self.api getQuestionsWithParentID:lastId];
     }
     else{
