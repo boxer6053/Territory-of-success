@@ -15,5 +15,7 @@
 @property (strong, nonatomic) NSArray *receivedArray;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (strong, nonatomic) NSArray *names;
+@property (weak, nonatomic) IBOutlet UILabel *votedLabel;
 
 @end

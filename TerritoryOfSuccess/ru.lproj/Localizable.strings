@@ -110,6 +110,7 @@
 "SendKey" = "Отправить";
 "BackKey" = "Назад";
 "MyBrandKey" = "Бренд";
+"VotedKey" = "Проголосовало ";
 
 // Новости
 "DownloadingInformationKey" = "Загрузка информации...";

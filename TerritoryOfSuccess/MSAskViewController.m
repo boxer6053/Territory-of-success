@@ -144,39 +144,24 @@
 {
     return 1;
 }
-//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-//    UIView *tempVeiw = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
-//    [tempVeiw setBackgroundColor:[UIColor redColor]];
-//    if(self.thisIsProducts){
-//    return tempVeiw;
-//    }
-//    else{
-//        [tempVeiw isHidden];
-//    }    
-//}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.questionsArray.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MSQuestionCell *cell;
+
     static NSString* cellIdentifier = @"questCellID";
-    cell = [_tableOfCategories dequeueReusableCellWithIdentifier:cellIdentifier];
+    MSQuestionCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
-        cell = [[MSQuestionCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+        cell = [[MSQuestionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    cell.productImage.layer.cornerRadius = 5.0f;
-    cell.productImage.clipsToBounds = YES;
-    if([[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"] isEqualToString:@""])
-    {
-        cell.productImage.image = [UIImage imageNamed:@"bag.png"];
-    }
-    else
-    {
-        [cell.productImage setImageWithURL:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"] placeholderImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
-    }
+    
+   // [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+//    cell.productImage.layer.cornerRadius = 5.0f;
+//    cell.productImage.clipsToBounds = YES;
+       [cell.productImage setImageWithURL:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"] placeholderImage:[UIImage imageNamed:@"bag.png"]];
     if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
         cell.nameLabel.minimumFontSize = 10.0f;
         cell.nameLabel.adjustsFontSizeToFitWidth = YES;
@@ -184,12 +169,9 @@
         cell.nameLabel.minimumScaleFactor = 0.8;
         cell.nameLabel.adjustsFontSizeToFitWidth = YES;
     }
-  
     cell.nameLabel.text = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
-    
     if(!self.thisIsProducts){
     cell.countLabel.text = [NSLocalizedString(@"AvailableKey:", nil) stringByAppendingString:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"]];
-     
     }
     else
     {
@@ -322,6 +304,7 @@
 //}
 - (IBAction)backButtonPressed:(id)sender {
     self.thisIsProducts = NO;
+      [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadingInquirerListKey",nil)];
     [self.headerButton removeFromSuperview];
     [self.backIds removeLastObject];
     [self.backTitles removeLastObject];
@@ -337,9 +320,8 @@
     if(self.backIds.count != 0){
 
     NSInteger lastId = [[self.backIds objectAtIndex:(self.backIds.count-1)] integerValue];
-
-    
-      [self.tableOfCategories setUserInteractionEnabled:NO];
+        [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadingInquirerListKey",nil)];
+        [self.tableOfCategories setUserInteractionEnabled:NO];
     [self.api getQuestionsWithParentID:lastId];
     }
     else{

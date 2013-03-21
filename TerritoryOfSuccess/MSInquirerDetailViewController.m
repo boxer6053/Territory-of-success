@@ -337,6 +337,11 @@
         MSStatisticViewController *controller = (MSStatisticViewController *)segue.destinationViewController;
         controller.interfaceIndex = self.count;
         controller.questionID = [self.itemID integerValue];
+        NSMutableArray *translateArray = [[NSMutableArray alloc] init];
+        for(int i=0;i<self.arrayOfProducts.count;i++){
+            [translateArray addObject:[[self.arrayOfProducts objectAtIndex:i] valueForKey:@"title"]];
+        }
+        controller.names = [translateArray mutableCopy];
         
         
         

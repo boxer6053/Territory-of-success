@@ -28,13 +28,16 @@
 @property ( nonatomic) NSInteger questionCount;
 @property (strong, nonatomic) NSArray *lastDownloaded;
 @property   BOOL isFirstDownload;
+@property (nonatomic) NSInteger counter;
 @property UIButton *footerButton;
+@property BOOL loaded;
 
 @end
 
 
 @implementation MSTypesOfInquirersViewController
 @synthesize footerButton = _footerButton;
+@synthesize counter = _counter;
 @synthesize sendingName = _sendingName;
 @synthesize tableOfInquirers = _tableOfInquirers;
 @synthesize testInquirers = _testInquirers;
@@ -51,6 +54,7 @@
 @synthesize loginView = _loginView;
 @synthesize lastDownloaded = _lastDownloaded    ;
 @synthesize isFirstDownload = _isFirstDownload;
+@synthesize loaded = _loaded;
 - (MSAPI *) api{
     if(!_api){
         _api = [[MSAPI alloc]init];
@@ -70,9 +74,10 @@
 {
     [super viewDidLoad];
         _isFirstDownload = YES;
+    
     self.myQuestionsArray = [[NSMutableArray alloc] init];
        self.tableOfInquirers.tableFooterView = nil;
-    self.footerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.tableOfInquirers.frame.size.width, 30)];
+    self.footerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.tableOfInquirers.frame.size.width, 45)];
     [self.footerButton setTitle:NSLocalizedString(@"DownloadMoreKey",nil) forState:UIControlStateNormal];
     self.footerButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
     [self.footerButton setTitleColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4] forState:UIControlStateNormal];
@@ -139,7 +144,14 @@
     {
         [self.loginView removeFromSuperview];
     }
-}
+    self.isFirstDownload = YES;
+    [self.myQuestionsArray removeAllObjects];
+    self.questionCount = 0;
+    self.counter = 0;
+    NSLog(@"LEAVING %d",self.myQuestionsArray.count);
+    [self.tableOfInquirers reloadData];
+
+    }
 
 -(void)setSegmentControlColor
 {
@@ -155,7 +167,9 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    
+      NSLog(@"COMING %d", self.myQuestionsArray.count);
+   // [self.myQuestionsArray removeAllObjects];
+    NSLog(@"COOMING %d",self.myQuestionsArray.count);
     NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
     NSString *token = [userDefults valueForKey:@"authorization_Token" ];
     if(token.length){
@@ -166,8 +180,17 @@
         self.isAuthorized = NO;
         [self.addQuestionButton setEnabled:NO];
     }
-
+    //[self.tableOfInquirers setContentOffset:CGPointMake(0, 0)];
+    //[self.inquirerTypeSegment setSelectedSegmentIndex:1];
+    if(self.inquirerTypeSegment.selectedSegmentIndex == 0)
+    {
     [self.api getLastQuestions];
+    }
+    else{
+       
+//        [self.tableOfInquirers setContentOffset:CGPointMake(0, 0)];
+        [self.api getMyQuestionsWithOffset:0];
+    }
     
     [self setSegmentControlColor];
     
@@ -264,6 +287,7 @@
     
     if(self.inquirerTypeSegment.selectedSegmentIndex == 0)
     {
+        [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadInquirersKey",nil)];
         self.allInquirerMode = YES;
         self.myInquirerMode = NO;
         [self.api getLastQuestions];
@@ -272,7 +296,7 @@
     }
     else
     {
-        
+       // [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadInquirersKey",nil)];
         self.allInquirerMode = NO;
         self.myInquirerMode = YES;
         if(_isFirstDownload){
@@ -312,6 +336,7 @@
     if (type == kMyQuestions)
     {
         self.lastDownloaded = [dictionary valueForKey:@"list"];
+        self.counter = [[dictionary valueForKey:@"count"] integerValue];
         [self.myQuestionsArray addObjectsFromArray:[dictionary valueForKey:@"list"]];
         if(_isFirstDownload){
             self.questionCount   += self.myQuestionsArray.count;
@@ -335,14 +360,33 @@
         }
 
 _isFirstDownload = NO;
+        self.loaded = YES;
     }
        [[self tableOfInquirers] reloadData];
 }
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if(self.loaded){
+    if(self.questionCount < self.counter){
+        if (self.tableOfInquirers.contentOffset.y + 300 > self.tableOfInquirers.contentSize.height)
+        {
+            [self.footerButton setTitle:NSLocalizedString(@"DownloadProductsKey", nil) forState:UIControlStateNormal];
+            [self downloadMoreQuestions];
+            self.loaded = NO;
+            NSLog(@"NOT");
+
+        }
+    }
+    else{
+        [self.footerButton setTitle:NSLocalizedString(@"AllProductsDownloadedKey", nil) forState:UIControlStateNormal];
+    }
+    }
+}
 -(void)downloadMoreQuestions{
-    _isFirstDownload = NO;
+    //_isFirstDownload = NO;
     [self.api getMyQuestionsWithOffset:self.myQuestionsArray.count -1];
     NSLog(@"load more");
 }
+
 - (void)alertView:(UIAlertView *)alertView
 clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 0){

@@ -7,6 +7,7 @@
 //
 
 #import "MSQuestionCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation MSQuestionCell
 @synthesize nameLabel = _nameLabel;
@@ -19,7 +20,6 @@
 {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
-}
+    }
 
 @end

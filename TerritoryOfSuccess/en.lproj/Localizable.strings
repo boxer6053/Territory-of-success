@@ -112,6 +112,7 @@
 "SendKey" = "Send";
 "BackKey" = "Back";
 "MyBrandKey" = "Brand";
+"VotedKey" = "Voted ";
 
 
 // Новости
