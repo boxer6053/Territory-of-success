@@ -74,6 +74,7 @@
 {
     [super viewDidLoad];
         _isFirstDownload = YES;
+    
     self.myQuestionsArray = [[NSMutableArray alloc] init];
        self.tableOfInquirers.tableFooterView = nil;
     self.footerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.tableOfInquirers.frame.size.width, 45)];
@@ -143,7 +144,14 @@
     {
         [self.loginView removeFromSuperview];
     }
-}
+    self.isFirstDownload = YES;
+    [self.myQuestionsArray removeAllObjects];
+    self.questionCount = 0;
+    self.counter = 0;
+    NSLog(@"LEAVING %d",self.myQuestionsArray.count);
+    [self.tableOfInquirers reloadData];
+
+    }
 
 -(void)setSegmentControlColor
 {
@@ -159,7 +167,9 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    
+      NSLog(@"COMING %d", self.myQuestionsArray.count);
+   // [self.myQuestionsArray removeAllObjects];
+    NSLog(@"COOMING %d",self.myQuestionsArray.count);
     NSUserDefaults *userDefults = [NSUserDefaults standardUserDefaults];
     NSString *token = [userDefults valueForKey:@"authorization_Token" ];
     if(token.length){
@@ -170,8 +180,17 @@
         self.isAuthorized = NO;
         [self.addQuestionButton setEnabled:NO];
     }
-
+    //[self.tableOfInquirers setContentOffset:CGPointMake(0, 0)];
+    //[self.inquirerTypeSegment setSelectedSegmentIndex:1];
+    if(self.inquirerTypeSegment.selectedSegmentIndex == 0)
+    {
     [self.api getLastQuestions];
+    }
+    else{
+       
+//        [self.tableOfInquirers setContentOffset:CGPointMake(0, 0)];
+        [self.api getMyQuestionsWithOffset:0];
+    }
     
     [self setSegmentControlColor];
     
@@ -363,7 +382,7 @@ _isFirstDownload = NO;
     }
 }
 -(void)downloadMoreQuestions{
-    _isFirstDownload = NO;
+    //_isFirstDownload = NO;
     [self.api getMyQuestionsWithOffset:self.myQuestionsArray.count -1];
     NSLog(@"load more");
 }
