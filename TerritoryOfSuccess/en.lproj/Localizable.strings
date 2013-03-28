@@ -81,7 +81,7 @@
 "EnterYoutPhoneNumberKey" = "Enter your phone number:";
 "MakingOrderKey" = "Making order";
 "EnterYourPhoneNumberKey" = "Please, enter your phone number";
-
+"MoreThan0StarKey" = "You shoud choose more than 1 star";
 // Опросы
 "DownloadInquirersKey" = "Loading interogation";
 "DownloadInquirerDetailKey" = "Loading detail";
