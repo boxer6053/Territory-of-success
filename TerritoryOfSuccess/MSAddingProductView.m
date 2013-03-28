@@ -97,8 +97,10 @@
 //        
         self.productImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 100, 100)];
         [self.productImageView setImage:[UIImage imageNamed:@"plaseholder_415*415.png"]];
-        self.productImageView.layer.cornerRadius = 5;
+        self.productImageView.layer.cornerRadius = 10.0f;
         self.productImageView.clipsToBounds = YES;
+        [self.productImageView.layer setBorderWidth:1.0];
+        [self.productImageView.layer setBorderColor:[UIColor colorWithWhite:0.5 alpha:1].CGColor];
         [self.contentView addSubview:self.productImageView];
      
         
