@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "SVProgressHUD.h"
 #import "MSStatisticCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
 #define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
@@ -19,11 +20,15 @@
 @interface MSStatisticViewController ()
 @property (strong, nonatomic) NSMutableData *receivedData;
 @property (strong, nonatomic) MSAPI *api;
+@property (strong, nonatomic) NSDictionary *questionDetailArray;
 @property  (nonatomic) CGFloat totalVotes;
+@property (strong, nonatomic) UIImageView *imageView;
 
 @end
 
 @implementation MSStatisticViewController
+@synthesize imageView = _imageView;
+@synthesize questionDetailArray = _questionDetailArray;
 @synthesize questionID = _questionID;
 @synthesize interfaceIndex = _interfaceIndex;
 @synthesize receivedData = _receivedData;
@@ -31,6 +36,8 @@
 @synthesize api = _api;
 @synthesize tableView = _tableView;
 @synthesize nameLabel = _nameLabel;
+@synthesize names = _names;
+@synthesize votedLabel = _votedLabel;
 
 - (MSAPI *) api{
     if(!_api){
@@ -41,7 +48,16 @@
 }
 - (void)viewDidLoad
 {
-   
+    self.votedLabel.text = @"";
+    if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
+        self.votedLabel.minimumFontSize = 10.0f;
+       self.votedLabel.adjustsFontSizeToFitWidth = YES;
+    }else{
+        self.votedLabel.minimumScaleFactor = 0.8;
+       self.votedLabel.adjustsFontSizeToFitWidth = YES;
+    }
+   // self.votedLabel = [[UILabel alloc] init];
+
     [super viewDidLoad];
 //    [self.tableView setContentOffset:CGPointMake(5, 100)animated:YES];
     [self.nameLabel setText:NSLocalizedString(@"AnswersKey", nil)];
@@ -63,6 +79,15 @@
     NSLog(@"id question %d", self.questionID);
     NSLog(@"interfaceIndex %d", self.interfaceIndex);
     [self.api getStatisticQuestionWithID:self.questionID];
+    
+    if(self.interfaceIndex == 1){
+        [self.tableView setFrame:CGRectMake(0, 210, self.tableView.frame.size.width, self.tableView.frame.size.height)];
+        self.imageView = [[UIImageView alloc]initWithFrame:CGRectMake(96, 50, 128, 128)];
+//[imageView setBackgroundColor:[UIColor redColor]];
+        [self.view addSubview:self.imageView];
+    }
+    
+   
     
 
 	// Do any additional setup after loading the view.
@@ -136,8 +161,17 @@
         NSLog(@"count %d",self.receivedArray.count);
         NSLog(@"current row %d", indexPath.row);
         NSLog(@"title %@", [[self.receivedArray objectAtIndex:indexPath.row] valueForKey:@"title"]);
-        NSString *number = [NSString stringWithFormat:@" %d",indexPath.row+1];
-        cell.titleLabel.text = [NSLocalizedString(@"ItemKey",nil) stringByAppendingString:number];
+        if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
+            cell.titleLabel.minimumFontSize = 8.0f;
+            cell.titleLabel.adjustsFontSizeToFitWidth = YES;
+        }else{
+            cell.titleLabel.minimumScaleFactor = 0.7;
+            cell.titleLabel.adjustsFontSizeToFitWidth = YES;
+        }
+        //NSString *number = [NSString stringWithFormat:@" %d",indexPath.row+1];
+        cell.titleLabel.text = [[self.receivedArray objectAtIndex:indexPath.row] valueForKey:@"title"];
+        [cell.productImageView setImageWithURL:[[self.receivedArray objectAtIndex:indexPath.row] valueForKey:@"image"] placeholderImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
+        //cell.titleLabel.text = [NSLocalizedString(@"ItemKey",nil) stringByAppendingString:number];
         NSString *value = [[self.receivedArray objectAtIndex:indexPath.row] valueForKey:@"cnt"];
        // NSLog(@"value %f = ", [value floatValue]);
         CGFloat index = [value floatValue]/self.totalVotes;
@@ -147,11 +181,11 @@
         NSInteger percents;
         if(self.totalVotes==0){
             percents = 0;
-        [cell.rateView setFrame:CGRectMake(20,10,0, 20)];
+        [cell.rateView setFrame:CGRectMake(70,10,0, 20)];
         }
         else{
             percents = index*100;
-           [cell.rateView setFrame:CGRectMake(20, 10,0+index*260, 20)];
+           [cell.rateView setFrame:CGRectMake(70, 10,0+index*210, 20)];
         }
         cell.rateView.image = [UIImage imageNamed:@"terrRate.png"];
         NSString *answer = [NSString stringWithFormat:@"%d",percents];
@@ -168,14 +202,18 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)finishedWithDictionary:(NSDictionary *)dictionary withTypeRequest:(requestTypes)type
-{
+{  
     if(type == kQuestStat){
+        self.questionDetailArray = [dictionary valueForKey:@"question"];
     self.receivedArray = [dictionary valueForKey:@"options"];
         for(int i=0;i<self.receivedArray.count;i++){
             NSString *votesForProduct = [[self.receivedArray objectAtIndex:i] valueForKey:@"cnt"];
             //  NSLog(@" gg %d", [votesForProduct integerValue  ])   ;
             self.totalVotes = self.totalVotes + [votesForProduct integerValue] ;
+            [self.imageView setImageWithURL:[self.questionDetailArray objectForKey:@"image"] placeholderImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
+            
         }
+       
         
     //[self buildView];
     }
@@ -185,9 +223,12 @@
         [failmessage show];
         
     }
-
+        NSInteger ttotal;
+     ttotal = self.totalVotes;
+    
     // [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"DownloadIsCompletedKey",nil)];
     NSLog(@"COUNT %d", self.receivedArray.count);
+     [self.votedLabel setText:[NSLocalizedString(@"VotedKey", nil) stringByAppendingString:[NSString stringWithFormat:@"%d", ttotal]]];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView reloadData];
@@ -197,4 +238,8 @@
 
 
 
+- (void)viewDidUnload {
+    [self setVotedLabel:nil];
+    [super viewDidUnload];
+}
 @end

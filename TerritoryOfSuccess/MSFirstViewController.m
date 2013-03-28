@@ -336,7 +336,7 @@
         imagePickerController.delegate = self;
         imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
         [imagePickerController setAllowsEditing:YES];
-                        
+                                
         UIImageView *overlayImageView = [[UIImageView alloc] init];
         [overlayImageView setImage:[UIImage imageNamed:@"rect_220*30.png"]];
         
@@ -372,12 +372,26 @@
             [rootOverlayAlphaTopView setFrame:CGRectMake(0, 0, 0, 0)];
             
             //додавання рамки і напівпрозорого фону
-            [overlayImageView setFrame:CGRectMake((self.screenWidth - self.frameMarkWidth)/2, (self.screenHeight - 54 - self.frameMarkHeight)/2, self.frameMarkWidth, self.frameMarkHeight)];
+            if (self.screenHeight == 568)
+            {
+                [overlayImageView setFrame:CGRectMake((self.screenWidth - self.frameMarkWidth)/2, (self.screenHeight - 108 - self.frameMarkHeight)/2, self.frameMarkWidth, self.frameMarkHeight)];
+            }
+            else
+            {
+                [overlayImageView setFrame:CGRectMake((self.screenWidth - self.frameMarkWidth)/2, (self.screenHeight - 54 - self.frameMarkHeight)/2, self.frameMarkWidth, self.frameMarkHeight)];
+            }
             
             [overlayAlphaTopView setFrame:CGRectMake(0, 0, 320, (self.screenHeight - 54 - self.frameMarkHeight)/2)];
             
-            [overlayAlphaBottomView setFrame:CGRectMake(0, (self.screenHeight - 54 + self.frameMarkHeight)/2, 320, self.screenHeight - (self.screenHeight - 54 + self.frameMarkHeight)/2 - 52)];
-            
+            if (self.screenHeight == 568)
+            {
+                [overlayAlphaBottomView setFrame:CGRectMake(0, (self.screenHeight - 54 + self.frameMarkHeight)/2, 320, self.screenHeight - (self.screenHeight - 54 + self.frameMarkHeight)/2 - 104)];
+            }
+            else
+            {
+                [overlayAlphaBottomView setFrame:CGRectMake(0, (self.screenHeight - 54 + self.frameMarkHeight)/2, 320, self.screenHeight - (self.screenHeight - 54 + self.frameMarkHeight)/2 - 52)];
+            }
+                        
             [overlayAlphaLeftView setFrame:CGRectMake(0, (self.screenHeight - 54 - self.frameMarkHeight)/2, (self.screenWidth - self.frameMarkWidth)/2, self.frameMarkHeight)];
             
             [overlayAlphaRightView setFrame:CGRectMake(self.frameMarkWidth + (self.screenWidth - self.frameMarkWidth)/2, (self.screenHeight - 54 - self.frameMarkHeight)/2, 320 - self.frameMarkWidth + (self.screenWidth - self.frameMarkWidth)/2, self.frameMarkHeight)];
@@ -512,7 +526,7 @@ static inline double radians (double degrees)
     
     CGRect rect;
     rect.origin.x = 100;
-    rect.origin.y = 290;
+    rect.origin.y = 285;
     rect.size.width = cropWidth * 2;
     rect.size.height = cropHeight * 2;
     
@@ -549,7 +563,7 @@ static inline double radians (double degrees)
     
     for (int i = 0; i < tempStr.length; i++) {
         unichar ch = [tempStr characterAtIndex:i];
-        if ((ch >= 48 && ch <= 57) || (ch >= 65 && ch <= 90) || ch == 45 || ch == 8212 || ch == 8211)
+        if ((ch >= 50 && ch <= 57) || (ch >= 65 && ch <= 72) || (ch >= 75 && ch <= 78) || ch == 80 || ch == 82 || (ch >= 84 && ch <= 89) || ch == 45 || ch == 8212 || ch == 8211)
         {
             if (ch == 45 || ch == 8211 || ch == 8212) {
                 ch = 45;
@@ -600,7 +614,7 @@ static inline double radians (double degrees)
     
     
     
-    if (![self.codeStr isEqualToString:@""] && self.codeStr.length == 19) {
+    if (![self.codeStr isEqualToString:@""] && self.codeStr.length == 11) {
         [SVProgressHUD showWithStatus:NSLocalizedString(@"Отправка кода...",nil)];
         
         [self.api checkCode:self.codeStr];
@@ -608,7 +622,7 @@ static inline double radians (double degrees)
     else
     {
         UIAlertView *codeFailMessage = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Ошибка кода",nil)
-                                                                     message:NSLocalizedString(@"Код должен включать 16 символов",nil)
+                                                                     message:NSLocalizedString(@"Код должен включать 11 символов",nil)
                                                                     delegate:self
                                                            cancelButtonTitle:@"Ok"
                                                            otherButtonTitles:nil];
@@ -1149,7 +1163,7 @@ static inline double radians (double degrees)
     {
         if (![string isEqualToString:@" "])
         {
-            if ((range.location == 4 || range.location == 9 || range.location == 14) && range.location != 0 && ![string isEqualToString:@""])
+            if ((range.location == 3 || range.location == 7) && range.location != 0 && ![string isEqualToString:@""])
             {
                 NSRange myRange;
                 myRange.location = range.location + 1;
@@ -1182,7 +1196,7 @@ static inline double radians (double degrees)
             }
             else
             {
-                if (newLength > 19)
+                if (newLength > 11)
                 {
                     return NO;
                 }

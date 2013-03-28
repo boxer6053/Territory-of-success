@@ -11,7 +11,7 @@
 #import "MSLogInView.h"
 
 
-@interface MSTypesOfInquirersViewController : UIViewController <UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, WsCompleteDelegate, UIAlertViewDelegate, UITextViewDelegate, dismissView>
+@interface MSTypesOfInquirersViewController  : UIViewController <UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, WsCompleteDelegate, UIAlertViewDelegate, UITextViewDelegate, dismissView> 
 @property (weak, nonatomic) IBOutlet UITableView *tableOfInquirers;
 @property (strong, nonatomic) NSArray *testInquirers;
 @property (strong, nonatomic) NSMutableArray *myQuestionsArray;

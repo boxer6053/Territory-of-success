@@ -224,6 +224,7 @@
         {
             [self performSegueWithIdentifier:@"toSubCatalogue" sender:[[self tableView] cellForRowAtIndexPath:indexPath]];
             [[self tableView] deselectRowAtIndexPath:indexPath animated:YES];
+
         }
     }
     else

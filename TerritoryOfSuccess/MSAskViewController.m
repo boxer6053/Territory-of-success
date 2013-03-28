@@ -29,12 +29,14 @@
 @property (strong, nonatomic) NSMutableData *receivedData;
 @property (strong, nonatomic) MSAPI *api;
 @property BOOL thisIsProducts;
+@property BOOL nothing;
 @property UIButton *headerButton;
 
 
 @end
 
 @implementation MSAskViewController
+@synthesize nothing = _nothing;
 @synthesize addingViewFrame = _addingViewFrame;
 @synthesize addingView = _addingView;
 @synthesize headerButton = _headerButton;
@@ -77,7 +79,7 @@
     self.tableOfCategories.tableHeaderView = nil;
     self.headerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 44, self.tableOfCategories.frame.size.width, 60)];
     UIImageView *headerView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 11, 50, 38)];
-    [headerView setImage:[UIImage imageNamed:@"header1.png"]];
+    [headerView setImage:[UIImage imageNamed:@"hheader.png"]];
     [self.headerButton addSubview:headerView];
     [self.headerButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica" size:15]];
     [self.headerButton setTitle:NSLocalizedString(@"AddProductKey",nil) forState:UIControlStateNormal];
@@ -122,11 +124,13 @@
     
     if(!self.defaultID){
         [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadingInquirerListKey",nil)];
+          [self.tableOfCategories setUserInteractionEnabled:NO];
     [self.api getQuestionsWithParentID:0];
     }
     else
     {
         [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadingInquirerListKey",nil)];
+          [self.tableOfCategories setUserInteractionEnabled:NO];
         [self.api getQuestionsWithParentID:self.defaultID];
     }
     NSLog(@"NEWWWW");
@@ -140,39 +144,24 @@
 {
     return 1;
 }
-//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-//    UIView *tempVeiw = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
-//    [tempVeiw setBackgroundColor:[UIColor redColor]];
-//    if(self.thisIsProducts){
-//    return tempVeiw;
-//    }
-//    else{
-//        [tempVeiw isHidden];
-//    }    
-//}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.questionsArray.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MSQuestionCell *cell;
+
     static NSString* cellIdentifier = @"questCellID";
-    cell = [_tableOfCategories dequeueReusableCellWithIdentifier:cellIdentifier];
+    MSQuestionCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
-        cell = [[MSQuestionCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+        cell = [[MSQuestionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    cell.productImage.layer.cornerRadius = 5.0f;
-    cell.productImage.clipsToBounds = YES;
-    if([[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"] isEqualToString:@""])
-    {
-        cell.productImage.image = [UIImage imageNamed:@"bag.png"];
-    }
-    else
-    {
-        [cell.productImage setImageWithURL:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"] placeholderImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
-    }
+    
+   // [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+//    cell.productImage.layer.cornerRadius = 5.0f;
+//    cell.productImage.clipsToBounds = YES;
+       [cell.productImage setImageWithURL:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"] placeholderImage:[UIImage imageNamed:@"bag.png"]];
     if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
         cell.nameLabel.minimumFontSize = 10.0f;
         cell.nameLabel.adjustsFontSizeToFitWidth = YES;
@@ -180,14 +169,9 @@
         cell.nameLabel.minimumScaleFactor = 0.8;
         cell.nameLabel.adjustsFontSizeToFitWidth = YES;
     }
-  
     cell.nameLabel.text = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
-    
     if(!self.thisIsProducts){
-    cell.countLabel.text = [@"got "stringByAppendingString:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"]];
-        if([cell.countLabel.text isEqualToString:@"got 0"]){
-            //cell.userInteractionEnabled = NO;
-        }
+    cell.countLabel.text = [NSLocalizedString(@"AvailableKey:", nil) stringByAppendingString:[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"]];
     }
     else
     {
@@ -198,14 +182,16 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.backButton setEnabled:YES];
+    
     self.upButtonShows = YES;
     [self.navigationItem.rightBarButtonItem setEnabled:YES];
     self.translatingValue = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"];
     
     
+    
     if([[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"cnt"] integerValue] != 0)
     {
+        [self.backButton setEnabled:YES];
        // NSInteger currentSubCategory = [[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
         
         self.upperTitle = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
@@ -214,22 +200,24 @@
         _questionsCount = 0;
         [_tableOfCategories reloadData];
         [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadingInquirerListKey",nil)];
+          [self.tableOfCategories setUserInteractionEnabled:NO];
         [self.api getQuestionsWithParentID:[[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue]];
         _upperID = [[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] integerValue];
       
     }
     else
+        
     {
         if(self.defaultID)
         {self.upperID = self.defaultID;
         }
         if([[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"] isEqualToString:@""])
         {
-            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Sorry" message:@"No picture or not enough data =(" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-            [failmessage show];
+            self.nothing = YES;
         }
         else
         {
+            [self.backButton setEnabled:YES];
             _translatingUrl = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"];
             _sendingTitle = [[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
             self.finalID = self.defaultID;
@@ -243,8 +231,9 @@
         }
         
     }
+    if(!self.nothing){
     [self.navigationBar.topItem setTitle:self.upperTitle];
-
+    }
 }
 
 
@@ -272,14 +261,26 @@
     if(products.count != 0){
         NSLog(@"THis is products");
         self.thisIsProducts  = YES;
-        [self.tableOfCategories setFrame:CGRectMake(0, 104, 320, 376)];
+        if ([[UIScreen mainScreen] bounds].size.height == 568) {
+        [self.tableOfCategories setFrame:CGRectMake(0, 104, 320, 440)];
+        }
+        else{
+            [self.tableOfCategories setFrame:CGRectMake(0, 104, 320, 356)];
+        }
         //self.tableOfCategories.tableHeaderView = self.headerButton;
         [self.view addSubview:self.headerButton];
     }
     else{
-          [self.tableOfCategories setFrame:CGRectMake(0, 44, 320, 480)];
+        if ([[UIScreen mainScreen] bounds].size.height == 568) {
+            [self.tableOfCategories setFrame:CGRectMake(0, 44, 320, 504)];
+        }
+        else{
+          [self.tableOfCategories setFrame:CGRectMake(0, 44, 320, 416)];
+        }
     }
-        [_tableOfCategories reloadData];
+        NSLog(@"RELOAD");
+        [self.tableOfCategories reloadData];
+                [self.tableOfCategories setUserInteractionEnabled:YES];
         
      
     }
@@ -303,6 +304,7 @@
 //}
 - (IBAction)backButtonPressed:(id)sender {
     self.thisIsProducts = NO;
+      [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadingInquirerListKey",nil)];
     [self.headerButton removeFromSuperview];
     [self.backIds removeLastObject];
     [self.backTitles removeLastObject];
@@ -318,12 +320,12 @@
     if(self.backIds.count != 0){
 
     NSInteger lastId = [[self.backIds objectAtIndex:(self.backIds.count-1)] integerValue];
-
-    
-    
+        [SVProgressHUD showWithStatus:NSLocalizedString(@"DownloadingInquirerListKey",nil)];
+        [self.tableOfCategories setUserInteractionEnabled:NO];
     [self.api getQuestionsWithParentID:lastId];
     }
     else{
+          [self.tableOfCategories setUserInteractionEnabled:NO];
         [self.api getQuestionsWithParentID:0];
         [self.backButton setEnabled:NO];
     }
@@ -396,7 +398,7 @@
 
 }
 -(void)updateTable{
-    
+      [self.tableOfCategories setUserInteractionEnabled:NO];
     [self.api getQuestionsWithParentID:self.upperID];
 }
 static inline double radians (double degrees) {return degrees * M_PI/180;}

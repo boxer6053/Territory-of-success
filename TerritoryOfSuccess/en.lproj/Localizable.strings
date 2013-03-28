@@ -20,7 +20,7 @@
 "Камера не доступна" = "Camera is not available";
 "Отправка кода..." = "Code sending...";
 "Ошибка кода" = "Code's error";
-"Код должен включать 16 символов" = "Code must contain 16 symbols";
+"Код должен включать 11 символов" = "Code must contain 11 symbols";
 "Товар:" = "Product:";
 "Категория:" = "Category:";
 "Бонус за продукт:" = "Product bonus";
@@ -111,6 +111,8 @@
 "AddProductKey" = "Add product";
 "SendKey" = "Send";
 "BackKey" = "Back";
+"MyBrandKey" = "Brand";
+"VotedKey" = "Voted ";
 
 
 // Новости

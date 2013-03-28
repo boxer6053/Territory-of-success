@@ -52,8 +52,7 @@
 		F5B1883716BBC1A400290F27 /* Profile-Picture_40*28_white.png in Resources */ = {isa = PBXBuildFile; fileRef = F5B1883616BBC1A400290F27 /* Profile-Picture_40*28_white.png */; };
 		F5B1884116BBCA2F00290F27 /* logo_text_30*165.png in Resources */ = {isa = PBXBuildFile; fileRef = F5B1884016BBCA2F00290F27 /* logo_text_30*165.png */; };
 		F5B2D23716C4180900EC7F00 /* logo_color_invert_40*147_ukr.png in Resources */ = {isa = PBXBuildFile; fileRef = F5B2D23616C4180900EC7F00 /* logo_color_invert_40*147_ukr.png */; };
-		F5B3C91A16F8B98A002F544A /* header.png in Resources */ = {isa = PBXBuildFile; fileRef = F5B3C91916F8B98A002F544A /* header.png */; };
-		F5B3C91E16F8CF6F002F544A /* header1.png in Resources */ = {isa = PBXBuildFile; fileRef = F5B3C91D16F8CF6F002F544A /* header1.png */; };
+		F5B3C92016F9CE20002F544A /* hheader.png in Resources */ = {isa = PBXBuildFile; fileRef = F5B3C91F16F9CE20002F544A /* hheader.png */; };
 		F5BD298716D7957F00B190B7 /* placeholder_415*415.png in Resources */ = {isa = PBXBuildFile; fileRef = F5BD298616D7957F00B190B7 /* placeholder_415*415.png */; };
 		F5BD298916D7970C00B190B7 /* placeholder_622*415.png in Resources */ = {isa = PBXBuildFile; fileRef = F5BD298816D7970C00B190B7 /* placeholder_622*415.png */; };
 		F5BD298B16D7989400B190B7 /* photoPlaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = F5BD298A16D7989400B190B7 /* photoPlaceholder.png */; };
@@ -223,8 +222,7 @@
 		F5B1883616BBC1A400290F27 /* Profile-Picture_40*28_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Profile-Picture_40*28_white.png"; sourceTree = "<group>"; };
 		F5B1884016BBCA2F00290F27 /* logo_text_30*165.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_text_30*165.png"; sourceTree = "<group>"; };
 		F5B2D23616C4180900EC7F00 /* logo_color_invert_40*147_ukr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_color_invert_40*147_ukr.png"; sourceTree = "<group>"; };
-		F5B3C91916F8B98A002F544A /* header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = header.png; sourceTree = "<group>"; };
-		F5B3C91D16F8CF6F002F544A /* header1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = header1.png; sourceTree = "<group>"; };
+		F5B3C91F16F9CE20002F544A /* hheader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hheader.png; sourceTree = "<group>"; };
 		F5BD298616D7957F00B190B7 /* placeholder_415*415.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder_415*415.png"; sourceTree = "<group>"; };
 		F5BD298816D7970C00B190B7 /* placeholder_622*415.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder_622*415.png"; sourceTree = "<group>"; };
 		F5BD298A16D7989400B190B7 /* photoPlaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photoPlaceholder.png; sourceTree = "<group>"; };
@@ -668,12 +666,11 @@
 				F512D75716E4DA3700DCC051 /* mainCameraGray.png */,
 				FAFB834116E61340006F0F4F /* bag.png */,
 				F536D09F16DE46A400950051 /* button_80_44-1_right.png */,
-				F5B3C91D16F8CF6F002F544A /* header1.png */,
 				F536D0A016DE46A400950051 /* button_80_44-1.png */,
 				F5D8C64E16DD0AB90035EF30 /* button_300*43.png */,
-				F5B3C91916F8B98A002F544A /* header.png */,
 				F5D8C64C16DD09D20035EF30 /* button_120*35_new.png */,
 				F5D8C64A16DD08C70035EF30 /* button_140*35.png */,
+				F5B3C91F16F9CE20002F544A /* hheader.png */,
 				F5D8C64816DD07650035EF30 /* button_185_45.png */,
 				FA2CEC1016DBBD42007015BC /* commentButton.png */,
 				F569162016E661A7003CAE0E /* chooseButton copy.png */,
@@ -1178,8 +1175,7 @@
 				F59C826816EF2B120015251B /* TOS cap.png in Resources */,
 				FAEF9F3516F33D6B004916A9 /* iPhoneStoryboard.storyboard in Resources */,
 				FAF604D516F70F4F006B1950 /* order.png in Resources */,
-				F5B3C91A16F8B98A002F544A /* header.png in Resources */,
-				F5B3C91E16F8CF6F002F544A /* header1.png in Resources */,
+				F5B3C92016F9CE20002F544A /* hheader.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1386,6 +1382,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/TerritoryOfSuccess/tesseract-ios-lib/lib\"",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1411,6 +1408,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/TerritoryOfSuccess/tesseract-ios-lib/lib\"",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
