@@ -817,6 +817,7 @@
 
 }
 
+
 //check conection and send request
 - (void)connectionVerification
 {

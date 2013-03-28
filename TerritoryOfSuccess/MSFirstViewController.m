@@ -984,7 +984,8 @@ static inline double radians (double degrees)
 
 - (void)didSelectTabBarItem:(UITabBarItem *)item
 {
-    if ([item tag] == 1) {
+    if ([item tag] == 1)
+    {
         NSLog(@"Ніхуя собі");
     }
 }
