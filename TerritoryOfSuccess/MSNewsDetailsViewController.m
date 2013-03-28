@@ -172,7 +172,7 @@
         
         [self.articleActivityIndicator startAnimating];
         self.imageUrl = [NSURL URLWithString: [[dictionary valueForKey:@"post"] valueForKey:@"image"]];
-        [self.articleImageView setImageWithURL:self.imageUrl placeholderImage:[UIImage imageNamed:@"photo_camera_1.png"]];
+        [self.articleImageView setImageWithURL:self.imageUrl placeholderImage:[UIImage imageNamed:@"placeholder_622*415.png"]];
         [self.articleImageView.layer setCornerRadius:5.0];
         self.articleTitleLabel.text = [[dictionary valueForKey:@"post"] valueForKey:@"title"];
         

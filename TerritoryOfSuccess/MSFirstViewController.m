@@ -153,7 +153,7 @@
         NSLog(@"Root view controller");
     }
         
-    [self.api getFiveNewsWithOffset:0];
+    [self.api getTopNews];
     
     [self.codeTextField setDelegate:self];
     
@@ -967,7 +967,7 @@ static inline double radians (double degrees)
                               action:@selector(picturePressed:)
                     forControlEvents:UIControlEventTouchUpInside];
         
-            NSURL *imageUrl = [NSURL URLWithString:[[arrayOfNews objectAtIndex:i] valueForKey:@"image" ]];
+            NSURL *imageUrl = [NSURL URLWithString:[[arrayOfNews objectAtIndex:i] valueForKey:@"imageBig" ]];
             [subViewButton setBackgroundImageWithURL:imageUrl forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"placeholder622*415.png"]];
             subViewButton.tag = [[[arrayOfNews objectAtIndex:i]valueForKey:@"id"] integerValue];
             [subView addSubview:subViewButton];
