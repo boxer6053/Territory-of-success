@@ -330,7 +330,7 @@
         self.allQuestionsArray = [dictionary valueForKey:@"list"];
         if([[dictionary valueForKey:@"status"] isEqualToString:@"failed"])
         {
-            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Пожалуйста перезайдите в систему!" delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
+            UIAlertView *failmessage = [[UIAlertView alloc] initWithTitle:[[dictionary valueForKey:@"message"] valueForKey:@"title"] message:[[dictionary valueForKey:@"message"] valueForKey:@"text"] delegate:self cancelButtonTitle:@"Ок" otherButtonTitles:nil];
             [failmessage show];
             [self.tabBarController setSelectedViewController:[self.tabBarController.viewControllers objectAtIndex:0]];
         }
