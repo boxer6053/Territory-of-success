@@ -931,6 +931,7 @@
                         <outlet property="inquirersNavigationItem" destination="sQE-dx-gsA" id="Tjc-Gd-tz2"/>
                         <outlet property="tableOfInquirers" destination="hLx-lW-QR0" id="eV7-pt-PFR"/>
                         <segue destination="xlL-gh-fab" kind="push" identifier="toInquirerDetail" id="Zch-bR-g1e"/>
+                        <segue destination="D0c-Nc-E5P" kind="push" identifier="toStat" id="Oeo-Wl-1t8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q3i-81-c2y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -953,9 +954,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="7dw-Qs-YPP"/>
-                    <connections>
-                        <segue destination="D0c-Nc-E5P" kind="push" identifier="toStat" id="S64-FZ-BYa"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NPl-TN-7Hd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -989,22 +987,26 @@
                                             <rect key="frame" x="10" y="1" width="300" height="51"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="L8S-Z6-iCI">
-                                                    <rect key="frame" x="20" y="32" width="187" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="L8S-Z6-iCI">
+                                                    <rect key="frame" x="69" y="32" width="167" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="100%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fI6-Ne-OqW">
-                                                    <rect key="frame" x="215" y="30" width="36" height="21"/>
+                                                    <rect key="frame" x="244" y="30" width="36" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="KJs-4N-nAE">
-                                                    <rect key="frame" x="20" y="11" width="260" height="20"/>
+                                                    <rect key="frame" x="69" y="11" width="211" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="Jjm-Cf-VDl">
+                                                    <rect key="frame" x="11" y="7" width="40" height="38"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -1012,6 +1014,7 @@
                                         </view>
                                         <connections>
                                             <outlet property="answerLabel" destination="fI6-Ne-OqW" id="bcL-lA-Nek"/>
+                                            <outlet property="productImageView" destination="Jjm-Cf-VDl" id="6Af-Na-YUe"/>
                                             <outlet property="rateView" destination="KJs-4N-nAE" id="enm-3l-pFe"/>
                                             <outlet property="titleLabel" destination="L8S-Z6-iCI" id="Ytk-s3-ckN"/>
                                         </connections>

@@ -12,6 +12,7 @@
 @synthesize titleLabel = _titleLabel;
 @synthesize rateView = _rateView;
 @synthesize answerLabel = _answerLabel  ;
+@synthesize productImageView = _productImageView;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
