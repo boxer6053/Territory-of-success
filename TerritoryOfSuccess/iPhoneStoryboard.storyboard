@@ -967,13 +967,6 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Ответы" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="thG-p1-N6o">
-                                <rect key="frame" x="61" y="20" width="66" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="47" sectionHeaderHeight="10" sectionFooterHeight="10" id="dar-Tf-bcB">
                                 <rect key="frame" x="0.0" y="49" width="320" height="406"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1033,7 +1026,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="by5-Vf-2kf"/>
                     <connections>
-                        <outlet property="nameLabel" destination="thG-p1-N6o" id="kLo-RC-ALv"/>
                         <outlet property="tableView" destination="dar-Tf-bcB" id="CFI-AC-q96"/>
                         <outlet property="votedLabel" destination="UVo-8u-hfH" id="NUp-FJ-SlI"/>
                     </connections>

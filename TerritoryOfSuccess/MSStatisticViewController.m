@@ -35,7 +35,6 @@
 @synthesize receivedArray = _receivedArray;
 @synthesize api = _api;
 @synthesize tableView = _tableView;
-@synthesize nameLabel = _nameLabel;
 @synthesize names = _names;
 @synthesize votedLabel = _votedLabel;
 
@@ -49,6 +48,7 @@
 - (void)viewDidLoad
 {
     self.votedLabel.text = @"";
+    [self.navigationItem setTitle:NSLocalizedString(@"AnswersKey", nil)];
     if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
         self.votedLabel.minimumFontSize = 10.0f;
        self.votedLabel.adjustsFontSizeToFitWidth = YES;
@@ -60,7 +60,7 @@
 
     [super viewDidLoad];
 //    [self.tableView setContentOffset:CGPointMake(5, 100)animated:YES];
-    [self.nameLabel setText:NSLocalizedString(@"AnswersKey", nil)];
+    
     NSLog(@"TOTAL %f", self.totalVotes);
  
     if ([[UIScreen mainScreen] bounds].size.height == 568)
@@ -81,10 +81,26 @@
     [self.api getStatisticQuestionWithID:self.questionID];
     
     if(self.interfaceIndex == 1){
-        [self.tableView setFrame:CGRectMake(0, 210, self.tableView.frame.size.width, self.tableView.frame.size.height)];
-        self.imageView = [[UIImageView alloc]initWithFrame:CGRectMake(96, 50, 128, 128)];
-//[imageView setBackgroundColor:[UIColor redColor]];
-        [self.view addSubview:self.imageView];
+         if ([[UIScreen mainScreen] bounds].size.height == 568) {
+    
+             [self.tableView setFrame:CGRectMake(0, 310, self.tableView.frame.size.width, self.tableView.frame.size.height)];
+             
+             self.imageView = [[UIImageView alloc]initWithFrame:CGRectMake(35, 50, 250, 250)];
+             
+
+        
+         }
+         else{
+             [self.tableView setFrame:CGRectMake(0, 210, self.tableView.frame.size.width, self.tableView.frame.size.height)];
+             
+             self.imageView = [[UIImageView alloc]initWithFrame:CGRectMake(85, 50, 150, 150)];
+                     }
+        self.imageView.layer.cornerRadius = 10.0f;
+        self.imageView.clipsToBounds = YES;
+        [self.imageView.layer setBorderWidth:1.0];
+        [self.imageView.layer setBorderColor:[UIColor colorWithWhite:0.5 alpha:1].CGColor];
+[self.view addSubview:self.imageView];
+
     }
     
    
@@ -210,7 +226,9 @@
             NSString *votesForProduct = [[self.receivedArray objectAtIndex:i] valueForKey:@"cnt"];
             //  NSLog(@" gg %d", [votesForProduct integerValue  ])   ;
             self.totalVotes = self.totalVotes + [votesForProduct integerValue] ;
+         
             [self.imageView setImageWithURL:[self.questionDetailArray objectForKey:@"image"] placeholderImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
+            
             
         }
        
