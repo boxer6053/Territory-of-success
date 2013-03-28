@@ -9,6 +9,7 @@
 
 #import "MSTypesOfInquirersViewController.h"
 #import "MSInquirerDetailViewController.h"
+#import "MSStatisticViewController.h"
 #import "SVProgressHUD.h"
 #import "MSInquirerCell.h"
 #import "MSLogInView.h"
@@ -21,6 +22,7 @@
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
 @interface MSTypesOfInquirersViewController ()
+@property int sendQuestionID;
 @property (strong, nonatomic) NSMutableData *receivedData;
 @property (strong, nonatomic) MSAPI *api;
 @property (nonatomic, strong) MSLogInView *loginView;
@@ -31,12 +33,15 @@
 @property (nonatomic) NSInteger counter;
 @property UIButton *footerButton;
 @property BOOL loaded;
+@property int interfaceIndex;
 
 @end
 
 
 @implementation MSTypesOfInquirersViewController
+@synthesize sendQuestionID = _sendQuestionID;
 @synthesize footerButton = _footerButton;
+@synthesize interfaceIndex = _interfaceIndex;
 @synthesize counter = _counter;
 @synthesize sendingName = _sendingName;
 @synthesize tableOfInquirers = _tableOfInquirers;
@@ -74,7 +79,6 @@
 {
     [super viewDidLoad];
         _isFirstDownload = YES;
-    
     self.myQuestionsArray = [[NSMutableArray alloc] init];
        self.tableOfInquirers.tableFooterView = nil;
     self.footerButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.tableOfInquirers.frame.size.width, 45)];
@@ -254,15 +258,18 @@
     if(allInquirerMode) {
         self.sendingID =  [[self.allQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"id"];
         self.sendingName = [[self.allQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
+        [self performSegueWithIdentifier:@"toInquirerDetail" sender:self];
+
     }
     else{
-        self.sendingID = [[self.myQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"id"];
+        self.sendQuestionID = [[[self.myQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"id"] intValue];
         self.sendingName = [[self.myQuestionsArray objectAtIndex:indexPath.row] valueForKey:@"title"];
+        self.interfaceIndex = [[[self.myQuestionsArray objectAtIndex:indexPath.row]valueForKey:@"cnt"] intValue];
+        [self performSegueWithIdentifier:@"toStat" sender:self];
     }
     NSLog(@"ID%@",  self.sendingID);
     NSLog (@"%@", self.sendingName);
-    [self performSegueWithIdentifier:@"toInquirerDetail" sender:self];
-}
+   }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -273,6 +280,12 @@
         controller.productName = self.sendingName;
         controller.ownerIndex = self.inquirerTypeSegment.selectedSegmentIndex;
         NSLog(@"ss %@", _selectedValue);
+    }
+    if([segue.identifier isEqualToString:@"toStat"]){
+        MSStatisticViewController *controller = (MSStatisticViewController *)segue.destinationViewController;
+        controller.questionID = self.sendQuestionID;
+        controller.interfaceIndex = self.interfaceIndex;
+        
     }
 }
 
@@ -359,8 +372,9 @@
             [self.tabBarController setSelectedViewController:[self.tabBarController.viewControllers objectAtIndex:0]];
         }
 
-_isFirstDownload = NO;
+        _isFirstDownload = NO;
         self.loaded = YES;
+
     }
        [[self tableOfInquirers] reloadData];
 }
