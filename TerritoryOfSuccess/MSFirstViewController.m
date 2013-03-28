@@ -614,7 +614,7 @@ static inline double radians (double degrees)
     
     
     
-    if (![self.codeStr isEqualToString:@""] && self.codeStr.length == 19) {
+    if (![self.codeStr isEqualToString:@""] && self.codeStr.length == 11) {
         [SVProgressHUD showWithStatus:NSLocalizedString(@"Отправка кода...",nil)];
         
         [self.api checkCode:self.codeStr];
@@ -622,7 +622,7 @@ static inline double radians (double degrees)
     else
     {
         UIAlertView *codeFailMessage = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Ошибка кода",nil)
-                                                                     message:NSLocalizedString(@"Код должен включать 16 символов",nil)
+                                                                     message:NSLocalizedString(@"Код должен включать 11 символов",nil)
                                                                     delegate:self
                                                            cancelButtonTitle:@"Ok"
                                                            otherButtonTitles:nil];
