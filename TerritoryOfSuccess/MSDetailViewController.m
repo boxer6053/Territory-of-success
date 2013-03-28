@@ -40,7 +40,7 @@
 @property (weak, nonatomic) UIButton *star3;
 @property (weak, nonatomic) UIButton *star4;
 @property (weak, nonatomic) UIButton *star5;
-@property int rateNumber;// 1 - 5
+@property int rateNumber;// 0 - 5
 
 //для обновления лайков, комментов и звездочек на странице
 @property int numberInList;
@@ -89,7 +89,7 @@
     self.isImageDisplay = YES;
     self.rateButtonPressed = NO;
     
-    self.rateNumber = 1;
+    self.rateNumber = 0;
     self.transitionView = [[UIView alloc] initWithFrame:CGRectMake(self.imageView.frame.origin.x, self.imageView.frame.origin.y, self.imageView.frame.size.width, self.imageView.frame.size.height)];
     [[self transitionView] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"dialogViewGradient.png"]]];
     [[self transitionView].layer setBorderWidth:2.0f];
@@ -206,10 +206,6 @@
         [[self.starsArray objectAtIndex:i]addTarget:self action:@selector(chooseRateStar:) forControlEvents:UIControlEventTouchDown];
         [[self.starsArray objectAtIndex:i]setBackgroundImage:[UIImage imageNamed:@"whiteStarButton"] forState:UIControlStateNormal];
         ((UIButton*)[self.starsArray objectAtIndex:i]).adjustsImageWhenHighlighted = NO;
-        if (i == 0)
-        {
-            [[self.starsArray objectAtIndex:i]setBackgroundImage:[UIImage imageNamed:@"starButton"] forState:UIControlStateNormal];
-        }
     }
     
     self.shareButton = [[UIBarButtonItem alloc] initWithTitle:@"Share" style:UIBarButtonItemStylePlain target:self action:@selector(shareButtonPressed:)];
@@ -441,11 +437,19 @@
     }
     else
     {
-        if (_isFromBrandCatalog == YES)
-            [self.api sentBonusRate:self.rateNumber withProductId:self.productSentId];
+        if (self.rateNumber == 0)
+        {
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Ошибка", nil) message:NSLocalizedString(@"MoreThan0StarKey", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        }
         else
-            [self.api sentRate:self.rateNumber withProductId:self.productSentId];
-        [self closeRateMenu];
+        {
+            if (_isFromBrandCatalog == YES)
+                [self.api sentBonusRate:self.rateNumber withProductId:self.productSentId];
+            else
+                [self.api sentRate:self.rateNumber withProductId:self.productSentId];
+            [self closeRateMenu];
+        }
     }
 }
 

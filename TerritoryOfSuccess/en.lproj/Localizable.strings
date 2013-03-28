@@ -20,7 +20,7 @@
 "Камера не доступна" = "Camera is not available";
 "Отправка кода..." = "Code sending...";
 "Ошибка кода" = "Code's error";
-"Код должен включать 16 символов" = "Code must contain 16 symbols";
+"Код должен включать 11 символов" = "Code must contain 11 symbols";
 "Товар:" = "Product:";
 "Категория:" = "Category:";
 "Бонус за продукт:" = "Product bonus";
@@ -81,7 +81,7 @@
 "EnterYoutPhoneNumberKey" = "Enter your phone number:";
 "MakingOrderKey" = "Making order";
 "EnterYourPhoneNumberKey" = "Please, enter your phone number";
-
+"MoreThan0StarKey" = "You shoud choose more than 1 star";
 // Опросы
 "DownloadInquirersKey" = "Loading interogation";
 "DownloadInquirerDetailKey" = "Loading detail";
