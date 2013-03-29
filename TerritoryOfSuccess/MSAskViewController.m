@@ -63,6 +63,7 @@
 @synthesize gottedFromPrevious = _gottedFromPrevious;
 @synthesize thisIsProducts = _thisIsProducts;
 @synthesize navigationBar = _navigationBar;
+@synthesize backgroundView = _backgroundView;
 
 
 - (MSAPI *) api{
@@ -376,21 +377,39 @@
     UIImage *compressedImage = [UIImage imageWithData:data];
     
     [picker dismissModalViewControllerAnimated:YES];
-    self.addingView = [[MSAddingProductView alloc] initWithOrigin:CGPointMake(0, self.view.frame.size.height/2 - 120)];
+//    self.addingView = [[MSAddingProductView alloc] initWithOrigin:CGPointMake(0, self.view.frame.size.height/2 - 120)];
+    self.addingView = [[MSAddingProductView alloc] initWithOrigin:CGPointMake(0, ([[UIScreen mainScreen] bounds].size.height - 170)/2)];
     [self.addingView.productImageView setImage:compressedImage];
     self.addingView.categoryID = self.upperID;
     self.addingView.sendingImage = compressedImage;
     self.addingView.delegate = self;
     
+    if ([[UIScreen mainScreen] bounds].size.height == 568)
+    {
+        self.backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)];
+    }
+    else
+    {
+        self.backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+    }
+    
+    [self.backgroundView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
 
     [self.view addSubview:self.addingView];
+    [self.view insertSubview:self.backgroundView belowSubview:self.addingView];
     
     [self.addingView attachPopUpAnimationForView:self.addingView.contentView];
 
 
 }
--(void)dismissPopViewAdd:(BOOL)sendResult{
- }
+-(void)dismissPopViewAdd:(BOOL)sendResult
+{
+    [UIView animateWithDuration:0.2 animations:^{
+        [self.backgroundView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0]];
+    } completion:^(BOOL finished) {
+        [self.backgroundView removeFromSuperview];
+    }];
+}
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [picker dismissModalViewControllerAnimated:YES];

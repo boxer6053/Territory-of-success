@@ -76,7 +76,9 @@
  //  [viewForButtons setBackgroundColor:[UIColor redColor]] ;
     self.askButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.askButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.askButton.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
      self.cleanButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.cleanButton.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
     [self.cleanButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.askButton setTitleColor:[UIColor whiteColor] forState:UIControlStateDisabled];
     [self.cleanButton setTitleColor:[UIColor whiteColor] forState:UIControlStateDisabled];
