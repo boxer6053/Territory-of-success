@@ -173,6 +173,25 @@
     [self connectionVerification];
 }
 
+- (void)getTopNews
+{
+    self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/news/top"];
+    
+    self.checkRequest = kNews;
+    
+    //створюемо запит
+    self.request = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
+    
+    //вказуэм протокол доступу
+    [self.request setHTTPMethod:@"POST"];
+    
+    [self.params appendFormat:@"&lang=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentLanguage"]];
+    
+    [self.request setHTTPBody:[self.params dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [self connectionVerification];
+}
+
 - (void)getNewsWithId:(NSString *)newsId
 {
     self.url = [NSURL URLWithString:@"http://id-bonus.com/api/app/news"];
@@ -816,6 +835,7 @@
     [self connectionVerification];
 
 }
+
 
 //check conection and send request
 - (void)connectionVerification

@@ -37,6 +37,7 @@
 @property (strong, nonatomic) NSMutableArray *backTitles;
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (strong, nonatomic) NSString *viewTitle;
+@property (strong, nonatomic) UIView *backgroundView;
 
 - (IBAction)cancel:(id)sender;
 
