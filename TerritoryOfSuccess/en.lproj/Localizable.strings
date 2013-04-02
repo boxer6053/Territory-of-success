@@ -73,6 +73,7 @@
 "SorryKey" = "Sorry";
 "DontAvailableOnThisVersionKey" = "Sharing don't available on your iOS version";
 "AvailableKey:" = "available:";
+"NotAvailableKey" = " Not available";
 "BrandKey" = "Brand:";
 "CatalogueNavTitleKey" = "Catalogue";
 "ProductsNavItemKey" = "Products";
