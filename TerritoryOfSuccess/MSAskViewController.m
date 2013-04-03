@@ -176,7 +176,12 @@
     }
     else
     {
-        cell.countLabel.text = @"";
+        if([[[_questionsArray objectAtIndex:indexPath.row] valueForKey:@"image"] isEqualToString:@""]){
+        cell.countLabel.text = NSLocalizedString(@"NotAvailableKey", nil);
+        }
+        else{
+            cell.countLabel.text = @"";
+        }
     }
     return cell;
 }
@@ -259,7 +264,8 @@
             }
         
         }
-    if(products.count != 0){
+    if(![[_questionsArray objectAtIndex:1] valueForKey:@"cnt"])
+    {
         NSLog(@"THis is products");
         self.thisIsProducts  = YES;
         if ([[UIScreen mainScreen] bounds].size.height == 568) {

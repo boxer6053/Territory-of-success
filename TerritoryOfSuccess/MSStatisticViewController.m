@@ -99,8 +99,8 @@
         self.imageView.clipsToBounds = YES;
         [self.imageView.layer setBorderWidth:1.0];
         [self.imageView.layer setBorderColor:[UIColor colorWithWhite:0.5 alpha:1].CGColor];
-[self.view addSubview:self.imageView];
-
+        [self.view addSubview:self.imageView];
+       
     }
     
    
@@ -228,8 +228,22 @@
             self.totalVotes = self.totalVotes + [votesForProduct integerValue] ;
          
             [self.imageView setImageWithURL:[self.questionDetailArray objectForKey:@"image"] placeholderImage:[UIImage imageNamed:@"placeholder_415*415.png"]];
-            
-            
+       
+            if(self.interfaceIndex ==1){
+                [self.tableView setUserInteractionEnabled:NO];            }
+            else{
+                if ([[UIScreen mainScreen] bounds].size.height != 568){
+                    if(self.receivedArray.count>5){
+                        [self.tableView setUserInteractionEnabled:YES];
+                        
+                    }
+                    else{
+                        [self.tableView setUserInteractionEnabled:NO];
+                    }
+                }
+            }
+
+
         }
        
         

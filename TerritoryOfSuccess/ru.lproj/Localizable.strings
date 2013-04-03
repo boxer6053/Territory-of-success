@@ -112,6 +112,7 @@
 "BackKey" = "Назад";
 "MyBrandKey" = "Бренд";
 "VotedKey" = "Проголосовало ";
+"NotAvailableKey" = "Недоступно";
 
 // Новости
 "DownloadingInformationKey" = "Загрузка информации...";
