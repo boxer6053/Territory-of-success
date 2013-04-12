@@ -37,6 +37,7 @@
 		F569162216E661A7003CAE0E /* chooseButton copy.png in Resources */ = {isa = PBXBuildFile; fileRef = F569162016E661A7003CAE0E /* chooseButton copy.png */; };
 		F569162316E661A7003CAE0E /* chooseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F569162116E661A7003CAE0E /* chooseButton.png */; };
 		F57217D416B6E4AC00705682 /* dialogViewGradient.png in Resources */ = {isa = PBXBuildFile; fileRef = F57217D316B6E4AC00705682 /* dialogViewGradient.png */; };
+		F5745A5117185E050000A681 /* rect_180*40.png in Resources */ = {isa = PBXBuildFile; fileRef = F5745A5017185E050000A681 /* rect_180*40.png */; };
 		F59884A416B96ABD009FBF48 /* MSAskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AA6B0E16B82A2F009EB16C /* MSAskViewController.m */; };
 		F59884AA16BACE7C009FBF48 /* MSCreateQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F59884A916BACE7C009FBF48 /* MSCreateQuestionViewController.m */; };
 		F59884E216C16DCA009FBF48 /* MSQuestionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F59884E116C16DCA009FBF48 /* MSQuestionCell.m */; };
@@ -201,6 +202,7 @@
 		F569162016E661A7003CAE0E /* chooseButton copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chooseButton copy.png"; sourceTree = "<group>"; };
 		F569162116E661A7003CAE0E /* chooseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chooseButton.png; sourceTree = "<group>"; };
 		F57217D316B6E4AC00705682 /* dialogViewGradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialogViewGradient.png; sourceTree = "<group>"; };
+		F5745A5017185E050000A681 /* rect_180*40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rect_180*40.png"; sourceTree = "<group>"; };
 		F59884A816BACE7C009FBF48 /* MSCreateQuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCreateQuestionViewController.h; sourceTree = "<group>"; };
 		F59884A916BACE7C009FBF48 /* MSCreateQuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSCreateQuestionViewController.m; sourceTree = "<group>"; };
 		F59884E016C16DCA009FBF48 /* MSQuestionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSQuestionCell.h; sourceTree = "<group>"; };
@@ -659,6 +661,7 @@
 		F59AEB7E16AF1770004519B9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F5745A5017185E050000A681 /* rect_180*40.png */,
 				FAF604D416F70F4F006B1950 /* order.png */,
 				F59C826716EF2B120015251B /* TOS cap.png */,
 				F5AC514916E7921800330A2F /* closeIcon.png */,
@@ -1176,6 +1179,7 @@
 				FAEF9F3516F33D6B004916A9 /* iPhoneStoryboard.storyboard in Resources */,
 				FAF604D516F70F4F006B1950 /* order.png in Resources */,
 				F5B3C92016F9CE20002F544A /* hheader.png in Resources */,
+				F5745A5117185E050000A681 /* rect_180*40.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

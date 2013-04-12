@@ -339,7 +339,8 @@
         [imagePickerController setAllowsEditing:YES];
                                 
         UIImageView *overlayImageView = [[UIImageView alloc] init];
-        [overlayImageView setImage:[UIImage imageNamed:@"rect_220*30.png"]];
+//        [overlayImageView setImage:[UIImage imageNamed:@"rect_220*30.png"]];
+        [overlayImageView setImage:[UIImage imageNamed:@"rect_180*40.png"]];
         
         UIView *rootOverlayAlphaTopView = [[UIView alloc] init];
         [rootOverlayAlphaTopView setBackgroundColor:[UIColor blackColor]];
@@ -363,8 +364,8 @@
         self.screenHeight = [[UIScreen mainScreen] bounds].size.height;
         
         //розмір рамки
-        self.frameMarkWidth = 220;
-        self.frameMarkHeight = 30;
+        self.frameMarkWidth = 180;
+        self.frameMarkHeight = 40;
         
         //запуск камери
         [self presentViewController:imagePickerController animated:YES completion:^(void){
@@ -547,15 +548,15 @@ static inline double radians (double degrees)
     
     if ([[UIScreen mainScreen] bounds].size.height == 568)
     {
-        rect.origin.x = 100;
-        rect.origin.y = 290;
+        rect.origin.x = 140;
+        rect.origin.y = 285;
         rect.size.width = cropWidth * 2;
         rect.size.height = cropHeight * 2;
     }
     else
     {
-        rect.origin.x = 100;
-        rect.origin.y = 285;
+        rect.origin.x = 140;
+        rect.origin.y = 280;
         rect.size.width = cropWidth * 2;
         rect.size.height = cropHeight * 2;
     }
@@ -642,9 +643,21 @@ static inline double radians (double degrees)
 //    unichar ch = [codeStr characterAtIndex:4];
 //    NSString *str = [NSString stringWithFormat:@"%c", ch];
     
+    NSMutableString *tempStr = [[NSMutableString alloc] init];
     
+    for (int i = 0; i < self.codeStr.length; i++)
+    {
+        unichar ch = [self.codeStr characterAtIndex:i];
+        
+        if (!(ch == 45 || ch == 8211 || ch == 8212))
+        {
+            [tempStr appendString:[NSString stringWithFormat:@"%c", ch]];
+        }
+    }
     
-    if (![self.codeStr isEqualToString:@""] && self.codeStr.length == 11) {
+    self.codeStr = [NSString stringWithString:tempStr];
+    
+    if (![self.codeStr isEqualToString:@""] && self.codeStr.length == 9) {
         [SVProgressHUD showWithStatus:NSLocalizedString(@"Отправка кода...",nil)];
         
         [self.api checkCode:self.codeStr];
@@ -652,7 +665,7 @@ static inline double radians (double degrees)
     else
     {
         UIAlertView *codeFailMessage = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Ошибка кода",nil)
-                                                                     message:NSLocalizedString(@"Код должен включать 11 символов",nil)
+                                                                     message:NSLocalizedString(@"Код должен включать 9 символов",nil)
                                                                     delegate:self
                                                            cancelButtonTitle:@"Ok"
                                                            otherButtonTitles:nil];

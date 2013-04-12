@@ -1667,6 +1667,7 @@
                 <relationship kind="outlet" name="profileBarButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="sendCodeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="testImageView" candidateClass="UIImageView"/>
             </relationships>
         </class>
         <class className="MSInquirerCell" superclassName="UITableViewCell">
