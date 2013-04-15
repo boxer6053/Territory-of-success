@@ -61,4 +61,18 @@
           andCategoryId:(int)categoryId
               andOffset:(int)offset
                andPrice:(int)price;
+
+- (void)sentBonusProductName:(NSString *)name
+                  andId:(int)prodId
+              andRating:(int)rating
+      andCommentsNumber:(int)comments
+       andAdvisesNumber:(int)advises
+            andImageURL:(NSString *)imageURL
+     andDescriptionText:(NSString *) descriptionText
+        andNumberInList:(int)numberInList
+          andCategoryId:(int)categoryId
+              andOffset:(int)offset
+               andPrice:(int)price;
+
+
 @end

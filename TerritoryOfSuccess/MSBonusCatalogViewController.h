@@ -11,7 +11,10 @@
 
 @interface MSBonusCatalogViewController : UITableViewController <WsCompleteDelegate>
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
 @property (strong, nonatomic) IBOutlet UITableView *bonusCatalog;
+- (IBAction)backButtonPressed:(id)sender;
+
 
 - (void)setCategoriesList:(NSArray *)categoriesList;
 

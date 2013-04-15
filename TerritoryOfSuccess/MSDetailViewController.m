@@ -328,6 +328,33 @@
     self.productPrice = [NSString stringWithFormat:@"%d", price];
     _isFromBrandCatalog = YES;
 }
+- (void)sentBonusProductName:(NSString *)name
+                  andId:(int)prodId
+              andRating:(int)rating
+      andCommentsNumber:(int)comments
+       andAdvisesNumber:(int)advises
+            andImageURL:(NSString *)imageURL
+     andDescriptionText:(NSString *) descriptionText
+        andNumberInList:(int)numberInList
+          andCategoryId:(int)categoryId
+              andOffset:(int)offset
+               andPrice:(int)price
+{
+    self.productSentId = prodId;
+    self.productSentName = name;
+    self.productImageURL = imageURL;
+    self.ratingDetail = rating;
+    self.commentsDetail = comments;
+    self.advisesDetail = advises;
+    self.productSentDescription = descriptionText;
+    
+    self.numberInList = numberInList;
+    self.categoryId = categoryId;
+    self.detailProductOffset = offset;
+    self.productPrice = [NSString stringWithFormat:@"%d", price];
+    
+}
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

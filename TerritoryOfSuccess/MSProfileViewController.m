@@ -24,6 +24,7 @@
 }
 
 @property (nonatomic) UIDatePicker *datePicker;
+@property (strong, nonatomic) NSString *savedDate;
 @property (strong, nonatomic) MSAPI *api;
 @property (strong, nonatomic) NSMutableArray *profileArray;
 @property (strong, nonatomic) NSMutableArray *profileStandartFields;
@@ -36,6 +37,7 @@
 
 @implementation MSProfileViewController
 
+@synthesize savedDate = _savedDate;
 @synthesize profileTableView = _profileTableView;
 @synthesize datePicker = _datePicker;
 @synthesize api = _api;
@@ -214,10 +216,16 @@
                 
                 if([[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"key"] isEqualToString:@"birthday"])
                 {
+                
                     MSDatePickerView *picker = [[MSDatePickerView alloc]initWithFrame:CGRectMake(0, 0, 320, 261)];
                     picker.delegate = self;
                     picker.target = cell.standartTextField;
+                    if(self.savedDate){
+                        cell.standartTextField.text = self.savedDate;
+                    }
+                    else{
                     cell.standartTextField.inputView = picker;
+                    }
                 }
                 if([[[self.profileStandartFields objectAtIndex:indexPath.row] valueForKey:@"key"] isEqualToString:@"phone"])
                 {
@@ -507,6 +515,7 @@
 
 -(void)msDatePickerViewDoneButtonPressed:(MSDatePickerView *)pickerView
 {
+    self.savedDate = pickerView.selectedDate;
     pickerView.target.text = pickerView.selectedDate;
     [pickerView.target resignFirstResponder];
 }

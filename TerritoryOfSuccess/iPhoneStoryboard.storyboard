@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8kx-JT-nNm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8kx-JT-nNm">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -757,21 +757,76 @@
                                     <outlet property="categoryOrBrandNumber" destination="dfH-3t-ahY" id="0xG-7c-huK"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="productCellIdentifier" rowHeight="93" id="xs7-uV-ViN" customClass="MSSubCatalogueCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="93"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="92"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Название продукта" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" id="Hbx-vw-aJE">
+                                            <rect key="frame" x="139" y="11" width="152" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="NWg-I4-y5c">
+                                            <rect key="frame" x="166" y="67" width="87" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Бренд:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mnS-K2-Laj">
+                                            <rect key="frame" x="139" y="46" width="39" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="13"/>
+                                            <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Имя бренда" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rAL-Dr-jeE">
+                                            <rect key="frame" x="181" y="46" width="119" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="13"/>
+                                            <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="nqT-8m-wGr">
+                                            <rect key="frame" x="7" y="14" width="124" height="64"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <outlet property="prodactBrandLabel" destination="mnS-K2-Laj" id="Kff-Sd-duy"/>
+                                    <outlet property="productBrandName" destination="rAL-Dr-jeE" id="2RL-gW-cLB"/>
+                                    <outlet property="productName" destination="Hbx-vw-aJE" id="Dlu-xh-YCB"/>
+                                    <outlet property="productRatingImage" destination="NWg-I4-y5c" id="uaQ-4K-0dC"/>
+                                    <outlet property="productSmallImage" destination="nqT-8m-wGr" id="XAw-qM-RmT"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="mMJ-qr-3TT" id="fLk-OK-A7m"/>
                             <outlet property="delegate" destination="mMJ-qr-3TT" id="gWq-dT-AUq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="7Sf-BO-ZmT"/>
+                    <navigationItem key="navigationItem" id="7Sf-BO-ZmT">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="rnL-1D-G8O">
+                            <connections>
+                                <action selector="backButtonPressed:" destination="mMJ-qr-3TT" id="qRY-J1-rXp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="backButton" destination="rnL-1D-G8O" id="a52-1P-Bak"/>
                         <outlet property="bonusCatalog" destination="EAQ-qh-hdR" id="vhH-ae-rRv"/>
                         <segue destination="pAQ-y9-8mp" kind="push" identifier="toBonusSubCatalog" id="Rre-dG-Mdu"/>
+                        <segue destination="n4h-LN-HLC" kind="push" identifier="toDetail1" id="p5D-WP-p4q"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fl-SF-EDU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1880" y="-1043"/>
+            <point key="canvasLocation" x="1998" y="-1049"/>
         </scene>
         <!--Bonus Sub Catalog View Controller-->
         <scene sceneID="Pfy-LN-xOi">
@@ -1539,6 +1594,8 @@
         <class className="MSBonusCatalogViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSBonusCatalogViewController.h"/>
             <relationships>
+                <relationship kind="action" name="backButtonPressed:"/>
+                <relationship kind="outlet" name="backButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="bonusCatalog" candidateClass="UITableView"/>
             </relationships>
         </class>
@@ -1813,7 +1870,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="UqF-wd-jSc"/>
         <segue reference="f75-2Y-K7q"/>
+        <segue reference="p5D-WP-p4q"/>
+        <segue reference="NNN-f2-Sbf"/>
     </inferredMetricsTieBreakers>
 </document>
