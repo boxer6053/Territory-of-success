@@ -112,6 +112,7 @@
 
 @synthesize newsActivityIdicator = _newsActivityIdicator;
 
+
 - (MSAPI *)api
 {
     if(!_api)
@@ -338,7 +339,8 @@
         [imagePickerController setAllowsEditing:YES];
                                 
         UIImageView *overlayImageView = [[UIImageView alloc] init];
-        [overlayImageView setImage:[UIImage imageNamed:@"rect_220*30.png"]];
+//        [overlayImageView setImage:[UIImage imageNamed:@"rect_220*30.png"]];
+        [overlayImageView setImage:[UIImage imageNamed:@"rect_180*40.png"]];
         
         UIView *rootOverlayAlphaTopView = [[UIView alloc] init];
         [rootOverlayAlphaTopView setBackgroundColor:[UIColor blackColor]];
@@ -362,8 +364,8 @@
         self.screenHeight = [[UIScreen mainScreen] bounds].size.height;
         
         //розмір рамки
-        self.frameMarkWidth = 220;
-        self.frameMarkHeight = 30;
+        self.frameMarkWidth = 180;
+        self.frameMarkHeight = 40;
         
         //запуск камери
         [self presentViewController:imagePickerController animated:YES completion:^(void){
@@ -372,29 +374,47 @@
             [rootOverlayAlphaTopView setFrame:CGRectMake(0, 0, 0, 0)];
             
             //додавання рамки і напівпрозорого фону
+//            if (self.screenHeight == 568)
+//            {
+//                [overlayImageView setFrame:CGRectMake((self.screenWidth - self.frameMarkWidth)/2, (self.screenHeight - 96 - self.frameMarkHeight)/2, self.frameMarkWidth, self.frameMarkHeight)];
+//                
+//                [overlayAlphaTopView setFrame:CGRectMake(0, 0, 320, (self.screenHeight - 96 - self.frameMarkHeight)/2)];
+//            }
+//            else
+//            {
+//                [overlayImageView setFrame:CGRectMake((self.screenWidth - self.frameMarkWidth)/2, (self.screenHeight - 54 - self.frameMarkHeight)/2, self.frameMarkWidth, self.frameMarkHeight)];
+//                [overlayAlphaTopView setFrame:CGRectMake(0, 0, 320, (self.screenHeight - 54 - self.frameMarkHeight)/2)];
+//            }
+            
+//            [overlayAlphaTopView setFrame:CGRectMake(0, 0, 320, (self.screenHeight - 54 - self.frameMarkHeight)/2)];
+            
             if (self.screenHeight == 568)
             {
-                [overlayImageView setFrame:CGRectMake((self.screenWidth - self.frameMarkWidth)/2, (self.screenHeight - 108 - self.frameMarkHeight)/2, self.frameMarkWidth, self.frameMarkHeight)];
+                [overlayImageView setFrame:CGRectMake((self.screenWidth - self.frameMarkWidth)/2, (self.screenHeight - 96 - self.frameMarkHeight)/2, self.frameMarkWidth, self.frameMarkHeight)];
+                
+                [overlayAlphaTopView setFrame:CGRectMake(0, 0, 320, (self.screenHeight - 96 - self.frameMarkHeight)/2)];
+                
+                [overlayAlphaBottomView setFrame:CGRectMake(0, (self.screenHeight - 96 + self.frameMarkHeight)/2, 320, self.screenHeight - (self.screenHeight - 96 + self.frameMarkHeight)/2 - 96)];
+                
+                [overlayAlphaLeftView setFrame:CGRectMake(0, (self.screenHeight - 96 - self.frameMarkHeight)/2, (self.screenWidth - self.frameMarkWidth)/2, self.frameMarkHeight)];
+                
+                [overlayAlphaRightView setFrame:CGRectMake(self.frameMarkWidth + (self.screenWidth - self.frameMarkWidth)/2, (self.screenHeight - 96 - self.frameMarkHeight)/2, 320 - self.frameMarkWidth + (self.screenWidth - self.frameMarkWidth)/2, self.frameMarkHeight)];
             }
             else
             {
                 [overlayImageView setFrame:CGRectMake((self.screenWidth - self.frameMarkWidth)/2, (self.screenHeight - 54 - self.frameMarkHeight)/2, self.frameMarkWidth, self.frameMarkHeight)];
-            }
-            
-            [overlayAlphaTopView setFrame:CGRectMake(0, 0, 320, (self.screenHeight - 54 - self.frameMarkHeight)/2)];
-            
-            if (self.screenHeight == 568)
-            {
-                [overlayAlphaBottomView setFrame:CGRectMake(0, (self.screenHeight - 54 + self.frameMarkHeight)/2, 320, self.screenHeight - (self.screenHeight - 54 + self.frameMarkHeight)/2 - 104)];
-            }
-            else
-            {
+                [overlayAlphaTopView setFrame:CGRectMake(0, 0, 320, (self.screenHeight - 54 - self.frameMarkHeight)/2)];
+
                 [overlayAlphaBottomView setFrame:CGRectMake(0, (self.screenHeight - 54 + self.frameMarkHeight)/2, 320, self.screenHeight - (self.screenHeight - 54 + self.frameMarkHeight)/2 - 52)];
+                
+                [overlayAlphaLeftView setFrame:CGRectMake(0, (self.screenHeight - 54 - self.frameMarkHeight)/2, (self.screenWidth - self.frameMarkWidth)/2, self.frameMarkHeight)];
+                
+                [overlayAlphaRightView setFrame:CGRectMake(self.frameMarkWidth + (self.screenWidth - self.frameMarkWidth)/2, (self.screenHeight - 54 - self.frameMarkHeight)/2, 320 - self.frameMarkWidth + (self.screenWidth - self.frameMarkWidth)/2, self.frameMarkHeight)];
             }
-                        
-            [overlayAlphaLeftView setFrame:CGRectMake(0, (self.screenHeight - 54 - self.frameMarkHeight)/2, (self.screenWidth - self.frameMarkWidth)/2, self.frameMarkHeight)];
             
-            [overlayAlphaRightView setFrame:CGRectMake(self.frameMarkWidth + (self.screenWidth - self.frameMarkWidth)/2, (self.screenHeight - 54 - self.frameMarkHeight)/2, 320 - self.frameMarkWidth + (self.screenWidth - self.frameMarkWidth)/2, self.frameMarkHeight)];
+//            [overlayAlphaLeftView setFrame:CGRectMake(0, (self.screenHeight - 54 - self.frameMarkHeight)/2, (self.screenWidth - self.frameMarkWidth)/2, self.frameMarkHeight)];
+            
+//            [overlayAlphaRightView setFrame:CGRectMake(self.frameMarkWidth + (self.screenWidth - self.frameMarkWidth)/2, (self.screenHeight - 54 - self.frameMarkHeight)/2, 320 - self.frameMarkWidth + (self.screenWidth - self.frameMarkWidth)/2, self.frameMarkHeight)];
             
             [rootOverlayAlphaTopView addSubview:overlayAlphaTopView];
             
@@ -525,11 +545,22 @@ static inline double radians (double degrees)
 //    rect.size.height = cropHeight * koefForHeight;
     
     CGRect rect;
-    rect.origin.x = 100;
-    rect.origin.y = 285;
-    rect.size.width = cropWidth * 2;
-    rect.size.height = cropHeight * 2;
     
+    if ([[UIScreen mainScreen] bounds].size.height == 568)
+    {
+        rect.origin.x = 140;
+        rect.origin.y = 285;
+        rect.size.width = cropWidth * 2;
+        rect.size.height = cropHeight * 2;
+    }
+    else
+    {
+        rect.origin.x = 140;
+        rect.origin.y = 280;
+        rect.size.width = cropWidth * 2;
+        rect.size.height = cropHeight * 2;
+    }
+        
 	CGImageRef ref = CGBitmapContextCreateImage(bitmap);
     
 	UIImage *result = [UIImage imageWithCGImage:ref];
@@ -612,9 +643,21 @@ static inline double radians (double degrees)
 //    unichar ch = [codeStr characterAtIndex:4];
 //    NSString *str = [NSString stringWithFormat:@"%c", ch];
     
+    NSMutableString *tempStr = [[NSMutableString alloc] init];
     
+    for (int i = 0; i < self.codeStr.length; i++)
+    {
+        unichar ch = [self.codeStr characterAtIndex:i];
+        
+        if (!(ch == 45 || ch == 8211 || ch == 8212))
+        {
+            [tempStr appendString:[NSString stringWithFormat:@"%c", ch]];
+        }
+    }
     
-    if (![self.codeStr isEqualToString:@""] && self.codeStr.length == 11) {
+    self.codeStr = [NSString stringWithString:tempStr];
+    
+    if (![self.codeStr isEqualToString:@""] && self.codeStr.length == 9) {
         [SVProgressHUD showWithStatus:NSLocalizedString(@"Отправка кода...",nil)];
         
         [self.api checkCode:self.codeStr];
@@ -622,7 +665,7 @@ static inline double radians (double degrees)
     else
     {
         UIAlertView *codeFailMessage = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Ошибка кода",nil)
-                                                                     message:NSLocalizedString(@"Код должен включать 11 символов",nil)
+                                                                     message:NSLocalizedString(@"Код должен включать 9 символов",nil)
                                                                     delegate:self
                                                            cancelButtonTitle:@"Ok"
                                                            otherButtonTitles:nil];

@@ -641,9 +641,9 @@
     
     if ((type == kCatalog) || (type == kBonusSubCategories))
     {
-        self.commentsLabel.text = [NSString stringWithFormat:@"%@",[[[dictionary objectForKey:@"list"] objectAtIndex:self.numberInList]valueForKey: @"comments"]];
-        self.advisesLabel.text = [NSString stringWithFormat:@"%@",[[[dictionary objectForKey:@"list"] objectAtIndex:self.numberInList]valueForKey: @"advises"]];
-        self.ratingImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@star",[[[dictionary objectForKey:@"list"] objectAtIndex:self.numberInList] valueForKey:@"rating"]]];
+//        self.commentsLabel.text = [NSString stringWithFormat:@"%@",[[[dictionary objectForKey:@"list"] objectAtIndex:self.numberInList]valueForKey: @"comments"]];
+//        self.advisesLabel.text = [NSString stringWithFormat:@"%@",[[[dictionary objectForKey:@"list"] objectAtIndex:self.numberInList]valueForKey: @"advises"]];
+//        self.ratingImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@star",[[[dictionary objectForKey:@"list"] objectAtIndex:self.numberInList] valueForKey:@"rating"]]];
     }
 }
 
