@@ -16,6 +16,7 @@
 #import "MSBonusCatalogViewController.h"
 #import "PrettyKit.h"
 #import <QuartzCore/QuartzCore.h>
+#import "MSTipsCell.h"
 
 @interface MSProfileViewController ()
 {
@@ -85,7 +86,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -110,6 +111,17 @@
         else
         {
             return 0;
+        }
+    }
+    else if (section == 4)
+    {
+        if (_isEditMode)
+        {
+            return 0;
+        }
+        else
+        {
+            return 1;
         }
     }
     else if (section == 2)
@@ -167,6 +179,14 @@
                 [cell.saveButton setTitle:NSLocalizedString(@"SaveKey", nil) forState:UIControlStateNormal];
                 return cell;
             }
+        }
+        if(indexPath.section ==4)
+        {
+            MSTipsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TipsCell"];
+            [cell.tipsButton setTitle:@"TTips" forState:UIControlStateNormal];
+            //cell.textLabel.text = @"sadsd";
+            [cell setBackgroundColor:[UIColor clearColor]];
+            return cell;
         }
         else
         {
