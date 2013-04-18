@@ -113,6 +113,7 @@
 "MyBrandKey" = "Бренд";
 "VotedKey" = "Проголосовало ";
 "NotAvailableKey" = "Недоступно";
+"TipsKey" = "Подсказки";
 
 // Новости
 "DownloadingInformationKey" = "Загрузка информации...";

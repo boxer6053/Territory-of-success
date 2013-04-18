@@ -114,6 +114,7 @@
 "BackKey" = "Back";
 "MyBrandKey" = "Brand";
 "VotedKey" = "Voted ";
+"TipsKey" = "Tips";
 
 
 // Новости

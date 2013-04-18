@@ -183,7 +183,7 @@
         if(indexPath.section ==4)
         {
             MSTipsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TipsCell"];
-            [cell.tipsButton setTitle:@"TTips" forState:UIControlStateNormal];
+            [cell.tipsButton setTitle:NSLocalizedString(@"TipsKey", nil) forState:UIControlStateNormal];
             //cell.textLabel.text = @"sadsd";
             [cell setBackgroundColor:[UIColor clearColor]];
             return cell;

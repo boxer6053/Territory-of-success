@@ -11,5 +11,6 @@
 @interface MSTipsViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIScrollView *tipsScrollView;
 - (IBAction)closeButton:(id)sender;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 
 @end

@@ -14,6 +14,7 @@
 
 @implementation MSTipsViewController
 @synthesize tipsScrollView = _tipsScrollView;
+@synthesize navigationBar = _navigationBar;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -26,6 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationBar.topItem.title = NSLocalizedString(@"TipsKey", nil);
   NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
     NSLog(@"lang = %@",language);
       [self.tipsScrollView setContentSize:CGSizeMake(320*9
@@ -63,6 +65,7 @@
 
 - (void)viewDidUnload {
     [self setTipsScrollView:nil];
+    [self setNavigationBar:nil];
       [super viewDidUnload];
 }
 - (IBAction)closeButton:(id)sender {
